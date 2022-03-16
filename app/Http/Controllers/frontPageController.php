@@ -36,13 +36,7 @@ class frontPageController extends Controller
 
     // login form
 
-public function loginForm()
-{
-    #show the login form
-
-    return view('frontend.frontend_pages.auth.loginForm');
-}
-
+ //++++++++++++++++++++++++++++  User Products Section   ++++++++++++++++++++++++++++++//
 
 
     public function ShopPage(Request $request)
@@ -138,6 +132,17 @@ public function loginForm()
       }
     }
 
+
+ //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
+
+    public function loginForm()
+    {
+        #show the login form
+
+        return view('frontend.frontend_pages.auth.loginForm');
+    }
+
+
     // login get the info details
     public function loginSubmit(Request $request)
     {
@@ -160,7 +165,7 @@ public function loginForm()
     }
 
     public function register_users( Request $request)
-    {
+{
      $data = $request->all();
      if(!empty($data['check-seller']) == 'on' && empty($data['check-customer'])){
             if ($data['full_name'] == null || empty($data['full_name'])) {
@@ -279,7 +284,9 @@ public function logout_front_user()
     return redirect()->route('homepage')->with('message','You Have logged out Seccessfuly!!');
 }
 
-/////////////////////////////////////////////////////
+
+
+ //++++++++++++++++++++++++++++ Current User Dashboard   ++++++++++++++++++++++++++++++//
 
 // user dahsboard
 public function userdashboard()
@@ -291,6 +298,45 @@ public function userdashboard()
     }else{
         return redirect()->route('loginForm')->with('warning','Login First To have access');
     }
+}
+// update the current user billing address
+public function billingupdate(Request $request,$id)
+{
+    $data = $request->all();
+    $user_address = User::find($id);
+if ($user_address) {
+    if (!empty($data['shipping_copy_billing_info'])) {
+        $saddress =  $data['address'];
+        $scountry =  $data['country'];
+        $scity =     $data['city'];
+        $sstate=     $data['state'];
+        $spostcode = $data['postcode'];
+    } else {
+        $saddress =  $user_address->saddress;
+        $scountry =  $user_address->scountry;
+        $scity =     $user_address->scity;
+        $sstate =     $user_address->sstate;
+        $spostcode = $user_address->spostcode;
+    }
+    User::where('id', $id)->update([
+
+        'address' => $data['address'],
+        'country' => $data['country'],
+       'city' => $data['city'],
+       'postcode' => $data['postcode'],
+       'state' => $data['state'],
+       'saddress' => $saddress,
+       'scountry' => $scountry,
+       'scity' => $scity,
+       'spostcode' => $spostcode,
+       'sstate' => $sstate,
+        
+    ]);
+    return back()->with('message', 'you have added Shipping Info same As billing Info');
+}else{
+            return back()->with('error', 'user is not exsits');
+
+}
 }
 
 

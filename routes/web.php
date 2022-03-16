@@ -53,6 +53,7 @@ Route::group(['perfix'=>'user'],function(){
 
     //view dashboard
     Route::get('/dashboard',[frontPageController::class,'userdashboard'])->name('userdashboard');
+    Route::post('billing_update/{id}',[frontPageController::class, 'billingupdate'])->name('billingupdate');
 
 
 });

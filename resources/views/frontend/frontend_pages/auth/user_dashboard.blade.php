@@ -259,32 +259,32 @@
                                         <table class="address-table">
                                             <tbody>
                                                 <tr>
-                                                    <th>Name:</th>
-                                                    <td>John Doe</td>
+                                                    <th>Full Name:</th>
+                                                    <td>{{ $current_user->full_name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Company:</th>
-                                                    <td>Conia</td>
+                                                    <th>User Name:</th>
+                                                    <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Address:</th>
-                                                    <td>Wall Street</td>
+                                                    <td>{{ $current_user->address }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>City:</th>
-                                                    <td>California</td>
+                                                    <td>{{ $current_user->city }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Country:</th>
-                                                    <td>United States (US)</td>
+                                                    <td>{{ $current_user->country }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Postcode:</th>
-                                                    <td>92020</td>
+                                                    <td>{{ $current_user->postcode }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Phone:</th>
-                                                    <td>1112223334</td>
+                                                    <td>{{ $current_user->phone }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -297,30 +297,34 @@
                                     <h4 class="title title-underline ls-25 font-weight-bold">Shipping Address</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
-                                            <tbody>
+                                             <tbody>
                                                 <tr>
-                                                    <th>Name:</th>
-                                                    <td>John Doe</td>
+                                                    <th>Full Name:</th>
+                                                    <td>{{ $current_user->full_name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Company:</th>
-                                                    <td>Conia</td>
+                                                    <th>User Name:</th>
+                                                    <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Address:</th>
-                                                    <td>Wall Street</td>
+                                                    <td>{{ $current_user->saddress }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>City:</th>
-                                                    <td>California</td>
+                                                    <td>{{ $current_user->scity }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Country:</th>
-                                                    <td>United States (US)</td>
+                                                    <td>{{ $current_user->scountry }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Postcode:</th>
-                                                    <td>92020</td>
+                                                    <td>{{ $current_user->spostcode }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Phone:</th>
+                                                    <td>{{ $current_user->phone }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -332,10 +336,10 @@
                                 <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Billing Form</a>
+                                            <a href="#collapse1-1" class="expand">Edit Billing Address</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
-                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="#"
+                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
 
@@ -369,7 +373,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">State</label>
                                                         <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->stat }}">
+                                                            class="form-control" id="state" value="{{ $current_user->state }}">
                                                     </div>
                                                 </div>
 
@@ -386,10 +390,10 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Billing Address</a>
+                                            <a href="#collapse1-1" class="expand">Edit Shipping Address</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
-                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="#"
+                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
 
@@ -423,7 +427,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">State</label>
                                                         <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->sstat }}">
+                                                            class="form-control" id="state" value="{{ $current_user->sstate }}">
                                                     </div>
                                                 </div>
                                                 <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
