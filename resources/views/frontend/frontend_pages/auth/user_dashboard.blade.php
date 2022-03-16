@@ -384,7 +384,7 @@
                                     <label for="shippingcopybillinginfo" style="color:red">Do you want to Update the shipping address as above data ?</label>
                                 </div>
                                                   
-                                                <button class="mt-3 btn btn-primary">Edit Now</button>
+                                                <button class="mt-3 btn btn-primary">Edit Billing Now</button>
                                             </form>
                                         </div>
                                     </div>
@@ -393,41 +393,41 @@
                                             <a href="#collapse1-1" class="expand">Edit Shipping Address</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
-                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
+                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">Address </label>
-                                                        <input  type="text" name="address" class="form-control"
-                                                            id="address" value="{{ $current_user->saddress }}">
+                                                        <input  type="text" name="saddress" class="form-control"
+                                                            id="saddress" value="{{ $current_user->saddress }}">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label for="inputPassword4">Country</label>
-                                                        <input type="text" name="country" class="form-control"
-                                                            id="country" value="{{ $current_user->scountry }}">
+                                                        <input type="text" name="scountry" class="form-control"
+                                                            id="scountry" value="{{ $current_user->scountry }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">City </label>
-                                                        <input  type="text" name="city" class="form-control"
-                                                            id="city" value="{{ $current_user->scity }}">
+                                                        <input  type="text" name="scity" class="form-control"
+                                                            id="scity" value="{{ $current_user->scity }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">Post Code </label>
-                                                        <input  type="number" name="postcode"
-                                                            class="form-control" id="postcode" value="{{ $current_user->spostcode }}">
+                                                        <input  type="number" name="spostcode"
+                                                            class="form-control" id="spostcode" value="{{ $current_user->spostcode }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">State</label>
-                                                        <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->sstate }}">
+                                                        <input  type="text" name="sstate"
+                                                            class="form-control" id="sstate" value="{{ $current_user->sstate }}">
                                                     </div>
                                                 </div>
                                                 <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
@@ -448,7 +448,8 @@
                                 <h4 class="mb-0 icon-box-title ls-normal">Account Details</h4>
                             </div>
                         </div>
-                        <form class="form account-details-form" action="#" method="post">
+                        <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -488,19 +489,14 @@
                             <div class="form-group">
                                 <label class="text-dark" for="cur-password">Current Password leave blank to leave
                                     unchanged</label>
-                                <input type="password" class="form-control form-control-md" id="cur-password"
-                                    name="cur_password">
+                                <input type="password" class="form-control form-control-md" id="old-password"
+                                    name="old_password">
                             </div>
                             <div class="form-group">
                                 <label class="text-dark" for="new-password">New Password leave blank to leave
                                     unchanged</label>
                                 <input type="password" class="form-control form-control-md" id="new-password"
                                     name="new_password">
-                            </div>
-                            <div class="mb-10 form-group">
-                                <label class="text-dark" for="conf-password">Confirm Password</label>
-                                <input type="password" class="form-control form-control-md" id="conf-password"
-                                    name="conf_password">
                             </div>
                             <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">Save Changes</button>
                         </form>

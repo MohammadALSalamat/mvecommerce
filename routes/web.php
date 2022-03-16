@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
+use App\Http\Controllers\ShippingCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('/',[frontPageController::class,'HomePage'])->name('homepage');
 
 Auth::routes(['register'=>false]);
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // auth show the  login form.
@@ -47,14 +49,22 @@ Route::post('registerusers',[frontPageController::class,'register_users'])->name
 
 Route::get('user/logout',[frontPageController::class,'logout_front_user'])->name('logout_front_user');
 
+Route::post('cart/stor',[ShippingCartController::class, 'add_to_cart'])->name('add_to_cart');
+
+
+
 // user dashboard and settings
 
 Route::group(['perfix'=>'user'],function(){
-
+    
     //view dashboard
     Route::get('/dashboard',[frontPageController::class,'userdashboard'])->name('userdashboard');
     Route::post('billing_update/{id}',[frontPageController::class, 'billingupdate'])->name('billingupdate');
-
+    Route::post('shipping/{id}',[frontPageController::class, 'shippingupdate'])->name('shippingupdate');
+    
+    // update user password
+    Route::post('update_account/{id}',[frontPageController::class, 'update_useraccount'])->name('updateuseraccount');
+    
 
 });
 

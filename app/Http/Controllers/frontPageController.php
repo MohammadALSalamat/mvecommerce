@@ -320,24 +320,88 @@ if ($user_address) {
     }
     User::where('id', $id)->update([
 
-        'address' => $data['address'],
-        'country' => $data['country'],
-       'city' => $data['city'],
-       'postcode' => $data['postcode'],
-       'state' => $data['state'],
-       'saddress' => $saddress,
-       'scountry' => $scountry,
-       'scity' => $scity,
-       'spostcode' => $spostcode,
-       'sstate' => $sstate,
+    'address' => $data['address'],
+    'country' => $data['country'],
+    'city' => $data['city'],
+    'postcode' => $data['postcode'],
+    'state' => $data['state'],
+    'saddress' => $saddress,
+    'scountry' => $scountry,
+    'scity' => $scity,
+    'spostcode' => $spostcode,
+    'sstate' => $sstate,
         
     ]);
     return back()->with('message', 'you have added Shipping Info same As billing Info');
 }else{
+    return back()->with('error', 'user is not exsits');
+}
+
+}
+
+    // update the current user billing address
+    public function shippingupdate(Request $request, $id)
+    {
+        $data = $request->all();
+        $user_address = User::find($id);
+        if ($user_address) {
+            User::where('id', $id)->update([
+                'saddress' => $data['saddress'],
+                'scountry' => $data['scountry'],
+                'scity' => $data['scity'],
+                'spostcode' => $data['spostcode'],
+                'sstate' => $data['sstate'],
+            ]);
+            return back()->with('message', 'you have Updated Shipping Info ');
+        } else {
             return back()->with('error', 'user is not exsits');
+        }
+    }
 
-}
-}
+    // update the user details 
 
+    public function update_useraccount(Request $request,$id)
+    {
+        $data = $request->all();
+        $current_user = User::find($id);
+
+        if(empty($data['full_name']) || $data['full_name'] == null){
+            return back()->with('error','full name is required');
+        }
+
+        if (empty($data['username']) || $data['username'] == null) {
+            return back()->with('error', 'Username is required');
+        }
+
+        if (empty($data['phone']) || $data['phone'] == null) {
+            return back()->with('error', 'full name is required');
+        }
+        if($current_user){
+            //check the old password
+            $oldpasscheker = Hash::check($data['old_password'],$current_user->password);
+            if($oldpasscheker || $data['old_password'] == null){
+                if($data['old_password'] == null){
+                    $passowrd = $current_user->password;
+                }else{
+                    $passowrd = Hash::make($data['new_password']);
+                }
+               
+
+                User::where('id',$id)->update([
+                    "full_name"=> $data['full_name'],
+                    "username"=> $data['username'],
+                    "phone"=> $data['phone'],
+                    "password" => $passowrd,
+                 ]);
+                 return back()->with('message','Your data has been updated');
+            }else{
+                return back()->with('error','Your Current Password is not Correct');
+            }
+
+
+        }else{
+            return back()->with('error','the user is not found');
+        }
+    }
 
 }
