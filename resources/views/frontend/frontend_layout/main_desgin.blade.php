@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Wolmart - Marketplace HTML5 Template</title>
 
@@ -62,8 +63,10 @@
 
 <body class = "home my-account">
     <div class="page-wrapper">
-
+  <!-- Start of Header -->
+  <header class="header" id="header-ajax">
     @include('frontend.frontend_layout.header')
+  </header>
     @yield('content')
     @include('frontend.frontend_layout.footer')
 
@@ -875,6 +878,32 @@
        <!-- Main JS -->
        <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
        @yield('script')
+
+       <!-- delete the items from the cart on the header -->
+       <script>
+              $(document).on('click','.cart_delete',function(e){
+        e.preventDefault();
+        // get the data from products
+        var cart_id = $(this).data('id');
+        
+        // start sending info using ajax
+
+        var token = "{{ csrf_token() }}";
+        var path = "{{ route('cart_delete') }}";
+        $.ajax({
+            url: path,
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                cart_id:cart_id,
+                _token:token,
+            },
+            success: function (data) {
+                $('body #header-ajax').html(data['header']);
+            }
+        });
+    });
+       </script>
 </body>
 
 </html>

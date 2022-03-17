@@ -192,7 +192,7 @@
                                                     height="338" />
                                             </a>
                                             <div class="product-action-horizontal">
-                                                <a href="" data-product-id="{{$product->id}}" id="add_to_cart{{$product->id}}" data-quantity="1" class="add_to_cart btn-product-icon btn-cart w-icon-cart"
+                                                <a href="" data-product-id="{{$product->id}}" id="add_to_cart{{$product->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
                                                     title="Add to cart"></a>
                                                 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
                                                     title="Wishlist"></a>
@@ -279,13 +279,12 @@
 
 </script>
 <script>
-    $(document).on('click','.add_to_cart',function(e){
+    $(document).on('click','.add-to-cart',function(e){
         e.preventDefault();
         // get the data from products
         var product_id = $(this).data('product-id');
         var product_quant = $(this).data('quantity');
         
-        alert(product_quant)
         // start sending info using ajax
 
         var token = "{{ csrf_token() }}";
@@ -293,7 +292,7 @@
 
         $.ajax({
             url: path,
-            type: "post",
+            type: "POST",
             dataType: "JSON",
             data: {
                 product_id:product_id,
@@ -301,9 +300,9 @@
                 _token:token,
             },
             success: function (data) {
-                consol.log(data);
+                $('body #header-ajax').html(data['header']);
             }
         });
-    })
+    });
 </script>
 @stop

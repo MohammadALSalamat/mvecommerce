@@ -1,5 +1,3 @@
-  <!-- Start of Header -->
-  <header class="header">
     <div class="header-top">
         <div class="container">
             <div class="header-left">
@@ -107,7 +105,7 @@
                     <div class="cart-overlay"></div>
                     <a href="#" class="cart-toggle label-down link">
                         <i class="w-icon-cart">
-                            <span class="cart-count">2</span>
+                            <span class="cart-count" id="cart-counter">{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count() }}</span>
                         </i>
                         <span class="cart-label">Cart</span>
                     </a>
@@ -118,52 +116,30 @@
                         </div>
 
                         <div class="products">
+                        @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                             <div class="product product-cart">
                                 <div class="product-detail">
-                                    <a href="product-default.html" class="product-name">Beige knitted
-                                        elas<br>tic
-                                        runner shoes</a>
+                                    <a href="product-default.html" class="product-name">{{ $item->name }}</a>
                                     <div class="price-box">
-                                        <span class="product-quantity">1</span>
-                                        <span class="product-price">$25.68</span>
+                                        <span class="product-quantity">{{ $item->qty }}</span>
+                                        <span class="product-price">AED {{ $item->price }}</span>
                                     </div>
                                 </div>
                                 <figure class="product-media">
-                                    <a href="product-default.html">
-                                        <img src="{{ asset('front-style/assets/images/cart/product-1.jpg')}}" alt="product" height="84"
+                                    <a href="{{ route('singleproduct',$item->model->slug) }}">
+                                        <img src="{{ $item->model->image }}" alt="product" height="84"
                                             width="94" />
                                     </a>
                                 </figure>
-                                <button class="btn btn-link btn-close" aria-label="button">
+                                <button class="btn btn-link btn-close cart_delete" aria-label="button" data-id="{{ $item->rowId }}">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
-
-                            <div class="product product-cart">
-                                <div class="product-detail">
-                                    <a href="product-default.html" class="product-name">Blue utility
-                                        pina<br>fore
-                                        denim dress</a>
-                                    <div class="price-box">
-                                        <span class="product-quantity">1</span>
-                                        <span class="product-price">$32.99</span>
-                                    </div>
-                                </div>
-                                <figure class="product-media">
-                                    <a href="product-default.html">
-                                        <img src="assets/images/cart/product-2.jpg" alt="product" width="84"
-                                            height="94" />
-                                    </a>
-                                </figure>
-                                <button class="btn btn-link btn-close" aria-label="button">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
+                            @endforeach
                         </div>
-
                         <div class="cart-total">
                             <label>Subtotal:</label>
-                            <span class="price">$58.67</span>
+                            <span class="price">AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
                         </div>
 
                         <div class="cart-action">
@@ -299,5 +275,4 @@
             </div>
         </div>
     </div>
-</header>
 <!-- End of Header -->

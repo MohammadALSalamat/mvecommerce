@@ -28,4 +28,11 @@ class product extends Model
         # related product
         return $this->hasMany(product::class, 'category_id')->where('status',1)->limit(10);
     }
+
+    // return the product in cart
+
+    public static function getProductByCart($id)
+    {
+        return self::where('id',$id)->get()->toArray();
+    }
 }

@@ -49,7 +49,8 @@ Route::post('registerusers',[frontPageController::class,'register_users'])->name
 
 Route::get('user/logout',[frontPageController::class,'logout_front_user'])->name('logout_front_user');
 
-Route::post('cart/stor',[ShippingCartController::class, 'add_to_cart'])->name('add_to_cart');
+Route::post('/cart/store',[ShippingCartController::class,'add_to_cart'])->name('add_to_cart');
+Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->name('cart_delete');
 
 
 
