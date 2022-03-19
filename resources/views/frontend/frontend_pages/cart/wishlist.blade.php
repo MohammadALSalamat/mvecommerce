@@ -74,4 +74,29 @@ $.ajax({
 })
 
 </script>
+
+<script>
+// Delete the current wishlist item
+$('.delete_wishlist').on('click',function(e){
+e.preventDefault();
+var rowId = $(this).data('id');
+var token = "{{ csrf_token() }}";
+var path = "{{ route('wishlist_delete') }}";
+$.ajax({
+    url: path,
+    type:"POST",
+    data:{
+        _token:token,
+        rowId:rowId,
+    },
+    success: function (data) {
+        $('body #header-ajax').html(data['header']);
+        $('body #wishlist_counter').html(data['wishlist_count']);
+        $('body #wishlist_list').html(data['wishlist_list']);
+    }
+});
+
+})
+
+</script>
 @endsection

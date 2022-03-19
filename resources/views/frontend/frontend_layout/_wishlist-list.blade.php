@@ -19,7 +19,7 @@
                                                     height="338">
                                             </figure>
                                         </a>
-                                        <button type="submit" class="btn btn-close"><i
+                                        <button type="submit" class="btn btn-close delete_wishlist" data-id="{{ $item->rowId }}"><i
                                                 class="fas fa-times"></i></button>
                                     </div>
                                 </td>

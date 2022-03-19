@@ -83,4 +83,30 @@ class WishlistController extends Controller
         }
         return json_encode($response);
     }
+
+    // delete the wishlist items
+    public function wishlist_delete(Request $request)
+    {
+        // this has a model in the product model
+        $id = $request->input('rowId');
+
+        Cart::instance('wishlist')->remove($id);
+
+        $response['status'] = true;
+        $response['message'] = "the item has been deleted";
+        $response['cart_count'] = Cart::instance('shopping')->count();
+
+
+        //render the header cart value
+        if ($request->ajax()) {
+            $header = view('frontend.frontend_layout.header')->render();
+            $wishlist_list = view('frontend.frontend_layout._wishlist-list')->render();
+            $cart_lists = view('frontend.frontend_layout._cart-lists')->render();
+            $response['cart_lists'] = $cart_lists;
+            $response['header'] = $header;
+            $response['wishlist_list'] = $wishlist_list;
+        }
+        return $response;
+        //add the item to Cart
+    }
 }

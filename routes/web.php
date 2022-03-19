@@ -69,6 +69,7 @@ Route::post('/coupon_discound',[ShippingCartController::class, 'code_coupon'])->
 Route::get('wishlist',[WishlistController::class,'view_wishlist'])->name('view_wishlist');
 Route::post('/wishlist', [WishlistController::class, 'add_to_wishlist'])->name('add_to_wishlist');
 Route::post('/wishlist_move_to_cart',[WishlistController::class, 'wishlist_move_to_cart'])->name('wishlist_move_to_cart');
+Route::post('/wishlist_delete', [WishlistController::class, 'wishlist_delete'])->name('wishlist_delete');
 
 
 
