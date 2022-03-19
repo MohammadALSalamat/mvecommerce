@@ -879,6 +879,33 @@
        <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
        @yield('script')
 
+       <script>
+    $(document).on('click','.add-to-cart',function(e){
+        e.preventDefault();
+        // get the data from products
+        var product_id = $(this).data('product-id');
+        var product_quant = $(this).data('quantity');
+        
+        // start sending info using ajax
+
+        var token = "{{ csrf_token() }}";
+        var path = "{{ route('add_to_cart') }}";
+
+        $.ajax({
+            url: path,
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                product_id:product_id,
+                product_quant:product_quant,
+                _token:token,
+            },
+            success: function (data) {
+                $('body #header-ajax').html(data['header']);
+            }
+        });
+    });
+</script>
        <!-- delete the items from the cart on the header -->
        <script>
               $(document).on('click','.cart_delete',function(e){

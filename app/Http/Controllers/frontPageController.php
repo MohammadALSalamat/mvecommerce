@@ -160,7 +160,7 @@ class frontPageController extends Controller
                 return redirect()->route('homepage')->with('message','Welcome Back '.auth()->user()->username);
             }
         }else{
-            return back()->with('error','Invalid Email & Password');
+            return back()->with('error','Invalid Email & Password Or the Status of your account is inactive please contact the Admin');
         }
     }
 
@@ -224,7 +224,6 @@ class frontPageController extends Controller
                 $filename = null;
             }
             // send email to hold it before activation 
-            Mail::to($data['email'])->send(new verficationVendors($data));
             $adminData = [
                 'email' => $data['email'],
                 'full_name' => $data['full_name'],
@@ -232,7 +231,7 @@ class frontPageController extends Controller
                 'type_of_work' => $data['type_work'],
                 'license' => $filename,
             ];
-
+            Mail::to($data['email'])->send(new verficationVendors($data));
             //send the data to admin to verify the user 
             Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
             $addnewvendor = new User();

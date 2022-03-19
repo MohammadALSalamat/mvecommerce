@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\frontPageController;
@@ -49,9 +50,17 @@ Route::post('registerusers',[frontPageController::class,'register_users'])->name
 
 Route::get('user/logout',[frontPageController::class,'logout_front_user'])->name('logout_front_user');
 
+// cart section
+Route::get('cart',[ShippingCartController::class, 'viewcart'])->name('viewcart');
 Route::post('/cart/store',[ShippingCartController::class,'add_to_cart'])->name('add_to_cart');
 Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->name('cart_delete');
 
+//update the cart
+Route::post('update_cart',[ShippingCartController::class,'update_cart'])->name('update_cart');
+
+//coupon
+
+Route::post('/coupon_discound',[ShippingCartController::class, 'code_coupon'])->name('code_coupon');
 
 
 // user dashboard and settings
@@ -120,6 +129,15 @@ Route::match(['get', 'post'], '/deletbanner/{id}', [BannerController::class, 'de
     Route::get('/edit_users/{id}', [UserController::class, 'editusers'])->name('editusers');
     Route::match(['get', 'post'], '/update_users/{id}', [UserController::class, 'updateusers'])->name('updateusers');
     Route::match(['get', 'post'], '/deletusers/{id}', [UserController::class, 'deletusers'])->name('deletusers');
+
+    // Coupon section
+
+    Route::get('view_coupon',[CouponController::class,'view_coupon'])->name('view_coupon');
+    Route::get('/create_coupon', [CouponController::class, 'create_coupon'])->name('create_coupon');
+    Route::post('/add_new_coupon', [CouponController::class, 'add_coupon'])->name('add_coupon');
+    Route::get('/edit_coupon/{id}', [CouponController::class, 'edit_coupon'])->name('edit_coupon');
+    Route::match(['get', 'post'], '/update_coupon/{id}', [CouponController::class, 'update_coupon'])->name('update_coupon');
+    Route::match(['get', 'post'], '/delet_coupon/{id}', [CouponController::class, 'delet_coupon'])->name('delet_coupon');
 
 
 });

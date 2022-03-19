@@ -31,8 +31,8 @@ class verfication_admin_email_for_vendors extends Mailable
     {
         return $this->from('support@9yards.ae')
         ->subject('vendor Activation')
-        ->view('mails.verify_admin_vendors')
-        ->attach($this->adminData['filename'])
+        ->view('mails.send_verify_for_admin')
+        ->attach($this->adminData['license'])
         ->with('adminData', $this->adminData);
     }
 }

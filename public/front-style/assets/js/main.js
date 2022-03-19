@@ -2505,7 +2505,7 @@ window.Wolmart = {};
     // Public Members
     QuantityInput.min = 1;
     QuantityInput.max = 1000000;
-    QuantityInput.value = 1;
+    QuantityInput.value = $('.valueqty .quantity').val();
 
     QuantityInput.prototype.init = function($el) {
         var self = this;

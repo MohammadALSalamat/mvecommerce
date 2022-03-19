@@ -119,7 +119,7 @@
                         @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                             <div class="product product-cart">
                                 <div class="product-detail">
-                                    <a href="product-default.html" class="product-name">{{ $item->name }}</a>
+                                    <a href="{{ route('singleproduct',$item->model->slug) }}" class="product-name">{{ $item->name }}</a>
                                     <div class="price-box">
                                         <span class="product-quantity">{{ $item->qty }}</span>
                                         <span class="product-price">AED {{ $item->price }}</span>
@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="cart-action">
-                            <a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
+                            <a href="{{ route('viewcart') }}" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
                             <a href="checkout.html" class="btn btn-primary btn-rounded">Checkout</a>
                         </div>
                     </div>
