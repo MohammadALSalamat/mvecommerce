@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\ShippingCartController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,15 @@ Route::post('update_cart',[ShippingCartController::class,'update_cart'])->name('
 //coupon
 
 Route::post('/coupon_discound',[ShippingCartController::class, 'code_coupon'])->name('code_coupon');
+
+
+// whish list section
+
+Route::get('wishlist',[WishlistController::class,'view_wishlist'])->name('view_wishlist');
+Route::post('/wishlist', [WishlistController::class, 'add_to_wishlist'])->name('add_to_wishlist');
+Route::post('/wishlist_move_to_cart',[WishlistController::class, 'wishlist_move_to_cart'])->name('wishlist_move_to_cart');
+
+
 
 
 // user dashboard and settings

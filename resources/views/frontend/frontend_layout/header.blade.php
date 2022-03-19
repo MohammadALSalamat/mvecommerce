@@ -14,8 +14,8 @@
                 <!-- End of DropDown Menu -->
 
                 <div class="dropdown">
-                    <a href="#language"><img src="{{ asset('front-style/assets/images/flags/eng.png')}}" alt="ENG Flag" width="14"
-                            height="8" class="dropdown-image" /> ENG</a>
+                    <a href="#language"><img src="{{ asset('front-style/assets/images/flags/eng.png')}}" alt="ENG Flag"
+                            width="14" height="8" class="dropdown-image" /> ENG</a>
                     <div class="dropdown-box">
                         <a href="#ENG">
                             <img src="assets/images/flags/eng.png" alt="ENG Flag" width="14" height="8"
@@ -23,8 +23,8 @@
                             ENG
                         </a>
                         <a href="#FRA">
-                            <img src="{{ asset('front-style/assets/images/flags/fra.png')}}" alt="FRA Flag" width="14" height="8"
-                                class="dropdown-image" />
+                            <img src="{{ asset('front-style/assets/images/flags/fra.png')}}" alt="FRA Flag" width="14"
+                                height="8" class="dropdown-image" />
                             FRA
                         </a>
                     </div>
@@ -34,20 +34,20 @@
                 <a href="blog.html" class="d-lg-show">Blog</a>
                 <a href="contact-us.html" class="d-lg-show">Contact Us</a>
                 @auth
-                <div class="dropdown" >
+                <div class="dropdown">
                     <a href="">My Account</a>
                     <div class="dropdown-box" style="max-width: 400px;min-width:100px">
                         <a href="#USD">hello {{ auth()->user()->full_name }}</a>
                         <a href="{{ route('userdashboard') }}">Dashboard</a>
                         <a class="" href="{{ route('logout_front_user') }}">Log Out </a>
-                        
+
                     </div>
                 </div>
                 @else
-                    <a href="{{route('loginForm')}}" class=""><i
-                            class="w-icon-account"></i>Sign In</a>
-                    <span class="delimiter d-lg-show">/</span>
-                    <a href="{{asset('front-style/assets/ajax/login.html')}}" class="ml-0 d-lg-show login register">Register</a>
+                <a href="{{route('loginForm')}}" class=""><i class="w-icon-account"></i>Sign In</a>
+                <span class="delimiter d-lg-show">/</span>
+                <a href="{{asset('front-style/assets/ajax/login.html')}}"
+                    class="ml-0 d-lg-show login register">Register</a>
                 @endauth
             </div>
         </div>
@@ -60,10 +60,10 @@
                 <a href="#" class="mobile-menu-toggle w-icon-hamburger" aria-label="menu-toggle">
                 </a>
                 <a href="{{ route('homepage') }}" class="logo ml-lg-0">
-                    <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144" height="45" />
+                    <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
+                        height="45" />
                 </a>
-                <form method="get" action="#"
-                    class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
                         <select id="category" name="category">
                             <option value="">All Categories</option>
@@ -93,8 +93,13 @@
                         <a href="tel:#" class="phone-number font-weight-bolder ls-50">0(800)123-456</a>
                     </div>
                 </div>
-                <a class="wishlist label-down link d-xs-show" href="wishlist.html">
-                    <i class="w-icon-heart"></i>
+                <a class="wishlist label-down link d-xs-show" style="position: relative"
+                    href="{{ route('view_wishlist') }}">
+                    <i class="w-icon-heart">
+                        <span id="wishlist_counter" style="position: absolute;width: 1.9rem;height: 1.9rem;border-radius: 50%;font-style: normal;z-index: 1;right: -8px;top: -5px;font-family: Poppins, sans-serif;font-size: 1.1rem;font-weight: 400;line-height: 1.8rem;background: #ee432a;color: #fff;text-align: center;">
+                            {{ \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() }}
+                        </span>
+                    </i>
                     <span class="wishlist-label d-lg-show">Wishlist</span>
                 </a>
                 <a class="compare label-down link d-xs-show" href="compare.html">
@@ -105,7 +110,8 @@
                     <div class="cart-overlay"></div>
                     <a href="#" class="cart-toggle label-down link">
                         <i class="w-icon-cart">
-                            <span class="cart-count" id="cart-counter">{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count() }}</span>
+                            <span class="cart-count"
+                                id="cart-counter">{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count() }}</span>
                         </i>
                         <span class="cart-label">Cart</span>
                     </a>
@@ -116,10 +122,11 @@
                         </div>
 
                         <div class="products">
-                        @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
+                            @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                             <div class="product product-cart">
                                 <div class="product-detail">
-                                    <a href="{{ route('singleproduct',$item->model->slug) }}" class="product-name">{{ $item->name }}</a>
+                                    <a href="{{ route('singleproduct',$item->model->slug) }}"
+                                        class="product-name">{{ $item->name }}</a>
                                     <div class="price-box">
                                         <span class="product-quantity">{{ $item->qty }}</span>
                                         <span class="product-price">AED {{ $item->price }}</span>
@@ -127,11 +134,11 @@
                                 </div>
                                 <figure class="product-media">
                                     <a href="{{ route('singleproduct',$item->model->slug) }}">
-                                        <img src="{{ $item->model->image }}" alt="product" height="84"
-                                            width="94" />
+                                        <img src="{{ $item->model->image }}" alt="product" height="84" width="94" />
                                     </a>
                                 </figure>
-                                <button class="btn btn-link btn-close cart_delete" aria-label="button" data-id="{{ $item->rowId }}">
+                                <button class="btn btn-link btn-close cart_delete" aria-label="button"
+                                    data-id="{{ $item->rowId }}">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
@@ -139,7 +146,12 @@
                         </div>
                         <div class="cart-total">
                             <label>Subtotal:</label>
+                            @if(session()->has('coupon'))
+                            <span class="price">AED
+                                {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
+                            @else
                             <span class="price">AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                            @endif
                         </div>
 
                         <div class="cart-action">
@@ -160,18 +172,17 @@
                 <div class="flex-1 header-left">
                     <div class="dropdown category-dropdown has-border" data-visible="true">
                         <a href="#" class="category-toggle text-dark" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true" data-display="static"
-                            title="Browse Categories">
+                            aria-haspopup="true" aria-expanded="true" data-display="static" title="Browse Categories">
                             <i class="w-icon-category"></i>
                             <span>Browse Categories</span>
                         </a>
 
                         <div class="dropdown-box">
                             <ul class="menu vertical-menu category-menu">
-                            @php
-                            $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
-                            @endphp
-                            @foreach($categories as $category )
+                                @php
+                                $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
+                                @endphp
+                                @foreach($categories as $category )
                                 <li>
                                     <a href="shop-fullwidth-banner.html">
                                         <i class="w-icon-home"></i>{{$category->title}}
@@ -206,7 +217,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                            @endforeach
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -247,23 +258,6 @@
                             <li>
                                 <a href="blog.html">Blog</a>
                             </li>
-                            <li>
-                                <a href="about-us.html">Pages</a>
-                                <ul>
-
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="become-a-vendor.html">Become A Vendor</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="faq.html">FAQs</a></li>
-                                    <li><a href="error-404.html">Error 404</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="compare.html">Compare</a></li>
-                                </ul>
-                            </li>
 
                         </ul>
                     </nav>
@@ -275,4 +269,4 @@
             </div>
         </div>
     </div>
-<!-- End of Header -->
+    <!-- End of Header -->

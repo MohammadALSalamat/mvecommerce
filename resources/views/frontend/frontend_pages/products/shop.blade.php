@@ -192,10 +192,15 @@
                                                     height="338" />
                                             </a>
                                             <div class="product-action-horizontal">
+                                                <!--Add to cart funtion -->
                                                 <a href="" data-product-id="{{$product->id}}" id="add_to_cart{{$product->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
                                                     title="Add to cart"></a>
-                                                <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+
+                                                     <!--Add to wishlist funtion -->
+                                                <a href="javascript:void(0)" data-id="{{ $product->id }}" id="add_to_wishlist{{ $product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                     title="Wishlist"></a>
+
+
                                                 <a href="#" class="btn-product-icon btn-compare w-icon-compare"
                                                     title="Compare"></a>
                                                 <a href="#" class="btn-product-icon btn-quickview w-icon-search"

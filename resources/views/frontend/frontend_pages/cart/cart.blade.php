@@ -41,8 +41,13 @@
                                 <div class="cart-summary mb-4">
                                     <h3 class="cart-title text-uppercase">Cart Totals</h3>
                                     <div class="cart-subtotal d-flex align-items-center justify-content-between">
+                                        @if(session()->has('coupon'))
+                                        <label class="ls-25">Subtotal + Coupon</label>
+                                        <span>AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
+                                        @else
                                         <label class="ls-25">Subtotal</label>
-                                        <span>AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                                        <span>AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
+                                        @endif
                                     </div>
 
                                     <hr class="divider">
