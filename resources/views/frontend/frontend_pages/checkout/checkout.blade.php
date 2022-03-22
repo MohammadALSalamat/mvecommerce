@@ -63,6 +63,10 @@
                     <form class="form checkout-form" action="{{ route('checkout_process') }}" method="post">
                         @csrf
                         <div class="row mb-9">
+                            <!-- hidden info for checkout -->
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
+
                             <div class="col-lg-7 pr-lg-4 mb-4">
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                     Billing Details
@@ -166,11 +170,12 @@
 
                                 <div class="form-group mt-3">
                                     <label for="order-notes">Order notes (optional)</label>
-                                    <textarea class="form-control mb-0" id="order-notes" name="order-notes" cols="30"
+                                    <textarea class="form-control mb-0" id="order-notes" name="note" cols="30"
                                         rows="4"
                                         placeholder="Notes about your order, e.g special notes for delivery"></textarea>
                                 </div>
                             </div>
+
                             <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
                                 <div class="order-summary-wrapper sticky-sidebar">
                                     <h3 class="title text-uppercase ls-10">Your Order</h3>
@@ -184,7 +189,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)                    
+                                                @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)   
+                                                <!-- hidden info for checkout -->
+                                                <input type="hidden" name="sub_total" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
+                                                <input type="hidden" name="copoun_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon') }}">             
                                                     <tr class="bb-no">
                                                         <td class="product-name">{{ $item->name }} <i
                                                                 class="fas fa-times"></i> <span
@@ -210,18 +218,22 @@
                                                     </td>
                                                 </tr>
                                                 @else
-                                                 <td>
+                                                <tr>
+                                                    <td>
                                                         <b>Subtotal</b>
                                                     </td>
                                                     <td>
                                                         <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
                                                     </td>
+                                                    </tr>
+                                                <tr>
                                                     <td>
                                                         <b>Coupon</b>
                                                     </td>
                                                     <td>
                                                         <b> 0 AED</b>
                                                     </td>
+                                                </tr>
                                                 @endif
                                             </tbody>
                                             <tfoot>
@@ -233,27 +245,18 @@
                                                             <li>
                                                                 <div class="custom-radio">
                                                                     <input type="radio" id="free-shipping"
-                                                                        class="custom-control-input" name="shipping_free">
+                                                                    value="0" name="shipping_paid">
                                                                     <label for="free-shipping"
-                                                                        class="custom-control-label color-dark">Free
+                                                                        class="" >Free
                                                                         Shipping</label>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div class="custom-radio">
-                                                                    <input type="radio" id="local-pickup"
-                                                                        class="custom-control-input" name="shipping_local">
-                                                                    <label for="local-pickup"
-                                                                        class="custom-control-label color-dark">Local
-                                                                        Pickup</label>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="custom-radio">
                                                                     <input type="radio" id="flat-rate"
-                                                                        class="custom-control-input" name="shipping_paid">
+                                                                        class="" name="shipping_paid" value="5">
                                                                     <label for="flat-rate"
-                                                                        class="custom-control-label color-dark">Flat
+                                                                        class="">Flat
                                                                         rate: $5.00</label>
                                                                 </div>
                                                             </li>
@@ -315,7 +318,8 @@
                                                     </div>
                                                     <div id="delivery" class="card-body collapsed">
                                                         <p class="mb-0">
-                                                            Pay with cash upon delivery.
+                                                            <input type="radio" name="cod" id="cod">
+                                                             Pay with cash upon delivery.
                                                         </p>
                                                     </div>
                                                 </div>

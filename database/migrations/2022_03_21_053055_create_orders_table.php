@@ -16,12 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
             $table->integer('order_number')->unique();
             $table->float('sub_total')->default(0);
             $table->float('total')->default(0);
             $table->float('coupon')->default(0)->nullable();
             $table->float('delivary_charge')->default(0)->nullable();
+            $table->string('payment_method')->default('cod');
+            $table->boolean('payment_status')->default(0);
             $table->integer('quantity');
 
 
