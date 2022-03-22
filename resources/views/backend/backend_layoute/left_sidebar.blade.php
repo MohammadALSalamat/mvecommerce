@@ -115,11 +115,19 @@
                 </li>
               </ul>
         </li>
-         <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Managment</span></a>
             <ul class="menu-content">
                 <li><a class="menu-item" href="{{ route('view_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Coupons</a>
                 </li>
                  <li><a class="menu-item" href="{{ route('create_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Coupons</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Shipping Managment</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('view_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Shipping</a>
+                </li>
+                 <li><a class="menu-item" href="{{ route('create_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Shipping</a>
                 </li>
               </ul>
         </li>

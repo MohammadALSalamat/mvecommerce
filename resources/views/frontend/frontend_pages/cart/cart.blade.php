@@ -7,8 +7,8 @@
             <nav class="breadcrumb-nav">
                 <div class="container">
                     <ul class="breadcrumb shop-breadcrumb bb-no">
-                        <li class="active"><a href="cart.html">Shopping Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li class="active"><a href="{{ route('viewcart') }}">Shopping Cart</a></li>
+                        <li><a href="{{ route('checkout') }}">Checkout</a></li>
                         <li><a href="order.html">Order Complete</a></li>
                     </ul>
                 </div>
@@ -40,19 +40,33 @@
                             <div class="sticky-sidebar">
                                 <div class="cart-summary mb-4">
                                     <h3 class="cart-title text-uppercase">Cart Totals</h3>
+                                    @if(session()->has('coupon'))
                                     <div class="cart-subtotal d-flex align-items-center justify-content-between">
-                                        @if(session()->has('coupon'))
-                                        <label class="ls-25">Subtotal + Coupon</label>
-                                        <span>AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
+                                        <label class="ls-25">Subtotal </label>
+                                        <span>AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                                    </div>
+                                    <div class="cart-subtotal d-flex align-items-center justify-content-between">    
+                                         <label class="ls-25">Coupon </label>
+                                        <span>AED {{\Illuminate\Support\Facades\Session::get('coupon')['value'] }}</span>
+                                    </div>
                                         @else
+                                        <div class="cart-subtotal d-flex align-items-center justify-content-between">    
+
                                         <label class="ls-25">Subtotal</label>
                                         <span>AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
-                                        @endif
+                                        </div>
+
+                                         <div class="cart-subtotal d-flex align-items-center justify-content-between">    
+                                         <label class="ls-25">Coupon </label>
+                                        <span>AED 0</span>
                                     </div>
+                                        @endif
+                                    
 
                                     <hr class="divider">
+                                    <!-- Add new Shipping section and calculation -->
 
-                                    <ul class="shipping-methods mb-2">
+                                    {{-- <ul class="shipping-methods mb-2">
                                         <li>
                                             <label
                                                 class="shipping-title text-dark font-weight-bold">Shipping</label>
@@ -84,9 +98,8 @@
                                                     $5.00</label>
                                             </div>
                                         </li>
-                                    </ul>
-
-                                    <div class="shipping-calculator">
+                                    </ul> --}}
+                                    {{-- <div class="shipping-calculator">
                                         <p class="shipping-destination lh-1">Shipping to <strong>CA</strong>.</p>
 
                                         <form class="shipping-calculator-form">
@@ -123,14 +136,21 @@
                                             <button type="submit" class="btn btn-dark btn-outline btn-rounded">Update
                                                 Totals</button>
                                         </form>
-                                    </div>
+                                    </div> --}}
 
                                     <hr class="divider mb-6">
+                                    @if(session()->has('coupon'))
                                     <div class="order-total d-flex justify-content-between align-items-center">
                                         <label>Total</label>
-                                        <span class="ls-50">$100.00</span>
+                                        <span class="ls-50">AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
                                     </div>
-                                    <a href="#"
+                                    @else
+                                    <div class="order-total d-flex justify-content-between align-items-center">
+                                        <label>Total</label>
+                                        <span class="ls-50">AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                                    </div>
+                                    @endif
+                                    <a href="{{ route('checkout') }}"
                                         class="btn btn-block btn-dark btn-icon-right btn-rounded  btn-checkout">
                                         Proceed to checkout<i class="w-icon-long-arrow-right"></i></a>
                                 </div>

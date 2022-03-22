@@ -19,7 +19,7 @@ class admin
         if (auth()->user()->role == 'admin') {
             return $next($request);
         }else{
-            return redirect()->route(auth()->user()->role)-with('error','you dont have permission');
+            return redirect()->route('homepage')->with('error','you dont have permission');
         }
     }
 }

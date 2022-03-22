@@ -156,7 +156,7 @@
 
                         <div class="cart-action">
                             <a href="{{ route('viewcart') }}" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
-                            <a href="checkout.html" class="btn btn-primary btn-rounded">Checkout</a>
+                            <a href="{{ route('checkout') }}" class="btn btn-primary btn-rounded">Checkout</a>
                         </div>
                     </div>
                     <!-- End of Dropdown Box -->

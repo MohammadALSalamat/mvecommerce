@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use App\Models\product;
-use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 use Illuminate\Http\Request;
+use Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 
 class ShippingCartController extends Controller
 {
@@ -143,7 +144,7 @@ class ShippingCartController extends Controller
           $cart_total= Cart::instance('shopping')->subtotal();
 
           //add the session for the coupon
-          session()->put('coupon',[
+         Session::put('coupon',[
             'id'=>$coupon->id,
             'code'=>$coupon->code,
             'value' => $coupon->discount($cart_total),

@@ -131,7 +131,7 @@
          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
              <b>User : </b>
              <p>
-                 @if (empty($product->vendor_id) || $product->vendor_id == null)
+                 @if (empty($user_full_name->full_name) || $user_full_name->full_name == null)
                  <div class='badge badge-danger'>There is No Vendor</div>
                  @else
                  <div class='badge badge-success'> {{ $user_full_name->full_name}}</div>
@@ -141,7 +141,7 @@
          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
              <b>Category : </b>
              <p>
-                 @if (empty($product->category_id) || $product->category_id == null)
+                 @if (empty($Category_Title->title) || $Category_Title->title == null)
                  <div class='badge badge-danger'>There is No Category</div>
                  @else
                  <div class='badge badge-success'> {{ $Category_Title->title}}</div>
@@ -152,7 +152,7 @@
          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
              <b>Brand : </b>
              <p>
-                 @if (empty($product->brand_id) || $product->brand_id == null)
+                 @if (empty($Brand_title->title) || $Brand_title->title == null)
                  <div class='badge badge-danger'>There is No Brand</div>
                  @else
                  <div class='badge badge-success'> {{ $Brand_title->title}}</div>
@@ -162,7 +162,7 @@
          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
             <b>Child Category : </b>
             <p>
-                @if (empty($product->child_category_id) || $product->child_category_id == null)
+                @if (empty($Child_Category_Title->title) || $Child_Category_Title->title == null)
                 <div class='badge badge-danger'>There is No Child Category</div>
                 @else
                 <div class='badge badge-success'>{{ $Child_Category_Title->title}}</div>

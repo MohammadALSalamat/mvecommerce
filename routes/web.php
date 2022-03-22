@@ -4,14 +4,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\ShippingCartController;
-use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,11 @@ use App\Http\Controllers\WishlistController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// // get the data of seller from the director below
+// require __DIR__.'seller.php';
+
+
 
 
 //shop page
@@ -60,7 +67,6 @@ Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->nam
 Route::post('update_cart',[ShippingCartController::class,'update_cart'])->name('update_cart');
 
 //coupon
-
 Route::post('/coupon_discound',[ShippingCartController::class, 'code_coupon'])->name('code_coupon');
 
 
@@ -72,6 +78,11 @@ Route::post('/wishlist_move_to_cart',[WishlistController::class, 'wishlist_move_
 Route::post('/wishlist_delete', [WishlistController::class, 'wishlist_delete'])->name('wishlist_delete');
 
 
+// check out page just for login users
+
+Route::get('checkout',[OrderController::class,'view_checkout'])->name('checkout')->middleware('user');
+
+Route::post('checkout/process',[OrderController::class,'checkout_process'])->name('checkout_process');
 
 
 // user dashboard and settings
@@ -149,6 +160,15 @@ Route::match(['get', 'post'], '/deletbanner/{id}', [BannerController::class, 'de
     Route::get('/edit_coupon/{id}', [CouponController::class, 'edit_coupon'])->name('edit_coupon');
     Route::match(['get', 'post'], '/update_coupon/{id}', [CouponController::class, 'update_coupon'])->name('update_coupon');
     Route::match(['get', 'post'], '/delet_coupon/{id}', [CouponController::class, 'delet_coupon'])->name('delet_coupon');
+
+    // shipping section
+    Route::get('view_shipping', [ShippingController::class, 'view_shipping'])->name('view_shipping');
+    Route::get('/create_shipping', [ShippingController::class, 'create_shipping'])->name('create_shipping');
+    Route::post('/add_new_shipping', [ShippingController::class, 'add_shipping'])->name('add_shipping');
+    Route::get('/edit_shipping/{id}', [ShippingController::class, 'edit_shipping'])->name('edit_shipping');
+    Route::match(['get', 'post'], '/update_shipping/{id}', [ShippingController::class, 'update_shipping'])->name('update_shipping');
+    Route::match(['get', 'post'], '/delet_shipping/{id}', [ShippingController::class, 'delet_shipping'])->name('delet_shipping');
+    
 
 
 });
