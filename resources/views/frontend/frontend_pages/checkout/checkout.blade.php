@@ -64,7 +64,7 @@
                         @csrf
                         <div class="row mb-9">
                             <!-- hidden info for checkout -->
-                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
 
 
                             <div class="col-lg-7 pr-lg-4 mb-4">
@@ -76,7 +76,7 @@
                                         <div class="form-group">
                                             <label>Full name *</label>
                                             <input type="text" class="form-control form-control-md" id="full_name" name="full_name"
-                                                required value="{{ auth()->user()->full_name }}">
+                                                required value="{{ $user->full_name }}">
                                         </div>
                                     </div>
                                    
@@ -84,42 +84,42 @@
                                 <div class="form-group">
                                         <label>Country *</label>
                                     <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="country" id="country" required value="{{ auth()->user()->country }}">
+                                        class="form-control form-control-md mb-2" name="country" id="country" required value="{{ $user->country }}">
                                     
                                 </div>
                                 <div class="form-group">
                                     <label>Street address *</label>
                                     <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="address" id="address" required value="{{ auth()->user()->address }}">
+                                        class="form-control form-control-md mb-2" name="address" id="address" required value="{{ $user->address }}">
                                     
                                 </div>
                                 <div class="row gutter-sm">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Town / City *</label>
-                                            <input type="text" id="city" class="form-control form-control-md" name="city" required value="{{ auth()->user()->city }}">
+                                            <input type="text" id="city" class="form-control form-control-md" name="city" required value="{{ $user->city }}">
                                         </div>
                                         <div class="form-group">
                                             <label>ZIP *</label>
-                                            <input type="text" id="postcode" class="form-control form-control-md" name="postcode" required value="{{ auth()->user()->postcode }}">
+                                            <input type="text" id="postcode" class="form-control form-control-md" name="postcode" required value="{{ $user->postcode }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>State *</label>
                                             <div class="select-box">
-                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ auth()->user()->state }}">
+                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ $user->state }}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Phone *</label>
-                                            <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ auth()->user()->phone }}">
+                                            <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ $user->phone }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-7">
                                     <label>Email address *</label>
-                                    <input type="email" class="form-control form-control-md" name="email" required value="{{ auth()->user()->email }}">
+                                    <input type="email" class="form-control form-control-md" name="email" required value="{{ $user->email }}">
                                 </div>
                                 <div class="form-group checkbox-toggle pb-2">
                                     <input type="checkbox" class="custom-checkbox" id="shipping-toggle"
@@ -132,7 +132,7 @@
                                             <div class="form-group">
                                                 <label>Full name *</label>
                                                 <input type="text" id="sfull_name" class="form-control form-control-md" name="sfull_name"
-                                                    required value="{{ auth()->user()->full_name }}">
+                                                    required value="{{ $user->full_name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -140,29 +140,29 @@
                                     <div class="form-group">
                                         <label>Country *</label>
                                         <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="scountry" required value=" {{ auth()->user()->scountry }}">
+                                            class="form-control form-control-md mb-2" name="scountry" required value=" {{ $user->scountry }}">
                                     
                                     </div>
                                     <div class="form-group">
                                         <label>Street address *</label>
                                         <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="saddress" required value=" {{ auth()->user()->saddress }}">
+                                            class="form-control form-control-md mb-2" name="saddress" required value=" {{ $user->saddress }}">
                                     </div>
                                     <div class="row gutter-sm">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Town / City *</label>
-                                                <input id="scity" type="text" class="form-control form-control-md" name="scity" required value=" {{ auth()->user()->scity }} ">
+                                                <input id="scity" type="text" class="form-control form-control-md" name="scity" required value=" {{ $user->scity }} ">
                                             </div>
                                             <div class="form-group">
                                                 <label>Postcode *</label>
-                                                <input id="spostcode" type="text" class="form-control form-control-md" name="spostcode" required value=" {{ auth()->user()->spostcode }} ">
+                                                <input id="spostcode" type="text" class="form-control form-control-md" name="spostcode" required value=" {{ $user->spostcode }} ">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>state</label>
-                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ auth()->user()->sstate }} ">
+                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ $user->sstate }} ">
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +192,6 @@
                                                 @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)   
                                                 <!-- hidden info for checkout -->
                                                 <input type="hidden" name="sub_total" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
-                                                <input type="hidden" name="copoun_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon') }}">             
                                                     <tr class="bb-no">
                                                         <td class="product-name">{{ $item->name }} <i
                                                                 class="fas fa-times"></i> <span
@@ -271,6 +270,8 @@
                                                     <td>
                                                         <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value']}} AED</b>
                                                         <input type="hidden" name="total_with_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value']}}">
+                                                        <input type="hidden" name="total_without_copuon" value="0">
+                                                        <input type="hidden" name="coupon_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon')['value'] }}">             
                                                     </td>
                                                 </tr>
                                                 @else
@@ -280,6 +281,7 @@
                                                     <td>
                                                         <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
                                                         <input type="hidden" name="total_without_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
+                                                        <input type="hidden" name="total_with_copuon" value="0">
                                                     </td>
                                                 
                                                 @endif

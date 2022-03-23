@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
 
 class frontPageController extends Controller
@@ -279,6 +280,8 @@ class frontPageController extends Controller
 public function logout_front_user()
 {
     Session::forget('user');
+    Session::forget('coupon');
+    Cart::instance('shopping')->destroy();
     Auth::logout();
     return redirect()->route('homepage')->with('message','You Have logged out Seccessfuly!!');
 }

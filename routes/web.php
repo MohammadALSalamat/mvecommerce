@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
@@ -62,6 +63,10 @@ Route::get('user/logout',[frontPageController::class,'logout_front_user'])->name
 Route::get('cart',[ShippingCartController::class, 'viewcart'])->name('viewcart');
 Route::post('/cart/store',[ShippingCartController::class,'add_to_cart'])->name('add_to_cart');
 Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->name('cart_delete');
+Route::get('clear_cart/',function(){
+    Cart::instance('shopping')->destroy();
+return back()->with('message','Your Cart is empty');
+})->name('clear_cart');
 
 //update the cart
 Route::post('update_cart',[ShippingCartController::class,'update_cart'])->name('update_cart');

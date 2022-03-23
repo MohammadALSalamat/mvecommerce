@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderEmail as userOrderMail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\OrderEmailForAdmin as adminOrderMail;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,12 +17,12 @@ class OrderController extends Controller
 
     public function view_checkout()
     {
-        return view('frontend.frontend_pages.checkout.checkout');
+        $user = User::where('id',auth()->user()->id)->first();
+        return view('frontend.frontend_pages.checkout.checkout', compact('user'));
     }
     public function checkout_process(Request $request)
     {
         $data = $request->all();
-
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
         }
@@ -94,10 +95,14 @@ class OrderController extends Controller
         }
         
 
-        if (!empty($data['total_without_copuon']) || $data['total_without_copuon'] != null) {
+        if (!empty($data['total_without_copuon']) || $data['total_without_copuon'] != 0) {
+
             $total = $data['total_without_copuon'];
-        }elseif(!empty($data['total_with_copuon']) || $data['total_with_copuon'] != null){
+
+        }elseif(!empty($data['total_with_copuon']) || $data['total_with_copuon'] != 0){
+
             $total = $data['total_with_copuon'];
+
         }else{
             $total = 0;
         }
@@ -140,6 +145,9 @@ class OrderController extends Controller
             if($save_order){
                 Mail::to($data['email'])->send(new userOrderMail($data));
                 Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data));
+                // delete the cart items after submistions
+                Cart::instance('shopping')->destroy();
+                Session::forget('coupon');
                 return redirect()->route('userdashboard')->with('message','Congrats You have complate the order check your email for recipt');
 
             }else{
