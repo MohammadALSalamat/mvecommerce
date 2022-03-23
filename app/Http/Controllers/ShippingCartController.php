@@ -23,8 +23,7 @@ class ShippingCartController extends Controller
         // this has a model in the product model
         $product = product::getProductByCart($product_id);
 
-        if(empty($product[0]['offer_price']) || $product[0]['offer_price'] == null){
-
+        if(!empty($product[0]['offer_price']) || $product[0]['offer_price'] != null){
             $price = $product[0]['offer_price'];
         }else{
             $price = $product[0]['price'];
@@ -65,7 +64,9 @@ class ShippingCartController extends Controller
         //render the header cart value
         if ($request->ajax()) {
             $header = view('frontend.frontend_layout.header')->render();
+            $cart_lists = view('frontend.frontend_layout._cart-lists')->render();
             $response['header'] = $header;
+            $response['cart_lists'] = $cart_lists;
         }
         return json_encode($response); 
 

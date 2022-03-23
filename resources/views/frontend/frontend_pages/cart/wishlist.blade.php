@@ -24,11 +24,10 @@
 
             <!-- Start of PageContent -->
             <div class="page-content">
-                <div class="container">
-                    <h3 class="wishlist-title">My wishlist</h3>
-                    <table class="shop-table wishlist-table" id="wishlist_list">
+                <div class="container" id="wishlist_list">
+                    
                       @include('frontend.frontend_layout._wishlist-list')
-                    </table>
+                  
                     <div class="social-links">
                         <label>Share On:</label>
                         <div class="social-icons social-no-color border-thin">

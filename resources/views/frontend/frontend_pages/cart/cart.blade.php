@@ -19,7 +19,7 @@
             <div class="page-content" >
                 <div class="container">
                     <div class="row gutter-lg mb-10" id="cart_lists">
-                                                     @include('frontend.frontend_layout._cart-lists')
+                    @include('frontend.frontend_layout._cart-lists')
 
                     </div>
                 </div>

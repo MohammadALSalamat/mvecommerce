@@ -188,32 +188,32 @@
                                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/1-1-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/1-1-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/1-1-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/1-1-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/1-2-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/1-2-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/1-2-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/1-2-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/1-3-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/1-3-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/1-3-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/1-3-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/1-4-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/1-4-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/1-4-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/1-4-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
@@ -242,19 +242,19 @@
                                                 }">
                                                     <div class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/1-1-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/1-1-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/1-2-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/1-2-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/1-3-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/1-3-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/1-4-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/1-4-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                     </div>
@@ -358,32 +358,32 @@
                                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/2-1-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/2-1-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/2-1-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/2-1-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/2-2-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/2-2-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/2-2-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/2-2-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/2-3-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/2-3-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/2-3-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/2-3-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="assets/images/demos/demo1/products/2-4-600x675.jpg"
-                                                                    data-zoom-image="assets/images/demos/demo1/products/2-4-800x900.jpg"
+                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/2-4-600x675.jpg')}}"
+                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/2-4-800x900.jpg')}}"
                                                                     alt="Product Image" width="800"
                                                                     height="900">
                                                             </figure>
@@ -408,19 +408,19 @@
                                                     <div
                                                         class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/2-1-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-1-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/2-2-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-2-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/2-3-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-3-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
-                                                            <img src="assets/images/demos/demo1/products/2-4-600x675.jpg"
+                                                            <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-4-600x675.jpg') }}"
                                                                 alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                     </div>
@@ -547,7 +547,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-1.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-1.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -569,7 +569,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-2.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-2.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -592,7 +592,7 @@
                                         <div class="product product-widget">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-3.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-3.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -617,7 +617,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-4.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-4.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -639,7 +639,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-5.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-5.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -662,7 +662,7 @@
                                         <div class="product product-widget">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-6.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-6.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -686,7 +686,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-7.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-7.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -708,7 +708,7 @@
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-8.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-8.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -731,7 +731,7 @@
                                         <div class="product product-widget">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
-                                                    <img src="assets/images/demos/demo1/products/2-9.jpg"
+                                                    <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-9.jpg') }}"
                                                         alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
@@ -789,13 +789,13 @@
                             @foreach( $categories as $category)
                         <div
                             class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
-                            <a href="shop-banner-sidebar.html" class="category-media">
+                            <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
                                 <img src="{{asset($category->image)}}" alt="Category"
                                     width="130" height="130">
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>
-                                <a href="shop-banner-sidebar.html"
+                                <a href="{{ route('shop_special_category',$category->slug) }}"
                                     class="btn btn-primary btn-link btn-underline">Shop
                                     Now</a>
                             </div>
@@ -2029,14 +2029,13 @@
                     <div class="swiper-slide product-col">
                         <div class="text-center product-wrap product">
                             <figure class="product-media">
-                                <a href="#">
-                                    <img src="{{ $products_cat->image }}" alt="Product"
-                                        width="216" height="243" />
+                                <a href="{{ route('singleproduct',$products_cat->slug) }}" >
+                                    <img style="height:200px !important; width:100% !important" src="{{ $products_cat->image }}" alt="Product" />
                                 </a>
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                    <a href="#" data-product-id="{{$products_cat->id}}" id="add_to_cart{{$products_cat->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
                                         title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                    <a href="javascript:void(0)" data-id="{{ $products_cat->id }}" id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                         title="Add to wishlist"></a>
                                     <a href="#" class="btn-product-icon btn-quickview w-icon-search"
                                         title="Quickview"></a>
@@ -2045,7 +2044,7 @@
                                 </div>
                             </figure>
                             <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">{{ $products_cat->title }}</a>
+                                <h4 class="product-name"><a href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->title }}</a>
                                 </h4>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -2056,8 +2055,13 @@
                                         reviews)</a>
                                 </div>
                                 <div class="product-price">
-                                    <ins class="new-price">{{ $products_cat->offer_price }}</ins><del
-                                        class="old-price">{{ $products_cat->price }}</del>
+                                    @if (empty($products_cat->offer_price) || $products_cat->offer_price == null)
+                                         <ins class="new-price">{{ $products_cat->price }}AED</ins>
+                                    @else
+                                         <ins class="new-price">{{ $products_cat->offer_price }} AED</ins><del
+                                        class="old-price">{{ $products_cat->price }} AED</del>
+                                    @endif
+                                   
                                 </div>
                             </div>
                         </div>
@@ -2073,7 +2077,7 @@
 @endforeach
 
 
-        <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(assets/images/demos/demo1/banners/4.jpg);
+        <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(front-style/assets/images/demos/demo1/banners/4.jpg);
             background-color: #383839;">
             <div class="banner-content align-items-center">
                 <div class="mb-3 content-left d-flex align-items-center">
@@ -2100,343 +2104,6 @@
         </div>
         <!-- End of Banner Fashion -->
 
-        <div class="product-wrapper-1 appear-animate mb-7">
-            <div class="pb-1 mb-4 title-link-wrapper">
-                <h2 class="mb-0 title ls-normal">Home Garden & Kitchen</h2>
-                <a href="shop-boxed-banner.html" class="mb-0 font-size-normal font-weight-bold ls-25">More
-                    Products<i class="w-icon-long-arrow-right"></i></a>
-            </div>
-            <div class="row">
-                <div class="mb-4 col-lg-3 col-sm-4">
-                    <div class="banner h-100 br-sm" style="background-image: url(assets/images/demos/demo1/banners/5.jpg);
-                    background-color: #EAEFF3;">
-                        <div class="banner-content content-top">
-                            <h5 class="mb-2 banner-subtitle font-weight-normal">Deals And Promotions</h5>
-                            <hr class="mb-2 banner-divider bg-dark">
-                            <h3 class="banner-title font-weight-bolder text-uppercase ls-25">
-                                Trending <br> <span class="font-weight-normal text-capitalize">House
-                                    Utensil</span>
-                            </h3>
-                            <a href="shop-banner-sidebar.html"
-                                class="btn btn-dark btn-outline btn-rounded btn-sm">shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Banner -->
-                <div class="col-lg-9 col-sm-8">
-                    <div class="swiper-container swiper-theme" data-swiper-options="{
-                        'spaceBetween': 20,
-                        'slidesPerView': 2,
-                        'breakpoints': {
-                            '992': {
-                                'slidesPerView': 3
-                            },
-                            '1200': {
-                                'slidesPerView': 4
-                            }
-                        }
-                    }">
-                        <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
-                            <div class="swiper-slide product-col">
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-1.jpg" alt="Product"
-                                                width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Home Sofa</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(5
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$75.99</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-5.jpg" alt="Product"
-                                                width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Electric
-                                                Rice-Cooker</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$215.00</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product-col">
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-2-1.jpg"
-                                                alt="Product" width="216" height="243" />
-                                            <img src="assets/images/demos/demo1/products/6-2-2.jpg"
-                                                alt="Product" width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-label-group">
-                                            <label class="product-label label-discount">21% Off</label>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Kitchen
-                                                Table</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(9
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$75.50</ins><del
-                                                class="old-price">$95.68</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-6.jpg" alt="Product"
-                                                width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Kitchen
-                                                Cooker</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$150.60</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product-col">
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-3-1.jpg"
-                                                alt="Product" width="216" height="243" />
-                                            <img src="assets/images/demos/demo1/products/6-3-2.jpg"
-                                                alt="Product" width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Table Lamp</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$45.60</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-7.jpg" alt="Product"
-                                                width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-label-group">
-                                            <label class="product-label label-discount">12% Off</label>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Electric Frying
-                                                Pan</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(5
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$137.35</ins><del
-                                                class="old-price">$155.65</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product-col">
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-4.jpg" alt="Product"
-                                                width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-label-group">
-                                            <label class="product-label label-discount">18% Off</label>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Latest Chair</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(6
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$70.00</ins><del
-                                                class="old-price">$85.00</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center product-wrap product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/6-8-1.jpg"
-                                                alt="Product" width="216" height="243" />
-                                            <img src="assets/images/demos/demo1/products/6-8-2.jpg"
-                                                alt="Product" width="216" height="243" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Automatic
-                                                Crusher</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(9
-                                                reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$220.25</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <!-- End of Produts -->
-                </div>
-            </div>
-        </div>
-        <!-- End of Product Wrapper 1 -->
 
         <h2 class="mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
         <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
@@ -2460,61 +2127,61 @@
             <div class="swiper-wrapper row gutter-no cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
                 <div class="swiper-slide brand-col">
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/1.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/1.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/2.png" alt="Brand" width="410"
-                            height="186" />
-                    </figure>
-                </div>
-                <div class="swiper-slide brand-col">
-                    <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/3.png" alt="Brand" width="410"
-                            height="186" />
-                    </figure>
-                    <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/4.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/2.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                 </div>
                 <div class="swiper-slide brand-col">
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/5.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/3.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/6.png" alt="Brand" width="410"
-                            height="186" />
-                    </figure>
-                </div>
-                <div class="swiper-slide brand-col">
-                    <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/7.png" alt="Brand" width="410"
-                            height="186" />
-                    </figure>
-                    <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/8.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/4.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                 </div>
                 <div class="swiper-slide brand-col">
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/9.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/5.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/10.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/6.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                 </div>
                 <div class="swiper-slide brand-col">
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/11.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/7.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                     <figure class="brand-wrapper">
-                        <img src="assets/images/demos/demo1/brands/12.png" alt="Brand" width="410"
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/8.png') }}" alt="Brand" width="410"
+                            height="186" />
+                    </figure>
+                </div>
+                <div class="swiper-slide brand-col">
+                    <figure class="brand-wrapper">
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/9.png') }}" alt="Brand" width="410"
+                            height="186" />
+                    </figure>
+                    <figure class="brand-wrapper">
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/10.png') }}" alt="Brand" width="410"
+                            height="186" />
+                    </figure>
+                </div>
+                <div class="swiper-slide brand-col">
+                    <figure class="brand-wrapper">
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/11.png') }}" alt="Brand" width="410"
+                            height="186" />
+                    </figure>
+                    <figure class="brand-wrapper">
+                        <img src="{{ asset('front-style/assets/images/demos/demo1/brands/12.png') }}" alt="Brand" width="410"
                             height="186" />
                     </figure>
                 </div>
@@ -2547,7 +2214,7 @@
                         <div class="text-center swiper-slide post overlay-zoom">
                             <figure class="post-media br-sm">
                                 <a href="post-single.html">
-                                    <img src="assets/images/demos/demo1/blogs/1.jpg" alt="Post" width="280"
+                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/1.jpg')}}" alt="Post" width="280"
                                         height="180" style="background-color: #4b6e91;" />
                                 </a>
                             </figure>
@@ -2566,7 +2233,7 @@
                         <div class="text-center swiper-slide post overlay-zoom">
                             <figure class="post-media br-sm">
                                 <a href="post-single.html">
-                                    <img src="assets/images/demos/demo1/blogs/2.jpg" alt="Post" width="280"
+                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/2.jpg')}}" alt="Post" width="280"
                                         height="180" style="background-color: #cec9cf;" />
                                 </a>
                             </figure>
@@ -2584,7 +2251,7 @@
                         <div class="text-center swiper-slide post overlay-zoom">
                             <figure class="post-media br-sm">
                                 <a href="post-single.html">
-                                    <img src="assets/images/demos/demo1/blogs/3.jpg" alt="Post" width="280"
+                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/3.jpg')}}" alt="Post" width="280"
                                         height="180" style="background-color: #c9c7bb;" />
                                 </a>
                             </figure>
@@ -2603,7 +2270,7 @@
                         <div class="text-center swiper-slide post overlay-zoom">
                             <figure class="post-media br-sm">
                                 <a href="post-single.html">
-                                    <img src="assets/images/demos/demo1/blogs/4.jpg" alt="Post" width="280"
+                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/4.jpg')}}" alt="Post" width="280"
                                         height="180" style="background-color: #d8dce0;" />
                                 </a>
                             </figure>
@@ -2649,7 +2316,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-1.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-1.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2663,7 +2330,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-2.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-2.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2677,7 +2344,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-3.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-3.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2691,7 +2358,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-4.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-4.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2705,7 +2372,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-5.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-5.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2719,7 +2386,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-6.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-6.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2733,7 +2400,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-7.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-7.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>
@@ -2747,7 +2414,7 @@
                     <div class="text-center product product-absolute">
                         <figure class="product-media">
                             <a href="product-defaproduct-default.html">
-                                <img src="assets/images/demos/demo1/products/7-8.jpg" alt="Category image"
+                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-8.jpg')}}" alt="Category image"
                                     width="130" height="146" style="background-color: #fff" />
                             </a>
                         </figure>

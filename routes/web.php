@@ -33,13 +33,19 @@ use App\Http\Controllers\ShippingCartController;
 
 
 
-//shop page
+//shop page for all products frid system
 
 Route::get('/shop',[frontPageController::class,'ShopPage'])->name('shop_page');
+
+// shop page as list 
 Route::get('/shop_list', [frontPageController::class, 'shop_list'])->name('shop_list');
 
+// products for a category
 Route::get('/Shop/prodcuts/{slug}',[frontPageController::class,'special_category_product'])->name('shop_special_category');
+// single prodcut [age]
 Route::get('/single_product/{slug}', [frontPageController::class, 'Single_product'])->name('singleproduct');
+
+
 
 Route::get('/',[frontPageController::class,'HomePage'])->name('homepage');
 

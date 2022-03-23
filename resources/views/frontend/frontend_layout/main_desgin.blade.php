@@ -927,6 +927,7 @@
             },
             success: function (data) {
                 $('body #header-ajax').html(data['header']);
+                $('body #cart_lists').html(data['cart_lists']);
             }
         });
     });

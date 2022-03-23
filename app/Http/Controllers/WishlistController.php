@@ -25,7 +25,7 @@ class WishlistController extends Controller
         // this has a model in the product model
         $product = product::getProductByCart($product_id);
 
-        if (empty($product[0]['offer_price']) || $product[0]['offer_price'] == null) {
+        if (!empty($product[0]['offer_price']) || $product[0]['offer_price'] != null) {
 
             $price = $product[0]['offer_price'];
         } else {
@@ -61,17 +61,14 @@ class WishlistController extends Controller
         // this has a model in the product model
         $wishlist_item =Cart::instance('wishlist')->get($request->input('rowId'));
 
-        // remove the item before send to the cart
-        Cart::instance('wishlist')->remove($request->input('rowId'));
-
-        //add the item to Cart
-
-        $result = Cart::instance('shopping')->add($wishlist_item->id, $wishlist_item->name,1,$wishlist_item->price)->associate('App\Models\product');
+        $result = Cart::instance('shopping')->add($wishlist_item->id, $wishlist_item->name, 1, $wishlist_item->price)->associate('App\Models\product');
         if ($result) {
             $response['status'] = true;
             $response['message'] = "the item has been moved to Cart";
             $response['cart_count'] = Cart::instance('shopping')->count();
         }
+        // remove the item before send to the cart
+        Cart::instance('wishlist')->remove($request->input('rowId'));
         //render the header cart value
         if ($request->ajax()) {
             $header = view('frontend.frontend_layout.header')->render();
