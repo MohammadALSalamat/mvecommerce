@@ -54,92 +54,12 @@
                                         <label>Filter :</label>
                                         <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
                                     </div>
-                                    <!-- Start of Collapsible widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>All Categories</label></h3>
-                                        <ul class="widget-body filter-items search-ul">
-                                            <li><a href="#">Accessories</a></li>
-                                            <li><a href="#">Babies</a></li>
-                                            <li><a href="#">Beauty</a></li>
-                                            <li><a href="#">Decoration</a></li>
-                                            <li><a href="#">Electronics</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Food</a></li>
-                                            <li><a href="#">Furniture</a></li>
-                                            <li><a href="#">Kitchen</a></li>
-                                            <li><a href="#">Medical</a></li>
-                                            <li><a href="#">Sports</a></li>
-                                            <li><a href="#">Watches</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Price</label></h3>
-                                        <div class="widget-body">
-                                            <ul class="filter-items search-ul">
-                                                <li><a href="#">$0.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $300.00</a></li>
-                                                <li><a href="#">$300.00 - $500.00</a></li>
-                                                <li><a href="#">$500.00+</a></li>
-                                            </ul>
-                                            <form class="price-range">
-                                                <input type="number" name="min_price" class="text-center min_price"
-                                                    placeholder="$min"><span class="delimiter">-</span><input
-                                                    type="number" name="max_price" class="text-center max_price"
-                                                    placeholder="$max"><a href="#"
-                                                    class="btn btn-primary btn-rounded">Go</a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Size</label></h3>
-                                        <ul class="mt-1 widget-body filter-items item-check">
-                                            <li><a href="#">Extra Large</a></li>
-                                            <li><a href="#">Large</a></li>
-                                            <li><a href="#">Medium</a></li>
-                                            <li><a href="#">Small</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Brand</label></h3>
-                                        <ul class="mt-1 widget-body filter-items item-check">
-                                            <li><a href="#">Elegant Auto Group</a></li>
-                                            <li><a href="#">Green Grass</a></li>
-                                            <li><a href="#">Node Js</a></li>
-                                            <li><a href="#">NS8</a></li>
-                                            <li><a href="#">Red</a></li>
-                                            <li><a href="#">Skysuite Tech</a></li>
-                                            <li><a href="#">Sterling</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Color</label></h3>
-                                        <ul class="mt-1 widget-body filter-items item-check">
-                                            <li><a href="#">Black</a></li>
-                                            <li><a href="#">Blue</a></li>
-                                            <li><a href="#">Brown</a></li>
-                                            <li><a href="#">Green</a></li>
-                                            <li><a href="#">Grey</a></li>
-                                            <li><a href="#">Orange</a></li>
-                                            <li><a href="#">Yellow</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
+                                    @include('frontend.frontend_pages.products.short_code._left-filter')
+                                   
                                 </div>
                                 <!-- End of Sidebar Content -->
                             </div>
+                                                   @include('frontend.frontend_pages.products.short_code._left-filter')
                             <!-- End of Sidebar Content -->
                         </aside>
                         <!-- End of Shop Sidebar -->
@@ -209,10 +129,11 @@
                                         </figure>
                                         <div class="product-details">
                                             <div class="product-cat">
-                                                <a href="shop-banner-sidebar.html">Electronics</a>
+                                           
+                                                <span >{{ $product->this_belong_to_category['title']}}</span>
                                             </div>
                                             <h3 class="product-name">
-                                                <a href="product-default.html">{{ $product->title}}</a>
+                                                <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
                                             </h3>
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
@@ -223,39 +144,27 @@
                                             </div>
                                             <div class="product-pa-wrapper">
                                                 <div class="product-price">
-                                                    ${{ $product->offer_price}} - <ins>${{ $product->price}}</ins>
+                                                    @if ( empty($product->offer_price) || $product->offer_price == null)
+                                                   <ins> {{ $product->price}} AED </ins>
+                                                        
+                                                    @else
+                                                        
+                                                    <ins> {{ $product->offer_price}} AED </ins> - <del>{{ $product->price}} AED</del>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div> 
-                                    
                                 @endforeach
                             </div>
-
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
-                                    Showing<span>1-12 of 60</span>Products
+                                    Showing Products
                                 </p>
-                                <ul class="pagination">
-                                    <li class="prev disabled">
-                                        <a href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                            <i class="w-icon-long-arrow-left"></i>Prev
-                                        </a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">1</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2</a>
-                                    </li>
-                                    <li class="next">
-                                        <a href="#" aria-label="Next">
-                                            Next<i class="w-icon-long-arrow-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                {{ $products->appends($_GET)->links('vendor.pagination.custompage') }}
                             </div>
+                            
                         </div>
                         <!-- End of Shop Main Content -->
                     </div>
@@ -278,10 +187,8 @@
     // filter the products using AJaxe
     $('#sortBy').change(function(){
         let sortVal = $('#sortBy').val();
-        alert(sortVal);
-        window.location = "{{ url(''.$route.'') }}?sort="+sortVal;
+        window.location = "{{ url(''.$route.'') }}"+sortVal;
     });
 
 </script>
-
-@stop
+@endsection

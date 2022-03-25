@@ -47,6 +47,16 @@ Route::get('/single_product/{slug}', [frontPageController::class, 'Single_produc
 
 
 
+// shop filter routes
+Route::post('shop_filter',[frontPageController::class, 'shop_filter'])->name('shop_filter');
+
+
+
+
+
+
+
+
 Route::get('/',[frontPageController::class,'HomePage'])->name('homepage');
 
 Auth::routes(['register'=>false]);

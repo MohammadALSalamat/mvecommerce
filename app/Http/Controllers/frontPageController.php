@@ -29,8 +29,6 @@ class frontPageController extends Controller
 
         $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->take(3)->get();
 
-
-
         return view('frontend.frontend_pages.homepage',compact('banners', 'categories','home_3_Categories'));
     }
 
@@ -42,15 +40,36 @@ class frontPageController extends Controller
 
     public function ShopPage(Request $request)
     {
-        $products = product::where('status', 1)->get();
-        // use it for the filtter using ajax (sort prodcuts)
+
+        // product filter in shop page get the data from the link top
+
+
+        $products = product::query();
+        if (!empty($_GET['category'])) {
+            $sortUrl= '&sort=';
+            $route='shop?category='.$_GET['category'].$sortUrl;
+            $slug = explode(',', $_GET['category']);
+            $cat_ids = category::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+            // get the products with the selected categories
+            $products = $products->with('this_belong_to_category')->whereIn('category_id', $cat_ids)->paginate(12);
+        } else {
+            $route='shop?sort=';
+            $products = product::with('this_belong_to_category')->where(['status' => 1])->paginate(12);
+        }
+        // foreach($products as $product){
+
+        //     dd($product->this_belong_to_category['title']);
+        // }
+        // use it for the filtter using ajax-> (sort prodcuts)
         $sort = '';
         if ($request->sort != null) {
             $sort = $request->sort; // get the value
         }
-    if ($products == null) {
+
+    
+        if ($products == null) {
         return view('errors.404');
-    } else {
+        } else {
         //start the sort depends on the valueof ajax
         if ($sort == 'price-low') {
         } elseif ($sort == 'price-low') {
@@ -65,18 +84,54 @@ class frontPageController extends Controller
             $products = product::orderBy('discound', 'ASC')->where(['status' => 1])->paginate(12);
         } elseif ($sort == 'discountHTL') {
             $products = product::orderBy('discound', 'DESC')->where(['status' => 1])->paginate(12);
-        } else {
-            $products = product::where(['status' => 1])->paginate(12);
+        } 
+
         }
-}
-        $route='shop';
-        return view('frontend.frontend_pages.products.shop',compact('products','route'));
+        // Filter Section
+        #categories
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        #type of work filter
+        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+        return view('frontend.frontend_pages.products.shop',compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
     }
 
-    public function shop_list()
+    public function shop_list( Request $request)
     {
-        return view('frontend.frontend_pages.products.shop_list');
+        $products = product::where('status', 1)->get();
+        // use it for the filtter using ajax (sort prodcuts)
+        $sort = '';
+        if ($request->sort != null) {
+            $sort = $request->sort; // get the value
+        }
+        if ($products == null) {
+            return view('errors.404');
+        } else {
+            //start the sort depends on the valueof ajax
+            if ($sort == 'price-low') {
+            } elseif ($sort == 'price-low') {
+                $products = product::orderBy('price', 'ASC')->where(['status' => 1])->paginate(12);
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1])->paginate(12);
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1])->paginate(12);
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1])->paginate(12);
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1])->paginate(12);
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1])->paginate(12);
+            } else {
+                $products = product::where(['status' => 1])->paginate(12);
+            }
+        }
+        $route = 'shop_list';
+        // Filter Section
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+    
+        return view('frontend.frontend_pages.products.shop_list', compact('products', 'route', 'main_categories'));
     }
 
     public function special_category_product(Request $request , $slug)
@@ -120,7 +175,10 @@ class frontPageController extends Controller
         }
         $count_product =  count($products);
         $route = 'Shop/prodcuts';
-        return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product'));
+        // Filter Section
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+    
+        return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories'));
     }
 
     public function Single_product($slug)
@@ -133,6 +191,24 @@ class frontPageController extends Controller
       }
     }
 
+    // Shop Filter
+
+    public function shop_filter(Request $request)
+    {
+        $data = $request->all();
+        $catUrl = '';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl.='&category='.$category;
+                }else{
+                    $catUrl.=','.$category;
+                }
+            }
+        }
+    
+        return redirect()->route('shop_page',$catUrl);
+    }
 
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 
@@ -244,13 +320,15 @@ class frontPageController extends Controller
             $addnewvendor->password = Hash::make(($data['password']));
             $addnewvendor->status = 'inactive';
             $addnewvendor->role ='seller';
+            $addnewvendor->shop_name = $data['shop-name'];
+            $addnewvendor->type_of_work = $data['type_work'];
             $addnewvendor->save();
-           
+        
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
-     }
-     
-     elseif(!empty($data['check-customer']) == 'on' && empty($data['check-seller'])){
+    }
+    
+    elseif(!empty($data['check-customer']) == 'on' && empty($data['check-seller'])){
 
             if ($data['full_name'] == null || empty($data['full_name'])) {
                 return back()->with('error', 'full name is required');
@@ -270,10 +348,10 @@ class frontPageController extends Controller
             $addnewcustumer->email = $data['email'];
             $addnewcustumer->password = Hash::make(($data['password']));
             $addnewcustumer->save();
-            return back()->with('message','Congrats you have registerd as a custumer');
+            return back()->with('message','Congrats you have registerd as a customer');
         
      }else{
-        return back()->with('error','There is an Error with the data that you have inserted, refresh the page');
+        return back()->with('error','Please Choose if you want to register as a customer or vendor');
     }
 }
 
@@ -387,20 +465,25 @@ if ($user_address) {
                 }else{
                     $passowrd = Hash::make($data['new_password']);
                 }
+
+                if($data['shop-name'] != null){
+                    $shop_name = $data['shop-name'];
+                }else{
+                    $shop_name = null;  
+                }
                
 
                 User::where('id',$id)->update([
                     "full_name"=> $data['full_name'],
                     "username"=> $data['username'],
                     "phone"=> $data['phone'],
+                    "shop_name"=> $shop_name,
                     "password" => $passowrd,
-                 ]);
-                 return back()->with('message','Your data has been updated');
+                ]);
+                return back()->with('message','Your data has been updated');
             }else{
                 return back()->with('error','Your Current Password is not Correct');
             }
-
-
         }else{
             return back()->with('error','the user is not found');
         }

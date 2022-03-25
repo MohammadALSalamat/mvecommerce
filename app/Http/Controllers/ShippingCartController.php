@@ -152,8 +152,8 @@ class ShippingCartController extends Controller
           ]);
         return back()->with('success','your coupon has been applied');
         // to complate the Math calculation go to model ( coupon )
-       }else{
-           return back()->with('error','the coupon is not correct');
-       }
+    }else{
+        return back()->with('error','the coupon is not correct');
+    }
     }
 }

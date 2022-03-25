@@ -50,88 +50,8 @@
                                     <label>Filter :</label>
                                     <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
                                 </div>
-                                <!-- Start of Collapsible widget -->
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title"><span>All Categories</span></h3>
-                                    <ul class="widget-body filter-items search-ul">
-                                        <li><a href="#">Accessories</a></li>
-                                        <li><a href="#">Babies</a></li>
-                                        <li><a href="#">Beauty</a></li>
-                                        <li><a href="#">Decoration</a></li>
-                                        <li><a href="#">Electronics</a></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">Food</a></li>
-                                        <li><a href="#">Furniture</a></li>
-                                        <li><a href="#">Kitchen</a></li>
-                                        <li><a href="#">Medical</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                        <li><a href="#">Watches</a></li>
-                                    </ul>
-                                </div>
-                                <!-- End of Collapsible Widget -->
-
-                                <!-- Start of Collapsible Widget -->
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title"><span>Price</span></h3>
-                                    <div class="widget-body">
-                                        <ul class="filter-items search-ul">
-                                            <li><a href="#">$0.00 - $100.00</a></li>
-                                            <li><a href="#">$100.00 - $200.00</a></li>
-                                            <li><a href="#">$200.00 - $300.00</a></li>
-                                            <li><a href="#">$300.00 - $500.00</a></li>
-                                            <li><a href="#">$500.00+</a></li>
-                                        </ul>
-                                        <form class="price-range">
-                                            <input type="number" name="min_price" class="text-center min_price"
-                                                placeholder="$min"><span class="delimiter">-</span><input type="number"
-                                                name="max_price" class="text-center max_price" placeholder="$max"><a
-                                                href="#" class="btn btn-primary btn-rounded">Go</a>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- End of Collapsible Widget -->
-
-                                <!-- Start of Collapsible Widget -->
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title"><span>Size</span></h3>
-                                    <ul class="mt-1 widget-body filter-items item-check">
-                                        <li><a href="#">Extra Large</a></li>
-                                        <li><a href="#">Large</a></li>
-                                        <li><a href="#">Medium</a></li>
-                                        <li><a href="#">Small</a></li>
-                                    </ul>
-                                </div>
-                                <!-- End of Collapsible Widget -->
-
-                                <!-- Start of Collapsible Widget -->
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title"><span>Brand</span></h3>
-                                    <ul class="mt-1 widget-body filter-items item-check">
-                                        <li><a href="#">Elegant Auto Group</a></li>
-                                        <li><a href="#">Green Grass</a></li>
-                                        <li><a href="#">Node Js</a></li>
-                                        <li><a href="#">NS8</a></li>
-                                        <li><a href="#">Red</a></li>
-                                        <li><a href="#">Skysuite Tech</a></li>
-                                        <li><a href="#">Sterling</a></li>
-                                    </ul>
-                                </div>
-                                <!-- End of Collapsible Widget -->
-
-                                <!-- Start of Collapsible Widget -->
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title"><span>Color</span></h3>
-                                    <ul class="mt-1 widget-body filter-items item-check">
-                                        <li><a href="#">Black</a></li>
-                                        <li><a href="#">Blue</a></li>
-                                        <li><a href="#">Brown</a></li>
-                                        <li><a href="#">Green</a></li>
-                                        <li><a href="#">Grey</a></li>
-                                        <li><a href="#">Orange</a></li>
-                                        <li><a href="#">Yellow</a></li>
-                                    </ul>
-                                </div>
-                                <!-- End of Collapsible Widget -->
+                                @include('frontend.frontend_pages.products.short_code._left-filter')
+                                
                             </div>
                             <!-- End of Sidebar Content -->
                         </aside>
@@ -167,13 +87,12 @@
                                 </div>
                             </nav>
                             @if ($count_product > 0)
-                             <div class="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
+                            <div class="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
                                 @foreach ($products as $products_category )
-
                                 <div class="product product-list">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                             <img src="{{ $products_category->image }}" alt="Product" width="330"
+                                            <img src="{{ $products_category->image }}" alt="Product" width="330"
                                                 height="338" />
                                             <img src="{{ $products_category->image }}" alt="Product" width="330"
                                                 height="338" />
@@ -202,9 +121,9 @@
                                             {{ $products_category->Summary }}
                                         </div>
                                         <div class="product-action">
-                                            <a href="product-default.html" class="btn-product btn-cart"
-                                                title="Add to Cart"><i class="w-icon-cart"></i>Select Options</a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                            <a href="javascript:void(0)" data-product-id="{{$products_category->id}}" id="add_to_cart{{$products_category->id}}" data-quantity="1" class="add-to-cart btn-product btn-cart"
+                                                title="Add to Cart"><i class="w-icon-cart"></i>Add To Cart</a>
+                                            <a href="javascript:void(0)" data-id="{{ $products_category->id }}" id="add_to_wishlist{{ $products_category->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
                                             <a href="#" class="btn-product-icon btn-compare w-icon-compare"
                                                 title="Compare"></a>

@@ -2033,7 +2033,7 @@
                                     <img style="height:200px !important; width:100% !important" src="{{ $products_cat->image }}" alt="Product" />
                                 </a>
                                 <div class="product-action-vertical">
-                                    <a href="#" data-product-id="{{$products_cat->id}}" id="add_to_cart{{$products_cat->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                    <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}" id="add_to_cart{{$products_cat->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
                                         title="Add to cart"></a>
                                     <a href="javascript:void(0)" data-id="{{ $products_cat->id }}" id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                         title="Add to wishlist"></a>

@@ -485,6 +485,13 @@
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
+                             @if($current_user->role == 'seller')
+                            <div class="mb-6 form-group">
+                                <label for="email_1">Shop Name </label>
+                                <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
+                                value="{{ $current_user->shop_name }}">
+                            </div>
+                            @endif
                             <h4 class="title title-password ls-25 font-weight-bold">Password change</h4>
                             <div class="form-group">
                                 <label class="text-dark" for="cur-password">Current Password leave blank to leave
