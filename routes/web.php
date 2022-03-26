@@ -14,6 +14,7 @@ use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
+use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ShippingCartController;
 
 /*
@@ -163,6 +164,16 @@ Route::match(['get', 'post'], '/deletbanner/{id}', [BannerController::class, 'de
     Route::get('/edit_products/{id}', [ProductController::class, 'editproducts'])->name('editproducts');
     Route::match(['get', 'post'], '/update_products/{id}', [ProductController::class, 'updateproducts'])->name('updateproducts');
     Route::match(['get', 'post'], '/deletproducts/{id}', [ProductController::class, 'deletproducts'])->name('deletproducts');
+
+
+    //Products Attribute section
+
+    Route::get('AddProductAttrebuite/{id}',[ProductAttributeController::class,'add_productAttr'])->name('add_productAttr');
+    Route::post('CreateProductAttrebuite/{id}',[ProductAttributeController::class,'create_productAttr'])->name('create_productAttr');
+    Route::match(['get', 'post'], '/deletproductAttr/{id}', [ProductAttributeController::class, 'deletproductAttr'])->name('deletproductAttr');
+
+
+
 
     //users section
     Route::get('/users', [UserController::class, 'viewusers'])->name('viewusers');

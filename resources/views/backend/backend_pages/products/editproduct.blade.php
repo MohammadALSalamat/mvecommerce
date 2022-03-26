@@ -126,13 +126,13 @@ input:checked + .slider:before {
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput56">Vendors</label>
                                                 <div class="col-md-9">
-                                                    <select id="projectinput56" name="vendor" class="form-control">
-                                                        <option value="none" ><-- Vendor -->
+                                                    <select id="projectinput56" name="vendor" class="form-control" disabled>
+                                                        <option  selected value="{{ $vendors->id }}" >{{ $vendors->full_name }}
+                                                        </option> 
+                                                        {{-- @foreach ($vendors as $vendor)
+                                                        <option value="{{ $vendor->id }}" > {{ $vendor->full_name }}
                                                         </option>
-                                                        @foreach ($vendors as $vendor)
-                                                        <option value="{{ $vendor->id }}" @if($current_product->vendor_id == $vendor->id) selected @else  @endif > {{ $vendor->full_name }}
-                                                        </option>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </select>
                                                 </div>
                                             </div>

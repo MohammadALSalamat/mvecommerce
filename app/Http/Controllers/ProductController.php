@@ -22,7 +22,8 @@ class ProductController extends Controller
     public function createproducts()
     {
         $brands = brand::get();
-        $vendors = User::where('role','vendor')->get();
+        $user = auth()->user()->id;
+        $vendors = User::find(auth()->user()->id);
         $categories = category::where('is_parent',0)->get();
        return view('backend.backend_pages.products.addproduct',compact('brands','vendors','categories'));
     }
@@ -32,6 +33,7 @@ class ProductController extends Controller
         //insert data of the product
 
         $data = $request->all();
+        dd($data);
          // check if the title is empty
          if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
@@ -43,11 +45,6 @@ class ProductController extends Controller
             $brand = null;
         }else{
             $brand = $data['brand'];
-        }
-        if (empty($data['vendor']) || $data['vendor'] == 'none' || $data['vendor'] == null) {
-            $vendor = null;
-        }else{
-            $vendor = $data['vendor'];
         }
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
@@ -97,7 +94,7 @@ class ProductController extends Controller
         $addproduct->discound = $data['discound'];
         $addproduct->brand_id = $brand;
         $addproduct->child_category_id = $child_cat;
-        $addproduct->vendor_id = $vendor;
+        $addproduct->vendor_id = auth()->user()->id;
         $addproduct->status = $status;
         $addproduct->save();
         return back()->with('message','your product has been created');
@@ -107,7 +104,8 @@ class ProductController extends Controller
     {
         $current_product= product::find($id); // get the current category
         $brands = brand::get();
-            $vendors = User::where('role','vendor')->get();
+        $user = auth()->user()->id;
+        $vendors = User::find(auth()->user()->id);
             $categories = category::where('is_parent',0)->get();
         if ($current_product) {
 
@@ -135,11 +133,6 @@ class ProductController extends Controller
                 $brand = null;
             }else{
                 $brand = $data['brand'];
-            }
-            if (empty($data['vendor']) || $data['vendor'] == 'none' || $data['vendor'] == null) {
-                $vendor = null;
-            }else{
-                $vendor = $data['vendor'];
             }
             if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
                 return back()->with('error', 'Category is requird');
@@ -183,7 +176,7 @@ class ProductController extends Controller
         'discound' => $data['discound'],
         'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
-        'vendor_id' => $vendor,
+        'vendor_id' => auth()->user()->id,
         'status' => $status,
         ]);
         return back()->with('message','The Product has been updated');
