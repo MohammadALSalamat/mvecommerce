@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
+use Helper;
 
 class frontPageController extends Controller
 {
@@ -46,54 +47,59 @@ class frontPageController extends Controller
 
         $products = product::query();
         if (!empty($_GET['category'])) {
-            $sortUrl= '&sort=';
-            $route='shop?category='.$_GET['category'].$sortUrl;
             $slug = explode(',', $_GET['category']);
             $cat_ids = category::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
             // get the products with the selected categories
-            $products = $products->with('this_belong_to_category')->whereIn('category_id', $cat_ids)->paginate(12);
-        } else {
-            $route='shop?sort=';
-            $products = product::with('this_belong_to_category')->where(['status' => 1])->paginate(12);
+            $products = $products->whereIn('category_id', $cat_ids);
         }
-        // foreach($products as $product){
+       // price filter
+        if(!empty($_GET['price'])){
+            $price = explode('-',$_GET['price']);
+            $price[0] = floor($price[0]);
+            $price[1] = ceil($price[1]);
+            $products = $products->whereBetween('price',$price);
+        }
 
-        //     dd($product->this_belong_to_category['title']);
-        // }
+        
         // use it for the filtter using ajax-> (sort prodcuts)
         $sort = '';
         if ($request->sort != null) {
             $sort = $request->sort; // get the value
         }
-
-    
+        
+        
         if ($products == null) {
         return view('errors.404');
         } else {
         //start the sort depends on the valueof ajax
         if ($sort == 'price-low') {
         } elseif ($sort == 'price-low') {
-            $products = product::orderBy('price', 'ASC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('price', 'ASC');
         } elseif ($sort == 'price-high') {
-            $products = product::orderBy('price', 'DESC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('price', 'DESC');
         } elseif ($sort == 'alpha-asc') {
-            $products = product::orderBy('title', 'ASC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('title', 'ASC');
         } elseif ($sort == 'alpha-desc') {
-            $products = product::orderBy('title', 'DESC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('title', 'DESC');
         } elseif ($sort == 'discountLTH') {
-            $products = product::orderBy('discound', 'ASC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('discound', 'ASC');
         } elseif ($sort == 'discountHTL') {
-            $products = product::orderBy('discound', 'DESC')->where(['status' => 1])->paginate(12);
+            $products = product::orderBy('discound', 'DESC');
         } 
+    }
+    
+    
+    $route='shop';
+    // Filter Section
+    #categories
+    $products = $products->where(['status' => 1])->paginate(12); 
 
-        }
-        // Filter Section
-        #categories
-        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+    $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
         $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+        
         return view('frontend.frontend_pages.products.shop',compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
     }
@@ -196,6 +202,7 @@ class frontPageController extends Controller
     public function shop_filter(Request $request)
     {
         $data = $request->all();
+
         $catUrl = '';
         if(!empty($data['category'])){
             foreach($data['category'] as $category){
@@ -206,8 +213,32 @@ class frontPageController extends Controller
                 }
             }
         }
-    
-        return redirect()->route('shop_page',$catUrl);
+
+
+        // price filter 
+        if (!empty($data['min_price']) || !empty($data['max_price'])) {
+            if ($data['min_price'] < Helper::minPrice() || $data['max_price'] > Helper::maxPrice() || $data['min_price'] > $data['max_price']) {
+                return back()->with('error', 'The Price Rang is Not Correct, Search between '. Helper::minPrice() .' And '. Helper::maxPrice());
+            }
+            if ($data['min_price'] == null || empty($data['min_price'])) {
+                $minPrice = Helper::minPrice();
+            } else {
+                $minPrice = $data['min_price'];
+            }
+
+            if ($data['max_price'] == null || empty($data['max_price'])) {
+                $maxPrice = Helper::maxPrice();
+            } else {
+                $maxPrice = $data['max_price'];
+            }
+            //filter price
+            $price = $minPrice.'-'.$maxPrice;
+        }
+        $price_range_url='';
+        if(!empty($price)){
+            $price_range_url.='&price='.$price;
+        }
+        return redirect()->route('shop_page',$catUrl.$price_range_url);
     }
 
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//

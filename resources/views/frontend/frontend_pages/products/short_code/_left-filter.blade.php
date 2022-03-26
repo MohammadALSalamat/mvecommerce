@@ -84,11 +84,21 @@
              <li><a href="#">$300.00 - $500.00</a></li>
              <li><a href="#">$500.00+</a></li>
          </ul>
-         <form class="price-range">
-             <input type="number" name="min_price" class="text-center min_price" placeholder="$min"><span
-                 class="delimiter">-</span><input type="number" name="max_price" class="text-center max_price"
-                 placeholder="$max"><a href="#" class="btn btn-primary btn-rounded">Go</a>
-         </form>
+        <form class="price-range" action="{{ route('shop_filter') }}" method="POST" >
+            @csrf
+            @if (!empty($_GET['price']))
+                @php
+                    if(!empty($_GET['price'])){
+                        $price=explode('-',$_GET['price']);
+                    }
+                @endphp
+            @endif
+            <input type="number" name="min_price" data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @endif class="text-center min_price" placeholder="$min">
+            <span class="delimiter" > - </span>
+            <input type="number" data-max="{{ Helper::maxPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[1] }}" @endif name="max_price" class="text-center max_price" placeholder="$max">
+                <button type="submit" href="#" class="btn btn-dark btn-rounded">Go</button>
+        </form>
+                <p><small>Rang of search between {{ Helper::minPrice() }} - {{ Helper::maxPrice() }}</small></p>
      </div>
  </div>
  <!-- End of Collapsible Widget -->

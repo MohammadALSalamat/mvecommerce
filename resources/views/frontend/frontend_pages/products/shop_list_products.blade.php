@@ -65,7 +65,7 @@
                                     <div class="toolbox-item toolbox-sort select-box text-dark">
                                         <label>Sort By :</label>
                                         <select name="orderby" class="form-control" id="sortBy">
-                                            <option value="default" selected="selected">Default sorting</option>
+                                            <option value="default" >Default sorting</option>
                                             <option value="alpha-asc">Sort by alpha-asc</option>
                                             <option value="alpha-desc">Sort by alpha-desc</option>
                                             <option value="discountLTH">Sort by dicount : low to high</option>

@@ -187,7 +187,7 @@
     // filter the products using AJaxe
     $('#sortBy').change(function(){
         let sortVal = $('#sortBy').val();
-        window.location = "{{ url(''.$route.'') }}"+sortVal;
+        window.location = "{{ url(''.$route.'') }}?sort="+sortVal;
     });
 
 </script>
