@@ -1,4 +1,139 @@
 @extends('frontend.frontend_layout.main_desgin')
+@section('style')
+<style>
+.row > .column {
+    padding: 0 8px;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .column {
+    float: left;
+    width: 25%;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .mySlides {
+    display: none;
+  }
+  
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  img {
+    margin-bottom: -4px;
+  }
+  
+  .caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+  }
+  
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+  
+  img.hover-shadow {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  </style>
+@endsection
+
 @section('content')
  <!-- Start of Main -->
  <main class="pb-1 mb-10 main">
@@ -139,8 +274,15 @@
                                 </div>
 
                                 <hr class="product-divider">
-
-                                <div class="product-form product-variation-form product-color-swatch">
+                                <div class="form-group d-flex">
+                                    <label for="sel1" style="font-size: 20px;">Select Size:</label>
+                                    <select class="form-control form-control-sm" name="size" id="sel1" style="width: 50%;margin-left:10px">
+                                        @foreach ($product_attr as $attr_size)
+                                        <option value="{{ $attr_size->size }}">{{ $attr_size->size }}</option>
+                                        @endforeach
+                                    </select>
+                                  </div>
+                                {{-- <div class="product-form product-variation-form product-color-swatch">
                                     <label>Color:</label>
                                     <div class="d-flex align-items-center product-variations">
                                         <a href="#" class="color" style="background-color: #ffcc01"></a>
@@ -160,11 +302,51 @@
                                     </div>
                                     <a href="#" class="product-variation-clean">Clean All</a>
                                 </div>
-
                                 <div class="product-variation-price">
                                     <span></span>
+                                </div> --}}
+                                <hr class="product-divider">
+                            @php
+                                $size_guid =explode(',',$single_product->size_guid); 
+                            @endphp
+                            @if(!empty($single_product->size_guid) || $single_product->size_guid != null)
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h5>Size Guide :</h5>
+                                    </div>
+                                    <div class="col-8">
+                                            @foreach ($size_guid as $key => $size)
+                                            <div class="column mr-1">
+                                              <img src="{{ $size }}" style="width:100%" onclick="openModal();currentSlide({{ $key }})" class="hover-shadow cursor" style="width:auto;height:100px" >
+                                            </div>
+                                            @endforeach
+                                          </div>
+                                          <div id="myModal" class="modal">
+                                            <span class="close cursor" onclick="closeModal()">&times;</span>
+                                            <div class="modal-content">
+                                                @foreach ($size_guid as $key => $size)
+                                                <div class="mySlides">
+                                                    <img src="{{ $size }}" style="width:100%">
+                                                  </div>
+                                                @endforeach
+                                              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                          
+                                              <div class="caption-container">
+                                                <p id="caption"></p>
+                                              </div>
+                                              @foreach ($size_guid as $key => $size)
+                                                <div class="column">
+                                                    <img class="demo cursor" src="{{ $size }}" style="width:100%" onclick="currentSlide({{ $key }})" alt="Nature and sunrise">
+                                                  </div>
+                                              @endforeach
+                                            </div>
+                                       
+                                    </div>
                                 </div>
-
+                            </div>
+                            @endif
                                 <div class="fix-bottom product-sticky-content sticky-content">
                                     <div class="container product-form">
                                         <div class="product-qty-form">
@@ -181,7 +363,7 @@
                                         </button>
                                     </div>
                                 </div>
-
+                               
                                 <div class="social-links-wrapper">
                                     <div class="social-links">
                                         <div class="social-icons social-no-color border-thin">
@@ -272,7 +454,7 @@
                                 <a href="#product-tab-description" class="nav-link active">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#product-tab-specification" class="nav-link">Specification</a>
+                                <a href="#product-tab-specification" class="nav-link">Additional Information</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#product-tab-vendor" class="nav-link">Vendor Info</a>
@@ -283,76 +465,19 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="product-tab-description">
-                                <div class="mb-4 row">
-                                    <div class="mb-5 col-md-6">
-                                        <h4 class="mb-2 title tab-pane-title font-weight-bold">Detail</h4>
-                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt arcu cursus vitae congue mauris.
-                                            Sagittis id consectetur purus ut. Tellus rutrum tellus pelle Vel
-                                            pretium lectus quam id leo in vitae turpis massa.</p>
-                                        <ul class="list-type-check">
-                                            <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis
-                                                elit.
-                                            </li>
-                                            <li>Vivamus finibus vel mauris ut vehicula.</li>
-                                            <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="mb-5 col-md-6">
-                                        <div class="banner banner-video product-video br-xs">
-                                            <figure class="banner-media">
-                                                <a href="#">
-                                                    <img src="assets/images/products/video-banner-610x300.jpg"
-                                                        alt="banner" width="610" height="300"
-                                                        style="background-color: #bebebe;">
-                                                </a>
-                                                <a class="btn-play-video btn-iframe"
-                                                    href="assets/video/memory-of-a-woman.mp4"></a>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row cols-md-3">
-                                    <div class="mb-3">
-                                        <h5 class="sub-title font-weight-bold"><span class="mr-3">1.</span>Free
-                                            Shipping &amp; Return</h5>
-                                        <p class="pl-5 detail">We offer free shipping for products on orders
-                                            above 50$ and offer free delivery for all orders in US.</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="sub-title font-weight-bold"><span>2.</span>Free and Easy
-                                            Returns</h5>
-                                        <p class="pl-5 detail">We guarantee our products and you could get back
-                                            all of your money anytime you want in 30 days.</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="sub-title font-weight-bold"><span>3.</span>Special Financing
-                                        </h5>
-                                        <p class="pl-5 detail">Get 20%-50% off items over 50$ for a month or
-                                            over 250$ for a year with our special credit card.</p>
-                                    </div>
-                                </div>
+                                @if($single_product->description != null || !empty($single_product->description))
+                                {{ $single_product->description }}
+                                @else
+                                <p class=text-red-600" style="color: red"> There is no Description for this product</p>
+                                @endif
+                             
                             </div>
                             <div class="tab-pane" id="product-tab-specification">
-                                <ul class="list-none">
-                                    <li>
-                                        <label>Model</label>
-                                        <p>Skysuite 320</p>
-                                    </li>
-                                    <li>
-                                        <label>Color</label>
-                                        <p>Black</p>
-                                    </li>
-                                    <li>
-                                        <label>Size</label>
-                                        <p>Large, Small</p>
-                                    </li>
-                                    <li>
-                                        <label>Guarantee Time</label>
-                                        <p>3 Months</p>
-                                    </li>
-                                </ul>
+                                @if($single_product->additional_info != null || !empty($single_product->additional_info))
+                                {{ $single_product->additional_info }}
+                                @else
+                                <p class=text-red-600" style="color: red"> There is no additional information for this product</p>
+                                @endif
                             </div>
                             <div class="tab-pane" id="product-tab-vendor">
                                 <div class="mb-3 row">
@@ -367,12 +492,12 @@
                                         <div class="vendor-user">
                                             <figure class="mr-4 vendor-logo">
                                                 <a href="#">
-                                                    <img src="assets/images/products/vendor-logo.jpg"
+                                                    <img src="{{ $vendor_info->photo }}"
                                                         alt="Vendor Logo" width="80" height="80" />
                                                 </a>
                                             </figure>
                                             <div>
-                                                <div class="vendor-name"><a href="#">Jone Doe</a></div>
+                                                <div class="vendor-name"><a href="#">{{ $vendor_info->full_name }}</a></div>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
                                                         <span class="ratings" style="width: 90%;"></span>
@@ -385,16 +510,15 @@
                                         <ul class="vendor-info list-style-none">
                                             <li class="store-name">
                                                 <label>Store Name:</label>
-                                                <span class="detail">OAIO Store</span>
+                                                <span class="detail">{{ $vendor_info->shope_name }}</span>
                                             </li>
                                             <li class="store-address">
                                                 <label>Address:</label>
-                                                <span class="detail">Steven Street, El Carjon, CA 92020, United
-                                                    States (US)</span>
+                                                <span class="detail">{{$vendor_info->address}}</span>
                                             </li>
                                             <li class="store-phone">
                                                 <label>Phone:</label>
-                                                <a href="#tel:">1234567890</a>
+                                                <a href="#tel:">{{ $vendor_info->phone }}</a>
                                             </li>
                                         </ul>
                                         <a href="vendor-dokan-store.html"
@@ -1467,4 +1591,45 @@
 </main>
 <!-- End of Main -->
 
+@endsection
+
+@section('script')
+<script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+    
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      var captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+    </script>
 @endsection

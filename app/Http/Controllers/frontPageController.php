@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
+use App\Models\productAttribute;
 use Helper;
 
 class frontPageController extends Controller
@@ -190,8 +191,10 @@ class frontPageController extends Controller
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first();
+      $vendor_info = User::where('id',$single_product->vendor_id)->first();
+      $product_attr = productAttribute::where('product_id',$single_product->id)->get();
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('single_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_attr'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }

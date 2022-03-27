@@ -24,8 +24,11 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('Summary');
             $table->text('description')->nullable();
+            $table->text('additional_info')->nullable();
+            $table->text('return_policy')->nullable();
             $table->integer('stock')->default(0);
             $table->text('image');
+            $table->text('size_guid')->nullable();
             $table->float('price')->default(0);
             $table->float('offer_price')->default(0);
             $table->float('discound')->default(0);

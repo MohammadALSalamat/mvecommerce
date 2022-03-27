@@ -180,8 +180,8 @@ input:checked + .slider:before {
                                             <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                            <i class="fa fa-picture-o"></i> Choose
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose Product Image
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="filepath" value="{{ $current_product->image }}">
@@ -189,11 +189,38 @@ input:checked + .slider:before {
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
+                                                <div class="input-group col-md-10 offset-2">
+                                                    <span class="input-group-btn">
+                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose Size Guid
+                                                        </a>
+                                                    </span>
+                                                    <input id="thumbnail1" class="form-control" type="text" name="size_guid" value="{{ $current_product->size_guid }}">
+                                                </div>
+                                                <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput9" rows="5" class="form-control"
                                                         name="comment" placeholder="About Project">{{ $current_product->description }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Additional Info</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="projectinput100" rows="5" class="form-control"
+                                                        name="additional_info" placeholder="write somthing new">{{ $current_product->additional_info }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Return Policy</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="projectinput1001" rows="5" class="form-control"
+                                                        name="return_policy" placeholder="Write Something ">{{ $current_product->return_policy }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -284,7 +311,7 @@ input:checked + .slider:before {
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-     $('#lfm').filemanager('image');
+     $('#lfm,#lfm1').filemanager('image');
 
 </script>
 <script>

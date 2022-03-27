@@ -33,7 +33,6 @@ class ProductController extends Controller
         //insert data of the product
 
         $data = $request->all();
-        dd($data);
          // check if the title is empty
          if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
@@ -83,7 +82,10 @@ class ProductController extends Controller
         $addproduct->title = $data['title'];
         $addproduct->slug = $data['slug'];
         $addproduct->image = $data['filepath'];
+        $addproduct->size_guid = $data['size_guid'];
         $addproduct->description = $data['comment'];
+        $addproduct->additional_info = $data['additional_info'];
+        $addproduct->return_policy = $data['return_policy'];
         $addproduct->Summary = $data['summary'];
         $addproduct->category_id = $data['category'];
         $addproduct->size = $data['size'];
@@ -165,6 +167,9 @@ class ProductController extends Controller
         'title' => $data['title'],
         'slug' => $data['slug'],
         'image' => $data['filepath'],
+        'size_guid' => $data['size_guid'],
+        'description' => $data['additional_info'],
+        'description' => $data['return_policy'],
         'description' => $data['comment'],
         'Summary' => $data['summary'],
         'category_id' => $data['category'],
