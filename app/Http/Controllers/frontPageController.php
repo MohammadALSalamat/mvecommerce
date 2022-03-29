@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
 use App\Models\productAttribute;
+use App\Models\ProductReview;
 use Helper;
 
 class frontPageController extends Controller
@@ -93,13 +94,14 @@ class frontPageController extends Controller
     $route='shop';
     // Filter Section
     #categories
-    $products = $products->where(['status' => 1])->paginate(12); 
+        $products = $products->where(['status' => 1])->paginate(12); 
 
-    $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
         $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+
         
         return view('frontend.frontend_pages.products.shop',compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
@@ -193,8 +195,11 @@ class frontPageController extends Controller
       $single_product = product::with('rel_product')->where('slug',$slug)->first();
       $vendor_info = User::where('id',$single_product->vendor_id)->first();
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
+      $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
+      
+     #review comments 
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_attr'));
+        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_attr','user_review'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
@@ -267,10 +272,10 @@ class frontPageController extends Controller
             if(Session::get('url.intended')){
                 return Redirect::to(Session::get('url.intended'));
             }else{
-
                 return redirect()->route('homepage')->with('message','Welcome Back '.auth()->user()->username);
             }
         }else{
+            
             return back()->with('error','Invalid Email & Password Or the Status of your account is inactive please contact the Admin');
         }
     }

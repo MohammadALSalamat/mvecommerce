@@ -1,142 +1,179 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('style')
 <style>
-.row > .column {
-    padding: 0 8px;
-  }
-  
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  .column {
-    float: left;
-    width: 25%;
-  }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: black;
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #999;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .mySlides {
-    display: none;
-  }
-  
-  .cursor {
-    cursor: pointer;
-  }
-  
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
-  
-  img {
-    margin-bottom: -4px;
-  }
-  
-  .caption-container {
-    text-align: center;
-    background-color: black;
-    padding: 2px 16px;
-    color: white;
-  }
-  
-  .demo {
-    opacity: 0.6;
-  }
-  
-  .active,
-  .demo:hover {
-    opacity: 1;
-  }
-  
-  img.hover-shadow {
-    transition: 0.3s;
-  }
-  
-  .hover-shadow:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  </style>
+    .row>.column {
+        padding: 0 8px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #999;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center
+    }
+
+    .rating>input {
+        display: none
+    }
+
+    .rating>label {
+        position: relative;
+        width: 30px;
+        font-size: 30px;
+        color: #F99932;
+        cursor: pointer
+    }
+
+    .rating>label::before {
+        content: "\2605";
+        position: absolute;
+        opacity: 0
+    }
+
+    .rating>label:hover:before,
+    .rating>label:hover~label:before {
+        opacity: 1 !important
+    }
+
+    .rating>input:checked~label:before {
+        opacity: 1
+    }
+
+    .rating:hover>input:checked~label:before {
+        opacity: 0.4
+    }
+</style>
 @endsection
 
 @section('content')
- <!-- Start of Main -->
- <main class="pb-1 mb-10 main">
+<!-- Start of Main -->
+<main class="pb-1 mb-10 main">
     <!-- Start of Page Content -->
     <div class="page-content">
         <div class="container">
@@ -145,7 +182,8 @@
                     <div class="product product-single row">
                         <div class="mb-6 col-md-6">
                             <div class="product-gallery product-gallery-sticky">
-                                <div class="swiper-container product-single-swiper swiper-theme nav-inner" data-swiper-options="{
+                                <div class="swiper-container product-single-swiper swiper-theme nav-inner"
+                                    data-swiper-options="{
                                     'navigation': {
                                         'nextEl': '.swiper-button-next',
                                         'prevEl': '.swiper-button-prev'
@@ -172,19 +210,22 @@
                                                     data-zoom-image="{{ $single_product->image }}"
                                                     alt="{{ $single_product->title }}" width="488" height="549">
                                             </figure>
-                                        </div> <div class="swiper-slide">
+                                        </div>
+                                        <div class="swiper-slide">
                                             <figure class="product-image">
                                                 <img src="{{ $single_product->image }}"
                                                     data-zoom-image="{{ $single_product->image }}"
                                                     alt="{{ $single_product->title }}" width="488" height="549">
                                             </figure>
-                                        </div> <div class="swiper-slide">
+                                        </div>
+                                        <div class="swiper-slide">
                                             <figure class="product-image">
                                                 <img src="{{ $single_product->image }}"
                                                     data-zoom-image="{{ $single_product->image }}"
                                                     alt="{{ $single_product->title }}" width="488" height="549">
                                             </figure>
-                                        </div> <div class="swiper-slide">
+                                        </div>
+                                        <div class="swiper-slide">
                                             <figure class="product-image">
                                                 <img src="{{ $single_product->image }}"
                                                     data-zoom-image="{{ $single_product->image }}"
@@ -194,7 +235,8 @@
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
-                                    <a href="#" class="product-gallery-btn product-image-full"><i class="w-icon-zoom"></i></a>
+                                    <a href="#" class="product-gallery-btn product-image-full"><i
+                                            class="w-icon-zoom"></i></a>
                                 </div>
                                 <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
                                     'navigation': {
@@ -204,28 +246,28 @@
                                 }">
                                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}"
-                                                alt="Product Thumb" width="800" height="900">
+                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                                height="900">
                                         </div>
                                     </div>
                                     <button class="swiper-button-next"></button>
@@ -239,8 +281,8 @@
                                 <!-- Brand Logo-->
                                 <div class="product-bm-wrapper">
                                     <figure class="brand">
-                                        <img src="assets/images/products/brand/brand-1.jpg" alt="Brand"
-                                            width="102" height="48" />
+                                        <img src="assets/images/products/brand/brand-1.jpg" alt="Brand" width="102"
+                                            height="48" />
                                     </figure>
                                     <!-- Category Detailes -->
                                     <div class="product-meta">
@@ -256,32 +298,37 @@
 
                                 <hr class="product-divider">
 
-                                <div class="product-price"><ins class="new-price">@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ $single_product->price }} AED @else <del style="color:red">{{ $single_product->price }} AED </del> - {{ $single_product->offer_price }} AED @endif</ins></div>
+                                <div class="product-price"><ins
+                                        class="new-price">@if(empty($single_product->offer_price) ||
+                                        $single_product->offer_price == null){{ $single_product->price }} AED @else <del
+                                            style="color:red">{{ $single_product->price }} AED </del> -
+                                        {{ $single_product->offer_price }} AED @endif</ins></div>
 
                                 <div class="ratings-container">
                                     <div class="ratings-full">
                                         <span class="ratings" style="width: 80%;"></span>
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
-                                    <a href="#product-tab-reviews" class="rating-reviews scroll-to">(3
+                                    <a href="#product-tab-review" class="rating-reviews scroll-to">(3
                                         Reviews)</a>
                                 </div>
 
                                 <div class="product-short-desc">
                                     <ul class="list-type-check list-style-none">
-                                        {!! $single_product->summary  !!}
+                                        {!! $single_product->summary !!}
                                     </ul>
                                 </div>
 
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
                                     <label for="sel1" style="font-size: 20px;">Select Size:</label>
-                                    <select class="form-control form-control-sm" name="size" id="sel1" style="width: 50%;margin-left:10px">
+                                    <select class="form-control form-control-sm" name="size" id="sel1"
+                                        style="width: 50%;margin-left:10px">
                                         @foreach ($product_attr as $attr_size)
                                         <option value="{{ $attr_size->size }}">{{ $attr_size->size }}</option>
                                         @endforeach
                                     </select>
-                                  </div>
+                                </div>
                                 {{-- <div class="product-form product-variation-form product-color-swatch">
                                     <label>Color:</label>
                                     <div class="d-flex align-items-center product-variations">
@@ -306,47 +353,50 @@
                                     <span></span>
                                 </div> --}}
                                 <hr class="product-divider">
-                            @php
-                                $size_guid =explode(',',$single_product->size_guid); 
-                            @endphp
-                            @if(!empty($single_product->size_guid) || $single_product->size_guid != null)
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <h5>Size Guide :</h5>
-                                    </div>
-                                    <div class="col-8">
+                                @php
+                                $size_guid =explode(',',$single_product->size_guid);
+                                @endphp
+                                @if(!empty($single_product->size_guid) || $single_product->size_guid != null)
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <h5>Size Guide :</h5>
+                                        </div>
+                                        <div class="col-8">
                                             @foreach ($size_guid as $key => $size)
                                             <div class="column mr-1">
-                                              <img src="{{ $size }}" style="width:100%" onclick="openModal();currentSlide({{ $key }})" class="hover-shadow cursor" style="width:auto;height:100px" >
+                                                <img src="{{ $size }}" style="width:100%"
+                                                    onclick="openModal();currentSlide({{ $key }})"
+                                                    class="hover-shadow cursor" style="width:auto;height:100px">
                                             </div>
                                             @endforeach
-                                          </div>
-                                          <div id="myModal" class="modal">
+                                        </div>
+                                        <div id="myModal" class="modal">
                                             <span class="close cursor" onclick="closeModal()">&times;</span>
                                             <div class="modal-content">
                                                 @foreach ($size_guid as $key => $size)
                                                 <div class="mySlides">
                                                     <img src="{{ $size }}" style="width:100%">
-                                                  </div>
+                                                </div>
                                                 @endforeach
-                                              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                              <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                                          
-                                              <div class="caption-container">
-                                                <p id="caption"></p>
-                                              </div>
-                                              @foreach ($size_guid as $key => $size)
+                                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                                <div class="caption-container">
+                                                    <p id="caption"></p>
+                                                </div>
+                                                @foreach ($size_guid as $key => $size)
                                                 <div class="column">
-                                                    <img class="demo cursor" src="{{ $size }}" style="width:100%" onclick="currentSlide({{ $key }})" alt="Nature and sunrise">
-                                                  </div>
-                                              @endforeach
+                                                    <img class="demo cursor" src="{{ $size }}" style="width:100%"
+                                                        onclick="currentSlide({{ $key }})" alt="Nature and sunrise">
+                                                </div>
+                                                @endforeach
                                             </div>
-                                       
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endif
+                                @endif
                                 <div class="fix-bottom product-sticky-content sticky-content">
                                     <div class="container product-form">
                                         <div class="product-qty-form">
@@ -363,23 +413,20 @@
                                         </button>
                                     </div>
                                 </div>
-                               
+
                                 <div class="social-links-wrapper">
                                     <div class="social-links">
                                         <div class="social-icons social-no-color border-thin">
                                             <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
                                             <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                                            <a href="#"
-                                                class="social-icon social-pinterest fab fa-pinterest-p"></a>
+                                            <a href="#" class="social-icon social-pinterest fab fa-pinterest-p"></a>
                                             <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                            <a href="#"
-                                                class="social-icon social-youtube fab fa-linkedin-in"></a>
+                                            <a href="#" class="social-icon social-youtube fab fa-linkedin-in"></a>
                                         </div>
                                     </div>
                                     <span class="divider d-xs-show"></span>
                                     <div class="product-link-wrapper d-flex">
-                                        <a href="#"
-                                            class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
                                         <a href="#"
                                             class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
                                     </div>
@@ -392,8 +439,8 @@
                         <div class="pb-4 mt-8 bought-together-products row">
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-1.jpg" alt="Product"
-                                        width="138" height="138" />
+                                    <img src="assets/images/products/default/bought-1.jpg" alt="Product" width="138"
+                                        height="138" />
                                     <div class="product-checkbox">
                                         <input type="checkbox" class="custom-checkbox" id="product_check1"
                                             name="product_check1">
@@ -409,8 +456,8 @@
                             </div>
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-2.jpg" alt="Product"
-                                        width="138" height="138" />
+                                    <img src="assets/images/products/default/bought-2.jpg" alt="Product" width="138"
+                                        height="138" />
                                     <div class="product-checkbox">
                                         <input type="checkbox" class="custom-checkbox" id="product_check2"
                                             name="product_check2">
@@ -426,8 +473,8 @@
                             </div>
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-3.jpg" alt="Product"
-                                        width="138" height="138" />
+                                    <img src="assets/images/products/default/bought-3.jpg" alt="Product" width="138"
+                                        height="138" />
                                     <div class="product-checkbox">
                                         <input type="checkbox" class="custom-checkbox" id="product_check3"
                                             name="product_check3">
@@ -460,7 +507,7 @@
                                 <a href="#product-tab-vendor" class="nav-link">Vendor Info</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#product-tab-reviews" class="nav-link">Customer Reviews (3)</a>
+                                <a href="#product-tab-review" class="nav-link">Customer Reviews ({{ count($user_review) }})</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -470,34 +517,36 @@
                                 @else
                                 <p class=text-red-600" style="color: red"> There is no Description for this product</p>
                                 @endif
-                             
+
                             </div>
                             <div class="tab-pane" id="product-tab-specification">
-                                @if($single_product->additional_info != null || !empty($single_product->additional_info))
+                                @if($single_product->additional_info != null ||
+                                !empty($single_product->additional_info))
                                 {{ $single_product->additional_info }}
                                 @else
-                                <p class=text-red-600" style="color: red"> There is no additional information for this product</p>
+                                <p class=text-red-600" style="color: red"> There is no additional information for this
+                                    product</p>
                                 @endif
                             </div>
                             <div class="tab-pane" id="product-tab-vendor">
                                 <div class="mb-3 row">
                                     <div class="mb-4 col-md-6">
                                         <figure class="vendor-banner br-sm">
-                                            <img src="assets/images/products/vendor-banner.jpg"
-                                                alt="Vendor Banner" width="610" height="295"
-                                                style="background-color: #353B55;" />
+                                            <img src="assets/images/products/vendor-banner.jpg" alt="Vendor Banner"
+                                                width="610" height="295" style="background-color: #353B55;" />
                                         </figure>
                                     </div>
                                     <div class="pl-2 mb-4 col-md-6 pl-md-6">
                                         <div class="vendor-user">
                                             <figure class="mr-4 vendor-logo">
                                                 <a href="#">
-                                                    <img src="{{ $vendor_info->photo }}"
-                                                        alt="Vendor Logo" width="80" height="80" />
+                                                    <img src="{{ $vendor_info->photo }}" alt="Vendor Logo" width="80"
+                                                        height="80" />
                                                 </a>
                                             </figure>
                                             <div>
-                                                <div class="vendor-name"><a href="#">{{ $vendor_info->full_name }}</a></div>
+                                                <div class="vendor-name"><a href="#">{{ $vendor_info->full_name }}</a>
+                                                </div>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
                                                         <span class="ratings" style="width: 90%;"></span>
@@ -545,7 +594,7 @@
                                     habitant morbi tristique senectus et. In dictum non consectetur a erat. Nunc
                                     scelerisque viverra mauris in aliquam sem fringilla.</p>
                             </div>
-                            <div class="tab-pane" id="product-tab-reviews">
+                            <div class="tab-pane" id="product-tab-review">
                                 <div class="mb-4 row">
                                     <div class="mb-4 col-xl-4 col-lg-5">
                                         <div class="ratings-wrapper">
@@ -562,10 +611,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="ratings-value d-flex align-items-center text-dark ls-25">
-                                                <span
-                                                    class="text-dark font-weight-bold">66.7%</span>Recommended<span
+                                            <div class="ratings-value d-flex align-items-center text-dark ls-25">
+                                                <span class="text-dark font-weight-bold">66.7%</span>Recommended<span
                                                     class="count">(2 of 3)</span>
                                             </div>
                                             <div class="ratings-list">
@@ -633,500 +680,101 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 col-xl-8 col-lg-7">
-                                        <div class="review-form-wrapper">
+                                        <div class="">
                                             <h3 class="mb-1 title tab-pane-title font-weight-bold">Submit Your
                                                 Review</h3>
                                             <p class="mb-3">Your email address will not be published. Required
                                                 fields are marked *</p>
-                                            <form action="#" method="POST" class="review-form">
-                                                <div class="rating-form">
-                                                    <label for="rating">Your Rating Of This Product :</label>
-                                                    <span class="rating-stars">
-                                                        <a class="star-1" href="#">1</a>
-                                                        <a class="star-2" href="#">2</a>
-                                                        <a class="star-3" href="#">3</a>
-                                                        <a class="star-4" href="#">4</a>
-                                                        <a class="star-5" href="#">5</a>
-                                                    </span>
-                                                    <select name="rating" id="rating" required=""
-                                                        style="display: none;">
-                                                        <option value="">Rate…</option>
-                                                        <option value="5">Perfect</option>
-                                                        <option value="4">Good</option>
-                                                        <option value="3">Average</option>
-                                                        <option value="2">Not that bad</option>
-                                                        <option value="1">Very poor</option>
-                                                    </select>
-                                                </div>
-                                                <textarea cols="30" rows="6"
-                                                    placeholder="Write Your Review Here..." class="form-control"
-                                                    id="review"></textarea>
-                                                <div class="row gutter-md">
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Your Name" id="author">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Your Email" id="email_1">
+                                            @auth
+                                            <form action="{{ route('review_submit',$single_product->slug) }}"
+                                                method="POST">
+                                                @csrf
+                                                <div class="">
+                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="product_id" value="{{ $single_product->id }}">
+                                                    <label for="rating">Rate This Product :</label>
+                                                    <div class="rating">
+                                                        <input type="radio" name="rating" value="5" id="5">
+                                                        <label for="5">☆</label>
+                                                        <input type="radio" name="rating" value="4" id="4">
+                                                        <label for="4">☆</label>
+                                                        <input type="radio" name="rating" value="3" id="3">
+                                                        <label for="3">☆</label>
+                                                        <input type="radio" name="rating" value="2" id="2">
+                                                        <label for="2">☆</label>
+                                                        <input type="radio" name="rating" value="1" id="1">
+                                                        <label for="1">☆</label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="checkbox" class="custom-checkbox"
-                                                        id="save-checkbox">
-                                                    <label for="save-checkbox">Save my name, email, and website
-                                                        in this browser for the next time I comment.</label>
+                                                <textarea cols="30" rows="6" placeholder="Write Your Review Here..."
+                                                    class="form-control" id="review" name="review"></textarea>
+                                                <div class="row gutter-md mt-2 mb-2">
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Your Name"
+                                                            id="author" name="user_name"
+                                                            value="{{auth()->user()->full_name}}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Your Email"
+                                                            id="email_1" name="email_user" disabled
+                                                            value="{{ auth()->user()->email }}">
+                                                    </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-dark">Submit
-                                                    Review</button>
+                                                <button type="submit" class="btn btn-dark"> Send </button>
                                             </form>
+                                            @else
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">Sorry, You need to
+                                                Login to send a review</h3>
+                                            <p><a href="{{ route('loginForm') }}"> Click Here!!</a> to login</p>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tab tab-nav-boxed tab-nav-outline tab-nav-center">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a href="#show-all" class="nav-link active">Show All</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#helpful-positive" class="nav-link">Most Helpful
-                                                Positive</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#helpful-negative" class="nav-link">Most Helpful
-                                                Negative</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#highest-rating" class="nav-link">Highest Rating</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#lowest-rating" class="nav-link">Lowest Rating</a>
-                                        </li>
-                                    </ul>
+                                    
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="show-all">
                                             <ul class="comments list-style-none">
+                                                @if(count($user_review) > 0)
+                                                @foreach ($user_review as $review )
                                                 <li class="comment">
                                                     <div class="comment-body">
                                                         <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/1-100x100.png"
+                                                            <img src="{{ \App\Models\User::where('id',$review->user_id)->value('photo') }}"
                                                                 alt="Commenter Avatar" width="90" height="90">
                                                         </figure>
                                                         <div class="comment-content">
                                                             <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:54 pm</span>
+                                                                <a href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
+                                                                <span class="comment-date">{{ $review->created_at }}</span>
                                                             </h4>
                                                             <div class="ratings-container comment-rating">
                                                                 <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 60%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
+                                                                    <span class="ratings" 
+                                                                    @if ($review->rate == 5)
+                                                                    style="width: 100%;"
+                                                                    @elseif($review->rate == 4)
+                                                                    style="width: 80%;"
+                                                                    @elseif($review->rate == 3)
+                                                                    style="width: 60%;"
+                                                                    @elseif($review->rate == 2)
+                                                                    style="width: 40%;"
+                                                                    @else
+                                                                    style="width: 20%;"
+                                                                    @endif>
+                                                                </span>
                                                                 </div>
                                                             </div>
-                                                            <p>pellentesque habitant morbi tristique senectus
-                                                                et. In dictum non consectetur a erat.
-                                                                Nunc ultrices eros in cursus turpis massa
-                                                                tincidunt ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-1.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-1-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
+                                                            <p>{{$review->review}}.</p>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/2-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:52 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 80%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>Nullam a magna porttitor, dictum risus nec,
-                                                                faucibus sapien.
-                                                                Ultrices eros in cursus turpis massa tincidunt
-                                                                ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-2.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-2.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-3.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-3.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/3-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:21 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 60%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>In fermentum et sollicitudin ac orci phasellus. A
-                                                                condimentum vitae
-                                                                sapien pellentesque habitant morbi tristique
-                                                                senectus et. In dictum
-                                                                non consectetur a erat. Nunc scelerisque viverra
-                                                                mauris in aliquam sem fringilla.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (0)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (1)
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="helpful-positive">
-                                            <ul class="comments list-style-none">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/1-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:54 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 60%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>pellentesque habitant morbi tristique senectus
-                                                                et. In dictum non consectetur a erat.
-                                                                Nunc ultrices eros in cursus turpis massa
-                                                                tincidunt ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-1.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-1.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/2-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:52 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 80%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>Nullam a magna porttitor, dictum risus nec,
-                                                                faucibus sapien.
-                                                                Ultrices eros in cursus turpis massa tincidunt
-                                                                ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-2.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-2-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-3.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-3-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="helpful-negative">
-                                            <ul class="comments list-style-none">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/3-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:21 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 60%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>In fermentum et sollicitudin ac orci phasellus. A
-                                                                condimentum vitae
-                                                                sapien pellentesque habitant morbi tristique
-                                                                senectus et. In dictum
-                                                                non consectetur a erat. Nunc scelerisque viverra
-                                                                mauris in aliquam sem fringilla.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (0)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (1)
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="highest-rating">
-                                            <ul class="comments list-style-none">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/2-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:52 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 80%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>Nullam a magna porttitor, dictum risus nec,
-                                                                faucibus sapien.
-                                                                Ultrices eros in cursus turpis massa tincidunt
-                                                                ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-2.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-2-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-3.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-3-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="lowest-rating">
-                                            <ul class="comments list-style-none">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <figure class="comment-avatar">
-                                                            <img src="assets/images/agents/1-100x100.png"
-                                                                alt="Commenter Avatar" width="90" height="90">
-                                                        </figure>
-                                                        <div class="comment-content">
-                                                            <h4 class="comment-author">
-                                                                <a href="#">John Doe</a>
-                                                                <span class="comment-date">March 22, 2021 at
-                                                                    1:54 pm</span>
-                                                            </h4>
-                                                            <div class="ratings-container comment-rating">
-                                                                <div class="ratings-full">
-                                                                    <span class="ratings"
-                                                                        style="width: 60%;"></span>
-                                                                    <span
-                                                                        class="tooltiptext tooltip-top"></span>
-                                                                </div>
-                                                            </div>
-                                                            <p>pellentesque habitant morbi tristique senectus
-                                                                et. In dictum non consectetur a erat.
-                                                                Nunc ultrices eros in cursus turpis massa
-                                                                tincidunt ante in nibh mauris cursus mattis.
-                                                                Cras ornare arcu dui vivamus arcu felis bibendum
-                                                                ut tristique.</p>
-                                                            <div class="comment-action">
-                                                                <a href="#"
-                                                                    class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-up"></i>Helpful (1)
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-                                                                    <i class="far fa-thumbs-down"></i>Unhelpful
-                                                                    (0)
-                                                                </a>
-                                                                <div class="review-image">
-                                                                    <a href="#">
-                                                                        <figure>
-                                                                            <img src="assets/images/products/default/review-img-3.jpg"
-                                                                                width="60" height="60"
-                                                                                alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-                                                                                data-zoom-image="assets/images/products/default/review-img-3-800x900.jpg" />
-                                                                        </figure>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                @endforeach
+                                                @else
+                                                <p><strong> be the first</strong>, there are no reviews to view yet</p>
+                                                @endif
+                                                {{ $user_review->links('vendor.pagination.custompage') }}
                                             </ul>
                                         </div>
                                     </div>
@@ -1160,10 +808,10 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="assets/images/products/default/1-1.jpg" alt="Product"
-                                                width="300" height="338" />
-                                            <img src="assets/images/products/default/1-2.jpg" alt="Product"
-                                                width="300" height="338" />
+                                            <img src="assets/images/products/default/1-1.jpg" alt="Product" width="300"
+                                                height="338" />
+                                            <img src="assets/images/products/default/1-2.jpg" alt="Product" width="300"
+                                                height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1198,8 +846,8 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="assets/images/products/default/2.jpg" alt="Product"
-                                                width="300" height="338" />
+                                            <img src="assets/images/products/default/2.jpg" alt="Product" width="300"
+                                                height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1228,8 +876,7 @@
                                         </div>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                <ins class="new-price">$480.00</ins><del
-                                                    class="old-price">$534.00</del>
+                                                <ins class="new-price">$480.00</ins><del class="old-price">$534.00</del>
                                             </div>
                                         </div>
                                     </div>
@@ -1237,8 +884,8 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="assets/images/products/default/3.jpg" alt="Product"
-                                                width="300" height="338" />
+                                            <img src="assets/images/products/default/3.jpg" alt="Product" width="300"
+                                                height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1265,8 +912,7 @@
                                         </div>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                <ins class="new-price">$278.00</ins><del
-                                                    class="old-price">$310.00</del>
+                                                <ins class="new-price">$278.00</ins><del class="old-price">$310.00</del>
                                             </div>
                                         </div>
                                     </div>
@@ -1274,10 +920,10 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="assets/images/products/default/4-1.jpg" alt="Product"
-                                                width="300" height="338" />
-                                            <img src="assets/images/products/default/4-2.jpg" alt="Product"
-                                                width="300" height="338" />
+                                            <img src="assets/images/products/default/4-1.jpg" alt="Product" width="300"
+                                                height="338" />
+                                            <img src="assets/images/products/default/4-2.jpg" alt="Product" width="300"
+                                                height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1340,8 +986,8 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="{{ $related_products->image }}" alt="Product"
-                                                width="300" height="338" />
+                                            <img src="{{ $related_products->image }}" alt="Product" width="300"
+                                                height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1357,7 +1003,8 @@
                                         </div>
                                     </figure>
                                     <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">{{ $related_products ->title}}</a></h4>
+                                        <h4 class="product-name"><a
+                                                href="product-default.html">{{ $related_products ->title}}</a></h4>
                                         <div class="ratings-container">
                                             <div class="ratings-full">
                                                 <span class="ratings" style="width: 100%;"></span>
@@ -1367,7 +1014,10 @@
                                         </div>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                @if(empty($single_product->offer_price) || $single_product->offer_price == null){{ $single_product->price }} AED @else <del style="color:red">{{ $single_product->price }} AED </del> - {{ $single_product->offer_price }} AED @endif
+                                                @if(empty($single_product->offer_price) || $single_product->offer_price
+                                                == null){{ $single_product->price }} AED @else <del
+                                                    style="color:red">{{ $single_product->price }} AED </del> -
+                                                {{ $single_product->offer_price }} AED @endif
                                             </div>
                                         </div>
                                     </div>
@@ -1419,16 +1069,15 @@
                             <div class="widget widget-banner mb-9">
                                 <div class="banner banner-fixed br-sm">
                                     <figure>
-                                        <img src="assets/images/shop/banner3.jpg" alt="Banner" width="266"
-                                            height="220" style="background-color: #1D2D44;" />
+                                        <img src="assets/images/shop/banner3.jpg" alt="Banner" width="266" height="220"
+                                            style="background-color: #1D2D44;" />
                                     </figure>
                                     <div class="banner-content">
                                         <div class="text-white banner-price-info font-weight-bolder lh-1 ls-25">
                                             40<sup class="font-weight-bold">%</sup><sub
                                                 class="font-weight-bold text-uppercase ls-25">Off</sub>
                                         </div>
-                                        <h4
-                                            class="mb-0 text-white banner-subtitle font-weight-bolder text-uppercase">
+                                        <h4 class="mb-0 text-white banner-subtitle font-weight-bolder text-uppercase">
                                             Ultimate Sale</h4>
                                     </div>
                                 </div>
@@ -1441,7 +1090,7 @@
                                 </div>
 
                                 <div class="swiper nav-top">
-                                    <div class="swiper-container swiper-theme nav-top" data-swiper-options = "{
+                                    <div class="swiper-container swiper-theme nav-top" data-swiper-options="{
                                         'slidesPerView': 1,
                                         'spaceBetween': 20,
                                         'navigation': {
@@ -1596,40 +1245,43 @@
 @section('script')
 <script>
     function openModal() {
-      document.getElementById("myModal").style.display = "block";
+        document.getElementById("myModal").style.display = "block";
     }
-    
+
     function closeModal() {
-      document.getElementById("myModal").style.display = "none";
+        document.getElementById("myModal").style.display = "none";
     }
-    
     var slideIndex = 1;
     showSlides(slideIndex);
-    
+
     function plusSlides(n) {
-      showSlides(slideIndex += n);
+        showSlides(slideIndex += n);
     }
-    
+
     function currentSlide(n) {
-      showSlides(slideIndex = n);
+        showSlides(slideIndex = n);
     }
-    
+
     function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      var captionText = document.getElementById("caption");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
     }
-    </script>
+</script>
 @endsection

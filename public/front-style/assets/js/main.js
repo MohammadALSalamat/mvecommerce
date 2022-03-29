@@ -2650,13 +2650,14 @@ window.Wolmart = {};
             mainClass: "mfp-fade",
             preloader: false,
             closeBtnInside: false
-        },
-        'login': {
-            type: 'ajax',
-            mainClass: "mfp-login-popup mfp-fade ",
-            tLoading: '',
-            preloader: false
         }
+        // },
+        // 'login': {
+        //     type: 'ajax',
+        //     mainClass: "mfp-login-popup mfp-fade ",
+        //     tLoading: '',
+        //     preloader: false
+        // }
     }
 
     Popup.prototype.init = function(options, preset) {

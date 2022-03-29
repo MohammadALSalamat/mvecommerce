@@ -15,6 +15,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\ProductAttributeController;
+use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\ShippingCartController;
 
 /*
@@ -82,7 +83,7 @@ Route::post('/cart/store',[ShippingCartController::class,'add_to_cart'])->name('
 Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->name('cart_delete');
 Route::get('clear_cart/',function(){
     Cart::instance('shopping')->destroy();
-return back()->with('message','Your Cart is empty');
+    return back()->with('message','Your Cart is empty');
 })->name('clear_cart');
 
 //update the cart
@@ -106,6 +107,9 @@ Route::get('checkout',[OrderController::class,'view_checkout'])->name('checkout'
 
 Route::post('checkout/process',[OrderController::class,'checkout_process'])->name('checkout_process');
 
+// Product review section
+
+Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit'])->name('review_submit');
 
 // user dashboard and settings
 
