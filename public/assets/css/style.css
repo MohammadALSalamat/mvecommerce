@@ -9,3 +9,30 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+@font-face {
+    font-family: "Neue Montreal Light";
+    src: url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.eot");
+    src: url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.woff") format("woff"), url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/b2bf6541bf9ab3fc3138440f2bc8b592.svg#Neue Montreal Light") format("svg");
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.eot");
+    src: url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.woff") format("woff"), url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/7980cc1889b6b0b264dc47cca659f7c2.svg#Neue Montreal") format("svg");
+}
+
+h1,
+.en,
+li,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+strong,
+div,
+p {
+    font-family: Neue Montreal !important;
+}

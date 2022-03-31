@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\brand;
-use App\Models\category;
-use App\Models\product;
+use App\Models\Adminview;
 use App\Models\User;
+use App\Models\brand;
+use App\Models\product;
+use App\Models\category;
 use Illuminate\Http\Request;
-use PhpOption\None;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -22,10 +23,10 @@ class ProductController extends Controller
     public function createproducts()
     {
         $brands = brand::get();
-        $user = auth()->user()->id;
-        $vendors = User::find(auth()->user()->id);
+        $user = Auth::guard('admin')->user()->id;
+        $vendors = Adminview::find($user);
         $categories = category::where('is_parent',0)->get();
-       return view('backend.backend_pages.products.addproduct',compact('brands','vendors','categories'));
+       return view('backend.backend_pages.products.addproduct',compact('brands','categories','vendors'));
     }
 
     public function addproducts(Request $request)
@@ -96,7 +97,7 @@ class ProductController extends Controller
         $addproduct->discound = $data['discound'];
         $addproduct->brand_id = $brand;
         $addproduct->child_category_id = $child_cat;
-        $addproduct->vendor_id = auth()->user()->id;
+        $addproduct->vendor_id = Auth::guard('admin')->user()->id;
         $addproduct->status = $status;
         $addproduct->save();
         return back()->with('message','your product has been created');
@@ -106,8 +107,8 @@ class ProductController extends Controller
     {
         $current_product= product::find($id); // get the current category
         $brands = brand::get();
-        $user = auth()->user()->id;
-        $vendors = User::find(auth()->user()->id);
+        $user = Auth::guard('admin')->user()->id;
+        $vendors = User::find(Auth::guard('admin')->user()->id);
             $categories = category::where('is_parent',0)->get();
         if ($current_product) {
 
@@ -181,7 +182,7 @@ class ProductController extends Controller
         'discound' => $data['discound'],
         'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
-        'vendor_id' => auth()->user()->id,
+        'vendor_id' => Auth::guard('admin')->user()->id,
         'status' => $status,
         ]);
         return back()->with('message','The Product has been updated');

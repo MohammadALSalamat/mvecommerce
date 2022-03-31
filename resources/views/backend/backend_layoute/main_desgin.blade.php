@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-
+<html class="loading" lang="{{ Config::get('app.locale') }}"
+@if (Config::get('app.locale') == 'en')
+data-textdirection="ltr"
+@else
+data-textdirection="rtl"
+@endif >
+@if (Config::get('app.locale') == 'en')
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,8 +57,31 @@
     @yield('style')
 
 </head>
-
-<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"
+@else
+<head>
+<link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+rel="stylesheet">
+<link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+rel="stylesheet">
+<!-- BEGIN VENDOR CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/vendors.css')}}">
+<!-- END VENDOR CSS-->
+<!-- BEGIN MODERN CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/app.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/custom-rtl.css')}}">
+<!-- END MODERN CSS-->
+<!-- BEGIN Page Level CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+<!-- END Page Level CSS-->
+<!-- BEGIN Custom CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}">
+<!-- END Custom CSS-->
+</head>
+@endif
+<body class="@if (Config::get('app.locale') == 'ar') ar @else en @endif vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     <!-- fixed-top-->
     @include('backend/backend_layoute.header')
@@ -128,6 +156,9 @@
     <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
     @yield('script')
-</body>
 
-</html>
+
+
+
+
+

@@ -4,7 +4,7 @@
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a href="{{ route('admin') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="float-right mr-2 badge badge-info badge-pill">0</span></a>
         </li>
-         <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">Users Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">Users Managment</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('viewusers') }}" data-i18n="nav.templates.vert.main">View Users</a>
             </li>
@@ -28,6 +28,38 @@
              <li><a class="menu-item" href="{{ route('createcategories') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Category</a>
             </li>
           </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">Banners Managment</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('bannersview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Banners</a>
+            </li>
+             <li><a class="menu-item" href="{{ route('createbanner') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Banners</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Brands Managment</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('viewbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Brands</a>
+                </li>
+                 <li><a class="menu-item" href="{{ route('createbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Brands</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Managment</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('view_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Coupons</a>
+                </li>
+                 <li><a class="menu-item" href="{{ route('create_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Coupons</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Shipping Managment</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('view_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Shipping</a>
+                </li>
+                <li><a class="menu-item" href="{{ route('create_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Shipping</a>
+                </li>
+              </ul>
         </li>
         <li class=" nav-item"><a href="#"><i class="la la-navicon"></i><span class="menu-title" data-i18n="nav.navbars.main">Cart</span></a>
           <ul class="menu-content">
@@ -98,38 +130,6 @@
             <li><a class="menu-item" href="vertical-nav-tags-pills.html" data-i18n="nav.vertical_nav.vertical_nav_tags_pills">Tags &amp; Pills</a>
             </li>
           </ul>
-        </li>
-        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">Banners Managment</span></a>
-          <ul class="menu-content">
-            <li><a class="menu-item" href="{{ route('bannersview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Banners</a>
-            </li>
-             <li><a class="menu-item" href="{{ route('createbanner') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Banners</a>
-            </li>
-          </ul>
-        </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Brands Managment</span></a>
-            <ul class="menu-content">
-                <li><a class="menu-item" href="{{ route('viewbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Brands</a>
-                </li>
-                 <li><a class="menu-item" href="{{ route('createbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Brands</a>
-                </li>
-              </ul>
-        </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Managment</span></a>
-            <ul class="menu-content">
-                <li><a class="menu-item" href="{{ route('view_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Coupons</a>
-                </li>
-                 <li><a class="menu-item" href="{{ route('create_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Coupons</a>
-                </li>
-              </ul>
-        </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Shipping Managment</span></a>
-            <ul class="menu-content">
-                <li><a class="menu-item" href="{{ route('view_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Shipping</a>
-                </li>
-                 <li><a class="menu-item" href="{{ route('create_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Shipping</a>
-                </li>
-              </ul>
         </li>
         <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings</span></a>
           <ul class="menu-content">

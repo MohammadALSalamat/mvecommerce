@@ -127,7 +127,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput56">Vendor</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput56" name="vendor" class="form-control" disabled>
-                                                        <option  selected value="{{ $vendors->id }}" >{{ $vendors->full_name }}
+                                                        <option  selected value="{{ $vendors->id }}"> {{ $vendors->full_name }}
                                                         </option>
                                                         {{-- @foreach ($vendors as $vendor)
                                                         <option value="{{ $vendor->id }}" > {{ $vendor->full_name }}
