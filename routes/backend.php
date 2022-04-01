@@ -12,6 +12,7 @@ use App\Http\Controllers\ShippingController;
 
 use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\AdminviewController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAttributeController;
 
 
@@ -101,7 +102,12 @@ Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
     Route::match(['get', 'post'], '/update_shipping/{id}', [ShippingController::class, 'update_shipping'])->name('update_shipping');
     Route::match(['get', 'post'], '/delet_shipping/{id}', [ShippingController::class, 'delet_shipping'])->name('delet_shipping');
     
+// orders sections
+Route::get('vieworders', [OrderController::class, 'view_order'])->name('view_order');
+Route::get('view_singleOrder/{id}',[OrderController::class,'singleOrder'])->name('singleOrder');
 
+// get the invoice template
+Route::get('invoice_template/{id}',[OrderController::class,'invoice_template'])->name('invoice_template');
 
 });
 

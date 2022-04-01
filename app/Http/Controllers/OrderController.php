@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderEmail as userOrderMail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\OrderEmailForAdmin as adminOrderMail;
+use App\Models\product;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -106,11 +107,12 @@ class OrderController extends Controller
         }else{
             $total = 0;
         }
-
-        $final_total = $total + $shipping_paid;
-        $ordernumber = '00'.rand(1,10000000);
-
-
+        if($shipping_paid == 0){
+            $final_total = $total;  
+        }else{
+            $final_total = $total ;
+        }
+        $ordernumber = rand(1,10000000);
 
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {
@@ -142,6 +144,15 @@ class OrderController extends Controller
 
             $save_order = $order->save();
 
+            // get the data of the order and send it to order page for invoice
+            foreach(Cart::instance('shopping')->content() as $item){
+                $product_id[]=$item->id;
+                $product_items = product::find($item->id);
+                $quantity = $item->qty;
+                $order->product()->attach($product_items,['quantity'=>$quantity]);
+
+            }
+
             if($save_order){
                 Mail::to($data['email'])->send(new userOrderMail($data));
                 Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data));
@@ -157,5 +168,35 @@ class OrderController extends Controller
         }else{
             return redirect()->route('loginForm')->with('error','Sorry , You Have To Login First');
         }
+    }
+
+
+    // backend order view and controller
+
+    public function view_order()
+    {
+        $Orders = Order::get();
+        return view('backend.backend_pages.orders.vieworders',compact('Orders'));
+    }
+
+    public function singleOrder($id)
+    {
+       $order = Order::find($id);
+       if($order){
+        return view('backend.backend_pages.orders.singleOrder',compact('order'));
+       }else{
+           return back()->with('error','this Id is not found');
+       }
+    }
+
+    // view the invoice 
+    public function invoice_template($id)
+    {
+        $order = Order::find($id);
+        if($order){
+            return view('backend.backend_pages.orders.invoice',compact('order'));
+           }else{
+               return back()->with('error','this Id is not found');
+           }
     }
 }
