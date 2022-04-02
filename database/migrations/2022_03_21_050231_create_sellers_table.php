@@ -29,6 +29,8 @@ class CreateSellersTable extends Migration
             $table->text('document')->nullable();
             $table->string('is_verify')->default(0);
             $table->boolean('status')->default(0);
+            $table->string('type_of_work')->nullable(0);
+            $table->string('added_by')->nullable(0);
             $table->rememberToken();
             $table->timestamps();
         });

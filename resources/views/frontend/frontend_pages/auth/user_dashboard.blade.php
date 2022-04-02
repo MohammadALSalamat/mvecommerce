@@ -1,4 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
+@section('mytitle','My Account' )
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css')}}">
 @endsection

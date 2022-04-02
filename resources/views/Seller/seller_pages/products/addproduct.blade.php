@@ -137,19 +137,6 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput76">Brands</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput76" name="brand" class="form-control">
-                                                        <option value="none" ><-- Brands -->
-                                                        </option>
-                                                        @foreach ($brands as $brand)
-                                                        <option value="{{ $brand->id }}" > {{ $brand->title }}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="cat_id">Main Category</label>
                                                 <div class="col-md-9">
                                                     <select id="cat_id" name="category" class="form-control">
@@ -178,10 +165,11 @@ input:checked + .slider:before {
                                             </div>
 
                                             <div class="form-group row">
-                                                <div class="input-group col-md-10 offset-2">
+                                                <label class="col-md-3 label-control" for="projectinput56">Choose Your Prodcut Image</label>
+                                                <div class="input-group col-md-9">
                                                     <span class="input-group-btn">
                                                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Product Image
+                                                            <i class="fa fa-picture-o"></i> Choose Main Image
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="filepath">
@@ -189,7 +177,8 @@ input:checked + .slider:before {
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="input-group col-md-10 offset-2">
+                                                <label class="col-md-3 label-control" for="projectinput56">Choose Your Guid Info</label>
+                                                <div class="input-group col-md-9 ">
                                                     <span class="input-group-btn">
                                                         <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
                                                             <i class="fa fa-picture-o"></i> Choose Size Guid
@@ -311,7 +300,7 @@ input:checked + .slider:before {
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-     $('#lfm,#lfm1').filemanager('image');
+     $('#lfm,#lfm1,#lfm2').filemanager('image');
 </script>
 <script>
     $('#cat_id').change(function(){

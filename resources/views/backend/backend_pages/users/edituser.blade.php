@@ -113,34 +113,28 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput5">Full Name</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the title" name="full_name" value="{{ $current_user->full_name }}">
+                                                        placeholder="add the title" disabled name="full_name" value="{{ $current_user->full_name }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1"> User Name</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a user name" name="username" value="{{ $current_user->username }}">
+                                                        placeholder="add a user name" disabled name="username" value="{{ $current_user->username }}">
                                                 </div>
                                             </div>
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1"> Email</label>
                                                 <div class="col-md-9">
                                                     <input type="email" id="projectinput1" class="form-control"
-                                                        placeholder="add a uniuqe Email" name="email" value="{{ $current_user->email }}">
+                                                        placeholder="add a uniuqe Email" disabled name="email" value="{{ $current_user->email }}">
                                                 </div>
                                             </div>
                                            
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput6">Role</label>
                                                 <div class="col-md-9">
-                                                    <select id="projectinput6" name="role" class="form-control">
-                                                        <option value="none" selected="" disabled="">-- Choose The Role Of User --
-                                                        </option>
-                                                        <option value="admin" @if ($current_user->role == "admin") selected @endif>admin</option>
-                                                        <option value="seller"  @if ($current_user->role == "seller") selected @endif>Seller</option>
-                                                        <option value="customer"  @if ($current_user->role == "customer") selected @endif>customer</option>
-                                                    </select>
+                                                   <input type="text" disabled value="{{ $current_user->added_by }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -150,15 +144,15 @@ input:checked + .slider:before {
                                                             <i class="fa fa-picture-o"></i> Choose Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail" class="form-control" type="text" name="image"  value="{{ $current_user->photo }}">
+                                                    <input disabled id="thumbnail" class="form-control" type="text" name="image"  value="{{ $current_user->photo }}">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                              <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1"> Phone Number</label>
+                                                <label class="col-md-3 label-control" disabled for="projectinput1"> Phone Number</label>
                                                 <div class="col-md-9">
                                                     <input type="number" minlength="10" maxlength="13" id="projectinput1" class="form-control"
-                                                        placeholder="add phone number" name="phone" value="{{ $current_user->phone }}">
+                                                        placeholder="add phone number" disabled name="phone" value="{{ $current_user->phone }}">
                                                 </div>
                                             </div>
                                             
@@ -167,7 +161,7 @@ input:checked + .slider:before {
                                                     for="projectinput9">Address</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput9" rows="5" class="form-control"
-                                                        name="address" placeholder="About Project">{{ $current_user->address }}</textarea>
+                                                        name="address" disabled placeholder="About Project">{{ $current_user->address }}</textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group row">
@@ -175,7 +169,7 @@ input:checked + .slider:before {
                                                 <div class="col-md-9">
                                                    <!-- Rounded switch -->
                                                         <label class="switch">
-                                                        <input type="checkbox" name="status" @if ($current_user->status == 'active') checked @endif>
+                                                        <input type="checkbox" name="status" @if ($current_user->status == 1) checked @endif>
                                                         <span class="slider round"></span>
                                                         </label>
                                                 </div>

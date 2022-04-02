@@ -37,7 +37,6 @@ class frontPageController extends Controller
         return view('frontend.frontend_pages.homepage',compact('banners', 'categories','home_3_Categories'));
     }
 
-
     // login form
 
  //++++++++++++++++++++++++++++  User Products Section   ++++++++++++++++++++++++++++++//
@@ -47,7 +46,6 @@ class frontPageController extends Controller
     {
 
         // product filter in shop page get the data from the link top
-
 
         $products = product::query();
         if (!empty($_GET['category'])) {
@@ -75,27 +73,26 @@ class frontPageController extends Controller
         if ($products == null) {
         return view('errors.404');
         } else {
-        //start the sort depends on the valueof ajax
-        if ($sort == 'price-low') {
-        } elseif ($sort == 'price-low') {
-            $products = product::orderBy('price', 'ASC');
-        } elseif ($sort == 'price-high') {
-            $products = product::orderBy('price', 'DESC');
-        } elseif ($sort == 'alpha-asc') {
-            $products = product::orderBy('title', 'ASC');
-        } elseif ($sort == 'alpha-desc') {
-            $products = product::orderBy('title', 'DESC');
-        } elseif ($sort == 'discountLTH') {
-            $products = product::orderBy('discound', 'ASC');
-        } elseif ($sort == 'discountHTL') {
-            $products = product::orderBy('discound', 'DESC');
-        } 
-    }
-    
-    
-    $route='shop';
-    // Filter Section
-    #categories
+            //start the sort depends on the valueof ajax
+            if ($sort == 'price-low') {
+            } elseif ($sort == 'price-low') {
+                $products = product::orderBy('price', 'ASC');
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC');
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC');
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC');
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC');
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC');
+            } 
+        }
+ 
+        $route='shop';
+        // Filter Section
+        #categories
         $products = $products->where(['status' => 1])->paginate(12); 
 
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
@@ -251,6 +248,132 @@ class frontPageController extends Controller
         }
         return redirect()->route('shop_page',$catUrl.$price_range_url);
     }
+//++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
+
+public function become_seller()
+{
+    return view('frontend.frontend_pages.sellers.become_seller');
+}
+
+public function view_register_seller_form()
+{
+   return view('frontend.frontend_pages.auth.register_vendors');
+}
+public function vendor_info(Request $request)
+{
+    $data = $request->all();
+    
+    if ($data['name'] == null || empty($data['name'])) {
+        return back()->with('error', 'full name is required');
+    }
+    if ($data['username'] == null || empty($data['username'])) {
+        return back()->with('error', 'full name is required');
+    }
+    if ($data['email'] == null || empty($data['email'])) {
+        return back()->with('error', 'Email is required');
+    }
+    if ($data['password'] == null || empty($data['password'])) {
+        return back()->with('error', 'Password is required');
+    }
+    if ($data['type_of_work'] == null || empty($data['type_of_work'])) {
+        return back()->with('error', 'type of work is required');
+    }
+    if ($data['shop-name'] == null || empty($data['shop-name'])) {
+        return back()->with('error', 'shop name is required');
+    }
+    if ($data['phone-number'] == null || empty($data['phone-number'])) {
+        return back()->with('error', 'Phone is required');
+    }
+    if ($data['address'] == null || empty($data['address'])) {
+        return back()->with('error', 'address is required');
+    }
+    if ($data['city'] == null || empty($data['city'])) {
+        return back()->with('error', 'city is required');
+    }
+    if ($data['country'] == null || empty($data['country'])) {
+        return back()->with('error', 'Phone is required');
+    }
+    if ($data['agreed_policy'] == null || empty($data['agreed_policy'])) {
+        return back()->with('error', 'Check Box  Policy is required');
+    }
+    if ($data['license'] == null || empty($data['license'])) {
+        return back()->with('error', 'license is required');
+    }
+    //checck email if exist
+    $emailCheck = Seller::where('email',$data['email'])->count();
+    if($emailCheck > 0){
+        return back()->with('error','Email Is Already Exist');
+    }
+
+        //get the attached License
+        $path = public_path('verify_vendors');
+        $attachment = $request->file('license');
+        $name = time() . '.' . $attachment->getClientOriginalExtension();
+        // create folder
+        if (!File::exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+        $attachment->move($path, $name);
+
+        $filename = $path . '/' . $name;
+
+        //get the attached personal Photo
+        $path = public_path('verify_vendors');
+        $attachment = $request->file('photo');
+        $name = time() . '.' . $attachment->getClientOriginalExtension();
+        // create folder
+        if (!File::exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+        $attachment->move($path, $name);
+
+        $filephoto = $path . '/' . $name;
+
+          //get the attached company brand logo
+          $path = public_path('verify_vendors');
+          $attachment = $request->file('brand_logo');
+          $name = time() . '.' . $attachment->getClientOriginalExtension();
+          // create folder
+          if (!File::exists($path)) {
+              File::makeDirectory($path, $mode = 0777, true, true);
+          }
+          $attachment->move($path, $name);
+          $file_brand_logo = $path . '/' . $name;
+    // send email to hold it before activation 
+    $adminData = [
+        'email' => $data['email'],
+        'full_name' => $data['name'],
+        'phone' => $data['phone-number'],
+        'type_of_work' => $data['type_of_work'],
+        'license' => $filename,
+        'shopname'=> $data['shop-name'],
+        'address' => $data['address'],
+        'country' =>$data['country']
+    ];
+    Mail::to($data['email'])->send(new verficationVendors($data));
+    //send the data to admin to verify the user 
+    Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
+    $addnewvendor = new Seller();
+    $addnewvendor->full_name = $data['name'];
+    $addnewvendor->username = $data['username'];
+    $addnewvendor->email = $data['email'];
+    $addnewvendor->city = $data['city'];
+    $addnewvendor->country = $data['country'];
+    $addnewvendor->address = $data['address'];
+    $addnewvendor->phone = $data['phone-number'];
+    $addnewvendor->document = $filename;
+    $addnewvendor->photo = $filephoto;
+    $addnewvendor->brand = $file_brand_logo;
+    $addnewvendor->password = Hash::make(($data['password']));
+    $addnewvendor->status = 0;
+    $addnewvendor->added_by ='seller';
+    $addnewvendor->shop_name = $data['shop-name'];
+    $addnewvendor->type_of_work = $data['type_of_work'];
+    $addnewvendor->save();
+
+    return back()->with('message', 'kindly check your email , the Verification Email has been sent');
+
+}
 
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 
@@ -286,91 +409,7 @@ class frontPageController extends Controller
     public function register_users( Request $request)
 {
      $data = $request->all();
-     if(!empty($data['check-seller']) == 'on' && empty($data['check-customer'])){
-            if ($data['full_name'] == null || empty($data['full_name'])) {
-                return back()->with('error', 'full name is required');
-            }
-            if ($data['email'] == null || empty($data['email'])) {
-                return back()->with('error', 'full name is required');
-            }
-            if ($data['password'] == null || empty($data['email'])) {
-                return back()->with('error', 'full name is required');
-            }
-            if ($data['type_work'] == null || empty($data['type_work'])) {
-                return back()->with('error', 'type of work is required');
-            }
-            if ($data['shop-name'] == null || empty($data['shop-name'])) {
-                return back()->with('error', 'shop name is required');
-            }
-            if ($data['phone-number'] == null || empty($data['phone-number'])) {
-                return back()->with('error', 'Phone is required');
-            }
-            //checck email if exist
-            $emailCheck = User::where('email',$data['email'])->count();
-            if($emailCheck > 0){
-                return back()->with('error','Email Is Already Exist');
-            }
-            if ($data['type_work'] == 'mall') {
-                //get the attached name
-                $path = public_path('verify_vendors');
-                $attachment = $request->file('vendor-mall');
-
-                $name = time() . '.' . $attachment->getClientOriginalExtension();
-                ;
-
-                // create folder
-                if (!File::exists($path)) {
-                    File::makeDirectory($path, $mode = 0777, true, true);
-                }
-                $attachment->move($path, $name);
-
-                $filename = $path . '/' . $name;
-            }elseif($data['type_work'] == 'home'){
-                //get the attached name
-                $path = public_path('verify_vendors');
-                $attachment = $request->file('vendor-home');
-
-                $name = time() . '.' . $attachment->getClientOriginalExtension();;
-
-                // create folder
-                if (!File::exists($path)) {
-                    File::makeDirectory($path, $mode = 0777, true, true);
-                }
-                $attachment->move($path, $name);
-
-                $filename = $path . '/' . $name;
-            }else{
-                $filename = null;
-            }
-            // send email to hold it before activation 
-            $adminData = [
-                'email' => $data['email'],
-                'full_name' => $data['full_name'],
-                'phone' => $data['phone-number'],
-                'type_of_work' => $data['type_work'],
-                'license' => $filename,
-            ];
-            Mail::to($data['email'])->send(new verficationVendors($data));
-            //send the data to admin to verify the user 
-            Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
-            $addnewvendor = new User();
-            $addnewvendor->full_name = $data['full_name'];
-            $addnewvendor->email = $data['email'];
-            $addnewvendor->username = $data['email'];
-            $addnewvendor->phone = $data['phone-number'];
-            $addnewvendor->license_passport = $filename;
-            $addnewvendor->password = Hash::make(($data['password']));
-            $addnewvendor->status = 'inactive';
-            $addnewvendor->role ='seller';
-            $addnewvendor->shop_name = $data['shop-name'];
-            $addnewvendor->type_of_work = $data['type_work'];
-            $addnewvendor->save();
-        
-            return back()->with('message', 'kindly check your email , the Verification Email has been sent');
-
-    }
-    
-    elseif(!empty($data['check-customer']) == 'on' && empty($data['check-seller'])){
+  
 
             if ($data['full_name'] == null || empty($data['full_name'])) {
                 return back()->with('error', 'full name is required');
@@ -391,10 +430,6 @@ class frontPageController extends Controller
             $addnewcustumer->password = Hash::make(($data['password']));
             $addnewcustumer->save();
             return back()->with('message','Congrats you have registerd as a customer');
-        
-     }else{
-        return back()->with('error','Please Choose if you want to register as a customer or vendor');
-    }
 }
 
 public function logout_front_user()

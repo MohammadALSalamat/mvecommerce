@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Wolmart - Marketplace HTML5 Template</title>
+        <title>ITajer | @yield('mytitle')</title>
 
         <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
         <meta name="description"

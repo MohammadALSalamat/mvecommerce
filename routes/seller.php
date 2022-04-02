@@ -23,8 +23,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
       Route::match(['get', 'post'], '/deletproducts/{id}', [SellerProductController::class, 'deletproducts'])->name('seller_deletproducts');
   
   
-      //Products Attribute section
-  
+    //Products Attribute section
       Route::get('AddProductAttrebuite/{id}',[SellerProductAttribute::class,'add_productAttr'])->name('seller_add_productAttr');
       Route::post('seller_CreateProductAttrebuite/{id}',[SellerProductAttribute::class,'create_productAttr'])->name('seller_create_productAttr');
       Route::post('CreateProductAttrebuite/{id}',[SellerProductAttribute::class,'create_productAttr_gallary'])->name('create_productAttr_gallary');

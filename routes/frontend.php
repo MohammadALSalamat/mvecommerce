@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\OrderController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
-use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\ShippingCartController;
+use App\Http\Controllers\ProductReviewController;
 
 //shop page for all products frid system
 
@@ -43,12 +44,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('my-account',[frontPageController::class,'loginForm'])->name('loginForm');
 // auth submit the login info
 Route::post('authsubmit',[frontPageController::class,'loginSubmit'])->name('submitlogin');
-// regirster data
+// register custmor data
 Route::post('registerusers',[frontPageController::class,'register_users'])->name('registerusers');
 
 //log out front user
 
 Route::get('user/logout',[frontPageController::class,'logout_front_user'])->name('logout_front_user');
+
+
+// become a vendor
+Route::get('/become_seller',[frontPageController::class,'become_seller'])->name('become_seller');
+Route::get('register_seller',[frontPageController::class,'view_register_seller_form'])->name('vendor_form');
+Route::post('/vendor_info',[frontPageController::class,'vendor_info'])->name('vendor_info');
+
+
 
 // cart section
 Route::get('cart',[ShippingCartController::class, 'viewcart'])->name('viewcart');
@@ -56,6 +65,7 @@ Route::post('/cart/store',[ShippingCartController::class,'add_to_cart'])->name('
 Route::post('/cart/delete', [ShippingCartController::class, 'cart_delete'])->name('cart_delete');
 Route::get('clear_cart/',function(){
     Cart::instance('shopping')->destroy();
+    Session::forget('coupon');
     return back()->with('message','Your Cart is empty');
 })->name('clear_cart');
 

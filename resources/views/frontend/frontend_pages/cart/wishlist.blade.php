@@ -1,5 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
-
+@section('mytitle','Wish List' )
 @section('content')
  <!-- Start of Main -->
         <main class="main wishlist-page">

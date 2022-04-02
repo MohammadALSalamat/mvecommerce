@@ -1,4 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
+@section('mytitle','Cart' )
 @section('content')
 
   <!-- Start of Main -->

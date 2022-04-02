@@ -1,4 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
+@section('mytitle','Shop Category')
 <!-- Default CSS -->
  <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css') }}">

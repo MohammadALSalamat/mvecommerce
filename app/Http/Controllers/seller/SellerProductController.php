@@ -43,11 +43,6 @@ class SellerProductController extends Controller
         if (empty($data['slug']) || $data['slug'] == null) {
             return back()->with('error', 'Slug is requird');
         }
-        if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
-            $brand = null;
-        }else{
-            $brand = $data['brand'];
-        }
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
         }
@@ -100,7 +95,6 @@ class SellerProductController extends Controller
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
         $addproduct->discound = $data['discound'];
-        $addproduct->brand_id = $brand;
         $addproduct->added_by = 'seller';
         $addproduct->child_category_id = $child_cat;
         $addproduct->vendor_id = Auth::guard('seller')->user()->id;
@@ -112,9 +106,9 @@ class SellerProductController extends Controller
     public function editproducts($id)
     {
         $current_product= product::find($id); // get the current category
-        $brands = brand::get();
         $user = Auth::guard('seller')->user()->id;
         $vendors = Seller::find(Auth::guard('seller')->user()->id);
+        $brands = $vendors->brand;
             $categories = category::where('is_parent',0)->get();
         if ($current_product) {
 

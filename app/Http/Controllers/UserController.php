@@ -20,7 +20,7 @@ class UserController extends Controller
     //view activation for sellers Only
     public function activation_sellers()
     {
-        $Users = User::where('status','inactive')->where('role','seller')->get();
+        $Users = Seller::where('status',0)->get();
         return view('backend.backend_pages.users.viewusers', compact('Users'));
     }
     // view create form
@@ -106,7 +106,8 @@ class UserController extends Controller
     // edit Products form
     public function editusers($id)
     {
-        $current_user = User::find($id); // get the current category
+       
+        $current_user = Seller::find($id); // get the current category
 
         if ($current_user) {
 
@@ -120,67 +121,44 @@ class UserController extends Controller
 
     public function updateusers(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = Seller::find($id);
         if ($user) {
             $data = $request->all();
-            //email validation
-            $Emailrepate = User::where('email', $data['email'])->where('id','!=',$user->id)->count();
-            $usernamerepate = User::where('username', $data['username'])->where('id', '!=', $user->id)->count();
-            if ($Emailrepate > 0) {
-                return back()->with('error', ' The Email Is Already There');
-            }
-            if ($usernamerepate > 0) {
-                return back()->with('error', ' The User Name Is Already There');
-            }
-            //validation
-            if (empty($data['full_name']) || $data['full_name'] == null) {
-                return back()->with('error', ' Full Name is required');
-            }
-            if (empty($data['email']) || $data['email'] == null) {
-                return back()->with('error', ' email is required');
-            }
-            if (empty($data['role']) || $data['role'] == null) {
-                return back()->with('error', ' role is required');
-            }
+            
 
             if (empty($data['status']) || $data['status'] == null) {
-                $status = 'inactive';
+                $status = 0;
             } else {
-                $status = 'active';
+                $status = 1;
             }
             
-            User::where('id', $id)->update([
-                'full_name' => $data['full_name'],
-                'username' => $data['username'],
-                'email' => $data['email'],
-                'role' => $data['role'],
-                'photo' => $data['image'],
-                'phone' => $data['phone'],
-                'address' => $data['address'],
+            Seller::where('id', $id)->update([
+               
                 'status' => $status,
             ]);
-            
-            // check if the new update of status == the database value 
-            if($status == $user->status && $user->role == 'seller'){
+       
+
+            if($status == $user->status){
                 return back()->with('message', 'The User has been updated');
             }else{
+                $useremail= $user->email;
                 //send email if you activate the seller account
-                if($status == 'active' && $user->role == 'seller'){
+                if($status == 1){
                     $bodymessage = 'Congrates your Account has been activated you can use now';
-                    Mail::send('mails.active_seller', $data, function ($message) use($bodymessage ,$data) {
+                    Mail::send('mails.active_seller', $data, function ($message) use($bodymessage ,$useremail) {
                         $message->from('support@9yards.ae', 'Itajer Admin');
                         $message->sender('alomda.alslmat@gmail.com', 'Itajer Admin');
-                        $message->to($data['email']);
+                        $message->to($useremail);
                         $message->subject('Active Seller Account');
                         $message->setBody($bodymessage);
                     });
                 }else{
                     //send email if you inactivate the seller account
                     $bodymessage = 'Sorry to inform you that your Account has been Disactivated you can not use now <br> if you have any request please contact the admin for more details ';
-                    Mail::send('mails.disactive',$data, function ($message) use ($bodymessage, $data) {
+                    Mail::send('mails.disactive',$data, function ($message) use ($bodymessage, $useremail) {
                         $message->from('support@9yards.ae', 'Itajer Admin');
                         $message->sender('alomda.alslmat@gmail.com', 'Itajer Admin');
-                        $message->to($data['email']);
+                        $message->to($useremail);
                         $message->subject('Disactive Seller Account');
                         $message->setBody($bodymessage);
                     });

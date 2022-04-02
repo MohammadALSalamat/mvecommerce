@@ -46,8 +46,8 @@
                 @else
                 <a href="{{route('loginForm')}}" class=""><i class="w-icon-account"></i>Sign In</a>
                 <span class="delimiter d-lg-show">/</span>
-                <a href="{{asset('front-style/assets/ajax/login.html')}}"
-                    class="ml-0 d-lg-show login register">Register</a>
+                <a href="{{route('loginForm')}}"
+                    class="ml-0 d-lg-show ">Register</a>
                 @endauth
             </div>
         </div>
@@ -228,6 +228,9 @@
                             </li>
                             <li>
                                 <a href="{{ route('shop_page') }}">Shop</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('become_seller') }}">Become A Vendor</a>
                             </li>
                             <li>
                                 <a href="vendor-dokan-store.html">Vendor</a>
