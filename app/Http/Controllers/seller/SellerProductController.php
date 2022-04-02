@@ -1,39 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\seller;
 
-use App\Models\Adminview;
-use App\Models\User;
 use App\Models\brand;
+use App\Models\Seller;
 use App\Models\product;
 use App\Models\category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class ProductController extends Controller
+class SellerProductController extends Controller
 {
     //view the products page
     public function viewproducts()
     {
-        $products = product::get();
-       return view('backend.backend_pages.products.viewproduct',compact('products'));
-    }
-
-    public function viewownproducts()
-    {
-        $user = Auth::guard('admin')->user()->id;
-        $products = product::where('vendor_id',$user)->where('added_by','admin')->get();
-       return view('backend.backend_pages.products.viewproduct',compact('products'));
+        $user = Auth::guard('seller')->user()->id;
+        $products = product::where('vendor_id',$user)->where('added_by','seller')->get();
+       return view('Seller.seller_pages.products.viewproduct',compact('products'));
     }
 
     //view the products page
     public function createproducts()
     {
         $brands = brand::get();
-        $user = Auth::guard('admin')->user()->id;
-        $vendors = Adminview::find($user);
+        $user = Auth::guard('seller')->user()->id;
+        $vendors = Seller::find($user);
         $categories = category::where('is_parent',0)->get();
-       return view('backend.backend_pages.products.addproduct',compact('brands','categories','vendors'));
+       return view('Seller.seller_pages.products.addproduct',compact('brands','categories','vendors'));
     }
 
     public function addproducts(Request $request)
@@ -85,10 +80,13 @@ class ProductController extends Controller
         }else{
             $child_cat = $data['child_category'];
         }
+        $slug = Str::slug($data['slug']);
+        $slug = $slug.'-'.Str::random(4);
+
         // insert the data
         $addproduct = new product();
         $addproduct->title = $data['title'];
-        $addproduct->slug = $data['slug'];
+        $addproduct->slug = $slug;
         $addproduct->image = $data['filepath'];
         $addproduct->size_guid = $data['size_guid'];
         $addproduct->description = $data['comment'];
@@ -103,9 +101,9 @@ class ProductController extends Controller
         $addproduct->offer_price = $data['offer_price'];
         $addproduct->discound = $data['discound'];
         $addproduct->brand_id = $brand;
-        $addproduct->added_by = 'admin';
+        $addproduct->added_by = 'seller';
         $addproduct->child_category_id = $child_cat;
-        $addproduct->vendor_id = Auth::guard('admin')->user()->id;
+        $addproduct->vendor_id = Auth::guard('seller')->user()->id;
         $addproduct->status = $status;
         $addproduct->save();
         return back()->with('message','your product has been created');
@@ -115,12 +113,12 @@ class ProductController extends Controller
     {
         $current_product= product::find($id); // get the current category
         $brands = brand::get();
-        $user = Auth::guard('admin')->user()->id;
-        $vendors = User::find(Auth::guard('admin')->user()->id);
+        $user = Auth::guard('seller')->user()->id;
+        $vendors = Seller::find(Auth::guard('seller')->user()->id);
             $categories = category::where('is_parent',0)->get();
         if ($current_product) {
 
-            return view('backend.backend_pages.products.editproduct', compact('current_product','brands','vendors','categories'));
+            return view('Seller.seller_pages.products.editproduct', compact('current_product','brands','vendors','categories'));
         } else {
             return back()->with('error', 'The ID is not found');
         }
@@ -165,7 +163,8 @@ class ProductController extends Controller
             if ($data['offer_price'] > $data['price']) {
                 return back()->with('error', 'Offer Price Must be less than Main Price');
             }
-
+            $slug = Str::slug($data['slug']);
+           $slugnew= $slug.'-'.Str::random(4);
 
             if (!empty($data['status'])) {
                 $status = '1';
@@ -174,7 +173,7 @@ class ProductController extends Controller
             }
             product::where('id', $id)->update([
         'title' => $data['title'],
-        'slug' => $data['slug'],
+        'slug' => $slugnew,
         'image' => $data['filepath'],
         'size_guid' => $data['size_guid'],
         'description' => $data['additional_info'],
@@ -190,7 +189,7 @@ class ProductController extends Controller
         'discound' => $data['discound'],
         'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
-        'vendor_id' => Auth::guard('admin')->user()->id,
+        'vendor_id' => Auth::guard('seller')->user()->id,
         'status' => $status,
         ]);
         return back()->with('message','The Product has been updated');

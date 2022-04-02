@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 use Session;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Seller;
+use App\Models\product;
 use Illuminate\Http\Request;
+use App\Mail\orderVendorEmail as vendorOrderMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderEmail as userOrderMail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\OrderEmailForAdmin as adminOrderMail;
-use App\Models\product;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -141,21 +143,26 @@ class OrderController extends Controller
             $order->status = 0;
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
-
-            $save_order = $order->save();
-
             // get the data of the order and send it to order page for invoice
             foreach(Cart::instance('shopping')->content() as $item){
                 $product_id[]=$item->id;
                 $product_items = product::find($item->id);
                 $quantity = $item->qty;
                 $order->product()->attach($product_items,['quantity'=>$quantity]);
-
+                // send email to vendor
+                $vendors_toSend_email = Seller::where(['id'=>$product_items->vendor_id])->get();
+                foreach($vendors_toSend_email as $vendor_email){
+                    if(!empty($vendor_email)){
+                        Mail::to($vendor_email->email)->send(new vendorOrderMail($data)); // send email to vendor
+                    }
+                }
             }
+            Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
+            Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
 
+            $save_order = $order->save();
+            
             if($save_order){
-                Mail::to($data['email'])->send(new userOrderMail($data));
-                Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data));
                 // delete the cart items after submistions
                 Cart::instance('shopping')->destroy();
                 Session::forget('coupon');

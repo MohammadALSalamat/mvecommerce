@@ -32,7 +32,8 @@ class CreateProductsTable extends Migration
             $table->float('price')->default(0);
             $table->float('offer_price')->default(0);
             $table->float('discound')->default(0);
-            $table->string('conditions');
+            $table->string('conditions');            
+            $table->string('added_by')->nullable();
             $table->boolean('status')->default(0);
 
 

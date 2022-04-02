@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adminview;
+use App\Models\Seller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -60,17 +62,43 @@ class UserController extends Controller
         $status = 1;
         }
         $password = Hash::make($data['password']);
-        $newuser = new User();
-        $newuser->full_name = $data['full_name'];
-        $newuser->username = $data['username'];
-        $newuser->email = $data['email'];
-        $newuser->password = $password;
-        $newuser->role = $data['role'];
-        $newuser->photo = $data['image'];
-        $newuser->phone = $data['phone'];
-        $newuser->address = $data['address'];
-        $newuser->status = $status;
-        $newuser->save();
+        if($data['role'] == 'seller'){
+            $newuser = new Seller();
+            $newuser->full_name = $data['full_name'];
+            $newuser->username = $data['username'];
+            $newuser->email = $data['email'];
+            $newuser->password = $password;
+            $newuser->added_by = $data['role'];
+            $newuser->photo = $data['image'];
+            $newuser->phone = $data['phone'];
+            $newuser->address = $data['address'];
+            $newuser->status = $status;
+            $newuser->save();
+        }elseif($data['role'] == 'admin'){
+            $newuser = new Adminview();
+            $newuser->full_name = $data['full_name'];
+            $newuser->username = $data['username'];
+            $newuser->email = $data['email'];
+            $newuser->password = $password;
+            $newuser->added_by = $data['role'];
+            $newuser->photo = $data['image'];
+            $newuser->phone = $data['phone'];
+            $newuser->address = $data['address'];
+            $newuser->status = $status;
+            $newuser->save(); 
+        }else{
+            $newuser = new User();
+            $newuser->full_name = $data['full_name'];
+            $newuser->username = $data['username'];
+            $newuser->email = $data['email'];
+            $newuser->password = $password;
+            $newuser->role = $data['role'];
+            $newuser->photo = $data['image'];
+            $newuser->phone = $data['phone'];
+            $newuser->address = $data['address'];
+            $newuser->status = $status;
+            $newuser->save();
+        }
 
         return back()->with('message','You have insert a User');
     }

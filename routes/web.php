@@ -35,6 +35,7 @@ use App\Http\Controllers\ShippingCartController;
 
 
 require __DIR__.'/backend.php';
+require __DIR__.'/seller.php';
 require __DIR__.'/frontend.php';
 
 

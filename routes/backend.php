@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 // admin side
 Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
-Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
+    Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
 
     // banners section
 
@@ -60,6 +60,7 @@ Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
      //Products section
 
     Route::get('/products', [ProductController::class, 'viewproducts'])->name('viewproducts');
+    Route::get('/admin_products', [ProductController::class, 'viewownproducts'])->name('adminviewproducts');
     Route::get('/create_products', [ProductController::class, 'createproducts'])->name('createproducts');
     Route::post('/add_new_products', [ProductController::class, 'addproducts'])->name('addproducts');
     Route::get('/edit_products/{id}', [ProductController::class, 'editproducts'])->name('editproducts');
@@ -103,15 +104,15 @@ Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
     Route::match(['get', 'post'], '/delet_shipping/{id}', [ShippingController::class, 'delet_shipping'])->name('delet_shipping');
     
 // orders sections
-Route::get('vieworders', [OrderController::class, 'view_order'])->name('view_order');
-Route::get('view_singleOrder/{id}',[OrderController::class,'singleOrder'])->name('singleOrder');
+    Route::get('vieworders', [OrderController::class, 'view_order'])->name('view_order');
+    Route::get('view_singleOrder/{id}',[OrderController::class,'singleOrder'])->name('singleOrder');
 
-// get the invoice template
-Route::get('invoice_template/{id}',[OrderController::class,'invoice_template'])->name('invoice_template');
+    // get the invoice template
+    Route::get('invoice_template/{id}',[OrderController::class,'invoice_template'])->name('invoice_template');
 
 });
 
-Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth:admin']], function () {
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 // channge language

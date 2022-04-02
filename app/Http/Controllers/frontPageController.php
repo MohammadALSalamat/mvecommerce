@@ -3,22 +3,24 @@
 namespace App\Http\Controllers;
 
 use File;
+use Helper;
 use Session;
 use App\Models\User;
 use App\Models\banner;
+use App\Models\Seller;
 use App\Models\product;
 use App\Models\category;
 use Illuminate\Http\Request;
+use App\Models\ProductReview;
 use App\Mail\verficationVendors;
+use App\Models\productAttribute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
-use App\Models\productAttribute;
-use App\Models\ProductReview;
-use Helper;
+use App\Models\productGallary;
 
 class frontPageController extends Controller
 {
@@ -193,13 +195,14 @@ class frontPageController extends Controller
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first();
-      $vendor_info = User::where('id',$single_product->vendor_id)->first();
+      $vendor_info = Seller::where('id',$single_product->vendor_id)->first();
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
+      $product_gallary =productGallary::where('product_id',$single_product->id)->get();
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
       
      #review comments 
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_attr','user_review'));
+        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_gallary','product_attr','user_review'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }

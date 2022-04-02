@@ -22,7 +22,12 @@ class CreateSellersTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->txt('photo')->nullable();
+            $table->text('brand')->nullable();
+            $table->text('document')->nullable();
+            $table->string('is_verify')->default(0);
             $table->boolean('status')->default(0);
             $table->rememberToken();
             $table->timestamps();

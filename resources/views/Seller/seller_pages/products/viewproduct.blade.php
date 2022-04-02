@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('Seller.seller_layoute.main_desgin')
 @section('style')
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
@@ -34,7 +34,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
+          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
                 class="la la-plus"></i> Add product </button></a>
         </div>
       </div>
@@ -60,7 +60,8 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body card-dashboard">
-                  <table class="table table-striped table-bordered file-export table-responsive">
+
+                  <table class="table table-striped table-bordered file-export">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -94,13 +95,13 @@
                               aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
                                 class="ft-settings"></i></button>
                             <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('add_productAttr',$product->id) }}" class="dropdown-item"><i
+                              <a href="{{ route('seller_add_productAttr',$product->id) }}" class="dropdown-item"><i
                                 class="ft-plus-circle primary"></i> Add Attributes</a>
                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"
                                   class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
-                              <a href="{{ route('editproducts',$product->id) }}" class="dropdown-item"><i
+                              <a href="{{ route('seller_editproducts',$product->id) }}" class="dropdown-item"><i
                                   class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('deletproducts',$product->id) }}" method="post">
+                              <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
                                 @csrf
                                 <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
                                   Delete</a>
@@ -246,8 +247,8 @@
                               </div>
                             </div>
                             <div class="modal-footer">
-                             <a href="{{ route('add_productAttr',$product->id) }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Add Attribuate</button></a>
-                             <a href="{{ route('editproducts',$product->id) }}"><button  class="btn btn-success">Edit Product</button></a> 
+                             <a href="{{ route('seller_add_productAttr',$product->id) }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Add Attribuate</button></a>
+                             <a href="{{ route('seller_editproducts',$product->id) }}"><button  class="btn btn-success">Edit Product</button></a> 
                             </div>
                           </div>
                         </div>

@@ -17,6 +17,8 @@
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('viewproducts') }}" data-i18n="nav.templates.vert.main">View Products</a>
             </li>
+            <li><a class="menu-item" href="{{ route('adminviewproducts') }}" data-i18n="nav.templates.vert.main">View Admin Products</a>
+            </li>
             <li><a class="menu-item" href="{{ route('createproducts') }}" data-i18n="nav.templates.horz.main">Create Products</a>
             </li>
           </ul>

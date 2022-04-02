@@ -196,42 +196,16 @@
                                                     data-zoom-image="{{ $single_product->image }}"
                                                     alt="{{ $single_product->title }}" width="800" height="900">
                                             </figure>
-                                        </div>
+                                        </div>  
+                                        @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
-                                                    alt="{{ $single_product->title }}" width="488" height="549">
+                                                <img src="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    alt="{{ $single_product->title }}" width="800" height="900">
                                             </figure>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
-                                                    alt="{{ $single_product->title }}" width="488" height="549">
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
-                                                    alt="{{ $single_product->title }}" width="488" height="549">
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
-                                                    alt="{{ $single_product->title }}" width="488" height="549">
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
-                                                    alt="{{ $single_product->title }}" width="488" height="549">
-                                            </figure>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
@@ -249,26 +223,12 @@
                                             <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
                                                 height="900">
                                         </div>
+                                        @foreach ($product_gallary as $image )
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                            <img src="{{asset('storage/popups/'.$image->gallery) }}" alt="Product Thumb" width="800"
                                                 height="900">
                                         </div>
-                                        <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
-                                                height="900">
-                                        </div>
-                                        <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
-                                                height="900">
-                                        </div>
-                                        <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
-                                                height="900">
-                                        </div>
-                                        <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
-                                                height="900">
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
