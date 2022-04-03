@@ -30,7 +30,7 @@
                                         enctype="multipart/form-data" class="icons-tab-steps wizard-notification">
                                         @csrf
                                         <!-- Step 1 -->
-                                        <h6><i class="step-icon la la-home" style="font-size: 20px"></i> Seller Details
+                                        <h6><i class="step-icon la la-user" style="font-size: 20px"></i> Seller Details
                                         </h6>
                                         <fieldset>
                                             <div class="row">
@@ -64,7 +64,7 @@
                                                     <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Your Photo : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="file" name="photo" class="form-control" id="photo">
+                                                        <input type="file" accept="image/png,image/jpeg,.jpg" name="photo" class="form-control" id="photo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 2 -->
-                                        <h6><i class="step-icon la la-pencil" style="font-size: 20px"></i>Company
+                                        <h6><i class="step-icon la la-home" style="font-size: 20px"></i>Company
                                             Details</h6>
                                         <fieldset>
                                             <div class="row">
@@ -109,13 +109,14 @@
                                                     <div class="form-group">
                                                         <label for="license" style="font-size: 15px">License : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="file" name="license" class="form-control"
+                                                        <input type="file" name="license" accept=".pdf" class="form-control"
                                                             id="license">
+                                                            <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: Max Size is up to 2 MB </small>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="brand" style="font-size: 15px">Your Brand Logo : </label>
                                                         <input type="file" name="brand_logo" class="form-control"
-                                                            id="brand">
+                                                            id="brand" accept=".png">
                                                             <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: If you dont upload your brand logo we will use ITAJER logo </small>
                                                     </div>
                                                 </div>
@@ -136,7 +137,7 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 3 -->
-                                        <h6><i class="step-icon la la-tv" style="font-size: 20px"></i>Seller Location
+                                        <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>Seller Location
                                         </h6>
                                         <fieldset>
                                             <div class="row">
@@ -164,7 +165,7 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 4 -->
-                                        <h6><i class="step-icon la la-image" style="font-size: 20px"></i>Our Policy</h6>
+                                        <h6><i class="step-icon la la-file" style="font-size: 20px"></i>Our Policy</h6>
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-md-12">

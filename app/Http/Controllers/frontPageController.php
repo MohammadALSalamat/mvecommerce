@@ -91,6 +91,7 @@ class frontPageController extends Controller
         }
  
         $route='shop';
+
         // Filter Section
         #categories
         $products = $products->where(['status' => 1])->paginate(12); 
@@ -108,51 +109,76 @@ class frontPageController extends Controller
 
     public function shop_list( Request $request)
     {
-        $products = product::where('status', 1)->get();
-        // use it for the filtter using ajax (sort prodcuts)
-        $sort = '';
-        if ($request->sort != null) {
-            $sort = $request->sort; // get the value
-        }
-        if ($products == null) {
-            return view('errors.404');
-        } else {
-            //start the sort depends on the valueof ajax
-            if ($sort == 'price-low') {
-            } elseif ($sort == 'price-low') {
-                $products = product::orderBy('price', 'ASC')->where(['status' => 1])->paginate(12);
-            } elseif ($sort == 'price-high') {
-                $products = product::orderBy('price', 'DESC')->where(['status' => 1])->paginate(12);
-            } elseif ($sort == 'alpha-asc') {
-                $products = product::orderBy('title', 'ASC')->where(['status' => 1])->paginate(12);
-            } elseif ($sort == 'alpha-desc') {
-                $products = product::orderBy('title', 'DESC')->where(['status' => 1])->paginate(12);
-            } elseif ($sort == 'discountLTH') {
-                $products = product::orderBy('discound', 'ASC')->where(['status' => 1])->paginate(12);
-            } elseif ($sort == 'discountHTL') {
-                $products = product::orderBy('discound', 'DESC')->where(['status' => 1])->paginate(12);
-            } else {
-                $products = product::where(['status' => 1])->paginate(12);
-            }
-        }
+       // product filter in shop page get the data from the link top
+
+       $products = product::query();
+       if (!empty($_GET['category'])) {
+           $slug = explode(',', $_GET['category']);
+           $cat_ids = category::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+           // get the products with the selected categories
+           $products = $products->whereIn('category_id', $cat_ids);
+       }
+      // price filter
+       if(!empty($_GET['price'])){
+           $price = explode('-',$_GET['price']);
+           $price[0] = floor($price[0]);
+           $price[1] = ceil($price[1]);
+           $products = $products->whereBetween('price',$price);
+       }
+
+       
+       // use it for the filtter using ajax-> (sort prodcuts)
+       $sort = '';
+       if ($request->sort != null) {
+           $sort = $request->sort; // get the value
+       }
+       
+       
+       if ($products == null) {
+       return view('errors.404');
+       } else {
+           //start the sort depends on the valueof ajax
+           if ($sort == 'price-low') {
+           } elseif ($sort == 'price-low') {
+               $products = product::orderBy('price', 'ASC');
+           } elseif ($sort == 'price-high') {
+               $products = product::orderBy('price', 'DESC');
+           } elseif ($sort == 'alpha-asc') {
+               $products = product::orderBy('title', 'ASC');
+           } elseif ($sort == 'alpha-desc') {
+               $products = product::orderBy('title', 'DESC');
+           } elseif ($sort == 'discountLTH') {
+               $products = product::orderBy('discound', 'ASC');
+           } elseif ($sort == 'discountHTL') {
+               $products = product::orderBy('discound', 'DESC');
+           } 
+       }
         $route = 'shop_list';
         // Filter Section
+         // Filter Section
+        #categories
+        $products = $products->where(['status' => 1])->paginate(12); 
+
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        #type of work filter
+        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
     
-        return view('frontend.frontend_pages.products.shop_list', compact('products', 'route', 'main_categories'));
+        return view('frontend.frontend_pages.products.shop_list', compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
     }
 
     public function special_category_product(Request $request , $slug)
     {
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
 
+       
         //get the sort value from the Ajax
     
         $sort = '';
         if($request->sort != null){
             $sort = $request->sort; // get the value
         }
-
         if($category_product == null){
             return view('errors.404');
         }else{
@@ -185,8 +211,11 @@ class frontPageController extends Controller
         $route = 'Shop/prodcuts';
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
-    
-        return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories'));
+        #vendors
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        #type of work filter
+        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+            return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
     public function Single_product($slug)

@@ -43,17 +43,6 @@
                             <!-- Start of Sidebar Overlay -->
                             <div class="sidebar-overlay"></div>
                             <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-
-                            <!-- Start of Sidebar Content -->
-                            <div class="sidebar-content scrollable">
-                                <div class="filter-actions">
-                                    <label>Filter :</label>
-                                    <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
-                                </div>
-                                @include('frontend.frontend_pages.products.short_code._left-filter')
-                                
-                            </div>
                             <!-- End of Sidebar Content -->
                         </aside>
                         <!-- End of Shop Sidebar -->
@@ -62,7 +51,6 @@
                         <div class="main-content">
                             <nav class="toolbox sticky-toolbox sticky-content fix-top">
                                 <div class="toolbox-left">
-                                    <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle btn-icon-left"><i class="w-icon-category"></i><span>Filters</span></a>
                                     <div class="toolbox-item toolbox-sort select-box text-dark">
                                         <label>Sort By :</label>
                                         <select name="orderby" class="form-control" id="sortBy">

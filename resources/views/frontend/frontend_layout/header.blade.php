@@ -188,39 +188,40 @@
                                         <i class="w-icon-home"></i>{{$category->title}}
                                     </a>
                                     <ul class="megamenu">
-                                        <li>
-                                            <h4 class="menu-title">Bedroom</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="shop-fullwidth-banner.html">Beds, Frames &
-                                                        Bases</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Dressers</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Nightstands</a>
+                                        @php
+                                            $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
+                                            @endphp
+                                        @if(count($sub_cat) > 4)
+                                        <div class="row">
+                                        @foreach ($sub_cat as $single_cat )
+                                            <div class="col-3">
+                                                <li>
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth-banner.html">{{$single_cat->title}}</a></li>
+                                                        
+                                                    </ul>
                                                 </li>
-                                                <li><a href="shop-fullwidth-banner.html">Kid's Beds &
-                                                        Headboards</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Armoires</a></li>
-                                            </ul>
-
-                                            <h4 class="mt-1 menu-title">Living Room</h4>
-                                            <hr class="divider">
-                                            <ul>
-                                                <li><a href="shop-fullwidth-banner.html">Coffee Tables</a>
-                                                </li>
-                                                <li><a href="shop-fullwidth-banner.html">Chairs</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Tables</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Futons & Sofa
-                                                        Beds</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Cabinets &
-                                                        Chests</a></li>
-                                            </ul>
-                                        </li>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        @else
+                                            @foreach ($sub_cat as $single_cat )
+                                            <li>
+                                                <ul>
+                                                    <li><a href="shop-fullwidth-banner.html">{{$single_cat->title}}</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+                                            @endforeach
+                                            @endif
                                     </ul>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
+
+                    <!-- Nav bar after categories -->
                     <nav class="main-nav">
                         <ul class="menu active-underline">
                             <li class="active">
