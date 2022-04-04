@@ -41,7 +41,6 @@ class frontPageController extends Controller
 
  //++++++++++++++++++++++++++++  User Products Section   ++++++++++++++++++++++++++++++//
 
-
     public function ShopPage(Request $request)
     {
 
@@ -215,7 +214,7 @@ class frontPageController extends Controller
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
         $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
-            return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
+        return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
     public function Single_product($slug)
@@ -225,10 +224,10 @@ class frontPageController extends Controller
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
       $product_gallary =productGallary::where('product_id',$single_product->id)->get();
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
-      
+      $Category_related_product = category::where('id',$single_product->category_id)->first();
      #review comments 
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_gallary','product_attr','user_review'));
+        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
@@ -403,6 +402,23 @@ public function vendor_info(Request $request)
     return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
 }
+
+
+// +++++++++++++++++++++++++++++ VVendors pages ++++++++++++++++++++++++++++//
+
+public function sellers_list()
+{
+    $sellers = Seller::where('status',1)->get();
+    return view('frontend.frontend_pages.sellers.sellers_pages.sellers_shops',compact('sellers'));
+}
+public function single_seller($id)
+{
+    $seller = Seller::where('id',$id)->where('status',1)->first();
+
+    $vendor_product = product::where('vendor_id',$id)->where('added_by','seller')->get();
+    return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('seller','vendor_product'));
+}
+
 
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 

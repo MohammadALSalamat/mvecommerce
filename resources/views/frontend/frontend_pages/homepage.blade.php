@@ -792,7 +792,7 @@
                             class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
                                 <img src="{{asset($category->image)}}" alt="Category"
-                                    width="130" height="130">
+                                style="width: 100% !important;height: 150px !important;object-fit: contain;">
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>

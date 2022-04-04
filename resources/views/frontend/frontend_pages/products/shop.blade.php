@@ -21,96 +21,51 @@
             </nav>
             <!-- End of Breadcrumb -->
 
-            <!-- Start of Page Content -->
-            <div class="page-content">
-                <div class="container">
-                    <!-- Start of Shop Banner -->
-                    <div class="mb-5 shop-default-banner banner d-flex align-items-center br-xs"
-                        style="background-image: url(assets/images/shop/banner1.jpg); background-color: #FFC74E;">
-                        <div class="banner-content">
-                            <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
-                            <h3 class="text-white banner-title text-uppercase font-weight-bolder ls-normal">Smart Wrist
-                                Watches</h3>
-                            <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
-                                Now<i class="w-icon-long-arrow-right"></i></a>
-                        </div>
+          
+            <!-- End of Page Content -->
+               <!-- Start of Page Content -->
+               <div class="page-content mb-10">
+                <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6"
+                    style="background-image: url(assets/images/shop/banner2.jpg); background-color: #FFC74E;">
+                    <div class="container banner-content">
+                        <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
+                        <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10">Smart Watches</h3>
+                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
+                            Now<i class="w-icon-long-arrow-right"></i></a>
                     </div>
-                    <!-- End of Shop Banner -->
-
-                   
-
+                </div>
+                <!-- End of Shop Banner -->
+                <div class="container-fluid">
                     <!-- Start of Shop Content -->
-                    <div class="mb-10 shop-content row gutter-lg">
-                        <!-- Start of Sidebar, Shop Sidebar -->
-                        <aside class="sidebar shop-sidebar sticky-sidebar-wrapper sidebar-fixed">
-                            <!-- Start of Sidebar Overlay -->
-                            <div class="sidebar-overlay"></div>
-                            <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-                            <!-- Start of Sidebar Content -->
-                            <div class="sidebar-content scrollable">
-                                <!-- Start of Sticky Sidebar -->
-                                <div class="sticky-sidebar">
-                                    <div class="filter-actions">
-                                        <label>Filter :</label>
-                                        <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
-                                    </div>
-                                    @include('frontend.frontend_pages.products.short_code._left-filter')
-                                   
-                                </div>
-                                <!-- End of Sidebar Content -->
-                            </div>
-                                                   @include('frontend.frontend_pages.products.short_code._left-filter')
-                            <!-- End of Sidebar Content -->
-                        </aside>
-                        <!-- End of Shop Sidebar -->
-
+                    <div class="shop-content">
                         <!-- Start of Shop Main Content -->
                         <div class="main-content">
                             <nav class="toolbox sticky-toolbox sticky-content fix-top">
                                 <div class="toolbox-left">
-                                    <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle btn-icon-left d-block d-lg-none"><i
-                                            class="w-icon-category"></i><span>Filters</span></a>
+                                    <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
+                                        btn-icon-left"><i class="w-icon-category"></i><span>Filters</span></a>
                                     <div class="toolbox-item toolbox-sort select-box text-dark">
                                         <label>Sort By :</label>
-                                        <select name="orderby" class="form-control" id="sortBy">
+                                        <select name="orderby" class="form-control">
                                             <option value="default" selected="selected">Default sorting</option>
-                                            <option value="alpha-asc">Sort by alpha-asc</option>
-                                            <option value="alpha-desc">Sort by alpha-desc</option>
-                                            <option value="discountLTH">Sort by dicount : low to high</option>
-                                            <option value="discountHTL">Sort by dicount : high to low</option>
+                                            <option value="popularity">Sort by popularity</option>
+                                            <option value="rating">Sort by average rating</option>
+                                            <option value="date">Sort by latest</option>
                                             <option value="price-low">Sort by pric: low to high</option>
                                             <option value="price-high">Sort by price: high to low</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="toolbox-right">
-                                    <div class="toolbox-item toolbox-show select-box">
-                                        <select name="count" class="form-control">
-                                            <option value="9">Show 9</option>
-                                            <option value="12" selected="selected">Show 12</option>
-                                            <option value="24">Show 24</option>
-                                            <option value="36">Show 36</option>
-                                        </select>
-                                    </div>
-                                    <div class="toolbox-item toolbox-layout">
-                                        <a href="{{ route('shop_page') }}" class="icon-mode-grid btn-layout active">
-                                            <i class="w-icon-grid"></i>
-                                        </a>
-                                        <a href="{{ route('shop_list') }}" class="icon-mode-list btn-layout">
-                                            <i class="w-icon-list"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                
                             </nav>
-                            <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
+                            <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ($products as $product )
                                 <div class="product-wrap">
                                     <div class="text-center product">
-                                        <figure class="product-media">
+                                        <figure class="product-media" >
                                             <a href="{{ route('singleproduct', $product->slug) }}">
-                                                <img src="{{ asset($product->image) }}" alt="Product" width="300"
-                                                    height="338" />
+                                                <img src="{{ asset($product->image) }}" alt="Product" style="width: 100% !important;
+                                                height: 150px !important;object-fit: contain;" />
                                             </a>
                                             <div class="product-action-horizontal">
                                                 <!--Add to cart funtion -->
@@ -159,15 +114,34 @@
                                 </div> 
                                 @endforeach
                             </div>
+
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
                                     Showing Products
                                 </p>
                                 {{ $products->appends($_GET)->links('vendor.pagination.custompage') }}
                             </div>
-                            
                         </div>
                         <!-- End of Shop Main Content -->
+
+                        <!-- Start of Sidebar, Shop Sidebar -->
+                        <aside class="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
+                            <!-- Start of Sidebar Overlay -->
+                            <div class="sidebar-overlay"></div>
+                            <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
+
+
+                            <!-- Start of Sidebar Content -->
+                            <div class="sidebar-content scrollable">
+                                <div class="filter-actions">
+                                    <label>Filter :</label>
+                                    <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
+                                </div>
+                                @include('frontend.frontend_pages.products.short_code._left-filter')
+                            </div>
+                            <!-- End of Sidebar Content -->
+                        </aside>
+                        <!-- End of Shop Sidebar -->
                     </div>
                     <!-- End of Shop Content -->
                 </div>

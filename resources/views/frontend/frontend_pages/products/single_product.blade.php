@@ -242,17 +242,25 @@
                                 <!-- Brand Logo-->
                                 <div class="product-bm-wrapper">
                                     <figure class="brand">
-                                        <img src="assets/images/products/brand/brand-1.jpg" alt="Brand" width="102"
+                                        @if ($vendor_info->brnad != null || !empty($vendor_info->brnad))
+                                        <img src="{{asset('verify_vendors/'.$vendor_info->brnad)}}" alt="Brand" width="102"
                                             height="48" />
+                                        @else
+                                        <img src="{{asset('front-style/assets/images/itajer_logo.png')}}" alt="itajer" width="80"
+                                        height="48" />
+                                        @endif
                                     </figure>
                                     <!-- Category Detailes -->
                                     <div class="product-meta">
                                         <div class="product-categories">
                                             Category:
-                                            <span class="product-category"><a href="#">Electronics</a></span>
+                                            <span class="product-category"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
                                         </div>
                                         <div class="product-sku">
                                             SKU: <span>MS46891340</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            Seller :  <a href="#" ><span>{{ $vendor_info->shop_name }}</span></a>
                                         </div>
                                     </div>
                                 </div>

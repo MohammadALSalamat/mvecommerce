@@ -224,45 +224,19 @@
                     <!-- Nav bar after categories -->
                     <nav class="main-nav">
                         <ul class="menu active-underline">
-                            <li class="active">
+                            <li class="{{ request()->routeIs('homepage') ? 'active' : '' }}">
                                 <a href="{{ route('homepage') }}">Home</a>
                             </li>
-                            <li>
+                            <li class="{{ request()->routeIs('shop_page') ? 'active' : '' }}">
                                 <a href="{{ route('shop_page') }}">Shop</a>
                             </li>
-                            <li>
+                            
+                            <li class="{{ request()->routeIs('become_seller') ? 'active' : '' }}">
                                 <a href="{{ route('become_seller') }}">Become A Vendor</a>
                             </li>
-                            <li>
-                                <a href="vendor-dokan-store.html">Vendor</a>
-                                <ul>
-                                    <li>
-                                        <a href="vendor-dokan-store-list.html">Store Listing</a>
-                                        <ul>
-                                            <li><a href="vendor-dokan-store-list.html">Store listing 1</a></li>
-                                            <li><a href="vendor-wcfm-store-list.html">Store listing 2</a></li>
-                                            <li><a href="vendor-wcmp-store-list.html">Store listing 3</a></li>
-                                            <li><a href="vendor-wc-store-list.html">Store listing 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="vendor-dokan-store.html">Vendor Store</a>
-                                        <ul>
-                                            <li><a href="vendor-dokan-store.html">Vendor Store 1</a></li>
-                                            <li><a href="vendor-wcfm-store-product-grid.html">Vendor Store 2</a>
-                                            </li>
-                                            <li><a href="vendor-wcmp-store-product-grid.html">Vendor Store 3</a>
-                                            </li>
-                                            <li><a href="vendor-wc-store-product-grid.html">Vendor Store 4</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li class="{{ request()->routeIs('sellers_list') ? 'active' : '' }}" >
+                                <a href="{{ route('sellers_list') }}">Vendors</a>
                             </li>
-                            <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
-
                         </ul>
                     </nav>
                 </div>

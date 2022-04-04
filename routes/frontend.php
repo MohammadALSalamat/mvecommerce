@@ -57,7 +57,10 @@ Route::get('/become_seller',[frontPageController::class,'become_seller'])->name(
 Route::get('register_seller',[frontPageController::class,'view_register_seller_form'])->name('vendor_form');
 Route::post('/vendor_info',[frontPageController::class,'vendor_info'])->name('vendor_info');
 
+// view the list of stores
 
+Route::get('vendors_list',[frontPageController::class,'sellers_list'])->name('sellers_list');
+Route::get('single_seller/{id}',[frontPageController::class,'single_seller'])->name('single_seller');
 
 // cart section
 Route::get('cart',[ShippingCartController::class, 'viewcart'])->name('viewcart');
