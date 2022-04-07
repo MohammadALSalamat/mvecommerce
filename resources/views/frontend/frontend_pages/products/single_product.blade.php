@@ -266,7 +266,9 @@
                                 </div>
 
                                 <hr class="product-divider">
-
+                                <h4> Summary</h4>
+                                <p>{!! $single_product->Summary !!}</p>
+                                <hr class="product-divider">
                                 <div class="product-price"><ins
                                         class="new-price">@if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null){{ $single_product->price }} AED @else <del
@@ -376,7 +378,7 @@
                                                 <button class="quantity-minus w-icon-minus"></button>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary btn-cart">
+                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn btn-primary btn-cart">
                                             <i class="w-icon-cart"></i>
                                             <span>Add to Cart</span>
                                         </button>
@@ -384,18 +386,9 @@
                                 </div>
 
                                 <div class="social-links-wrapper">
-                                    <div class="social-links">
-                                        <div class="social-icons social-no-color border-thin">
-                                            <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                            <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                                            <a href="#" class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                                            <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                            <a href="#" class="social-icon social-youtube fab fa-linkedin-in"></a>
-                                        </div>
-                                    </div>
                                     <span class="divider d-xs-show"></span>
                                     <div class="product-link-wrapper d-flex">
-                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
+                                        <a href="javascript:void(0)" data-id="{{ $single_product->id }}" id="add_to_wishlist{{ $single_product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
                                         <a href="#"
                                             class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
                                     </div>
@@ -482,7 +475,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="product-tab-description">
                                 @if($single_product->description != null || !empty($single_product->description))
-                                {{ $single_product->description }}
+                                {!! $single_product->description !!}
                                 @else
                                 <p class=text-red-600" style="color: red"> There is no Description for this product</p>
                                 @endif
@@ -491,7 +484,7 @@
                             <div class="tab-pane" id="product-tab-specification">
                                 @if($single_product->additional_info != null ||
                                 !empty($single_product->additional_info))
-                                {{ $single_product->additional_info }}
+                                {!! $single_product->additional_info !!}
                                 @else
                                 <p class=text-red-600" style="color: red"> There is no additional information for this
                                     product</p>

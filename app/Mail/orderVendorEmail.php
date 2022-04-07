@@ -7,10 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class orderVendorEmail extends Mailable
+class orderVendorEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    private  $data;
     /**
      * Create a new message instance.
      *

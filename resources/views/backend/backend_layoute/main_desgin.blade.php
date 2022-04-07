@@ -41,6 +41,10 @@ data-textdirection="rtl"
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/timeline.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/dashboard-ecommerce.css') }}">
+    <!-- include summernote css/js -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/editors/summernote.css') }}">
+
+
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -154,7 +158,21 @@ rel="stylesheet">
     <!-- END MODERN JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL JS-->
+    <script src="{{ asset('app-assets/js/scripts/editors/editor-summernote.js') }}" type="text/javascript">
+    </script>  
+    <script src="{{ asset('app-assets/vendors/js/editors/summernote/summernote.js') }}" type="text/javascript"></script>
+   <script>
+        $('#lfm').filemanager('image');
+   </script>
+   <script>
+      $(document).ready(function() {
+             $('#summernote').summernote();
+             $('#summernote1').summernote();
+             $('#summernote2').summernote();
+             $('#summernote3').summernote();
+             $('#summernote4').summernote();
+           });
+   </script>
     @yield('script')
 
 

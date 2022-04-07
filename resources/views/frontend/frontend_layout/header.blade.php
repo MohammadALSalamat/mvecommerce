@@ -220,7 +220,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <!-- Nav bar after categories -->
                     <nav class="main-nav">
                         <ul class="menu active-underline">

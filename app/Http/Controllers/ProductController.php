@@ -48,11 +48,7 @@ class ProductController extends Controller
         if (empty($data['slug']) || $data['slug'] == null) {
             return back()->with('error', 'Slug is requird');
         }
-        if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
-            $brand = null;
-        }else{
-            $brand = $data['brand'];
-        }
+       
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
         }
@@ -102,7 +98,6 @@ class ProductController extends Controller
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
         $addproduct->discound = $data['discound'];
-        $addproduct->brand_id = $brand;
         $addproduct->added_by = 'admin';
         $addproduct->child_category_id = $child_cat;
         $addproduct->vendor_id = Auth::guard('admin')->user()->id;
@@ -140,11 +135,11 @@ class ProductController extends Controller
             if (empty($data['slug']) || $data['slug'] == null) {
                 return back()->with('error', 'Slug is requird');
             }
-            if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
-                $brand = null;
-            }else{
-                $brand = $data['brand'];
-            }
+            // if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
+            //     $brand = null;
+            // }else{
+            //     $brand = $data['brand'];
+            // }
             if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
                 return back()->with('error', 'Category is requird');
             }
@@ -172,13 +167,13 @@ class ProductController extends Controller
             } else {
                 $status = '0';
             }
-            product::where('id', $id)->update([
+        product::where('id', $id)->update([
         'title' => $data['title'],
         'slug' => $data['slug'],
         'image' => $data['filepath'],
         'size_guid' => $data['size_guid'],
-        'description' => $data['additional_info'],
-        'description' => $data['return_policy'],
+        'additional_info' => $data['additional_info'],
+        'return_policy' => $data['return_policy'],
         'description' => $data['comment'],
         'Summary' => $data['summary'],
         'category_id' => $data['category'],
@@ -188,7 +183,6 @@ class ProductController extends Controller
         'price' => $data['price'],
         'offer_price' => $data['offer_price'],
         'discound' => $data['discound'],
-        'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
         'vendor_id' => Auth::guard('admin')->user()->id,
         'status' => $status,

@@ -12,7 +12,6 @@ class product extends Model
     [
         'vendor_id','category_id','child_category_id','brand_id','title','slug','summary','description','additional_info','return_policy','size_guid','stock','price','offer_price','discound','conditions','status','size','image'
     ];
-
       //create a relatrion one to many with products
       public function one_product_has_one_cat(){
         return $this->hasOne(category::class,'id');

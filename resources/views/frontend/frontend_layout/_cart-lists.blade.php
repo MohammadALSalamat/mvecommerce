@@ -32,10 +32,10 @@
                    <td class="product-qty">
                        <div class="quantity">
                            <input class="qty form-control" type="number" min="1" max="99" name="quantity"
-                               data-id="{{ $item->rowId }}" id="qty-input-{{ $item->rowId }}" value="{{ $item->qty }}">
+                            data-id="{{ $item->rowId }}" id="qty-input-{{ $item->rowId }}" value="{{ $item->qty }}">
 
                            <input type="hidden" name="stockproduct" data-id="{{ $item->rowId }}"
-                               data-product-quantity="{{ $item->model->stock }}" id="update-cart-{{ $item->rowId }}">
+                            data-product-quantity="{{ $item->model->stock }}" id="update-cart-{{ $item->rowId }}">
                        </div>
                    </td>
                    <td class="product-subtotal">

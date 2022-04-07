@@ -165,8 +165,8 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput9" rows="5" class="form-control"
-                                                        name="description" placeholder="About Project">{{ $current_category->description }}</textarea>
+                                                    <textarea id="summernote" rows="5" class="form-control"
+                                                        name="description" placeholder="About Project">{!! $current_category->description !!}</textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group row">

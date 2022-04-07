@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use File;
 use Helper;
 use Session;
 use App\Models\User;
@@ -12,15 +11,17 @@ use App\Models\product;
 use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
+use App\Models\productGallary;
 use App\Mail\verficationVendors;
 use App\Models\productAttribute;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\verfication_admin_email_for_vendors;
-use App\Models\productGallary;
 
 class frontPageController extends Controller
 {
@@ -334,51 +335,47 @@ public function vendor_info(Request $request)
     }
 
         //get the attached License
-        $path = public_path('verify_vendors');
         $attachment = $request->file('license');
         $name = time() . '.' . $attachment->getClientOriginalExtension();
-        // create folder
-        if (!File::exists($path)) {
-            File::makeDirectory($path, $mode = 0777, true, true);
-        }
-        $attachment->move($path, $name);
+        $filename = $name;
 
-        $filename = $path . '/' . $name;
+        Storage::disk('public')->put('seller/'.$filename,File::get($attachment));
 
         //get the attached personal Photo
-        $path = public_path('verify_vendors');
         $attachment = $request->file('photo');
         $name = time() . '.' . $attachment->getClientOriginalExtension();
-        // create folder
-        if (!File::exists($path)) {
-            File::makeDirectory($path, $mode = 0777, true, true);
-        }
-        $attachment->move($path, $name);
+        $filephoto = $name;
 
-        $filephoto = $path . '/' . $name;
+        Storage::disk('public')->put('seller/'.$filephoto,File::get($attachment));
 
           //get the attached company brand logo
-          $path = public_path('verify_vendors');
           $attachment = $request->file('brand_logo');
           $name = time() . '.' . $attachment->getClientOriginalExtension();
           // create folder
-          if (!File::exists($path)) {
-              File::makeDirectory($path, $mode = 0777, true, true);
-          }
-          $attachment->move($path, $name);
-          $file_brand_logo = $path . '/' . $name;
-    // send email to hold it before activation 
+          $file_brand_logo = $name;
+
+          Storage::disk('public')->put('seller/'.$file_brand_logo,File::get($attachment));
+          // send email to hold it before activation 
     $adminData = [
         'email' => $data['email'],
         'full_name' => $data['name'],
         'phone' => $data['phone-number'],
         'type_of_work' => $data['type_of_work'],
-        'license' => $filename,
+        'shopname'=> $data['shop-name'],
+        'address' => $data['address'],
+        // 'license' =>$filename,
+        'country' =>$data['country']
+    ];
+    $newdata = [
+        'email' => $data['email'],
+        'name' => $data['name'],
+        'phone' => $data['phone-number'],
+        'type_of_work' => $data['type_of_work'],
         'shopname'=> $data['shop-name'],
         'address' => $data['address'],
         'country' =>$data['country']
     ];
-    Mail::to($data['email'])->send(new verficationVendors($data));
+    Mail::to($data['email'])->send(new verficationVendors($newdata));
     //send the data to admin to verify the user 
     Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
     $addnewvendor = new Seller();
@@ -452,94 +449,94 @@ public function single_seller($id)
     }
 
     public function register_users( Request $request)
-{
-     $data = $request->all();
-  
+    {
+        $data = $request->all();
+    
 
-            if ($data['full_name'] == null || empty($data['full_name'])) {
-                return back()->with('error', 'full name is required');
-            }
-            if ($data['email'] == null || empty($data['email'])) {
-                return back()->with('error', 'full name is required');
-            }
-            if ($data['password'] == null || empty($data['email'])) {
-                return back()->with('error', 'full name is required');
-            }
-            $emailCheck = User::where('email', $data['email'])->count();
-            if ($emailCheck > 0) {
-                return back()->with('error', 'Email Is Already Exist');
-            }
-            $addnewcustumer = new User();
-            $addnewcustumer->full_name = $data['full_name'];
-            $addnewcustumer->email = $data['email'];
-            $addnewcustumer->password = Hash::make(($data['password']));
-            $addnewcustumer->save();
-            return back()->with('message','Congrats you have registerd as a customer');
-}
+                if ($data['full_name'] == null || empty($data['full_name'])) {
+                    return back()->with('error', 'full name is required');
+                }
+                if ($data['email'] == null || empty($data['email'])) {
+                    return back()->with('error', 'full name is required');
+                }
+                if ($data['password'] == null || empty($data['email'])) {
+                    return back()->with('error', 'full name is required');
+                }
+                $emailCheck = User::where('email', $data['email'])->count();
+                if ($emailCheck > 0) {
+                    return back()->with('error', 'Email Is Already Exist');
+                }
+                $addnewcustumer = new User();
+                $addnewcustumer->full_name = $data['full_name'];
+                $addnewcustumer->email = $data['email'];
+                $addnewcustumer->password = Hash::make(($data['password']));
+                $addnewcustumer->save();
+                return back()->with('message','Congrats you have registerd as a customer');
+    }
 
-public function logout_front_user()
-{
-    Session::forget('user');
-    Session::forget('coupon');
-    Cart::instance('shopping')->destroy();
-    Auth::logout();
-    return redirect()->route('homepage')->with('message','You Have logged out Seccessfuly!!');
-}
+    public function logout_front_user()
+    {
+        Session::forget('user');
+        Session::forget('coupon');
+        Cart::instance('shopping')->destroy();
+        Auth::logout();
+        return redirect()->route('homepage')->with('message','You Have logged out Seccessfuly!!');
+    }
 
 
 
  //++++++++++++++++++++++++++++ Current User Dashboard   ++++++++++++++++++++++++++++++//
 
-// user dahsboard
-public function userdashboard()
-{
-    $current_user = Auth::user();
-    if($current_user){
-        // dd($current_user);
-        return view('frontend.frontend_pages.auth.user_dashboard', compact('current_user'));
-    }else{
-        return redirect()->route('loginForm')->with('warning','Login First To have access');
+    // user dahsboard
+    public function userdashboard()
+    {
+        $current_user = Auth::user();
+        if($current_user){
+            // dd($current_user);
+            return view('frontend.frontend_pages.auth.user_dashboard', compact('current_user'));
+        }else{
+            return redirect()->route('loginForm')->with('warning','Login First To have access');
+        }
     }
-}
-// update the current user billing address
-public function billingupdate(Request $request,$id)
-{
-    $data = $request->all();
-    $user_address = User::find($id);
-if ($user_address) {
-    if (!empty($data['shipping_copy_billing_info'])) {
-        $saddress =  $data['address'];
-        $scountry =  $data['country'];
-        $scity =     $data['city'];
-        $sstate=     $data['state'];
-        $spostcode = $data['postcode'];
-    } else {
-        $saddress =  $user_address->saddress;
-        $scountry =  $user_address->scountry;
-        $scity =     $user_address->scity;
-        $sstate =     $user_address->sstate;
-        $spostcode = $user_address->spostcode;
+    // update the current user billing address
+    public function billingupdate(Request $request,$id)
+    {
+        $data = $request->all();
+        $user_address = User::find($id);
+        if ($user_address) {
+        if (!empty($data['shipping_copy_billing_info'])) {
+            $saddress =  $data['address'];
+            $scountry =  $data['country'];
+            $scity =     $data['city'];
+            $sstate=     $data['state'];
+            $spostcode = $data['postcode'];
+        } else {
+            $saddress =  $user_address->saddress;
+            $scountry =  $user_address->scountry;
+            $scity =     $user_address->scity;
+            $sstate =     $user_address->sstate;
+            $spostcode = $user_address->spostcode;
+        }
+        User::where('id', $id)->update([
+
+        'address' => $data['address'],
+        'country' => $data['country'],
+        'city' => $data['city'],
+        'postcode' => $data['postcode'],
+        'state' => $data['state'],
+        'saddress' => $saddress,
+        'scountry' => $scountry,
+        'scity' => $scity,
+        'spostcode' => $spostcode,
+        'sstate' => $sstate,
+            
+        ]);
+        return back()->with('message', 'you have added Shipping Info same As billing Info');
+        }else{
+            return back()->with('error', 'user is not exsits');
+        }
+
     }
-    User::where('id', $id)->update([
-
-    'address' => $data['address'],
-    'country' => $data['country'],
-    'city' => $data['city'],
-    'postcode' => $data['postcode'],
-    'state' => $data['state'],
-    'saddress' => $saddress,
-    'scountry' => $scountry,
-    'scity' => $scity,
-    'spostcode' => $spostcode,
-    'sstate' => $sstate,
-        
-    ]);
-    return back()->with('message', 'you have added Shipping Info same As billing Info');
-}else{
-    return back()->with('error', 'user is not exsits');
-}
-
-}
 
     // update the current user billing address
     public function shippingupdate(Request $request, $id)

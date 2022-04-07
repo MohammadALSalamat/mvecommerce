@@ -2031,7 +2031,7 @@
                         <div class="text-center product-wrap product">
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$products_cat->slug) }}" >
-                                    <img style="height:200px !important; width:100% !important" src="{{ $products_cat->image }}" alt="Product" />
+                                    <img style="height:200px !important; width:100% !important;object-fit:contain" src="{{ $products_cat->image }}" alt="Product" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}" id="add_to_cart{{$products_cat->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
@@ -2066,8 +2066,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <!-- The Modal -->
                     @endforeach
                 </div>
                 <div class="swiper-pagination"></div>

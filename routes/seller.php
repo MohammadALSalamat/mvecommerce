@@ -4,6 +4,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\seller\SellerProductAttribute;
 use App\Http\Controllers\seller\SellerProductController;
+use App\Http\Controllers\seller\sellerSittingsController;
 
 Route::group(['prefix'=>'seller'],function(){
 
@@ -30,7 +31,9 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
       Route::match(['get', 'post'], '/deletproductAttr/{id}', [SellerProductAttribute::class, 'deletproductAttr'])->name('seller_deletproductAttr');
       Route::match(['get', 'post'], '/gallary_deletproductAttr/{id}', [SellerProductAttribute::class, 'gallary_deletproductAttr'])->name('gallary_deletproductAttr');
   
-  
+  // Seller sittings page
+
+  Route::get('seller/details',[sellerSittingsController::class,'view_seller_details'])->name('view_seller_details');
   
 
 });

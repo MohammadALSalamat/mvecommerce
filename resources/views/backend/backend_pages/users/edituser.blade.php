@@ -160,7 +160,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Address</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput9" rows="5" class="form-control"
+                                                    <textarea id="summernote" rows="5" class="form-control"
                                                         name="address" disabled placeholder="About Project">{{ $current_user->address }}</textarea>
                                                 </div>
                                             </div>

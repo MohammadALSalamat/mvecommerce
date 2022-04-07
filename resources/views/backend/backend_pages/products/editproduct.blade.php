@@ -172,8 +172,8 @@ input:checked + .slider:before {
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput11">Summary</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput11" rows="5" class="form-control"
-                                                    name="summary" placeholder="About Project">{{ $current_product->Summary }}</textarea>
+                                                    <textarea id="summernote" rows="5" class="form-control"
+                                                    name="summary" placeholder="About Project">{!! $current_product->Summary !!}</textarea>
                                                 </div>
                                             </div>
 
@@ -201,26 +201,26 @@ input:checked + .slider:before {
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
-                                                    for="projectinput9">Description</label>
+                                                    for="summernote1">Description</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput9" rows="5" class="form-control"
-                                                        name="comment" placeholder="About Project">{{ $current_product->description }}</textarea>
+                                                    <textarea id="summernote1" rows="5" class="form-control"
+                                                        name="comment" placeholder="About Project">{!! $current_product->description !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Additional Info</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput100" rows="5" class="form-control"
-                                                        name="additional_info" placeholder="write somthing new">{{ $current_product->additional_info }}</textarea>
+                                                    <textarea id="summernote2" rows="5" class="form-control"
+                                                        name="additional_info" placeholder="write somthing new">{!! $current_product->additional_info !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Return Policy</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput1001" rows="5" class="form-control"
-                                                        name="return_policy" placeholder="Write Something ">{{ $current_product->return_policy }}</textarea>
+                                                    <textarea id="summernote3" rows="5" class="form-control"
+                                                        name="return_policy" placeholder="Write Something ">{!! $current_product->return_policy !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

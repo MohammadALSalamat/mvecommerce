@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class verficationVendors extends Mailable
+class verficationVendors extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    private  $newdata;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($newdata)
     {
-        $this->data = $data;
+        $this->newdata = $newdata;
     }
 
     /**
@@ -31,6 +32,6 @@ class verficationVendors extends Mailable
         return $this->from('support@9yards.ae')
         ->subject('vendor Regirstaion')
         ->view('mails.verify_vendors')
-        ->with('data', $this->data);
+        ->with('newdata', $this->newdata);
     }
 }

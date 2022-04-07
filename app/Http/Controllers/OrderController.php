@@ -143,9 +143,17 @@ class OrderController extends Controller
             $order->status = 0;
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
+
+            
+            Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
+            Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
+
+            $save_order = $order->save();
+            
             // get the data of the order and send it to order page for invoice
             foreach(Cart::instance('shopping')->content() as $item){
                 $product_id[]=$item->id;
+                $order_id =  $order->id;
                 $product_items = product::find($item->id);
                 $quantity = $item->qty;
                 $order->product()->attach($product_items,['quantity'=>$quantity]);
@@ -157,10 +165,6 @@ class OrderController extends Controller
                     }
                 }
             }
-            Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
-            Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
-
-            $save_order = $order->save();
             
             if($save_order){
                 // delete the cart items after submistions

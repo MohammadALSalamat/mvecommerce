@@ -7,11 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class verfication_admin_email_for_vendors extends Mailable
+class verfication_admin_email_for_vendors extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $adminData;
+    private $adminData;
     /**
      * Create a new message instance.
      *
@@ -32,7 +32,7 @@ class verfication_admin_email_for_vendors extends Mailable
         return $this->from('support@9yards.ae')
         ->subject('vendor Activation')
         ->view('mails.send_verify_for_admin')
-        ->attach($this->adminData['license'])
+        // ->attach($this->adminData['license'])
         ->with('adminData', $this->adminData);
     }
 }

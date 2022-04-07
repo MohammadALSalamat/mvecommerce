@@ -160,7 +160,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput9" rows="5" class="form-control"
+                                                    <textarea id="summernote" rows="20" class="form-control"
                                                         name="description" placeholder="About Project">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
@@ -197,10 +197,7 @@ input:checked + .slider:before {
 @endsection
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-<script>
-     $('#lfm').filemanager('image');
-</script>
-
+ 
 <!-- hide the form of parent select if the category is a parent -->
 <script>
  let is_checked = $('#is_parent').prop('checked');
