@@ -336,26 +336,24 @@ public function vendor_info(Request $request)
 
         //get the attached License
         $attachment = $request->file('license');
-        $name = time() . '.' . $attachment->getClientOriginalExtension();
-        $filename = $name;
+        $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
+        $filename = Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
 
-        Storage::disk('public')->put('seller/'.$filename,File::get($attachment));
+
 
         //get the attached personal Photo
         $attachment = $request->file('photo');
-        $name = time() . '.' . $attachment->getClientOriginalExtension();
-        $filephoto = $name;
+        $name_filephoto = time() . '.' . $attachment->getClientOriginalExtension();
+        $filephoto = Storage::disk('public')->put('seller/'.$name_filephoto,File::get($attachment));
 
-        Storage::disk('public')->put('seller/'.$filephoto,File::get($attachment));
 
           //get the attached company brand logo
           $attachment = $request->file('brand_logo');
-          $name = time() . '.' . $attachment->getClientOriginalExtension();
+          $name_filebrandLogo = time() . '.' . $attachment->getClientOriginalExtension();
           // create folder
-          $file_brand_logo = $name;
-
-          Storage::disk('public')->put('seller/'.$file_brand_logo,File::get($attachment));
-          // send email to hold it before activation 
+          $file_brand_logo = Storage::disk('public')->put('seller/'.$name_filebrandLogo,File::get($attachment));
+          
+        // send email to hold it before activation 
     $adminData = [
         'email' => $data['email'],
         'full_name' => $data['name'],

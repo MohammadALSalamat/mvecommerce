@@ -20,18 +20,11 @@
           </ul>
         </li>
        
-        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings Managment</span></a>
           <ul class="menu-content">
-            <li><a class="menu-item" href="footer-light.html" data-i18n="nav.footers.footer_light">Footer Light</a>
+            <li><a class="menu-item" href="{{ route('view_seller_details') }}" data-i18n="nav.footers.footer_light">View Profile</a>
             </li>
-            <li><a class="menu-item" href="footer-dark.html" data-i18n="nav.footers.footer_dark">Footer Dark</a>
-            </li>
-            <li><a class="menu-item" href="footer-transparent.html" data-i18n="nav.footers.footer_transparent">Footer Transparent</a>
-            </li>
-            <li><a class="menu-item" href="footer-fixed.html" data-i18n="nav.footers.footer_fixed">Footer Fixed</a>
-            </li>
-            <li><a class="menu-item" href="footer-components.html" data-i18n="nav.footers.footer_components">Footer Components</a>
-            </li>
+            
           </ul>
         </li>
         <li class=" nav-item">

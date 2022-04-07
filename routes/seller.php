@@ -34,6 +34,9 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
   // Seller sittings page
 
   Route::get('seller/details',[sellerSittingsController::class,'view_seller_details'])->name('view_seller_details');
+  Route::post('seller/edit/{id}',[sellerSittingsController::class,'seller_edit_info'])->name('seller_edit_info');
+  
+
   
 
 });
