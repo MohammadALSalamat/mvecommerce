@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class sellerSittingsController extends Controller
 {
@@ -30,89 +31,121 @@ class sellerSittingsController extends Controller
     public function seller_edit_info(Request $request, $id)
     {
         $data = $request->all();
-        dd($data);
+        $current_seller = Seller::where('id',$id)->first();
+          //checck email if exist
+           $validator =  Validator::make($data, [
+            'shop_banner' => 'max:10240',
+            'brand_logo' => 'max:10240',
+            'photo' => 'image|size:10240|max:10240',
+            'license' => 'max:10240',
+        ]);
+       if($validator->fails()){
+        return back()->with('error','your images are too big to be uploaded');
+       }
         if ($data['name'] == null || empty($data['name'])) {
-            return back()->with('error', 'full name is required');
+            return back()->with('error', 'name is required');
         }
         if ($data['username'] == null || empty($data['username'])) {
             return back()->with('error', 'full name is required');
         }
-        if ($data['email'] == null || empty($data['email'])) {
-            return back()->with('error', 'Email is required');
-        }
-        if ($data['password'] == null || empty($data['password'])) {
-            return back()->with('error', 'Password is required');
-        }
-        if ($data['type_of_work'] == null || empty($data['type_of_work'])) {
-            return back()->with('error', 'type of work is required');
+        if ($data['phone-number'] == null || empty($data['phone-number'])) {
+            return back()->with('error', 'Phone Number is required');
         }
         if ($data['shop-name'] == null || empty($data['shop-name'])) {
             return back()->with('error', 'shop name is required');
         }
-        if ($data['phone-number'] == null || empty($data['phone-number'])) {
-            return back()->with('error', 'Phone is required');
+        $shop_name_checker = Seller::where('shop_name', $data['shop-name'])->where('id','!=',$id)->count();
+        if($shop_name_checker > 0){
+            return back()->with('error', 'shop name is Already there , please change it');
         }
-        if ($data['address'] == null || empty($data['address'])) {
-            return back()->with('error', 'address is required');
-        }
-        if ($data['city'] == null || empty($data['city'])) {
-            return back()->with('error', 'city is required');
-        }
-        if ($data['country'] == null || empty($data['country'])) {
-            return back()->with('error', 'Phone is required');
-        }
-        if ($data['agreed_policy'] == null || empty($data['agreed_policy'])) {
-            return back()->with('error', 'Check Box  Policy is required');
-        }
-        if ($data['license'] == null || empty($data['license'])) {
-            return back()->with('error', 'license is required');
-        }
-        //checck email if exist
-        $emailCheck = Seller::where('email',$data['email'])->count();
-        if($emailCheck > 0){
-            return back()->with('error','Email Is Already Exist');
+        if (empty($data['shop_banner']) || $data['shop_banner'] == null) {
+            if ( $current_seller->banner_image == null || empty( $current_seller->banner_image)) {
+                return back()->with('error', 'shop banner is required');
+            }else{
+                $file_branner_image = $current_seller->banner_image;
+            }
+        }else{
+               //get the attached company banner shop
+               $attachment = $request->file('shop_banner');
+               $name_filebanner = time() . '.' . $attachment->getClientOriginalExtension();
+               // create folder
+               Storage::disk('public')->put('seller/'.$name_filebanner,File::get($attachment));
+               $file_branner_image = $name_filebanner;
+            }
+
+        if (empty($data['license']) || $data['license'] == null) {
+            if ( $current_seller->document == null || empty( $current_seller->document)) {
+                return back()->with('error', 'License is required');
+            }else{
+                $filename = $current_seller->document;
+            }
+        }else{
+         //get the attached License
+         $attachment = $request->file('license');
+         $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
+         Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
+         $filename = $name_filename;
         }
     
-            //get the attached License
-            $attachment = $request->file('license');
-            $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
-            $filename = Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
-    
-    
-    
-            //get the attached personal Photo
+          
+            if ( empty($data['photo']) || $data['photo'] == null ) {
+                if ($current_seller->photo == null || empty( $current_seller->photo)) {
+                    return back()->with('error', 'photo is required');
+                }else{
+                    $filephoto = $current_seller->photo;
+                }
+            }else{
+                   //get the attached personal Photo
             $attachment = $request->file('photo');
             $name_filephoto = time() . '.' . $attachment->getClientOriginalExtension();
-            $filephoto = Storage::disk('public')->put('seller/'.$name_filephoto,File::get($attachment));
-    
-    
+            Storage::disk('public')->put('seller/'.$name_filephoto,File::get($attachment));
+            $filephoto = $name_filephoto;
+            }
+
+            if ( empty($data['brand_logo']) || $data['brand_logo'] == null) {
+                if ( $current_seller->brand == null || empty( $current_seller->brand)) {
+                    return back()->with('error', 'brand is required');
+                }else{
+                    $file_brand_logo = $current_seller->brand;
+                }
+            }else{
               //get the attached company brand logo
               $attachment = $request->file('brand_logo');
               $name_filebrandLogo = time() . '.' . $attachment->getClientOriginalExtension();
               // create folder
-              $file_brand_logo = Storage::disk('public')->put('seller/'.$name_filebrandLogo,File::get($attachment));
+              Storage::disk('public')->put('seller/'.$name_filebrandLogo,File::get($attachment));
+              $file_brand_logo = $name_filebrandLogo;
               
+            }
+           
+                  //password checker
+                  if(empty($data['old_pass']) || $data['old_pass'] == null){
+                    $password = $current_seller->password;
+                  }elseif($data['old_pass'] != null && $data['new_pass'] == null){
+                    $password = $current_seller->password;                    
+                 }elseif($data['old_pass'] != null && $data['new_pass'] != null){
+                      $hash_new_pass = Hash::make($data['new_pass']);
+                      $hash_old_pass = Hash::make($data['old_pass']);
+                      if($hash_old_pass != $current_seller->password){
+                          return back()->with('error','your old password is not correct, contact with admin if you forget it');
+                      }else{
+                        $password = $hash_new_pass;
+                      }
+                  }
          
-      
-        $addnewvendor = new Seller();
-        $addnewvendor->full_name = $data['name'];
-        $addnewvendor->username = $data['username'];
-        $addnewvendor->email = $data['email'];
-        $addnewvendor->city = $data['city'];
-        $addnewvendor->country = $data['country'];
-        $addnewvendor->address = $data['address'];
-        $addnewvendor->phone = $data['phone-number'];
-        $addnewvendor->document = $filename;
-        $addnewvendor->photo = $filephoto;
-        $addnewvendor->brand = $file_brand_logo;
-        $addnewvendor->password = Hash::make(($data['password']));
-        $addnewvendor->status = 0;
-        $addnewvendor->added_by ='seller';
-        $addnewvendor->shop_name = $data['shop-name'];
-        $addnewvendor->type_of_work = $data['type_of_work'];
-        $addnewvendor->save();
+      Seller::where('id',$id)->update([
+       'full_name' => $data['name'],
+       'username' => $data['username'],
+       'phone' => $data['phone-number'],
+       'document' => $filename,
+       'photo' => $filephoto,
+       'brand' => $file_brand_logo,
+       'banner_image' => $file_branner_image,
+       'password' => $password,
+       'shop_name' => $data['shop-name']
+      ]);
     
-        return back()->with('message', 'kindly check your email , the Verification Email has been sent');
+        return back()->with('message', 'your data has been updated');
     
     }
 }

@@ -212,13 +212,13 @@
                     <div class="main-content">
                         <div class="store store-banner mb-4">
                             <figure class="store-media">
-                                <img src="{{ asset('front-style/assets/images/vendor/dokan/1.jpg') }}" alt="Vendor" width="930" height="446"
+                                <img src="{{ asset('/storage/seller/'.$seller->banner_image) }}" alt="Vendor" width="930" height="446"
                                     style="background-color: #414960;" />
                             </figure>
                             <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="{{ asset('front-style/assets/images/vendor/brand/1.jpg') }}" alt="Brand" width="80"
-                                        height="80" />
+                                <figure class="mb-3">
+                                    <img src="{{ asset('/storage/seller/'.$seller->brand) }}" alt="Brand" width="100px"
+                                        height="100px" style="object-fit: contain" />
                                 </figure>
                                 <h4 class="store-title">{{ $seller->full_name}}</h4>
                                 <ul class="seller-info-list list-style-none mb-6">
@@ -241,14 +241,14 @@
                                         Store Open
                                     </li>
                                 </ul>
-                                <div class="social-icons social-no-color border-thin">
+                                {{-- <div class="social-icons social-no-color border-thin">
                                     <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
                                     <a href="#" class="social-icon social-google w-icon-google"></a>
                                     <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
                                     <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
                                     <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
                                     <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- End of Store Banner -->

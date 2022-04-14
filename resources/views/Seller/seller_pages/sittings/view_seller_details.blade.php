@@ -24,12 +24,12 @@
           <div class="col-12">
             <div class="card profile-with-cover">
               <div class="card-img-top img-fluid bg-cover height-300"
-                style="background: url('../../../app-assets/images/carousel/22.jpg') 50%;"></div>
+                style="background: url('/storage/seller/{{ $current_seller->banner_image }}') 50%;"></div>
               <div class="media profil-cover-details w-100">
                 <div class="media-left pl-2 pt-2">
                   <a href="#" class="profile-image">
-                    <img src="../../../app-assets/images/portrait/small/avatar-s-8.png"
-                      class="rounded-circle img-border height-100" alt="Card image">
+                    <img src="{{ '/storage/seller/'. $current_seller->photo }}"
+                      class="rounded-circle img-border" width="100px" height="100px" style="object-fit: cover" alt="Card image">
                   </a>
                 </div>
                 <div class="media-body pt-3 px-2">
@@ -37,14 +37,7 @@
                     <div class="col">
                       <h3 class="card-title">{{ $current_seller->full_name }}</h3>
                     </div>
-                    <div class="col text-right">
-                      <button type="button" class="btn btn-primary d-"><i class="la la-plus"></i> Edit Shop
-                        Info</button>
-                      <div class="btn-group d-none d-md-block float-right ml-2" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-success"><i class="la la-dashcube"></i> Edit
-                          Password</button>
-                        <button type="button" class="btn btn-success"><i class="la la-user"></i></button>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -61,7 +54,14 @@
   <div class="content-wrapper">
 
       <div class="content-body">
-
+        @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>
+                {!! implode('<br/>', $errors->all('<span>:message</span>')) !!}
+            </strong>
+        </div>
+        @endif
           <!-- Form wzard with step validation section start -->
           <section id="icon-tabs">
               <div class="row">
@@ -87,10 +87,10 @@
                                               </div>
                                               <div class="col-md-6">
                                                   <div class="form-group">
-                                                      <label for="lastName2" style="font-size: 15px">User Name : <b
+                                                      <label for="username" style="font-size: 15px">User Name : <b
                                                               style="color: red">*</b></label>
                                                       <input type="text" name="username" class="form-control"
-                                                          id="lastName2" value="{{ $current_seller->username }}">
+                                                          id="username" value="{{ $current_seller->username }}">
                                                   </div>
                                               </div>
                                           </div>
@@ -108,7 +108,10 @@
                                                       <label for="location2" style="font-size: 15px">Your Photo : <b
                                                               style="color: red">*</b></label>
                                                       <input type="file" accept="image/png,image/jpeg,.jpg" name="photo" class="form-control" id="photo" value="{{ $current_seller->photo }}">
-                                                      <img src="{{ $current_seller->photo }}" width="50px">
+                                                        <div class="d-flex mt-2">
+                                                          <h6 class="pr-2 " style="color: rgb(22 163 74)"> Current Photo :</h6> 
+                                                          <img src="{{ '/storage/seller/'. $current_seller->photo }}" width="50px">
+                                                        </div>
                                                   </div>
                                               </div>
                                           </div>
@@ -133,7 +136,7 @@
                                                       <label for="license" style="font-size: 15px">Update License : <b
                                                               style="color: red">*</b></label>
                                                       <input type="file" name="license" accept=".pdf" class="form-control"
-                                                          id="license" {{ $current_seller->document }}>
+                                                          id="license" value="{{ $current_seller->document }}" >
                                                           <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: Max Size is up to 2 MB </small>
                                                   </div>
                                                   <div class="form-group">
@@ -145,7 +148,7 @@
                                                   <div class="form-group">
                                                     <label for="brand" style="font-size: 15px">Your Shop Banner : </label>
                                                     <input type="file" name="shop_banner" class="form-control"
-                                                        id="banner" accept=".png,.jpg" {{ $current_seller->banner_image }}>
+                                                        id="banner" accept=".png,.jpg" value="{{ $current_seller->banner_image }}">
                                                         <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: If you dont upload your banner section we will use ITAJER Defualt banner </small>
                                                 </div>
                                               </div>
