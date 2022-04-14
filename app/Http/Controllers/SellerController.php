@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
+use App\Models\productOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -48,8 +49,28 @@ class SellerController extends Controller
         $products_sold = Order::where('status' , 1)->count();
         $order_product = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
+
+        // seller product that got sold
+        
+        $total = array(); // get the profit of seller 
+        foreach ($order_product as $profit ){
+            $sold_product = productOrder::where('product_id',$profit->id)->get();
+            $count_sold_product = productOrder::where('product_id',$profit->id)->count();
+            foreach($sold_product as $total_prodcut){
+                // get the total of  products
+                $total_products = product::where('id',$total_prodcut->product_id)->get();
+                foreach ($total_products as $totals_prodcut){
+                    if(!empty($totals_prodcut->offer_price) || $totals_prodcut->offer_price != null){
+                        array_push($total,$totals_prodcut->offer_price);
+                    }else{
+                        array_push($total,$totals_prodcut->price);
+                    }
+                    
+                }
+            }
+        }
         if($current_user){
-            return view('Seller.seller_pages.dashboard',compact('current_user','count_vendors','order_product','products_sold','products')); 
+            return view('Seller.seller_pages.dashboard',compact('count_sold_product','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
         }else{
             return redirect()->route('homepage')->with('error','you do not have permission to access !!!');
         }

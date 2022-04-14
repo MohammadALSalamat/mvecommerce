@@ -144,9 +144,13 @@ class OrderController extends Controller
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
 
+            try {
             
-            Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
-            Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
+                Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
+                Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
+                } catch (\Throwable $th) {
+               return back()->with('error','there is something went wrong, please try again!!');
+            }
 
             $save_order = $order->save();
             

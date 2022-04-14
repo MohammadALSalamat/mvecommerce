@@ -36,7 +36,7 @@ class sellerSittingsController extends Controller
            $validator =  Validator::make($data, [
             'shop_banner' => 'max:10240',
             'brand_logo' => 'max:10240',
-            'photo' => 'image|size:10240|max:10240',
+            'photo' => 'max:10240',
             'license' => 'max:10240',
         ]);
        if($validator->fails()){
