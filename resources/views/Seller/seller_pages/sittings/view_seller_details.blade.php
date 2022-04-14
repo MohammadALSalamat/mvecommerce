@@ -24,7 +24,7 @@
           <div class="col-12">
             <div class="card profile-with-cover">
               <div class="card-img-top img-fluid bg-cover height-300"
-                style="background: url('/storage/seller/{{ $current_seller->banner_image }}') 50%;"></div>
+                style="background: url('/storage/seller/{{ $current_seller->banner_image }}') center; background-repeat: no-repeat;" ></div>
               <div class="media profil-cover-details w-100">
                 <div class="media-left pl-2 pt-2">
                   <a href="#" class="profile-image">
@@ -138,18 +138,31 @@
                                                       <input type="file" name="license" accept=".pdf" class="form-control"
                                                           id="license" value="{{ $current_seller->document }}" >
                                                           <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: Max Size is up to 2 MB </small>
+                                                          <div class="d-flex mt-2">
+                                                            
+                                                            <h6 class="pr-2 " style="color: rgb(22 163 74)"> Current License :</h6> 
+                                                            <img src="{{ '/storage/seller/'. $current_seller->document }}" width="50px">
+                                                          </div>
                                                   </div>
                                                   <div class="form-group">
                                                       <label for="brand" style="font-size: 15px">Your Brand Logo : </label>
                                                       <input type="file" name="brand_logo" class="form-control"
                                                           id="brand" accept=".png" value="{{ $current_seller->brand }}">
                                                           <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: If you dont upload your brand logo we will use ITAJER logo </small>
+                                                          <div class="d-flex mt-2">
+                                                            <h6 class="pr-2 " style="color: rgb(22 163 74)"> Current Brand Photo :</h6> 
+                                                            <img src="{{ '/storage/seller/'. $current_seller->brand }}" width="50px">
+                                                          </div>
                                                   </div>
                                                   <div class="form-group">
                                                     <label for="brand" style="font-size: 15px">Your Shop Banner : </label>
                                                     <input type="file" name="shop_banner" class="form-control"
                                                         id="banner" accept=".png,.jpg" value="{{ $current_seller->banner_image }}">
                                                         <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: If you dont upload your banner section we will use ITAJER Defualt banner </small>
+                                                        <div class="d-flex mt-2">
+                                                          <h6 class="pr-2 " style="color: rgb(22 163 74)"> Current Banner Photo :</h6> 
+                                                          <img src="{{ '/storage/seller/'. $current_seller->banner_image }}" width="50px">
+                                                        </div>
                                                 </div>
                                               </div>
                                               <div class="col-md-6">

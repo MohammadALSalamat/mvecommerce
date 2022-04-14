@@ -21,7 +21,7 @@ class UserController extends Controller
     public function activation_sellers()
     {
         $Users = Seller::where('status',0)->get();
-        return view('backend.backend_pages.users.viewusers', compact('Users'));
+        return view('backend.backend_pages.users.activation_sellers', compact('Users'));
     }
     // view create form
     public function createusers()

@@ -75,7 +75,7 @@
                       @foreach ($Users as $user)
                       <tr>
                         <td>{{ $user->id }}</td>
-                        <td><img src="{{asset($user->photo)}}" width="100%" height="50px"
+                        <td><img src="{{asset('storage/seller/'.$user->photo)}}" width="100%" height="50px"
                             alt="{{ $user->title }}"></th>
                         <td>{{ $user->full_name }}</td>
                         <td>{{ $user->role }}</td>
@@ -115,7 +115,7 @@
      <div class="row">
          <!-- left section -->
          <div class="col-6" style="padding:9px">
-            <img src="{{ asset($user->photo) }}" alt="{{ $user->full_name }}">
+            <img src="{{asset('storage/seller/'.$user->photo)}}" alt="{{ $user->full_name }}">
          </div>
          <!-- Right section -->
          <div class="col-6">

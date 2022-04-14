@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
 
 class frontPageController extends Controller
@@ -333,26 +334,47 @@ public function vendor_info(Request $request)
     if($emailCheck > 0){
         return back()->with('error','Email Is Already Exist');
     }
-
+    //checck email if exist
+    $emailCheck = Seller::where('username',$data['username'])->count();
+    if($emailCheck > 0){
+        return back()->with('error','username Is Already Exist');
+    }
+    $shop_name_checker = Seller::where('shop_name', $data['shop-name'])->count();
+    if($shop_name_checker > 0){
+        return back()->with('error', 'shop name is Already there , please change it');
+    }
+    $shop_name_checker = Seller::where('username', $data['username'])->count();
+    if($shop_name_checker > 0){
+        return back()->with('error', 'User name is Already there , please change it');
+    }
+       //checck email if exist
+       $validator =  Validator::make($data, [
+        'brand_logo' => 'max:10240',
+        'photo' => 'max:10240',
+        'license' => 'max:10240',
+    ]);
+   if($validator->fails()){
+    return back()->with('error','your Images are too big to be uploaded');
+   }
         //get the attached License
         $attachment = $request->file('license');
         $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
-        $filename = Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
-
+        Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
+        $filename =$name_filename;
 
 
         //get the attached personal Photo
         $attachment = $request->file('photo');
         $name_filephoto = time() . '.' . $attachment->getClientOriginalExtension();
-        $filephoto = Storage::disk('public')->put('seller/'.$name_filephoto,File::get($attachment));
-
+        Storage::disk('public')->put('seller/'.$name_filephoto,File::get($attachment));
+        $filephoto = $name_filephoto;
 
           //get the attached company brand logo
           $attachment = $request->file('brand_logo');
           $name_filebrandLogo = time() . '.' . $attachment->getClientOriginalExtension();
           // create folder
-          $file_brand_logo = Storage::disk('public')->put('seller/'.$name_filebrandLogo,File::get($attachment));
-          
+          Storage::disk('public')->put('seller/'.$name_filebrandLogo,File::get($attachment));
+          $file_brand_logo = $name_filebrandLogo;
         // send email to hold it before activation 
     $adminData = [
         'email' => $data['email'],
@@ -361,7 +383,7 @@ public function vendor_info(Request $request)
         'type_of_work' => $data['type_of_work'],
         'shopname'=> $data['shop-name'],
         'address' => $data['address'],
-        // 'license' =>$filename,
+        'license' =>$filename,
         'country' =>$data['country']
     ];
     $newdata = [
@@ -373,9 +395,7 @@ public function vendor_info(Request $request)
         'address' => $data['address'],
         'country' =>$data['country']
     ];
-    Mail::to($data['email'])->send(new verficationVendors($newdata));
-    //send the data to admin to verify the user 
-    Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
+    
     $addnewvendor = new Seller();
     $addnewvendor->full_name = $data['name'];
     $addnewvendor->username = $data['username'];
@@ -394,6 +414,15 @@ public function vendor_info(Request $request)
     $addnewvendor->type_of_work = $data['type_of_work'];
     $addnewvendor->save();
 
+    try {
+        Mail::to($data['email'])->send(new verficationVendors($newdata));
+        //send the data to admin to verify the user 
+        Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
+    } catch (\Throwable $th) {
+        //throw $th;
+        return back()->with('error','your email has problem');
+    }
+  
     return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
 }
