@@ -130,7 +130,7 @@
             </div>
         </div>
         <!-- End of Iocn Box Wrapper -->
-<!-- third section -->
+    <!-- third section -->
         <div class="pt-6 pb-8 row category-banner-wrapper appear-animate">
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed br-xs">
@@ -167,8 +167,7 @@
                 </div>
             </div>
         </div>
-        <!-- End of Category Banner Wrapper -->
-
+    <!-- End of Category Banner Wrapper -->
         <div class="mb-8 row deals-wrapper appear-animate">
             <div class="mb-4 col-lg-9">
                 <div class="single-product h-100 br-sm">
@@ -267,20 +266,16 @@
                                                 <h2 class="mb-1 product-title"><a
                                                         href="product-default.html">Coat Pool
                                                         Comfort Jacket</a></h2>
-
                                                 <hr class="product-divider">
-
                                                 <div class="product-price"><ins class="new-price ls-50">$150.00
                                                         -
                                                         $180.00</ins></div>
-
                                                 <div class="flex-wrap product-countdown-container">
                                                     <label class="mr-2 text-default">Offer Ends In:</label>
                                                     <div class="product-countdown countdown-compact"
                                                         data-until="2022, 12, 31" data-compact="true">
                                                         629 days, 11: 59: 52</div>
                                                 </div>
-
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
                                                         <span class="ratings" style="width: 80%;"></span>
@@ -288,12 +283,9 @@
                                                     </div>
                                                     <a href="#" class="rating-reviews">(3 Reviews)</a>
                                                 </div>
-
-                                                <div
-                                                    class="mb-3 product-form product-variation-form product-size-swatch">
+                                                <div class="mb-3 product-form product-variation-form product-size-swatch">
                                                     <label class="mb-1">Size:</label>
-                                                    <div
-                                                        class="flex-wrap d-flex align-items-center product-variations">
+                                                    <div class="flex-wrap d-flex align-items-center product-variations">
                                                         <a href="#" class="size">Extra Large</a>
                                                         <a href="#" class="size">Large</a>
                                                         <a href="#" class="size">Medium</a>
@@ -301,19 +293,16 @@
                                                     </div>
                                                     <a href="#" class="product-variation-clean">Clean All</a>
                                                 </div>
-
                                                 <div class="product-variation-price">
                                                     <span></span>
                                                 </div>
-
                                                 <div class="pt-4 product-form">
                                                     <div class="mb-2 mr-2 product-qty-form">
                                                         <div class="input-group">
-                                                            <input class="quantity form-control" type="number"
-                                                                min="1" max="10000000">
+                                                            <input class="quantity form-control" 
+                                                            type="number" min="1" max="10000000">
                                                             <button class="quantity-plus w-icon-plus"></button>
-                                                            <button
-                                                                class="quantity-minus w-icon-minus"></button>
+                                                            <button class="quantity-minus w-icon-minus"></button>
                                                         </div>
                                                     </div>
                                                     <button class="btn btn-primary btn-cart">
@@ -321,28 +310,20 @@
                                                         <span>Add to Cart</span>
                                                     </button>
                                                 </div>
-
                                                 <div class="mt-1 social-links-wrapper">
                                                     <div class="social-links">
                                                         <div class="social-icons social-no-color border-thin">
-                                                            <a href="#"
-                                                                class="social-icon social-facebook w-icon-facebook"></a>
-                                                            <a href="#"
-                                                                class="social-icon social-twitter w-icon-twitter"></a>
-                                                            <a href="#"
-                                                                class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                                                            <a href="#"
-                                                                class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                                            <a href="#"
-                                                                class="social-icon social-youtube fab fa-linkedin-in"></a>
+                                                            <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                                            <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+                                                            <a href="#" class="social-icon social-pinterest fab fa-pinterest-p"></a>
+                                                            <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
+                                                            <a href="#" class="social-icon social-youtube fab fa-linkedin-in"></a>
                                                         </div>
                                                     </div>
                                                     <span class="divider d-xs-show"></span>
                                                     <div class="product-link-wrapper d-flex">
-                                                        <a href="#"
-                                                            class="btn-product-icon btn-wishlist w-icon-heart"></a>
-                                                        <a href="#"
-                                                            class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"></a>
+                                                        <a href="#" class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -352,17 +333,14 @@
                                 <div class="swiper-slide">
                                     <div class="product product-single row">
                                         <div class="col-md-6">
-                                            <div
-                                                class="product-gallery product-gallery-sticky product-gallery-vertical">
-                                                <div
-                                                    class="swiper-container product-single-swiper swiper-theme nav-inner">
+                                            <div class="product-gallery product-gallery-sticky product-gallery-vertical">
+                                                <div class="swiper-container product-single-swiper swiper-theme nav-inner">
                                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                                         <div class="swiper-slide">
                                                             <figure class="product-image">
-                                                                <img src="{{asset('front-style/assets/images/demos/demo1/products/2-1-600x675.jpg')}}"
-                                                                    data-zoom-image="{{asset('front-style/assets/images/demos/demo1/products/2-1-800x900.jpg')}}"
-                                                                    alt="Product Image" width="800"
-                                                                    height="900">
+                                                                <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-1-600x675.jpg') }}"
+                                                                    data-zoom-image="{{ asset('front-style/assets/images/demos/demo1/products/2-1-800x900.jpg') }}"
+                                                                    alt="Product Image" width="800" height="900">
                                                             </figure>
                                                         </div>
                                                         <div class="swiper-slide">
@@ -393,16 +371,15 @@
                                                     <button class="swiper-button-next"></button>
                                                     <button class="swiper-button-prev"></button>
                                                     <div class="product-label-group">
-                                                        <label class="product-label label-discount">25%
-                                                            Off</label>
+                                                        <label class="product-label label-discount">25% Off</label>
                                                     </div>
                                                 </div>
                                                 <div class="product-thumbs-wrap swiper-container"
                                                     data-swiper-options="{
                                                     'breakpoints': {
                                                         '992': {
-                                                            'direction': 'vertical',
-                                                            'slidesPerView': 'auto'
+                                                        'direction': 'vertical',
+                                                        'slidesPerView': 'auto'
                                                         }
                                                     }
                                                 }">
@@ -410,19 +387,19 @@
                                                         class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                                         <div class="product-thumb swiper-slide">
                                                             <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-1-600x675.jpg') }}"
-                                                                alt="Product thumb" width="60" height="68" />
+                                                            alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
                                                             <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-2-600x675.jpg') }}"
-                                                                alt="Product thumb" width="60" height="68" />
+                                                            alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
                                                             <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-3-600x675.jpg') }}"
-                                                                alt="Product thumb" width="60" height="68" />
+                                                            alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                         <div class="product-thumb swiper-slide">
                                                             <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-4-600x675.jpg') }}"
-                                                                alt="Product thumb" width="60" height="68" />
+                                                            alt="Product thumb" width="60" height="68" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -433,45 +410,38 @@
                                                 <h2 class="mb-1 product-title"><a
                                                         href="product-default.html">Coat Pool
                                                         Comfort Jacket</a></h2>
-
                                                 <hr class="product-divider">
-
                                                 <div class="product-price"><ins class="new-price ls-50">$150.00
                                                         -
                                                         $180.00</ins></div>
-
                                                 <div class="flex-wrap product-countdown-container">
                                                     <label class="mr-2 text-default">Offer Ends In:</label>
                                                     <div class="product-countdown countdown-compact"
                                                         data-until="2022, 12, 31" data-compact="true">
                                                         629 days, 11: 59: 52</div>
                                                 </div>
-
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
-                                                        <span class="ratings" style="width: 80%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    <span class="ratings" style="width: 80%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                     <a href="#" class="rating-reviews">(3 Reviews)</a>
                                                 </div>
-
                                                 <div
                                                     class="mb-3 product-form product-variation-form product-size-swatch">
                                                     <label class="mb-1">Size:</label>
                                                     <div
-                                                        class="flex-wrap d-flex align-items-center product-variations">
-                                                        <a href="#" class="size">Extra Large</a>
-                                                        <a href="#" class="size">Large</a>
-                                                        <a href="#" class="size">Medium</a>
-                                                        <a href="#" class="size">Small</a>
+                                                    class="flex-wrap d-flex align-items-center product-variations">
+                                                    <a href="#" class="size">Extra Large</a>
+                                                    <a href="#" class="size">Large</a>
+                                                    <a href="#" class="size">Medium</a>
+                                                    <a href="#" class="size">Small</a>
                                                     </div>
                                                     <a href="#" class="product-variation-clean">Clean All</a>
                                                 </div>
-
                                                 <div class="product-variation-price">
                                                     <span></span>
                                                 </div>
-
                                                 <div class="pt-4 product-form">
                                                     <div class="mb-2 mr-2 product-qty-form">
                                                         <div class="input-group">
@@ -487,7 +457,6 @@
                                                         <span>Add to Cart</span>
                                                     </button>
                                                 </div>
-
                                                 <div class="mt-1 social-links-wrapper">
                                                     <div class="social-links">
                                                         <div class="social-icons social-no-color border-thin">
@@ -678,7 +647,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-price">
-                                                    <ins class="new-price">$215.68</ins>
+                                                <ins class="new-price">$215.68</ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -701,8 +670,7 @@
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
-                                                <div class="product-price">
-                                                    <ins class="new-price">$320.00</ins>
+                                                <div class="product-price"><ins class="new-price">$320.00</ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -710,7 +678,7 @@
                                             <figure class="product-media">
                                                 <a href="product-default.html">
                                                     <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-8.jpg') }}"
-                                                        alt="Product" width="105" height="118" />
+                                                    alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
                                             <div class="product-details">
@@ -725,7 +693,7 @@
                                                 </div>
                                                 <div class="product-price">
                                                     <ins class="new-price">$243.30</ins><del
-                                                        class="old-price">$253.50</del>
+                                                    class="old-price">$253.50</del>
                                                 </div>
                                             </div>
                                         </div>
@@ -733,7 +701,7 @@
                                             <figure class="product-media">
                                                 <a href="product-default.html">
                                                     <img src="{{ asset('front-style/assets/images/demos/demo1/products/2-9.jpg') }}"
-                                                        alt="Product" width="105" height="118" />
+                                                    alt="Product" width="105" height="118" />
                                                 </a>
                                             </figure>
                                             <div class="product-details">
@@ -742,13 +710,13 @@
                                                 </h4>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
-                                                        <span class="ratings" style="width: 60%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
                                                 <div class="product-price">
                                                     <ins class="new-price">$450.68</ins><del
-                                                        class="old-price">$500.00</del>
+                                                    class="old-price">$500.00</del>
                                                 </div>
                                             </div>
                                         </div>
@@ -758,14 +726,12 @@
                                 <button class="swiper-button-prev"></button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End of Deals Wrapper -->
+    <!-- End of Deals Wrapper -->
     </div>
-
     <section class="pt-10 pb-10 category-section top-category bg-grey appear-animate">
         <div class="container pb-2">
             <h2 class="pt-1 mb-5 title justify-content-center ls-normal">Top Categories Of The Month</h2>
@@ -786,8 +752,7 @@
                     }
                 }">
                     <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
-
-                            @foreach( $categories as $category)
+                        @foreach( $categories as $category)
                         <div
                             class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
@@ -797,8 +762,7 @@
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>
                                 <a href="{{ route('shop_special_category',$category->slug) }}"
-                                    class="btn btn-primary btn-link btn-underline">Shop
-                                    Now</a>
+                                class="btn btn-primary btn-link btn-underline">Shop Now</a>
                             </div>
                         </div>
                         @endforeach
@@ -808,7 +772,6 @@
         </div>
     </section>
     <!-- End of .category-section top-category -->
-
     <div class="container">
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Departments
         </h2>
@@ -828,7 +791,7 @@
                 </li>
             </ul>
         </div>
-        <!-- End of Tab -->
+    <!-- End of Tab -->
         <div class="tab-content product-wrapper appear-animate">
             <div class="pt-4 tab-pane active" id="tab1-1">
                 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
@@ -1951,8 +1914,7 @@
             </div>
             <!-- End of Tab Pane -->
         </div>
-        <!-- End of Tab Content -->
-
+    <!-- End of Tab Content -->
         <div class="mb-5 row category-cosmetic-lifestyle appear-animate">
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed category-banner-1 br-xs">
@@ -1987,7 +1949,7 @@
                 </div>
             </div>
         </div>
-        <!-- End of Category Cosmetic Lifestyle -->
+    <!-- End of Category Cosmetic Lifestyle -->
 @foreach ($home_3_Categories as $item)
 <div class="mb-5 product-wrapper-1 appear-animate">
     <div class="pb-1 mb-4 title-link-wrapper">
@@ -2057,12 +2019,11 @@
                                 </div>
                                 <div class="product-price">
                                     @if (empty($products_cat->offer_price) || $products_cat->offer_price == null)
-                                         <ins class="new-price">{{ $products_cat->price }}AED</ins>
+                                        <ins class="new-price">{{ $products_cat->price }}AED</ins>
                                     @else
-                                         <ins class="new-price">{{ $products_cat->offer_price }} AED</ins><del
+                                        <ins class="new-price">{{ $products_cat->offer_price }} AED</ins><del
                                         class="old-price">{{ $products_cat->price }} AED</del>
                                     @endif
-                                   
                                 </div>
                             </div>
                         </div>
@@ -2076,8 +2037,6 @@
     </div>
 </div>
 @endforeach
-
-
         <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(front-style/assets/images/demos/demo1/banners/4.jpg);
             background-color: #383839;">
             <div class="banner-content align-items-center">
@@ -2104,8 +2063,6 @@
             </div>
         </div>
         <!-- End of Banner Fashion -->
-
-
         <h2 class="mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
         <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
             'spaceBetween': 0,
@@ -2189,7 +2146,6 @@
             </div>
         </div>
         <!-- End of Brands Wrapper -->
-
         <div class="mb-4 post-wrapper appear-animate">
             <div class="pb-1 mb-4 title-link-wrapper">
                 <h2 class="mb-0 title ls-normal">From Our Blog</h2>
@@ -2292,7 +2248,6 @@
             </div>
         </div>
         <!-- Post Wrapper -->
-
         <h2 class="mb-4 title title-underline ls-normal appear-animate">Your Recent Views</h2>
         <div class="pb-4 mb-8 swiper-container swiper-theme shadow-swiper appear-animate" data-swiper-options="{
             'spaceBetween': 20,

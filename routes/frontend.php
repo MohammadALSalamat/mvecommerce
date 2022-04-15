@@ -97,6 +97,10 @@ Route::post('checkout/process',[OrderController::class,'checkout_process'])->nam
 
 Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit'])->name('review_submit');
 
+
+// channge language
+Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.switch');
+
 // user dashboard and settings
 
 Route::group(['perfix'=>'user'],function(){

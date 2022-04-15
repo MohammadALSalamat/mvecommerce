@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>ITajer | @yield('mytitle')</title>
+    <title>ITajer | @yield('mytitle')</title>
 
-        <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
-        <meta name="description"
-            content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
-        <meta name="author" content="D-THEMES">
+    <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
+    <meta name="description" content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
+    <meta name="author" content="D-THEMES">
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="{{asset('front-style/assets/images/icons/favicon.png')}}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{asset('front-style/assets/images/icons/favicon.png')}}">
 
-        <!-- WebFont.js -->
-        <script>
-            WebFontConfig = {
-                google: { families: ['Poppins:400,500,600,700,800'] }
-            };
-            (function (d) {
-                var wf = d.createElement('script'), s = d.scripts[0];
-                wf.src = 'front-style/assets/js/webfont.js';
-                wf.async = true;
-                s.parentNode.insertBefore(wf, s);
-            })(document);
-        </script>
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: ['Poppins:400,500,600,700,800']
+            }
+        };
+        (function(d) {
+            var wf = d.createElement('script'),
+                s = d.scripts[0];
+            wf.src = 'front-style/assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
 
-        <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
-            crossorigin="anonymous">
-        <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}" as="font" type="font/woff2"
-            crossorigin="anonymous">
-        <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2')}}" as="font" type="font/woff2"
-            crossorigin="anonymous">
-        <link rel="preload" href="{{ asset('front-style/assets/fonts/wolmart.woff?png09e" as="font" type="font/woff')}}" crossorigin="anonymous">
+    <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}"
+        as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}"
+        as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{{ asset('front-style/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2')}}"
+        as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{{ asset('front-style/assets/fonts/wolmart.woff?png09e" as="font" type="font/woff')}}"
+        crossorigin="anonymous">
 
-        <!-- Vendor CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/fontawesome-free/css/all.min.css')}}">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('front-style/assets/vendor/fontawesome-free/css/all.min.css')}}">
 
-        <!-- Plugins CSS -->
-        <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/animate/animate.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/magnific-popup/magnific-popup.min.css')}}">
-        <!-- Link Swiper's CSS -->
-        <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css')}}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/animate/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('front-style/assets/vendor/magnific-popup/magnific-popup.min.css')}}">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css')}}">
 
-        <!-- Default CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo1.min.css')}}">
-                <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css')}}">
+    <!-- Default CSS -->
+    @if(Config::get('app.locale') == 'en')
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo1.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css')}}">
+    @else
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo-rtl.min.css')}}">
+    @endif
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-	<link rel="stylesheet" type="text/css"
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-               @yield('style')
+    @yield('style')
 
 </head>
 
-<body class = "home my-account">
+<body class="home my-account" @if(Config::get('app.locale') == 'en') @else dir="rtl" @endif>
     <div class="page-wrapper">
-  <!-- Start of Header -->
-  <header class="header" id="header-ajax">
-    @include('frontend.frontend_layout.header')
-  </header>
-    @yield('content')
-    @include('frontend.frontend_layout.footer')
+        <!-- Start of Header -->
+        <header class="header" id="header-ajax">
+            @include('frontend.frontend_layout.header')
+        </header>
+        @yield('content')
+        @include('frontend.frontend_layout.footer')
 
     </div>
     <!-- End of Page-wrapper-->
@@ -106,7 +114,8 @@
                         </div>
                         <figure class="product-media">
                             <a href="product-default.html">
-                                <img src="{{asset('front-style/assets/images/cart/product-1.jpg')}}" alt="product" height="84" width="94" />
+                                <img src="{{asset('front-style/assets/images/cart/product-1.jpg')}}" alt="product"
+                                    height="84" width="94" />
                             </a>
                         </figure>
                         <button class="btn btn-link btn-close" aria-label="button">
@@ -127,7 +136,8 @@
                         </div>
                         <figure class="product-media">
                             <a href="product-default.html">
-                                <img src="{{asset('front-style/assets/images/cart/product-2.jpg')}}" alt="product" width="84" height="94" />
+                                <img src="{{asset('front-style/assets/images/cart/product-2.jpg')}}" alt="product"
+                                    width="84" height="94" />
                             </a>
                         </figure>
                         <button class="btn btn-link btn-close" aria-label="button">
@@ -705,20 +715,20 @@
                     }">
                         <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                             <div class="product-thumb swiper-slide">
-                                <img src="{{asset('front-style/assets/images/products/popup/1-103x116.jpg')}}" alt="Product Thumb" width="103"
-                                    height="116">
+                                <img src="{{asset('front-style/assets/images/products/popup/1-103x116.jpg')}}"
+                                    alt="Product Thumb" width="103" height="116">
                             </div>
                             <div class="product-thumb swiper-slide">
-                                <img src="{{asset('front-style/assets/images/products/popup/2-103x116.jpg')}}" alt="Product Thumb" width="103"
-                                    height="116">
+                                <img src="{{asset('front-style/assets/images/products/popup/2-103x116.jpg')}}"
+                                    alt="Product Thumb" width="103" height="116">
                             </div>
                             <div class="product-thumb swiper-slide">
-                                <img src="{{asset('front-style/assets/images/products/popup/3-103x116.jpg')}}" alt="Product Thumb" width="103"
-                                    height="116">
+                                <img src="{{asset('front-style/assets/images/products/popup/3-103x116.jpg')}}"
+                                    alt="Product Thumb" width="103" height="116">
                             </div>
                             <div class="product-thumb swiper-slide">
-                                <img src="{{asset('front-style/assets/images/products/popup/4-103x116.jpg')}}" alt="Product Thumb" width="103"
-                                    height="116">
+                                <img src="{{asset('front-style/assets/images/products/popup/4-103x116.jpg')}}"
+                                    alt="Product Thumb" width="103" height="116">
                             </div>
                         </div>
                         <button class="swiper-button-next"></button>
@@ -731,7 +741,8 @@
                     <h2 class="product-title">Electronics Black Wrist Watch</h2>
                     <div class="product-bm-wrapper">
                         <figure class="brand">
-                            <img src="{{asset('front-style/assets/images/products/brand/brand-1.jpg')}}" alt="Brand" width="102" height="48" />
+                            <img src="{{asset('front-style/assets/images/products/brand/brand-1.jpg')}}" alt="Brand"
+                                width="102" height="48" />
                         </figure>
                         <div class="product-meta">
                             <div class="product-categories">
@@ -827,142 +838,126 @@
         </div>
     </div>
     <!-- End of Quick view -->
-   <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-    toastr.success("{{ session('message') }}");
-  @endif
+    <script>
+        @if(Session::has('message'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success("{{ session('message') }}");
+        @endif
+        @if(Session::has('error'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.error("{{ session('error') }}");
+        @endif
+        @if(Session::has('info'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.info("{{ session('info') }}");
+        @endif
+        @if(Session::has('warning'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
+    <script src="{{ asset('front-style/assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('front-style/assets/vendor/skrollr/skrollr.min.js')}}"></script>
 
-  @if(Session::has('error'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.error("{{ session('error') }}");
-  @endif
+    <!-- Swiper JS -->
+    <script src="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
-  @if(Session::has('info'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-  		toastr.info("{{ session('info') }}");
-  @endif
-
-  @if(Session::has('warning'))
-  toastr.options =
-  {
-  	"closeButton" : true,
-  	"progressBar" : true
-  }
-    toastr.warning("{{ session('warning') }}");
-  @endif
-</script>
-       <script src="{{ asset('front-style/assets/vendor/jquery/jquery.min.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
-       <script src="{{ asset('front-style/assets/vendor/skrollr/skrollr.min.js')}}"></script>
-
-       <!-- Swiper JS -->
-       <script src="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-
-       <!-- Main JS -->
-       <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
-       @yield('script')
-<!-- add to cart ajax -->
-<script>
-    $(document).on('click','.add-to-cart',function(e){
-        e.preventDefault();
-        // get the data from products
-        var product_id = $(this).data('product-id');
-        var product_quant = $(this).data('quantity');
-        
-        // start sending info using ajax
-
-        var token = "{{ csrf_token() }}";
-        var path = "{{ route('add_to_cart') }}";
-
-        $.ajax({
-            url: path,
-            type: "POST",
-            dataType: "JSON",
-            data: {
-                product_id:product_id,
-                product_quant:product_quant,
-                _token:token,
-            },
-            success: function (data) {
-                $('body #header-ajax').html(data['header']);
-            }
+    <!-- Main JS -->
+    <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
+    @yield('script')
+    <!-- add to cart ajax -->
+    <script>
+        $(document).on('click', '.add-to-cart', function(e) {
+            e.preventDefault();
+            // get the data from products
+            var product_id = $(this).data('product-id');
+            var product_quant = $(this).data('quantity');
+            // start sending info using ajax
+            var token = "{{ csrf_token() }}";
+            var path = "{{ route('add_to_cart') }}";
+            $.ajax({
+                url: path,
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    product_id: product_id,
+                    product_quant: product_quant,
+                    _token: token,
+                },
+                success: function(data) {
+                    $('body #header-ajax').html(data['header']);
+                }
+            });
         });
-    });
-</script>
-<!-- delete the items from the cart on the header -->
-<script>
-    $(document).on('click','.cart_delete',function(e){
-        e.preventDefault();
-        // get the data from products
-        var cart_id = $(this).data('id');
-        
-        // start sending info using ajax
-
-        var token = "{{ csrf_token() }}";
-        var path = "{{ route('cart_delete') }}";
-        $.ajax({
-            url: path,
-            type: "POST",
-            dataType: "JSON",
-            data: {
-                cart_id:cart_id,
-                _token:token,
-            },
-            success: function (data) {
-                $('body #header-ajax').html(data['header']);
-                $('body #cart_lists').html(data['cart_lists']);
-            }
+    </script>
+    <!-- delete the items from the cart on the header -->
+    <script>
+        $(document).on('click', '.cart_delete', function(e) {
+            e.preventDefault();
+            // get the data from products
+            var cart_id = $(this).data('id');
+            // start sending info using ajax
+            var token = "{{ csrf_token() }}";
+            var path = "{{ route('cart_delete') }}";
+            $.ajax({
+                url: path,
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    cart_id: cart_id,
+                    _token: token,
+                },
+                success: function(data) {
+                    $('body #header-ajax').html(data['header']);
+                    $('body #cart_lists').html(data['cart_lists']);
+                }
+            });
         });
-    });
-</script>
+    </script>
 
-<!-- add to wishlist -->
-<script>
-    $(document).on('click','.add_to_wishlist',function(e){
-        e.preventDefault();
-        // get the data from products
-        var product_id = $(this).data('id');
-        var product_quant = $(this).data('quantity');
-        
-        // start sending info using ajax
-
-        var token = "{{ csrf_token() }}";
-        var path = "{{ route('add_to_wishlist') }}";
-
-        $.ajax({
-            url: path,
-            type: "POST",
-            dataType: "JSON",
-            data: {
-                product_id:product_id,
-                product_quant:product_quant,
-                _token:token,
-            },
-            success: function (data) {
-                $('body #header-ajax').html(data['header']);
-                $('body #wishlist_counter').html(data['wishlist_count']);
-            }
+    <!-- add to wishlist -->
+    <script>
+        $(document).on('click', '.add_to_wishlist', function(e) {
+            e.preventDefault();
+            // get the data from products
+            var product_id = $(this).data('id');
+            var product_quant = $(this).data('quantity');
+            // start sending info using ajax
+            var token = "{{ csrf_token() }}";
+            var path = "{{ route('add_to_wishlist') }}";
+            $.ajax({
+                url: path,
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    product_id: product_id,
+                    product_quant: product_quant,
+                    _token: token,
+                },
+                success: function(data) {
+                    $('body #header-ajax').html(data['header']);
+                    $('body #wishlist_counter').html(data['wishlist_count']);
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 
 </html>
-

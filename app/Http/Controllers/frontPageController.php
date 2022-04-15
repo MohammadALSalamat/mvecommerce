@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Helper;
-use Session;
 use App\Models\User;
 use App\Models\banner;
 use App\Models\Seller;
@@ -18,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -638,4 +639,16 @@ public function single_seller($id)
         }
     }
 
+
+
+    //+++++++++++++++++++++++++++++++ Languages Switcher ++++++++++++++++++++++++++//
+
+    public function switchLang($lang)
+    {
+       
+       if(array_key_exists($lang,Config::get('languages'))){
+        Session::put('applocale',$lang);
+       }
+       return Redirect::back();
+    }
 }

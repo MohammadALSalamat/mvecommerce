@@ -1,8 +1,15 @@
     <div class="header-top">
         <div class="container">
+            @if(Config::get('app.locale') == 'en')
+
             <div class="header-left">
-                <p class="welcome-msg">Welcome to ITajer Store message or remove it!</p>
+                <p class="welcome-msg">Welcome to ITajer Store Get the best Deals with us !</p>
             </div>
+            @else
+            <div class="header-left">
+                <p class="welcome-msg">مرحبا بك في متجرنا . معنا ستحصل على افضل العروض وبارخص الاسعار</p>
+            </div>
+            @endif
             <div class="header-right">
                 <div class="dropdown">
                     <a href="#currency">USD</a>
@@ -14,24 +21,24 @@
                 <!-- End of DropDown Menu -->
 
                 <div class="dropdown">
-                    <a href="#language"><img src="{{ asset('front-style/assets/images/flags/eng.png')}}" alt="ENG Flag"
-                            width="14" height="8" class="dropdown-image" /> ENG</a>
-                    <div class="dropdown-box">
-                        <a href="#ENG">
-                            <img src="assets/images/flags/eng.png" alt="ENG Flag" width="14" height="8"
-                                class="dropdown-image" />
-                            ENG
+                    @if(Config::get('app.locale') == 'en')
+                    <a href="{{ route('lang.switch','ar') }}">
+                        <img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag"
+                            width="14" height="8" class="dropdown-image" /> Ar
                         </a>
-                        <a href="#FRA">
-                            <img src="{{ asset('front-style/assets/images/flags/fra.png')}}" alt="FRA Flag" width="14"
-                                height="8" class="dropdown-image" />
-                            FRA
+                    @else
+                    <a href="{{ route('lang.switch','en') }}">
+                        <img src="{{ asset('front-style/assets/images/flags/eng.png')}}" alt="ENG Flag"
+                            width="14" height="8" class="dropdown-image" /> ENG
                         </a>
-                    </div>
+                    @endif
+                    
                 </div>
                 <!-- End of Dropdown Menu -->
+                <!-- Change the language -->
+                @if(Config::get('app.locale') == 'en')
+
                 <span class="divider d-lg-show"></span>
-                <a href="blog.html" class="d-lg-show">Blog</a>
                 <a href="contact-us.html" class="d-lg-show">Contact Us</a>
                 @auth
                 <div class="dropdown">
@@ -49,6 +56,29 @@
                 <a href="{{route('loginForm')}}"
                     class="ml-0 d-lg-show ">Register</a>
                 @endauth
+
+                @else
+<!-- Arabice Version -->
+                <span class="divider d-lg-show"></span>
+                <a href="contact-us.html" class="d-lg-show">أتصل بنا</a>
+                @auth
+                <div class="dropdown">
+                    <a href="">حسابي</a>
+                    <div class="dropdown-box" style="max-width: 400px;min-width:100px">
+                        <a href="#USD">مرحبا {{ auth()->user()->full_name }}</a>
+                        <a href="{{ route('userdashboard') }}">لوحة التحكم</a>
+                        <a class="" href="{{ route('logout_front_user') }}">تسجيل الخروج </a>
+
+                    </div>
+                </div>
+                @else
+                <a href="{{route('loginForm')}}" class=""><i class="w-icon-account"></i>تسجيل الدخول</a>
+                <span class="delimiter d-lg-show">/</span>
+                <a href="{{route('loginForm')}}"
+                    class="ml-0 d-lg-show ">حساب جديد</a>
+                @endauth
+
+                @endif
             </div>
         </div>
     </div>
