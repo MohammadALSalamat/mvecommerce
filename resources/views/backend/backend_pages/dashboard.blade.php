@@ -13,6 +13,7 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
+                      
                         @if (Config::get('app.locale') == 'en')
                         <h3 class="success">{{ $products_sold }}</h3>
                         <h6>Products Sold</h6>
@@ -48,8 +49,7 @@
                     @endphp
                         @if (Config::get('app.locale') == 'en')
                         <h3 class="success">
-                          
-                           {{ array_sum($total).' AED ' }}
+                          {{ array_sum($total).' AED ' }}
                         </h3>
                         <h6>Net Profit</h6>
                         @else

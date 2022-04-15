@@ -66,7 +66,7 @@
          @endif
          @endforeach
          @else
-         <li class=" text-red-700"> There is no Categries to Filter</li>
+         <li class=" text-red-700"> There is no Sellers to Filter</li>
          @endif
 
      </ul>
@@ -104,7 +104,7 @@
  <!-- End of Collapsible Widget -->
 
  <!-- Start of Collapsible Widget -->
- <div class="widget widget-collapsible">
+ {{-- <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Size</label></h3>
      <ul class="mt-1 widget-body filter-items item-check">
          <li><a href="#">Extra Large</a></li>
@@ -112,11 +112,11 @@
          <li><a href="#">Medium</a></li>
          <li><a href="#">Small</a></li>
      </ul>
- </div>
+ </div> --}}
  <!-- End of Collapsible Widget -->
 
  <!-- Start of Collapsible Widget -->
- <div class="widget widget-collapsible">
+ {{-- <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Color</label></h3>
      <ul class="mt-1 widget-body filter-items item-check">
          <li><a href="#">Black</a></li>
@@ -127,5 +127,5 @@
          <li><a href="#">Orange</a></li>
          <li><a href="#">Yellow</a></li>
      </ul>
- </div>
+ </div> --}}
  <!-- End of Collapsible Widget -->

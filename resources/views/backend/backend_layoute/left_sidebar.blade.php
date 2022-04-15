@@ -1,10 +1,11 @@
   <!-- ////////////////////////////////////////////////////////////////////////////-->
+  @if (Config::get('app.locale') == 'en')
   <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a href="{{ route('admin') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="float-right mr-2 badge badge-info badge-pill">0</span></a>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">Users Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">Users Management</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('viewusers') }}" data-i18n="nav.templates.vert.main">View Users</a>
             </li>
@@ -13,7 +14,7 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">Products Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">Products Management</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('viewproducts') }}" data-i18n="nav.templates.vert.main">View Products</a>
             </li>
@@ -23,7 +24,7 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title" data-i18n="nav.page_layouts.main">Category Managment</span><span class="float-right mr-2 badge badge-pill badge-danger">New</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title" data-i18n="nav.page_layouts.main">Category Management</span><span class="float-right mr-2 badge badge-pill badge-danger">New</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('viewcategories') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Categories</a>
             </li>
@@ -31,13 +32,13 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">Orders Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">Orders Management</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('view_order') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Orders</a>
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">Banners Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">Banners Management</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('bannersview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Banners</a>
             </li>
@@ -45,7 +46,7 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Brands Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Brands Management</span></a>
             <ul class="menu-content">
                 <li><a class="menu-item" href="{{ route('viewbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Brands</a>
                 </li>
@@ -53,7 +54,7 @@
                 </li>
               </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Coupons Management</span></a>
             <ul class="menu-content">
                 <li><a class="menu-item" href="{{ route('view_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Coupons</a>
                 </li>
@@ -61,7 +62,7 @@
                 </li>
               </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Shipping Managment</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Shipping Management</span></a>
             <ul class="menu-content">
                 <li><a class="menu-item" href="{{ route('view_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Shipping</a>
                 </li>
@@ -127,3 +128,92 @@
       </ul>
     </div>
   </div>
+  @else
+  <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="main-menu-content">
+      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+        <li class=" nav-item"><a href="{{ route('admin') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">لوحة التخكم</span><span class="float-right mr-2 badge badge-info badge-pill">0</span></a>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">إدارة المستخدمين</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('viewusers') }}" data-i18n="nav.templates.vert.main">عرض المستخدمين</a>
+            </li>
+            <li><a class="menu-item" href="{{ route('createusers') }}" data-i18n="nav.templates.horz.main">أنشئ مستخدمين</a>
+            <li><a class="menu-item" href="{{ route('activation_sellers') }}" data-i18n="nav.templates.horz.main">تنشيط البائعين</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">إدارة المنتجات</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('viewproducts') }}" data-i18n="nav.templates.vert.main">عرض المنتجات</a>
+            </li>
+            <li><a class="menu-item" href="{{ route('adminviewproducts') }}" data-i18n="nav.templates.vert.main">عرض منتجات المدير</a>
+            </li>
+            <li><a class="menu-item" href="{{ route('createproducts') }}" data-i18n="nav.templates.horz.main">إنشاء المنتجات</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title" data-i18n="nav.page_layouts.main">إدارة اﻷقسام</span><span class="float-right mr-2 badge badge-pill badge-danger">New</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('viewcategories') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض اﻷقسام</a>
+            </li>
+             <li><a class="menu-item" href="{{ route('createcategories') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة قسم</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">أدارة الطلبات </span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('view_order') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الطلبات </a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main"> إدارة اللافتات و العروض </span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('bannersview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الافتات</a>
+            </li>
+             <li><a class="menu-item" href="{{ route('createbanner') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة لافتة أو عرض</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">أدارة الشركاء</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('viewbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الشركاء</a>
+                </li>
+                <li><a class="menu-item" href="{{ route('createbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة شريك</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">أدارة الخصم </span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('view_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الخصم</a>
+                </li>
+                 <li><a class="menu-item" href="{{ route('create_coupon') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة خصم</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">إدارة الشحن</span></a>
+            <ul class="menu-content">
+                <li><a class="menu-item" href="{{ route('view_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">جميع معلومات إدارة الشحن</a>
+                </li>
+                <li><a class="menu-item" href="{{ route('create_shipping') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة معلومات إدارة الشحن</a>
+                </li>
+              </ul>
+        </li>
+        <li class=" nav-item">
+          <a class="" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+                                        {{ __('تسجيل الخروج') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    
+        </li>
+        <li>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  @endif

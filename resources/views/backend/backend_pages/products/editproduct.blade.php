@@ -223,32 +223,7 @@ input:checked + .slider:before {
                                                         name="return_policy" placeholder="Write Something ">{!! $current_product->return_policy !!}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput46">Size</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput46" name="size" class="form-control">
-                                                        <option value="none" ><-- Product Size -->
-                                                        </option>
-                                                        <option value="Small" @if ($current_product->size == "Small" || $current_product->size == "S" ) selected @endif >Small </option>
-                                                        <option value="Medium"  @if ($current_product->size == "Medium" || $current_product->size == "M") selected @endif >Medium </option>
-                                                        <option value="Large"  @if ($current_product->size == "Large" || $current_product->size == "L") selected @endif  >Large </option>
-                                                        <option value="XLarge"  @if ($current_product->size == "XLarge" || $current_product->size == "XL") selected @endif  >XLarge </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput96">Condition</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput96" name="condition" class="form-control">
-                                                        <option value="none" ><-- Product condition -->
-                                                        </option>
-                                                        <option value="New" @if ($current_product->conditions == "New") selected @endif >New </option>
-                                                        <option value="Popular" @if ($current_product->conditions == "Popular") selected @endif >Popular </option>
-                                                        <option value="Old" @if ($current_product->conditions == "Old") selected @endif >Old </option>
-                                                        <option value="Second Hand" @if ($current_product->conditions == "Second Hand") selected @endif >Second Hand </option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput30">Stock</label>
                                                 <div class="col-md-9">

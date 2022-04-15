@@ -24,13 +24,14 @@ class CreateSellersTable extends Migration
             $table->text('address')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->txt('photo')->nullable();
+            $table->text('photo')->nullable();
             $table->text('brand')->nullable();
             $table->text('document')->nullable();
+            $table->text('banner_image')->nullable();
             $table->string('is_verify')->default(0);
             $table->boolean('status')->default(0);
-            $table->string('type_of_work')->nullable(0);
-            $table->string('added_by')->nullable(0);
+            $table->string('type_of_work')->default('personal');
+            $table->string('added_by')->default('seller');
             $table->rememberToken();
             $table->timestamps();
         });

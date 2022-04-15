@@ -223,32 +223,7 @@ input:checked + .slider:before {
                                                         name="return_policy" placeholder="Write Something ">{{ old('return_policy') }}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput46">Size</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput46" name="size" class="form-control">
-                                                        <option value="none" ><-- Product Size -->
-                                                        </option>
-                                                        <option value="Small" >Small </option>
-                                                        <option value="Medium" >Medium </option>
-                                                        <option value="Large" >Large </option>
-                                                        <option value="XLarge" >XLarge </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput96">Condition</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput96" name="condition" class="form-control">
-                                                        <option value="none" ><-- Product condition -->
-                                                        </option>
-                                                        <option value="New" >New </option>
-                                                        <option value="Popular" >Popular </option>
-                                                        <option value="Old" >Old </option>
-                                                        <option value="Second Hand" >Second Hand </option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput30">Stock</label>
                                                 <div class="col-md-9">

@@ -92,8 +92,6 @@ class ProductController extends Controller
         $addproduct->return_policy = $data['return_policy'];
         $addproduct->Summary = $data['summary'];
         $addproduct->category_id = $data['category'];
-        $addproduct->size = $data['size'];
-        $addproduct->conditions = $data['condition'];
         $addproduct->stock = $data['stock'];
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
@@ -177,8 +175,6 @@ class ProductController extends Controller
         'description' => $data['comment'],
         'Summary' => $data['summary'],
         'category_id' => $data['category'],
-        'size' => $data['size'],
-        'conditions' => $data['condition'],
         'stock' => $data['stock'],
         'price' => $data['price'],
         'offer_price' => $data['offer_price'],

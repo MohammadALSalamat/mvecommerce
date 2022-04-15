@@ -101,7 +101,7 @@ class frontPageController extends Controller
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
-        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
 
         
         return view('frontend.frontend_pages.products.shop',compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
@@ -278,6 +278,9 @@ class frontPageController extends Controller
         }
         return redirect()->route('shop_page',$catUrl.$price_range_url);
     }
+
+
+    
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
 
 public function become_seller()

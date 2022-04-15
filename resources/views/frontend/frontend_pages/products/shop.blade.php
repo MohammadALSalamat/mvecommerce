@@ -58,6 +58,7 @@
                                 </div>
                                 
                             </nav>
+                            @if(!empty($products))
                             <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ($products as $product )
                                 <div class="product-wrap">
@@ -114,13 +115,15 @@
                                 </div> 
                                 @endforeach
                             </div>
-
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
                                     Showing Products
                                 </p>
                                 {{ $products->appends($_GET)->links('vendor.pagination.custompage') }}
                             </div>
+                            @else 
+                            
+                            @endif
                         </div>
                         <!-- End of Shop Main Content -->
 

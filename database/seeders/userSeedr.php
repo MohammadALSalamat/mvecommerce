@@ -17,33 +17,32 @@ class userSeedr extends Seeder
     {
         //insert user as an admin  
         DB::table('users')->insert([
-            'full_name'=>'Mohammad admin',
+            'full_name'=>'Mohammad user',
             'username'=>'admin',
-            'email'=>'alomda.alslmat@gmail.com',
+            'email'=>'abusare45@gmail.com',
             'password'=>Hash::make('12345'),
-            'role'=>'admin',
             'status'=>'active'
 
 
-        ],
-        //insert user as a vendor
-        [
-                'full_name' => 'ahmad vendor',
-                'username' => 'vendor',
-                'email' => 'alomda.alslmat1@gmail.com',
-                'password' => Hash::make('12345'),
-                'role' => 'vendor',
-                'status' => 'active'
-        ],
-            //insert user as a customer
-            [
-                'full_name' => 'ahmad customer',
-                'username' => 'customer',
-                'email' => 'alomda.alslmat2@gmail.com',
-                'password' => Hash::make('12345'),
-                'role' => 'customer',
-                'status' => 'active'
-            ],
-    );
+        ]);
+        //insert user as an admin  
+        DB::table('sellers')->insert([
+            'full_name'=>'Mohammad seller',
+            'username'=>'admin',
+            'email'=>'abosare46@gmail.com',
+            'password'=>Hash::make('12345'),
+            'status'=>1
+
+
+        ]);
+        //insert user as an admin  
+        DB::table('adminviews')->insert([
+            'full_name'=>'Mohammad admin',
+            'email'=>'alomda.alslmat@gmail.com',
+            'password'=>Hash::make('12345'),
+            'status'=>1
+
+
+        ]);
     }
 }

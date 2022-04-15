@@ -94,9 +94,10 @@ rel="stylesheet">
     @yield('content')
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
+    @if (Config::get('app.locale') == 'en')
     <footer class="footer footer-static footer-light navbar-border navbar-shadow">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-            <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2021 <a
+            <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2022 <a
                     class="text-bold-800 grey darken-2"
                     href="https://9yards.ae" target="_blank">9Yards Team
                 </a>, All rights reserved. </span>
@@ -104,6 +105,18 @@ rel="stylesheet">
                     class="ft-heart pink"></i></span>
         </p>
     </footer>
+    @else
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span class="float-md-left d-block d-md-inline-block">حقوق النشر &copy; 2022 <a
+                    class="text-bold-800 grey darken-2"
+                    href="https://9yards.ae" target="_blank">شركة ناين ياردز
+                </a>, جميع الحقوق محفوظة. </span>
+            <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">مصنوع يدويًا ومصنوع من <i
+                    class="ft-heart pink"></i></span>
+        </p>
+    </footer>
+    @endif
      <script>
   @if(Session::has('message'))
   toastr.options =
