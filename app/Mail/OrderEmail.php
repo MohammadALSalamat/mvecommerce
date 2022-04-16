@@ -9,9 +9,8 @@ use Illuminate\Queue\SerializesModels;
 
 class OrderEmail extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use  Queueable,SerializesModels;
     private  $data;
-
     /**
      * Create a new message instance.
      *

@@ -165,7 +165,7 @@ class frontPageController extends Controller
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
-        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
     
         return view('frontend.frontend_pages.products.shop_list', compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
     }
@@ -216,7 +216,7 @@ class frontPageController extends Controller
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
-        $type_of_work = User::groupBy('type_of_work')->where('status','active')->where('role','seller')->pluck('type_of_work');
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
@@ -471,10 +471,9 @@ public function single_seller($id)
             if(Session::get('url.intended')){
                 return Redirect::to(Session::get('url.intended'));
             }else{
-                return redirect()->route('homepage')->with('message','Welcome Back '.auth()->user()->username);
+                return redirect()->route('userdashboard')->with('message','Welcome Back '.auth()->user()->username);
             }
         }else{
-            
             return back()->with('error','Invalid Email & Password Or the Status of your account is inactive please contact the Admin');
         }
     }
@@ -545,7 +544,7 @@ public function single_seller($id)
             $saddress =  $user_address->saddress;
             $scountry =  $user_address->scountry;
             $scity =     $user_address->scity;
-            $sstate =     $user_address->sstate;
+            $sstate =     $user_address->sstat;
             $spostcode = $user_address->spostcode;
         }
         User::where('id', $id)->update([
@@ -554,12 +553,12 @@ public function single_seller($id)
         'country' => $data['country'],
         'city' => $data['city'],
         'postcode' => $data['postcode'],
-        'state' => $data['state'],
+        'stat' => $data['state'],
         'saddress' => $saddress,
         'scountry' => $scountry,
         'scity' => $scity,
         'spostcode' => $spostcode,
-        'sstate' => $sstate,
+        'sstat' => $sstate,
             
         ]);
         return back()->with('message', 'you have added Shipping Info same As billing Info');
@@ -580,7 +579,7 @@ public function single_seller($id)
                 'scountry' => $data['scountry'],
                 'scity' => $data['scity'],
                 'spostcode' => $data['spostcode'],
-                'sstate' => $data['sstate'],
+                'sstat' => $data['sstat'],
             ]);
             return back()->with('message', 'you have Updated Shipping Info ');
         } else {
@@ -615,19 +614,12 @@ public function single_seller($id)
                 }else{
                     $passowrd = Hash::make($data['new_password']);
                 }
-
-                if($data['shop-name'] != null){
-                    $shop_name = $data['shop-name'];
-                }else{
-                    $shop_name = null;  
-                }
                
 
                 User::where('id',$id)->update([
                     "full_name"=> $data['full_name'],
                     "username"=> $data['username'],
                     "phone"=> $data['phone'],
-                    "shop_name"=> $shop_name,
                     "password" => $passowrd,
                 ]);
                 return back()->with('message','Your data has been updated');

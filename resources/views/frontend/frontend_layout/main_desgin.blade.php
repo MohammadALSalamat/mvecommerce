@@ -69,7 +69,7 @@
 
 </head>
 
-<body class="home my-account" @if(Config::get('app.locale') == 'en') @else dir="rtl" @endif>
+<body class="home my-account @if(Config::get('app.locale') == 'ar') ar @endif " @if(Config::get('app.locale') == 'en') @else dir="rtl" @endif>
     <div class="page-wrapper">
         <!-- Start of Header -->
         <header class="header" id="header-ajax">

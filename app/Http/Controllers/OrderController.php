@@ -1,17 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use Session;
+
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
+use App\Jobs\OrderEmail;
 use Illuminate\Http\Request;
-use App\Mail\orderVendorEmail as vendorOrderMail;
+use App\Jobs\OrderEmailForAdmin;
+use App\Jobs\orderVendorEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Mail\OrderEmail as userOrderMail;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Mail\orderVendorEmail as vendorOrderMail;
 use App\Mail\OrderEmailForAdmin as adminOrderMail;
 
 class OrderController extends Controller
@@ -45,6 +49,9 @@ class OrderController extends Controller
             return back()->with('error', 'Billing Email Feild Is Required');
         }
         if (empty($data['phone']) || $data['phone'] == null) {
+            return back()->with('error', 'Billing Phone Feild Is Required');
+        }
+        if (empty($data['cod']) || $data['cod'] == null) {
             return back()->with('error', 'Billing Phone Feild Is Required');
         }
         if (empty($data['scountry']) || $data['scountry'] == null) {
@@ -117,6 +124,7 @@ class OrderController extends Controller
         $ordernumber = rand(1,10000000);
 
         $userInfo = User::where('id',$data['user_id'])->first();
+
         if ($userInfo) {
             $order = new Order();
             $order->user_id = $data['user_id'];
@@ -133,25 +141,26 @@ class OrderController extends Controller
             $order->email = $data['email'];
             $order->note = $data['note'];
             $order->phone = $data['phone'];
+            $order->sphone = $data['phone'];
             $order->postcode = $data['postcode'];
             $order->spostcode = $data['spostcode'];
             $order->order_number = $ordernumber;
             $order->total = $final_total;
             $order->sub_total = $total;
             $order->payment_method = $data['cod'];
-            $order->condition = 'pending';
-            $order->status = 0;
+            // $order->condition = 'pending';
+            // $order->status = 0;
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
 
-            try {
             
-                Mail::to($data['email'])->send(new userOrderMail($data)); // send email to user
-                Mail::to('alomda.alslmat@gmail.com')->send(new adminOrderMail($data)); // send email to admin
-                } catch (\Throwable $th) {
-               return back()->with('error','there is something went wrong, please try again!!');
+            try {
+                dispatch(new OrderEmail($data));
+                dispatch(new OrderEmailForAdmin($data));
+            } catch (\Throwable $th) {
+                return back()->with('error','there is something went wrong, your order did not complate yet!!');
             }
-
+            
             $save_order = $order->save();
             
             // get the data of the order and send it to order page for invoice
@@ -165,7 +174,7 @@ class OrderController extends Controller
                 $vendors_toSend_email = Seller::where(['id'=>$product_items->vendor_id])->get();
                 foreach($vendors_toSend_email as $vendor_email){
                     if(!empty($vendor_email)){
-                        Mail::to($vendor_email->email)->send(new vendorOrderMail($data)); // send email to vendor
+                        dispatch(new orderVendorEmail($data,$vendor_email));
                     }
                 }
             }

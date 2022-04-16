@@ -8,7 +8,7 @@
        <li class="mr-auto nav-item">
          <a class="navbar-brand" href="{{ route('admin') }}">
            <img class="brand-logo" alt="modern admin logo" src="{{ asset('app-assets/images/logo/logo.png') }}">
-           <h3 class="brand-text">{{ auth('admin')->user()->full_name }}</h3>
+           <h3 class="brand-text" style="font-size: 18px">{{ auth('admin')->user()->full_name }}</h3>
          </a>
        </li>
        <li class="float-right nav-item d-none d-md-block"><a class="pr-0 nav-link modern-nav-toggle"

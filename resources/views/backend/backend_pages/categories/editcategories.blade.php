@@ -116,6 +116,13 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ $current_category->ar_title }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Slug</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput1" class="form-control"
@@ -167,6 +174,14 @@ input:checked + .slider:before {
                                                 <div class="col-md-9">
                                                     <textarea id="summernote" rows="5" class="form-control"
                                                         name="description" placeholder="About Project">{!! $current_category->description !!}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Description</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar" rows="5" class="form-control"
+                                                        name="ar_description" placeholder="About Project">{!! $current_category->ar_description !!}</textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group row">

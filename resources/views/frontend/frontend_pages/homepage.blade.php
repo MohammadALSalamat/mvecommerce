@@ -753,6 +753,7 @@
                 }">
                     <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
                         @foreach( $categories as $category)
+                        @if(Config::get('app.locale') == 'en')
                         <div
                             class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
@@ -765,6 +766,20 @@
                                 class="btn btn-primary btn-link btn-underline">Shop Now</a>
                             </div>
                         </div>
+                        @else
+                        <div
+                        class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
+                        <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
+                            <img src="{{asset($category->image)}}" alt="Category"
+                            style="width: 100% !important;height: 150px !important;object-fit: contain;">
+                        </a>
+                        <div class="category-content">
+                            <h4 class="category-name">{{$category->ar_title}}</h4>
+                            <a href="{{ route('shop_special_category',$category->slug) }}"
+                            class="btn btn-primary btn-link btn-underline">أطلب اﻷن</a>
+                        </div>
+                    </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
@@ -1951,6 +1966,8 @@
         </div>
     <!-- End of Category Cosmetic Lifestyle -->
 @foreach ($home_3_Categories as $item)
+@if(Config::get('app.locale') == 'en')
+
 <div class="mb-5 product-wrapper-1 appear-animate">
     <div class="pb-1 mb-4 title-link-wrapper">
         <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
@@ -1962,14 +1979,24 @@
             <div class="banner h-100 br-sm" style="background-image: url({{ $item->image }});
                 background-color: #ebeced;">
                 <div class="banner-content content-top">
-                    <h5 class="mb-2 banner-subtitle font-weight-normal">Weekend Sale</h5>
-                    <hr class="mb-2 banner-divider bg-dark">
-                    <h3 class="banner-title font-weight-bolder ls-25 text-uppercase">
+                    <h5 class="mb-2 banner-subtitle font-weight-normal text-white">Weekend Sale</h5>
+                    <hr class="mb-2 banner-divider bg-light">
+                    <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
                         New Arrivals<br> <span
-                            class="font-weight-normal text-capitalize">Collection</span>
+                            class="font-weight-normal text-capitalize text-white">Collection</span>
                     </h3>
                     <a href="{{ route('shop_special_category',$item->slug) }}"
-                        class="btn btn-dark btn-outline btn-rounded btn-sm">shop Now</a>
+                        class="btn btn-light btn-outline btn-rounded btn-sm text-white">shop Now</a>
+                        <div style="position: absolute;
+                        background: #000;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        opacity: 0.5;
+                        z-index:-1">
+
+                        </div>
                 </div>
             </div>
         </div>
@@ -2036,6 +2063,100 @@
         </div>
     </div>
 </div>
+@else
+<div class="mb-5 product-wrapper-1 appear-animate">
+    <div class="pb-1 mb-4 title-link-wrapper">
+        <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
+        <a href="{{ route('shop_special_category',$item->slug) }}" class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات <i class="w-icon-long-arrow-right"></i></a>
+    </div>
+    <div class="row">
+        <div class="mb-4 col-lg-3 col-sm-4">
+            <div class="banner h-100 br-sm" style="background-image: url({{ $item->image }});
+                background-color: #ebeced;">
+                <div class="banner-content content-top">
+                    <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر بيعا</h5>
+                    <hr class="mb-2 banner-divider bg-light">
+                    <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
+                        اقسام جديدة<br> <span
+                            class="font-weight-normal text-capitalize text-white">المنتجات</span>
+                    </h3>
+                    <a href="{{ route('shop_special_category',$item->slug) }}"
+                        class="btn btn-light btn-outline btn-rounded btn-sm text-white">تسوق اﻷن</a>
+                        <div style="position: absolute;
+                        background: #000;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        opacity: 0.5;
+                        z-index:-1">
+
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Banner -->
+        <div class="col-lg-9 col-sm-8">
+            <div class="swiper-container swiper-theme" data-swiper-options="{
+                'spaceBetween': 20,
+                'slidesPerView': 2,
+                'breakpoints': {
+                    '992': {
+                        'slidesPerView': 3
+                    },
+                    '1200': {
+                        'slidesPerView': 4
+                    }
+                }
+            }">
+            <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
+                    @foreach ($item->one_cat_has_many_products as $products_cat)
+                    <div class="swiper-slide product-col">
+                        <div class="text-center product-wrap product">
+                            <figure class="product-media">
+                                <a href="{{ route('singleproduct',$products_cat->slug) }}" >
+                                    <img style="height:200px !important; width:100% !important;object-fit:contain" src="{{ $products_cat->image }}" alt="Product" />
+                                </a>
+                                <div class="product-action-vertical">
+                                    <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}" id="add_to_cart{{$products_cat->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                        title="Add to cart"></a>
+                                    <a href="javascript:void(0)" data-id="{{ $products_cat->id }}" id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
+                                        title="Add to wishlist"></a>
+                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                        title="Quickview"></a>
+                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
+                                        title="Add to Compare"></a>
+                                </div>
+                            </figure>
+                            <div class="product-details">
+                                <h4 class="product-name"><a href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->ar_title }}</a>
+                                </h4>
+                                <div class="ratings-container">
+                                    <div class="ratings-full">
+                                        <span class="ratings" style="width: 60%;"></span>
+                                        <span class="tooltiptext tooltip-top"></span>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    @if (empty($products_cat->offer_price) || $products_cat->offer_price == null)
+                                        <ins class="new-price">{{ $products_cat->price }}د.أ</ins>
+                                    @else
+                                        <ins class="new-price">{{ $products_cat->offer_price }} د.أ</ins><del
+                                        class="old-price">{{ $products_cat->price }} د.أ</del>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @endforeach
         <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(front-style/assets/images/demos/demo1/banners/4.jpg);
             background-color: #383839;">

@@ -117,6 +117,13 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Slug</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput1" class="form-control"
@@ -164,6 +171,14 @@ input:checked + .slider:before {
                                                         name="description" placeholder="About Project">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Description</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar" rows="20" class="form-control"
+                                                        name="ar_description" placeholder="About Project">{{ old('description') }}</textarea>
+                                                </div>
+                                            </div>
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Enable</label>
                                                 <div class="col-md-9">
@@ -197,7 +212,9 @@ input:checked + .slider:before {
 @endsection
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
- 
+ <script>
+    $('#lfm').filemanager('image');
+</script>
 <!-- hide the form of parent select if the category is a parent -->
 <script>
  let is_checked = $('#is_parent').prop('checked');

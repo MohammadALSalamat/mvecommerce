@@ -59,6 +59,13 @@ class ProductController extends Controller
         if (empty($data['comment'])) {
             return back()->with('error', 'Description is requird');
         }
+        if (empty($data['ar_summary'])) {
+            return back()->with('error', 'Arabic Summary is requird');
+        }
+
+        if (empty($data['ar_comment'])) {
+            return back()->with('error', 'Arabic Description is requird');
+        }
         if (empty($data['filepath']) || $data['filepath'] == null) {
             return back()->with('error', 'Image is requird');
         }
@@ -84,6 +91,7 @@ class ProductController extends Controller
         // insert the data
         $addproduct = new product();
         $addproduct->title = $data['title'];
+        $addproduct->ar_title = $data['ar_title'];
         $addproduct->slug = $data['slug'];
         $addproduct->image = $data['filepath'];
         $addproduct->size_guid = $data['size_guid'];
@@ -91,6 +99,10 @@ class ProductController extends Controller
         $addproduct->additional_info = $data['additional_info'];
         $addproduct->return_policy = $data['return_policy'];
         $addproduct->Summary = $data['summary'];
+        $addproduct->ar_description = $data['ar_comment'];
+        $addproduct->ar_additional_info = $data['ar_additional_info'];
+        $addproduct->ar_return_policy = $data['ar_return_policy'];
+        $addproduct->ar_Summary = $data['ar_summary'];
         $addproduct->category_id = $data['category'];
         $addproduct->stock = $data['stock'];
         $addproduct->price = $data['price'];
@@ -148,6 +160,13 @@ class ProductController extends Controller
             if (empty($data['comment'])) {
                 return back()->with('error', 'Description is requird');
             }
+            if (empty($data['ar_summary'])) {
+                return back()->with('error', 'Arabic Summary is requird');
+            }
+
+            if (empty($data['ar_comment'])) {
+                return back()->with('error', 'Arabic Description is requird');
+            }
             if (empty($data['filepath']) || $data['filepath'] == null) {
                 return back()->with('error', 'Image is requird');
             }
@@ -167,6 +186,7 @@ class ProductController extends Controller
             }
         product::where('id', $id)->update([
         'title' => $data['title'],
+        'ar_title' => $data['ar_title'],
         'slug' => $data['slug'],
         'image' => $data['filepath'],
         'size_guid' => $data['size_guid'],
@@ -174,6 +194,10 @@ class ProductController extends Controller
         'return_policy' => $data['return_policy'],
         'description' => $data['comment'],
         'Summary' => $data['summary'],
+        'ar_additional_info' => $data['ar_additional_info'],
+        'ar_return_policy' => $data['ar_return_policy'],
+        'ar_description' => $data['ar_comment'],
+        'ar_Summary' => $data['ar_summary'],
         'category_id' => $data['category'],
         'stock' => $data['stock'],
         'price' => $data['price'],

@@ -184,6 +184,11 @@ rel="stylesheet">
              $('#summernote2').summernote();
              $('#summernote3').summernote();
              $('#summernote4').summernote();
+             $('#summernote_ar').summernote();
+             $('#summernote_ar1').summernote();
+             $('#summernote_ar2').summernote();
+             $('#summernote_ar3').summernote();
+             $('#summernote_ar4').summernote();
            });
    </script>
     @yield('script')
