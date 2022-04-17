@@ -75,6 +75,9 @@ Route::get('clear_cart/',function(){
 //update the cart
 Route::post('update_cart',[ShippingCartController::class,'update_cart'])->name('update_cart');
 
+// update the add to cart in single product page
+Route::post('sing_page_update_cart',[ShippingCartController::class,'sing_page_update_cart'])->name('sing_page_update_cart');
+
 //coupon
 Route::post('/coupon_discound',[ShippingCartController::class, 'code_coupon'])->name('code_coupon');
 

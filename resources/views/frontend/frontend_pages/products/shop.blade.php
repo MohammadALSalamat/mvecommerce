@@ -80,7 +80,7 @@
 
                                                 <a href="#" class="btn-product-icon btn-compare w-icon-compare"
                                                     title="Compare"></a>
-                                                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quickview{{ $product->id }}" class="btn-product-icon btn-quickview w-icon-search"
                                                     title="Quick View"></a>
                                             </div>
                                         </figure>
@@ -113,8 +113,13 @@
                                         </div>
                                     </div>
                                 </div> 
+                                
                                 @endforeach
                             </div>
+                            @foreach ($products as $product )
+                            
+                            @include('frontend.frontend_layout._quickView')
+                            @endforeach
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
                                     Showing Products

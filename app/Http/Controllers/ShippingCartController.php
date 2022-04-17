@@ -132,6 +132,62 @@ class ShippingCartController extends Controller
             }
 
     }
+
+    // update single page product
+    public function sing_page_update_cart( Request $request)
+    {
+       
+        $rowId = $request->input('rowId');
+        $current_qty = $request->input('product_qty');
+        $product_full_qty = $request->input('productQuantity');
+        
+        if($product_full_qty == null || empty($product_full_qty)){
+            Cart::instance('shopping')->update($rowId, $current_qty);
+            $message = "Quantity was updated";
+            $response['status'] = true;
+            $response['total'] = Cart::subtotal();
+            $response['cart_count'] = Cart::instance('shopping')->count();
+            //render the header cart value
+            if ($request->ajax()) {
+                $header = view('frontend.frontend_layout.header')->render();
+                $cart_lists = view('frontend.frontend_layout._cart-lists')->render();
+                $response['header'] = $header;
+                $response['cart_lists'] = $cart_lists;
+                $response['message'] = $message;
+            }
+            return $response; 
+
+        }elseif($current_qty > $product_full_qty)
+        {
+            $message = "We Dont have enough items in stock";
+            $response['status']=false;
+        }
+                
+        elseif($current_qty < 1)
+        {
+            $message = "you can not add less than 1 quantity";
+            $response['status'] = false;
+
+        }
+                
+        else{
+            Cart::instance('shopping')->update($rowId,$current_qty);
+            $message="Quantity was updated";
+            $response['status']=true;
+            $response['total'] = Cart::subtotal();
+            $response['cart_count'] = Cart::instance('shopping')->count();
+            //render the header cart value
+            if ($request->ajax()) {
+                $header = view('frontend.frontend_layout.header')->render();
+                $cart_lists = view('frontend.frontend_layout._cart-lists')->render();
+                $response['header'] = $header;
+                $response['cart_lists'] = $cart_lists;
+                $response['message'] = $message;
+            }
+            return $response; 
+            }
+
+    }
     //coupon
 
     public function code_coupon(Request $request)

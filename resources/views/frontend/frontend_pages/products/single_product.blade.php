@@ -260,7 +260,13 @@
                                             SKU: <span>MS46891340</span>
                                         </div>
                                         <div class="mt-2">
+                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name !=  null)
                                             Seller :  <a href="#" ><span>{{ $vendor_info->shop_name }}</span></a>
+                                                
+                                            @else
+                                            Seller :  <a href="#" ><span>ITajer</span></a>
+                                                
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -277,10 +283,28 @@
 
                                 <div class="ratings-container">
                                     <div class="ratings-full">
-                                        <span class="ratings" style="width: 80%;"></span>
+                                        <span class="ratings"
+                                        @if (number_format($avareg,1) == 5)
+                                        style="width: 100%;"
+                                        @elseif(number_format($avareg,1) >= 4.5)
+                                        style="width: 90%;"
+                                        @elseif(number_format($avareg,1) >= 4)
+                                        style="width: 80%;"
+                                        @elseif(number_format($avareg,1) >= 3.5)
+                                        style="width: 70%;"
+                                        @elseif(number_format($avareg,1) >= 3)
+                                        style="width: 60%;"
+                                        @elseif(number_format($avareg,1) >= 2.5)
+                                        style="width: 50%;"
+                                        @elseif(number_format($avareg,1) >= 2)
+                                        style="width: 40%;"
+                                        @else
+                                        style="width: 20%;"
+                                        @endif
+                                         ></span>
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
-                                    <a href="#product-tab-review" class="rating-reviews scroll-to">(3
+                                    <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
                                         Reviews)</a>
                                 </div>
 
@@ -290,6 +314,7 @@
                                     </ul>
                                 </div>
 
+                                @if($product_attr->count() !== 0))
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
                                     <label for="sel1" style="font-size: 20px;">Select Size:</label>
@@ -300,6 +325,9 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @else
+
+                                @endif
                                 {{-- <div class="product-form product-variation-form product-color-swatch">
                                     <label>Color:</label>
                                     <div class="d-flex align-items-center product-variations">
@@ -368,17 +396,16 @@
                                     </div>
                                 </div>
                                 @endif
-                                <div class="fix-bottom product-sticky-content sticky-content">
-                                    <div class="container product-form">
-                                        <div class="product-qty-form">
-                                            <div class="input-group">
-                                                <input class="quantity form-control" type="number" min="1"
-                                                    max="10000000">
-                                                <button class="quantity-plus w-icon-plus"></button>
-                                                <button class="quantity-minus w-icon-minus"></button>
-                                            </div>
+                                <div class=" fix-bottom product-sticky-content sticky-content">
+                                    <div class="container product-form align-middle">
+                                        <div class="product-qty">
+                                        <div class="quantity mr-2">
+                                                <input class="qty form-control" type="number" min="1" max="99" name="quantity"
+                                                data-id="{{ $single_product->id }}" id="qty-input-{{ $single_product->id }}" value="1" >
+                    
                                         </div>
-                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn btn-primary btn-cart">
+                                        </div>
+                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn btn-primary btn-cart mt-2">
                                             <i class="w-icon-cart"></i>
                                             <span>Add to Cart</span>
                                         </button>
@@ -396,6 +423,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- more products with the item --->
                     <div class="mt-5 frequently-bought-together">
                         <h2 class="title title-underline">Frequently Bought Together</h2>
                         <div class="pb-4 mt-8 bought-together-products row">
@@ -457,6 +485,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Tabs of Vednor and description --->
                     <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
@@ -561,83 +591,43 @@
                                     <div class="mb-4 col-xl-4 col-lg-5">
                                         <div class="ratings-wrapper">
                                             <div class="avg-rating-container">
-                                                <h4 class="avg-mark font-weight-bolder ls-50">3.3</h4>
+                                                <h4 class="avg-mark font-weight-bolder ls-50">{{ number_format($avareg,1) }}</h4>
                                                 <div class="avg-rating">
                                                     <p class="mb-1 text-dark">Average Rating</p>
                                                     <div class="ratings-container">
                                                         <div class="ratings-full">
-                                                            <span class="ratings" style="width: 60%;"></span>
+                                                            <span class="ratings" 
+                                                            @if (number_format($avareg,1) == 5)
+                                                            style="width: 100%;"
+                                                            @elseif(number_format($avareg,1) >= 4.5)
+                                                            style="width: 90%;"
+                                                            @elseif(number_format($avareg,1) >= 4)
+                                                            style="width: 80%;"
+                                                            @elseif(number_format($avareg,1) >= 3.5)
+                                                            style="width: 70%;"
+                                                            @elseif(number_format($avareg,1) >= 3)
+                                                            style="width: 60%;"
+                                                            @elseif(number_format($avareg,1) >= 2.5)
+                                                            style="width: 50%;"
+                                                            @elseif(number_format($avareg,1) >= 2)
+                                                            style="width: 40%;"
+                                                            @else
+                                                            style="width: 20%;"
+                                                            @endif></span>
                                                             <span class="tooltiptext tooltip-top"></span>
                                                         </div>
-                                                        <a href="#" class="rating-reviews">(3 Reviews)</a>
+                                                        <a href="#" class="rating-reviews">({{ $avareg_review->count() }} Reviews)</a>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                             <div class="ratings-value d-flex align-items-center text-dark ls-25">
-                                                <span class="text-dark font-weight-bold">66.7%</span>Recommended<span
-                                                    class="count">(2 of 3)</span>
-                                            </div>
-                                            <div class="ratings-list">
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <div class="progress-bar progress-bar-sm ">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="progress-value">
-                                                        <mark>70%</mark>
-                                                    </div>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 80%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <div class="progress-bar progress-bar-sm ">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="progress-value">
-                                                        <mark>30%</mark>
-                                                    </div>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 60%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <div class="progress-bar progress-bar-sm ">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="progress-value">
-                                                        <mark>40%</mark>
-                                                    </div>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 40%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <div class="progress-bar progress-bar-sm ">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="progress-value">
-                                                        <mark>0%</mark>
-                                                    </div>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 20%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <div class="progress-bar progress-bar-sm ">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="progress-value">
-                                                        <mark>0%</mark>
-                                                    </div>
-                                                </div>
+                                                <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
+                                                @if( number_format($avareg ,1 ) >= 3.5)
+                                                <span class="badge badge-success" style="padding:5px ;background:green;colo:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
+                                                @else
+                                                <span style="padding-left:5px ">Rating</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -1205,6 +1195,51 @@
 @endsection
 
 @section('script')
+<script>
+    $(document).on('click','.qty',function () {
+        var id = $(this).data('id');
+        var spinner = $(this),input = spinner.closest("div.quantity").find('input[type="number"]');
+        if(input.val()==0){
+            return false;
+        }
+        if(input.val() != 1){
+            var newVal = parseFloat(input.val());
+            $('#qty-input-'+id).val(newVal);
+        }
+        var productQuantity = $('#update-cart-'+id).data('product-quantity');
+       
+        update_cart(id,productQuantity)
+        $('.add-to-cart').attr('data-quantity', $('#qty-input-'+id).val());
+
+    });
+    function update_cart(id,productQuantity){
+    var rowId = id;
+    var product_qty = $('#qty-input-'+rowId).val();
+    var token="{{ csrf_token() }}";
+    var path="{{ route('sing_page_update_cart') }}";
+
+    $.ajax({
+        type: "POST",
+        url: path,
+        data:{
+            _token:token,
+            product_qty : product_qty,
+            rowId:rowId,
+            productQuantity:productQuantity,
+        },
+        success: function (data) {
+            console.log(data)
+            if(data['status']){
+            $('body #header-ajax').html(data['header']);
+            $('body #cart_lists').html(data['cart_lists']);
+            }else{
+                alert('Out Of Stock');
+            }
+        }
+    });
+    }
+
+</script>
 <script>
     function openModal() {
         document.getElementById("myModal").style.display = "block";

@@ -224,13 +224,19 @@ class frontPageController extends Controller
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first();
       $vendor_info = Seller::where('id',$single_product->vendor_id)->first();
+     
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
       $product_gallary =productGallary::where('product_id',$single_product->id)->get();
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
+      $avareg_review = ProductReview::get();
       $Category_related_product = category::where('id',$single_product->category_id)->first();
      #review comments 
+     $avareg= 0;
+     foreach($avareg_review as $avg){
+        $avareg = $avg->avg('rate');
+    }
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
