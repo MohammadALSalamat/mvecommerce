@@ -33,9 +33,9 @@ class SellerProductController extends Controller
 
     public function addproducts(Request $request)
     {
-        //insert data of the product
+         //insert data of the product
 
-        $data = $request->all();
+         $data = $request->all();
          // check if the title is empty
          if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
@@ -43,6 +43,7 @@ class SellerProductController extends Controller
         if (empty($data['slug']) || $data['slug'] == null) {
             return back()->with('error', 'Slug is requird');
         }
+       
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
         }
@@ -52,6 +53,13 @@ class SellerProductController extends Controller
 
         if (empty($data['comment'])) {
             return back()->with('error', 'Description is requird');
+        }
+        if (empty($data['ar_summary'])) {
+            return back()->with('error', 'Arabic Summary is requird');
+        }
+
+        if (empty($data['ar_comment'])) {
+            return back()->with('error', 'Arabic Description is requird');
         }
         if (empty($data['filepath']) || $data['filepath'] == null) {
             return back()->with('error', 'Image is requird');
@@ -75,22 +83,22 @@ class SellerProductController extends Controller
         }else{
             $child_cat = $data['child_category'];
         }
-        $slug = Str::slug($data['slug']);
-        $slug = $slug.'-'.Str::random(4);
-
         // insert the data
         $addproduct = new product();
         $addproduct->title = $data['title'];
-        $addproduct->slug = $slug;
+        $addproduct->ar_title = $data['ar_title'];
+        $addproduct->slug = $data['slug'];
         $addproduct->image = $data['filepath'];
         $addproduct->size_guid = $data['size_guid'];
         $addproduct->description = $data['comment'];
         $addproduct->additional_info = $data['additional_info'];
         $addproduct->return_policy = $data['return_policy'];
         $addproduct->Summary = $data['summary'];
+        $addproduct->ar_description = $data['ar_comment'];
+        $addproduct->ar_additional_info = $data['ar_additional_info'];
+        $addproduct->ar_return_policy = $data['ar_return_policy'];
+        $addproduct->ar_Summary = $data['ar_summary'];
         $addproduct->category_id = $data['category'];
-        $addproduct->size = $data['size'];
-        $addproduct->conditions = $data['condition'];
         $addproduct->stock = $data['stock'];
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
@@ -132,11 +140,11 @@ class SellerProductController extends Controller
             if (empty($data['slug']) || $data['slug'] == null) {
                 return back()->with('error', 'Slug is requird');
             }
-            if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
-                $brand = null;
-            }else{
-                $brand = $data['brand'];
-            }
+            // if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
+            //     $brand = null;
+            // }else{
+            //     $brand = $data['brand'];
+            // }
             if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
                 return back()->with('error', 'Category is requird');
             }
@@ -146,6 +154,13 @@ class SellerProductController extends Controller
 
             if (empty($data['comment'])) {
                 return back()->with('error', 'Description is requird');
+            }
+            if (empty($data['ar_summary'])) {
+                return back()->with('error', 'Arabic Summary is requird');
+            }
+
+            if (empty($data['ar_comment'])) {
+                return back()->with('error', 'Arabic Description is requird');
             }
             if (empty($data['filepath']) || $data['filepath'] == null) {
                 return back()->with('error', 'Image is requird');
@@ -157,31 +172,32 @@ class SellerProductController extends Controller
             if ($data['offer_price'] > $data['price']) {
                 return back()->with('error', 'Offer Price Must be less than Main Price');
             }
-            $slug = Str::slug($data['slug']);
-           $slugnew= $slug.'-'.Str::random(4);
+
 
             if (!empty($data['status'])) {
                 $status = '1';
             } else {
                 $status = '0';
             }
-            product::where('id', $id)->update([
+        product::where('id', $id)->update([
         'title' => $data['title'],
-        'slug' => $slugnew,
+        'ar_title' => $data['ar_title'],
+        'slug' => $data['slug'],
         'image' => $data['filepath'],
         'size_guid' => $data['size_guid'],
-        'description' => $data['additional_info'],
-        'description' => $data['return_policy'],
+        'additional_info' => $data['additional_info'],
+        'return_policy' => $data['return_policy'],
         'description' => $data['comment'],
         'Summary' => $data['summary'],
+        'ar_additional_info' => $data['ar_additional_info'],
+        'ar_return_policy' => $data['ar_return_policy'],
+        'ar_description' => $data['ar_comment'],
+        'ar_Summary' => $data['ar_summary'],
         'category_id' => $data['category'],
-        'size' => $data['size'],
-        'conditions' => $data['condition'],
         'stock' => $data['stock'],
         'price' => $data['price'],
         'offer_price' => $data['offer_price'],
         'discound' => $data['discound'],
-        'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
         'vendor_id' => Auth::guard('seller')->user()->id,
         'status' => $status,

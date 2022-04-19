@@ -63,13 +63,17 @@
                                     </figure>
                                     <div class="seller-date">
                                         <h4 class="store-title">
-                                            <a href="{{ route('single_seller',$seller->id) }}">{{ $seller->full_name}}</a>
+                                            <a href="{{ route('single_seller',$seller->username) }}">{{ $seller->full_name}}</a>
                                         </h4>
                                         <ul class="seller-info-list list-style-none">
+                                            @if (empty($seller->address) || $seller->address == null)
+                                                
+                                            @else
                                             <li class="store-address">
                                                 <i class="w-icon-map-marker"></i>
                                                 <p>{{$seller->address}},{{ $seller->country }}</p>
                                             </li>
+                                            @endif
                                             <li class="store-rating">
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">

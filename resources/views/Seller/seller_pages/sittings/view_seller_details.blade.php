@@ -24,12 +24,12 @@
           <div class="col-12">
             <div class="card profile-with-cover">
               <div class="card-img-top img-fluid bg-cover height-300"
-                style="background: url('/storage/seller/{{ $current_seller->banner_image }}') center; background-repeat: no-repeat;" ></div>
+                style="background: url('/storage/seller/{{ $current_seller->banner_image }}') center; background-repeat: no-repeat;background-size:contain !important" ></div>
               <div class="media profil-cover-details w-100">
                 <div class="media-left pl-2 pt-2">
                   <a href="#" class="profile-image">
                     <img src="{{ '/storage/seller/'. $current_seller->photo }}"
-                      class="rounded-circle img-border" width="100px" height="100px" style="object-fit: cover" alt="Card image">
+                      class="rounded-circle img-border" width="100px" height="100px" style="object-fit: contain" alt="Card image">
                   </a>
                 </div>
                 <div class="media-body pt-3 px-2">

@@ -14,10 +14,10 @@
                 <div class="media d-flex">
                   <div class="media-body text-left">
                     @if (Config::get('app.locale') == 'en')
-                    <h3 class="success">{{ $count_sold_product }}</h3>
+                    <h3 class="success">{{ $countSoldProduct }}</h3>
                     <h6>Products Sold</h6>
                     @else
-                    <h3 class="success">{{ $count_sold_product }}</h3>
+                    <h3 class="success">{{ $countSoldProduct }}</h3>
                     <h6> البضائع المباعة</h6>
                     @endif
                   </div>
@@ -70,10 +70,10 @@
                 <div class="media d-flex">
                   <div class="media-body text-left">
                     @if (Config::get('app.locale') == 'en')
-                    <h3 class="success">{{ $count_sold_product }}</h3>
+                    <h3 class="success">{{ $countSoldProduct }}</h3>
                     <h6>Sold Product</h6>
                     @else
-                    <h3 class="success">{{ $count_sold_product }}</h3>
+                    <h3 class="success">{{ $countSoldProduct }}</h3>
                     <h6>التجار المنتظرين</h6>
                     @endif
                   </div>
@@ -178,14 +178,14 @@
                       </td>
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
-                          @foreach ( $order->product as $items)
+                          @foreach ( $order->product as $order_items)
 
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                               src="{{ $items->image }}" alt="{{ $items->title }}">
                           </li>
-                          @if($items->pivot->quantity > 3)
+                          @if($order_items->pivot->quantity > 3)
                           <li class="avatar avatar-sm">
                             <span class="badge badge-info">+1 more</span>
                           </li>
@@ -195,7 +195,7 @@
                         </ul>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items->category_id)->value('title') }}</button>
                       </td>
                       <td>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -203,10 +203,19 @@
                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
-                      <td class="text-truncate">{{ $order->total }} AED</td>
+                      <td class="text-truncate">$@if ($items->offer_price != null)
+                        {{ $items->offer_price }} AED
+                      @else
+                      {{ $items->price }} AED
+                      @endif</td>
                     </tr>
                     @endforeach
                     @endforeach
+                    <tr>
+                      <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
+                      <td  style="background: #ccc"> <b >{{ array_sum($total).' AED ' }}</b></td>
+                      
+                    </tr>
                   </tbody>
                 </table>
               </div>

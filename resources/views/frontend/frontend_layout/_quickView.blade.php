@@ -326,7 +326,6 @@
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- Start of Quick View -->
 <div class=" modal fade" tabindex="-1" id="quickview{{ $product->id }}" role="dialog"
     aria-hidden="true">

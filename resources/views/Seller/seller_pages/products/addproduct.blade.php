@@ -117,6 +117,13 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Slug</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput1" class="form-control"
@@ -133,6 +140,19 @@ input:checked + .slider:before {
                                                         <option value="{{ $vendor->id }}" > {{ $vendor->full_name }}
                                                         </option>
                                                         @endforeach --}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput76">Brands</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput76" name="brand" class="form-control">
+                                                        <option value="none" ><-- Brands -->
+                                                        </option>
+                                                        @foreach ($brands as $brand)
+                                                        <option value="{{ $brand->id }}" > {{ $brand->title }}
+                                                        </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -159,17 +179,23 @@ input:checked + .slider:before {
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput11">Summary</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput11" rows="5" class="form-control"
+                                                    <textarea id="summernote" rows="5" class="form-control"
                                                     name="summary" placeholder="About Project">{{ old('summary') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput11">Arabic Summary</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar1" rows="5" class="form-control"
+                                                    name="ar_summary" placeholder="About Project">{{ old('ar_summary') }}</textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput56">Choose Your Prodcut Image</label>
-                                                <div class="input-group col-md-9">
+                                                <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
                                                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Main Image
+                                                            <i class="fa fa-picture-o"></i> Choose Product Image
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="filepath">
@@ -177,8 +203,7 @@ input:checked + .slider:before {
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput56">Choose Your Guid Info</label>
-                                                <div class="input-group col-md-9 ">
+                                                <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
                                                         <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
                                                             <i class="fa fa-picture-o"></i> Choose Size Guid
@@ -192,50 +217,48 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput9" rows="5" class="form-control"
+                                                    <textarea id="summernote1" rows="5" class="form-control"
                                                         name="comment" placeholder="About Project">{{ old('description') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Description</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar" rows="5" class="form-control"
+                                                        name="ar_comment" placeholder="About Project">{{ old('ar_description') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Additional Info</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput100" rows="5" class="form-control"
+                                                    <textarea id="summernote2" rows="5" class="form-control"
                                                         name="additional_info" placeholder="write somthing new">{{ old('additional_info') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Additional Info</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar2" rows="5" class="form-control"
+                                                        name="ar_additional_info" placeholder="write somthing new">{{ old('ar_additional_info') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
                                                     for="projectinput9">Return Policy</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="projectinput1001" rows="5" class="form-control"
+                                                    <textarea id="summernote3" rows="5" class="form-control"
                                                         name="return_policy" placeholder="Write Something ">{{ old('return_policy') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput46">Size</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Return Policy</label>
                                                 <div class="col-md-9">
-                                                    <select id="projectinput46" name="size" class="form-control">
-                                                        <option value="none" ><-- Product Size -->
-                                                        </option>
-                                                        <option value="Small" >Small </option>
-                                                        <option value="Medium" >Medium </option>
-                                                        <option value="Large" >Large </option>
-                                                        <option value="XLarge" >XLarge </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput96">Condition</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput96" name="condition" class="form-control">
-                                                        <option value="none" ><-- Product condition -->
-                                                        </option>
-                                                        <option value="New" >New </option>
-                                                        <option value="Popular" >Popular </option>
-                                                        <option value="Old" >Old </option>
-                                                        <option value="Second Hand" >Second Hand </option>
-                                                    </select>
+                                                    <textarea id="summernote_ar3" rows="5" class="form-control"
+                                                        name="ar_return_policy" placeholder="Write Something ">{{ old('ar_return_policy') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

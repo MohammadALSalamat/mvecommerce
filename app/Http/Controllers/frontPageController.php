@@ -222,13 +222,13 @@ class frontPageController extends Controller
 
     public function Single_product($slug)
     {
-      $single_product = product::with('rel_product')->where('slug',$slug)->first();
-      $vendor_info = Seller::where('id',$single_product->vendor_id)->first();
-     
+      $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
+      $vendor_info = Seller::where('id',$single_product->vendor_id)->first(); // vednof info
+      $vendor_products= product::where('vendor_id',$vendor_info->id)->where('added_by','seller')->get();
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
       $product_gallary =productGallary::where('product_id',$single_product->id)->get();
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
-      $avareg_review = ProductReview::get();
+      $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
       $Category_related_product = category::where('id',$single_product->category_id)->first();
      #review comments 
      $avareg= 0;
@@ -236,7 +236,7 @@ class frontPageController extends Controller
         $avareg = $avg->avg('rate');
     }
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
@@ -447,9 +447,9 @@ public function sellers_list()
 }
 public function single_seller($id)
 {
-    $seller = Seller::where('id',$id)->where('status',1)->first();
+    $seller = Seller::where('username',$id)->where('status',1)->first();
 
-    $vendor_product = product::where('vendor_id',$id)->where('added_by','seller')->get();
+    $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
     return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('seller','vendor_product'));
 }
 

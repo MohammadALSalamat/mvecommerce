@@ -27,7 +27,7 @@
                         <a href="#" class="sidebar-toggle"><i class="fas fa-chevron-right"></i></a>
                         <div class="sidebar-content">
                             <div class="sticky-sidebar">
-                                <div class="widget widget-collapsible widget-categories">
+                                {{-- <div class="widget widget-collapsible widget-categories">
                                     <h3 class="widget-title"><span>All Categories</span></h3>
                                     <ul class="widget-body filter-items search-ul">
                                         <li><a href="#">Clothing</a></li>
@@ -40,7 +40,7 @@
                                         <li><a href="#">Shoes</a></li>
                                         <li><a href="#">Sports</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <!-- End of Widget -->
                                 <div class="widget widget-collapsible widget-contact">
                                     <h3 class="widget-title"><span>Contact Vendor</span></h3>
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                 <!-- End of Widget -->
-                                <div class="widget widget-collapsible widget-time">
+                                {{-- <div class="widget widget-collapsible widget-time">
                                     <h3 class="widget-title"><span>Store Time</span></h3>
                                     <ul class="widget-body">
                                         <li><label>Sunday</label></li>
@@ -67,7 +67,7 @@
                                         <li><label>Friday</label></li>
                                         <li><label>Saturday</label></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <!-- End of Widget -->
                                 <div class="widget widget-collapsible widget-products">
                                     <h3 class="widget-title"><span>Best Selling</span></h3>
@@ -222,20 +222,24 @@
                                 </figure>
                                 <h4 class="store-title">{{ $seller->full_name}}</h4>
                                 <ul class="seller-info-list list-style-none mb-6">
+                                    @if (empty($seller->address) || $seller->address ==null)
+                                    @else
                                     <li class="store-address">
                                         <i class="w-icon-map-marker"></i>
                                        {{$seller->address}},{{ $seller->country }}
                                     </li>
+                                        
+                                    @endif
                                     <li class="store-phone">
                                         <a href="tel:{{ $seller->phone }}">
                                             <i class="w-icon-phone"></i>
                                             {{ $seller->phone }}
                                         </a>
                                     </li>
-                                    <li class="store-rating">
+                                    {{-- <li class="store-rating">
                                         <i class="w-icon-star-full"></i>
                                         4.33 rating from 3 reviews
-                                    </li>
+                                    </li> --}}
                                     <li class="store-open">
                                         <i class="w-icon-cart"></i>
                                         Store Open

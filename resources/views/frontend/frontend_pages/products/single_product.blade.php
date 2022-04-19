@@ -242,12 +242,13 @@
                                 <!-- Brand Logo-->
                                 <div class="product-bm-wrapper">
                                     <figure class="brand">
-                                        @if ($vendor_info->brnad != null || !empty($vendor_info->brnad))
-                                        <img src="{{asset('verify_vendors/'.$vendor_info->brnad)}}" alt="Brand" width="102"
-                                            height="48" />
-                                        @else
+                                        @if ($vendor_info->brand == null || empty($vendor_info->brand))
                                         <img src="{{asset('front-style/assets/images/itajer_logo.png')}}" alt="itajer" width="80"
                                         height="48" />
+                                        @else
+                                        <img src="{{asset('/storage/seller/'.$vendor_info->brand)}}" alt="Brand" width="102"
+                                        height="48" />
+                                    
                                         @endif
                                     </figure>
                                     <!-- Category Detailes -->
@@ -270,17 +271,20 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <hr class="product-divider">
                                 <h4> Summary</h4>
                                 <p>{!! $single_product->Summary !!}</p>
                                 <hr class="product-divider">
                                 <div class="product-price"><ins
-                                        class="new-price">@if(empty($single_product->offer_price) ||
-                                        $single_product->offer_price == null){{ $single_product->price }} AED @else <del
+                                        class="new-price">
+                                        
+                                    @if(empty($single_product->offer_price) ||
+                                        $single_product->offer_price == null)
+                                        {{ $single_product->price }} AED 
+                                        @else <del
                                             style="color:red">{{ $single_product->price }} AED </del> -
-                                        {{ $single_product->offer_price }} AED @endif</ins></div>
-
+                                        {{ $single_product->offer_price }} AED @endif
+                                    </ins></div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
                                         <span class="ratings"
@@ -301,7 +305,7 @@
                                         @else
                                         style="width: 20%;"
                                         @endif
-                                         ></span>
+                                        ></span>
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
                                     <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
@@ -326,7 +330,6 @@
                                     </select>
                                 </div>
                                 @else
-
                                 @endif
                                 {{-- <div class="product-form product-variation-form product-color-swatch">
                                     <label>Color:</label>
@@ -405,13 +408,12 @@
                     
                                         </div>
                                         </div>
-                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn btn-primary btn-cart mt-2">
+                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="single-product-add-to-cart add-to-cart btn btn-primary btn-cart mt-2">
                                             <i class="w-icon-cart"></i>
                                             <span>Add to Cart</span>
                                         </button>
                                     </div>
                                 </div>
-
                                 <div class="social-links-wrapper">
                                     <span class="divider d-xs-show"></span>
                                     <div class="product-link-wrapper d-flex">
@@ -624,7 +626,7 @@
                                             <div class="ratings-value d-flex align-items-center text-dark ls-25">
                                                 <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
                                                 @if( number_format($avareg ,1 ) >= 3.5)
-                                                <span class="badge badge-success" style="padding:5px ;background:green;colo:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
+                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
                                                 @else
                                                 <span style="padding-left:5px ">Rating</span>
                                                 @endif
@@ -735,6 +737,7 @@
                         </div>
                     </div>
                     <!-- More Productcs From This Vendor -->
+                    @if($vendor_products->count() != 0)
                     <section class="vendor-product-section">
                         <div class="mb-4 title-link-wrapper">
                             <h4 class="text-left title">More Products From This Vendor</h4>
@@ -757,159 +760,45 @@
                             }
                         }">
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
-                                <div class="swiper-slide product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/products/default/1-1.jpg" alt="Product" width="300"
-                                                height="338" />
-                                            <img src="assets/images/products/default/1-2.jpg" alt="Product" width="300"
-                                                height="338" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-quickview" title="Quick View">Quick
-                                                View</a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="product-cat"><a href="shop-banner-sidebar.html">Accessories</a>
-                                        </div>
-                                        <h4 class="product-name"><a href="product-default.html">Sticky Pencil</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                        </div>
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">$20.00</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/products/default/2.jpg" alt="Product" width="300"
-                                                height="338" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-quickview" title="Quick View">Quick
-                                                View</a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="product-cat"><a href="shop-banner-sidebar.html">Electronics</a>
-                                        </div>
-                                        <h4 class="product-name"><a href="product-default.html">Mini
-                                                Multi-Functional Cooker</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 80%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(5 reviews)</a>
-                                        </div>
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">
-                                                <ins class="new-price">$480.00</ins><del class="old-price">$534.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/products/default/3.jpg" alt="Product" width="300"
-                                                height="338" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-quickview" title="Quick View">Quick
-                                                View</a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="product-cat"><a href="shop-banner-sidebar.html">Sports</a></div>
-                                        <h4 class="product-name"><a href="product-default.html">Skate Pan</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                        </div>
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">
-                                                <ins class="new-price">$278.00</ins><del class="old-price">$310.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="assets/images/products/default/4-1.jpg" alt="Product" width="300"
-                                                height="338" />
-                                            <img src="assets/images/products/default/4-2.jpg" alt="Product" width="300"
-                                                height="338" />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-quickview" title="Quick View">Quick
-                                                View</a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="product-cat"><a href="shop-banner-sidebar.html">Accessories</a>
-                                        </div>
-                                        <h4 class="product-name"><a href="product-default.html">Clip Attachment</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(5 reviews)</a>
-                                        </div>
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">$40.00</div>
-                                        </div>
-                                    </div>
-                                </div>
+                               @foreach ( $vendor_products as $product )
+                               <div class="swiper-slide product">
+                                   <figure class="product-media">
+                                       <a href="{{ route('singleproduct',$product->slug) }}">
+                                           <img src="{{ $product->image }}" alt="Product" width="300"
+                                               height="338" />
+                                       </a>
+                                       <div class="product-action-vertical">
+                                           <a href="#" data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                               title="Add to cart"></a>
+                                           <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                               title="Add to wishlist"></a>
+                                          
+                                       </div>
+                                      
+                                   </figure>
+                                   <div class="product-details text-center">
+                                       <div class="product-cat"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a>
+                                       </div>
+                                       <h4 class="product-name"><a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title }}</a>
+                                       </h4>
+                                      
+                                       <div class="product-pa-wrapper">
+                                           <div class="product-price">
+                                            @if(empty($product->offer_price) ||
+                                            $product->offer_price == null)
+                                            {{ $product->price }} AED 
+                                            @else <del
+                                                style="color:red">{{ $product->price }} AED </del> -
+                                            {{ $product->offer_price }} AED @endif
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                               @endforeach
                             </div>
                         </div>
                     </section>
+                    @endif
                     <!-- Related Products-->
                     @if(!empty($single_product->rel_product))
                     <section class="related-product-section">
@@ -936,40 +825,27 @@
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
                                 @foreach($single_product->rel_product as $related_products)
                                 <div class="swiper-slide product">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ $related_products->image }}" alt="Product" width="300"
-                                                height="338" />
+                                    <figure class="product-media " style="height: 150px" >
+                                        <a href="{{ route('singleproduct',$related_products->slug) }}">
+                                            <img src="{{ $related_products->image }}" alt="Product"  />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
                                                 title="Add to cart"></a>
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
                                         </div>
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-quickview" title="Quick View">Quick
-                                                View</a>
-                                        </div>
+                                        
                                     </figure>
-                                    <div class="product-details">
+                                    <div class="product-details text-center">
                                         <h4 class="product-name"><a
-                                                href="product-default.html">{{ $related_products ->title}}</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                        </div>
+                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a></h4>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                @if(empty($single_product->offer_price) || $single_product->offer_price
-                                                == null){{ $single_product->price }} AED @else <del
-                                                    style="color:red">{{ $single_product->price }} AED </del> -
-                                                {{ $single_product->offer_price }} AED @endif
+                                                @if(empty($related_products->offer_price) || $related_products->offer_price
+                                                == null){{ $related_products->price }} AED @else <del
+                                                    style="color:red">{{ $related_products->price }} AED </del> -
+                                                {{ $related_products->offer_price }} AED @endif
                                             </div>
                                         </div>
                                     </div>
@@ -1207,9 +1083,8 @@
             $('#qty-input-'+id).val(newVal);
         }
         var productQuantity = $('#update-cart-'+id).data('product-quantity');
-       
         update_cart(id,productQuantity)
-        $('.add-to-cart').attr('data-quantity', $('#qty-input-'+id).val());
+        $('.single-product-add-to-cart').attr('data-quantity', $('#qty-input-'+id).val());
 
     });
     function update_cart(id,productQuantity){

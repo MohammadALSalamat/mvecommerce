@@ -93,10 +93,10 @@
                                     </figure>
                                     <div class="product-details">
                                         <div class="product-cat">
-                                            <a href="shop-banner-sidebar.html">{{ $category_product->title }}</a>
+                                            <a href="{{ route('shop_special_category',$category_product->slug) }}">{{ $category_product->title }}</a>
                                         </div>
                                         <h4 class="product-name">
-                                            <a href="product-default.html">{{ $products_category->title }}</a>
+                                            <a href="{{ route('singleproduct',$products_category->slug) }}">{{ $products_category->title }}</a>
                                         </h4>
                                         <div class="ratings-container">
                                             <div class="ratings-full">
@@ -105,17 +105,15 @@
                                             </div>
                                             <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
                                         </div>
-                                        <div class="product-price">${{ $products_category->price }} - ${{ $products_category->offer_price }}</div>
+                                        <div class="product-price">AED {{ $products_category->price }} -  AED {{ $products_category->offer_price }}</div>
                                         <div class="product-desc">
-                                            {{ $products_category->Summary }}
+                                            {!! $products_category->Summary !!}
                                         </div>
                                         <div class="product-action">
                                             <a href="javascript:void(0)" data-product-id="{{$products_category->id}}" id="add_to_cart{{$products_category->id}}" data-quantity="1" class="add-to-cart btn-product btn-cart"
                                                 title="Add to Cart"><i class="w-icon-cart"></i>Add To Cart</a>
                                             <a href="javascript:void(0)" data-id="{{ $products_category->id }}" id="add_to_wishlist{{ $products_category->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Compare"></a>
                                         </div>
                                     </div>
                                 </div>
