@@ -123,7 +123,9 @@
                           </ul>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
+                          @foreach ( $order->product as $items)
+                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::groupBy('title')->where('id',$items->category_id)->value('title') }}</button>
+                          @endforeach                        
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">

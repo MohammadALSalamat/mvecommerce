@@ -178,19 +178,12 @@
                       </td>
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
-                          @foreach ( $order->product as $order_items)
-
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                               src="{{ $items->image }}" alt="{{ $items->title }}">
                           </li>
-                          @if($order_items->pivot->quantity > 3)
-                          <li class="avatar avatar-sm">
-                            <span class="badge badge-info">+1 more</span>
-                          </li>
-                          @endif
-                          @endforeach
+ 
                         
                         </ul>
                       </td>

@@ -7,16 +7,13 @@ use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
 use App\Jobs\OrderEmail;
+use PDF;
 use Illuminate\Http\Request;
-use App\Jobs\OrderEmailForAdmin;
 use App\Jobs\orderVendorEmail;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+
+use App\Jobs\OrderEmailForAdmin;
 use Illuminate\Support\Facades\Session;
-use App\Mail\OrderEmail as userOrderMail;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Mail\orderVendorEmail as vendorOrderMail;
-use App\Mail\OrderEmailForAdmin as adminOrderMail;
 
 class OrderController extends Controller
 {
@@ -222,5 +219,11 @@ class OrderController extends Controller
            }else{
                return back()->with('error','this Id is not found');
            }
+    }
+    public function generateInvoicePDF($id)
+    {
+        $order = Order::find($id);
+        $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('general-invoic.pdf');
     }
 }

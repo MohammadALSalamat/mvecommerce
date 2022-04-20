@@ -17,6 +17,12 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     src: url("//db.onlinewebfonts.com/t/02f502e5eefeb353e5f83fc5045348dc.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/02f502e5eefeb353e5f83fc5045348dc.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/02f502e5eefeb353e5f83fc5045348dc.woff") format("woff"), url("//db.onlinewebfonts.com/t/02f502e5eefeb353e5f83fc5045348dc.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/02f502e5eefeb353e5f83fc5045348dc.svg#GE SS Two Light") format("svg");
 }
 
+@font-face {
+    font-family: "Amazon Ember";
+    src: url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.eot");
+    src: url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.woff") format("woff"), url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/3108eb4da4655a215801f0f4ed03ab1b.svg#Amazon Ember") format("svg");
+}
+
 .ar h1,
 .ar,
 .ar li,
@@ -29,5 +35,5 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .ar strong,
 .ar div,
 .ar p {
-    font-family: GE SS Two Light !important;
+    font-family: Amazon Ember !important;
 }

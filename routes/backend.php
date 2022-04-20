@@ -109,6 +109,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
 
     // get the invoice template
     Route::get('invoice_template/{id}',[OrderController::class,'invoice_template'])->name('invoice_template');
+    Route::get('generate-invoice-pdf/{id}', [OrderController::class,'generateInvoicePDF'])->name('pdfviewer');
 
 });
 
