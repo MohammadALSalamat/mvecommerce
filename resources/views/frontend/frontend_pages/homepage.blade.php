@@ -324,7 +324,7 @@
                     <div class="banner banner-fixed br-xs">
                         <figure>
                             <img src="{{asset($item->image_English)}}"
-                                alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover:width:100%" />
+                                alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                         </figure>
                         {{-- <div class="mt-0 banner-content y-50">
                             <h5 class="banner-subtitle font-weight-normal text-dark">Get up to <span
@@ -2073,38 +2073,35 @@
         </div>
         <!-- End of Tab Content -->
         <div class="mb-5 row category-cosmetic-lifestyle appear-animate">
-            <div class="mb-4 col-md-6">
-                <div class="banner banner-fixed category-banner-1 br-xs">
-                    <figure>
-                        <img src="assets/images/demos/demo1/categories/3-1.jpg" alt="Category Banner" width="610"
-                            height="200" style="background-color: #3B4B48;" />
-                    </figure>
-                    <div class="pt-1 banner-content y-50">
-                        <h5 class="banner-subtitle font-weight-bold text-uppercase">Natural Process</h5>
-                        <h3 class="text-white banner-title font-weight-bolder text-capitalize">Cosmetic
-                            Makeup<br>Professional</h3>
-                        <a href="shop-banner-sidebar.html"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">Shop Now<i
-                                class="w-icon-long-arrow-right"></i></a>
+            @php
+            $sponser_cat_section = \App\Models\sponserAds::where('image_place' ,'homepage_under_filter')->get();
+             @endphp
+                @if($sponser_cat_section->count() > 0)
+                @foreach ($sponser_cat_section as $item)
+                @php
+            $single_seller_name = \App\Models\Seller::where('id' ,$item->seller_id)->value('username');
+             @endphp
+                <div class="mb-4 col-md-6">
+                    <div class="banner banner-fixed br-xs">
+                        <figure>
+                           <a href="{{route('single_seller',$single_seller_name)}}"> <img src="{{asset($item->image_English)}}"
+                                alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover;width:100%" /></a>
+                        </figure>
+                        {{-- <div class="mt-0 banner-content y-50">
+                            <h5 class="banner-subtitle font-weight-normal text-dark">Get up to <span
+                                    class="text-secondary font-weight-bolder text-uppercase ls-25">20% Off</span>
+                            </h5>
+                            <h3 class="banner-title text-uppercase">Sports Outfits<br><span
+                                    class="font-weight-normal text-capitalize">Collection</span>
+                            </h3>
+                            <div class="banner-price-info font-weight-normal">Starting at <span
+                                    class="text-secondary font-weight-bolder">$170.00</span>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
-            </div>
-            <div class="mb-4 col-md-6">
-                <div class="banner banner-fixed category-banner-2 br-xs">
-                    <figure>
-                        <img src="assets/images/demos/demo1/categories/3-2.jpg" alt="Category Banner" width="610"
-                            height="200" style="background-color: #E5E5E5;" />
-                    </figure>
-                    <div class="pt-1 banner-content y-50">
-                        <h5 class="banner-subtitle font-weight-bold text-uppercase">Trending Now</h5>
-                        <h3 class="banner-title font-weight-bolder text-capitalize">Women's
-                            Lifestyle<br>Collection</h3>
-                        <a href="shop-banner-sidebar.html"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">Shop Now<i
-                                class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
         <!-- End of Category Cosmetic Lifestyle -->
         @foreach ($home_3_Categories as $item)
