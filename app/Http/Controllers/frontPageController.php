@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
+use App\Models\sponserAds;
 
 class frontPageController extends Controller
 {
@@ -34,10 +35,10 @@ class frontPageController extends Controller
         //get the data
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
-
+        $sponsers = sponserAds::where('status',1)->get();
         $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->take(3)->get();
 
-        return view('frontend.frontend_pages.homepage',compact('banners', 'categories','home_3_Categories'));
+        return view('frontend.frontend_pages.homepage',compact('sponsers','banners', 'categories','home_3_Categories'));
     }
 
     // login form

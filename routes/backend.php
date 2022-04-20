@@ -14,9 +14,7 @@ use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\AdminviewController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAttributeController;
-
-
-
+use App\Http\Controllers\SponserAdsController;
 
 // ADMIN LOGIN FORM 
 Route::group(['prefix'=>'admin'],function(){
@@ -36,6 +34,19 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::get('/edit_banner/{id}', [BannerController::class, 'editbanner'])->name('editbanner');
     Route::match(['get','post'],'/update_banner/{id}', [BannerController::class, 'updatebanner'])->name('updatebanner');
     Route::match(['get', 'post'], '/deletbanner/{id}', [BannerController::class, 'deletbanner'])->name('deletbanner');
+
+
+  // banners section
+
+  Route::get('/ads',[SponserAdsController::class, 'viewaads'])->name('adsview');
+  Route::get('/create_ads', [SponserAdsController::class, 'createads'])->name('createads');
+  Route::post('/add_new_ads',[SponserAdsController::class,'addads'])->name('addads');
+  Route::get('/edit_ads/{id}', [SponserAdsController::class, 'editads'])->name('editads');
+  Route::match(['get','post'],'/update_ads/{id}', [SponserAdsController::class, 'updateads'])->name('updateads');
+  Route::match(['get', 'post'], '/deletads/{id}', [SponserAdsController::class, 'deletads'])->name('deletads');
+
+
+
 
     // Categories Section
     Route::get('/category', [CategoryController::class, 'viewCategory'])->name('viewcategories');

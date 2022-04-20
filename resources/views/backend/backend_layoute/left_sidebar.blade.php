@@ -46,6 +46,14 @@
             </li>
           </ul>
         </li>
+        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">Sponsered Ads Management</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('adsview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Ads</a>
+            </li>
+             <li><a class="menu-item" href="{{ route('createads') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Ads</a>
+            </li>
+          </ul>
+        </li>
         <li class=" nav-item"><a href="#"><i class="la la-header"></i><span class="menu-title" data-i18n="nav.page_headers.main">Brands Management</span></a>
             <ul class="menu-content">
                 <li><a class="menu-item" href="{{ route('viewbrand') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Brands</a>
@@ -172,6 +180,14 @@
             <li><a class="menu-item" href="{{ route('bannersview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الافتات</a>
             </li>
              <li><a class="menu-item" href="{{ route('createbanner') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">أضافة لافتة أو عرض</a>
+            </li>
+          </ul>
+        </li>
+        <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title" data-i18n="nav.horz_nav.main">أدارة الاعلانات المدفوعة</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="{{ route('adsview') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">عرض الاعلانات</a>
+            </li>
+             <li><a class="menu-item" href="{{ route('createads') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">صنع اعلان</a>
             </li>
           </ul>
         </li>

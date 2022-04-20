@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
@@ -12,12 +13,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AdminviewController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\AdminbackendController;
-use App\Http\Controllers\AdminviewController;
-use App\Http\Controllers\ProductAttributeController;
-use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\ShippingCartController;
+use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\ProductAttributeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,22 @@ require __DIR__.'/frontend.php';
 
 
 Auth::routes(['register'=>false]);
+
+Route::get('/clearCash',function(){
+    Artisan::call('optimize');
+    return ' its clear now';
+});
+Route::get('/clearview',function(){
+    Artisan::call('view:clear');
+    return ' view clear now';
+});
+Route::get('/clearroute',function(){
+    Artisan::call('route:clear');
+    return ' route clear now';
+});
+Route::get('/storagelink',function(){
+    Artisan::call('storage:link');
+    return ' its storage now';
+});
 
 
