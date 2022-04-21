@@ -123,13 +123,7 @@ input:checked + .slider:before {
                                                         placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1">Slug</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a uniuqe slug" name="slug">
-                                                </div>
-                                            </div>
+                                            
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Is It Parent?</label>
                                                 <div class="col-md-9">
@@ -155,13 +149,24 @@ input:checked + .slider:before {
                                             <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                            <i class="fa fa-picture-o"></i> Choose
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose English Image
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="image">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="input-group col-md-10 offset-2">
+                                                    <span class="input-group-btn">
+                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose Arabic Image
+                                                        </a>
+                                                    </span>
+                                                    <input id="thumbnail1" class="form-control" type="text" name="ar_image">
+                                                </div>
+                                                <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
@@ -173,7 +178,7 @@ input:checked + .slider:before {
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control"
-                                                    for="projectinput9">Description</label>
+                                                    for="projectinput9">Arabic Description</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote_ar" rows="20" class="form-control"
                                                         name="ar_description" placeholder="About Project">{{ old('description') }}</textarea>
@@ -213,7 +218,7 @@ input:checked + .slider:before {
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
  <script>
-    $('#lfm').filemanager('image');
+    $('#lfm,#lfm1').filemanager('image');
 </script>
 <!-- hide the form of parent select if the category is a parent -->
 <script>

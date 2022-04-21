@@ -13,10 +13,10 @@
             <div class="header-right">
                 <div class="dropdown">
                     <a href="#currency">USD</a>
-                    <div class="dropdown-box">
+                    {{-- <div class="dropdown-box">
                         <a href="#USD">USD</a>
                         <a href="#EUR">EUR</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- End of DropDown Menu -->
 
@@ -97,16 +97,11 @@
                 <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
                         <select id="category" name="category">
-                            <option value="">All Categories</option>
-                            <option value="4">Fashion</option>
-                            <option value="5">Furniture</option>
-                            <option value="6">Shoes</option>
-                            <option value="7">Sports</option>
-                            <option value="8">Games</option>
-                            <option value="9">Computers</option>
-                            <option value="10">Electronics</option>
-                            <option value="11">Kitchen</option>
-                            <option value="12">Clothing</option>
+                            <option value="">All Department </option>
+                            <option value="shps_business">Shop Business</option>
+                            <option value="home_business">Home Business</option>
+                            <option value="personal_business">Personal Business</option>
+                            
                         </select>
                     </div>
                     <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
@@ -121,7 +116,7 @@
                     <div class="call-info d-lg-show">
                         <h4 class="mb-0 chat font-weight-normal font-size-md text-normal ls-normal text-light">
                             <a href="mailto:#" class="text-capitalize">Live Chat</a> or :</h4>
-                        <a href="tel:#" class="phone-number font-weight-bolder ls-50">0(800)123-456</a>
+                        <a href="tel:+971501413429" class="phone-number font-weight-bolder ls-50">+(971)501413429</a>
                     </div>
                 </div>
                 <a class="wishlist label-down link d-xs-show" style="position: relative"
@@ -133,10 +128,7 @@
                     </i>
                     <span class="wishlist-label d-lg-show">Wishlist</span>
                 </a>
-                <a class="compare label-down link d-xs-show" href="compare.html">
-                    <i class="w-icon-compare"></i>
-                    <span class="compare-label d-lg-show">Compare</span>
-                </a>
+                
                 <div class="mr-0 dropdown cart-dropdown cart-offcanvas mr-lg-2">
                     <div class="cart-overlay"></div>
                     <a href="#" class="cart-toggle label-down link">
@@ -214,8 +206,8 @@
                                 @endphp
                                 @foreach($categories as $category )
                                 <li>
-                                    <a href="shop-fullwidth-banner.html">
-                                        <i class="w-icon-home"></i>{{$category->title}}
+                                    <a href="{{ route('shop_special_category',$category->slug) }}">
+                                        {{$category->title}}
                                     </a>
                                     <ul class="megamenu">
                                         @php
@@ -227,7 +219,7 @@
                                             <div class="col-3">
                                                 <li>
                                                     <ul>
-                                                        <li><a href="shop-fullwidth-banner.html">{{$single_cat->title}}</a></li>
+                                                        <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->title}}</a></li>
                                                         
                                                     </ul>
                                                 </li>
@@ -238,7 +230,7 @@
                                             @foreach ($sub_cat as $single_cat )
                                             <li>
                                                 <ul>
-                                                    <li><a href="shop-fullwidth-banner.html">{{$single_cat->title}}</a></li>
+                                                    <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->title}}</a></li>
                                                     
                                                 </ul>
                                             </li>
@@ -289,16 +281,11 @@
                 <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
                         <select id="category" name="category">
-                            <option value="">كل الاقسام</option>
-                            <option value="4">Fashion</option>
-                            <option value="5">Furniture</option>
-                            <option value="6">Shoes</option>
-                            <option value="7">Sports</option>
-                            <option value="8">Games</option>
-                            <option value="9">Computers</option>
-                            <option value="10">Electronics</option>
-                            <option value="11">Kitchen</option>
-                            <option value="12">Clothing</option>
+                            <option value="">الفئات</option>
+                            <option value="shop_business">الاسواق</option>
+                            <option value="personal_business">الفردية</option>
+                            <option value="home_business">المنزلية</option>
+                            
                         </select>
                     </div>
                     <input type="text" class="form-control" name="search" id="search" placeholder="بحث....."
@@ -313,7 +300,7 @@
                     <div class="call-info d-lg-show">
                         <h4 class="mb-0 chat font-weight-normal font-size-md text-normal ls-normal text-light">
                             <a href="mailto:#" class="text-capitalize">أتصال مباشر</a> أو :</h4>
-                        <a href="tel:#" class="phone-number font-weight-bolder ls-50">0(800)123-456</a>
+                        <a href="tel:+971501413429" class="phone-number font-weight-bolder ls-50 " style="float:left;direction:ltr">+(971)501413429</a>
                     </div>
                 </div>
                 <a class="wishlist label-down link d-xs-show" style="position: relative"
@@ -403,7 +390,7 @@
                                 @foreach($categories as $category )
                                 <li>
                                     <a href="{{ route('shop_special_category',$category->slug) }}">
-                                        <i class="w-icon-home"></i>{{$category->ar_title}}
+                                        {{$category->ar_title}}
                                     </a>
                                     <ul class="megamenu">
                                         @php
@@ -426,7 +413,7 @@
                                             @foreach ($sub_cat as $single_cat )
                                             <li>
                                                 <ul>
-                                                    <li><a href="shop-fullwidth-banner.html">{{$single_cat->ar_title}}</a></li>
+                                                    <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->ar_title}}</a></li>
                                                     
                                                 </ul>
                                             </li>

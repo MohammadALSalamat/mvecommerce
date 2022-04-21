@@ -2075,16 +2075,16 @@
         <div class="mb-5 row category-cosmetic-lifestyle appear-animate">
             @php
             $sponser_cat_section = \App\Models\sponserAds::where('image_place' ,'homepage_under_filter')->get();
-             @endphp
-                @if($sponser_cat_section->count() > 0)
-                @foreach ($sponser_cat_section as $item)
-                @php
+            @endphp
+            @if($sponser_cat_section->count() > 0)
+            @foreach ($sponser_cat_section as $item)
+            @php
             $single_seller_name = \App\Models\Seller::where('id' ,$item->seller_id)->value('username');
-             @endphp
+            @endphp
                 <div class="mb-4 col-md-6">
                     <div class="banner banner-fixed br-xs">
                         <figure>
-                           <a href="{{route('single_seller',$single_seller_name)}}"> <img src="{{asset($item->image_English)}}"
+                        <a href="{{route('single_seller',$single_seller_name)}}"> <img src="{{asset($item->image_English)}}"
                                 alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover;width:100%" /></a>
                         </figure>
                         {{-- <div class="mt-0 banner-content y-50">
@@ -2104,9 +2104,13 @@
             @endif
         </div>
         <!-- End of Category Cosmetic Lifestyle -->
-        @foreach ($home_3_Categories as $item)
-        @if(Config::get('app.locale') == 'en')
 
+        <!-- Products Collection  -->
+        @foreach ($home_3_Categories as $item)
+        @if ($item->one_cat_has_many_products-> count() == 0)
+            
+        @else
+        @if(Config::get('app.locale') == 'en')
         <div class="mb-5 product-wrapper-1 appear-animate">
             <div class="pb-1 mb-4 title-link-wrapper">
                 <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
@@ -2116,8 +2120,8 @@
             </div>
             <div class="row">
                 <div class="mb-4 col-lg-3 col-sm-4">
-                    <div class="banner h-100 br-sm" style="background-image: url({{ $item->image }});
-                background-color: #ebeced;">
+                    <div class="banner br-sm" style="background:url('{{ $item->one_cat_has_many_products[0]->image }}');
+                    background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
                         <div class="banner-content content-top">
                             <h5 class="mb-2 banner-subtitle font-weight-normal text-white">Weekend Sale</h5>
                             <hr class="mb-2 banner-divider bg-light">
@@ -2135,7 +2139,6 @@
                         left: 0;
                         opacity: 0.5;
                         z-index:-1">
-
                             </div>
                         </div>
                     </div>
@@ -2313,33 +2316,36 @@
             </div>
         </div>
         @endif
+        @endif
         @endforeach
-        <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(front-style/assets/images/demos/demo1/banners/4.jpg);
-            background-color: #383839;">
-            <div class="banner-content align-items-center">
-                <div class="mb-3 content-left d-flex align-items-center">
-                    <div class="banner-price-info font-weight-bolder text-secondary text-uppercase lh-1 ls-25">
-                        25
-                        <sup class="font-weight-bold">%</sup><sub class="font-weight-bold ls-25">Off</sub>
-                    </div>
-                    <hr class="mt-0 mb-0 mr-8 bg-white banner-divider">
-                </div>
-                <div class="flex-wrap flex-1 content-right d-flex align-items-center">
-                    <div class="pr-4 mr-auto banner-info">
-                        <h3 class="text-white banner-title font-weight-bolder text-uppercase ls-25">For Today's
-                            Fashion</h3>
-                        <p class="mb-0 text-white">Use code
-                            <span class="pl-1 pr-1 bg-white text-dark font-weight-bold ls-50 d-inline-block">Black
-                                <strong>12345</strong></span> to get best offer.</p>
-                    </div>
-                    <a href="shop-banner-sidebar.html"
-                        class="mb-3 btn btn-white btn-outline btn-rounded btn-icon-right">Shop Now<i
-                            class="w-icon-long-arrow-right"></i></a>
-                </div>
+        <!-- End Products Collection  -->
+        <!-- Slider under view products -->
+        @php
+        $sponser_adsdown = \App\Models\sponserAds::where('image_place' ,'homepage_under_full_width')->get();
+        @endphp
+         @if($sponser_adsdown->count() > 0)
+   
+        <div id="carouselExampleControlsdown" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach($sponser_adsdown as $key => $slider)
+            @if($slider->image_place == 'homepage_under_full_width')
+            <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                <img src="{{url($slider->image_English)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
             </div>
+            @endif
+            @endforeach
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsdown" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsdown" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      @endif 
+
         <!-- End of Banner Fashion -->
-        <h2 class="mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
+        <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
         <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
             'spaceBetween': 0,
             'slidesPerView': 2,
@@ -2418,108 +2424,6 @@
                         <img src="{{ asset('front-style/assets/images/demos/demo1/brands/12.png') }}" alt="Brand"
                             width="410" height="186" />
                     </figure>
-                </div>
-            </div>
-        </div>
-        <!-- End of Brands Wrapper -->
-        <div class="mb-4 post-wrapper appear-animate">
-            <div class="pb-1 mb-4 title-link-wrapper">
-                <h2 class="mb-0 title ls-normal">From Our Blog</h2>
-                <a href="blog-listing.html" class="font-weight-bold font-size-normal">View All Articles</a>
-            </div>
-            <div class="swiper">
-                <div class="swiper-container swiper-theme" data-swiper-options="{
-                    'slidesPerView': 1,
-                    'spaceBetween': 20,
-                    'breakpoints': {
-                        '576': {
-                            'slidesPerView': 2
-                        },
-                        '768': {
-                            'slidesPerView': 3
-                        },
-                        '992': {
-                            'slidesPerView': 4
-                        }
-                    }
-                }">
-                    <div class="swiper-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1">
-                        <div class="text-center swiper-slide post overlay-zoom">
-                            <figure class="post-media br-sm">
-                                <a href="post-single.html">
-                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/1.jpg')}}" alt="Post"
-                                        width="280" height="180" style="background-color: #4b6e91;" />
-                                </a>
-                            </figure>
-                            <div class="post-details">
-                                <div class="post-meta">
-                                    by <a href="#" class="post-author">John Doe</a>
-                                    - <a href="#" class="mr-0 post-date">03.05.2021</a>
-                                </div>
-                                <h4 class="post-title"><a href="post-single.html">Aliquam tincidunt mauris
-                                        eurisus</a>
-                                </h4>
-                                <a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read
-                                    More<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center swiper-slide post overlay-zoom">
-                            <figure class="post-media br-sm">
-                                <a href="post-single.html">
-                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/2.jpg')}}" alt="Post"
-                                        width="280" height="180" style="background-color: #cec9cf;" />
-                                </a>
-                            </figure>
-                            <div class="post-details">
-                                <div class="post-meta">
-                                    by <a href="#" class="post-author">John Doe</a>
-                                    - <a href="#" class="mr-0 post-date">03.05.2021</a>
-                                </div>
-                                <h4 class="post-title"><a href="post-single.html">Cras ornare tristique elit</a>
-                                </h4>
-                                <a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read
-                                    More<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center swiper-slide post overlay-zoom">
-                            <figure class="post-media br-sm">
-                                <a href="post-single.html">
-                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/3.jpg')}}" alt="Post"
-                                        width="280" height="180" style="background-color: #c9c7bb;" />
-                                </a>
-                            </figure>
-                            <div class="post-details">
-                                <div class="post-meta">
-                                    by <a href="#" class="post-author">John Doe</a>
-                                    - <a href="#" class="mr-0 post-date">03.05.2021</a>
-                                </div>
-                                <h4 class="post-title"><a href="post-single.html">Vivamus vestibulum ntulla nec
-                                        ante</a>
-                                </h4>
-                                <a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read
-                                    More<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center swiper-slide post overlay-zoom">
-                            <figure class="post-media br-sm">
-                                <a href="post-single.html">
-                                    <img src="{{asset('front-style/assets/images/demos/demo1/blogs/4.jpg')}}" alt="Post"
-                                        width="280" height="180" style="background-color: #d8dce0;" />
-                                </a>
-                            </figure>
-                            <div class="post-details">
-                                <div class="post-meta">
-                                    by <a href="#" class="post-author">John Doe</a>
-                                    - <a href="#" class="mr-0 post-date">03.05.2021</a>
-                                </div>
-                                <h4 class="post-title"><a href="post-single.html">Fusce lacinia arcuet nulla</a>
-                                </h4>
-                                <a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read
-                                    More<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>

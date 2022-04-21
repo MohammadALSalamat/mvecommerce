@@ -2,6 +2,230 @@
 @section('mytitle',$single_product->title )
 @section('style')
 <style>
+    .carousel-item {
+        width: 100%;
+        height: 250px;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+    }
+
+    .carousel {
+        position: relative
+    }
+
+    .carousel.pointer-event {
+        touch-action: pan-y
+    }
+
+    .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden
+    }
+
+    .carousel-inner::after {
+        display: block;
+        clear: both;
+        content: ""
+    }
+
+    .carousel-item {
+        position: relative;
+        display: none;
+        float: left;
+        width: 100%;
+        margin-right: -100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: transform .6s ease-in-out
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+        .carousel-item {
+            transition: none
+        }
+    }
+
+    .carousel-item-next,
+    .carousel-item-prev,
+    .carousel-item.active {
+        display: block
+    }
+
+    .active.carousel-item-end,
+    .carousel-item-next:not(.carousel-item-start) {
+        transform: translateX(100%)
+    }
+
+    .active.carousel-item-start,
+    .carousel-item-prev:not(.carousel-item-end) {
+        transform: translateX(-100%)
+    }
+
+    .carousel-fade .carousel-item {
+        opacity: 0;
+        transition-property: opacity;
+        transform: none
+    }
+
+    .carousel-fade .carousel-item-next.carousel-item-start,
+    .carousel-fade .carousel-item-prev.carousel-item-end,
+    .carousel-fade .carousel-item.active {
+        z-index: 1;
+        opacity: 1
+    }
+
+    .carousel-fade .active.carousel-item-end,
+    .carousel-fade .active.carousel-item-start {
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0s .6s
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+        .carousel-fade .active.carousel-item-end,
+        .carousel-fade .active.carousel-item-start {
+            transition: none
+        }
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: 0 0;
+        border: 0;
+        opacity: .5;
+        transition: opacity .15s ease
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+        .carousel-control-next,
+        .carousel-control-prev {
+            transition: none
+        }
+    }
+
+    .carousel-control-next:focus,
+    .carousel-control-next:hover,
+    .carousel-control-prev:focus,
+    .carousel-control-prev:hover {
+        color: #fff;
+        text-decoration: none;
+        outline: 0;
+        opacity: .9
+    }
+
+    .carousel-control-prev {
+        left: 0
+    }
+
+    .carousel-control-next {
+        right: 0
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 100% 100%
+    }
+
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e")
+    }
+
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 15%;
+        margin-bottom: 1rem;
+        margin-left: 15%;
+        list-style: none
+    }
+
+    .carousel-indicators [data-bs-target] {
+        box-sizing: content-box;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        padding: 0;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: .5;
+        transition: opacity .6s ease
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+        .carousel-indicators [data-bs-target] {
+            transition: none
+        }
+    }
+
+    .carousel-indicators .active {
+        opacity: 1
+    }
+
+    .carousel-caption {
+        position: absolute;
+        right: 15%;
+        bottom: 1.25rem;
+        left: 15%;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        color: #fff;
+        text-align: center
+    }
+
+    .carousel-dark .carousel-control-next-icon,
+    .carousel-dark .carousel-control-prev-icon {
+        filter: invert(1) grayscale(100)
+    }
+
+    .carousel-dark .carousel-indicators [data-bs-target] {
+        background-color: #000
+    }
+
+    .carousel-dark .carousel-caption {
+        color: #000
+    }
+</style>
+<style>
     .row>.column {
         padding: 0 8px;
     }
@@ -737,11 +961,11 @@
                         </div>
                     </div>
                     <!-- More Productcs From This Vendor -->
-                    @if($vendor_products->count() != 0)
+                    @if($vendor_products->count() > 0)
                     <section class="vendor-product-section">
                         <div class="mb-4 title-link-wrapper">
                             <h4 class="text-left title">More Products From This Vendor</h4>
-                            <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
+                            <a href="{{ route('single_seller',$vendor_info->username) }}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
                                 Products<i class="w-icon-long-arrow-right"></i></a>
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
@@ -800,7 +1024,7 @@
                     </section>
                     @endif
                     <!-- Related Products-->
-                    @if(!empty($single_product->rel_product))
+                    @if ($related_product->count() > 0)
                     <section class="related-product-section">
                         <div class="mb-4 title-link-wrapper">
                             <h4 class="title">Related Products</h4>
@@ -822,40 +1046,42 @@
                                 }
                             }
                         }">
-                            <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
-                                @foreach($single_product->rel_product as $related_products)
-                                <div class="swiper-slide product">
-                                    <figure class="product-media " style="height: 150px" >
-                                        <a href="{{ route('singleproduct',$related_products->slug) }}">
-                                            <img src="{{ $related_products->image }}" alt="Product"  />
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                        </div>
-                                        
-                                    </figure>
-                                    <div class="product-details text-center">
-                                        <h4 class="product-name"><a
-                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a></h4>
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">
-                                                @if(empty($related_products->offer_price) || $related_products->offer_price
-                                                == null){{ $related_products->price }} AED @else <del
-                                                    style="color:red">{{ $related_products->price }} AED </del> -
-                                                {{ $related_products->offer_price }} AED @endif
-                                            </div>
+                        <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
+                            @foreach($related_product as $related_products)
+                            <div class="swiper-slide product">
+                                <figure class="product-media " style="height: 380px" >
+                                    <a href="{{ route('singleproduct',$related_products->slug) }}">
+                                        <img src="{{ $related_products->image }}" alt="Product"  />
+                                    </a>
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                            title="Add to cart"></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                            title="Add to wishlist"></a>
+                                    </div>
+                                    
+                                </figure>
+                                <div class="product-details text-center">
+                                    <h4 class="product-name"><a
+                                            href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a></h4>
+                                    <div class="product-pa-wrapper">
+                                        <div class="product-price">
+                                            @if(empty($related_products->offer_price) || $related_products->offer_price
+                                            == null){{ $related_products->price }} AED @else <del
+                                                style="color:red">{{ $related_products->price }} AED </del> -
+                                            {{ $related_products->offer_price }} AED @endif
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
                         </div>
-                    </section>
-                    @endif
-                </div>
+                    </div>
+                </section> 
+                        @else
+                            
+                        @endif
+                                    </div>
                 <!-- End of Main Content -->
                 <aside class="sidebar product-sidebar sidebar-fixed right-sidebar sticky-sidebar-wrapper">
                     <div class="sidebar-overlay"></div>
@@ -895,20 +1121,31 @@
                             <!-- End of Widget Icon Box -->
 
                             <div class="widget widget-banner mb-9">
-                                <div class="banner banner-fixed br-sm">
-                                    <figure>
-                                        <img src="assets/images/shop/banner3.jpg" alt="Banner" width="266" height="220"
-                                            style="background-color: #1D2D44;" />
-                                    </figure>
-                                    <div class="banner-content">
-                                        <div class="text-white banner-price-info font-weight-bolder lh-1 ls-25">
-                                            40<sup class="font-weight-bold">%</sup><sub
-                                                class="font-weight-bold text-uppercase ls-25">Off</sub>
+          
+                                        @php
+                                        $sponser_adsdown = \App\Models\sponserAds::where('image_place' ,'single_product_side_bar')->get();
+                                        @endphp
+                                         @if($sponser_adsdown->count() > 0)
+                                   
+                                        <div id="carouselExampleControlsdown2" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach($sponser_adsdown as $key => $slider)
+                                            @if($slider->image_place == 'single_product_side_bar')
+                                            <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                                                <img src="{{url($slider->image_English)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
+                                            </div>
+                                            @endif
+                                            @endforeach
                                         </div>
-                                        <h4 class="mb-0 text-white banner-subtitle font-weight-bolder text-uppercase">
-                                            Ultimate Sale</h4>
-                                    </div>
-                                </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsdown2" data-bs-slide="prev">
+                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsdown2" data-bs-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        </button>
+                                      </div>
+                                      @endif 
+                                   
                             </div>
                             <!-- End of Widget Banner -->
 

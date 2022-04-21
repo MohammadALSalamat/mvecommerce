@@ -2,16 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class product extends Model
 {
     use HasFactory;
-    protected $fillable=
-    [
-        'vendor_id','category_id','child_category_id','brand_id','title','slug','summary','description','additional_info','return_policy','size_guid','stock','price','offer_price','discound','conditions','status','size','image'
-    ];
+    use Sluggable;
+
+    protected $guarded=[]; 
+        public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
       //create a relatrion one to many with products
       public function one_product_has_one_cat(){
         return $this->hasOne(category::class,'id');

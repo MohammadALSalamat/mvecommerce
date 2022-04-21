@@ -83,7 +83,9 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
 
     Route::get('AddProductAttrebuite/{id}',[ProductAttributeController::class,'add_productAttr'])->name('add_productAttr');
     Route::post('CreateProductAttrebuite/{id}',[ProductAttributeController::class,'create_productAttr'])->name('create_productAttr');
+    Route::post('adminCreateProductAttrebuite/{id}',[ProductAttributeController::class,'create_productAttr_gallary'])->name('admin_create_productAttr_gallary');
     Route::match(['get', 'post'], '/deletproductAttr/{id}', [ProductAttributeController::class, 'deletproductAttr'])->name('deletproductAttr');
+    Route::match(['get', 'post'], '/admin_gallary_deletproductAttr/{id}', [SellerProductAttribute::class, 'gallary_deletproductAttr'])->name('admin_gallary_deletproductAttr');
 
 
 

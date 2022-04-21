@@ -50,7 +50,6 @@ class SellerController extends Controller
         $products_sold = Order::count();
         $order_product = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
-        
         // seller product that got sold
         $total = array(); // get the profit of seller 
         if ($order_product->count() > 0) {

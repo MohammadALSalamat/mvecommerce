@@ -58,7 +58,7 @@
                                 </div>
                                 
                             </nav>
-                            @if(!empty($products))
+                            @if(!empty($products) || $products->count() > 0 )
                             <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ($products as $product )
                                 <div class="product-wrap">
@@ -86,8 +86,10 @@
                                         </figure>
                                         <div class="product-details">
                                             <div class="product-cat">
-                                           
-                                                <span >{{ $product->this_belong_to_category['title']}}</span>
+                                                @foreach ($product->this_belong_to_category as $cat )
+                                                <span >{{ $cat['title']}}</span>
+                                                    
+                                                @endforeach
                                             </div>
                                             <h3 class="product-name">
                                                 <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>

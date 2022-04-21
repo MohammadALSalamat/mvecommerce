@@ -123,13 +123,7 @@ input:checked + .slider:before {
                                                         placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1">Slug</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a uniuqe slug" name="slug">
-                                                </div>
-                                            </div>
+                                           
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput56">Vendor</label>
                                                 <div class="col-md-9">

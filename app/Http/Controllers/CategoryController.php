@@ -37,9 +37,6 @@ class CategoryController extends Controller
         if (empty($data['ar_title']) || $data['ar_title'] == null) {
             return back()->with('error', 'Title is requird');
         }
-        if (empty($data['slug'])|| $data['slug'] == null) {
-            return back()->with('error', 'Slug is requird');
-        }
         if (empty($data['description'])) {
             return back()->with('error', 'Description is requird');
         }
@@ -69,8 +66,8 @@ class CategoryController extends Controller
         $addCategory = new category();
         $addCategory->title = $data['title'];
         $addCategory->ar_title = $data['ar_title'];
-        $addCategory->slug = $data['slug'];
         $addCategory->image = $data['image'];
+        $addCategory->ar_image = $data['ar_image'];
         $addCategory->description = $data['description'];
         $addCategory->ar_description = $data['ar_description'];
         $addCategory->is_parent = $parent;
@@ -101,9 +98,6 @@ class CategoryController extends Controller
         if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
         }
-        if (empty($data['slug']) || $data['slug'] == null) {
-            return back()->with('error', 'Slug is requird');
-        }
         if (empty($data['description'])) {
             return back()->with('error', 'Description is requird');
         }
@@ -128,8 +122,8 @@ class CategoryController extends Controller
         category::where('id',$id)->update([
                 'title' => $data['title'],
                 'ar_title' => $data['ar_title'],
-                'slug' => $data['slug'],
                 'image' => $data['image'],
+                'ar_image' => $data['ar_image'],
                 'description' => $data['description'],
                 'ar_description' => $data['description'],
                 'is_parent' => $parent,

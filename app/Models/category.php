@@ -2,24 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class category extends Model
 {
     use HasFactory;
-    protected $fillable =
-    [
-        'title',
-        'slug',
-        'description',
-        'image',
-        'parent_id',
-        'is_parent',
-        'status'
-    ];
+    use Sluggable;
 
-  
+    protected $guarded=[]; 
+
       //create a relatrion one to many with products
       public function one_cat_has_many_products(){
         return $this->hasMany(product::class,'category_id');
@@ -30,6 +23,15 @@ class category extends Model
     public static function get_category_child_by_parent_id($id)
     {
         return category::where('parent_id',$id)->get();
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 
 }

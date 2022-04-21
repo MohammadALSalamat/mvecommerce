@@ -225,6 +225,115 @@
                     </div>
                 </div>
             </section>
+        <!-- // Images Gallary for the product -->
+        <section class="basic-select2">
+            <div class="row">
+                <div class="col-xl-7 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Add Gallery Attribute</h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <form class="form form-horizontal"
+                                action="{{ route('admin_create_productAttr_gallary',$current_product->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div id="productAttr1" style="overflow: scroll; padding-left:10px;height:220px"
+                                    data-mfield-options='{"section": ".group","btnAdd":"#btnAdd-1","btnRemove":".btnRemove"}'>
+                                    <div class="row">
+                                        <div class="col-md-12"><button type="button" id="btnAdd-1"
+                                                class="btn btn-sm mb-2 btn-primary"><i class="la la-plus"></i>Attribute
+                                            </button></div>
+                                    </div>
+                                    <div class="row group mb-2">
+                                        <div class="col-md-9">
+                                                <label for="">Image</label>
+                                               <input type="file" name="image[]" class=" form-control form-control-file">
+                                        </div>
+                                        
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-sm mt-2 btn-danger btnRemove"><i
+                                                    class="ft-trash-2"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions" style="padding-left: 10px">
+                                    <button type="button" class="mr-1 btn btn-warning">
+                                        <i class="ft-x"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="la la-check-square-o"></i> Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Data Table Of Gallrery Attribute</h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <table class="table table-striped table-bordered file-export table-responsive"  style="min-height:300px;max-height:300px;overflow:scroll">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Images</th>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ProductGallary as $attr )
+                                    <tr>
+                                        <td>{{ $current_product->title }}</td>
+                                        <td><img src="{{ asset('storage/popups/'.$attr->gallery) }}" width="100px"></td>
+                                        <td>
+                                            <span class="dropdown">
+                                                <button id="btnSearchDrop2" type="button" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="true"
+                                                    class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
+                                                        class="ft-settings"></i></button>
+                                                <span aria-labelledby="btnSearchDrop2"
+                                                    class="mt-1 dropdown-menu dropdown-menu-right">
+
+                                                    <form action="{{ route('admin_gallary_deletproductAttr',$attr->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <a href="" id="cancel-delete" class="dropdown-item dltbtn">
+                                                            <i class="ft-trash-2 danger"></i>Delete
+                                                        </a>
+                                                    </form>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
             <!-- // Basic form layout section end -->
         </div>

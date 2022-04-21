@@ -36,8 +36,7 @@ class frontPageController extends Controller
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         $sponsers = sponserAds::where('status',1)->get();
-        $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->take(3)->get();
-
+        $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         return view('frontend.frontend_pages.homepage',compact('sponsers','banners', 'categories','home_3_Categories'));
     }
 
@@ -97,7 +96,7 @@ class frontPageController extends Controller
 
         // Filter Section
         #categories
-        $products = $products->where(['status' => 1])->paginate(12); 
+        $products = $products->with('this_belong_to_category')->where(['status' => 1])->paginate(12); 
 
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
@@ -174,8 +173,6 @@ class frontPageController extends Controller
     public function special_category_product(Request $request , $slug)
     {
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
-
-       
         //get the sort value from the Ajax
     
         $sort = '';
@@ -215,15 +212,64 @@ class frontPageController extends Controller
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
-        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
+    public function shop_child_cat(Request $request , $slug)
+    {
+        $Products_has_same_sub_category = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
+        //get the sort value from the Ajax
+    
+        $sort = '';
+        if($request->sort != null){
+            $sort = $request->sort; // get the value
+        }
+        if($Products_has_same_sub_category == null){
+            return view('errors.404');
+        }else{
+            //start the sort depends on the valueof ajax
+            if($sort == 'price-low'){
+
+            }elseif($sort == 'price-low'){
+            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'category_id'=>$Products_has_same_sub_category->id])->paginate(12);
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+
+            }else{
+                $products = product::where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+
+            }
+            
+        }
+        $count_product =  count($products);
+        $route = 'Shop/prodcuts/sub_product';
+        // Filter Section
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+        $main_vendors = Seller::where('status', 1)->where('added_by','seller')->get();
+        #type of work filter
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
+        return view('frontend.frontend_pages.products.shop_child_cat',compact('Products_has_same_sub_category', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
+    }
+
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
+      $related_product = product::where('category_id',$single_product->category_id)->where('id','!=',$single_product->id)->get();
       $vendor_info = Seller::where('id',$single_product->vendor_id)->first(); // vednof info
       $vendor_products= product::where('vendor_id',$vendor_info->id)->where('added_by','seller')->get();
       $product_attr = productAttribute::where('product_id',$single_product->id)->get();
@@ -237,7 +283,7 @@ class frontPageController extends Controller
         $avareg = $avg->avg('rate');
     }
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('related_product','vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
