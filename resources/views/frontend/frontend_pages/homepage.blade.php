@@ -821,7 +821,7 @@
     <div class="container">
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Departments
         </h2>
-        <div class="tab tab-nav-boxed tab-nav-outline appear-animate">
+        <div class="tab  tab-nav-outline appear-animate">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrivals</a>
@@ -838,9 +838,9 @@
             </ul>
         </div>
         <!-- End of Tab -->
-        <div class="tab-content product-wrapper appear-animate">
+        <div class="tab-content tab-content-fullwidth product-wrapper appear-animate">
             <div class="pt-4 tab-pane active" id="tab1-1">
-                <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                <div class="row cols-xl-6 cols-md-4 cols-sm-3 cols-2">
                 @foreach ($new_products as $new_product)
                 @php
                 $avareg_review = \App\Models\ProductReview::where('product_id',$new_product->id)->get();
@@ -860,17 +860,22 @@
                     <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
-                                <a href="{{ $new_product->slug }}">
+                                <a href="{{ route('singleproduct',$new_product->slug) }}">
                                     <img src="{{asset($new_product->image)}}"
                                         alt="Product" width="300" height="338" />
                                     
                                 </a>
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
+                                    <!--Add to cart funtion -->
+                                    <a href="" data-product-id="{{$new_product->id}}" id="add_to_cart{{$new_product->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
+                                        title="Add to cart"></a>
+
+                                         <!--Add to wishlist funtion -->
+                                    <a href="javascript:void(0)" data-id="{{ $new_product->id }}" id="add_to_wishlist{{ $new_product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
+                                        title="Wishlist"></a>
+
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quickview{{ $new_product->id }}" class="btn-product-icon btn-quickview w-icon-search"
+                                        title="Quick View"></a>
                                     
                                 </div>
                                 <div class="product-label-group">
@@ -883,7 +888,7 @@
                                 </div>
                             </figure>
                             <div class="product-details">
-                                <h4 class="product-name"><a href="{{ $new_product->slug }}">{{ $new_product->title }}</a>
+                                <h4 class="product-name"><a href="{{ route('singleproduct',$new_product->slug) }}">{{ $new_product->title }}</a>
                                 </h4>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -928,7 +933,7 @@
             <!-- End of Tab Pane -->
             @if ($products_bestSelling->count() > 0 )
             <div class="pt-4 tab-pane" id="tab1-2">
-                <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                <div class="row cols-xl-6 cols-md-4 cols-sm-3 cols-2">
                     @foreach ( $products_bestSelling as $top_selling)
                     @php
                     $avareg_review = \App\Models\ProductReview::where('product_id',$top_selling->id)->get();
@@ -944,17 +949,21 @@
                     <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
-                                <a href="{{ $top_selling->slug }}">
+                                <a href="{{ route('singleproduct',$top_selling->slug) }}">
                                     <img src="{{asset($top_selling->image)}}"
                                         alt="Product" width="300" height="338" />
                                     
                                 </a>
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
+                                    <a href="" data-product-id="{{$top_selling->id}}" id="add_to_cart{{$top_selling->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
+                                        title="Add to cart"></a>
+
+                                         <!--Add to wishlist funtion -->
+                                    <a href="javascript:void(0)" data-id="{{ $top_selling->id }}" id="add_to_wishlist{{ $top_selling->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
+                                        title="Wishlist"></a>
+
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quickview{{ $top_selling->id }}" class="btn-product-icon btn-quickview w-icon-search"
+                                        title="Quick View"></a>
                                     
                                 </div>
                                 @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
@@ -964,7 +973,7 @@
                                 @endif
                             </figure>
                             <div class="product-details">
-                                <h4 class="product-name"><a href="{{ $top_selling->slug }}">{{ $top_selling->title }}</a>
+                                <h4 class="product-name"><a href="{{ route('singleproduct',$top_selling->slug) }}">{{ $top_selling->title }}</a>
                                 </h4>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -1009,7 +1018,7 @@
             @endif
             <!-- End of Tab Pane -->
             <div class="pt-4 tab-pane" id="tab1-3">
-                <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                <div class="row cols-xl-6 cols-md-4 cols-sm-3 cols-2">
                     <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
@@ -1453,8 +1462,7 @@
                                                 title="Add to wishlist"></a>
                                             <a href="#" class="btn-product-icon btn-quickview w-icon-search"
                                                 title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
+                                            
                                         </div>
                                     </figure>
                                     <div class="product-details">
@@ -1585,8 +1593,7 @@
                                                 title="Add to wishlist"></a>
                                             <a href="#" class="btn-product-icon btn-quickview w-icon-search"
                                                 title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
+                                            
                                         </div>
                                     </figure>
                                     <div class="product-details">

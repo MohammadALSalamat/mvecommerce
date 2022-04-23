@@ -13653,7 +13653,7 @@ body .product-popup {
 }
 
 .tab-vertical .tab-content {
-    width: 73.7%;
+    width: 100%;
     border-top: 1px solid #eee;
     padding-left: 2rem;
 }
@@ -21083,6 +21083,10 @@ body .product-popup {
     width: 75.59%;
     padding-left: 1.5rem;
     border: none;
+}
+
+.tab-content-fullwidth {
+    width: 100% !important;
 }
 
 .my-account .nav-link,
