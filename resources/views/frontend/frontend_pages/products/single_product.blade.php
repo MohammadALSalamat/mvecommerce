@@ -385,17 +385,18 @@
     .rating>label:hover~label:before {
         opacity: 1 !important
     }
-
     .rating>input:checked~label:before {
         opacity: 1
     }
-
     .rating:hover>input:checked~label:before {
         opacity: 0.4
     }
+  .product-tabs table  tr:nth-child(odd) {background-color: #f2f2f2;}
+  .product-tabs table  td{
+      padding: 10px;
+  }
 </style>
 @endsection
-
 @section('content')
 <!-- Start of Main -->
 <main class="pb-1 mb-10 main">
@@ -535,13 +536,11 @@
                                     <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
                                         Reviews)</a>
                                 </div>
-
                                 <div class="product-short-desc">
                                     <ul class="list-type-check list-style-none">
                                         {!! $single_product->summary !!}
                                     </ul>
                                 </div>
-
                                 @if($product_attr->count() !== 0))
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">

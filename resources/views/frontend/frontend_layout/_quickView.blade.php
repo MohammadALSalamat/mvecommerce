@@ -361,7 +361,7 @@
                                 <div class="product-meta">
                                     <div class="product-categories">
                                         Category:
-                                        <span class="product-category"><a href="#">{{ $product->this_belong_to_category['title']}}</a></span>
+                                        {{-- <span class="product-category"><a href="#">{{ $product->this_belong_to_category['title']}}</a></span> --}}
                                     </div>
                                     <div class="product-sku">
                                         SKU: <span>MS46891340</span>
@@ -371,11 +371,11 @@
 
                             <hr class="product-divider">
                             @if (empty($product->offer_price) || $product->offer_price == null)
-                            <div class="product-price">{{ $product->price }} AED</div>
+                            <div class="product-price">{{number_format($product->price,2) }} AED</div>
                             @else
-                          <div class="product-price">{{ $product->offer_price }} AED - <del>{{ $product->price }} AED </del></div>
+                          <div class="product-price">{{ number_format($product->offer_price,2 )}} AED - <del style="color: #ccc">{{number_format($product->price,2) }} AED </del></div>
 
-                            @endif()
+                            @endif
 
                             <div class="ratings-container">
                                 <div class="ratings-full">

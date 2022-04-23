@@ -104,7 +104,6 @@ input:checked + .slider:before {
                             </div>
                             <div class="card-content collpase show">
                                 <div class="card-body">
-
                                     <form class="form form-horizontal" action="{{ route('seller_addproducts') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
@@ -121,13 +120,6 @@ input:checked + .slider:before {
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput5" class="form-control"
                                                         placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1">Slug</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a uniuqe slug" name="slug">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -323,7 +315,7 @@ input:checked + .slider:before {
 @section('script')
  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-     $('#lfm,#lfm1,#lfm2').filemanager('image');
+     $('#lfm,#lfm1').filemanager('image');
 </script>
 <script>
     $('#cat_id').change(function(){

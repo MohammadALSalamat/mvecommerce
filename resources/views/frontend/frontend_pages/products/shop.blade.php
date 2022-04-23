@@ -86,10 +86,6 @@
                                         </figure>
                                         <div class="product-details">
                                             <div class="product-cat">
-                                                @foreach ($product->this_belong_to_category as $cat )
-                                                <span >{{ $cat['title']}}</span>
-                                                    
-                                                @endforeach
                                             </div>
                                             <h3 class="product-name">
                                                 <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
@@ -104,11 +100,11 @@
                                             <div class="product-pa-wrapper">
                                                 <div class="product-price">
                                                     @if ( empty($product->offer_price) || $product->offer_price == null)
-                                                   <ins> {{ $product->price}} AED </ins>
+                                                   <ins> {{ number_format($product->price,2)}} AED </ins>
                                                         
                                                     @else
                                                         
-                                                    <ins> {{ $product->offer_price}} AED </ins> - <del>{{ $product->price}} AED</del>
+                                                    <ins> {{ number_format($product->offer_price,2)}} AED </ins> - <del style="color: #ccc">{{ number_format($product->price,2)}} AED</del>
                                                     @endif
                                                 </div>
                                             </div>

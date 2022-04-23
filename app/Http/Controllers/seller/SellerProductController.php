@@ -40,9 +40,7 @@ class SellerProductController extends Controller
          if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
         }
-        if (empty($data['slug']) || $data['slug'] == null) {
-            return back()->with('error', 'Slug is requird');
-        }
+       
        
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
@@ -87,7 +85,6 @@ class SellerProductController extends Controller
         $addproduct = new product();
         $addproduct->title = $data['title'];
         $addproduct->ar_title = $data['ar_title'];
-        $addproduct->slug = $data['slug'];
         $addproduct->image = $data['filepath'];
         $addproduct->size_guid = $data['size_guid'];
         $addproduct->description = $data['comment'];
@@ -137,14 +134,7 @@ class SellerProductController extends Controller
             if (empty($data['title']) || $data['title'] == null) {
                 return back()->with('error', 'Title is requird');
             }
-            if (empty($data['slug']) || $data['slug'] == null) {
-                return back()->with('error', 'Slug is requird');
-            }
-            // if (empty($data['brand']) || $data['brand'] == 'none' || $data['brand'] ==  null) {
-            //     $brand = null;
-            // }else{
-            //     $brand = $data['brand'];
-            // }
+            
             if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
                 return back()->with('error', 'Category is requird');
             }
@@ -182,7 +172,6 @@ class SellerProductController extends Controller
         product::where('id', $id)->update([
         'title' => $data['title'],
         'ar_title' => $data['ar_title'],
-        'slug' => $data['slug'],
         'image' => $data['filepath'],
         'size_guid' => $data['size_guid'],
         'additional_info' => $data['additional_info'],

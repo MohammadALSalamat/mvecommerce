@@ -16,7 +16,7 @@ data-textdirection="rtl"
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     {{--  <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
-    <title>IMarket</title>
+    <title>ADMIN PANEL</title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
     <link
@@ -80,6 +80,10 @@ rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/colors/palette-gradient.css')}}">
 <!-- END Page Level CSS-->
+    <!-- include summernote css/js -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/editors/summernote.css') }}">
+
+
 <!-- BEGIN Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}">
 <!-- END Custom CSS-->

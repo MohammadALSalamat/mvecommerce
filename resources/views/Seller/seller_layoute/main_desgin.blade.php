@@ -16,7 +16,7 @@ data-textdirection="rtl"
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     {{--  <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
-    <title>IMarket</title>
+    <title>ADMAIN PANEL</title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
     <link
@@ -41,6 +41,10 @@ data-textdirection="rtl"
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/timeline.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/dashboard-ecommerce.css') }}">
+        <!-- include summernote css/js -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/editors/summernote.css') }}">
+
+
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -75,6 +79,10 @@ rel="stylesheet">
 <!-- BEGIN Page Level CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    <!-- include summernote css/js -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/editors/summernote.css') }}">
+
+
 <!-- END Page Level CSS-->
 <!-- BEGIN Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}">
@@ -154,8 +162,24 @@ rel="stylesheet">
     <!-- END MODERN JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL JS-->
+    <script src="{{ asset('app-assets/js/scripts/editors/editor-summernote.js') }}" type="text/javascript">
+    </script>  
+    <script src="{{ asset('app-assets/vendors/js/editors/summernote/summernote.js') }}" type="text/javascript"></script>
     @yield('script')
+    <script>
+        $(document).ready(function() {
+               $('#summernote').summernote();
+               $('#summernote1').summernote();
+               $('#summernote2').summernote();
+               $('#summernote3').summernote();
+               $('#summernote4').summernote();
+               $('#summernote_ar').summernote();
+               $('#summernote_ar1').summernote();
+               $('#summernote_ar2').summernote();
+               $('#summernote_ar3').summernote();
+               $('#summernote_ar4').summernote();
+             });
+     </script>
 
 
 
