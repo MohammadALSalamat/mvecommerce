@@ -143,11 +143,11 @@
                                 <a href="{{ route('singleOrder',$order->id) }}"  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
                               <a href="{{ route('editproducts',$order->id) }}" class="dropdown-item"><i
                                   class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('deletproducts',$order->id) }}" method="post">
+                              {{-- <form action="{{ route('deletproducts',$order->id) }}" method="post">
                                 @csrf
                                 <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
                                   Delete</a>
-                              </form>
+                              </form> --}}
                             </span>
                           </span>
                         </td>

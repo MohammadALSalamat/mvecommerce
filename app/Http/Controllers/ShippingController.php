@@ -25,15 +25,16 @@ class ShippingController extends Controller
 
         if (empty($data['deliver_time']) || $data['deliver_time'] == null
         ) {
-            return back()->with('error', 'This Feild is required');
+            return back()->with('error', 'deliver Feild is required');
         }
 
         if (empty($data['deliver_charge']) || $data['deliver_charge'] == null) {
-            return back()->with('error', 'This Feild is required');
+            $delivery_charge = 0;
+        }else{
+            $delivery_charge =$data['deliver_charge'];
         }
-
         if (empty($data['shipping_address']) || $data['shipping_address'] == null) {
-            return back()->with('error', 'This Feild is required');
+            return back()->with('error', 'address Feild is required');
         }
 
         if (empty($data['status'])) {
@@ -46,7 +47,7 @@ class ShippingController extends Controller
 
         $newshipping->shipping_address = $data['shipping_address'];
         $newshipping->delivery_Time = $data['deliver_time'];
-        $newshipping->delivery_charge = $data['deliver_charge'];
+        $newshipping->delivery_charge = $delivery_charge;
         $newshipping->status = $status;
         $newshipping->save();
 

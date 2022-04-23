@@ -68,7 +68,9 @@ class ProductController extends Controller
         if ($data['offer_price'] > $data['price'] ) {
             return back()->with('error', 'Offer Price Must be less than Main Price');
         }
-
+        if(empty($data['offer_price']) || $data['offer_price'] != null){
+            $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
+          }
 
         if (!empty($data['status'])) {
             $status = '1';
@@ -98,7 +100,7 @@ class ProductController extends Controller
         $addproduct->stock = $data['stock'];
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
-        $addproduct->discound = $data['discound'];
+        $addproduct->discound = $discound;
         $addproduct->added_by = 'admin';
         $addproduct->child_category_id = $child_cat;
         $addproduct->vendor_id = Auth::guard('admin')->user()->id;
@@ -167,6 +169,9 @@ class ProductController extends Controller
                 return back()->with('error', 'Offer Price Must be less than Main Price');
             }
 
+            if(empty($data['offer_price']) || $data['offer_price'] != null){
+              $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
+            }
 
             if (!empty($data['status'])) {
                 $status = '1';
@@ -190,7 +195,7 @@ class ProductController extends Controller
         'stock' => $data['stock'],
         'price' => $data['price'],
         'offer_price' => $data['offer_price'],
-        'discound' => $data['discound'],
+        'discound' => $discound,
         'child_category_id' => $data['child_category'],
         'vendor_id' => Auth::guard('admin')->user()->id,
         'status' => $status,

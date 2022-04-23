@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Jobs\orderVendorEmail;
 
 use App\Jobs\OrderEmailForAdmin;
+use App\Models\Shipping;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -22,7 +23,8 @@ class OrderController extends Controller
     public function view_checkout()
     {
         $user = User::where('id',auth()->user()->id)->first();
-        return view('frontend.frontend_pages.checkout.checkout', compact('user'));
+        $shipping_adress = Shipping::where('status',1)->get();
+        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user'));
     }
     public function checkout_process(Request $request)
     {
@@ -109,7 +111,6 @@ class OrderController extends Controller
         }elseif(!empty($data['total_with_copuon']) || $data['total_with_copuon'] != 0){
 
             $total = $data['total_with_copuon'];
-
         }else{
             $total = 0;
         }
@@ -121,7 +122,7 @@ class OrderController extends Controller
         $ordernumber = rand(1,10000000);
 
         $userInfo = User::where('id',$data['user_id'])->first();
-
+        
         if ($userInfo) {
             $order = new Order();
             $order->user_id = $data['user_id'];

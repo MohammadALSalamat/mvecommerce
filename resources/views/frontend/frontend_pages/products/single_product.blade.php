@@ -505,10 +505,8 @@
                                         
                                     @if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null)
-                                        {{ $single_product->price }} AED 
-                                        @else <del
-                                            style="color:red">{{ $single_product->price }} AED </del> -
-                                        {{ $single_product->offer_price }} AED @endif
+                                        {{ number_format($single_product->price) }} AED 
+                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del> @endif
                                     </ins></div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">

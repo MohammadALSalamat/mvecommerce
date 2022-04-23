@@ -15,10 +15,10 @@
                     <div class="media-body text-left">
                       
                         @if (Config::get('app.locale') == 'en')
-                        <h3 class="success">{{ $products_sold }}</h3>
+                        <h3 class="success">{{ $countSoldProduct }}</h3>
                         <h6>Products Sold</h6>
                         @else
-                        <h3 class="success">{{ $products_sold }}</h3>
+                        <h3 class="success">{{ $countSoldProduct }}</h3>
                         <h6> البضائع المباعة</h6>  
                         @endif
                     </div>
@@ -40,16 +40,10 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                        @php
-                        $net_profit = \App\Models\Order::get();
-                        $total = array();
-                        foreach ($net_profit as $profit ){
-                            array_push($total,$profit->total);
-                        }
-                    @endphp
+                       
                         @if (Config::get('app.locale') == 'en')
                         <h3 class="success">
-                          {{ array_sum($total).' AED ' }}
+                          {{ number_format(array_sum($total)).' AED ' }}
                         </h3>
                         <h6>Net Profit</h6>
                         @else
@@ -103,8 +97,13 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h3 class="danger">99.89 %</h3>
-                      <h6>Customer Satisfaction</h6>
+                      @if (Config::get('app.locale') == 'en')
+                      <h3 class="danger">{{ $products }}</h3>
+                      <h6>Products In Store</h6>
+                      @else
+                      <h3 class="danger">{{ $products }}</h3>
+                      <h6>مجموع المنتجات</h6>
+                      @endif
                     </div>
                     <div>
                       <i class="icon-heart danger font-large-2 float-right"></i>

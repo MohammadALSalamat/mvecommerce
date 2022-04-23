@@ -264,13 +264,7 @@ input:checked + .slider:before {
                                                         placeholder="Add The Offer Price Value" step="any" name="offer_price" value="{{ $current_product->offer_price }}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput32">Discound</label>
-                                                <div class="col-md-9">
-                                                    <input type="number" id="projectinput32" class="form-control"
-                                                        placeholder="Add The Discound Value" step="any" name="discound" value="{{ $current_product->discound }}">
-                                                </div>
-                                            </div>
+                                            
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Enable</label>
                                                 <div class="col-md-9">

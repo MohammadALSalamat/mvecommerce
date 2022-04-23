@@ -109,7 +109,7 @@
                                         <div class="form-group">
                                             <label>State *</label>
                                             <div class="select-box">
-                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ $user->state }}">
+                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ $user->stat }}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -163,7 +163,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>state</label>
-                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ $user->sstate }} ">
+                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ $user->sstat }} ">
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@
                                             <thead>
                                                 <tr>
                                                     <th colspan="2">
-                                                        <b>Product</b>
+                                                        <b>Products</b>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -194,10 +194,11 @@
                                                 <!-- hidden info for checkout -->
                                                 <input type="hidden" name="sub_total" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
                                                     <tr class="bb-no">
-                                                        <td class="product-name">{{ $item->name }} <i
+                                                        <td style="word-wrap:break-word;
+                                                        white-space: normal;" class="product-name">{{ $item->name }} <i
                                                                 class="fas fa-times"></i> <span
                                                                 class="product-quantity">{{ $item->qty }}</span></td>
-                                                        <td class="product-total">{{ $item->price }} AED</td>
+                                                        <td class="product-total">{{ number_format($item->price) }} AED</td>
                                                     </tr>
                                                 @endforeach
                                                 @if(session()->has('coupon'))
@@ -242,16 +243,17 @@
                                                         <h4 class="title title-simple bb-no mb-1 pb-0 pt-3">Shipping
                                                         </h4>
                                                         <ul id="shipping-method" class="mb-4">
-                                                            <li>
-                                                                <div class="custom-radio">
+                                                            @foreach ($shipping_adress as $shipping)
+                                                                
+                                                            <li><div class="custom-radio">
                                                                     <input type="radio" id="free-shipping"
-                                                                    value="0" name="shipping_paid">
+                                                                    value="{{ $shipping->delivery_charge}}" name="shipping_paid">
                                                                     <label for="free-shipping"
-                                                                        class="" >Free
-                                                                        Shipping</label>
+                                                                        class="" >{{ $shipping->shipping_address }} : {{ number_format($shipping->delivery_charge,2)}} AED - <small style="color: #fff; background:rgb(236, 58, 3);padding:5px 10px;border-radius:20px;text-transform:capitalize;text-weight:bold" class=" badge badge-success">{{ $shipping->delivery_Time}}</small></label>
                                                                 </div>
                                                             </li>
-                                                            <li>
+                                                            @endforeach
+                                                            {{-- <li>
                                                                 <div class="custom-radio">
                                                                     <input type="radio" id="flat-rate"
                                                                         class="" name="shipping_paid" value="5">
@@ -259,7 +261,7 @@
                                                                         class="">Flat
                                                                         rate: $5.00</label>
                                                                 </div>
-                                                            </li>
+                                                            </li> --}}
                                                         </ul>
                                                     </td>
                                                 </tr>
