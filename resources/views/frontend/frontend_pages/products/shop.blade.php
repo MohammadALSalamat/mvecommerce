@@ -11,14 +11,8 @@
         <!-- Start of Main -->
         <main class="main">
             <!-- Start of Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <div class="container">
-                    <ul class="breadcrumb bb-no">
-                        <li><a href="demo1.html">Home</a></li>
-                        <li>Shop</li>
-                    </ul>
-                </div>
-            </nav>
+            @include('frontend.frontend_layout._breadcrumb')
+
             <!-- End of Breadcrumb -->
 
           

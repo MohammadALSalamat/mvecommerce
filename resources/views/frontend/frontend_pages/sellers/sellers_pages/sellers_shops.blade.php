@@ -4,16 +4,7 @@
         <!-- Start of Main -->
         <main class="main">
             <!-- Start of Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <div class="container">
-                    <ul class="breadcrumb bb-no">
-                        <li><a href="demo1.html">Home</a></li>
-                        <li><a href="#">Vendor</a></li>
-                        <li><a href="#">WC Marketplace</a></li>
-                        <li>Store List</li>
-                    </ul>
-                </div>
-            </nav>
+            @include('frontend.frontend_layout._breadcrumb')
             <!-- End of Breadcrumb -->
 
             <!-- Start of Pgae Contetn -->
@@ -33,7 +24,7 @@
                             <a href="#" class="btn btn-rounded mb-2 mr-4">Sort</a>
                         </div>
                         <div class="vendor-filter-right">
-                            <label class="d-inline-block font-size-md text-dark mb-2">Viewing all 6 vendors</label>
+                            <label class="d-inline-block font-size-md text-dark mb-2">Viewing all {{ $sellers->count() }} vendors</label>
                         </div>
                     </div>
                     <!-- End of Vendor Filter -->
@@ -55,7 +46,7 @@
                                 </figure>
                                 <div class="store-content">
                                     <figure class=" mr-2">
-                                        @if (empty( $seller->banner_image) || $seller->banner_image == null)
+                                        @if (empty( $seller->brand) || $seller->brand == null)
                                         <img src="{{ asset('front-style/assets/images/vendor/brand/1.jpg') }}" alt="Brand" width="80px" height="80px" />
                                         @else
                                         <img src="{{ asset('/storage/seller/'.$seller->brand)  }}" alt="Brand" width="80px" height="80px" style="object-fit: cover" />

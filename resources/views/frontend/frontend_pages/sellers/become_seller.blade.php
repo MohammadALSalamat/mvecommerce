@@ -11,14 +11,8 @@
     <!-- End of Page Header -->
 
     <!-- Start of Breadcrumb -->
-    <nav class="breadcrumb-nav mb-10 pb-1 pb-lg-10">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="demo1.html">Home</a></li>
-                <li>Become a Vendor</li>
-            </ul>
-        </div>
-    </nav>
+    @include('frontend.frontend_layout._breadcrumb')
+
     <!-- End of Breadcrumb -->
 
     <div class="page-content become-a-vendor">

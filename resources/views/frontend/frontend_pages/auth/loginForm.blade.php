@@ -23,14 +23,8 @@
     <!-- End of Page Header -->
 
     <!-- Start of Breadcrumb -->
-    <nav class="breadcrumb-nav">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="{{ route('homepage') }}">Home</a></li>
-                <li>My account</li>
-            </ul>
-        </div>
-    </nav>
+    @include('frontend.frontend_layout._breadcrumb')
+
     <!-- End of Breadcrumb -->
     <div class="page-content">
         <div class="container">

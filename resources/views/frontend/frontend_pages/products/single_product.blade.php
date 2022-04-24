@@ -400,6 +400,8 @@
 @section('content')
 <!-- Start of Main -->
 <main class="pb-1 mb-10 main">
+    @include('frontend.frontend_layout._breadcrumb')
+
     <!-- Start of Page Content -->
     <div class="page-content">
         <div class="container">
@@ -497,17 +499,19 @@
                                     </div>
                                 </div>
                                 <hr class="product-divider">
-                                <h4> Summary</h4>
+                                <h4> Summary</h4> <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% OFF</small>
                                 <p>{!! $single_product->Summary !!}</p>
                                 <hr class="product-divider">
-                                <div class="product-price"><ins
-                                        class="new-price">
+                                <div class="product-price">
+                                    <ins class="new-price">
                                         
                                     @if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null)
                                         {{ number_format($single_product->price) }} AED 
-                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del> @endif
-                                    </ins></div>
+                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
+                                    </ins> 
+                                    
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
                                         <span class="ratings"
@@ -747,67 +751,49 @@
                                 <div class="mb-3 row">
                                     <div class="mb-4 col-md-6">
                                         <figure class="vendor-banner br-sm">
-                                            <img src="assets/images/products/vendor-banner.jpg" alt="Vendor Banner"
-                                                width="610" height="295" style="background-color: #353B55;" />
+                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image == null)
+                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Vendor" 
+                                            width="400" height="318" style="background-color: #454b63;" />
+                                            @else
+                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}" alt="Vendor" 
+                                                width="400px" height="318px" style="background-color: #454b63;" />
+                                            
+                                            @endif
                                         </figure>
                                     </div>
                                     <div class="pl-2 mb-4 col-md-6 pl-md-6">
                                         <div class="vendor-user">
                                             <figure class="mr-4 vendor-logo">
                                                 <a href="#">
-                                                    <img src="{{ $vendor_info->photo }}" alt="Vendor Logo" width="80"
+                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}" alt="Vendor Logo" width="80"
                                                         height="80" />
                                                 </a>
                                             </figure>
-                                            <div>
-                                                <div class="vendor-name"><a href="#">{{ $vendor_info->full_name }}</a>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 90%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    <a href="#" class="rating-reviews">(32 Reviews)</a>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <ul class="vendor-info list-style-none">
                                             <li class="store-name">
                                                 <label>Store Name:</label>
-                                                <span class="detail">{{ $vendor_info->shope_name }}</span>
+                                                <span class="detail">{{ $vendor_info->shop_name }}</span>
                                             </li>
+                                            @if (empty($vendor_info->address) || $vendor_info->address == null)
+                                                
+                                            @else
                                             <li class="store-address">
                                                 <label>Address:</label>
                                                 <span class="detail">{{$vendor_info->address}}</span>
                                             </li>
+                                            @endif
                                             <li class="store-phone">
                                                 <label>Phone:</label>
                                                 <a href="#tel:">{{ $vendor_info->phone }}</a>
                                             </li>
                                         </ul>
-                                        <a href="vendor-dokan-store.html"
+                                        <a href="{{ route('single_seller',$vendor_info->username) }}"
                                             class="btn btn-dark btn-link btn-underline btn-icon-right">Visit
                                             Store<i class="w-icon-long-arrow-right"></i></a>
                                     </div>
                                 </div>
-                                <p class="mb-5"><strong class="text-dark">L</strong>orem ipsum dolor sit amet,
-                                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.
-                                    Venenatis tellus in metus vulputate eu scelerisque felis. Vel pretium
-                                    lectus quam id leo in vitae turpis massa. Nunc id cursus metus aliquam.
-                                    Libero id faucibus nisl tincidunt eget. Aliquam id diam maecenas ultricies
-                                    mi eget mauris. Volutpat ac tincidunt vitae semper quis lectus. Vestibulum
-                                    mattis ullamcorper velit sed. A arcu cursus vitae congue mauris.
-                                </p>
-                                <p class="mb-2"><strong class="text-dark">A</strong> arcu cursus vitae congue
-                                    mauris. Sagittis id consectetur purus
-                                    ut. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla.
-                                    Diam in
-                                    arcu cursus euismod quis. Eget sit amet tellus cras adipiscing enim eu. In
-                                    fermentum et sollicitudin ac orci phasellus. A condimentum vitae sapien
-                                    pellentesque
-                                    habitant morbi tristique senectus et. In dictum non consectetur a erat. Nunc
-                                    scelerisque viverra mauris in aliquam sem fringilla.</p>
                             </div>
                             <div class="tab-pane" id="product-tab-review">
                                 <div class="mb-4 row">

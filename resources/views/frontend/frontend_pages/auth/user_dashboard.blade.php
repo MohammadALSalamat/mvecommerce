@@ -15,12 +15,8 @@
     <!-- End of Page Header -->
 
     <!-- Start of Breadcrumb -->
-    <nav class="container breadcrumb-nav">
-        <ul class="breadcrumb bb-no">
-            <li><a href="demo1.html">Home</a></li>
-            <li>My account</li>
-        </ul>
-    </nav>
+    @include('frontend.frontend_layout._breadcrumb')
+
     <!-- End of Breadcrumb -->
 
     <!-- Start of PageContent -->
