@@ -403,9 +403,10 @@ input:checked + .slider:before {
 @section('script')
 
 <script>
-$(function(){
+$(document).ready(function(){
+
     $('#lfm,#lfm1').filemanager('image');
-})
+});
 </script>
 <script>
  $('#cat_id').change(function(){
