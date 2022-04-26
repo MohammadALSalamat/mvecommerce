@@ -404,7 +404,6 @@ input:checked + .slider:before {
 
 <script>
 $(document).ready(function(){
-
     $('#lfm,#lfm1').filemanager('image');
 });
 </script>
