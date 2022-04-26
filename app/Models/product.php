@@ -11,6 +11,9 @@ class product extends Model
     use HasFactory;
     use Sluggable;
 
+    protected $casts = [
+        'frequantly_boughts_ids'=>'array',
+    ];
     protected $guarded=[]; 
         public function sluggable(): array
     {

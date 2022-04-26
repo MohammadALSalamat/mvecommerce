@@ -28,7 +28,8 @@ class SellerProductController extends Controller
         $user = Auth::guard('seller')->user()->id;
         $vendors = Seller::find($user);
         $categories = category::where('is_parent',0)->get();
-       return view('Seller.seller_pages.products.addproduct',compact('brands','categories','vendors'));
+        $products = product::where('vendor_id',$user)->where('added_by','seller')->get();
+       return view('Seller.seller_pages.products.addproduct',compact('products','brands','categories','vendors'));
     }
 
     public function addproducts(Request $request)
@@ -40,8 +41,6 @@ class SellerProductController extends Controller
          if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
         }
-       
-       
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
         }
@@ -66,13 +65,14 @@ class SellerProductController extends Controller
         if (empty($data['price']) || $data['price'] == null) {
             return back()->with('error', 'Price is requird');
         }
-        if ($data['offer_price'] > $data['price'] ) {
-            return back()->with('error', 'Offer Price Must be less than Main Price');
-        }
-        if(empty($data['offer_price']) || $data['offer_price'] != null){
-            $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
-          }
 
+        if(empty($data['price']) || $data['price'] == null){
+            $discound = 0;
+        }elseif ($data['offer_price'] > $data['price'] ) {
+            return back()->with('error', 'Offer Price Must be less than Main Price');
+        }elseif(empty($data['offer_price']) || $data['offer_price'] != null){
+            $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
+        }
 
         if (!empty($data['status'])) {
             $status = '1';
@@ -84,6 +84,13 @@ class SellerProductController extends Controller
         }else{
             $child_cat = $data['child_category'];
         }
+
+        if(empty($data['field2']) || $data['field2'] == null){
+            $frequntly = 0;
+        }else{
+            $frequntly = $data['field2'];
+        }
+        
         // insert the data
         $addproduct = new product();
         $addproduct->title = $data['title'];
@@ -106,6 +113,7 @@ class SellerProductController extends Controller
         $addproduct->added_by = 'seller';
         $addproduct->child_category_id = $child_cat;
         $addproduct->vendor_id = Auth::guard('seller')->user()->id;
+        $addproduct->frequantly_boughts_ids = $frequntly;
         $addproduct->status = $status;
         $addproduct->save();
         return back()->with('message','your product has been created');

@@ -650,68 +650,76 @@
                             </div>
                         </div>
                     </div>
+                    @if (!empty($freq_products) || $freq_products != null )
                     <!-- more products with the item --->
-                    <div class="mt-5 frequently-bought-together">
+                    <div class="mt-5 frequently-bought-together ">
                         <h2 class="title title-underline">Frequently Bought Together</h2>
-                        <div class="pb-4 mt-8 bought-together-products row">
+                        <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-1.jpg" alt="Product" width="138"
-                                        height="138" />
+                                    <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:138px !important"/>
                                     <div class="product-checkbox">
-                                        <input type="checkbox" class="custom-checkbox" id="product_check1"
-                                            name="product_check1">
+                                        <input type="checkbox" 
+                                        data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif" 
+                                        data-id="{{ $single_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $single_product->id }}"
+                                            name="product_check{{ $single_product->id }}">
                                         <label></label>
                                     </div>
                                 </figure>
                                 <div class="product-details">
                                     <h4 class="product-name">
-                                        <a href="#">Electronics Black Wrist Watch</a>
+                                        <a href="{{ route('singleproduct',$single_product->slug)  }}">{{ $single_product->title }}</a>
                                     </h4>
-                                    <div class="product-price">$40.00</div>
+                                    <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                        @if(empty($single_product->offer_price) ||
+                                        $single_product->offer_price == null)
+                                        {{ number_format($single_product->price) }} AED 
+                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
+                                    </div>
                                 </div>
                             </div>
+                            @foreach ($freq_products as $freq_product)
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-2.jpg" alt="Product" width="138"
-                                        height="138" />
+                                    <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:150px !important"/>
                                     <div class="product-checkbox">
-                                        <input type="checkbox" class="custom-checkbox" id="product_check2"
-                                            name="product_check2">
+                                        <input type="checkbox" 
+                                        data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif" 
+                                        data-id="{{ $freq_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $freq_product->id }}"
+                                            name="product_check{{ $freq_product->id }}">
                                         <label></label>
                                     </div>
                                 </figure>
                                 <div class="product-details">
                                     <h4 class="product-name">
-                                        <a href="#">Apple Laptop</a>
+                                        <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
                                     </h4>
-                                    <div class="product-price">$1,800.00</div>
-                                </div>
-                            </div>
-                            <div class="text-center product product-wrap">
-                                <figure class="product-media">
-                                    <img src="assets/images/products/default/bought-3.jpg" alt="Product" width="138"
-                                        height="138" />
-                                    <div class="product-checkbox">
-                                        <input type="checkbox" class="custom-checkbox" id="product_check3"
-                                            name="product_check3">
-                                        <label></label>
+                                    <div class="product-price">
+                                        @if(empty($freq_product->offer_price) ||
+                                        $freq_product->offer_price == null)
+                                        {{ number_format($freq_product->price) }} AED 
+                                        @else {{ number_format($freq_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>  @endif
                                     </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-name">
-                                        <a href="#">White Lenovo Headphone</a>
-                                    </h4>
-                                    <div class="product-price">$34.00</div>
                                 </div>
                             </div>
+                            @endforeach
+                            @php
+                              $frequantly_boughts_ids = array();
+                              foreach ($single_product->frequantly_boughts_ids as $prod_ids) {
+                                  array_push($frequantly_boughts_ids,$prod_ids);
+                              }  
+                            @endphp
                             <div class="product-button">
-                                <div class="bought-price font-weight-bolder text-primary ls-50">$1,874.00</div>
-                                <div class="bought-count">For 3 items</div>
-                                <a href="cart.html" class="btn btn-dark btn-rounded">Add All To Cart</a>
+                                <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                <div class="bought-count">For {{ $freq_products->count() }} items</div>
+                                <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                   <span>Add All To Cart </span> 
+                                </button>
                             </div>
                         </div>
                     </div>
+
+                    @endif
 
                     <!-- Tabs of Vednor and description --->
                     <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
@@ -1290,7 +1298,68 @@
 
 @endsection
 
+
 @section('script')
+
+<script>
+var checked= [];
+//  add eventlistener listener on parent (listen for change event)
+document.querySelector('.bought-together-products ').addEventListener('change', e => {
+
+//  get checkbox id
+const id = e.target.dataset.id;
+//  if you need it as data-id just change the above to
+//  const id = e.target.dataset.id;
+
+//  if the target is checked add the id to the array  
+if (e.target.checked) checked.push(id);
+//  if not – remove it 
+else checked.splice(checked.indexOf(id), 1);
+
+$(".freq-product-add-to-cart").attr("data-freq-product-id",checked);
+
+
+})
+
+
+$(document).on('click','.freq-product-add-to-cart',function () {
+        var rawId_feq =  checked;
+        update_ids(rawId_feq);
+});
+
+</script>
+
+<script>
+var prices= [];
+//  add eventlistener listener on parent (listen for change event)
+document.querySelector('.bought-together-products-prices').addEventListener('change', e => {
+
+const price  = e.target.dataset.price;
+
+if (e.target.checked) prices.push(price);
+else prices.splice(prices.indexOf(price), 1);
+
+$(".total_frq_prices").attr("data-prices",prices);
+$('.total_frq_prices').text(sumThem());
+
+if($(".total_frq_prices").attr("data-prices") !== '' ){
+    $(".freq-product-add-to-cart").removeAttr("disabled")
+}
+});
+
+
+function sumThem(){
+    var myArr = prices;
+    let counter = 0;
+for(let i = 0; i < myArr.length; i++){
+    
+  counter += myArr[i] *1;
+    }
+    return counter + ' AED';
+}
+</script>
+
+ <!--add  products to cart -->
 <script>
     $(document).on('click','.qty',function () {
         var id = $(this).data('id');
@@ -1333,6 +1402,35 @@
         }
     });
     }
+
+</script>
+ <!--add frequntly products to cart -->
+<script>
+    function update_ids(rawId_feq){
+        var token="{{ csrf_token() }}";
+        var path="{{ route('sing_freq_page_update_cart') }}";
+        var ids = rawId_feq;
+    $.ajax({
+        type: "POST",
+        url: path,
+        data:{
+            _token:token,
+            ids:ids,
+        },
+        success: function (data) {
+            console.log(data)
+            if(data['status']){
+            $('body #header-ajax').html(data['header']);
+            $('body #cart_lists').html(data['cart_lists']);
+            $('freq-product-add-to-cart').html('<i class="fa fa-gear spinner"></i>');
+            }else{
+                alert('Please Select A Product First');
+            }
+        }
+    });
+    }
+  
+
 
 </script>
 <script>

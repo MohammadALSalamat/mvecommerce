@@ -299,6 +299,11 @@ class frontPageController extends Controller
       $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
       $Category_related_product = category::where('id',$single_product->category_id)->first();
      #review comments 
+     if(empty($single_product->frequantly_boughts_ids) || $single_product->frequantly_boughts_ids == null){
+        $freq_products = 0;
+     }else{
+         $freq_products = product::wherein('id',$single_product->frequantly_boughts_ids)->get(); // get frequantly products
+     }
      $avareg = 0;
                                        $sum = 0;
                                        foreach($avareg_review as $avg){
@@ -307,7 +312,7 @@ class frontPageController extends Controller
                                            $avareg = $sum / $countavg;
                                         }
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('related_product','vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('freq_products','related_product','vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
