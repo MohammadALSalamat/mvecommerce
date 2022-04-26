@@ -1,0 +1,42 @@
+-------------------- Auto-Git Log --------------------
+		Tue Apr 26 2022 11:47:50 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/ShippingCartController.php
+* app/Http/Controllers/frontPageController.php
+* app/Http/Controllers/seller/SellerProductController.php
+* app/Models/product.php
+* resources/views/Seller/seller_pages/products/addproduct.blade.php
+* resources/views/frontend/frontend_layout/header.blade.php
+* resources/views/frontend/frontend_pages/products/single_product.blade.php
+* routes/frontend.php
+
+
+Created files:
+* .autogit/autogit.json
+* app/Http/Controllers/FrequentlyTogotherController.php
+* app/Models/FrequentlyTogother.php
+* database/migrations/2022_04_24_012801_create_frequently_togothers_table.php
+* public/front-style/docs/css/bootstrap-3.3.2.min.css
+* public/front-style/docs/css/bootstrap-example.min.css
+* public/front-style/docs/css/bootstrap-multiselect.css
+* public/front-style/docs/css/prettify.min.css
+* public/front-style/docs/fonts/glyphicons-halflings-regular.eot
+* public/front-style/docs/fonts/glyphicons-halflings-regular.svg
+* public/front-style/docs/fonts/glyphicons-halflings-regular.ttf
+* public/front-style/docs/fonts/glyphicons-halflings-regular.woff
+* public/front-style/docs/fonts/glyphicons-halflings-regular.woff2
+* public/front-style/docs/js/bootstrap-3.3.2.min.js
+* public/front-style/docs/js/bootstrap-multiselect.js
+* public/front-style/docs/js/jquery-2.1.3.min.js
+* public/front-style/docs/js/multiselect-dropdown.js
+* public/front-style/docs/js/prettify.min.js
+* public/front-style/docs/js/require-2.3.5.min.js
+* public/front-style/docs/less/bootstrap-example.less
+
+
+Deleted files:
+
+
+Renamed files:
