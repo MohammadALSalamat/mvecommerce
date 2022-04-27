@@ -170,7 +170,9 @@ class OrderController extends Controller
                 'order_number' => $ordernumber,
                 'total' => $final_total,
                 'sub_total' => $total,
+                'coupon'=>$coupon_value,
                 'payment_method' => $data['cod'],
+                'delivary_charge'=>$shipping_paid,
             ];
             
             try {
