@@ -122,7 +122,6 @@ class OrderController extends Controller
         $ordernumber = rand(1,10000000);
 
         $userInfo = User::where('id',$data['user_id'])->first();
-        
         if ($userInfo) {
             $order = new Order();
             $order->user_id = $data['user_id'];

@@ -17829,20 +17829,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($order_email_imfo['product'] as $items)
-                    <tr>
-                      <th scope="row">1</th>
-                      <td class="text-truncate">
-                        <span class="avatar avatar-xs">
-                          <img class="box-shadow-2" src="{{  $items->image}}" alt="avatar">
-                        </span>
-                        <span>{{ $items->title }}</span>
-                      </td>
-                      <td class="text-right">{{ $order_email_imfo['full_name'] }}</td>
-                      <td class="text-right">{{ $items->pivot->quantity }}</td>
-                      <td class="text-right">{{ $order_email_imfo['total'] }}</td>
-                    </tr>
-                    @endforeach
+                   
 
                   </tbody>
                 </table>
