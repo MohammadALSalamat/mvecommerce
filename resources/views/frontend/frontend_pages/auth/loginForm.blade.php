@@ -93,7 +93,7 @@
                                     <label>Password *</label>
                                     <input type="password" class="form-control" name="password" id="password_1">
                                 </div>
-                                <div class="checkbox-content login-vendor">
+                                {{-- <div class="checkbox-content login-vendor">
                                      <div class="mb-5 form-group">
                                         <label for="seeAnotherField">What is the type of your work </label>
                                         <select class="form-control" id="seeAnotherField" name="type_work">
@@ -125,15 +125,15 @@
                                         <input type="file" accept="application/pdf" name="vendor-home" class="form-control" id="passport" name="home_passport">
                                         <small style="color: red">if you dont have a license upload your passport</small>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="mt-0 form-checkbox user-checkbox">
-                                    <input type="radio" class="custom-checkbox checkbox-round" id="check-customer"
-                                        name="check-customer">
+                                    <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
+                                        name="check-customer" checked = "true">
                                     <label for="check-customer" class="mb-1 check-customer">I am a customer</label>
                                     <br>
-                                    <input type="radio" class="custom-checkbox checkbox-round" id="check-seller"
+                                    {{-- <input type="radio" class="custom-checkbox checkbox-round" id="check-seller"
                                         name="check-seller">
-                                    <label for="check-seller" class="check-seller">I am a vendor</label>
+                                    <label for="check-seller" class="check-seller">I am a vendor</label> --}}
                                 </div>
                                 <p>Your personal data will be used to support your experience
                                     throughout this website, to manage access to your account,
