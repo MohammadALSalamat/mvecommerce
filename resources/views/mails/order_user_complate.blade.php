@@ -17791,7 +17791,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-center text-md-left">
               <ul class="px-0 list-unstyled">
-                <li class="text-bold-800">{{ $order_email_imfo['full_name ']}}</li>
+                <li class="text-bold-800">{{ $order_email_imfo['full_name']}}</li>
                 <li>{{ $order_email_imfo['address'] }},</li>
                 <li>{{ $order_email_imfo['city'] }},</li>
                 <li>{{ $order_email_imfo['country'] }}.</li>
@@ -17799,9 +17799,9 @@
               <strong class="text-muted">Shipping To</strong>
               <ul class="px-0 list-unstyled">
                 <li class="text-bold-800">{{ $order_email_imfo['sfull_name'] }}</li>
-                <li>{{ $order_email_imfo->saddress }},</li>
-                <li>{{ $order_email_imfo->scity }},</li>
-                <li>{{ $order_email_imfo->scountry }}.</li>
+                <li>{{ $order_email_imfo['saddress'] }},</li>
+                <li>{{ $order_email_imfo['scity'] }},</li>
+                <li>{{ $order_email_imfo['scountry'] }}.</li>
               </ul>
             </div>
             <div class="col-md-6 col-sm-12 text-center text-md-right">
@@ -17829,7 +17829,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($order_email_imfo->product as $items)
+                    @foreach ($order_email_imfo['product'] as $items)
                     <tr>
                       <th scope="row">1</th>
                       <td class="text-truncate">
@@ -17838,9 +17838,9 @@
                         </span>
                         <span>{{ $items->title }}</span>
                       </td>
-                      <td class="text-right">{{ $order_email_imfo->full_name }}</td>
+                      <td class="text-right">{{ $order_email_imfo['full_name'] }}</td>
                       <td class="text-right">{{ $items->pivot->quantity }}</td>
-                      <td class="text-right">{{ $order_email_imfo->total }}</td>
+                      <td class="text-right">{{ $order_email_imfo['total'] }}</td>
                     </tr>
                     @endforeach
 
@@ -17859,19 +17859,19 @@
                     <tbody>
                       <tr>
                         <td>Sub Total</td>
-                        <td class="text-right">{{ $order_email_imfo->sub_total }} AED</td>
+                        <td class="text-right">{{ $order_email_imfo['sub_total'] }} AED</td>
                       </tr>
                       <tr>
                         <td>Coupon</td>
-                        <td class="text-right">{{ $order_email_imfo->coupon }} AED</td>
+                        <td class="text-right">{{ $order_email_imfo['coupon'] }} AED</td>
                       </tr>
                       <tr>
                         <td>Delivary Charge</td>
-                        <td class="text-right">{{ $order_email_imfo->delivary_charge }} AED</td>
+                        <td class="text-right">{{ $order_email_imfo['delivary_charge'] }} AED</td>
                       </tr>
                       <tr>
                         <td class="text-bold-800">Total</td>
-                        <td class="text-bold-800 text-right"> {{ $order_email_imfo->total }} AED</td>
+                        <td class="text-bold-800 text-right"> {{ $order_email_imfo['total'] }} AED</td>
                       </tr>
 
                     </tbody>
