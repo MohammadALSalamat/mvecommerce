@@ -188,6 +188,49 @@ class ShippingCartController extends Controller
             }
 
     }
+
+    // add Frequntly bought togother 
+    public function freq_product_add_to_cart(Request $request)
+    {
+        if(empty($request->input('ids')) || $request->input('ids') == null){
+            return back()->with('error','select one of the products');
+        }
+        $freq_products = product::whereIn('id',$request->input('ids'))->get(); // get frequantly products
+        foreach ($freq_products as $ids) {
+            // this has a model in the product model
+            $product = product::getProductByCart($ids->id);
+
+        if(!empty($product[0]['offer_price']) || $product[0]['offer_price'] != null){
+            $price = $product[0]['offer_price'];
+        }else{
+            $price = $product[0]['price'];
+        }
+        //array to save all the products that will be inserted to the cart
+        $cart_array=[];
+        foreach(Cart::instance('shopping')->content() as $item){
+            $cart_array[]= $item->id;
+
+        }
+        $result = Cart::instance('shopping')->add($ids->id,$product[0]['title'],1,$price)->associate('App\Models\product');
+        if ($result) {
+            $response['status'] = true;
+            $response['product_id'] = $ids->id;
+            $response['total'] = Cart::subtotal();
+            $response['cart_count'] = Cart::instance('shopping')->count();
+        }
+
+        //render the header cart value
+        if($request->ajax()){
+            $header = view('frontend.frontend_layout.header')->render();
+            $response['header'] = $header;
+        }
+    }
+    return $response; 
+    }
+
+
+
+
     //coupon
 
     public function code_coupon(Request $request)

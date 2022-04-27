@@ -144,7 +144,7 @@
                             <a href="#" class="btn-close">Close<i class="w-icon-long-arrow-right"></i></a>
                         </div>
 
-                        <div class="products">
+                        <div class="products" style="overflow-y: auto">
                             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                             <div class="product product-cart">
                                 <div class="product-detail">
