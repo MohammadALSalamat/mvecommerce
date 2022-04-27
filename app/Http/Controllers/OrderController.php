@@ -151,9 +151,31 @@ class OrderController extends Controller
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
 
+            $order_email_imfo = [
+                'full_name' => $data['full_name'],
+                'sfull_name' => $sfull_name,
+                'city' => $data['city'],
+                'country' => $data['country'],
+                'address' => $data['address'],
+                'state' => $data['state'],
+                'scity' => $scity,
+                'scountry' => $scountry,
+                'sstate' => $sstate,
+                'saddress' => $saddress,
+                'email' => $data['email'],
+                'note' => $data['note'],
+                'phone' => $data['phone'],
+                'sphone' => $data['phone'],
+                'postcode' => $data['postcode'],
+                'spostcode' => $data['spostcode'],
+                'order_number' => $ordernumber,
+                'total' => $final_total,
+                'sub_total' => $total,
+                'payment_method' => $data['cod'],
+            ];
             
             try {
-                dispatch(new OrderEmail($data));
+                dispatch(new OrderEmail($order_email_imfo));
                 dispatch(new OrderEmailForAdmin($data));
             } catch (\Throwable $th) {
                 return back()->with('error','there is something went wrong, your order did not complate yet!!');

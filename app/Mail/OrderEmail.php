@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class OrderEmail extends Mailable implements ShouldQueue
 {
     use  Queueable,SerializesModels;
-    private  $data;
+    private  $order_email_imfo;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order_email_imfo)
     {
-        $this->data = $data;
+        $this->order_email_imfo = $order_email_imfo;
     }
 
     /**
@@ -31,6 +31,6 @@ class OrderEmail extends Mailable implements ShouldQueue
         return $this->from('support@9yards.ae')
         ->subject('Order Recipt')
         ->view('mails.order_user_complate')
-        ->with('data', $this->data);
+        ->with('order_email_imfo', $this->order_email_imfo);
     }
 }

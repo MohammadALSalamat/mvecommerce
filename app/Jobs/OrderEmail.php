@@ -16,15 +16,15 @@ class OrderEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $data;
+    public $order_email_imfo;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order_email_imfo)
     {
-        $this->data = $data;
+        $this->order_email_imfo = $order_email_imfo;
     }
 
     /**
@@ -34,6 +34,6 @@ class OrderEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->data['email'])->send(new userOrderMail($this->data)); // send email to user
+        Mail::to($this->order_email_imfo['email'])->send(new userOrderMail($this->order_email_imfo)); // send email to user
     }
 }
