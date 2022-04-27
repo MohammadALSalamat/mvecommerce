@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -17761,6 +17762,7 @@
   </style>
 
 </head>
+<body>
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-body">
@@ -17770,7 +17772,7 @@
           <div id="invoice-company-details" class="row">
             <div class="col-md-6 col-sm-12 text-center text-md-left">
               <div class="media">
-                <img src="{{ public_path('front-style/assets/images/itajer_logo.png') }}" width="200px"
+                <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="200px"
                   alt="company logo" class="" />
               </div>
             </div>
