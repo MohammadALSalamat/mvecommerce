@@ -405,6 +405,7 @@ input:checked + .slider:before {
 <script>
   $('#lfm,#lfm1').filemanager('image');
 </script>
+
 <script>
  $('#cat_id').change(function(){
      var cat_id = $(this).val();
