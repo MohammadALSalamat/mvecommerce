@@ -337,8 +337,8 @@
                         <i class="w-icon-bag"></i>
                     </span>
                     <div class="icon-box-content">
-                        <h4 class="mb-1 icon-box-title font-weight-bold">Secure Payment</h4>
-                        <p class="text-default">We ensure secure payment</p>
+                        <h4 class="mb-1 icon-box-title font-weight-bold">دفع أمن</h4>
+                        <p class="text-default">نحن نضمن الدفع الآمن</p>
                     </div>
                 </div>
                 <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-money">
@@ -346,8 +346,8 @@
                         <i class="w-icon-money"></i>
                     </span>
                     <div class="icon-box-content">
-                        <h4 class="mb-1 icon-box-title font-weight-bold">Money Back Guarantee</h4>
-                        <p class="text-default">Any back within 30 days</p>
+                        <h4 class="mb-1 icon-box-title font-weight-bold">ضمان استعادة الاموال</h4>
+                        <p class="text-default">أي عودة في غضون 30 يومًا</p>
                     </div>
                 </div>
                 <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-chat">
@@ -355,8 +355,8 @@
                         <i class="w-icon-chat"></i>
                     </span>
                     <div class="icon-box-content">
-                        <h4 class="mb-1 icon-box-title font-weight-bold">Customer Support</h4>
-                        <p class="text-default">Call or email us 24/7</p>
+                        <h4 class="mb-1 icon-box-title font-weight-bold">دعم العملاء</h4>
+                        <p class="text-default">اتصل بنا أو راسلنا على مدار الساعة طوال أيام الأسبوع</p>
                     </div>
                 </div>
             </div>
@@ -376,8 +376,13 @@
                 <div class="mb-4 col-md-6">
                     <div class="banner banner-fixed br-xs">
                         <figure>
+                            @if(Config::get('app.locale') == 'en') 
                             <img src="{{asset($item->image_English)}}"
                                 alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                @else
+                                <img src="{{asset($item->image_Arabic)}}"
+                                alt="{{ $item->image_place }}" width="610" height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                @endif
                         </figure>
                         {{-- <div class="mt-0 banner-content y-50">
                             <h5 class="banner-subtitle font-weight-normal text-dark">Get up to <span
@@ -399,9 +404,16 @@
         <div class="mb-8 row deals-wrapper appear-animate">
             <div class="mb-4 col-lg-9">
                 <div class="single-product h-100 br-sm">
+                    @if(Config::get('app.locale') == 'en') 
                     <h4 class="title-sm title-underline font-weight-bolder ls-normal">
                         Deals Hot of The Day
                     </h4>
+                    @else
+                    <h4 class="title-sm title-underline font-weight-bolder ls-normal">
+                        أفضل العروض اليوم
+                    </h4>
+                    @endif
+                    <!-- Slider of the products here -->
                     <div class="swiper">
                         <div class="swiper-container swiper-theme nav-top swiper-nav-lg" data-swiper-options="{
                             'spaceBetween': 20,
@@ -717,13 +729,19 @@
                             <button class="swiper-button-next"></button>
                         </div>
                     </div>
+                    <!-- Slider of the products here -->
+
                 </div>
             </div>
             <div class="mb-4 col-lg-3">
                 <div class="widget widget-products widget-products-bordered h-100">
                     <div class="widget-body br-sm h-100">
-                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top 20 Best
-                            Seller</h4>
+                        @if(Config::get('app.locale') == 'en') 
+                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
+                            Selling Items</h4>
+                            @else
+                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">العناصر الأكثر مبيعًا</h4>
+                            @endif
                         <div class="swiper">
                             <div class="swiper-container swiper-theme nav-top" data-swiper-options="{
                                 'slidesPerView': 1,
@@ -745,7 +763,7 @@
                                     <div class="swiper-slide product-widget-wrap">
                                         @foreach ($products_bestSelling as  $top_sellings)
                                         @php
-                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_sellings->id)->get();
+                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_sellings->id)->take(3)->get();
                                        #review rateing 
                                        $avareg = 0;
                                        $sum = 0;
@@ -804,7 +822,6 @@
                                         </div>
                                         @endforeach
                                     </div>
-                                        
                                     @else
                                     @endif
                                 </div>
