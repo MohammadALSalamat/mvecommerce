@@ -127,7 +127,6 @@ class SellerProductController extends Controller
         $brands = $vendors->brand;
         $categories = category::where('is_parent',0)->get();
         $cat_category =category::where('is_parent',1)->get();
-        dd($cat_category);
         if ($current_product) {
 
             return view('Seller.seller_pages.products.editproduct', compact('current_product','brands','vendors','categories'));
@@ -213,6 +212,26 @@ class SellerProductController extends Controller
 
         }else{
             return back()->with('error','this item is not found');
+        }
+    }
+
+    public function get_category_child_by_parent_id(Request $request,$id)
+    {
+
+        $category = category::find($request->id);
+
+        if ($category) {
+            $child_category = category::get_category_child_by_parent_id($request->id);
+            if (count($child_category) <= 0) {
+                return response()->json(['status'=>false,'data'=>null,'msg'=>'parent data'  ]);
+            }
+                return response()->json(['status'=>true,'data'=>$child_category,'msg'=>'data is there']);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'data'=>null,
+                'msg'=>'Data Not Found'
+            ]);
         }
     }
 

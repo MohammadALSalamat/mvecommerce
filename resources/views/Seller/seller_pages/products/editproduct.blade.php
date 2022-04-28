@@ -163,9 +163,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="child_cat_id">Child Category</label>
                                                 <div class="col-md-9">
                                                     <select id="child_cat_id" name="child_category" class="form-control">
-                                                        @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected = "selected" @else  @endif > {{ $category->title }} </option>
-                                                        @endforeach
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
@@ -344,7 +342,7 @@ input:checked + .slider:before {
         var cat_id = $(this).val();
         if(cat_id != null){
             $.ajax({
-                url: "/admin/category/"+cat_id+"/child",
+                url: "/seller/category/"+cat_id+"/child",
                 type: "POST",
                 data:{
                     _token:"{{csrf_token()}}",
