@@ -23,7 +23,7 @@
 <nav class="breadcrumb-nav">
     <div class="container">
         <ul class="breadcrumb bb-no">
-            <li><a href="{{ route('homepage') }}">Home</a></li>
+            <li><a href="{{ route('homepage') }}">الرئيسية</a></li>
             <?php $link = "" ?>
             @for($i = 1; $i <= count(Request::segments()); $i++)
                 @if($i < count(Request::segments()) & $i > 0)
