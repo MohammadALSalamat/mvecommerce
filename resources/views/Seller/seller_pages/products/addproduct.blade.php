@@ -411,7 +411,7 @@ input:checked + .slider:before {
      var cat_id = $(this).val();
      if(cat_id != null){
          $.ajax({
-             url: "/admin/category/"+cat_id+"/child",
+             url: "/seller/category/"+cat_id+"/child",
              type: "POST",
              data:{
                  _token:"{{csrf_token()}}",

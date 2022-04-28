@@ -37,7 +37,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
   Route::post('seller/edit/{id}',[sellerSittingsController::class,'seller_edit_info'])->name('seller_edit_info');
   
     // get child category
-    Route::post('/category/{id}/child',[CategoryController::class,'get_category_child_by_parent_id']);
+    Route::post('/category/{id}/child',[SellerProductController::class,'get_category_child_by_parent_id']);
 
   
 

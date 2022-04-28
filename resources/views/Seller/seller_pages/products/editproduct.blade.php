@@ -341,6 +341,7 @@ input:checked + .slider:before {
     $('#cat_id').change(function(){
         var cat_id = $(this).val();
         if(cat_id != null){
+            
             $.ajax({
                 url: "/seller/category/"+cat_id+"/child",
                 type: "POST",
@@ -354,7 +355,7 @@ input:checked + .slider:before {
                         $('#child_cat_div').removeClass('d-none');
                         $.each(response.data,function(index,value)
                         {
-                                html_option +="<option value='"+value.id+"'"+(child_cat_id ==value.id?'selected':'')+">"+value.title+"</option>"
+                                html_option +="<option value='"+value.id+"'"+(child_cat_id == value.id?'selected':'')+">"+value.title+"</option>"
                         });
 
                     }else{
