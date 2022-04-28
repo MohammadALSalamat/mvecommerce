@@ -126,6 +126,8 @@ class SellerProductController extends Controller
         $vendors = Seller::find(Auth::guard('seller')->user()->id);
         $brands = $vendors->brand;
         $categories = category::where('is_parent',0)->get();
+        $cat_category =category::where('is_parent',1)->get();
+        dd($cat_category);
         if ($current_product) {
 
             return view('Seller.seller_pages.products.editproduct', compact('current_product','brands','vendors','categories'));

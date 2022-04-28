@@ -153,11 +153,8 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="cat_id">Main Category</label>
                                                 <div class="col-md-9">
                                                     <select id="cat_id" name="category" class="form-control">
-                                                        <option value="none" ><-- Category -->
-                                                        </option>
                                                         @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected @else  @endif > {{ $category->title }}
-                                                        </option>
+                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected = "selected" @else  @endif > {{ $category->title }} </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -166,6 +163,9 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="child_cat_id">Child Category</label>
                                                 <div class="col-md-9">
                                                     <select id="child_cat_id" name="child_category" class="form-control">
+                                                        @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected = "selected" @else  @endif > {{ $category->title }} </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
