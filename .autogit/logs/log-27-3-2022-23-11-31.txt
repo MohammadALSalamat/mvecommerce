@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Wed Apr 27 2022 23:11:31 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/mails/order_user_complate.blade.php
+
+
+Created files:
+* .autogit/logs/log-27-3-2022-22-57-59.txt
+
+
+Deleted files:
+
+
+Renamed files:
