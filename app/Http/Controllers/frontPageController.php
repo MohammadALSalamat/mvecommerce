@@ -48,6 +48,7 @@ class frontPageController extends Controller
             array_push($get_product_top_selling_ids,$selles->product_id);
         }
         // get the products that are in array (best selling)
+        $products_bestSelling_top3 = product::wherein('id',$get_product_top_selling_ids)->take(3)->get();
         $products_bestSelling = product::wherein('id',$get_product_top_selling_ids)->get();
 
         $products_review_ids = product::get();
@@ -57,7 +58,7 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
     }
 
     // login form

@@ -759,11 +759,11 @@
                                 }
                             }">
                                 <div class="swiper-wrapper row cols-lg-1 cols-md-3">
-                                    @if ($products_bestSelling->count() > 0 )
+                                    @if ($products_bestSelling_top3->count() > 0 )
                                     <div class="swiper-slide product-widget-wrap">
-                                        @foreach ($products_bestSelling as  $top_sellings)
+                                        @foreach ($products_bestSelling_top3 as  $top_sellings)
                                         @php
-                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_sellings->id)->take(3)->get();
+                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_sellings->id)->get();
                                        #review rateing 
                                        $avareg = 0;
                                        $sum = 0;
@@ -783,7 +783,13 @@
                                          
                                             <div class="product-details">
                                                 <h4 class="product-name">
-                                                    <a href="{{ route('singleproduct',$top_sellings->slug) }}">{{ $top_sellings->title }}</a>
+                                                    <a href="{{ route('singleproduct',$top_sellings->slug) }}">
+                                                        @if(Config::get('app.locale') == 'en') 
+                                                        {{ $top_sellings->title }}
+                                                        @else
+                                                        {{ $top_sellings->ar_title }}
+                                                        @endif
+                                                    </a>
                                                 </h4>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
@@ -811,10 +817,10 @@
                                                 </div>
                                                 <div class="product-price">
                                                     @if (!empty($top_sellings->offer_price) || $top_sellings->offer_price != null)
-                                                    <ins class="new-price">{{ number_format($top_sellings->offer_price) }} AED - <del style="color:#ccc"> {{ number_format($top_sellings->price) }} AED</del></ins>
+                                                    <ins class="new-price">{{ number_format($top_sellings->offer_price) }} د.أ - <del style="color:#ccc"> {{ number_format($top_sellings->price) }} د.أ</del></ins>
                                                         
                                                     @else
-                                                    <ins class="new-price">{{ number_format($top_sellings->price) }} AED</ins>
+                                                    <ins class="new-price">{{ number_format($top_sellings->price) }} د.أ</ins>
                                                         
                                                     @endif
                                                 </div>
@@ -889,8 +895,15 @@
     </section>
     <!-- End of .category-section top-category -->
     <div class="container">
+        @if(Config::get('app.locale') == 'en') 
+
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Departments
         </h2>
+
+        @else
+        <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">الاقسام اﻷكثر زيارة
+        </h2>
+        @endif
         <div class="tab  tab-nav-outline appear-animate">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="mb-2 mr-2 nav-item">
