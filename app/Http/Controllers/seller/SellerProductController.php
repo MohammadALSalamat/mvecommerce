@@ -145,6 +145,9 @@ class SellerProductController extends Controller
             if (empty($data['title']) || $data['title'] == null) {
                 return back()->with('error', 'Title is requird');
             }
+            if (empty($data['ar_title']) || $data['ar_title'] == null) {
+                return back()->with('error', 'Arabic Title is requird');
+            }
             
             if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
                 return back()->with('error', 'Category is requird');
