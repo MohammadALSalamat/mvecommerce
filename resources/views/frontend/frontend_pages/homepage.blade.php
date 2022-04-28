@@ -906,18 +906,23 @@
         @endif
         <div class="tab  tab-nav-outline appear-animate">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
+                @if(Config::get('app.locale') == 'en') 
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrivals</a>
                 </li>
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">Best seller</a>
                 </li>
+               
+                @else
                 <li class="mb-2 mr-2 nav-item">
-                    <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-3">most popular</a>
+                    <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">المنتجات الجديدة</a>
                 </li>
-                <li class="mb-2 mr-0 nav-item">
-                    <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-4">Featured</a>
+                <li class="mb-2 mr-2 nav-item">
+                    <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">الاكثر مبيعا</a>
                 </li>
+                
+                @endif
             </ul>
         </div>
         <!-- End of Tab -->
@@ -939,7 +944,8 @@
                 $now = Carbon\Carbon::now();
                 $days_count = $start->diffInDays($now);
                 @endphp
-            @if($days_count < 15)
+                <!-- hide the products after 15 days  -->
+                    @if($days_count < 15) 
                     <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
@@ -962,16 +968,34 @@
                                     
                                 </div>
                                 <div class="product-label-group">
+                                @if(Config::get('app.locale') == 'en') 
                                 @if (!empty($new_product-> discound) || $new_product-> discound != null)
                                     <label class="product-label label-discount">{{number_format($new_product-> discound,2)}}%</label>
+                                    
                                     <label class="product-label label-new">New Item</label>
-                                                                @else                                 
+                                    @else                                 
                                 <label class="product-label label-new">New Item</label>
+                                @endif
+                                @else
+                                @if (!empty($new_product-> discound) || $new_product-> discound != null)
+                                <label class="product-label label-discount">{{number_format($new_product-> discound,2)}}%</label>
+                                
+                                <label class="product-label label-new">منتج جديد</label>
+                                @else                                 
+                            <label class="product-label label-new">منتج جديد</label>
+                            @endif
                                 @endif
                                 </div>
                             </figure>
                             <div class="product-details">
-                                <h4 class="product-name"><a href="{{ route('singleproduct',$new_product->slug) }}">{{ $new_product->title }}</a>
+                                <h4 class="product-name">
+                                    <a href="{{ route('singleproduct',$new_product->slug) }}">
+                                        @if(Config::get('app.locale') == 'en') 
+                                        {{ $top_sellings->title }}
+                                        @else
+                                        {{ $top_sellings->ar_title }}
+                                        @endif
+                                    </a>
                                 </h4>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -997,6 +1021,7 @@
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
                                 </div>
+                                @if(Config::get('app.locale') == 'en') 
                                 <div class="product-price">
                                         @if (empty($new_product->offer_price) || $new_product->offer_price ==
                                         null)
@@ -1006,6 +1031,17 @@
                                             class="old-price">{{ number_format($new_product->price )}} AED</del>
                                         @endif
                                 </div>
+                                @else
+                                <div class="product-price">
+                                    @if (empty($new_product->offer_price) || $new_product->offer_price ==
+                                    null)
+                                    <ins class="new-price">{{ number_format($new_product->price) }} د.أ</ins>
+                                    @else
+                                    <ins class="new-price">{{ number_format($new_product->offer_price) }} د.أ </ins><del
+                                        class="old-price">{{ number_format($new_product->price )}} د.أ</del>
+                                    @endif
+                            </div>
+                                @endif
                             </div>
                         </div>
                     </div>
