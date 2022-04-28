@@ -926,7 +926,7 @@
             </ul>
         </div>
         <!-- End of Tab -->
-        <div class="tab-content tab-content-fullwidth product-wrapper appear-animate">
+        <div class="tab-content tab-content-fullwidth product-wrapper appear-animate">  
             <div class="pt-4 tab-pane active" id="tab1-1">
                 <div class="row cols-xl-6 cols-md-4 cols-sm-3 cols-2">
                 @foreach ($new_products as $new_product)
@@ -1647,10 +1647,10 @@
         @else
         <div class="mb-5 product-wrapper-1 appear-animate">
             <div class="pb-1 mb-4 title-link-wrapper">
-                <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
+                <h2 class="mb-0 title ls-normal">{{ $item->ar_title }}</h2>
                 <a href="{{ route('shop_special_category',$item->slug) }}"
                     class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات <i
-                        class="w-icon-long-arrow-right"></i></a>
+                        class="w-icon-long-arrow-left"></i></a>
             </div>
             <div class="row">
                 <div class="mb-4 col-lg-3 col-sm-4">
@@ -1760,7 +1760,13 @@
             @foreach($sponser_adsdown as $key => $slider)
             @if($slider->image_place == 'homepage_under_full_width')
             <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                @if(Config::get('app.locale') == 'en')
+
                 <img src="{{url($slider->image_English)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
+                @else
+                <img src="{{url($slider->image_Arabic)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
+                @endif
+           
             </div>
             @endif
             @endforeach
