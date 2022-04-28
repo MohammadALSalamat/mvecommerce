@@ -229,6 +229,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <main class="main">
+    <!-- main slider for ads -->
     <section class="intro-section">
         @php
             $sponser_banner = \App\Models\sponserAds::where('image_place' ,'homepage_banner')->get();
@@ -239,9 +240,17 @@
             <div class="carousel-inner">
                 @foreach($sponser_banner as $key => $slider)
                 @if($slider->image_place == 'homepage_banner')
+                <!-- change to the arabic image --> 
+                @if(Config::get('app.locale') == 'en') 
                 <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
                     <img src="{{url($slider->image_English)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
                 </div>
+                @else
+                <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                    <img src="{{url($slider->image_Arabic)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
+                </div>
+                @endif
+                <!-- change to the arabic image --> 
                 @endif
                 @endforeach
             </div>
@@ -273,6 +282,7 @@
             }
         }">
             <!-- second section -->
+            @if(Config::get('app.locale') == 'en') 
             <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
                 <div class="swiper-slide icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-shipping">
@@ -311,6 +321,49 @@
                     </div>
                 </div>
             </div>
+            @else
+            <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
+                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                    <span class="icon-box-icon icon-shipping">
+                        <i class="w-icon-truck"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h4 class="mb-1 icon-box-title font-weight-bold">الشحن والإرجاع المجاني</h4>
+                        <p class="text-default">لجميع الطلبات التي تزيد عن 99 د.أ</p>
+                    </div>
+                </div>
+                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                    <span class="icon-box-icon icon-payment">
+                        <i class="w-icon-bag"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h4 class="mb-1 icon-box-title font-weight-bold">Secure Payment</h4>
+                        <p class="text-default">We ensure secure payment</p>
+                    </div>
+                </div>
+                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-money">
+                    <span class="icon-box-icon icon-money">
+                        <i class="w-icon-money"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h4 class="mb-1 icon-box-title font-weight-bold">Money Back Guarantee</h4>
+                        <p class="text-default">Any back within 30 days</p>
+                    </div>
+                </div>
+                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-chat">
+                    <span class="icon-box-icon icon-chat">
+                        <i class="w-icon-chat"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h4 class="mb-1 icon-box-title font-weight-bold">Customer Support</h4>
+                        <p class="text-default">Call or email us 24/7</p>
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+
         </div>
         <!-- End of Iocn Box Wrapper -->
         <!-- third section -->
