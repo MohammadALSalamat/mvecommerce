@@ -187,7 +187,7 @@
    </div>
 
    @else
-   <div class="col-lg-8 pr-lg-4 mb-6">
+<div class="col-lg-8 pr-lg-4 mb-6">
     <table class="shop-table cart-table">
         <thead>
             <tr>
