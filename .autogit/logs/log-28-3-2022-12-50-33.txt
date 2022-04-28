@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Thu Apr 28 2022 12:50:33 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_pages/cart/cart.blade.php
+
+
+Created files:
+* .autogit/logs/log-28-3-2022-12-37-2.txt
+
+
+Deleted files:
+
+
+Renamed files:
