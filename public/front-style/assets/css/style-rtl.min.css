@@ -22882,6 +22882,10 @@ aside .sp-sidebar-banner span {
     padding-right: 1rem;
 }
 
+.tab-content-fullwidth {
+    width: 100% !important;
+}
+
 .shop-table .product-thumbnail {
     width: 11rem;
     padding-left: 1rem;

@@ -130,7 +130,7 @@ input:checked + .slider:before {
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            {{-- <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput76">Brands</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput76" name="brand" class="form-control">
@@ -142,7 +142,7 @@ input:checked + .slider:before {
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="cat_id">Main Category</label>
                                                 <div class="col-md-9">
@@ -167,7 +167,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput11">Summary</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput11" rows="5" class="form-control"
-                                                    name="summary" placeholder="About Project">{{ $current_product->Summary }}</textarea>
+                                                    name="summary" placeholder="About Project">{!! $current_product->Summary !!}</textarea>
                                                 </div>
                                             </div>
 
@@ -198,7 +198,7 @@ input:checked + .slider:before {
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput9" rows="5" class="form-control"
-                                                        name="comment" placeholder="About Project">{{ $current_product->description }}</textarea>
+                                                        name="comment" placeholder="About Project">{!! $current_product->description !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -206,7 +206,7 @@ input:checked + .slider:before {
                                                     for="projectinput9">Additional Info</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput100" rows="5" class="form-control"
-                                                        name="additional_info" placeholder="write somthing new">{{ $current_product->additional_info }}</textarea>
+                                                        name="additional_info" placeholder="write somthing new">{!! $current_product->additional_info !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -214,10 +214,10 @@ input:checked + .slider:before {
                                                     for="projectinput9">Return Policy</label>
                                                 <div class="col-md-9">
                                                     <textarea id="projectinput1001" rows="5" class="form-control"
-                                                        name="return_policy" placeholder="Write Something ">{{ $current_product->return_policy }}</textarea>
+                                                        name="return_policy" placeholder="Write Something ">{!! $current_product->return_policy !!}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            {{-- <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput46">Size</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput46" name="size" class="form-control">
@@ -229,8 +229,8 @@ input:checked + .slider:before {
                                                         <option value="XLarge"  @if ($current_product->size == "XLarge" || $current_product->size == "XL") selected @endif  >XLarge </option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput96">Condition</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput96" name="condition" class="form-control">
@@ -242,7 +242,7 @@ input:checked + .slider:before {
                                                         <option value="Second Hand" @if ($current_product->conditions == "Second Hand") selected @endif >Second Hand </option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput30">Stock</label>
                                                 <div class="col-md-9">
