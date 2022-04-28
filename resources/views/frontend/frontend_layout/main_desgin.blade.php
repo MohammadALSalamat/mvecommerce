@@ -57,6 +57,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo1.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css')}}">
     @else
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style-rtl.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo-rtl.min.css')}}">
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
