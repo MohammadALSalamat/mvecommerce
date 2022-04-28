@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Thu Apr 28 2022 23:36:02 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/seller/SellerProductController.php
+* resources/views/Seller/seller_pages/products/editproduct.blade.php
+
+
+Created files:
+* .autogit/logs/log-28-3-2022-23-22-41.txt
+
+
+Deleted files:
+
+
+Renamed files:
