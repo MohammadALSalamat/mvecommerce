@@ -253,8 +253,8 @@
                                 </div>
                                 
                                 <div class="mt-0 form-checkbox user-checkbox">
-                                    <input type="radio" class="custom-checkbox checkbox-round" id="check-customer"
-                                        name="check-customer">
+                                    <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
+                                        name="check-customer" checked>
                                     <label for="check-customer" class="mb-1 check-customer">تسجيل كمستخدم </label>
                                 </div>
                                 <p>
