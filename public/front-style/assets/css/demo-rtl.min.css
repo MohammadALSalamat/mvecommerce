@@ -10119,11 +10119,11 @@ body .product-popup {
 
 .product-name {
     margin-bottom: 0.8rem;
-    text-align: right;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
     white-space: normal;
-    height: 60px;
+    height: 61px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
