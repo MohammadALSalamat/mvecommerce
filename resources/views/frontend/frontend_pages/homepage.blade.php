@@ -360,10 +360,7 @@
                     </div>
                 </div>
             </div>
-
             @endif
-
-
         </div>
         <!-- End of Iocn Box Wrapper -->
         <!-- third section -->
@@ -909,10 +906,8 @@
     <!-- End of .category-section top-category -->
     <div class="container">
         @if(Config::get('app.locale') == 'en') 
-
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Departments
         </h2>
-
         @else
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">الاقسام اﻷكثر زيارة
         </h2>
@@ -926,7 +921,6 @@
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">Best seller</a>
                 </li>
-               
                 @else
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">المنتجات الجديدة</a>
@@ -934,7 +928,6 @@
                 <li class="mb-2 mr-2 nav-item">
                     <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">الاكثر مبيعا</a>
                 </li>
-                
                 @endif
             </ul>
         </div>
@@ -1004,9 +997,9 @@
                                 <h4 class="product-name">
                                     <a href="{{ route('singleproduct',$new_product->slug) }}">
                                         @if(Config::get('app.locale') == 'en') 
-                                        {{ $top_sellings->title }}
+                                        {{ $new_product->title }}
                                         @else
-                                        {{ $top_sellings->ar_title }}
+                                        {{ $new_product->ar_title }}
                                         @endif
                                     </a>
                                 </h4>
@@ -1050,7 +1043,7 @@
                                     null)
                                     <ins class="new-price">{{ number_format($new_product->price) }} د.أ</ins>
                                     @else
-                                    <ins class="new-price">{{ number_format($new_product->offer_price) }} د.أ </ins><del
+                                    <ins class="new-price">{{ number_format($new_product->offer_price) }} د.أ </ins> - <del
                                         class="old-price">{{ number_format($new_product->price )}} د.أ</del>
                                     @endif
                             </div>
@@ -1105,7 +1098,13 @@
                                 @endif
                             </figure>
                             <div class="product-details">
-                                <h4 class="product-name"><a href="{{ route('singleproduct',$top_selling->slug) }}">{{ $top_selling->title }}</a>
+                                <h4 class="product-name"><a href="{{ route('singleproduct',$top_selling->slug) }}">
+                                    @if(Config::get('app.locale') == 'en') 
+                                    {{ $top_sellings->title }}
+                                    @else
+                                    {{ $top_sellings->ar_title }}
+                                    @endif
+                                </a>
                                 </h4>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -1131,15 +1130,27 @@
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
                                 </div>
+                                @if(Config::get('app.locale') == 'en') 
                                 <div class="product-price">
                                         @if (empty($top_selling->offer_price) || $top_selling->offer_price ==
                                         null)
                                         <ins class="new-price">{{ number_format($top_selling->price) }}AED</ins>
                                         @else
-                                        <ins class="new-price">{{ number_format($top_selling->offer_price) }} AED </ins><del
+                                        <ins class="new-price">{{ number_format($top_selling->offer_price) }} AED </ins> - <del
                                             class="old-price">{{ number_format($top_selling->price )}} AED</del>
                                         @endif
                                 </div>
+                                @else
+                                <div class="product-price">
+                                    @if (empty($top_selling->offer_price) || $top_selling->offer_price ==
+                                    null)
+                                    <ins class="new-price">{{ number_format($top_selling->price) }} د.أ</ins>
+                                    @else
+                                    <ins class="new-price">{{ number_format($top_selling->offer_price) }} د.أ </ins> - <del
+                                        class="old-price">{{ number_format($top_selling->price )}} د.أ</del>
+                                    @endif
+                            </div>
+                                @endif
                             </div>
                         </div>
                     </div>
