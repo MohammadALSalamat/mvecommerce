@@ -212,7 +212,7 @@
                                     @php
                                     $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
                                     @endphp
-                                                                                @if($sub_cat->count()>0)
+                                    @if($sub_cat->count()>0)
 
                                     <ul class="megamenu">
                                         <li>
@@ -340,10 +340,10 @@
                     <div class="dropdown-box">
                         <div class="cart-header">
                             <span>سلة المشتريات</span>
-                            <a href="#" class="btn-close">أغلاق<i class="w-icon-long-arrow-right"></i></a>
+                            <a href="#" class="btn-close">أغلاق<i class="w-icon-long-arrow-left"></i></a>
                         </div>
 
-                        <div class="products">
+                        <div class="products" style="overflow-y: auto">
                             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                             <div class="product product-cart">
                                 <div class="product-detail">
@@ -351,7 +351,7 @@
                                         class="product-name">{{ $item->name }}</a>
                                     <div class="price-box">
                                         <span class="product-quantity">{{ $item->qty }}</span>
-                                        <span class="product-price">د.إ {{ $item->price }}</span>
+                                        <span class="product-price"> د.إ {{ $item->price }}</span>
                                     </div>
                                 </div>
                                 <figure class="product-media">
@@ -369,10 +369,10 @@
                         <div class="cart-total">
                             <label>المجموع:</label>
                             @if(session()->has('coupon'))
-                            <span class="price">د.إ
+                            <span class="price"> د.إ
                                 {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
                             @else
-                            <span class="price">د.إ {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                            <span class="price"> د.إ {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
                             @endif
                         </div>
 
@@ -408,34 +408,44 @@
                                     <a href="{{ route('shop_special_category',$category->slug) }}">
                                         {{$category->ar_title}}
                                     </a>
+                                    @php
+                                    $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
+                                    @endphp
+                                    @if($sub_cat->count()>0)
                                     <ul class="megamenu">
-                                        @php
-                                            $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
-                                            @endphp
-                                        @if(count($sub_cat) > 4)
-                                        <div class="row">
-                                        @foreach ($sub_cat as $single_cat )
-                                            <div class="col-3">
-                                                <li>
-                                                    <ul>
-                                                        <li><a href="{{ route('shop_special_category',$item->slug) }}">{{$single_cat->ar_title}}</a></li>
-                                                        
-                                                    </ul>
+                                        <li>
+                                           
+                                            <h4 class="menu-title">الاكثر زيارة</h4>
+                                            <hr class="divider">
+                                            <ul>
+                                                @foreach ($sub_cat as $single_cat )
+                                                <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->ar_title}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h4 class="menu-title">العلامات التجارية</h4>
+                                            <hr class="divider">
+                                            <ul>
+                                                <li><a href="#">مرسيدس</a>
                                                 </li>
+                                                <li><a href="#">اودي</a>
+                                                </li>
+                                                <li><a href="#">لولو ماركت</a></li>
+                                                <li><a href="#">اديداس</a></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="banner-fixed menu-banner menu-banner2">
+                                                <figure>
+                                                    <img src="{{ asset('front-style/assets/images/menu/banner-2.jpg') }}" alt="Menu Banner"
+                                                        width="235" height="347" />
+                                                </figure>
                                             </div>
-                                            @endforeach
-                                        </div>
-                                        @else
-                                            @foreach ($sub_cat as $single_cat )
-                                            <li>
-                                                <ul>
-                                                    <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->ar_title}}</a></li>
-                                                    
-                                                </ul>
-                                            </li>
-                                            @endforeach
-                                            @endif
+                                        </li>
                                     </ul>
+                                    @endif
                                 </li>
                                 @endforeach
                             </ul>

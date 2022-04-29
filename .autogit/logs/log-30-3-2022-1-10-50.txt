@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 30 2022 01:10:50 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* public/front-style/assets/css/demo-rtl.min.css
+* resources/views/frontend/frontend_layout/_wishlist-list.blade.php
+* resources/views/frontend/frontend_pages/homepage.blade.php
+
+
+Created files:
+* .autogit/logs/log-30-3-2022-0-57-21.txt
+
+
+Deleted files:
+
+
+Renamed files:
