@@ -719,7 +719,7 @@
                                 <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Billing Address</a>
+                                            <a href="#collapse1-1" class="expand">تعديل على موقع وصول الشحنة</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
                                             <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
@@ -728,33 +728,33 @@
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">Address </label>
+                                                        <label for="inputEmail4">الموقع </label>
                                                         <input  type="text" name="address" class="form-control"
                                                             id="address" value="{{ $current_user->address }}">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputPassword4">Country</label>
+                                                        <label for="inputPassword4">البلد</label>
                                                         <input type="text" name="country" class="form-control"
                                                             id="country" value="{{ $current_user->country }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">City </label>
+                                                        <label for="inputEmail4">المدينة </label>
                                                         <input  type="text" name="city" class="form-control"
                                                             id="city" value="{{ $current_user->city }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">Post Code </label>
+                                                        <label for="inputEmail4">الرمز البريدي</label>
                                                         <input  type="number" name="postcode"
                                                             class="form-control" id="postcode" value="{{ $current_user->postcode }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">State</label>
+                                                        <label for="inputEmail4">المقاطعة\ الامارة </label>
                                                         <input  type="text" name="state"
                                                             class="form-control" id="state" value="{{ $current_user->state }}">
                                                     </div>
@@ -764,16 +764,16 @@
                                                         
                                                 <div class="my-4 form-checkbox d-flex align-items-center">
                                     <input class="mr-4  form-check-input" type="checkbox" name="shipping_copy_billing_info" id="shippingcopybillinginfo">
-                                    <label for="shippingcopybillinginfo" style="color:red">Do you want to Update the shipping address as above data ?</label>
+                                    <label for="shippingcopybillinginfo" style="color:red">هل تريد نسخ المعلومات في الاعلى لاستخدامهافي توصيل الشحنة</label>
                                 </div>
                                                   
-                                                <button class="mt-3 btn btn-primary">Edit Billing Now</button>
+                                                <button class="mt-3 btn btn-primary">تعديل الان</button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Shipping Address</a>
+                                            <a href="#collapse1-1" class="expand">تعديل عنوان الشحن</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
                                             <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
@@ -782,33 +782,33 @@
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">Address </label>
+                                                        <label for="inputEmail4">الموقع </label>
                                                         <input  type="text" name="saddress" class="form-control"
                                                             id="saddress" value="{{ $current_user->saddress }}">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputPassword4">Country</label>
+                                                        <label for="inputPassword4">البلد</label>
                                                         <input type="text" name="scountry" class="form-control"
                                                             id="scountry" value="{{ $current_user->scountry }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">City </label>
+                                                        <label for="inputEmail4">المدينة </label>
                                                         <input  type="text" name="scity" class="form-control"
                                                             id="scity" value="{{ $current_user->scity }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">Post Code </label>
+                                                        <label for="inputEmail4">الرمز البريدي</label>
                                                         <input  type="number" name="spostcode"
                                                             class="form-control" id="spostcode" value="{{ $current_user->spostcode }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">State</label>
+                                                        <label for="inputEmail4">المقاطعة\ الامارة </label>
                                                         <input  type="text" name="sstate"
                                                             class="form-control" id="sstate" value="{{ $current_user->sstate }}">
                                                     </div>
@@ -828,7 +828,7 @@
                                 <i class="w-icon-user"></i>
                             </span>
                             <div class="icon-box-content">
-                                <h4 class="mb-0 icon-box-title ls-normal">Account Details</h4>
+                                <h4 class="mb-0 icon-box-title ls-normal">معلومات الحساب</h4>
                             </div>
                         </div>
                         <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
@@ -836,7 +836,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="firstname">Full Nname </label>
+                                        <label for="firstname">الاسم الكامل </label>
                                         <input type="text" id="firstname" name="full_name"
                                             class="form-control form-control-md" @if(!empty($current_user->full_name) ||
                                         $current_user->full_name != null)
@@ -846,7 +846,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="lastname">UserName </label>
+                                        <label for="lastname">اسم المستخدم  </label>
                                         <input type="text" id="username" name="username"
                                             @if(!empty($current_user->username) || $current_user->username != null)
                                         value="{{ $current_user->username }}" @endif
@@ -856,39 +856,37 @@
                             </div>
 
                             <div class="mb-6 form-group">
-                                <label for="email_1">Email address </label>
+                                <label for="email_1">البريد الالكتروني </label>
                                 <input type="email" id="email" name="email" class="form-control form-control-md"
                                     @if(!empty($current_user->email) || $current_user->email != null)
                                 value="{{ $current_user->email }}" @endif disabled>
                             </div>
 
                             <div class="mb-6 form-group">
-                                <label for="email_1">Phone Number </label>
+                                <label for="email_1">رقم الهاتف </label>
                                 <input type="number" id="phone" name="phone" class="form-control form-control-md"
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
                              @if($current_user->role == 'seller')
                             <div class="mb-6 form-group">
-                                <label for="email_1">Shop Name </label>
+                                <label for="email_1">اسم المشروع </label>
                                 <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
                                 value="{{ $current_user->shop_name }}">
                             </div>
                             @endif
-                            <h4 class="title title-password ls-25 font-weight-bold">Password change</h4>
+                            <h4 class="title title-password ls-25 font-weight-bold">تعديل كلمة السر</h4>
                             <div class="form-group">
-                                <label class="text-dark" for="cur-password">Current Password leave blank to leave
-                                    unchanged</label>
+                                <label class="text-dark" for="cur-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="old-password"
                                     name="old_password">
                             </div>
                             <div class="form-group">
-                                <label class="text-dark" for="new-password">New Password leave blank to leave
-                                    unchanged</label>
+                                <label class="text-dark" for="new-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="new-password"
                                     name="new_password">
                             </div>
-                            <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">Save Changes</button>
+                            <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">حفظ التغييرات </button>
                         </form>
                     </div>
                 </div>
