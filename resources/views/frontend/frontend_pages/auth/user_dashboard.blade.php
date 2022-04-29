@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <!-- Start of Main -->
-@if (@if(Config::get('app.locale') == 'en'))
+@if(Config::get('app.locale') == 'en')
 <main class="main">
     <!-- Start of Page Header -->
     <div class="page-header">
@@ -331,7 +331,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">State</label>
                                                         <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->state }}">
+                                                            class="form-control" id="state" value="{{ $current_user->stat }}">
                                                     </div>
                                                 </div>
 
@@ -385,7 +385,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">State</label>
                                                         <input  type="text" name="sstate"
-                                                            class="form-control" id="sstate" value="{{ $current_user->sstate }}">
+                                                            class="form-control" id="sstate" value="{{ $current_user->sstat }}">
                                                     </div>
                                                 </div>
                                                 <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
@@ -477,7 +477,7 @@
     <!-- Start of Page Header -->
     <div class="page-header">
         <div class="container">
-            <h1 class="mb-0 page-title">My Account</h1>
+            <h1 class="mb-0 page-title">الحساب الشخصي</h1>
         </div>
     </div>
     <!-- End of Page Header -->
@@ -756,7 +756,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">المقاطعة\ الامارة </label>
                                                         <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->state }}">
+                                                            class="form-control" id="state" value="{{ $current_user->stat }}">
                                                     </div>
                                                 </div>
 
@@ -810,7 +810,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">المقاطعة\ الامارة </label>
                                                         <input  type="text" name="sstate"
-                                                            class="form-control" id="sstate" value="{{ $current_user->sstate }}">
+                                                            class="form-control" id="sstate" value="{{ $current_user->sstat }}">
                                                     </div>
                                                 </div>
                                                 <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
