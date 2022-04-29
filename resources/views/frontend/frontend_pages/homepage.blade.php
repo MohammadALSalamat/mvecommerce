@@ -733,15 +733,16 @@
 
                 </div>
             </div>
+            <!-- TOP SELLING RIGHT BAR -->
             <div class="mb-4 col-lg-3">
                 <div class="widget widget-products widget-products-bordered h-100">
                     <div class="widget-body br-sm h-100">
                         @if(Config::get('app.locale') == 'en') 
                         <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
                             Selling Items</h4>
-                            @else
-                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">العناصر الأكثر مبيعًا</h4>
-                            @endif
+                        @else
+                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">العناصر الأكثر مبيعًا</h4>
+                        @endif
                         <div class="swiper">
                             <div class="swiper-container swiper-theme nav-top" data-swiper-options="{
                                 'slidesPerView': 1,
@@ -815,6 +816,17 @@
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
+                                                @if(Config::get('app.locale') == 'en') 
+                                                <div class="product-price">
+                                                    @if (!empty($top_sellings->offer_price) || $top_sellings->offer_price != null)
+                                                    <ins class="new-price">{{ number_format($top_sellings->offer_price) }} AED - <del style="color:#ccc"> {{ number_format($top_sellings->price) }} AED</del></ins>
+                                                        
+                                                    @else
+                                                    <ins class="new-price">{{ number_format($top_sellings->price) }} AED</ins>
+                                                        
+                                                    @endif
+                                                </div>
+                                                @else
                                                 <div class="product-price">
                                                     @if (!empty($top_sellings->offer_price) || $top_sellings->offer_price != null)
                                                     <ins class="new-price">{{ number_format($top_sellings->offer_price) }} د.أ - <del style="color:#ccc"> {{ number_format($top_sellings->price) }} د.أ</del></ins>
@@ -824,6 +836,7 @@
                                                         
                                                     @endif
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
                                         @endforeach
@@ -1647,24 +1660,23 @@
         @else
         <div class="mb-5 product-wrapper-1 appear-animate">
             <div class="pb-1 mb-4 title-link-wrapper">
-                <h2 class="mb-0 title ls-normal">{{ $item->ar_title }}</h2>
+                <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
                 <a href="{{ route('shop_special_category',$item->slug) }}"
-                    class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات <i
-                        class="w-icon-long-arrow-left"></i></a>
+                    class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات<i class="w-icon-long-arrow-left"></i></a>
             </div>
             <div class="row">
                 <div class="mb-4 col-lg-3 col-sm-4">
-                    <div class="banner h-100 br-sm" style="background-image: url({{ $item->image }});
-                background-color: #ebeced;">
+                    <div class="banner br-sm" style="background:url('{{ $item->one_cat_has_many_products[0]->image }}');
+                    background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
                         <div class="banner-content content-top">
-                            <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر بيعا</h5>
+                            <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر مبيعا اسبوعيا</h5>
                             <hr class="mb-2 banner-divider bg-light">
                             <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
-                                اقسام جديدة<br> <span
-                                    class="font-weight-normal text-capitalize text-white">المنتجات</span>
+                                New Arrivals<br> <span
+                                    class="font-weight-normal text-capitalize text-white">القسم</span>
                             </h3>
                             <a href="{{ route('shop_special_category',$item->slug) }}"
-                                class="btn btn-light btn-outline btn-rounded btn-sm text-white">تسوق اﻷن</a>
+                                class="btn btn-light btn-outline btn-rounded btn-sm text-white">تسوق الان</a>
                             <div style="position: absolute;
                         background: #000;
                         right: 0;
@@ -1673,7 +1685,6 @@
                         left: 0;
                         opacity: 0.5;
                         z-index:-1">
-
                             </div>
                         </div>
                     </div>
@@ -1719,19 +1730,49 @@
                                         <h4 class="product-name"><a
                                                 href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->ar_title }}</a>
                                         </h4>
+                                            @php
+                                        $avareg_review = \App\Models\ProductReview::where('product_id',$products_cat->id)->get();
+                                        #review comments 
+                                        $avareg = 0;
+                                       $sum = 0;
+                                       foreach($avareg_review as $avg){
+                                           $sum += $avg->rate;
+                                           $countavg = count($avareg_review);
+                                           $avareg = $sum / $countavg;
+                                        }
+                                            @endphp 
                                         <div class="ratings-container">
                                             <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
+                                                <span class="ratings" 
+                                                @if (number_format($avareg,1) == 5)
+                                                    style="width: 100%;"
+                                                    @elseif(number_format($avareg,1) >= 4.5)
+                                                    style="width: 90%;"
+                                                    @elseif(number_format($avareg,1) >= 4)
+                                                    style="width: 80%;"
+                                                    @elseif(number_format($avareg,1) >= 3.5)
+                                                    style="width: 70%;"
+                                                    @elseif(number_format($avareg,1) >= 3)
+                                                    style="width: 60%;"
+                                                    @elseif(number_format($avareg,1) >= 2.5)
+                                                    style="width: 50%;"
+                                                    @elseif(number_format($avareg,1) >= 2)
+                                                    style="width: 40%;"
+                                                    @else
+                                                    style="width: 20%;"
+                                                    @endif></span>
                                                 <span class="tooltiptext tooltip-top"></span>
                                             </div>
+                                            <a href="product-default.html" class="rating-reviews">({{ $avareg_review->count() }}
+                                                reviews)</a>
                                         </div>
                                         <div class="product-price">
                                             @if (empty($products_cat->offer_price) || $products_cat->offer_price ==
                                             null)
-                                            <ins class="new-price">{{ $products_cat->price }}د.أ</ins>
+                                            <ins class="new-price">{{ number_format($products_cat->price) }} د.أ </ins>
                                             @else
-                                            <ins class="new-price">{{ $products_cat->offer_price }} د.أ</ins><del
-                                                class="old-price">{{ $products_cat->price }} د.أ</del>
+                                            <ins class="new-price">{{ number_format($products_cat->offer_price) }}  د.أ  </ins><del
+                                                class="old-price">{{ number_format($products_cat->price )}} د.أ </del>
                                             @endif
                                         </div>
                                     </div>
@@ -1779,7 +1820,6 @@
         </button>
       </div>
       @endif 
-
         <!-- End of Banner Fashion -->
         <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
         <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
@@ -1864,7 +1904,7 @@
             </div>
         </div>
         <!-- Post Wrapper -->
-        <h2 class="mb-4 title title-underline ls-normal appear-animate">Your Recent Views</h2>
+        {{-- <h2 class="mb-4 title title-underline ls-normal appear-animate">Your Recent Views</h2>
         <div class="pb-4 mb-8 swiper-container swiper-theme shadow-swiper appear-animate" data-swiper-options="{
             'spaceBetween': 20,
             'slidesPerView': 2,
@@ -1998,7 +2038,7 @@
                 <!-- End of Product Wrap -->
             </div>
             <div class="swiper-pagination"></div>
-        </div>
+        </div> --}}
         <!-- End of Reviewed Producs -->
     </div>
     <!--End of Catainer -->
