@@ -964,7 +964,7 @@
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$new_product->slug) }}">
                                     <img src="{{asset($new_product->image)}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                     
                                 </a>
                                 <div class="product-action-vertical">
@@ -1083,7 +1083,7 @@
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$top_selling->slug) }}">
                                     <img src="{{asset($top_selling->image)}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                     
                                 </a>
                                 <div class="product-action-vertical">
@@ -1156,7 +1156,7 @@
                             <figure class="product-media">
                                 <a href="product-default.html">
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-9.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1188,9 +1188,9 @@
                             <figure class="product-media">
                                 <a href="product-default.html">
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-1-1.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-1-2.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1221,7 +1221,7 @@
                             <figure class="product-media">
                                 <a href="product-default.html">
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-3.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1257,7 +1257,7 @@
                             <figure class="product-media">
                                 <a href="product-default.html">
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-2.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1289,7 +1289,7 @@
                             <figure class="product-media">
                                 <a href="product-default.html">
                                     <img src="{{asset('front-style/assets/images/demos/demo1/products/3-10.jpg')}}"
-                                        alt="Product" width="300" height="338" />
+                                       style="height:200px !important; width:100% !important;object-fit:contain" />
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
@@ -1771,7 +1771,7 @@
                                             null)
                                             <ins class="new-price">{{ number_format($products_cat->price) }} د.أ </ins>
                                             @else
-                                            <ins class="new-price">{{ number_format($products_cat->offer_price) }}  د.أ  </ins><del
+                                            <ins class="new-price">{{ number_format($products_cat->offer_price) }}  د.أ  </ins> - <del
                                                 class="old-price">{{ number_format($products_cat->price )}} د.أ </del>
                                             @endif
                                         </div>
