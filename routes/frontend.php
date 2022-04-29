@@ -20,7 +20,7 @@ Route::get('/shop_list', [frontPageController::class, 'shop_list'])->name('shop_
 Route::get('/Shop/prodcuts/{slug}',[frontPageController::class,'special_category_product'])->name('shop_special_category');
 Route::get('/Shop/prodcuts/sub_product/{slug}',[frontPageController::class,'shop_child_cat'])->name('shop_child_cat');
 // single prodcut [age]
-Route::get('/single_product/{slug}', [frontPageController::class, 'Single_product'])->name('singleproduct');
+Route::get('{slug}', [frontPageController::class, 'Single_product'])->name('singleproduct');
 
 
 
