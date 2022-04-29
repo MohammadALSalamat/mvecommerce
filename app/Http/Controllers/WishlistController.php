@@ -78,7 +78,7 @@ class WishlistController extends Controller
             $response['header'] = $header;
             $response['wishlist_list'] = $wishlist_list;
         }
-        return json_encode($response);
+        return  $response;
     }
 
     // delete the wishlist items

@@ -6,7 +6,12 @@
             <!-- Start of Page Header -->
             <div class="page-header">
                 <div class="container">
+                    @if(Config::get('app.locale') == 'en')
                     <h1 class="page-title mb-0">Wishlist</h1>
+                    @else
+                    <h1 class="page-title mb-0">المفضلة</h1>
+
+                    @endif
                 </div>
             </div>
             <!-- End of Page Header -->
@@ -22,7 +27,7 @@
                     
                       @include('frontend.frontend_layout._wishlist-list')
                   
-                    <div class="social-links">
+                    {{-- <div class="social-links">
                         <label>Share On:</label>
                         <div class="social-icons social-no-color border-thin">
                             <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
@@ -31,7 +36,7 @@
                             <a href="#" class="social-icon social-email far fa-envelope"></a>
                             <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- End of PageContent -->
