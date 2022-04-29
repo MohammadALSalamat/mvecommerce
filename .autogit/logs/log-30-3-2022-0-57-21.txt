@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 30 2022 00:57:21 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_layout/_wishlist-list.blade.php
+
+
+Created files:
+* .autogit/logs/log-30-3-2022-0-43-55.txt
+
+
+Deleted files:
+
+
+Renamed files:

@@ -1,5 +1,5 @@
 @if(Config::get('app.locale') == 'en')
-  <h3 class="wishlist-title">My wishlist</h3>
+<h3 class="wishlist-title">My wishlist</h3>
   <table class="shop-table wishlist-table">
 
       <thead>

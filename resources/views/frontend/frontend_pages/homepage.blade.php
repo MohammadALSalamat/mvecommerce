@@ -853,7 +853,12 @@
     </div>
     <section class="pt-10 pb-10 category-section top-category bg-grey appear-animate">
         <div class="container pb-2">
+            @if(Config::get('app.locale') == 'en') 
             <h2 class="pt-1 mb-5 title justify-content-center ls-normal">Top Categories Of The Month</h2>
+          @else
+          <h2 class="pt-1 mb-5 title justify-content-center ls-normal">الاقسام الاكثر مبيعا هذا الشهر</h2>
+
+          @endif
             <div class="swiper">
                 <div class="swiper-container swiper-theme pg-show" data-swiper-options="{
                     'spaceBetween': 20,
@@ -1345,8 +1350,8 @@
                             <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر مبيعا اسبوعيا</h5>
                             <hr class="mb-2 banner-divider bg-light">
                             <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
-                                New Arrivals<br> <span
-                                    class="font-weight-normal text-capitalize text-white">القسم</span>
+                                 قسم<br> <span
+                                    class="font-weight-normal text-capitalize text-white">وصل حديثا</span>
                             </h3>
                             <a href="{{ route('shop_special_category',$item->slug) }}"
                                 class="btn btn-light btn-outline btn-rounded btn-sm text-white">تسوق الان</a>
