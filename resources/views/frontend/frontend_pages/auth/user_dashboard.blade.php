@@ -30,18 +30,14 @@
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#account-downloads" class="nav-link">Downloads</a>
-                    </li>
+        
                     <li class="nav-item">
                         <a href="#account-addresses" class="nav-link">Addresses</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">Account details</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="wishlist.html" class="nav-link">Wishlist</a>
-                    </li>
+                 
                     <li class="nav-item">
                         <a href="login.html" class="nav-link">Logout</a>
                     </li>
@@ -80,18 +76,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="#account-downloads" class="link-to-tab">
-                                    <div class="text-center icon-box">
-                                        <span class="icon-box-icon icon-download">
-                                            <i class="w-icon-download"></i>
-                                        </span>
-                                        <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Downloads</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -116,18 +101,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="wishlist.html" class="link-to-tab">
-                                    <div class="text-center icon-box">
-                                        <span class="icon-box-icon icon-wishlist">
-                                            <i class="w-icon-heart"></i>
-                                        </span>
-                                        <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Wishlist</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#">
                                     <div class="text-center icon-box">
@@ -222,20 +196,7 @@
                         <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Go
                             Shop<i class="w-icon-long-arrow-right"></i></a>
                     </div>
-                    <!-- DownLoads Tab -->
-                    <div class="tab-pane" id="account-downloads">
-                        <div class="icon-box icon-box-side icon-box-light">
-                            <span class="mr-2 icon-box-icon icon-downloads">
-                                <i class="w-icon-download"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title ls-normal">Downloads</h4>
-                            </div>
-                        </div>
-                        <p class="mb-4">No downloads available yet.</p>
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Go
-                            Shop<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
+                   
                     <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
@@ -532,46 +493,39 @@
             <div class="tab tab-vertical row gutter-lg">
                 <ul class="mb-6 nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a href="#account-dashboard" class="nav-link active">Dashboard</a>
+                        <a href="#account-dashboard" class="nav-link active">لوحة التحكم</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#account-orders" class="nav-link">Orders</a>
+                        <a href="#account-orders" class="nav-link">الطلبات</a>
+                    </li>
+        
+                    <li class="nav-item">
+                        <a href="#account-addresses" class="nav-link">المواقع</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#account-downloads" class="nav-link">Downloads</a>
+                        <a href="#account-details" class="nav-link">معلومات الحساب</a>
                     </li>
+                 
                     <li class="nav-item">
-                        <a href="#account-addresses" class="nav-link">Addresses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#account-details" class="nav-link">Account details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="wishlist.html" class="nav-link">Wishlist</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.html" class="nav-link">Logout</a>
+                        <a href="login.html" class="nav-link">تسجيل الخروج</a>
                     </li>
                 </ul>
 
                 <div class="mb-6 tab-content">
                     <div class="tab-pane active in" id="account-dashboard">
                         <p class="greeting">
-                            Hello
+                            مرحبا
                             <span class="text-dark font-weight-bold">{{ $current_user->full_name }}</span>
-                            (not
-                            <span class="text-dark font-weight-bold">{{ $current_user->full_name }}</span>?
-                            <a href="{{ route('logout_front_user') }}" class="text-primary">Log out</a>)
+                            (لست
+                            <span class="text-dark font-weight-bold">{{ $current_user->full_name }}</span>؟
+                            <a href="{{ route('logout_front_user') }}" class="text-primary">تسجيل خروج</a>)
                         </p>
 
                         <p class="mb-4">
-                            From your account dashboard you can view your <a href="#account-orders"
-                                class="text-primary link-to-tab">recent orders</a>,
-                            manage your <a href="#account-addresses" class="text-primary link-to-tab">shipping
-                                and billing
-                                addresses</a>, and
-                            <a href="#account-details" class="text-primary link-to-tab">edit your password and
-                                account details.</a>
+                            من خلال لوحط التحكم الخاصة بك يمكن الان  <a href="#account-orders"
+                                class="text-primary link-to-tab">الاطلاع على طلباتك</a>,
+                            أو تعديل <a href="#account-addresses" class="text-primary link-to-tab">عناوين الشحن والفواتير</a>, و
+                            <a href="#account-details" class="text-primary link-to-tab">تعديل حسابك الشخصي مع كلمة المرور</a>
                         </p>
 
                         <div class="row">
@@ -582,23 +536,12 @@
                                             <i class="w-icon-orders"></i>
                                         </span>
                                         <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Orders</p>
+                                            <p class="mb-0 text-uppercase">الطلبات</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="#account-downloads" class="link-to-tab">
-                                    <div class="text-center icon-box">
-                                        <span class="icon-box-icon icon-download">
-                                            <i class="w-icon-download"></i>
-                                        </span>
-                                        <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Downloads</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -606,7 +549,7 @@
                                             <i class="w-icon-map-marker"></i>
                                         </span>
                                         <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Addresses</p>
+                                            <p class="mb-0 text-uppercase">المواقع</p>
                                         </div>
                                     </div>
                                 </a>
@@ -618,23 +561,12 @@
                                             <i class="w-icon-user"></i>
                                         </span>
                                         <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Account Details</p>
+                                            <p class="mb-0 text-uppercase">الحساب الشخصي</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="wishlist.html" class="link-to-tab">
-                                    <div class="text-center icon-box">
-                                        <span class="icon-box-icon icon-wishlist">
-                                            <i class="w-icon-heart"></i>
-                                        </span>
-                                        <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Wishlist</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#">
                                     <div class="text-center icon-box">
@@ -642,7 +574,7 @@
                                             <i class="w-icon-logout"></i>
                                         </span>
                                         <div class="icon-box-content">
-                                            <p class="mb-0 text-uppercase">Logout</p>
+                                            <p class="mb-0 text-uppercase">تسجيل الخروج</p>
                                         </div>
                                     </div>
                                 </a>
@@ -656,18 +588,18 @@
                                 <i class="w-icon-orders"></i>
                             </span>
                             <div class="icon-box-content">
-                                <h4 class="mb-0 icon-box-title text-capitalize ls-normal">Orders</h4>
+                                <h4 class="mb-0 icon-box-title text-capitalize ls-normal">الطلبات</h4>
                             </div>
                         </div>
 
                         <table class="mb-6 shop-table account-orders-table">
                             <thead>
                                 <tr>
-                                    <th class="order-id">Order</th>
-                                    <th class="order-date">Date</th>
-                                    <th class="order-status">Status</th>
-                                    <th class="order-total">Total</th>
-                                    <th class="order-actions">Actions</th>
+                                    <th class="order-id">الطلب</th>
+                                    <th class="order-date">تاريخ</th>
+                                    <th class="order-status">الحالة</th>
+                                    <th class="order-total">مجموع الدفع</th>
+                                    <th class="order-actions">المزيد</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -684,65 +616,13 @@
                                             class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="order-id">#2321</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$150.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-id">#2319</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$201.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-id">#2318</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$321.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
+                               
                             </tbody>
                         </table>
 
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Go
-                            Shop<i class="w-icon-long-arrow-right"></i></a>
+                        <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i class="w-icon-long-arrow-left"></i></a>
                     </div>
-                    <!-- DownLoads Tab -->
-                    <div class="tab-pane" id="account-downloads">
-                        <div class="icon-box icon-box-side icon-box-light">
-                            <span class="mr-2 icon-box-icon icon-downloads">
-                                <i class="w-icon-download"></i>
-                            </span>
-                            <div class="icon-box-content">
-                                <h4 class="icon-box-title ls-normal">Downloads</h4>
-                            </div>
-                        </div>
-                        <p class="mb-4">No downloads available yet.</p>
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Go
-                            Shop<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
+                   
                     <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
@@ -750,44 +630,43 @@
                                 <i class="w-icon-map-marker"></i>
                             </span>
                             <div class="icon-box-content">
-                                <h4 class="mb-0 icon-box-title ls-normal">Addresses</h4>
+                                <h4 class="mb-0 icon-box-title ls-normal">المواقع</h4>
                             </div>
                         </div>
-                        <p>The following addresses will be used on the checkout page
-                            by default.</p>
+                        <p>المعلومات الموجودة هنا سيتم استخدامها لاحقا في صفحة الدفع</p>
                         <div class="row">
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Billing Address</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان وصول الشحنة</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
                                                 <tr>
-                                                    <th>Full Name:</th>
+                                                    <th>الاسم الكامل:</th>
                                                     <td>{{ $current_user->full_name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>User Name:</th>
+                                                    <th>الاسم المستخدم:</th>
                                                     <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Address:</th>
+                                                    <th>الموقع:</th>
                                                     <td>{{ $current_user->address }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>City:</th>
+                                                    <th>المدينة:</th>
                                                     <td>{{ $current_user->city }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Country:</th>
+                                                    <th>البلد:</th>
                                                     <td>{{ $current_user->country }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Postcode:</th>
+                                                    <th>الرمز البريدي:</th>
                                                     <td>{{ $current_user->postcode }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Phone:</th>
+                                                    <th>رقم الهاتف:</th>
                                                     <td>{{ $current_user->phone }}</td>
                                                 </tr>
                                             </tbody>
@@ -798,36 +677,36 @@
                             </div>
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address shipping-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Shipping Address</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان الشحن</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                              <tbody>
                                                 <tr>
-                                                    <th>Full Name:</th>
+                                                    <th>الاسم الكامل:</th>
                                                     <td>{{ $current_user->full_name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>User Name:</th>
+                                                    <th>الاسم المستخدم:</th>
                                                     <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Address:</th>
+                                                    <th>الموقع:</th>
                                                     <td>{{ $current_user->saddress }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>City:</th>
+                                                    <th>المدينة:</th>
                                                     <td>{{ $current_user->scity }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Country:</th>
+                                                    <th>البلد:</th>
                                                     <td>{{ $current_user->scountry }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Postcode:</th>
+                                                    <th>الرمز البريدي:</th>
                                                     <td>{{ $current_user->spostcode }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Phone:</th>
+                                                    <th>رقم الهاتف:</th>
                                                     <td>{{ $current_user->phone }}</td>
                                                 </tr>
                                             </tbody>
