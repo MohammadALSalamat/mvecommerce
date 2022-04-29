@@ -58,8 +58,9 @@ class WishlistController extends Controller
 
     public function wishlist_move_to_cart(Request $request)
     {
+        $id = $request->input('rowId');
         // this has a model in the product model
-        $wishlist_item =Cart::instance('wishlist')->get($request->input('rowId'));
+        $wishlist_item =Cart::instance('wishlist')->get($id);
 
         $result = Cart::instance('shopping')->add($wishlist_item->id, $wishlist_item->name, 1, $wishlist_item->price)->associate('App\Models\product');
         if ($result) {
@@ -68,7 +69,7 @@ class WishlistController extends Controller
             $response['cart_count'] = Cart::instance('shopping')->count();
         }
         // remove the item before send to the cart
-        Cart::instance('wishlist')->remove($request->input('rowId'));
+        Cart::instance('wishlist')->remove($id);
         //render the header cart value
         if ($request->ajax()) {
             $header = view('frontend.frontend_layout.header')->render();
