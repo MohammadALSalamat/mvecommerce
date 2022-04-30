@@ -177,7 +177,7 @@ class SellerProductController extends Controller
             if ($data['offer_price'] > $data['price']) {
                 return back()->with('error', 'Offer Price Must be less than Main Price');
             }
-            if(empty($data['offer_price']) || $data['offer_price'] != null){
+            if(!empty($data['offer_price']) || $data['offer_price'] != null){
                 $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
               }else{
                   $discound = null;
