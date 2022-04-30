@@ -10715,7 +10715,7 @@ body .product-popup {
 
 del {
     font-size: 13px !important;
-    color: #ccc;
+    color: #ccc !important;
 }
 
 .product-hidden-details .btn-compare,

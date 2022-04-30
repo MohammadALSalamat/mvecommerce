@@ -1300,9 +1300,14 @@
                     @if($vendor_products->count() > 0)
                     <section class="vendor-product-section">
                         <div class="mb-4 title-link-wrapper">
+                            @if(Config::get('app.locale') == 'en') 
                             <h4 class="text-left title">More Products From This Vendor</h4>
                             <a href="{{ route('single_seller',$vendor_info->username) }}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
                                 Products<i class="w-icon-long-arrow-right"></i></a>
+                                @else
+                                <h4 class="text-left title">المزيد من المنتجات من ذات البائع</h4>
+                                <a href="{{ route('single_seller',$vendor_info->username) }}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من المنتجات<i class="w-icon-long-arrow-left"></i></a>
+                                @endif
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
                             'spaceBetween': 20,
@@ -1339,18 +1344,30 @@
                                    <div class="product-details text-center">
                                        <div class="product-cat"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a>
                                        </div>
+                                       @if(Config::get('app.locale') == 'en') 
                                        <h4 class="product-name"><a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title }}</a>
                                        </h4>
-                                      
+                                      @else
+                                      <h4 class="product-name"><a href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title }}</a>
+                                      </h4>
+                                      @endif
                                        <div class="product-pa-wrapper">
                                            <div class="product-price">
+                                            @if(Config::get('app.locale') == 'en') 
+
                                             @if(empty($product->offer_price) ||
                                             $product->offer_price == null)
                                             {{ $product->price }} AED 
-                                            @else <del
-                                                style="color:red">{{ $product->price }} AED </del> -
+                                            @else <del>{{ $product->price }} AED </del> -
                                             {{ $product->offer_price }} AED @endif
-                                           </div>
+                                        @else
+                                        @if(empty($product->offer_price) ||
+                                        $product->offer_price == null)
+                                        {{ $product->price }} د.أ 
+                                        @else <del>{{ $product->price }} د.أ </del> -
+                                        {{ $product->offer_price }} د.أ @endif
+                                        @endif
+                                        </div>
                                        </div>
                                    </div>
                                </div>
