@@ -673,14 +673,29 @@
                                 </figure>
                                 <div class="product-details">
                                     <h4 class="product-name">
-                                        <a href="{{ route('singleproduct',$single_product->slug)  }}">{{ $single_product->title }}</a>
+                                        <a href="{{ route('singleproduct',$single_product->slug)  }}">
+                                            @if(Config::get('app.locale') == 'en') 
+                                            {{ $single_product->title }}
+                                            @else
+                                            {{ $single_product->ar_title }}
+                                            @endif
+                                        </a>
                                     </h4>
+                                    @if(Config::get('app.locale') == 'en') 
                                     <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
                                         @if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null)
                                         {{ number_format($single_product->price) }} AED 
                                         @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
                                     </div>
+                                    @else
+                                    <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                        @if(empty($single_product->offer_price) ||
+                                        $single_product->offer_price == null)
+                                        {{ number_format($single_product->price) }} د.أ 
+                                        @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc;font-size:12px"> {{ number_format($single_product->price) }} د.أ </del>  @endif
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             @foreach ($freq_products as $freq_product)
