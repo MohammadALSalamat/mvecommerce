@@ -13,7 +13,7 @@
                     <li>  <a href="<?= $link ?>" class="inactive">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
                     @endif
                 @else
-                   <li> <a class="active"> {{ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
+                <li> <a class="active"> {{ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
                 @endif
             @endfor
         </ul>

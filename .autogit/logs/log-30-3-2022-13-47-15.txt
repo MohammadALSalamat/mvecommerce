@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 30 2022 13:47:15 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* app/Http/Controllers/seller/SellerProductController.php
+* routes/frontend.php
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
