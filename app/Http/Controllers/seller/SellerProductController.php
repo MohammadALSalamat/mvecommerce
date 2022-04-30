@@ -179,6 +179,8 @@ class SellerProductController extends Controller
             }
             if(empty($data['offer_price']) || $data['offer_price'] != null){
                 $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
+              }else{
+                  $discound = null;
               }
 
             if (!empty($data['status'])) {
