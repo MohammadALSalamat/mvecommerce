@@ -400,7 +400,7 @@
 @section('content')
 <!-- Start of Main -->
 <main class="pb-1 mb-10 main">
-    @include('frontend.frontend_layout._breadcrumb')
+    {{-- @include('frontend.frontend_layout._breadcrumb') --}}
 
     <!-- Start of Page Content -->
     <div class="page-content">
@@ -653,7 +653,12 @@
                     @if (!empty($freq_products) || $freq_products != null )
                     <!-- more products with the item --->
                     <div class="mt-5 frequently-bought-together ">
+                        @if(Config::get('app.locale') == 'en') 
                         <h2 class="title title-underline">Frequently Bought Together</h2>
+                        @else
+                        <h2 class="title title-underline">يُباع معها أيضًا                        </h2>
+
+                        @endif
                         <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
@@ -718,7 +723,6 @@
                             </div>
                         </div>
                     </div>
-
                     @endif
 
                     <!-- Tabs of Vednor and description --->

@@ -291,7 +291,6 @@ class frontPageController extends Controller
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
-      dd($slug);
       $related_product = product::where('category_id',$single_product->category_id)->where('id','!=',$single_product->id)->get();
       $vendor_info = Seller::where('id',$single_product->vendor_id)->first(); // vednof info
       $vendor_products= product::where('vendor_id',$vendor_info->id)->where('added_by','seller')->get();
