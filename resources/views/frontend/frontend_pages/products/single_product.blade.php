@@ -1146,7 +1146,7 @@
                                             </li>
                                         </ul>
                                         <a href="{{ route('single_seller',$vendor_info->username) }}"
-                                            class="btn btn-dark btn-link btn-underline btn-icon-left">رؤية المزيد <i class="w-icon-long-arrow-right"></i></a>
+                                            class="btn btn-dark btn-link btn-underline btn-icon-right">رؤية المزيد <i class="w-icon-long-arrow-left"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1188,7 +1188,7 @@
                                             <div class="ratings-value d-flex align-items-center text-dark ls-25">
                                                 <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
                                                 @if( number_format($avareg ,1 ) >= 3.5)
-                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
+                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-right:10px;"> موثوق </span>
                                                 @else
                                                 <span style="padding-left:5px ">التقييم</span>
                                                 @endif
