@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 30 2022 14:00:41 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_layout/_breadcrumb.blade.php
+
+
+Created files:
+* .autogit/logs/log-30-3-2022-13-47-15.txt
+
+
+Deleted files:
+
+
+Renamed files:
