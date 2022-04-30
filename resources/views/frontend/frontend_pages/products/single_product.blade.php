@@ -465,7 +465,12 @@
                         </div>
                         <div class="mb-4 col-md-6 mb-md-6">
                             <div class="product-details" data-sticky-options="{'minWidth': 767}">
+                                @if(Config::get('app.locale') == 'en') 
                                 <h1 class="product-title">{{ $single_product->title }}</h1>
+                                @else
+                                <h1 class="product-title">{{ $single_product->ar_title }}</h1>
+
+                                @endif
                                 <!-- Brand Logo-->
                                 <div class="product-bm-wrapper">
                                     <figure class="brand">
@@ -479,6 +484,7 @@
                                         @endif
                                     </figure>
                                     <!-- Category Detailes -->
+                                    @if(Config::get('app.locale') == 'en') 
                                     <div class="product-meta">
                                         <div class="product-categories">
                                             Category:
@@ -497,20 +503,54 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @else
+                                    <div class="product-meta">
+                                        <div class="product-categories">
+                                            القسم:
+                                            <span class="product-category"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
+                                        </div>
+                                        <div class="product-sku">
+                                            الرمز: <span>MS46891340</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name !=  null)
+                                            البائع :  <a href="#" ><span>{{ $vendor_info->shop_name }}</span></a>
+                                                
+                                            @else
+                                            البائع :  <a href="#" ><span>ITajer</span></a>
+                                                
+                                            @endif
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                                 <hr class="product-divider">
+                                @if(Config::get('app.locale') == 'en') 
                                 <h4> Summary</h4> <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% OFF</small>
                                 <p>{!! $single_product->Summary !!}</p>
+                                @else
+                                <h4> ملخص</h4> <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% OFF</small>
+                                <p>{!! $single_product->ar_Summary !!}</p>
+                              
+                                @endif
+
                                 <hr class="product-divider">
                                 <div class="product-price">
+                                    @if(Config::get('app.locale') == 'en') 
                                     <ins class="new-price">
-                                        
                                     @if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null)
                                         {{ number_format($single_product->price) }} AED 
                                         @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
                                     </ins> 
-                                    
+                                    @else
+                                    <ins class="new-price">
+                                        @if(empty($single_product->offer_price) ||
+                                            $single_product->offer_price == null)
+                                            {{ number_format($single_product->price) }} د.أ 
+                                            @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($single_product->price) }} د.أ </del>  @endif
+                                        </ins>
+                                    @endif
                                 </div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -1117,17 +1157,15 @@
                                                 @if( number_format($avareg ,1 ) >= 3.5)
                                                 <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
                                                 @else
-                                                <span style="padding-left:5px ">Rating</span>
+                                                <span style="padding-left:5px ">التقييم</span>
                                                 @endif
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-4 col-xl-8 col-lg-7">
                                         <div class="">
-                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">Submit Your
-                                                Review</h3>
-                                            <p class="mb-3">Your email address will not be published. Required
-                                                fields are marked *</p>
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">أضف تعليق</h3>
+                                            <p class="mb-3">لن يكون الايميل الخاص بك منشورا . كل الحقول ضرورية  *</p>
                                             @auth
                                             <form action="{{ route('review_submit',$single_product->slug) }}"
                                                 method="POST">
@@ -1135,7 +1173,7 @@
                                                 <div class="">
                                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                                     <input type="hidden" name="product_id" value="{{ $single_product->id }}">
-                                                    <label for="rating">Rate This Product :</label>
+                                                    <label for="rating">قيم المنتج :</label>
                                                     <div class="rating">
                                                         <input type="radio" name="rating" value="5" id="5">
                                                         <label for="5">☆</label>
@@ -1149,7 +1187,7 @@
                                                         <label for="1">☆</label>
                                                     </div>
                                                 </div>
-                                                <textarea cols="30" rows="6" placeholder="Write Your Review Here..."
+                                                <textarea cols="30" rows="6" placeholder="ادخل تعليقك هنا..."
                                                     class="form-control" id="review" name="review"></textarea>
                                                 <div class="row gutter-md mt-2 mb-2">
                                                     <div class="col-md-6">
@@ -1163,12 +1201,11 @@
                                                             value="{{ auth()->user()->email }}">
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-dark"> Send </button>
+                                                <button type="submit" class="btn btn-dark"> أرسال </button>
                                             </form>
                                             @else
-                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">Sorry, You need to
-                                                Login to send a review</h3>
-                                            <p><a href="{{ route('loginForm') }}"> Click Here!!</a> to login</p>
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">اسف يجب ان يكون لديك حساب لتعطي رأيك</h3>
+                                            <p><a href="{{ route('loginForm') }}"> اضغط هنا!!</a> لتدخل الى حسابك</p>
                                             @endauth
                                         </div>
                                     </div>
@@ -1215,7 +1252,7 @@
                                                 </li>
                                                 @endforeach
                                                 @else
-                                                <p><strong> be the first</strong>, there are no reviews to view yet</p>
+                                                <p><strong> كن اول من يبدي رايه</strong>, لا يوجد تقييم للمنتج بعد</p>
                                                 @endif
                                                 {{ $user_review->links('vendor.pagination.custompage') }}
                                             </ul>
