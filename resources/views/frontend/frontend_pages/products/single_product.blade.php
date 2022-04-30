@@ -710,6 +710,8 @@
                                         <label></label>
                                     </div>
                                 </figure>
+                                @if(Config::get('app.locale') == 'en') 
+
                                 <div class="product-details">
                                     <h4 class="product-name">
                                         <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
@@ -721,6 +723,20 @@
                                         @else {{ number_format($freq_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>  @endif
                                     </div>
                                 </div>
+                                @else
+                                <div class="product-details">
+                                    <h4 class="product-name">
+                                        <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->ar_title }}</a>
+                                    </h4>
+                                    <div class="product-price">
+                                        @if(empty($freq_product->offer_price) ||
+                                        $freq_product->offer_price == null)
+                                        {{ number_format($freq_product->price) }} د.أ 
+                                        @else {{ number_format($freq_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} د.أ </del>  @endif
+                                    </div>
+                                </div>
+                                @endif
+
                             </div>
                             @endforeach
                             @php
@@ -729,6 +745,7 @@
                                   array_push($frequantly_boughts_ids,$prod_ids);
                               }  
                             @endphp
+                            @if(Config::get('app.locale') == 'en') 
                             <div class="product-button">
                                 <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
                                 <div class="bought-count">For {{ $freq_products->count() }} items</div>
@@ -736,10 +753,19 @@
                                    <span>Add All To Cart </span> 
                                 </button>
                             </div>
+                            @else
+                            <div class="product-button">
+                                <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                <div class="bought-count">لاجل {{ $freq_products->count() }} منتجات</div>
+                                <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                   <span>اضافة جميع المنتجات </span> 
+                                </button>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     @endif
-
+                    @if(Config::get('app.locale') == 'en') 
                     <!-- Tabs of Vednor and description --->
                     <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
                         <ul class="nav nav-tabs" role="tablist">
@@ -970,6 +996,236 @@
                             </div>
                         </div>
                     </div>
+
+                    @else
+                    <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a href="#product-tab-description" class="nav-link active">التفاصيل</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#product-tab-specification" class="nav-link">معلومات أضافية</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#product-tab-vendor" class="nav-link">معلومات البائع</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#product-tab-review" class="nav-link">آراء العملاء ({{ count($user_review) }})</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="product-tab-description">
+                                @if($single_product->description != null || !empty($single_product->description))
+                                {!! $single_product->description !!}
+                                @else
+                                <p class=text-red-600" style="color: red"> لايوجد وصف للمنتج</p>
+                                @endif
+
+                            </div>
+                            <div class="tab-pane" id="product-tab-specification">
+                                @if($single_product->additional_info != null ||
+                                !empty($single_product->additional_info))
+                                {!! $single_product->additional_info !!}
+                                @else
+                                <p class=text-red-600" style="color: red"> لايوجد معلومات أضافية للمنتج</p>
+                                @endif
+                            </div>
+                            <div class="tab-pane" id="product-tab-vendor">
+                                <div class="mb-3 row">
+                                    <div class="mb-4 col-md-6">
+                                        <figure class="vendor-banner br-sm">
+                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image == null)
+                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Vendor" 
+                                            width="400" height="318" style="background-color: #454b63;" />
+                                            @else
+                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}" alt="Vendor" 
+                                                width="400px" height="318px" style="background-color: #454b63;" />
+                                            
+                                            @endif
+                                        </figure>
+                                    </div>
+                                    <div class="pl-2 mb-4 col-md-6 pl-md-6">
+                                        <div class="vendor-user">
+                                            <figure class="mr-4 vendor-logo">
+                                                <a href="#">
+                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}" alt="Vendor Logo" width="80"
+                                                        height="80" />
+                                                </a>
+                                            </figure>
+                                            
+                                        </div>
+                                        <ul class="vendor-info list-style-none">
+                                            <li class="store-name">
+                                                <label>أسم المتجر:</label>
+                                                <span class="detail">{{ $vendor_info->shop_name }}</span>
+                                            </li>
+                                            @if (empty($vendor_info->address) || $vendor_info->address == null)
+                                                
+                                            @else
+                                            <li class="store-address">
+                                                <label>العنوان:</label>
+                                                <span class="detail">{{$vendor_info->address}}</span>
+                                            </li>
+                                            @endif
+                                            <li class="store-phone">
+                                                <label>رقم الهاتف:</label>
+                                                <a href="#tel:">{{ $vendor_info->phone }}</a>
+                                            </li>
+                                        </ul>
+                                        <a href="{{ route('single_seller',$vendor_info->username) }}"
+                                            class="btn btn-dark btn-link btn-underline btn-icon-right">رؤية المزيد <i class="w-icon-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="product-tab-review">
+                                <div class="mb-4 row">
+                                    <div class="mb-4 col-xl-4 col-lg-5">
+                                        <div class="ratings-wrapper">
+                                            <div class="avg-rating-container">
+                                                <h4 class="avg-mark font-weight-bolder ls-50">{{ number_format($avareg,1) }}</h4>
+                                                <div class="avg-rating">
+                                                    <p class="mb-1 text-dark">متوسظ التقييم</p>
+                                                    <div class="ratings-container">
+                                                        <div class="ratings-full">
+                                                            <span class="ratings" 
+                                                            @if (number_format($avareg,1) == 5)
+                                                            style="width: 100%;"
+                                                            @elseif(number_format($avareg,1) >= 4.5)
+                                                            style="width: 90%;"
+                                                            @elseif(number_format($avareg,1) >= 4)
+                                                            style="width: 80%;"
+                                                            @elseif(number_format($avareg,1) >= 3.5)
+                                                            style="width: 70%;"
+                                                            @elseif(number_format($avareg,1) >= 3)
+                                                            style="width: 60%;"
+                                                            @elseif(number_format($avareg,1) >= 2.5)
+                                                            style="width: 50%;"
+                                                            @elseif(number_format($avareg,1) >= 2)
+                                                            style="width: 40%;"
+                                                            @else
+                                                            style="width: 20%;"
+                                                            @endif></span>
+                                                            <span class="tooltiptext tooltip-top"></span>
+                                                        </div>
+                                                        <a href="#" class="rating-reviews">({{ $avareg_review->count() }} أراء)</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="ratings-value d-flex align-items-center text-dark ls-25">
+                                                <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
+                                                @if( number_format($avareg ,1 ) >= 3.5)
+                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
+                                                @else
+                                                <span style="padding-left:5px ">Rating</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-xl-8 col-lg-7">
+                                        <div class="">
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">Submit Your
+                                                Review</h3>
+                                            <p class="mb-3">Your email address will not be published. Required
+                                                fields are marked *</p>
+                                            @auth
+                                            <form action="{{ route('review_submit',$single_product->slug) }}"
+                                                method="POST">
+                                                @csrf
+                                                <div class="">
+                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="product_id" value="{{ $single_product->id }}">
+                                                    <label for="rating">Rate This Product :</label>
+                                                    <div class="rating">
+                                                        <input type="radio" name="rating" value="5" id="5">
+                                                        <label for="5">☆</label>
+                                                        <input type="radio" name="rating" value="4" id="4">
+                                                        <label for="4">☆</label>
+                                                        <input type="radio" name="rating" value="3" id="3">
+                                                        <label for="3">☆</label>
+                                                        <input type="radio" name="rating" value="2" id="2">
+                                                        <label for="2">☆</label>
+                                                        <input type="radio" name="rating" value="1" id="1">
+                                                        <label for="1">☆</label>
+                                                    </div>
+                                                </div>
+                                                <textarea cols="30" rows="6" placeholder="Write Your Review Here..."
+                                                    class="form-control" id="review" name="review"></textarea>
+                                                <div class="row gutter-md mt-2 mb-2">
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Your Name"
+                                                            id="author" name="user_name"
+                                                            value="{{auth()->user()->full_name}}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Your Email"
+                                                            id="email_1" name="email_user" disabled
+                                                            value="{{ auth()->user()->email }}">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-dark"> Send </button>
+                                            </form>
+                                            @else
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">Sorry, You need to
+                                                Login to send a review</h3>
+                                            <p><a href="{{ route('loginForm') }}"> Click Here!!</a> to login</p>
+                                            @endauth
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab tab-nav-boxed tab-nav-outline tab-nav-center">
+                                    
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="show-all">
+                                            <ul class="comments list-style-none">
+                                                @if(count($user_review) > 0)
+                                                @foreach ($user_review as $review )
+                                                <li class="comment">
+                                                    <div class="comment-body">
+                                                        <figure class="comment-avatar">
+                                                            <img src="{{ \App\Models\User::where('id',$review->user_id)->value('photo') }}"
+                                                                alt="Commenter Avatar" width="90" height="90">
+                                                        </figure>
+                                                        <div class="comment-content">
+                                                            <h4 class="comment-author">
+                                                                <a href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
+                                                                <span class="comment-date">{{ $review->created_at }}</span>
+                                                            </h4>
+                                                            <div class="ratings-container comment-rating">
+                                                                <div class="ratings-full">
+                                                                    <span class="ratings" 
+                                                                    @if ($review->rate == 5)
+                                                                    style="width: 100%;"
+                                                                    @elseif($review->rate == 4)
+                                                                    style="width: 80%;"
+                                                                    @elseif($review->rate == 3)
+                                                                    style="width: 60%;"
+                                                                    @elseif($review->rate == 2)
+                                                                    style="width: 40%;"
+                                                                    @else
+                                                                    style="width: 20%;"
+                                                                    @endif>
+                                                                </span>
+                                                                </div>
+                                                            </div>
+                                                            <p>{{$review->review}}.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                @endforeach
+                                                @else
+                                                <p><strong> be the first</strong>, there are no reviews to view yet</p>
+                                                @endif
+                                                {{ $user_review->links('vendor.pagination.custompage') }}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <!-- More Productcs From This Vendor -->
                     @if($vendor_products->count() > 0)
                     <section class="vendor-product-section">

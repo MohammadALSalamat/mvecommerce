@@ -10713,6 +10713,11 @@ body .product-popup {
     font-size: 1.8rem;
 }
 
+del {
+    font-size: 13px !important;
+    color: #ccc;
+}
+
 .product-hidden-details .btn-compare,
 .product-list .btn-compare {
     font-size: 2rem;

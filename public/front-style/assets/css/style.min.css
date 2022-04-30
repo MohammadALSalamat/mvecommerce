@@ -10718,6 +10718,11 @@ body .product-popup {
     font-size: 2rem;
 }
 
+del {
+    font-size: 13px !important;
+    color: #ccc;
+}
+
 .product-name {
     margin-bottom: 0.7rem;
     font-size: 1.3rem;
