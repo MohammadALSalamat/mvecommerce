@@ -829,7 +829,7 @@
                             @else
                             <div class="product-button">
                                 <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
-                                <div class="bought-count">لاجل {{ $freq_products->count() }} منتجات</div>
+                                <div class="bought-count">لاجل المنتجات المحددة</div>
                                 <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
                                    <span>اضافة جميع المنتجات </span> 
                                 </button>
@@ -1088,19 +1088,19 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="product-tab-description">
-                                @if($single_product->description != null || !empty($single_product->description))
-                                {!! $single_product->description !!}
+                                @if($single_product->ar_description != null || !empty($single_product->ar_description))
+                                {!! $single_product->ar_description !!}
                                 @else
-                                <p class=text-red-600" style="color: red"> لايوجد وصف للمنتج</p>
-                                @endif
+                                {!! $single_product->description !!}
+                                                                @endif
 
                             </div>
                             <div class="tab-pane" id="product-tab-specification">
-                                @if($single_product->additional_info != null ||
-                                !empty($single_product->additional_info))
-                                {!! $single_product->additional_info !!}
+                                @if($single_product->ar_additional_info != null ||
+                                !empty($single_product->ar_additional_info))
+                                {!! $single_product->ar_additional_info !!}
                                 @else
-                                <p class=text-red-600" style="color: red"> لايوجد معلومات أضافية للمنتج</p>
+                                {!! $single_product->additional_info !!}
                                 @endif
                             </div>
                             <div class="tab-pane" id="product-tab-vendor">
@@ -1146,7 +1146,7 @@
                                             </li>
                                         </ul>
                                         <a href="{{ route('single_seller',$vendor_info->username) }}"
-                                            class="btn btn-dark btn-link btn-underline btn-icon-right">رؤية المزيد <i class="w-icon-long-arrow-right"></i></a>
+                                            class="btn btn-dark btn-link btn-underline btn-icon-left">رؤية المزيد <i class="w-icon-long-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1378,11 +1378,19 @@
                     @endif
                     <!-- Related Products-->
                     @if ($related_product->count() > 0)
+                    
                     <section class="related-product-section">
                         <div class="mb-4 title-link-wrapper">
+                            @if(Config::get('app.locale') == 'en') 
+
                             <h4 class="title">Related Products</h4>
                             <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
                                 Products<i class="w-icon-long-arrow-right"></i></a>
+                                @else
+
+                                <h4 class="title">منتجات قد تعجبك</h4>
+                                <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من المنتجات<i class="w-icon-long-arrow-right"></i></a>
+                                @endif
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
                             'spaceBetween': 20,
@@ -1414,6 +1422,8 @@
                                     </div>
                                     
                                 </figure>
+                                @if(Config::get('app.locale') == 'en') 
+
                                 <div class="product-details text-center">
                                     <h4 class="product-name"><a
                                             href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a></h4>
@@ -1421,11 +1431,25 @@
                                         <div class="product-price">
                                             @if(empty($related_products->offer_price) || $related_products->offer_price
                                             == null){{ $related_products->price }} AED @else <del
-                                                style="color:red">{{ $related_products->price }} AED </del> -
+                                                >{{ $related_products->price }} AED </del> -
                                             {{ $related_products->offer_price }} AED @endif
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="product-details text-center">
+                                    <h4 class="product-name"><a
+                                            href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a></h4>
+                                    <div class="product-pa-wrapper">
+                                        <div class="product-price">
+                                            @if(empty($related_products->offer_price) || $related_products->offer_price
+                                            == null){{ $related_products->price }} د.أ @else <del
+                                                >{{ $related_products->price }} د.أ </del> -
+                                            {{ $related_products->offer_price }} د.أ @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                             @endforeach
                         </div>
@@ -1442,6 +1466,7 @@
                     <a href="#" class="sidebar-toggle d-flex d-lg-none"><i class="fas fa-chevron-left"></i></a>
                     <div class="sidebar-content scrollable">
                         <div class="sticky-sidebar">
+                            @if(Config::get('app.locale') == 'en') 
                             <div class="mb-6 widget widget-icon-box">
                                 <div class="icon-box icon-box-side">
                                     <span class="icon-box-icon text-dark">
@@ -1471,6 +1496,37 @@
                                     </div>
                                 </div>
                             </div>
+                            @else
+                            <div class="mb-6 widget widget-icon-box">
+                                <div class="icon-box icon-box-side">
+                                    <span class="icon-box-icon text-dark">
+                                        <i class="w-icon-truck"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class=" icon-box-title ">الشحن والإرجاع المجاني</h4>
+                                        <p >لجميع الطلبات التي تزيد عن 99 د.أ</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-box-side">
+                                    <span class="icon-box-icon text-dark">
+                                        <i class="w-icon-bag"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title ">دفع أمن</h4>
+                        <p>نحن نضمن الدفع الآمن</p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-box-side">
+                                    <span class="icon-box-icon text-dark">
+                                        <i class="w-icon-money"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title ">ضمان استعادة الاموال</h4>
+                                        <p >أي عودة في غضون 30 يومًا</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <!-- End of Widget Icon Box -->
 
                             <div class="widget widget-banner mb-9">
@@ -1504,7 +1560,12 @@
 
                             <div class="widget widget-products">
                                 <div class="mb-2 title-link-wrapper">
+                                    @if(Config::get('app.locale') == 'en') 
+
                                     <h4 class="title title-link font-weight-bold">More Products</h4>
+                                    @else
+                                    <h4 class="title title-link font-weight-bold">المزيد من المنتجات</h4>
+                                    @endif
                                 </div>
 
                                 <div class="swiper nav-top">
