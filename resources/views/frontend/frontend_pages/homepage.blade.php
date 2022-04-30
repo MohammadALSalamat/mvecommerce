@@ -290,7 +290,7 @@
                     </span>
                     <div class="icon-box-content">
                         <h4 class="mb-1 icon-box-title font-weight-bold">Free Shipping & Returns</h4>
-                        <p class="text-default">For all orders over $99</p>
+                        <p class="text-default">For all orders over AED 99</p>
                     </div>
                 </div>
                 <div class="swiper-slide icon-box icon-box-side icon-box-primary">
@@ -981,7 +981,7 @@
                                 <div class="product-label-group">
                                 @if(Config::get('app.locale') == 'en') 
                                 @if (!empty($new_product-> discound) || $new_product-> discound != null)
-                                    <label class="product-label label-discount">{{number_format($new_product-> discound,2)}}%</label>
+                                    <label class="product-label label-discount" style="font-size: 12px">{{$new_product-> discound}}% off</label>
                                     
                                     <label class="product-label label-new">New Item</label>
                                     @else                                 
@@ -989,8 +989,7 @@
                                 @endif
                                 @else
                                 @if (!empty($new_product-> discound) || $new_product-> discound != null)
-                                <label class="product-label label-discount">{{number_format($new_product-> discound,2)}}%</label>
-                                
+                                <label class="product-label label-discount" style="font-size: 12px">{{$new_product-> discound}}% خصم</label>                                
                                 <label class="product-label label-new">منتج جديد</label>
                                 @else                                 
                             <label class="product-label label-new">منتج جديد</label>
@@ -1096,9 +1095,14 @@
                                         title="Quick View"></a>
                                     
                                 </div>
+                                
                                 @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
                                 <div class="product-label-group">
-                                    <label class="product-label label-discount">{{number_format($top_selling-> discound,2)}}%</label>
+                                    @if(Config::get('app.locale') == 'en') 
+                                    <label class="product-label label-discount" style="font-size: 12px">{{$top_selling-> discound}}% OFF</label>
+                                    @else
+                                    <label class="product-label label-discount" style="font-size: 12px">{{$top_selling-> discound}}% خصم</label>
+                                    @endif
                                 </div>                                    
                                 @endif
                             </figure>
