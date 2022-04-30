@@ -575,14 +575,26 @@
                                         ></span>
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
+                                    @if(Config::get('app.locale') == 'en') 
                                     <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
                                         Reviews)</a>
+                                        @else
+                                        <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
+                                            اراء)</a>
+                                        @endif
                                 </div>
                                 <div class="product-short-desc">
+                                    @if(Config::get('app.locale') == 'en')
                                     <ul class="list-type-check list-style-none">
                                         {!! $single_product->summary !!}
                                     </ul>
+                                    @else
+                                    <ul class="list-type-check list-style-none">
+                                        {!! $single_product->ar_summary !!}
+                                    </ul>
+                                    @endif 
                                 </div>
+                                @if (Config::get('app.locale')=='en')
                                 @if($product_attr->count() !== 0))
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
@@ -594,6 +606,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                    
+                                @else
+                                <hr class="product-divider">
+                                <div class="form-group d-flex">
+                                    <label for="sel1" style="font-size: 20px;">أختر القياس:</label>
+                                    <select class="form-control form-control-sm" name="size" id="sel1"
+                                        style="width: 50%;margin-left:10px">
+                                        @foreach ($product_attr as $attr_size)
+                                        <option value="{{ $attr_size->size }}">{{ $attr_size->size }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                    
+                                @endif
                                 @else
                                 @endif
                                 {{-- <div class="product-form product-variation-form product-color-swatch">
@@ -627,7 +653,11 @@
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="row">
                                         <div class="col-3">
+                                            @if (Config::get('app.locale')=='en')
                                             <h5>Size Guide :</h5>
+                                            @else
+                                            <h5>دليل المقاسات :</h5>
+                                            @endif
                                         </div>
                                         <div class="col-8">
                                             @foreach ($size_guid as $key => $size)
@@ -675,7 +705,11 @@
                                         </div>
                                         <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="single-product-add-to-cart add-to-cart btn btn-primary btn-cart mt-2">
                                             <i class="w-icon-cart"></i>
+                                            @if (Config::get('app.locale')=='en')
                                             <span>Add to Cart</span>
+                                            @else
+                                            <span>أضافة للسلة</span>
+                                            @endif
                                         </button>
                                     </div>
                                 </div>
@@ -683,8 +717,7 @@
                                     <span class="divider d-xs-show"></span>
                                     <div class="product-link-wrapper d-flex">
                                         <a href="javascript:void(0)" data-id="{{ $single_product->id }}" id="add_to_wishlist{{ $single_product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
-                                        <a href="#"
-                                            class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
+                                       
                                     </div>
                                 </div>
                             </div>
