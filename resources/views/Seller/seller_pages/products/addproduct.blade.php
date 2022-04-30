@@ -401,9 +401,10 @@ input:checked + .slider:before {
 </div>
 @endsection
 @section('script')
-
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-  $('#lfm,#lfm1').filemanager('image');
+    
+    $('#lfm,#lfm1').filemanager('Image');
 </script>
 
 <script>
