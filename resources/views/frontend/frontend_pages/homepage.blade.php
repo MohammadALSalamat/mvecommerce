@@ -970,9 +970,13 @@
                         <div class="text-center product">
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$new_product->slug) }}">
-                                    <img src="{{asset($new_product->image)}}"
-                                       style="height:200px !important; width:100% !important;object-fit:contain" />
-                                    
+                                    @if(count($other_image) > 1 )
+                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                    <img src="{{ $other_image[1] }}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @else
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                        @endif
+                                
                                 </a>
                                 <div class="product-action-vertical">
                                     <!--Add to cart funtion -->
@@ -1082,15 +1086,19 @@
                        $sum += $avg->rate;
                        $countavg = count($avareg_review);
                        $avareg = $sum / $countavg;
-                    }                                       
+                    }     
+                    $other_image = explode(',',$top_selling->image);                                  
                    @endphp
                     <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$top_selling->slug) }}">
-                                    <img src="{{asset($top_selling->image)}}"
-                                       style="height:200px !important; width:100% !important;object-fit:contain" />
-                                    
+                                    @if(count($other_image) > 1 )
+                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                    <img src="{{ $other_image[1] }}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @else
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                        @endif
                                 </a>
                                 <div class="product-action-vertical">
                                     <a href="" data-product-id="{{$top_selling->id}}" id="add_to_cart{{$top_selling->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
@@ -1267,12 +1275,21 @@
             }">
                         <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
                             @foreach ($item->one_cat_has_many_products as $products_cat)
+                            @php
+                                                        $other_image = explode(',',$products_cat->image);
+
+                            @endphp
                             <div class="swiper-slide product-col">
                                 <div class="text-center product-wrap product">
                                     <figure class="product-media">
                                         <a href="{{ route('singleproduct',$products_cat->slug) }}">
-                                            <img style="height:200px !important; width:100% !important;object-fit:contain"
-                                                src="{{ $products_cat->image }}" alt="Product" />
+                                           
+                                                @if(count($other_image) > 1 )
+                                                <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                                <img src="{{ $other_image[1] }}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain" />
+                                                    @else
+                                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                                    @endif
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}"
@@ -1396,12 +1413,21 @@
             }">
                         <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
                             @foreach ($item->one_cat_has_many_products as $products_cat)
+                            @php
+                                                        $other_image = explode(',',$products_cat->image);
+
+                            @endphp
                             <div class="swiper-slide product-col">
                                 <div class="text-center product-wrap product">
                                     <figure class="product-media">
                                         <a href="{{ route('singleproduct',$products_cat->slug) }}">
-                                            <img style="height:200px !important; width:100% !important;object-fit:contain"
-                                                src="{{ $products_cat->image }}" alt="Product" />
+                                           
+                                                @if(count($other_image) > 1 )
+                                                <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                                <img src="{{ $other_image[1] }}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain" />
+                                                    @else
+                                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:200px !important; width:100% !important;object-fit:contain"/>
+                                                    @endif
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}"
