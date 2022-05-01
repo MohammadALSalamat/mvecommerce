@@ -114,7 +114,7 @@ class frontPageController extends Controller
         $route='shop';
         // Filter Section
         #categories
-        $products = $products->with('this_belong_to_category')->where(['status' => 1])->paginate(12); 
+        $products = $products->with('this_belong_to_category')->where(['status' => 1])->paginate(50); 
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
