@@ -62,7 +62,7 @@
                                 <figure class="category-media">
                                     <a href="shop-banner-sidebar.html">
                                         <img src="{{ asset($single_cat->image) }}" alt="Categroy"
-                                            style="width: 100%;height:100px !important;object-fit:contain;background:#fff"  />
+                                            style="width: 100%;height:130px !important;object-fit:contain;background:#fff"  />
                                     </a>
                                 </figure>
                                 <div class="category-content">
@@ -113,14 +113,22 @@
                     @if ($count_product > 0)
                     <div class="product-wrapper row cols-md-4 cols-sm-3 cols-2 scroll-load">
                         @foreach ($products as $products_category )
+                    @php
+                        $other_image = explode(',',$products_category->image);
+                    @endphp
                         <div class="product-wrap">
                             <div class="product text-center">
                                 <figure class="product-media">
                                     <a href="product-default.html">
-                                        <img src="{{ $products_category->image[0]}}" alt="Product" width="300"
+                                        @if(count($other_image) > 1)
+                                        <img src="{{ $other_image[0]}}" alt="Product" width="300"
                                             height="338"/>
-                                        <img src="{{ $products_category->image[1] }}" alt="Product" width="330"
+                                        <img src="{{ $other_image[1] }}" alt="Product" width="330"
                                             height="338" />
+                                            @else
+                                            <img src="{{ $other_image[0]}}" alt="Product" width="300"
+                                            height="338"/>
+                                            @endif
                                     </a>
                                     <div class="product-action-horizontal">
                                         <a href="javascript:void(0)" data-product-id="{{$products_category->id}}" id="add_to_cart{{$products_category->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"

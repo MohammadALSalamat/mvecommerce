@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 02 2022 00:55:58 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* public/front-style/assets/css/style.min.css
+* resources/views/frontend/frontend_layout/header.blade.php
+* resources/views/frontend/frontend_pages/products/shop_list_products.blade.php
+
+
+Created files:
+* .autogit/logs/log-2-4-2022-0-42-26.txt
+
+
+Deleted files:
+
+
+Renamed files:
