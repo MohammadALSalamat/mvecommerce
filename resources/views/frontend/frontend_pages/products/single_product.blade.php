@@ -736,7 +736,6 @@
                         <h2 class="title title-underline">Frequently Bought Together</h2>
                         @else
                         <h2 class="title title-underline">يُباع معها أيضًا </h2>
-
                         @endif
                         <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
                             <div class="col-8" style="overflow-x: scroll; display: flex;">
@@ -762,16 +761,14 @@
                                             </a>
                                         </h4>
                                         @if(Config::get('app.locale') == 'en') 
-                                        <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                            @if(empty($single_product->offer_price) ||
-                                            $single_product->offer_price == null)
+                                        <div class="current-product-price product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) || $single_product->offer_price == null)
                                             {{ number_format($single_product->price) }} AED 
                                             @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
                                         </div>
                                         @else
-                                        <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                            @if(empty($single_product->offer_price) ||
-                                            $single_product->offer_price == null)
+                                        <div class="current-product-price product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) || $single_product->offer_price == null)
                                             {{ number_format($single_product->price) }} د.أ 
                                             @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc;font-size:12px"> {{ number_format($single_product->price) }} د.أ </del>  @endif
                                         </div>
@@ -790,8 +787,7 @@
                                             <label></label>
                                         </div>
                                     </figure>
-                                    @if(Config::get('app.locale') == 'en') 
-    
+                                    @if(Config::get('app.locale') == 'en')
                                     <div class="product-details">
                                         <h4 class="product-name">
                                             <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
