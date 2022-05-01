@@ -125,8 +125,17 @@
                             <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ($products as $product )
                                 @php
+                                $avareg_review = \App\Models\ProductReview::where('product_id',$product->id)->get();
+                               #review rateing 
+                               $avareg = 0;
+                               $sum = 0;
+                               foreach($avareg_review as $avg){
+                                   $sum += $avg->rate;
+                                   $countavg = count($avareg_review);
+                                   $avareg = $sum / $countavg;
+                                }    
                                 $other_image = explode(',', $product->image);
-                                @endphp
+                               @endphp
                                 <div class="product-wrap">
                                     <div class="text-center product">
                                         <figure class="product-media" >

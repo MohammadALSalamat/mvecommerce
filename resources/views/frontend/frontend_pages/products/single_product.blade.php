@@ -426,11 +426,15 @@
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide">
                                             <figure class="product-image">
-                                                <img src="{{ $single_product->image }}"
-                                                    data-zoom-image="{{ $single_product->image }}"
+                                                @php
+                                                $other_image = explode(',',$single_product->image);
+                                                @endphp
+                                                <img src="{{ asset($other_image[0]) }}"
+                                                    data-zoom-image="{{asset($other_image[0]) }}"
                                                     alt="{{ $single_product->title }}" width="800" height="900">
                                             </figure>
                                         </div>
+                                        
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
@@ -453,7 +457,7 @@
                                 }">
                                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ $single_product->image }}" alt="Product Thumb" width="800"
+                                            <img src="{{ asset($other_image[0]) }}" alt="Product Thumb" width="800"
                                                 height="900">
                                         </div>
                                         @foreach ($product_gallary as $image )

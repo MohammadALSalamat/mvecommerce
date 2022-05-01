@@ -53,14 +53,7 @@ class frontPageController extends Controller
         $products_bestSelling = product::wherein('id',$get_product_top_selling_ids)->get();
         $products_review_ids = product::get();
         $products_review_ids_array = array();
-        $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
-        $avareg = 0;
-        $sum = 0;
-        foreach($avareg_review as $avg){
-            $sum += $avg->rate;
-            $countavg = count($avareg_review);
-            $avareg = $sum / $countavg;
-         }
+      
         foreach($products_review_ids as $all_ids){
             array_push($products_review_ids_array,$all_ids->id);
         }

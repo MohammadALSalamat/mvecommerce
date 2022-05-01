@@ -114,6 +114,15 @@
                     <div class="product-wrapper row cols-md-4 cols-sm-3 cols-2 scroll-load">
                         @foreach ($products as $products_category )
                     @php
+                    $avareg_review = \App\Models\ProductReview::where('product_id',$products_category->id)->get();
+                               #review rateing 
+                               $avareg = 0;
+                               $sum = 0;
+                               foreach($avareg_review as $avg){
+                                   $sum += $avg->rate;
+                                   $countavg = count($avareg_review);
+                                   $avareg = $sum / $countavg;
+                                }  
                         $other_image = explode(',',$products_category->image);
                     @endphp
                         <div class="product-wrap">
@@ -146,10 +155,25 @@
                                     </h4>
                                     <div class="ratings-container">
                                         <div class="ratings-full">
-                                            <span class="ratings" style="width: 100%;"></span>
+                                            <span class="ratings" 
+                                            @if (number_format($avareg,1)==5) style="width: 100%;"
+                                            @elseif(number_format($avareg,1)>= 4.5)
+                                            style="width: 90%;"
+                                            @elseif(number_format($avareg,1) >= 4)
+                                            style="width: 80%;"
+                                            @elseif(number_format($avareg,1) >= 3.5)
+                                            style="width: 70%;"
+                                            @elseif(number_format($avareg,1) >= 3)
+                                            style="width: 60%;"
+                                            @elseif(number_format($avareg,1) >= 2.5)
+                                            style="width: 50%;"
+                                            @elseif(number_format($avareg,1) >= 2)
+                                            style="width: 40%;"
+                                            @else
+                                            style="width: 20%;"
+                                            @endif></span>
                                             <span class="tooltiptext tooltip-top"></span>
                                         </div>
-                                        <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
                                     </div>
                                     <div class="product-pa-wrapper">
                                         <div class="product-price">
