@@ -79,7 +79,7 @@
                                     <div class="category category-ellipse">
                                         <figure class="category-media">
                                             <a href="{{ route('shop_special_category',$category->slug) }}">
-                                                <img src="{{asset($category->ar-image)}}" alt="Categroy"
+                                                <img src="{{asset($category->ar_image)}}" alt="Categroy"
                                                         style="background-color: #fff;width:100%;height:120px;object-fit:contain" />
                                             </a>
                                         </figure>
