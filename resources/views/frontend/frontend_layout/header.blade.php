@@ -411,7 +411,7 @@
                                     @php
                                     $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
                                     @endphp
-                                    @if($sub_cat->count() > 0)
+                                        @if($sub_cat->count() > 0)
                                     <ul class="megamenu">
                                         <li>
                                            

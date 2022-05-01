@@ -124,8 +124,7 @@ class frontPageController extends Controller
         
         return view('frontend.frontend_pages.products.shop',compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
-    }
-
+    }   
     public function shop_list( Request $request)
     {
        // product filter in shop page get the data from the link top
@@ -283,7 +282,6 @@ class frontPageController extends Controller
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_child_cat',compact('Products_has_same_sub_category', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
-
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
