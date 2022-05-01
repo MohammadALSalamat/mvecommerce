@@ -385,16 +385,22 @@
     .rating>label:hover~label:before {
         opacity: 1 !important
     }
+
     .rating>input:checked~label:before {
         opacity: 1
     }
+
     .rating:hover>input:checked~label:before {
         opacity: 0.4
     }
-  .product-tabs table  tr:nth-child(odd) {background-color: #f2f2f2;}
-  .product-tabs table  td{
-      padding: 10px;
-  }
+
+    .product-tabs table tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .product-tabs table td {
+        padding: 10px;
+    }
 </style>
 @endsection
 @section('content')
@@ -424,7 +430,7 @@
                                                     data-zoom-image="{{ $single_product->image }}"
                                                     alt="{{ $single_product->title }}" width="800" height="900">
                                             </figure>
-                                        </div>  
+                                        </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
@@ -453,8 +459,8 @@
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{asset('storage/popups/'.$image->gallery) }}" alt="Product Thumb" width="800"
-                                                height="900">
+                                            <img src="{{asset('storage/popups/'.$image->gallery) }}" alt="Product Thumb"
+                                                width="800" height="900">
                                         </div>
                                         @endforeach
                                     </div>
@@ -465,7 +471,7 @@
                         </div>
                         <div class="mb-4 col-md-6 mb-md-6">
                             <div class="product-details" data-sticky-options="{'minWidth': 767}">
-                                @if(Config::get('app.locale') == 'en') 
+                                @if(Config::get('app.locale') == 'en')
                                 <h1 class="product-title">{{ $single_product->title }}</h1>
                                 @else
                                 <h1 class="product-title">{{ $single_product->ar_title }}</h1>
@@ -475,31 +481,32 @@
                                 <div class="product-bm-wrapper">
                                     <figure class="brand">
                                         @if ($vendor_info->brand == null || empty($vendor_info->brand))
-                                        <img src="{{asset('front-style/assets/images/itajer_logo.png')}}" alt="itajer" width="80"
-                                        height="48" />
+                                        <img src="{{asset('front-style/assets/images/itajer_logo.png')}}" alt="itajer"
+                                            width="80" height="48" />
                                         @else
-                                        <img src="{{asset('/storage/seller/'.$vendor_info->brand)}}" alt="Brand" width="102"
-                                        height="48" />
-                                    
+                                        <img src="{{asset('/storage/seller/'.$vendor_info->brand)}}" alt="Brand"
+                                            width="102" height="48" />
+
                                         @endif
                                     </figure>
                                     <!-- Category Detailes -->
-                                    @if(Config::get('app.locale') == 'en') 
+                                    @if(Config::get('app.locale') == 'en')
                                     <div class="product-meta">
                                         <div class="product-categories">
                                             Category:
-                                            <span class="product-category"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
+                                            <span class="product-category"><a
+                                                    href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
                                         </div>
                                         <div class="product-sku">
                                             SKU: <span>MS46891340</span>
                                         </div>
                                         <div class="mt-2">
-                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name !=  null)
-                                            Seller :  <a href="#" ><span>{{ $vendor_info->shop_name }}</span></a>
-                                                
+                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name != null)
+                                            Seller : <a href="#"><span>{{ $vendor_info->shop_name }}</span></a>
+
                                             @else
-                                            Seller :  <a href="#" ><span>ITajer</span></a>
-                                                
+                                            Seller : <a href="#"><span>ITajer</span></a>
+
                                             @endif
                                         </div>
                                     </div>
@@ -507,87 +514,95 @@
                                     <div class="product-meta">
                                         <div class="product-categories">
                                             القسم:
-                                            <span class="product-category"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
+                                            <span class="product-category"><a
+                                                    href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
                                         </div>
                                         <div class="product-sku">
                                             الرمز: <span>MS46891340</span>
                                         </div>
                                         <div class="mt-2">
-                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name !=  null)
-                                            البائع :  <a href="#" ><span>{{ $vendor_info->shop_name }}</span></a>
-                                                
+                                            @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name != null)
+                                            البائع : <a href="#"><span>{{ $vendor_info->shop_name }}</span></a>
+
                                             @else
-                                            البائع :  <a href="#" ><span>ITajer</span></a>
-                                                
+                                            البائع : <a href="#"><span>ITajer</span></a>
+
                                             @endif
                                         </div>
                                     </div>
                                     @endif
                                 </div>
                                 <hr class="product-divider">
-                                @if(Config::get('app.locale') == 'en') 
-                                <h4> Summary</h4> 
+                                @if(Config::get('app.locale') == 'en')
+                                <h4> Summary</h4>
                                 @if (!empty($single_product->discound) || $single_product->discound != null)
-                                <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">
-                                {{ $single_product->discound }}% OFF</small>
+                                <small
+                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">
+                                    {{ $single_product->discound }}% OFF</small>
                                 @endif
                                 <p>{!! $single_product->Summary !!}</p>
                                 @else
                                 <h4> ملخص</h4>
                                 @if (!empty($single_product->discound) || $single_product->discound != null)
-                                 <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% خصم</small>
-                                 @endif
-                                <p>{!! $single_product->ar_Summary !!}</p> 
+                                <small
+                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                    خصم</small>
+                                @endif
+                                <p>{!! $single_product->ar_Summary !!}</p>
                                 @endif
 
                                 <hr class="product-divider">
                                 <div class="product-price">
-                                    @if(Config::get('app.locale') == 'en') 
+                                    @if(Config::get('app.locale') == 'en')
                                     <ins class="new-price">
-                                    @if(empty($single_product->offer_price) ||
+                                        @if(empty($single_product->offer_price) ||
                                         $single_product->offer_price == null)
-                                        {{ number_format($single_product->price) }} AED 
-                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
-                                    </ins> 
+                                        {{ number_format($single_product->price) }} AED
+                                        @else {{ number_format($single_product->offer_price) }} AED - <del
+                                            style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>
+                                        @endif
+                                    </ins>
                                     @else
                                     <ins class="new-price">
                                         @if(empty($single_product->offer_price) ||
-                                            $single_product->offer_price == null)
-                                            {{ number_format($single_product->price) }} د.أ 
-                                            @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($single_product->price) }} د.أ </del>  @endif
-                                        </ins>
+                                        $single_product->offer_price == null)
+                                        {{ number_format($single_product->price) }} د.أ
+                                        @else {{ number_format($single_product->offer_price) }} د.أ - <del
+                                            style="color:#ccc"> {{ number_format($single_product->price) }} د.أ </del>
+                                        @endif
+                                    </ins>
                                     @endif
                                 </div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
-                                        <span class="ratings"
-                                        @if (number_format($avareg,1) == 5)
-                                        style="width: 100%;"
-                                        @elseif(number_format($avareg,1) >= 4.5)
-                                        style="width: 90%;"
-                                        @elseif(number_format($avareg,1) >= 4)
-                                        style="width: 80%;"
-                                        @elseif(number_format($avareg,1) >= 3.5)
-                                        style="width: 70%;"
-                                        @elseif(number_format($avareg,1) >= 3)
-                                        style="width: 60%;"
-                                        @elseif(number_format($avareg,1) >= 2.5)
-                                        style="width: 50%;"
-                                        @elseif(number_format($avareg,1) >= 2)
-                                        style="width: 40%;"
-                                        @else
-                                        style="width: 20%;"
-                                        @endif
-                                        ></span>
+                                        <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
+                                            @elseif(number_format($avareg,1)>= 4.5)
+                                            style="width: 90%;"
+                                            @elseif(number_format($avareg,1) >= 4)
+                                            style="width: 80%;"
+                                            @elseif(number_format($avareg,1) >= 3.5)
+                                            style="width: 70%;"
+                                            @elseif(number_format($avareg,1) >= 3)
+                                            style="width: 60%;"
+                                            @elseif(number_format($avareg,1) >= 2.5)
+                                            style="width: 50%;"
+                                            @elseif(number_format($avareg,1) >= 2)
+                                            style="width: 40%;"
+                                            @else
+                                            style="width: 20%;"
+                                            @endif
+                                            ></span>
                                         <span class="tooltiptext tooltip-top"></span>
                                     </div>
-                                    @if(Config::get('app.locale') == 'en') 
-                                    <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
+                                    @if(Config::get('app.locale') == 'en')
+                                    <a href="#product-tab-review"
+                                        class="rating-reviews scroll-to">({{ $avareg_review->count() }}
                                         Reviews)</a>
-                                        @else
-                                        <a href="#product-tab-review" class="rating-reviews scroll-to">({{ $avareg_review->count() }}
-                                            اراء)</a>
-                                        @endif
+                                    @else
+                                    <a href="#product-tab-review"
+                                        class="rating-reviews scroll-to">({{ $avareg_review->count() }}
+                                        اراء)</a>
+                                    @endif
                                 </div>
                                 <div class="product-short-desc">
                                     @if(Config::get('app.locale') == 'en')
@@ -598,7 +613,7 @@
                                     <ul class="list-type-check list-style-none">
                                         {!! $single_product->ar_summary !!}
                                     </ul>
-                                    @endif 
+                                    @endif
                                 </div>
                                 @if (Config::get('app.locale')=='en')
                                 @if($product_attr->count() !== 0))
@@ -612,7 +627,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                    
+
                                 @else
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
@@ -624,7 +639,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                    
+
                                 @endif
                                 @else
                                 @endif
@@ -703,13 +718,16 @@
                                 <div class=" fix-bottom product-sticky-content sticky-content">
                                     <div class="container product-form align-middle">
                                         <div class="product-qty">
-                                        <div class="quantity mr-2">
-                                                <input class="qty form-control" type="number" min="1" max="99" name="quantity"
-                                                data-id="{{ $single_product->id }}" id="qty-input-{{ $single_product->id }}" value="1" >
-                    
+                                            <div class="quantity mr-2">
+                                                <input class="qty form-control" type="number" min="1" max="99"
+                                                    name="quantity" data-id="{{ $single_product->id }}"
+                                                    id="qty-input-{{ $single_product->id }}" value="1">
+
+                                            </div>
                                         </div>
-                                        </div>
-                                        <button data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="single-product-add-to-cart add-to-cart btn btn-primary btn-cart mt-2">
+                                        <button data-product-id="{{$single_product->id}}"
+                                            id="add_to_cart{{$single_product->id}}" data-quantity="1"
+                                            class="single-product-add-to-cart add-to-cart btn btn-primary btn-cart mt-2">
                                             <i class="w-icon-cart"></i>
                                             @if (Config::get('app.locale')=='en')
                                             <span>Add to Cart</span>
@@ -722,8 +740,10 @@
                                 <div class="social-links-wrapper">
                                     <span class="divider d-xs-show"></span>
                                     <div class="product-link-wrapper d-flex">
-                                        <a href="javascript:void(0)" data-id="{{ $single_product->id }}" id="add_to_wishlist{{ $single_product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
-                                       
+                                        <a href="javascript:void(0)" data-id="{{ $single_product->id }}"
+                                            id="add_to_wishlist{{ $single_product->id }}" data-quantity="1"
+                                            class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
+
                                     </div>
                                 </div>
                             </div>
@@ -732,7 +752,7 @@
                     @if (!empty($freq_products) || $freq_products != null )
                     <!-- more products with the item --->
                     <div class="mt-5 frequently-bought-together ">
-                        @if(Config::get('app.locale') == 'en') 
+                        @if(Config::get('app.locale') == 'en')
                         <h2 class="title title-underline">Frequently Bought Together</h2>
                         @else
                         <h2 class="title title-underline">يُباع معها أيضًا </h2>
@@ -741,11 +761,13 @@
                             <div class="col-8" style="overflow-x: scroll; display: flex;">
                                 <div class="text-center product product-wrap">
                                     <figure class="product-media">
-                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:100px !important;object-fit: contain;"/>
+                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}"
+                                            style="width: 100% !important; height:100px !important;object-fit: contain;" />
                                         <div class="product-checkbox">
-                                            <input type="checkbox" 
-                                            data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif" 
-                                            data-id="{{ $single_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $single_product->id }}"
+                                            <input type="checkbox"
+                                                data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif"
+                                                data-id="{{ $single_product->id }}" class="delcheck custom-checkbox"
+                                                id="product_check{{ $single_product->id }}"
                                                 name="product_check{{ $single_product->id }}">
                                             <label></label>
                                         </div>
@@ -753,24 +775,32 @@
                                     <div class="product-details">
                                         <h4 class="product-name">
                                             <a href="{{ route('singleproduct',$single_product->slug)  }}">
-                                                @if(Config::get('app.locale') == 'en') 
+                                                @if(Config::get('app.locale') == 'en')
                                                 {{ $single_product->title }}
                                                 @else
                                                 {{ $single_product->ar_title }}
                                                 @endif
                                             </a>
                                         </h4>
-                                        @if(Config::get('app.locale') == 'en') 
-                                        <div class="current-product-price product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                            @if(empty($single_product->offer_price) || $single_product->offer_price == null)
-                                            {{ number_format($single_product->price) }} AED 
-                                            @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
+                                        @if(Config::get('app.locale') == 'en')
+                                        <div class="current-product-price product-price"
+                                            data-curret-price="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) || $single_product->offer_price ==
+                                            null)
+                                            {{ number_format($single_product->price) }} AED
+                                            @else {{ number_format($single_product->offer_price) }} AED - <del
+                                                style="color:#ccc"> {{ number_format($single_product->price) }} AED
+                                            </del> @endif
                                         </div>
                                         @else
-                                        <div class="current-product-price product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                            @if(empty($single_product->offer_price) || $single_product->offer_price == null)
-                                            {{ number_format($single_product->price) }} د.أ 
-                                            @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc;font-size:12px"> {{ number_format($single_product->price) }} د.أ </del>  @endif
+                                        <div class="current-product-price product-price"
+                                            data-curret-price="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) || $single_product->offer_price ==
+                                            null)
+                                            {{ number_format($single_product->price) }} د.أ
+                                            @else {{ number_format($single_product->offer_price) }} د.أ - <del
+                                                style="color:#ccc;font-size:12px">
+                                                {{ number_format($single_product->price) }} د.أ </del> @endif
                                         </div>
                                         @endif
                                     </div>
@@ -778,11 +808,13 @@
                                 @foreach ($freq_products as $freq_product)
                                 <div class="text-center product product-wrap">
                                     <figure class="product-media">
-                                        <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:100px !important;    object-fit: contain;"/>
+                                        <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}"
+                                            style="width: 100% !important; height:100px !important;    object-fit: contain;" />
                                         <div class="product-checkbox">
-                                            <input type="checkbox" 
-                                            data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif" 
-                                            data-id="{{ $freq_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $freq_product->id }}"
+                                            <input type="checkbox"
+                                                data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif"
+                                                data-id="{{ $freq_product->id }}" class="delcheck custom-checkbox"
+                                                id="product_check{{ $freq_product->id }}"
                                                 name="product_check{{ $freq_product->id }}">
                                             <label></label>
                                         </div>
@@ -790,53 +822,65 @@
                                     @if(Config::get('app.locale') == 'en')
                                     <div class="product-details">
                                         <h4 class="product-name">
-                                            <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
+                                            <a
+                                                href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
                                         </h4>
                                         <div class="product-price">
                                             @if(empty($freq_product->offer_price) ||
                                             $freq_product->offer_price == null)
-                                            {{ number_format($freq_product->price) }} AED 
-                                            @else {{ number_format($freq_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>  @endif
+                                            {{ number_format($freq_product->price) }} AED
+                                            @else {{ number_format($freq_product->offer_price) }} AED - <del
+                                                style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>
+                                            @endif
                                         </div>
                                     </div>
                                     @else
                                     <div class="product-details">
                                         <h4 class="product-name">
-                                            <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->ar_title }}</a>
+                                            <a
+                                                href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->ar_title }}</a>
                                         </h4>
                                         <div class="product-price">
                                             @if(empty($freq_product->offer_price) ||
                                             $freq_product->offer_price == null)
-                                            {{ number_format($freq_product->price) }} د.أ 
-                                            @else {{ number_format($freq_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} د.أ </del>  @endif
+                                            {{ number_format($freq_product->price) }} د.أ
+                                            @else {{ number_format($freq_product->offer_price) }} د.أ - <del
+                                                style="color:#ccc"> {{ number_format($freq_product->price) }} د.أ </del>
+                                            @endif
                                         </div>
                                     </div>
                                     @endif
-    
+
                                 </div>
                                 @endforeach
                             </div>
                             @php
-                              $frequantly_boughts_ids = array();
-                              foreach ($single_product->frequantly_boughts_ids as $prod_ids) {
-                                  array_push($frequantly_boughts_ids,$prod_ids);
-                              }  
+                            $frequantly_boughts_ids = array();
+                            foreach ($single_product->frequantly_boughts_ids as $prod_ids) {
+                            array_push($frequantly_boughts_ids,$prod_ids);
+                            }
                             @endphp
                             <div class="col-4">
-                                @if(Config::get('app.locale') == 'en') 
+                                @if(Config::get('app.locale') == 'en')
                                 <div class="product-button">
-                                    <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                    <div id="total_frq_prices" data-prices=""
+                                        class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0
+                                        AED</div>
                                     <div class="bought-count">For {{ $freq_products->count() }} items</div>
-                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
-                                       <span>Add All To Cart </span> 
+                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"
+                                        class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                        <span>Add All To Cart </span>
                                     </button>
                                 </div>
                                 @else
                                 <div class="product-button">
-                                    <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                    <div id="total_frq_prices" data-prices=""
+                                        class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0
+                                        AED</div>
                                     <div class="bought-count">لاجل المنتجات المحددة</div>
-                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
-                                       <span>اضافة جميع المنتجات </span> 
+                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"
+                                        class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                        <span>اضافة جميع المنتجات </span>
                                     </button>
                                 </div>
                                 @endif
@@ -844,7 +888,7 @@
                         </div>
                     </div>
                     @endif
-                    @if(Config::get('app.locale') == 'en') 
+                    @if(Config::get('app.locale') == 'en')
                     <!-- Tabs of Vednor and description --->
                     <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
                         <ul class="nav nav-tabs" role="tablist">
@@ -858,7 +902,8 @@
                                 <a href="#product-tab-vendor" class="nav-link">Vendor Info</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#product-tab-review" class="nav-link">Customer Reviews ({{ count($user_review) }})</a>
+                                <a href="#product-tab-review" class="nav-link">Customer Reviews
+                                    ({{ count($user_review) }})</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -883,13 +928,16 @@
                                 <div class="mb-3 row">
                                     <div class="mb-4 col-md-6">
                                         <figure class="vendor-banner br-sm">
-                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image == null)
-                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Vendor" 
-                                            width="400" height="318" style="background-color: #454b63;" />
+                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image ==
+                                            null)
+                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}"
+                                                alt="Vendor" width="400" height="318"
+                                                style="background-color: #454b63;" />
                                             @else
-                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}" alt="Vendor" 
-                                                width="400px" height="318px" style="background-color: #454b63;" />
-                                            
+                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}"
+                                                alt="Vendor" width="400px" height="318px"
+                                                style="background-color: #454b63;" />
+
                                             @endif
                                         </figure>
                                     </div>
@@ -897,11 +945,11 @@
                                         <div class="vendor-user">
                                             <figure class="mr-4 vendor-logo">
                                                 <a href="#">
-                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}" alt="Vendor Logo" width="80"
-                                                        height="80" />
+                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}"
+                                                        alt="Vendor Logo" width="80" height="80" />
                                                 </a>
                                             </figure>
-                                            
+
                                         </div>
                                         <ul class="vendor-info list-style-none">
                                             <li class="store-name">
@@ -909,7 +957,7 @@
                                                 <span class="detail">{{ $vendor_info->shop_name }}</span>
                                             </li>
                                             @if (empty($vendor_info->address) || $vendor_info->address == null)
-                                                
+
                                             @else
                                             <li class="store-address">
                                                 <label>Address:</label>
@@ -932,40 +980,46 @@
                                     <div class="mb-4 col-xl-4 col-lg-5">
                                         <div class="ratings-wrapper">
                                             <div class="avg-rating-container">
-                                                <h4 class="avg-mark font-weight-bolder ls-50">{{ number_format($avareg,1) }}</h4>
+                                                <h4 class="avg-mark font-weight-bolder ls-50">
+                                                    {{ number_format($avareg,1) }}</h4>
                                                 <div class="avg-rating">
                                                     <p class="mb-1 text-dark">Average Rating</p>
                                                     <div class="ratings-container">
                                                         <div class="ratings-full">
-                                                            <span class="ratings" 
-                                                            @if (number_format($avareg,1) == 5)
-                                                            style="width: 100%;"
-                                                            @elseif(number_format($avareg,1) >= 4.5)
-                                                            style="width: 90%;"
-                                                            @elseif(number_format($avareg,1) >= 4)
-                                                            style="width: 80%;"
-                                                            @elseif(number_format($avareg,1) >= 3.5)
-                                                            style="width: 70%;"
-                                                            @elseif(number_format($avareg,1) >= 3)
-                                                            style="width: 60%;"
-                                                            @elseif(number_format($avareg,1) >= 2.5)
-                                                            style="width: 50%;"
-                                                            @elseif(number_format($avareg,1) >= 2)
-                                                            style="width: 40%;"
-                                                            @else
-                                                            style="width: 20%;"
-                                                            @endif></span>
+                                                            <span class="ratings" @if (number_format($avareg,1)==5)
+                                                                style="width: 100%;" @elseif(number_format($avareg,1)>=
+                                                                4.5)
+                                                                style="width: 90%;"
+                                                                @elseif(number_format($avareg,1) >= 4)
+                                                                style="width: 80%;"
+                                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                                style="width: 70%;"
+                                                                @elseif(number_format($avareg,1) >= 3)
+                                                                style="width: 60%;"
+                                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                                style="width: 50%;"
+                                                                @elseif(number_format($avareg,1) >= 2)
+                                                                style="width: 40%;"
+                                                                @else
+                                                                style="width: 20%;"
+                                                                @endif></span>
                                                             <span class="tooltiptext tooltip-top"></span>
                                                         </div>
-                                                        <a href="#" class="rating-reviews">({{ $avareg_review->count() }} Reviews)</a>
+                                                        <a href="#"
+                                                            class="rating-reviews">({{ $avareg_review->count() }}
+                                                            Reviews)</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="ratings-value d-flex align-items-center text-dark ls-25">
-                                                <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
+                                                <span
+                                                    class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }}
+                                                </span>
                                                 @if( number_format($avareg ,1 ) >= 3.5)
-                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;"> Recommended </span>
+                                                <span class="badge badge-success"
+                                                    style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-left:10px;">
+                                                    Recommended </span>
                                                 @else
                                                 <span style="padding-left:5px ">Rating</span>
                                                 @endif
@@ -983,8 +1037,10 @@
                                                 method="POST">
                                                 @csrf
                                                 <div class="">
-                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                                    <input type="hidden" name="product_id" value="{{ $single_product->id }}">
+                                                    <input type="hidden" name="user_id"
+                                                        value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $single_product->id }}">
                                                     <label for="rating">Rate This Product :</label>
                                                     <div class="rating">
                                                         <input type="radio" name="rating" value="5" id="5">
@@ -1025,7 +1081,7 @@
                                 </div>
 
                                 <div class="tab tab-nav-boxed tab-nav-outline tab-nav-center">
-                                    
+
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="show-all">
                                             <ul class="comments list-style-none">
@@ -1039,24 +1095,25 @@
                                                         </figure>
                                                         <div class="comment-content">
                                                             <h4 class="comment-author">
-                                                                <a href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
-                                                                <span class="comment-date">{{ $review->created_at }}</span>
+                                                                <a
+                                                                    href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
+                                                                <span
+                                                                    class="comment-date">{{ $review->created_at }}</span>
                                                             </h4>
                                                             <div class="ratings-container comment-rating">
                                                                 <div class="ratings-full">
-                                                                    <span class="ratings" 
-                                                                    @if ($review->rate == 5)
-                                                                    style="width: 100%;"
-                                                                    @elseif($review->rate == 4)
-                                                                    style="width: 80%;"
-                                                                    @elseif($review->rate == 3)
-                                                                    style="width: 60%;"
-                                                                    @elseif($review->rate == 2)
-                                                                    style="width: 40%;"
-                                                                    @else
-                                                                    style="width: 20%;"
-                                                                    @endif>
-                                                                </span>
+                                                                    <span class="ratings" @if ($review->rate == 5)
+                                                                        style="width: 100%;"
+                                                                        @elseif($review->rate == 4)
+                                                                        style="width: 80%;"
+                                                                        @elseif($review->rate == 3)
+                                                                        style="width: 60%;"
+                                                                        @elseif($review->rate == 2)
+                                                                        style="width: 40%;"
+                                                                        @else
+                                                                        style="width: 20%;"
+                                                                        @endif>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                             <p>{{$review->review}}.</p>
@@ -1075,7 +1132,6 @@
                             </div>
                         </div>
                     </div>
-
                     @else
                     <div class="tab tab-nav-boxed tab-nav-underline product-tabs">
                         <ul class="nav nav-tabs" role="tablist">
@@ -1089,7 +1145,8 @@
                                 <a href="#product-tab-vendor" class="nav-link">معلومات البائع</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#product-tab-review" class="nav-link">آراء العملاء ({{ count($user_review) }})</a>
+                                <a href="#product-tab-review" class="nav-link">آراء العملاء
+                                    ({{ count($user_review) }})</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -1098,7 +1155,7 @@
                                 {!! $single_product->ar_description !!}
                                 @else
                                 {!! $single_product->description !!}
-                                                                @endif
+                                @endif
 
                             </div>
                             <div class="tab-pane" id="product-tab-specification">
@@ -1113,13 +1170,16 @@
                                 <div class="mb-3 row">
                                     <div class="mb-4 col-md-6">
                                         <figure class="vendor-banner br-sm">
-                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image == null)
-                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Vendor" 
-                                            width="400" height="318" style="background-color: #454b63;" />
+                                            @if (empty( $vendor_info->banner_image) || $vendor_info->banner_image ==
+                                            null)
+                                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}"
+                                                alt="Vendor" width="400" height="318"
+                                                style="background-color: #454b63;" />
                                             @else
-                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}" alt="Vendor" 
-                                                width="400px" height="318px" style="background-color: #454b63;" />
-                                            
+                                            <img src="{{ asset('/storage/seller/'.$vendor_info->banner_image) }}"
+                                                alt="Vendor" width="400px" height="318px"
+                                                style="background-color: #454b63;" />
+
                                             @endif
                                         </figure>
                                     </div>
@@ -1127,11 +1187,11 @@
                                         <div class="vendor-user">
                                             <figure class="mr-4 vendor-logo">
                                                 <a href="#">
-                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}" alt="Vendor Logo" width="80"
-                                                        height="80" />
+                                                    <img src="{{ asset('/storage/seller/'.$vendor_info->brand) }}"
+                                                        alt="Vendor Logo" width="80" height="80" />
                                                 </a>
                                             </figure>
-                                            
+
                                         </div>
                                         <ul class="vendor-info list-style-none">
                                             <li class="store-name">
@@ -1139,7 +1199,7 @@
                                                 <span class="detail">{{ $vendor_info->shop_name }}</span>
                                             </li>
                                             @if (empty($vendor_info->address) || $vendor_info->address == null)
-                                                
+
                                             @else
                                             <li class="store-address">
                                                 <label>العنوان:</label>
@@ -1152,7 +1212,8 @@
                                             </li>
                                         </ul>
                                         <a href="{{ route('single_seller',$vendor_info->username) }}"
-                                            class="btn btn-dark btn-link btn-underline btn-icon-right">رؤية المزيد <i class="w-icon-long-arrow-left"></i></a>
+                                            class="btn btn-dark btn-link btn-underline btn-icon-right">رؤية المزيد <i
+                                                class="w-icon-long-arrow-left"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1161,40 +1222,46 @@
                                     <div class="mb-4 col-xl-4 col-lg-5">
                                         <div class="ratings-wrapper">
                                             <div class="avg-rating-container">
-                                                <h4 class="avg-mark font-weight-bolder ls-50">{{ number_format($avareg,1) }}</h4>
+                                                <h4 class="avg-mark font-weight-bolder ls-50">
+                                                    {{ number_format($avareg,1) }}</h4>
                                                 <div class="avg-rating">
                                                     <p class="mb-1 text-dark">متوسظ التقييم</p>
                                                     <div class="ratings-container">
                                                         <div class="ratings-full">
-                                                            <span class="ratings" 
-                                                            @if (number_format($avareg,1) == 5)
-                                                            style="width: 100%;"
-                                                            @elseif(number_format($avareg,1) >= 4.5)
-                                                            style="width: 90%;"
-                                                            @elseif(number_format($avareg,1) >= 4)
-                                                            style="width: 80%;"
-                                                            @elseif(number_format($avareg,1) >= 3.5)
-                                                            style="width: 70%;"
-                                                            @elseif(number_format($avareg,1) >= 3)
-                                                            style="width: 60%;"
-                                                            @elseif(number_format($avareg,1) >= 2.5)
-                                                            style="width: 50%;"
-                                                            @elseif(number_format($avareg,1) >= 2)
-                                                            style="width: 40%;"
-                                                            @else
-                                                            style="width: 20%;"
-                                                            @endif></span>
+                                                            <span class="ratings" @if (number_format($avareg,1)==5)
+                                                                style="width: 100%;" @elseif(number_format($avareg,1)>=
+                                                                4.5)
+                                                                style="width: 90%;"
+                                                                @elseif(number_format($avareg,1) >= 4)
+                                                                style="width: 80%;"
+                                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                                style="width: 70%;"
+                                                                @elseif(number_format($avareg,1) >= 3)
+                                                                style="width: 60%;"
+                                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                                style="width: 50%;"
+                                                                @elseif(number_format($avareg,1) >= 2)
+                                                                style="width: 40%;"
+                                                                @else
+                                                                style="width: 20%;"
+                                                                @endif></span>
                                                             <span class="tooltiptext tooltip-top"></span>
                                                         </div>
-                                                        <a href="#" class="rating-reviews">({{ $avareg_review->count() }} أراء)</a>
+                                                        <a href="#"
+                                                            class="rating-reviews">({{ $avareg_review->count() }}
+                                                            أراء)</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="ratings-value d-flex align-items-center text-dark ls-25">
-                                                <span class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }} </span> 
+                                                <span
+                                                    class="text-dark font-weight-bold">{{ number_format($avareg ,1 ) }}
+                                                </span>
                                                 @if( number_format($avareg ,1 ) >= 3.5)
-                                                <span class="badge badge-success" style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-right:10px;"> موثوق </span>
+                                                <span class="badge badge-success"
+                                                    style="padding:5px 15px ;background:green;color:#fff !important;border-radius:20px;margin-right:10px;">
+                                                    موثوق </span>
                                                 @else
                                                 <span style="padding-left:5px ">التقييم</span>
                                                 @endif
@@ -1204,14 +1271,16 @@
                                     <div class="mb-4 col-xl-8 col-lg-7">
                                         <div class="">
                                             <h3 class="mb-1 title tab-pane-title font-weight-bold">أضف تعليق</h3>
-                                            <p class="mb-3">لن يكون الايميل الخاص بك منشورا . كل الحقول ضرورية  *</p>
+                                            <p class="mb-3">لن يكون الايميل الخاص بك منشورا . كل الحقول ضرورية *</p>
                                             @auth
                                             <form action="{{ route('review_submit',$single_product->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 <div class="">
-                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                                    <input type="hidden" name="product_id" value="{{ $single_product->id }}">
+                                                    <input type="hidden" name="user_id"
+                                                        value="{{ auth()->user()->id }}">
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $single_product->id }}">
                                                     <label for="rating">قيم المنتج :</label>
                                                     <div class="rating">
                                                         <input type="radio" name="rating" value="5" id="5">
@@ -1243,7 +1312,8 @@
                                                 <button type="submit" class="btn btn-dark"> أرسال </button>
                                             </form>
                                             @else
-                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">اسف يجب ان يكون لديك حساب لتعطي رأيك</h3>
+                                            <h3 class="mb-1 title tab-pane-title font-weight-bold">اسف يجب ان يكون لديك
+                                                حساب لتعطي رأيك</h3>
                                             <p><a href="{{ route('loginForm') }}"> اضغط هنا!!</a> لتدخل الى حسابك</p>
                                             @endauth
                                         </div>
@@ -1251,7 +1321,7 @@
                                 </div>
 
                                 <div class="tab tab-nav-boxed tab-nav-outline tab-nav-center">
-                                    
+
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="show-all">
                                             <ul class="comments list-style-none">
@@ -1265,24 +1335,25 @@
                                                         </figure>
                                                         <div class="comment-content">
                                                             <h4 class="comment-author">
-                                                                <a href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
-                                                                <span class="comment-date">{{ $review->created_at }}</span>
+                                                                <a
+                                                                    href="#">{{ \App\Models\User::where('id',$review->user_id)->value('full_name') }}</a>
+                                                                <span
+                                                                    class="comment-date">{{ $review->created_at }}</span>
                                                             </h4>
                                                             <div class="ratings-container comment-rating">
                                                                 <div class="ratings-full">
-                                                                    <span class="ratings" 
-                                                                    @if ($review->rate == 5)
-                                                                    style="width: 100%;"
-                                                                    @elseif($review->rate == 4)
-                                                                    style="width: 80%;"
-                                                                    @elseif($review->rate == 3)
-                                                                    style="width: 60%;"
-                                                                    @elseif($review->rate == 2)
-                                                                    style="width: 40%;"
-                                                                    @else
-                                                                    style="width: 20%;"
-                                                                    @endif>
-                                                                </span>
+                                                                    <span class="ratings" @if ($review->rate == 5)
+                                                                        style="width: 100%;"
+                                                                        @elseif($review->rate == 4)
+                                                                        style="width: 80%;"
+                                                                        @elseif($review->rate == 3)
+                                                                        style="width: 60%;"
+                                                                        @elseif($review->rate == 2)
+                                                                        style="width: 40%;"
+                                                                        @else
+                                                                        style="width: 20%;"
+                                                                        @endif>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                             <p>{{$review->review}}.</p>
@@ -1306,14 +1377,17 @@
                     @if($vendor_products->count() > 0)
                     <section class="vendor-product-section">
                         <div class="mb-4 title-link-wrapper">
-                            @if(Config::get('app.locale') == 'en') 
+                            @if(Config::get('app.locale') == 'en')
                             <h4 class="text-left title">More Products From This Vendor</h4>
-                            <a href="{{ route('single_seller',$vendor_info->username) }}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
+                            <a href="{{ route('single_seller',$vendor_info->username) }}"
+                                class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
                                 Products<i class="w-icon-long-arrow-right"></i></a>
-                                @else
-                                <h4 class="text-left title">المزيد من المنتجات من ذات البائع</h4>
-                                <a href="{{ route('single_seller',$vendor_info->username) }}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من المنتجات<i class="w-icon-long-arrow-left"></i></a>
-                                @endif
+                            @else
+                            <h4 class="text-left title">المزيد من المنتجات من ذات البائع</h4>
+                            <a href="{{ route('single_seller',$vendor_info->username) }}"
+                                class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من المنتجات<i
+                                    class="w-icon-long-arrow-left"></i></a>
+                            @endif
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
                             'spaceBetween': 20,
@@ -1331,72 +1405,76 @@
                             }
                         }">
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
-                               @foreach ( $vendor_products as $product )
-                               <div class="swiper-slide product">
-                                   <figure class="product-media">
-                                       <a href="{{ route('singleproduct',$product->slug) }}">
-                                           <img src="{{ $product->image }}" alt="Product" width="300"
-                                               height="338" />
-                                       </a>
-                                       <div class="product-action-vertical">
-                                           <a href="#" data-product-id="{{$single_product->id}}" id="add_to_cart{{$single_product->id}}" data-quantity="1" class="add-to-cart btn-product-icon btn-cart w-icon-cart"
-                                               title="Add to cart"></a>
-                                           <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                               title="Add to wishlist"></a>
-                                          
-                                       </div>
-                                      
-                                   </figure>
-                                   <div class="product-details text-center">
-                                       <div class="product-cat"><a href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a>
-                                       </div>
-                                       @if(Config::get('app.locale') == 'en') 
-                                       <h4 class="product-name"><a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title }}</a>
-                                       </h4>
-                                      @else
-                                      <h4 class="product-name"><a href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title }}</a>
-                                      </h4>
-                                      @endif
-                                       <div class="product-pa-wrapper">
-                                           <div class="product-price">
-                                            @if(Config::get('app.locale') == 'en') 
+                                @foreach ( $vendor_products as $product )
+                                <div class="swiper-slide product">
+                                    <figure class="product-media">
+                                        <a href="{{ route('singleproduct',$product->slug) }}">
+                                            <img src="{{ $product->image }}" alt="Product" width="300" height="338" />
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" data-product-id="{{$single_product->id}}"
+                                                id="add_to_cart{{$single_product->id}}" data-quantity="1"
+                                                class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                                title="Add to cart"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                title="Add to wishlist"></a>
 
-                                            @if(empty($product->offer_price) ||
-                                            $product->offer_price == null)
-                                            {{ $product->price }} AED 
-                                            @else <del>{{ $product->price }} AED </del> -
-                                            {{ $product->offer_price }} AED @endif
-                                        @else
-                                        @if(empty($product->offer_price) ||
-                                        $product->offer_price == null)
-                                        {{ $product->price }} د.أ 
-                                        @else <del>{{ $product->price }} د.أ </del> -
-                                        {{ $product->offer_price }} د.أ @endif
-                                        @endif
                                         </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               @endforeach
+
+                                    </figure>
+                                    <div class="product-details text-center">
+                                        <div class="product-cat"><a
+                                                href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a>
+                                        </div>
+                                        @if(Config::get('app.locale') == 'en')
+                                        <h4 class="product-name"><a
+                                                href="{{ route('singleproduct',$product->slug) }}">{{ $product->title }}</a>
+                                        </h4>
+                                        @else
+                                        <h4 class="product-name"><a
+                                                href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title }}</a>
+                                        </h4>
+                                        @endif
+                                        <div class="product-pa-wrapper">
+                                            <div class="product-price">
+                                                @if(Config::get('app.locale') == 'en')
+
+                                                @if(empty($product->offer_price) ||
+                                                $product->offer_price == null)
+                                                {{ $product->price }} AED
+                                                @else <del>{{ $product->price }} AED </del> -
+                                                {{ $product->offer_price }} AED @endif
+                                                @else
+                                                @if(empty($product->offer_price) ||
+                                                $product->offer_price == null)
+                                                {{ $product->price }} د.أ
+                                                @else <del>{{ $product->price }} د.أ </del> -
+                                                {{ $product->offer_price }} د.أ @endif
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </section>
                     @endif
                     <!-- Related Products-->
                     @if ($related_product->count() > 0)
-                    
                     <section class="related-product-section">
                         <div class="mb-4 title-link-wrapper">
-                            @if(Config::get('app.locale') == 'en') 
+                            @if(Config::get('app.locale') == 'en')
 
                             <h4 class="title">Related Products</h4>
                             <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More
                                 Products<i class="w-icon-long-arrow-right"></i></a>
-                                @else
+                            @else
 
-                                <h4 class="title">منتجات قد تعجبك</h4>
-                                <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من المنتجات<i class="w-icon-long-arrow-right"></i></a>
-                                @endif
+                            <h4 class="title">منتجات قد تعجبك</h4>
+                            <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من
+                                المنتجات<i class="w-icon-long-arrow-right"></i></a>
+                            @endif
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
                             'spaceBetween': 20,
@@ -1413,58 +1491,62 @@
                                 }
                             }
                         }">
-                        <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
-                            @foreach($related_product as $related_products)
-                            <div class="swiper-slide product">
-                                <figure class="product-media " style="height: 380px" >
-                                    <a href="{{ route('singleproduct',$related_products->slug) }}">
-                                        <img src="{{ $related_products->image }}" alt="Product"  />
-                                    </a>
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                            title="Add to cart"></a>
-                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                            title="Add to wishlist"></a>
-                                    </div>
-                                    
-                                </figure>
-                                @if(Config::get('app.locale') == 'en') 
+                            <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
+                                @foreach($related_product as $related_products)
+                                <div class="swiper-slide product">
+                                    <figure class="product-media " style="height: 380px">
+                                        <a href="{{ route('singleproduct',$related_products->slug) }}">
+                                            <img src="{{ $related_products->image }}" alt="Product" />
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                                title="Add to cart"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                title="Add to wishlist"></a>
+                                        </div>
 
-                                <div class="product-details text-center">
-                                    <h4 class="product-name"><a
-                                            href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a></h4>
-                                    <div class="product-pa-wrapper">
-                                        <div class="product-price">
-                                            @if(empty($related_products->offer_price) || $related_products->offer_price
-                                            == null){{ $related_products->price }} AED @else <del
-                                                >{{ $related_products->price }} AED </del> -
-                                            {{ $related_products->offer_price }} AED @endif
+                                    </figure>
+                                    @if(Config::get('app.locale') == 'en')
+
+                                    <div class="product-details text-center">
+                                        <h4 class="product-name"><a
+                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a>
+                                        </h4>
+                                        <div class="product-pa-wrapper">
+                                            <div class="product-price">
+                                                @if(empty($related_products->offer_price) ||
+                                                $related_products->offer_price
+                                                == null){{ $related_products->price }} AED @else
+                                                <del>{{ $related_products->price }} AED </del> -
+                                                {{ $related_products->offer_price }} AED @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @else
-                                <div class="product-details text-center">
-                                    <h4 class="product-name"><a
-                                            href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a></h4>
-                                    <div class="product-pa-wrapper">
-                                        <div class="product-price">
-                                            @if(empty($related_products->offer_price) || $related_products->offer_price
-                                            == null){{ $related_products->price }} د.أ @else <del
-                                                >{{ $related_products->price }} د.أ </del> -
-                                            {{ $related_products->offer_price }} د.أ @endif
+                                    @else
+                                    <div class="product-details text-center">
+                                        <h4 class="product-name"><a
+                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a>
+                                        </h4>
+                                        <div class="product-pa-wrapper">
+                                            <div class="product-price">
+                                                @if(empty($related_products->offer_price) ||
+                                                $related_products->offer_price
+                                                == null){{ $related_products->price }} د.أ @else
+                                                <del>{{ $related_products->price }} د.أ </del> -
+                                                {{ $related_products->offer_price }} د.أ @endif
+                                            </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
-                                @endif
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
-                    </div>
-                </section> 
-                        @else
-                            
-                        @endif
-                                    </div>
+                    </section>
+                    @else
+
+                    @endif
+                </div>
                 <!-- End of Main Content -->
                 <aside class="sidebar product-sidebar sidebar-fixed right-sidebar sticky-sidebar-wrapper">
                     <div class="sidebar-overlay"></div>
@@ -1472,7 +1554,7 @@
                     <a href="#" class="sidebar-toggle d-flex d-lg-none"><i class="fas fa-chevron-left"></i></a>
                     <div class="sidebar-content scrollable">
                         <div class="sticky-sidebar">
-                            @if(Config::get('app.locale') == 'en') 
+                            @if(Config::get('app.locale') == 'en')
                             <div class="mb-6 widget widget-icon-box">
                                 <div class="icon-box icon-box-side">
                                     <span class="icon-box-icon text-dark">
@@ -1510,7 +1592,7 @@
                                     </span>
                                     <div class="icon-box-content">
                                         <h4 class=" icon-box-title ">الشحن والإرجاع المجاني</h4>
-                                        <p >لجميع الطلبات التي تزيد عن 99 د.أ</p>
+                                        <p>لجميع الطلبات التي تزيد عن 99 د.أ</p>
                                     </div>
                                 </div>
                                 <div class="icon-box icon-box-side">
@@ -1519,7 +1601,7 @@
                                     </span>
                                     <div class="icon-box-content">
                                         <h4 class="icon-box-title ">دفع أمن</h4>
-                        <p>نحن نضمن الدفع الآمن</p>
+                                        <p>نحن نضمن الدفع الآمن</p>
                                     </div>
                                 </div>
                                 <div class="icon-box icon-box-side">
@@ -1528,7 +1610,7 @@
                                     </span>
                                     <div class="icon-box-content">
                                         <h4 class="icon-box-title ">ضمان استعادة الاموال</h4>
-                                        <p >أي عودة في غضون 30 يومًا</p>
+                                        <p>أي عودة في غضون 30 يومًا</p>
                                     </div>
                                 </div>
                             </div>
@@ -1536,37 +1618,40 @@
                             <!-- End of Widget Icon Box -->
 
                             <div class="widget widget-banner mb-9">
-          
-                                        @php
-                                        $sponser_adsdown = \App\Models\sponserAds::where('image_place' ,'single_product_side_bar')->get();
-                                        @endphp
-                                         @if($sponser_adsdown->count() > 0)
-                                   
-                                        <div id="carouselExampleControlsdown2" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-inner">
-                                            @foreach($sponser_adsdown as $key => $slider)
-                                            @if($slider->image_place == 'single_product_side_bar')
-                                            <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
-                                                <img src="{{url($slider->image_English)}}" class="d-block w-100"  alt="{{ $slider->image_place }}"> 
-                                            </div>
-                                            @endif
-                                            @endforeach
+                                @php
+                                $sponser_adsdown = \App\Models\sponserAds::where('image_place'
+                                ,'single_product_side_bar')->get();
+                                @endphp
+                                @if($sponser_adsdown->count() > 0)
+
+                                <div id="carouselExampleControlsdown2" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach($sponser_adsdown as $key => $slider)
+                                        @if($slider->image_place == 'single_product_side_bar')
+                                        <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                                            <img src="{{url($slider->image_English)}}" class="d-block w-100"
+                                                alt="{{ $slider->image_place }}">
                                         </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsdown2" data-bs-slide="prev">
-                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsdown2" data-bs-slide="next">
-                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        </button>
-                                      </div>
-                                      @endif 
-                                   
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleControlsdown2" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleControlsdown2" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                @endif
+
                             </div>
                             <!-- End of Widget Banner -->
 
                             <div class="widget widget-products">
                                 <div class="mb-2 title-link-wrapper">
-                                    @if(Config::get('app.locale') == 'en') 
+                                    @if(Config::get('app.locale') == 'en')
 
                                     <h4 class="title title-link font-weight-bold">More Products</h4>
                                     @else
@@ -1585,6 +1670,7 @@
                                     }">
                                         <div class="swiper-wrapper">
                                             <div class="widget-col swiper-slide">
+                                                @foreach ($more_products_left_side as $items )
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
                                                         <a href="#">
@@ -1605,108 +1691,7 @@
                                                         <div class="product-price">$80.00 - $90.00</div>
                                                     </div>
                                                 </div>
-                                                <div class="product product-widget">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/14.jpg" alt="Product"
-                                                                width="100" height="113" />
-                                                        </a>
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name">
-                                                            <a href="#">Sky Medical Facility</a>
-                                                        </h4>
-                                                        <div class="ratings-container">
-                                                            <div class="ratings-full">
-                                                                <span class="ratings" style="width: 80%;"></span>
-                                                                <span class="tooltiptext tooltip-top"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-price">$58.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product-widget">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/15.jpg" alt="Product"
-                                                                width="100" height="113" />
-                                                        </a>
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name">
-                                                            <a href="#">Black Stunt Motor</a>
-                                                        </h4>
-                                                        <div class="ratings-container">
-                                                            <div class="ratings-full">
-                                                                <span class="ratings" style="width: 60%;"></span>
-                                                                <span class="tooltiptext tooltip-top"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-price">$374.00</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-col swiper-slide">
-                                                <div class="product product-widget">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/16.jpg" alt="Product"
-                                                                width="100" height="113" />
-                                                        </a>
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name">
-                                                            <a href="#">Skate Pan</a>
-                                                        </h4>
-                                                        <div class="ratings-container">
-                                                            <div class="ratings-full">
-                                                                <span class="ratings" style="width: 100%;"></span>
-                                                                <span class="tooltiptext tooltip-top"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-price">$278.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product-widget">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/17.jpg" alt="Product"
-                                                                width="100" height="113" />
-                                                        </a>
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name">
-                                                            <a href="#">Modern Cooker</a>
-                                                        </h4>
-                                                        <div class="ratings-container">
-                                                            <div class="ratings-full">
-                                                                <span class="ratings" style="width: 80%;"></span>
-                                                                <span class="tooltiptext tooltip-top"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-price">$324.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product-widget">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/18.jpg" alt="Product"
-                                                                width="100" height="113" />
-                                                        </a>
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name">
-                                                            <a href="#">CT Machine</a>
-                                                        </h4>
-                                                        <div class="ratings-container">
-                                                            <div class="ratings-full">
-                                                                <span class="ratings" style="width: 100%;"></span>
-                                                                <span class="tooltiptext tooltip-top"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-price">$236.00</div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <button class="swiper-button-next"></button>
@@ -1727,140 +1712,121 @@
 
 @endsection
 
-
 @section('script')
 
 <script>
-var checked= [];
-//  add eventlistener listener on parent (listen for change event)
-document.querySelector('.bought-together-products ').addEventListener('change', e => {
-
-//  get checkbox id
-const id = e.target.dataset.id;
-//  if you need it as data-id just change the above to
-//  const id = e.target.dataset.id;
-
-//  if the target is checked add the id to the array  
-if (e.target.checked) checked.push(id);
-//  if not – remove it 
-else checked.splice(checked.indexOf(id), 1);
-
-$(".freq-product-add-to-cart").attr("data-freq-product-id",checked);
-
-
-})
-
-
-$(document).on('click','.freq-product-add-to-cart',function () {
-        var rawId_feq =  checked;
+    var checked = [];
+    //  add eventlistener listener on parent (listen for change event)
+    document.querySelector('.bought-together-products ').addEventListener('change', e => {
+        //  get checkbox id
+        const id = e.target.dataset.id;
+        //  if you need it as data-id just change the above to
+        //  const id = e.target.dataset.id;
+        //  if the target is checked add the id to the array  
+        if (e.target.checked) checked.push(id);
+        //  if not – remove it 
+        else checked.splice(checked.indexOf(id), 1);
+        $(".freq-product-add-to-cart").attr("data-freq-product-id", checked);
+    })
+    $(document).on('click', '.freq-product-add-to-cart', function() {
+        var rawId_feq = checked;
         update_ids(rawId_feq);
-});
-
+    });
 </script>
 
 <script>
-var prices= [];
-//  add eventlistener listener on parent (listen for change event)
-document.querySelector('.bought-together-products-prices').addEventListener('change', e => {
+    var prices = [];
+    //  add eventlistener listener on parent (listen for change event)
+    document.querySelector('.bought-together-products-prices').addEventListener('change', e => {
+        const price = e.target.dataset.price;
+        if (e.target.checked) prices.push(price);
+        else prices.splice(prices.indexOf(price), 1);
+        $(".total_frq_prices").attr("data-prices", prices);
+        $('.total_frq_prices').text(sumThem());
+        if ($(".total_frq_prices").attr("data-prices") !== '') {
+            $(".freq-product-add-to-cart").removeAttr("disabled")
+        }
+    });
 
-const price  = e.target.dataset.price;
-
-if (e.target.checked) prices.push(price);
-else prices.splice(prices.indexOf(price), 1);
-
-$(".total_frq_prices").attr("data-prices",prices);
-$('.total_frq_prices').text(sumThem());
-
-if($(".total_frq_prices").attr("data-prices") !== '' ){
-    $(".freq-product-add-to-cart").removeAttr("disabled")
-}
-});
-
-
-function sumThem(){
-    var myArr = prices;
-    let counter = 0;
-for(let i = 0; i < myArr.length; i++){
-    
-  counter += myArr[i] *1;
+    function sumThem() {
+        var myArr = prices;
+        let counter = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            counter += myArr[i] * 1;
+        }
+        return counter + ' AED';
     }
-    return counter + ' AED';
-}
 </script>
 
- <!--add  products to cart -->
+<!--add  products to cart -->
 <script>
-    $(document).on('click','.qty',function () {
+    $(document).on('click', '.qty', function() {
         var id = $(this).data('id');
-        var spinner = $(this),input = spinner.closest("div.quantity").find('input[type="number"]');
-        if(input.val()==0){
+        var spinner = $(this),
+            input = spinner.closest("div.quantity").find('input[type="number"]');
+        if (input.val() == 0) {
             return false;
         }
-        if(input.val() != 1){
+        if (input.val() != 1) {
             var newVal = parseFloat(input.val());
-            $('#qty-input-'+id).val(newVal);
+            $('#qty-input-' + id).val(newVal);
         }
-        var productQuantity = $('#update-cart-'+id).data('product-quantity');
-        update_cart(id,productQuantity)
-        $('.single-product-add-to-cart').attr('data-quantity', $('#qty-input-'+id).val());
-
+        var productQuantity = $('#update-cart-' + id).data('product-quantity');
+        update_cart(id, productQuantity)
+        $('.single-product-add-to-cart').attr('data-quantity', $('#qty-input-' + id).val());
     });
-    function update_cart(id,productQuantity){
-    var rowId = id;
-    var product_qty = $('#qty-input-'+rowId).val();
-    var token="{{ csrf_token() }}";
-    var path="{{ route('sing_page_update_cart') }}";
 
-    $.ajax({
-        type: "POST",
-        url: path,
-        data:{
-            _token:token,
-            product_qty : product_qty,
-            rowId:rowId,
-            productQuantity:productQuantity,
-        },
-        success: function (data) {
-            console.log(data)
-            if(data['status']){
-            $('body #header-ajax').html(data['header']);
-            $('body #cart_lists').html(data['cart_lists']);
-            }else{
-                alert('Out Of Stock');
+    function update_cart(id, productQuantity) {
+        var rowId = id;
+        var product_qty = $('#qty-input-' + rowId).val();
+        var token = "{{ csrf_token() }}";
+        var path = "{{ route('sing_page_update_cart') }}";
+        $.ajax({
+            type: "POST",
+            url: path,
+            data: {
+                _token: token,
+                product_qty: product_qty,
+                rowId: rowId,
+                productQuantity: productQuantity,
+            },
+            success: function(data) {
+                console.log(data)
+                if (data['status']) {
+                    $('body #header-ajax').html(data['header']);
+                    $('body #cart_lists').html(data['cart_lists']);
+                } else {
+                    alert('Out Of Stock');
+                }
             }
-        }
-    });
+        });
     }
-
 </script>
- <!--add frequntly products to cart -->
+<!--add frequntly products to cart -->
 <script>
-    function update_ids(rawId_feq){
-        var token="{{ csrf_token() }}";
-        var path="{{ route('sing_freq_page_update_cart') }}";
+    function update_ids(rawId_feq) {
+        var token = "{{ csrf_token() }}";
+        var path = "{{ route('sing_freq_page_update_cart') }}";
         var ids = rawId_feq;
-    $.ajax({
-        type: "POST",
-        url: path,
-        data:{
-            _token:token,
-            ids:ids,
-        },
-        success: function (data) {
-            console.log(data)
-            if(data['status']){
-            $('body #header-ajax').html(data['header']);
-            $('body #cart_lists').html(data['cart_lists']);
-            $('freq-product-add-to-cart').html('<i class="fa fa-gear spinner"></i>');
-            }else{
-                alert('Please Select A Product First');
+        $.ajax({
+            type: "POST",
+            url: path,
+            data: {
+                _token: token,
+                ids: ids,
+            },
+            success: function(data) {
+                console.log(data)
+                if (data['status']) {
+                    $('body #header-ajax').html(data['header']);
+                    $('body #cart_lists').html(data['cart_lists']);
+                    $('freq-product-add-to-cart').html('<i class="fa fa-gear spinner"></i>');
+                } else {
+                    alert('Please Select A Product First');
+                }
             }
-        }
-    });
+        });
     }
-  
-
-
 </script>
 <script>
     function openModal() {

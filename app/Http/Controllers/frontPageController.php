@@ -43,6 +43,8 @@ class frontPageController extends Controller
         $top_selles = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->get();
         $top_reviewed= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->get();
         $new_products =product::orderBy('created_at','desc')->get();
+        // more products (random product)
+        $more_products_left_side = product::inRandomOrder()->take('10')->get();
         $get_product_top_selling_ids = array();
         foreach($top_selles as $selles){
             array_push($get_product_top_selling_ids,$selles->product_id);
@@ -50,15 +52,13 @@ class frontPageController extends Controller
         // get the products that are in array (best selling)
         $products_bestSelling_top3 = product::wherein('id',$get_product_top_selling_ids)->take(3)->get();
         $products_bestSelling = product::wherein('id',$get_product_top_selling_ids)->get();
-
         $products_review_ids = product::get();
         $products_review_ids_array = array();
-
         foreach($products_review_ids as $all_ids){
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('more_products_left_side','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
     }
 
     // login form
