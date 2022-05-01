@@ -44,7 +44,6 @@ class frontPageController extends Controller
         $top_reviewed= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->get();
         $new_products =product::orderBy('created_at','desc')->get();
         // more products (random product)
-        $more_products_left_side = product::inRandomOrder()->take('10')->get();
         $get_product_top_selling_ids = array();
         foreach($top_selles as $selles){
             array_push($get_product_top_selling_ids,$selles->product_id);
@@ -58,7 +57,7 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('more_products_left_side','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
     }
 
     // login form
@@ -299,6 +298,8 @@ class frontPageController extends Controller
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
       $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
       $Category_related_product = category::where('id',$single_product->category_id)->first();
+      $more_products_left_side = product::where('id','!=',$single_product->id)->inRandomOrder()->take('10')->get();
+
      #review comments 
      if(empty($single_product->frequantly_boughts_ids) || $single_product->frequantly_boughts_ids == null){
         $freq_products = 0;
@@ -313,7 +314,7 @@ class frontPageController extends Controller
                                            $avareg = $sum / $countavg;
                                         }
       if($single_product){
-        return view('frontend.frontend_pages.products.single_product',compact('freq_products','related_product','vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
+        return view('frontend.frontend_pages.products.single_product',compact('more_products_left_side','freq_products','related_product','vendor_products','avareg','avareg_review','single_product','vendor_info','product_gallary','product_attr','user_review','Category_related_product'));
       }else{
         return back()->with('error','This Product Is Not Valid');
       }

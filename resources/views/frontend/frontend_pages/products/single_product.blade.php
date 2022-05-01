@@ -1228,7 +1228,8 @@
                                                     <p class="mb-1 text-dark">متوسظ التقييم</p>
                                                     <div class="ratings-container">
                                                         <div class="ratings-full">
-                                                            <span class="ratings" @if (number_format($avareg,1)==5)
+                                                            <span class="ratings" 
+                                                            @if (number_format($avareg,1)==5)
                                                                 style="width: 100%;" @elseif(number_format($avareg,1)>=
                                                                 4.5)
                                                                 style="width: 90%;"
@@ -1473,7 +1474,7 @@
 
                             <h4 class="title">منتجات قد تعجبك</h4>
                             <a href="#" class="btn btn-dark btn-link btn-slide-right btn-icon-right">المزيد من
-                                المنتجات<i class="w-icon-long-arrow-right"></i></a>
+                                المنتجات<i class="w-icon-long-arrow-left"></i></a>
                             @endif
                         </div>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
@@ -1507,7 +1508,6 @@
 
                                     </figure>
                                     @if(Config::get('app.locale') == 'en')
-
                                     <div class="product-details text-center">
                                         <h4 class="product-name"><a
                                                 href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->title}}</a>
@@ -1524,8 +1524,8 @@
                                     </div>
                                     @else
                                     <div class="product-details text-center">
-                                        <h4 class="product-name"><a
-                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a>
+                                        <h4 class="product-name">
+                                            <a href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a>
                                         </h4>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
@@ -1652,13 +1652,11 @@
                             <div class="widget widget-products">
                                 <div class="mb-2 title-link-wrapper">
                                     @if(Config::get('app.locale') == 'en')
-
                                     <h4 class="title title-link font-weight-bold">More Products</h4>
                                     @else
                                     <h4 class="title title-link font-weight-bold">المزيد من المنتجات</h4>
                                     @endif
                                 </div>
-
                                 <div class="swiper nav-top">
                                     <div class="swiper-container swiper-theme nav-top" data-swiper-options="{
                                         'slidesPerView': 1,
@@ -1670,32 +1668,101 @@
                                     }">
                                         <div class="swiper-wrapper">
                                             <div class="widget-col swiper-slide">
-                                                @foreach ($more_products_left_side as $items )
+                                                @foreach ($more_products_left_side as $item )
+                                                @if(Config::get('app.locale') == 'en')
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="assets/images/shop/13.jpg" alt="Product"
+                                                        <a href="{{ route('singleproduct',$item->slug) }}">
+                                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
                                                                 width="100" height="113" />
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">
                                                         <h4 class="product-name">
-                                                            <a href="#">Smart Watch</a>
+                                                            <a href="{{ route('singleproduct',$item->slug) }}">{{ $item->title }}</a>
                                                         </h4>
                                                         <div class="ratings-container">
                                                             <div class="ratings-full">
-                                                                <span class="ratings" style="width: 100%;"></span>
+                                                                <span class="ratings" 
+                                                                @if (number_format($avareg,1)==5)
+                                                                style="width: 100%;" @elseif(number_format($avareg,1)>=
+                                                                4.5)
+                                                                style="width: 90%;"
+                                                                @elseif(number_format($avareg,1) >= 4)
+                                                                style="width: 80%;"
+                                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                                style="width: 70%;"
+                                                                @elseif(number_format($avareg,1) >= 3)
+                                                                style="width: 60%;"
+                                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                                style="width: 50%;"
+                                                                @elseif(number_format($avareg,1) >= 2)
+                                                                style="width: 40%;"
+                                                                @else
+                                                                style="width: 20%;"
+                                                                @endif
+
+                                                                ></span>
                                                                 <span class="tooltiptext tooltip-top"></span>
                                                             </div>
                                                         </div>
-                                                        <div class="product-price">$80.00 - $90.00</div>
+                                                        <div class="product-price">
+                                                            @if(empty($related_products->offer_price) ||
+                                                            $related_products->offer_price
+                                                            == null){{ $related_products->price }} AED @else
+                                                            <del>{{ $related_products->price }} AED </del> -
+                                                            {{ $related_products->offer_price }} AED @endif
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                @else
+                                                <div class="product product-widget">
+                                                    <figure class="product-media">
+                                                        <a href="{{ route('singleproduct',$item->slug) }}">
+                                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
+                                                                width="100" height="113" />
+                                                        </a>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h4 class="product-name">
+                                                            <a href="{{ route('singleproduct',$item->slug) }}">{{ $item->ar_title }}</a>
+                                                        </h4>
+                                                        <div class="ratings-container">
+                                                            <div class="ratings-full">
+                                                                <span class="ratings" 
+                                                                @if (number_format($avareg,1)==5)
+                                                                style="width: 100%;" @elseif(number_format($avareg,1)>= 4.5)
+                                                                style="width: 90%;"
+                                                                @elseif(number_format($avareg,1) >= 4)
+                                                                style="width: 80%;"
+                                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                                style="width: 70%;"
+                                                                @elseif(number_format($avareg,1) >= 3)
+                                                                style="width: 60%;"
+                                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                                style="width: 50%;"
+                                                                @elseif(number_format($avareg,1) >= 2)
+                                                                style="width: 40%;"
+                                                                @else
+                                                                style="width: 20%;"
+                                                                @endif
+                                                                ></span>
+                                                                <span class="tooltiptext tooltip-top"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            @if(empty($related_products->offer_price) ||
+                                                            $related_products->offer_price
+                                                            == null){{ $related_products->price }} د.أ @else
+                                                            <del>{{ $related_products->price }} د.أ </del> -
+                                                            {{ $related_products->offer_price }} د.أ @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <button class="swiper-button-next"></button>
-                                        <button class="swiper-button-prev"></button>
                                     </div>
                                 </div>
                             </div>
