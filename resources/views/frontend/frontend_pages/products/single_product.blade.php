@@ -1505,7 +1505,6 @@
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
                                         </div>
-
                                     </figure>
                                     @if(Config::get('app.locale') == 'en')
                                     <div class="product-details text-center">
@@ -1514,9 +1513,9 @@
                                         </h4>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                @if(empty($related_products->offer_price) ||
-                                                $related_products->offer_price
-                                                == null){{ $related_products->price }} AED @else
+                                                @if(empty($related_products->offer_price) || $related_products->offer_price  == null)
+                                                {{ $related_products->price }} AED
+                                                @else
                                                 <del>{{ $related_products->price }} AED </del> -
                                                 {{ $related_products->offer_price }} AED @endif
                                             </div>
@@ -1669,6 +1668,17 @@
                                         <div class="swiper-wrapper">
                                             <div class="widget-col swiper-slide">
                                                 @foreach ($more_products_left_side as $item )
+                                                @php
+                                                $avareg_review = \App\Models\ProductReview::where('product_id',$item->id)->get();
+                                                #review rateing 
+                                                $avareg = 0;
+                                                $sum = 0;
+                                                foreach($avareg_review as $avg){
+                                                    $sum += $avg->rate;
+                                                    $countavg = count($avareg_review);
+                                                    $avareg = $sum / $countavg;
+                                                    }                                       
+                                                @endphp
                                                 @if(Config::get('app.locale') == 'en')
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
@@ -1707,11 +1717,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-price">
-                                                            @if(empty($related_products->offer_price) ||
-                                                            $related_products->offer_price
-                                                            == null){{ $related_products->price }} AED @else
-                                                            <del>{{ $related_products->price }} AED </del> -
-                                                            {{ $related_products->offer_price }} AED @endif
+                                                            @if(empty($item->offer_price) ||
+                                                            $item->offer_price
+                                                            == null){{ $item->price }} AED @else
+                                                            <del>{{ $item->price }} AED </del> -
+                                                            {{ $item->offer_price }} AED @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1727,6 +1737,7 @@
                                                         <h4 class="product-name">
                                                             <a href="{{ route('singleproduct',$item->slug) }}">{{ $item->ar_title }}</a>
                                                         </h4>
+                                                        
                                                         <div class="ratings-container">
                                                             <div class="ratings-full">
                                                                 <span class="ratings" 
@@ -1751,11 +1762,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-price">
-                                                            @if(empty($related_products->offer_price) ||
-                                                            $related_products->offer_price
-                                                            == null){{ $related_products->price }} د.أ @else
-                                                            <del>{{ $related_products->price }} د.أ </del> -
-                                                            {{ $related_products->offer_price }} د.أ @endif
+                                                            @if(empty($item->offer_price) ||
+                                                            $item->offer_price
+                                                            == null){{ $item->price }} د.أ @else
+                                                            <del>{{ $item->price }} د.أ </del> -
+                                                            {{ $item->offer_price }} د.أ @endif
                                                         </div>
                                                     </div>
                                                 </div>

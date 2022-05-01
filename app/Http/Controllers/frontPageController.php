@@ -298,7 +298,7 @@ class frontPageController extends Controller
       $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
       $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
       $Category_related_product = category::where('id',$single_product->category_id)->first();
-      $more_products_left_side = product::where('id','!=',$single_product->id)->inRandomOrder()->take('10')->get();
+      $more_products_left_side = product::where('id','!=',$single_product->id)->inRandomOrder()->take(7)->get();
 
      #review comments 
      if(empty($single_product->frequantly_boughts_ids) || $single_product->frequantly_boughts_ids == null){
