@@ -124,12 +124,23 @@
                             @if(!empty($products) || $products->count() > 0 )
                             <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ($products as $product )
+                                @php
+                                $other_image = explode(',', $product->image);
+                                @endphp
                                 <div class="product-wrap">
                                     <div class="text-center product">
                                         <figure class="product-media" >
                                             <a href="{{ route('singleproduct', $product->slug) }}">
-                                                <img src="{{ asset($product->image) }}" alt="Product" style="width: 100% !important;
+                                                @if(count($other_image) > 1 && count($other_image) < 2)
+                                                <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                                 height: 150px !important;object-fit: contain;" />
+                                                 <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                                 height: 150px !important;object-fit: contain;" />
+                                                 @else
+                                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                                 height: 150px !important;object-fit: contain;" />
+                                                 @endif
+
                                             </a>
                                             <div class="product-action-horizontal">
                                                 <!--Add to cart funtion -->
@@ -155,7 +166,23 @@
                                             </h3>
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="ratings" 
+                                                    @if (number_format($avareg,1)==5) style="width: 100%;"
+                                            @elseif(number_format($avareg,1)>= 4.5)
+                                            style="width: 90%;"
+                                            @elseif(number_format($avareg,1) >= 4)
+                                            style="width: 80%;"
+                                            @elseif(number_format($avareg,1) >= 3.5)
+                                            style="width: 70%;"
+                                            @elseif(number_format($avareg,1) >= 3)
+                                            style="width: 60%;"
+                                            @elseif(number_format($avareg,1) >= 2.5)
+                                            style="width: 50%;"
+                                            @elseif(number_format($avareg,1) >= 2)
+                                            style="width: 40%;"
+                                            @else
+                                            style="width: 20%;"
+                                            @endif></span>
                                                     <span class="tooltiptext tooltip-top"></span>
                                                 </div>
                                                 <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
