@@ -58,7 +58,7 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('avareg','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
     }
 
     // login form

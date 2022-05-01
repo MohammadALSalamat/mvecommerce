@@ -760,7 +760,7 @@
                                     @if ($products_bestSelling_top3->count() > 0 )
                                     <div class="swiper-slide product-widget-wrap">
                                         @foreach ($products_bestSelling_top3 as  $top_sellings)
-                                        @php
+                                    @php
                                         $avareg_review = \App\Models\ProductReview::where('product_id',$top_sellings->id)->get();
                                        #review rateing 
                                        $avareg = 0;
@@ -769,13 +769,21 @@
                                            $sum += $avg->rate;
                                            $countavg = count($avareg_review);
                                            $avareg = $sum / $countavg;
-                                        }                                       
+                                        }               
+                                        $other_image = explode(',',$top_sellings->image);                        
                                        @endphp
                                         <div class="product product-widget bb-no">
                                             <figure class="product-media">
                                                 <a href="{{ route('singleproduct',$top_sellings->slug) }}">
-                                                    <img src="{{ asset($top_sellings->image) }}"
-                                                        alt="Product" width="105" height="118" />
+                                                    @if(count($other_image) > 1 )
+                                                    <img src="{{ $other_image[0]}}" alt="Product" width="300"
+                                                        height="338"/>
+                                                    <img src="{{ $other_image[1] }}" alt="Product" width="330"
+                                                        height="338" />
+                                                        @else
+                                                        <img src="{{ $other_image[0]}}" alt="Product" width="300"
+                                                        height="338"/>
+                                                        @endif
                                                 </a>
                                             </figure>
                                          
@@ -954,6 +962,7 @@
                 $start = Carbon\Carbon::parse($new_product->created_at);
                 $now = Carbon\Carbon::now();
                 $days_count = $start->diffInDays($now);
+                $other_image = explode(',',$new_product->image);
                 @endphp
                 <!-- hide the products after 15 days  -->
                     @if($days_count < 15) 

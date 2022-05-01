@@ -129,7 +129,7 @@
                             <div class="product text-center">
                                 <figure class="product-media">
                                     <a href="product-default.html">
-                                        @if(count($other_image) > 1 && count($other_image) < 2)
+                                        @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product" width="300"
                                             height="338"/>
                                         <img src="{{ $other_image[1] }}" alt="Product" width="330"
@@ -177,8 +177,20 @@
                                     </div>
                                     <div class="product-pa-wrapper">
                                         <div class="product-price">
-                                            $220.00 - $230.00
-                                        </div>
+                                            @if(Config::get('app.locale') == 'en')
+
+                                            @if(empty($products_category->offer_price) ||
+                                            $products_category->offer_price == null)
+                                            {{ $products_category->price }} AED
+                                            @else <del>{{ $products_category->price }} AED </del> -
+                                            {{ $products_category->offer_price }} AED @endif
+                                            @else
+                                            @if(empty($products_category->offer_price) ||
+                                            $products_category->offer_price == null)
+                                            {{ $products_category->price }} د.أ
+                                            @else <del>{{ $products_category->price }} د.أ </del> -
+                                            {{ $products_category->offer_price }} د.أ @endif
+                                            @endif                                        </div>
                                     </div>
                                 </div>
                             </div>
