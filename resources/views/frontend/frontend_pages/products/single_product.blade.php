@@ -735,14 +735,14 @@
                         @if(Config::get('app.locale') == 'en') 
                         <h2 class="title title-underline">Frequently Bought Together</h2>
                         @else
-                        <h2 class="title title-underline">يُباع معها أيضًا                        </h2>
+                        <h2 class="title title-underline">يُباع معها أيضًا </h2>
 
                         @endif
                         <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
                             <div class="col-8" style="overflow-x: scroll; display: flex;">
                                 <div class="text-center product product-wrap">
                                     <figure class="product-media">
-                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:138px !important"/>
+                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:100px !important;object-fit: contain;"/>
                                         <div class="product-checkbox">
                                             <input type="checkbox" 
                                             data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif" 
@@ -781,7 +781,7 @@
                                 @foreach ($freq_products as $freq_product)
                                 <div class="text-center product product-wrap">
                                     <figure class="product-media">
-                                        <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:150px !important"/>
+                                        <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:100px !important;    object-fit: contain;"/>
                                         <div class="product-checkbox">
                                             <input type="checkbox" 
                                             data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif" 
