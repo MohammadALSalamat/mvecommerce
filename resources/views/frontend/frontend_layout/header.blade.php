@@ -146,6 +146,9 @@
 
                         <div class="products" style="overflow-y: auto">
                             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
+                            @php
+                            $other_image = explode(',', $item->model->image);
+                            @endphp
                             <div class="product product-cart">
                                 <div class="product-detail">
                                     <a href="{{ route('singleproduct',$item->model->slug) }}"
@@ -157,7 +160,7 @@
                                 </div>
                                 <figure class="product-media">
                                     <a href="{{ route('singleproduct',$item->model->slug) }}">
-                                        <img src="{{ $item->model->image }}" alt="product" height="84" width="94" />
+                                        <img src="{{ $other_image[0] }}" alt="product" height="84" width="94" />
                                     </a>
                                 </figure>
                                 <button class="btn btn-link btn-close cart_delete" aria-label="button"

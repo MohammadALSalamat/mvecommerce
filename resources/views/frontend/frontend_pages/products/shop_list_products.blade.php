@@ -120,7 +120,7 @@
                             <div class="product text-center">
                                 <figure class="product-media">
                                     <a href="product-default.html">
-                                        @if(count($other_image) > 1)
+                                        @if(count($other_image) > 1 && count($other_image) < 2)
                                         <img src="{{ $other_image[0]}}" alt="Product" width="300"
                                             height="338"/>
                                         <img src="{{ $other_image[1] }}" alt="Product" width="330"
