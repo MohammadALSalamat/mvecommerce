@@ -738,110 +738,113 @@
                         <h2 class="title title-underline">يُباع معها أيضًا                        </h2>
 
                         @endif
-                        <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row d-flex">
-                            
-                            <div class="text-center product product-wrap">
-                                <figure class="product-media">
-                                    <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:138px !important"/>
-                                    <div class="product-checkbox">
-                                        <input type="checkbox" 
-                                        data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif" 
-                                        data-id="{{ $single_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $single_product->id }}"
-                                            name="product_check{{ $single_product->id }}">
-                                        <label></label>
+                        <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
+                            <div class="col-8" style="overflow-x: scroll; display: flex;">
+                                <div class="text-center product product-wrap">
+                                    <figure class="product-media">
+                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:138px !important"/>
+                                        <div class="product-checkbox">
+                                            <input type="checkbox" 
+                                            data-price=" @if(empty($single_product->offer_price) ||$single_product->offer_price == null) {{ $single_product->price }} @else {{ $single_product->offer_price }} @endif" 
+                                            data-id="{{ $single_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $single_product->id }}"
+                                                name="product_check{{ $single_product->id }}">
+                                            <label></label>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h4 class="product-name">
+                                            <a href="{{ route('singleproduct',$single_product->slug)  }}">
+                                                @if(Config::get('app.locale') == 'en') 
+                                                {{ $single_product->title }}
+                                                @else
+                                                {{ $single_product->ar_title }}
+                                                @endif
+                                            </a>
+                                        </h4>
+                                        @if(Config::get('app.locale') == 'en') 
+                                        <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) ||
+                                            $single_product->offer_price == null)
+                                            {{ number_format($single_product->price) }} AED 
+                                            @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
+                                        </div>
+                                        @else
+                                        <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
+                                            @if(empty($single_product->offer_price) ||
+                                            $single_product->offer_price == null)
+                                            {{ number_format($single_product->price) }} د.أ 
+                                            @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc;font-size:12px"> {{ number_format($single_product->price) }} د.أ </del>  @endif
+                                        </div>
+                                        @endif
                                     </div>
-                                </figure>
-                                <div class="product-details">
-                                    <h4 class="product-name">
-                                        <a href="{{ route('singleproduct',$single_product->slug)  }}">
-                                            @if(Config::get('app.locale') == 'en') 
-                                            {{ $single_product->title }}
-                                            @else
-                                            {{ $single_product->ar_title }}
-                                            @endif
-                                        </a>
-                                    </h4>
+                                </div>
+                                @foreach ($freq_products as $freq_product)
+                                <div class="text-center product product-wrap">
+                                    <figure class="product-media">
+                                        <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:150px !important"/>
+                                        <div class="product-checkbox">
+                                            <input type="checkbox" 
+                                            data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif" 
+                                            data-id="{{ $freq_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $freq_product->id }}"
+                                                name="product_check{{ $freq_product->id }}">
+                                            <label></label>
+                                        </div>
+                                    </figure>
                                     @if(Config::get('app.locale') == 'en') 
-                                    <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                        @if(empty($single_product->offer_price) ||
-                                        $single_product->offer_price == null)
-                                        {{ number_format($single_product->price) }} AED 
-                                        @else {{ number_format($single_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($single_product->price) }} AED </del>  @endif
+    
+                                    <div class="product-details">
+                                        <h4 class="product-name">
+                                            <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
+                                        </h4>
+                                        <div class="product-price">
+                                            @if(empty($freq_product->offer_price) ||
+                                            $freq_product->offer_price == null)
+                                            {{ number_format($freq_product->price) }} AED 
+                                            @else {{ number_format($freq_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>  @endif
+                                        </div>
                                     </div>
                                     @else
-                                    <div class="current-product-price" data-curret-price ="@if(empty($single_product->offer_price) || $single_product->offer_price == null){{ number_format($single_product->price) }} @else {{ number_format($single_product->offer_price) }}@endif ">
-                                        @if(empty($single_product->offer_price) ||
-                                        $single_product->offer_price == null)
-                                        {{ number_format($single_product->price) }} د.أ 
-                                        @else {{ number_format($single_product->offer_price) }} د.أ  - <del style="color:#ccc;font-size:12px"> {{ number_format($single_product->price) }} د.أ </del>  @endif
+                                    <div class="product-details">
+                                        <h4 class="product-name">
+                                            <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->ar_title }}</a>
+                                        </h4>
+                                        <div class="product-price">
+                                            @if(empty($freq_product->offer_price) ||
+                                            $freq_product->offer_price == null)
+                                            {{ number_format($freq_product->price) }} د.أ 
+                                            @else {{ number_format($freq_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} د.أ </del>  @endif
+                                        </div>
                                     </div>
                                     @endif
+    
                                 </div>
+                                @endforeach
                             </div>
-                            @foreach ($freq_products as $freq_product)
-                            <div class="text-center product product-wrap">
-                                <figure class="product-media">
-                                    <img src="{{ $freq_product->image }}" alt="{{ $freq_product->title }}" style="width: 100% !important; height:150px !important"/>
-                                    <div class="product-checkbox">
-                                        <input type="checkbox" 
-                                        data-price=" @if(empty($freq_product->offer_price) ||$freq_product->offer_price == null) {{ $freq_product->price }} @else {{ $freq_product->offer_price }} @endif" 
-                                        data-id="{{ $freq_product->id }}" class="delcheck custom-checkbox" id="product_check{{ $freq_product->id }}"
-                                            name="product_check{{ $freq_product->id }}">
-                                        <label></label>
-                                    </div>
-                                </figure>
-                                @if(Config::get('app.locale') == 'en') 
-
-                                <div class="product-details">
-                                    <h4 class="product-name">
-                                        <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->title }}</a>
-                                    </h4>
-                                    <div class="product-price">
-                                        @if(empty($freq_product->offer_price) ||
-                                        $freq_product->offer_price == null)
-                                        {{ number_format($freq_product->price) }} AED 
-                                        @else {{ number_format($freq_product->offer_price) }} AED  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} AED </del>  @endif
-                                    </div>
-                                </div>
-                                @else
-                                <div class="product-details">
-                                    <h4 class="product-name">
-                                        <a href="{{ route('singleproduct',$freq_product->slug)  }}">{{ $freq_product->ar_title }}</a>
-                                    </h4>
-                                    <div class="product-price">
-                                        @if(empty($freq_product->offer_price) ||
-                                        $freq_product->offer_price == null)
-                                        {{ number_format($freq_product->price) }} د.أ 
-                                        @else {{ number_format($freq_product->offer_price) }} د.أ  - <del style="color:#ccc"> {{ number_format($freq_product->price) }} د.أ </del>  @endif
-                                    </div>
-                                </div>
-                                @endif
-
-                            </div>
-                            @endforeach
                             @php
                               $frequantly_boughts_ids = array();
                               foreach ($single_product->frequantly_boughts_ids as $prod_ids) {
                                   array_push($frequantly_boughts_ids,$prod_ids);
                               }  
                             @endphp
-                            @if(Config::get('app.locale') == 'en') 
-                            <div class="product-button">
-                                <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
-                                <div class="bought-count">For {{ $freq_products->count() }} items</div>
-                                <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
-                                   <span>Add All To Cart </span> 
-                                </button>
+                            <div class="col-4">
+                                @if(Config::get('app.locale') == 'en') 
+                                <div class="product-button">
+                                    <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                    <div class="bought-count">For {{ $freq_products->count() }} items</div>
+                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                       <span>Add All To Cart </span> 
+                                    </button>
+                                </div>
+                                @else
+                                <div class="product-button">
+                                    <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
+                                    <div class="bought-count">لاجل المنتجات المحددة</div>
+                                    <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
+                                       <span>اضافة جميع المنتجات </span> 
+                                    </button>
+                                </div>
+                                @endif
                             </div>
-                            @else
-                            <div class="product-button">
-                                <div id="total_frq_prices" data-prices="" class="total_frq_prices bought-price font-weight-bolder text-primary ls-50"> 0 AED</div>
-                                <div class="bought-count">لاجل المنتجات المحددة</div>
-                                <button data-freq-product-id="[]" id="add_to_cart" data-quantity="1"  class="freq-product-add-to-cart add-to-cart btn btn-primary btn-cart">
-                                   <span>اضافة جميع المنتجات </span> 
-                                </button>
-                            </div>
-                            @endif
                         </div>
                     </div>
                     @endif
