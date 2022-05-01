@@ -526,12 +526,18 @@
                                 </div>
                                 <hr class="product-divider">
                                 @if(Config::get('app.locale') == 'en') 
-                                <h4> Summary</h4> <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% OFF</small>
+                                <h4> Summary</h4> 
+                                @if (!empty($single_product->discound) || $single_product->discound != null)
+                                <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">
+                                {{ $single_product->discound }}% OFF</small>
+                                @endif
                                 <p>{!! $single_product->Summary !!}</p>
                                 @else
-                                <h4> ملخص</h4> <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% OFF</small>
-                                <p>{!! $single_product->ar_Summary !!}</p>
-                              
+                                <h4> ملخص</h4>
+                                @if (!empty($single_product->discound) || $single_product->discound != null)
+                                 <small style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}% خصم</small>
+                                 @endif
+                                <p>{!! $single_product->ar_Summary !!}</p> 
                                 @endif
 
                                 <hr class="product-divider">
@@ -732,7 +738,8 @@
                         <h2 class="title title-underline">يُباع معها أيضًا                        </h2>
 
                         @endif
-                        <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
+                        <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row d-flex">
+                            
                             <div class="text-center product product-wrap">
                                 <figure class="product-media">
                                     <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}" style="width: 100% !important; height:138px !important"/>
