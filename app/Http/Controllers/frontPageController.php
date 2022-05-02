@@ -239,7 +239,6 @@ class frontPageController extends Controller
     public function shop_child_cat(Request $request , $slug)
     {
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
-        dd($category_product);
         //get the sort value from the Ajax
     
         $sort = '';
@@ -274,6 +273,8 @@ class frontPageController extends Controller
             }
             
         }
+        dd($products);
+
         $count_product =  count($products);
         $route = 'Shop/prodcuts/sub_product';
         // Filter Section
