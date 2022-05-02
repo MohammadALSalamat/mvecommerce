@@ -130,13 +130,10 @@
                                 <figure class="product-media">
                                     <a href="product-default.html">
                                         @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product" width="300"
-                                            height="338"/>
-                                        <img src="{{ $other_image[1] }}" alt="Product" width="330"
-                                            height="338" />
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="width: 100%;height:200px !important;object-fit:contain;"/>
+                                        <img src="{{ $other_image[1] }}" alt="Product" style="width: 100%;height:200px !important;object-fit:contain;" />
                                             @else
-                                            <img src="{{ $other_image[0]}}" alt="Product" width="300"
-                                            height="338"/>
+                                            <img src="{{ $other_image[0]}}" alt="Product" style="width: 100%;height:200px !important;object-fit:contain;"/>
                                             @endif
                                     </a>
                                     <div class="product-action-horizontal">

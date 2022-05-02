@@ -272,7 +272,6 @@ class frontPageController extends Controller
             }
             
         }
-        dd($products);
 
         $count_product =  count($products);
         $route = 'Shop/prodcuts/sub_product';
