@@ -28,7 +28,7 @@
 
             <!-- Start of Shop Category -->
             @php
-            $sub_cat = \App\Models\category::where('parent_id',$category_product->id)->where('status',1)->where('id','!=',$category_product->id)->get();
+            $sub_cat = \App\Models\category::where('parent_id',$category_product->id)->where('status',1)->get();
             @endphp
             @if($sub_cat->count() > 0)
             <div class="shop-default-category category-ellipse-section mb-6">
