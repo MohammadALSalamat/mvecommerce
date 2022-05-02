@@ -14,13 +14,23 @@
       <tbody>
           @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
           @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content() as $item)
+          @php
+            $other_image = explode(',', $item->model->image);
+          @endphp
           <tr>
               <td class="product-thumbnail">
                   <div class="p-relative">
                       <a href="{{route('singleproduct',  $item->model->slug)  }}">
-                          <figure>
-                              <img src="{{  $item->model->image }} " alt="product" width="300" height="338">
-                          </figure>
+                          <figure class="product-media">
+                            @if(count($other_image) > 1)
+                            <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                            height: 90px !important;object-fit: contain;" />
+                             <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                             height: 90px !important;object-fit: contain;" />
+                             @else
+                             <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                             height: 90px !important;object-fit: contain;" />
+                             @endif                           </figure>
                       </a>
                       <button type="submit" class="btn btn-close delete_wishlist" data-id="{{ $item->rowId }}"><i
                               class="fas fa-times"></i></button>
@@ -39,9 +49,6 @@
               </td>
               <td class="wishlist-action">
                   <div class="d-lg-flex">
-                      <a href="#"
-                          class="btn btn-quickview btn-outline btn-default btn-rounded btn-sm mb-2 mb-lg-0">Quick
-                          View</a>
                       <a href="javascript:void(0)" data-id={{ $item->rowId }}
                           class="moveToCart btn btn-dark btn-rounded btn-sm ml-lg-2 btn-cart">Add to
                           cart</a>
@@ -74,12 +81,23 @@
       <tbody>
         @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
         @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content() as $item)
+        @php
+        $other_image = explode(',', $item->model->image);
+        @endphp
         <tr>
             <td class="product-thumbnail">
                 <div class="p-relative">
                     <a href="{{route('singleproduct',  $item->model->slug)  }}">
-                        <figure>
-                            <img src="{{  $item->model->image }} " alt="product" width="300" height="338">
+                        <figure class="product-media">
+                            @if(count($other_image) > 1)
+                            <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                            height: 90px !important;object-fit: contain;" />
+                             <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                             height: 90px !important;object-fit: contain;" />
+                             @else
+                             <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                             height: 90px !important;object-fit: contain;" />
+                             @endif 
                         </figure>
                     </a>
                     <button type="submit" class="btn btn-close delete_wishlist" data-id="{{ $item->rowId }}"><i
@@ -99,8 +117,8 @@
               </td>
               <td class="wishlist-action">
                   <div class="d-lg-flex">
-                      <a href="javascript:void(0)" data-id={{ $item->rowId }}
-                          class="moveToCart btn btn-dark btn-rounded btn-sm ml-lg-2 btn-cart">أضافة للسلة</a>
+                    <a href="javascript:void(0)" data-id={{ $item->rowId }}
+                        class="moveToCart btn btn-dark btn-rounded btn-sm ml-lg-2 btn-cart">أضافة للسلة</a>
                   </div>
               </td>
           </tr>

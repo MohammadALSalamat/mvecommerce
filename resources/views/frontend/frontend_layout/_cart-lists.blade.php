@@ -20,7 +20,7 @@
                    <td class="product-thumbnail">
                        <div class="p-relative">
                            <a href="{{ route('singleproduct',$item->model->slug) }}">
-                               <figure>
+                               <figure class="product-media">
                                 @if(count($other_image) > 1)
                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                 height: 90px !important;object-fit: contain;" />
@@ -54,7 +54,6 @@
                        <span class="amount">AED {{ $item->subtotal() }}</span>
                    </td>
                </tr>
-
                @endforeach
            </tbody>
        </table>
@@ -217,7 +216,7 @@
                 <td class="product-thumbnail">
                     <div class="p-relative">
                         <a href="{{ route('singleproduct',$item->model->slug) }}">
-                            <figure>
+                            <figure class="product-media">
                                 @if(count($other_image) > 1)
                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                 height: 90px !important;object-fit: contain;" />
@@ -226,7 +225,8 @@
                                  @else
                                  <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                  height: 90px !important;object-fit: contain;" />
-                                 @endif                             </figure>
+                                 @endif 
+                                                            </figure>
                         </a>
                         <button type="submit" class="btn btn-close cart_delete" aria-label="button"
                             data-id="{{ $item->rowId }}"><i class="fas fa-times"></i></button>
