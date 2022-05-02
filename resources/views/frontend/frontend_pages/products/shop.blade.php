@@ -159,10 +159,6 @@
                                                      <!--Add to wishlist funtion -->
                                                 <a href="javascript:void(0)" data-id="{{ $product->id }}" id="add_to_wishlist{{ $product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                     title="Wishlist"></a>
-
-
-                                                <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                    title="Compare"></a>
                                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quickview{{ $product->id }}" class="btn-product-icon btn-quickview w-icon-search"
                                                     title="Quick View"></a>
                                             </div>
@@ -194,7 +190,6 @@
                                             @endif></span>
                                                     <span class="tooltiptext tooltip-top"></span>
                                                 </div>
-                                                <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
                                             </div>
                                             <div class="product-pa-wrapper">
                                                 <div class="product-price">
