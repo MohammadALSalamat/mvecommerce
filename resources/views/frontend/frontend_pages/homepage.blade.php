@@ -922,6 +922,8 @@
                         @endif
                         @endforeach
                     </div>
+                    <button class="swiper-button-prev"></button>
+                            <button class="swiper-button-next"></button>
                 </div>
             </div>
         </div>
@@ -1370,7 +1372,7 @@
                                                 @endif></span>
                                             <span class="tooltiptext tooltip-top"></span>
                                         </div>
-                                        <a href="product-default.html"
+                                        <a href="{{  route('singleproduct',$products_cat->slug)  }}"
                                             class="rating-reviews">({{ $avareg_review->count() }}
                                             reviews)</a>
                                     </div>
@@ -1386,10 +1388,13 @@
                                 </div>
                             </div>
                         </div>
+                        <button class="swiper-button-prev"></button>
+                        <button class="swiper-button-next"></button>
                         <!-- The Modal -->
                         @endforeach
                     </div>
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1512,7 +1517,7 @@
                                                 @endif></span>
                                             <span class="tooltiptext tooltip-top"></span>
                                         </div>
-                                        <a href="product-default.html"
+                                        <a href="{{ route('singleproduct',$products_cat->slug) }}"
                                             class="rating-reviews">({{ $avareg_review->count() }}
                                             reviews)</a>
                                     </div>
