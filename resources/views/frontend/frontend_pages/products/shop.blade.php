@@ -140,7 +140,7 @@
                                     <div class="text-center product">
                                         <figure class="product-media" >
                                             <a href="{{ route('singleproduct', $product->slug) }}">
-                                                @if(count($other_image) > 1 && count($other_image) < 2)
+                                                @if(count($other_image) > 1)
                                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                                 height: 150px !important;object-fit: contain;" />
                                                  <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;

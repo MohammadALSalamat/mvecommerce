@@ -160,8 +160,15 @@
                                 </div>
                                 <figure class="product-media">
                                     <a href="{{ route('singleproduct',$item->model->slug) }}">
-                                        <img src="{{ $other_image[0] }}" alt="product" height="84" width="94" />
-                                    </a>
+                                        @if(count($other_image) > 1)
+                                        <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                        height: 90px !important;object-fit: contain;" />
+                                         <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                         height: 90px !important;object-fit: contain;" />
+                                         @else
+                                         <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                         height: 90px !important;object-fit: contain;" />
+                                         @endif                                    </a>
                                 </figure>
                                 <button class="btn btn-link btn-close cart_delete" aria-label="button"
                                     data-id="{{ $item->rowId }}">
