@@ -60,14 +60,14 @@
                         <div class="swiper-slide category-wrap">
                             <div class="category category-ellipse">
                                 <figure class="category-media">
-                                    <a href="shop-banner-sidebar.html">
+                                    <a href="{{ route('shop_child_cat',$single_cat->slug) }}">
                                         <img src="{{ asset($single_cat->image) }}" alt="Categroy"
                                             style="width: 100%;height:130px !important;object-fit:contain;background:#fff"  />
                                     </a>
                                 </figure>
                                 <div class="category-content">
                                     <h4 class="category-name">
-                                        <a href="shop-banner-sidebar.html">{{ $single_cat->title }}</a>
+                                        <a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->title }}</a>
                                     </h4>
                                 </div>
                             </div>
