@@ -252,24 +252,23 @@ class frontPageController extends Controller
             if($sort == 'price-low'){
 
             }elseif($sort == 'price-low'){
-            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'category_id'=>$category_product->id])->paginate(12);
+            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'child_category_id'=>$category_product->id])->paginate(12);
             } elseif ($sort == 'price-high') {
-                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
             } elseif ($sort == 'alpha-asc') {
-                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'alpha-desc') {
-                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'discountLTH') {
-                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'discountHTL') {
-                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
 
             }else{
-                $products = product::where(['status' => 1, 'category_id' => $category_product->id])->paginate(50);
-
+                $products = product::where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(50);
             }
             
         }
