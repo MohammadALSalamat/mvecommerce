@@ -422,8 +422,7 @@
                                     'navigation': {
                                         'nextEl': '.swiper-button-next',
                                         'prevEl': '.swiper-button-prev'
-                                    }
-                                }">
+                                    }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide">
                                             <figure class="product-image">

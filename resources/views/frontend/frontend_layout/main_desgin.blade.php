@@ -74,9 +74,10 @@
     <div class="page-wrapper">
         <!-- Start of Header -->
         <header class="header" id="header-ajax">
-            @include('frontend.frontend_layout.header')
+        @include('frontend.frontend_layout.header')
         </header>
         @yield('content')
+        
         @include('frontend.frontend_layout.footer')
 
     </div>

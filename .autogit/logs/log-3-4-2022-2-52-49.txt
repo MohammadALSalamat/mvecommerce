@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 02:52:49 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_pages/products/single_product.blade.php
+
+
+Created files:
+* .autogit/logs/log-3-4-2022-2-39-19.txt
+
+
+Deleted files:
+
+
+Renamed files:
