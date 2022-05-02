@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 02:25:43 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_layout/main_desgin.blade.php
+
+
+Created files:
+* .autogit/logs/log-3-4-2022-2-12-13.txt
+
+
+Deleted files:
+
+
+Renamed files:

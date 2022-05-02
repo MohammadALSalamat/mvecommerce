@@ -703,14 +703,11 @@
     <script src="{{ asset('front-style/assets/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script> 
-    <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.js') }}"></script>
-    <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe-ui-default.js') }}"></script>
     <script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/skrollr/skrollr.min.js')}}"></script>
-
-    <!-- Swiper JS -->
+    
+    <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script> 
     <script src="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
     <!-- Main JS -->

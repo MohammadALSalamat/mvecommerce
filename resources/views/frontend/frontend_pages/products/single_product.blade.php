@@ -1,6 +1,7 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle',$single_product->title )
 @section('style')
+
 <style>
     .carousel-item {
         width: 100%;
