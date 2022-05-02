@@ -238,50 +238,50 @@ class frontPageController extends Controller
     //still empty 
     public function shop_child_cat(Request $request , $slug)
     {
-        $Products_has_same_sub_category = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
+        $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
         //get the sort value from the Ajax
     
         $sort = '';
         if($request->sort != null){
             $sort = $request->sort; // get the value
         }
-        if($Products_has_same_sub_category == null){
+        if($category_product == null){
             return view('errors.404');
         }else{
             //start the sort depends on the valueof ajax
             if($sort == 'price-low'){
 
             }elseif($sort == 'price-low'){
-            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'category_id'=>$Products_has_same_sub_category->id])->paginate(12);
+            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'category_id'=>$category_product->id])->paginate(12);
             } elseif ($sort == 'price-high') {
-                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
             } elseif ($sort == 'alpha-asc') {
-                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'alpha-desc') {
-                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'discountLTH') {
-                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
 
             } elseif ($sort == 'discountHTL') {
-                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
 
             }else{
-                $products = product::where(['status' => 1, 'category_id' => $Products_has_same_sub_category->id])->paginate(12);
+                $products = product::where(['status' => 1, 'category_id' => $category_product->id])->paginate(50);
 
             }
             
         }
         $count_product =  count($products);
-        $route = 'Shop/prodcuts/sub_product';
+        $route = 'Shop/prodcuts/category_child';
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
-        $main_vendors = Seller::where('status', 1)->where('added_by','seller')->get();
+        $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
-        return view('frontend.frontend_pages.products.shop_child_cat',compact('Products_has_same_sub_category', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
+        return view('frontend.frontend_pages.products.shop_child_cat',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
     public function Single_product($slug)
     {
