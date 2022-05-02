@@ -435,7 +435,6 @@
                                                     alt="{{ $single_product->title }}" width="800" height="900">
                                             </figure>
                                         </div>
-                                        
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
@@ -448,14 +447,14 @@
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
-                                    <a href="#" class="product-gallery-btn product-image-full"><i class="w-icon-zoom"></i></a>
+                                    <a href="#" class="product-gallery-btn product-image-full"><i
+                                            class="w-icon-zoom"></i></a>
                                 </div>
                                 <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
                                     'navigation': {
                                         'nextEl': '.swiper-button-next',
                                         'prevEl': '.swiper-button-prev'
-                                    }
-                                }">
+                                    }  }">
                                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                         <div class="product-thumb swiper-slide">
                                             <img src="{{ asset($other_image[0]) }}" alt="Product Thumb" width="800"
@@ -579,8 +578,7 @@
                                 </div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
-                                        <span class="ratings" 
-                                        @if (number_format($avareg,1)==5) style="width: 100%;"
+                                        <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
                                             @elseif(number_format($avareg,1)>= 4.5)
                                             style="width: 90%;"
                                             @elseif(number_format($avareg,1) >= 4)
@@ -1233,8 +1231,7 @@
                                                     <p class="mb-1 text-dark">متوسظ التقييم</p>
                                                     <div class="ratings-container">
                                                         <div class="ratings-full">
-                                                            <span class="ratings" 
-                                                            @if (number_format($avareg,1)==5)
+                                                            <span class="ratings" @if (number_format($avareg,1)==5)
                                                                 style="width: 100%;" @elseif(number_format($avareg,1)>=
                                                                 4.5)
                                                                 style="width: 90%;"
@@ -1518,7 +1515,8 @@
                                         </h4>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
-                                                @if(empty($related_products->offer_price) || $related_products->offer_price  == null)
+                                                @if(empty($related_products->offer_price) ||
+                                                $related_products->offer_price == null)
                                                 {{ $related_products->price }} AED
                                                 @else
                                                 <del>{{ $related_products->price }} AED </del> -
@@ -1529,7 +1527,8 @@
                                     @else
                                     <div class="product-details text-center">
                                         <h4 class="product-name">
-                                            <a href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a>
+                                            <a
+                                                href="{{ route('singleproduct', $related_products->slug) }}">{{ $related_products ->ar_title}}</a>
                                         </h4>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
@@ -1674,50 +1673,52 @@
                                             <div class="widget-col swiper-slide">
                                                 @foreach ($more_products_left_side as $item )
                                                 @php
-                                                $avareg_review = \App\Models\ProductReview::where('product_id',$item->id)->get();
-                                                #review rateing 
+                                                $avareg_review =
+                                                \App\Models\ProductReview::where('product_id',$item->id)->get();
+                                                #review rateing
                                                 $avareg = 0;
                                                 $sum = 0;
                                                 foreach($avareg_review as $avg){
-                                                    $sum += $avg->rate;
-                                                    $countavg = count($avareg_review);
-                                                    $avareg = $sum / $countavg;
-                                                    }                                       
+                                                $sum += $avg->rate;
+                                                $countavg = count($avareg_review);
+                                                $avareg = $sum / $countavg;
+                                                }
                                                 @endphp
                                                 @if(Config::get('app.locale') == 'en')
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
                                                         <a href="{{ route('singleproduct',$item->slug) }}">
-                                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
-                                                                width="100" height="113" />
+                                                            <img src="{{ asset($item->image) }}"
+                                                                alt="{{ $item->title }}" width="100" height="113" />
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">
                                                         <h4 class="product-name">
-                                                            <a href="{{ route('singleproduct',$item->slug) }}">{{ $item->title }}</a>
+                                                            <a
+                                                                href="{{ route('singleproduct',$item->slug) }}">{{ $item->title }}</a>
                                                         </h4>
                                                         <div class="ratings-container">
                                                             <div class="ratings-full">
-                                                                <span class="ratings" 
-                                                                @if (number_format($avareg,1)==5)
-                                                                style="width: 100%;" @elseif(number_format($avareg,1)>=
-                                                                4.5)
-                                                                style="width: 90%;"
-                                                                @elseif(number_format($avareg,1) >= 4)
-                                                                style="width: 80%;"
-                                                                @elseif(number_format($avareg,1) >= 3.5)
-                                                                style="width: 70%;"
-                                                                @elseif(number_format($avareg,1) >= 3)
-                                                                style="width: 60%;"
-                                                                @elseif(number_format($avareg,1) >= 2.5)
-                                                                style="width: 50%;"
-                                                                @elseif(number_format($avareg,1) >= 2)
-                                                                style="width: 40%;"
-                                                                @else
-                                                                style="width: 20%;"
-                                                                @endif
+                                                                <span class="ratings" @if (number_format($avareg,1)==5)
+                                                                    style="width: 100%;"
+                                                                    @elseif(number_format($avareg,1)>=
+                                                                    4.5)
+                                                                    style="width: 90%;"
+                                                                    @elseif(number_format($avareg,1) >= 4)
+                                                                    style="width: 80%;"
+                                                                    @elseif(number_format($avareg,1) >= 3.5)
+                                                                    style="width: 70%;"
+                                                                    @elseif(number_format($avareg,1) >= 3)
+                                                                    style="width: 60%;"
+                                                                    @elseif(number_format($avareg,1) >= 2.5)
+                                                                    style="width: 50%;"
+                                                                    @elseif(number_format($avareg,1) >= 2)
+                                                                    style="width: 40%;"
+                                                                    @else
+                                                                    style="width: 20%;"
+                                                                    @endif
 
-                                                                ></span>
+                                                                    ></span>
                                                                 <span class="tooltiptext tooltip-top"></span>
                                                             </div>
                                                         </div>
@@ -1734,35 +1735,36 @@
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
                                                         <a href="{{ route('singleproduct',$item->slug) }}">
-                                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
-                                                                width="100" height="113" />
+                                                            <img src="{{ asset($item->image) }}"
+                                                                alt="{{ $item->title }}" width="100" height="113" />
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">
                                                         <h4 class="product-name">
-                                                            <a href="{{ route('singleproduct',$item->slug) }}">{{ $item->ar_title }}</a>
+                                                            <a
+                                                                href="{{ route('singleproduct',$item->slug) }}">{{ $item->ar_title }}</a>
                                                         </h4>
-                                                        
+
                                                         <div class="ratings-container">
                                                             <div class="ratings-full">
-                                                                <span class="ratings" 
-                                                                @if (number_format($avareg,1)==5)
-                                                                style="width: 100%;" @elseif(number_format($avareg,1)>= 4.5)
-                                                                style="width: 90%;"
-                                                                @elseif(number_format($avareg,1) >= 4)
-                                                                style="width: 80%;"
-                                                                @elseif(number_format($avareg,1) >= 3.5)
-                                                                style="width: 70%;"
-                                                                @elseif(number_format($avareg,1) >= 3)
-                                                                style="width: 60%;"
-                                                                @elseif(number_format($avareg,1) >= 2.5)
-                                                                style="width: 50%;"
-                                                                @elseif(number_format($avareg,1) >= 2)
-                                                                style="width: 40%;"
-                                                                @else
-                                                                style="width: 20%;"
-                                                                @endif
-                                                                ></span>
+                                                                <span class="ratings" @if (number_format($avareg,1)==5)
+                                                                    style="width: 100%;"
+                                                                    @elseif(number_format($avareg,1)>= 4.5)
+                                                                    style="width: 90%;"
+                                                                    @elseif(number_format($avareg,1) >= 4)
+                                                                    style="width: 80%;"
+                                                                    @elseif(number_format($avareg,1) >= 3.5)
+                                                                    style="width: 70%;"
+                                                                    @elseif(number_format($avareg,1) >= 3)
+                                                                    style="width: 60%;"
+                                                                    @elseif(number_format($avareg,1) >= 2.5)
+                                                                    style="width: 50%;"
+                                                                    @elseif(number_format($avareg,1) >= 2)
+                                                                    style="width: 40%;"
+                                                                    @else
+                                                                    style="width: 20%;"
+                                                                    @endif
+                                                                    ></span>
                                                                 <span class="tooltiptext tooltip-top"></span>
                                                             </div>
                                                         </div>
