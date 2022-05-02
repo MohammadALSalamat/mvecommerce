@@ -13,13 +13,23 @@
            </thead>
            <tbody>
                @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
+               @php
+                            $other_image = explode(',', $item->model->image);
+               @endphp
                <tr>
                    <td class="product-thumbnail">
                        <div class="p-relative">
                            <a href="{{ route('singleproduct',$item->model->slug) }}">
                                <figure>
-                                   <img src="{{ $item->model->image }}" alt="product" width="300" height="338">
-                               </figure>
+                                @if(count($other_image) > 1)
+                                <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                height: 90px !important;object-fit: contain;" />
+                                 <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                 height: 90px !important;object-fit: contain;" />
+                                 @else
+                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                 height: 90px !important;object-fit: contain;" />
+                                 @endif                                </figure>
                            </a>
                            <button type="submit" class="btn btn-close cart_delete" aria-label="button"
                                data-id="{{ $item->rowId }}"><i class="fas fa-times"></i></button>
@@ -200,13 +210,23 @@
         </thead>
         <tbody>
             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
+            @php
+            $other_image = explode(',', $item->model->image);
+@endphp
             <tr>
                 <td class="product-thumbnail">
                     <div class="p-relative">
                         <a href="{{ route('singleproduct',$item->model->slug) }}">
                             <figure>
-                                <img src="{{ $item->model->image }}" alt="product" width="300" height="338">
-                            </figure>
+                                @if(count($other_image) > 1)
+                                <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                height: 90px !important;object-fit: contain;" />
+                                 <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                 height: 90px !important;object-fit: contain;" />
+                                 @else
+                                 <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                 height: 90px !important;object-fit: contain;" />
+                                 @endif                             </figure>
                         </a>
                         <button type="submit" class="btn btn-close cart_delete" aria-label="button"
                             data-id="{{ $item->rowId }}"><i class="fas fa-times"></i></button>
