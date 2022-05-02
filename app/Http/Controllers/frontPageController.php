@@ -275,6 +275,8 @@ class frontPageController extends Controller
 
         $count_product =  count($products);
         $route = 'Shop/prodcuts/sub_product';
+       
+
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors

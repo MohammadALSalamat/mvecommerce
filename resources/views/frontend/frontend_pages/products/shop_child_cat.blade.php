@@ -16,19 +16,19 @@
             <!-- Start of Shop Banner -->
             <div class="shop-default-banner banner d-flex align-items-center mb-5 br-xs"
                 style="background-image: url(assets/images/shop/banner1.jpg); background-color: #FFC74E;">
-                <div class="banner-content">
+                {{-- <div class="banner-content">
                     <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
                     <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-normal">Smart Wrist
                         Watches</h3>
                     <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
                         Now<i class="w-icon-long-arrow-right"></i></a>
-                </div>
+                </div> --}}
             </div>
             <!-- End of Shop Brands-->
 
             <!-- Start of Shop Category -->
             @php
-            $sub_cat = \App\Models\category::where('parent_id',$category_product->id)->where('status',1)->get();
+            $sub_cat = \App\Models\category::where('parent_id',$category_product->parent_id)->where('id','!=',$category_product->id)->where('status',1)->get();
             @endphp
             @if($sub_cat->count() > 0)
             <div class="shop-default-category category-ellipse-section mb-6">
@@ -60,14 +60,14 @@
                         <div class="swiper-slide category-wrap">
                             <div class="category category-ellipse">
                                 <figure class="category-media">
-                                    <a href="shop-banner-sidebar.html">
+                                    <a href="{{ route('shop_child_cat',$single_cat->slug) }}">
                                         <img src="{{ asset($single_cat->image) }}" alt="Categroy"
                                             style="width: 100%;height:130px !important;object-fit:contain;background:#fff"  />
                                     </a>
                                 </figure>
                                 <div class="category-content">
                                     <h4 class="category-name">
-                                        <a href="shop-banner-sidebar.html">{{ $single_cat->title }}</a>
+                                        <a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->title }}</a>
                                     </h4>
                                 </div>
                             </div>
