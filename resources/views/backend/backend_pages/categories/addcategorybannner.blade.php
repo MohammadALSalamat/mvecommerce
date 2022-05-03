@@ -67,7 +67,6 @@
 </style>
 @endsection
 @section('content')
-
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -86,60 +85,87 @@
             </div>
         </div>
         <div class="content-body">
-        <!-- // Images Gallary for the product -->
-        <section class="basic-select2">
-            <div class="row">
-                <div class="col-xl-7 col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Add Category Banners</h4>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
-                                </ul>
+            <!-- // Images Gallary for the product -->
+            <section class="basic-select2">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Category Banners</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-content collapse show">
-                            <form class="form form-horizontal"
-                                action="{{ route('admin_create_categorybanners') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div id="productAttr1" style="overflow: scroll; padding-left:10px;height:220px"
-                                    data-mfield-options='{"section": ".group","btnAdd":"#btnAdd-1","btnRemove":".btnRemove"}'>
-                                    <div class="row">
-                                        <div class="col-md-12"><button type="button" id="btnAdd-1"
-                                                class="btn btn-sm mb-2 btn-primary"><i class="la la-plus"></i>Add New Banner
-                                            </button></div>
-                                    </div>
-                                    <div class="row group mb-2">
-                                        <div class="col-md-9">
-                                                <label for="">Image</label>
-                                               <input type="file" name="image[]" class=" form-control form-control-file">
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <button type="button" class="btn btn-sm mt-2 btn-danger btnRemove"><i
-                                                    class="ft-trash-2"></i></button>
+                            <div class="card-content collapse show">
+                                <form class="form form-horizontal" action="{{ route('create_category_banner') }}"
+                                    method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group row" style="padding:20px">
+                                        <div class="col-md-12">
+                                            <label for="">Place Of Show</label>
+                                            <select class="form-control form-control-sm" name="category_id" id="size">
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-actions" style="padding-left: 10px">
-                                    <button type="button" class="mr-1 btn btn-warning">
-                                        <i class="ft-x"></i> Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> Save
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="form-group row" style="padding:20px">
+                                        <div class="input-group col-md-12">
+                                            <span class="input-group-btn">
+                                                <a id="lfm" data-input="thumbnail" data-preview="holder"
+                                                    class="btn btn-light">
+                                                    <i class="fa fa-picture-o"></i> Banner Image English
+                                                </a>
+                                            </span>
+                                            <input id="thumbnail" class="form-control" type="text" name="en_image">
+                                        </div>
+                                        <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                                    </div>
+                                    <div class="form-group row" style="padding:20px">
+
+                                        <div class="input-group col-md-12">
+                                            <span class="input-group-btn">
+                                                <a id="lfm1" data-input="thumbnail1" data-preview="holder1"
+                                                    class="btn btn-light">
+                                                    <i class="fa fa-picture-o"></i> Banner Image Arabic
+                                                </a>
+                                            </span>
+                                            <input id="thumbnail1" class="form-control" type="text" name="ar_image">
+                                        </div>
+                                        <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
+                                    </div>
+                                    <div class="form-group row" style="padding:20px">
+                                        <div class="col-md-12">
+                                            <label for="stock">Seller Url Shop</label>
+                                            <select class="form-control form-control-sm" name="seller_id" id="seller">
+                                                @foreach ($sellers as $seller)
+                                                <option value="{{ $seller->id }}">{{ $seller->shop_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions" style="padding: 20px">
+                                        <button type="button" class="mr-1 btn btn-warning">
+                                            <i class="ft-x"></i> Cancel
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="la la-check-square-o"></i> Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-12">
+                <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Data Table Of Category Banners</h4>
@@ -154,19 +180,29 @@
                             </div>
                         </div>
                         <div class="card-content collapse show">
-                            <table class="table table-striped table-bordered file-export table-responsive"  style="min-height:300px;max-height:300px;overflow:scroll">
+                            <table class="table table-striped table-bordered file-export table-responsive"
+                                style="min-height:300px;max-height:300px;overflow:scroll">
                                 <thead>
                                     <tr>
                                         <th>Ccategory Name</th>
-                                        <th>Banners</th>
+                                        <th>Banners English</th>
+                                        <th>Banners Arabic</th>
+                                        <th>Seller Name</th>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ProductGallary as $attr )
+                                    @foreach ($categorybanners as $attr )
+                                    @php
+                                        $category_details = \App\Models\category::where('id',$attr->category_place_id)->value('title')
+                                        $seller_details = \App\Models\Seller::where('id',$attr->category_place_id)->value('shop_name')
+                                    @endphp
                                     <tr>
-                                        <td>{{ $current_product->title }}</td>
-                                        <td><img src="{{ asset('storage/popups/'.$attr->gallery) }}" width="100px"></td>
+                                        <td>{{ $category_details }}</td>
+                                        <td><img src="{{ asset($attr->image_English) }}" width="100px"></td>
+                                        <td><img src="{{ asset($attr->image_Arabic) }}" width="100px"></td>
+                                        <td>{{ $seller_details }}</td>
+                                        
                                         <td>
                                             <span class="dropdown">
                                                 <button id="btnSearchDrop2" type="button" data-toggle="dropdown"
@@ -175,8 +211,8 @@
                                                         class="ft-settings"></i></button>
                                                 <span aria-labelledby="btnSearchDrop2"
                                                     class="mt-1 dropdown-menu dropdown-menu-right">
-
-                                                    <form action="{{ route('admin_gallary_deletproductAttr',$attr->id) }}"
+                                                    <form
+                                                        action="{{ route('admin_gallary_deletproductAttr',$attr->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <a href="" id="cancel-delete" class="dropdown-item dltbtn">
@@ -193,26 +229,25 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         </section>
 
-            <!-- // Basic form layout section end -->
-        </div>
+        <!-- // Basic form layout section end -->
     </div>
+</div>
 </div>
 @endsection
 @section('script')
 
-<script src="{{ asset('app-assets/js/core/jquery.multifield.min.js') }}"></script>
 <!--sweet alert -->
 <script src="{{ asset('app-assets/js/scripts/extensions/sweet-alerts.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/vendors/js/extensions/sweetalert.min.js') }}" type="text/javascript"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-    $('#productAttr').multifield();
+    $('#lfm,#lfm1').filemanager('image');
 </script>
-
 <!-- delete AJAX CODE -->
 <script>
     $.ajaxSetup({

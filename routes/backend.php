@@ -12,9 +12,11 @@ use App\Http\Controllers\ShippingController;
 
 use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\AdminviewController;
+use App\Http\Controllers\CategoryBannerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\SponserAdsController;
+use App\Models\categoryBanner;
 
 // ADMIN LOGIN FORM 
 Route::group(['prefix'=>'admin'],function(){
@@ -56,7 +58,8 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::match(['get', 'post'], '/update_category/{id}', [CategoryController::class, 'updateCategory'])->name('updatecategories');
     Route::match(['get', 'post'], '/deletcategory/{id}', [CategoryController::class, 'deletCategory'])->name('deletcategories');
     // categories banners
-    Route::get('/create_category/banners', [CategoryController::class, '    createcategoriesbanners'])->name('createcategoriesbanners');
+    Route::get('/create_category/banners', [CategoryBannerController::class, 'createcategoriesbanners'])->name('createcategoriesbanners');
+    Route::post('/add_create_category/banners', [CategoryBannerController::class, 'create_category_banner'])->name('create_category_banner');
 
 
     

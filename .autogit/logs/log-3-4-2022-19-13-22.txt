@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 19:13:22 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* database/migrations/2022_05_03_135817_create_category_banners_table.php
+
+
+Created files:
+* .autogit/logs/log-3-4-2022-18-59-56.txt
+
+
+Deleted files:
+
+
+Renamed files:
