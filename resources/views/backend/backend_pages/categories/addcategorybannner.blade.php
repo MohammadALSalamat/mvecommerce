@@ -194,8 +194,8 @@
                                 <tbody>
                                     @foreach ($categorybanners as $attr )
                                     @php
-                                        $category_details = \App\Models\category::where('id',$attr->category_place_id)->value('title')
-                                        $seller_details = \App\Models\Seller::where('id',$attr->category_place_id)->value('shop_name')
+                                        $category_details = \App\Models\category::where('id',$attr->category_place_id)->value('title');
+                                        $seller_details = \App\Models\Seller::where('id',$attr->seller_id)->value('shop_name');
                                     @endphp
                                     <tr>
                                         <td>{{ $category_details }}</td>

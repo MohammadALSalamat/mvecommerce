@@ -24,8 +24,8 @@ class CategoryBannerController extends Controller
         $newcategorybanner = new categoryBanner();
         $newcategorybanner->seller_id = $data['seller_id'];
         $newcategorybanner->category_place_id = $data['category_id'];
-        $newcategorybanner->image_English = $data['category_id'];
-        $newcategorybanner->image_Arabic = $data['category_id'];
+        $newcategorybanner->image_English = $data['en_image'];
+        $newcategorybanner->image_Arabic = $data['ar_image'];
         $newcategorybanner->save();
 
         return back()->with('message','The banner has been added');
