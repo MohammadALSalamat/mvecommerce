@@ -617,8 +617,8 @@
                                     </ul>
                                     @endif
                                 </div>
+                                @if($product_attr->count() !== 0)
                                 @if (Config::get('app.locale')=='en')
-                                @if($product_attr->count() !== 0))
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
                                     <label for="sel1" style="font-size: 20px;">Select Size:</label>
@@ -1682,13 +1682,21 @@
                                                 $countavg = count($avareg_review);
                                                 $avareg = $sum / $countavg;
                                                 }
+                                                $other_image = explode(',',$item->image);
                                                 @endphp
                                                 @if(Config::get('app.locale') == 'en')
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
                                                         <a href="{{ route('singleproduct',$item->slug) }}">
-                                                            <img src="{{ asset($item->image) }}"
-                                                                alt="{{ $item->title }}" width="100" height="113" />
+                                                            @if(count($other_image) > 1 )
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:100px !important; width:100% !important;object-fit:contain" />
+                                        <img src="{{ $other_image[1] }}" alt="Product"
+                                            style="height:100px !important; width:100% !important;object-fit:contain" />
+                                        @else
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:100px !important; width:100% !important;object-fit:contain" />
+                                        @endif
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">

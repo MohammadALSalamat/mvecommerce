@@ -231,7 +231,7 @@
                                             <hr class="divider">
                                             <ul>
                                                 @foreach ($sub_cat as $single_cat )
-                                                <li><a href="{{ route('shop_special_category',$category->slug) }}">{{$single_cat->title}}</a></li>
+                                                <li><a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{$single_cat->title}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>

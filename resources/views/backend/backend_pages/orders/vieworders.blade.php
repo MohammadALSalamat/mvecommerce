@@ -106,12 +106,13 @@
                               if(count($quantity) > 3){
                                 $last_items = array_slice($quantity, -3, 3, true);
                               }
+                              $other_image = explode(',', $items->image);
                             @endphp
                             @foreach ($order->product as $items)
                             <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
                             class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $items->image }}"
+                              src="{{ $other_image[0] }}"
                               alt="{{ $items->title }}">
                             </li>
                             @endforeach
