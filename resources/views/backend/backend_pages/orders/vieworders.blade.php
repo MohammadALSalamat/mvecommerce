@@ -107,12 +107,13 @@
                                 $last_items = array_slice($quantity, -3, 3, true);
                               }
                               $other_image = explode(',', $items->image);
+                             dump($other_image);
                             @endphp
                             @foreach ($order->product as $items)
                             <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
                             class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}"
+                              src="{{ $$other_image[$key] }}"
                               alt="{{ $items->title }}">
                             </li>
                             @endforeach
