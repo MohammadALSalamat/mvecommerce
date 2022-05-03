@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 17:39:23 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/backend/backend_layoute/left_sidebar.blade.php
+* resources/views/backend/backend_pages/dashboard.blade.php
+* routes/backend.php
+
+
+Created files:
+* .autogit/logs/log-3-4-2022-17-25-57.txt
+
+
+Deleted files:
+
+
+Renamed files:
