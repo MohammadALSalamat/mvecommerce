@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 17:25:57 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/backend/backend_pages/orders/vieworders.blade.php
+
+
+Created files:
+* .autogit/logs/log-3-4-2022-17-12-32.txt
+
+
+Deleted files:
+
+
+Renamed files:

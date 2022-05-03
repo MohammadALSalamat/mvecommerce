@@ -55,6 +55,11 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::get('/edit_category/{id}', [CategoryController::class, 'editCategory'])->name('editcategories');
     Route::match(['get', 'post'], '/update_category/{id}', [CategoryController::class, 'updateCategory'])->name('updatecategories');
     Route::match(['get', 'post'], '/deletcategory/{id}', [CategoryController::class, 'deletCategory'])->name('deletcategories');
+    // categories banners
+    Route::get('/create_category/banners', [CategoryController::class, '    createcategoriesbanners'])->name('createcategoriesbanners');
+
+
+    
 
     // get child category
     Route::post('/category/{id}/child',[CategoryController::class,'get_category_child_by_parent_id']);

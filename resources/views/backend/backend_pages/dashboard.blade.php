@@ -162,7 +162,9 @@
                     
                     </thead>
                     <tbody>
+                      
                         @foreach ($Orders as $order)
+                       
                         <tr>
                           <td class="text-truncate">
                             @if ($order->payment_status == 1)
@@ -184,12 +186,20 @@
                           <td class="text-truncate p-1">
                             <ul class="list-unstyled users-list m-0">
                               @foreach ( $order->product as $items)
-                                
+                              @php
+                              $other_image = explode(',', $items->image);
+                            @endphp
                               <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
                               class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                                src="{{ $items->image }}"
-                                alt="{{ $items->title }}">
+                              @if (count($other_image) > 1)
+                              <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
+                              src="{{ $other_image[0]}}"
+                              alt="{{ $items->title }}">
+                              @else
+                              <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
+                              src="{{ $items->image}}"
+                              alt="{{ $items->title }}">
+                              @endif
                               </li>
                               @if($items->pivot->quantity > 3)
                               <li class="avatar avatar-sm">

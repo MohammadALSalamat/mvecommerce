@@ -30,6 +30,8 @@
             </li>
              <li><a class="menu-item" href="{{ route('createcategories') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Category</a>
             </li>
+            <li><a class="menu-item" href="{{ route('createcategoriesbanners') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">Add Category Banners</a>
+            </li>
           </ul>
         </li>
         <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">Orders Management</span></a>
