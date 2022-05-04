@@ -13,7 +13,7 @@ class CategoryBannerController extends Controller
 {
     public function createcategoriesbanners()
     {
-        $categories = category::where('status',1)->get();
+        $categories = category::where('is_parent',0)->where('status',1)->get();
         $categorybanners = categoryBanner::get();
         $sellers = Seller::where('status',1)->get();
         return view('backend.backend_pages.categories.addcategorybannner',compact('sellers','categories','categorybanners'));

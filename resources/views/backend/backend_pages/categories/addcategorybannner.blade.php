@@ -111,7 +111,10 @@
                                             <label for="">Place Of Show</label>
                                             <select class="form-control form-control-sm" name="category_id" id="size">
                                                 @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->title }} ---- (Main Category)</option>
+                                                @php
+                                                $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
+                                                @endphp
                                                 @endforeach
                                             </select>
                                         </div>

@@ -14,8 +14,8 @@
     <div class="page-content">
         <div class="container">
             <!-- Start of Shop Banner -->
-            <div class="shop-default-banner banner d-flex align-items-center mb-5 br-xs"
-                style="background-image: url(assets/images/shop/banner1.jpg); background-color: #FFC74E;">
+            {{-- <div class="shop-default-banner banner d-flex align-items-center mb-5 br-xs"
+                style="background-image: url(assets/images/shop/banner1.jpg); background-color: #FFC74E;"> --}}
                 {{-- <div class="banner-content">
                     <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
                     <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-normal">Smart Wrist
@@ -23,10 +23,12 @@
                     <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
                         Now<i class="w-icon-long-arrow-right"></i></a>
                 </div> --}}
-            </div>
+            {{-- </div> --}}
             <!-- End of Shop Brands-->
 
             <!-- Start of Shop Category -->
+            @include('frontend.frontend_pages.products.short_code._adsbanners')
+
             @php
             $sub_cat = \App\Models\category::where('parent_id',$category_product->parent_id)->where('id','!=',$category_product->id)->where('status',1)->get();
             @endphp
