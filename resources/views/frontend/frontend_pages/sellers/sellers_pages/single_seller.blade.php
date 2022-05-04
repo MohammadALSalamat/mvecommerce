@@ -119,7 +119,22 @@
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
-                                                <div class="product-price">$220.00</div>
+                                                <div class="product-price">
+                                                    @if(Config::get('app.locale') == 'en')
+
+                                                    @if(empty($top_selling->offer_price) ||
+                                                    $top_selling->offer_price == null)
+                                                    {{ $top_selling->price }} AED
+                                                    @else <del>{{ $top_selling->price }} AED </del> -
+                                                    {{ $top_selling->offer_price }} AED @endif
+                                                    @else
+                                                    @if(empty($top_selling->offer_price) ||
+                                                    $top_selling->offer_price == null)
+                                                    {{ $top_selling->price }} د.أ
+                                                    @else <del>{{ $top_selling->price }} د.أ </del> -
+                                                    {{ $top_selling->offer_price }} د.أ @endif
+                                                    @endif 
+                                                </div>
                                             </div>
                                         </div>
                                             
@@ -189,7 +204,22 @@
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
-                                                <div class="product-price">$220.00</div>
+                                                <div class="product-price">
+                                                    @if(Config::get('app.locale') == 'en')
+
+                                                    @if(empty($top_selling->offer_price) ||
+                                                    $top_selling->offer_price == null)
+                                                    {{ $top_selling->price }} AED
+                                                    @else <del>{{ $top_selling->price }} AED </del> -
+                                                    {{ $top_selling->offer_price }} AED @endif
+                                                    @else
+                                                    @if(empty($top_selling->offer_price) ||
+                                                    $top_selling->offer_price == null)
+                                                    {{ $top_selling->price }} د.أ
+                                                    @else <del>{{ $top_selling->price }} د.أ </del> -
+                                                    {{ $top_selling->offer_price }} د.أ @endif
+                                                    @endif                                                 
+                                                </div>
                                             </div>
                                         </div>
                                        @endforeach

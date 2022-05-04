@@ -188,7 +188,8 @@
                                             {{ $products_category->price }} د.أ
                                             @else <del>{{ $products_category->price }} د.أ </del> -
                                             {{ $products_category->offer_price }} د.أ @endif
-                                            @endif                                        </div>
+                                            @endif                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
