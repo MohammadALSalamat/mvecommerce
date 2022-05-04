@@ -1,5 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 @if($banner_category->count() > 0)
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin-top: 20px">
     <div class="carousel-inner">
         @foreach($banner_category as $slider)
         @php
@@ -10,18 +12,17 @@
         @if(Config::get('app.locale') == 'en')
         @foreach ($other_image as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
-            <img src="{{url($item)}}" class="d-block w-100" alt="{{ $slider->image_place }}">
+            <img src="{{url($item)}}" class="d-block w-100" alt="slider">
         </div>
         @endforeach
         @else
         @foreach ($other_image_ar as $key => $ar_item)
         <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
-            <img src="{{url($item)}}" class="d-block w-100" alt="{{ $slider->image_place }}">
+            <img src="{{url($ar_item)}}" class="d-block w-100" alt="slider">
         </div>
         @endforeach
         @endif
         <!-- change to the arabic image -->
-        @endif
         @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -33,3 +34,4 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </button>
 </div>
+@endif
