@@ -145,6 +145,7 @@
                                         <div class="col-md-12">
                                             <label for="stock">Seller Url Shop</label>
                                             <select class="form-control form-control-sm" name="seller_id" id="seller">
+                                                <option value="0">No Sellers</option>
                                                 @foreach ($sellers as $seller)
                                                 <option value="{{ $seller->id }}">{{ $seller->shop_name }}</option>
                                                 @endforeach

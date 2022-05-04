@@ -3,24 +3,26 @@
 @if($banner_category->count() > 0)
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin-top: 20px">
     <div class="carousel-inner">
-        @foreach($banner_category as $slider)
+        @foreach($banner_category as$key => $slider)
         @php
-        $other_image = explode(',', $slider->image_English);
-        $other_image_ar = explode(',', $slider->image_Arabic);
+            $vendor_slug = \App\Models\Seller::where('id',$slider->seller_id)->value('username');
         @endphp
         <!-- change to the arabic image -->
         @if(Config::get('app.locale') == 'en')
-        @foreach ($other_image as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
-            <img src="{{url($item)}}" class="d-block w-100" alt="slider">
+            <a href="@if (empty($vendor_slug) || $vendor_slug == null)
+                #
+            @else
+            {{ route('single_seller',$vendor_slug) }}
+                
+            @endif
+            ">
+                <img src="{{url($slider->image_English)}}" class="d-block w-100" alt="slider"></a>
         </div>
-        @endforeach
         @else
-        @foreach ($other_image_ar as $key => $ar_item)
         <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
-            <img src="{{url($ar_item)}}" class="d-block w-100" alt="slider">
+            <a href="{{ route('single_seller',$vendor_slug) }}"> <img src="{{url($slider->image_Arabic)}}" class="d-block w-100" alt="slider"></a>
         </div>
-        @endforeach
         @endif
         <!-- change to the arabic image -->
         @endforeach
