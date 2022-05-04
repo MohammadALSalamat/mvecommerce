@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 04 2022 17:36:19 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/SellerController.php
+* resources/views/Seller/seller_pages/dashboard.blade.php
+
+
+Created files:
+* .autogit/logs/log-4-4-2022-17-22-53.txt
+
+
+Deleted files:
+
+
+Renamed files:
