@@ -195,9 +195,9 @@
                         </div>
                       </td>
                       <td class="text-truncate"> @if ($items->offer_price != null)
-                        {{ $items->offer_price }} AED
+                        {{ $items->offer_price }} AED 
                       @else
-                      {{ $items->price }} AED
+                      {{ $items->price }} AED 
                       @endif</td>
                     </tr>
                     @endforeach

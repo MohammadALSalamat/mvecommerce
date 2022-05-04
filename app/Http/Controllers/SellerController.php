@@ -62,9 +62,13 @@ class SellerController extends Controller
                         $total_products = product::where('id', $total_prodcut->product_id)->get();
                         foreach ($total_products as $totals_prodcut) {
                             if (!empty($totals_prodcut->offer_price) || $totals_prodcut->offer_price != null) {
-                                array_push($total, $totals_prodcut->offer_price);
+                                $total_offer_price = $totals_prodcut->offer_price * $total_prodcut->quantity;
+
+                                array_push($total, $total_offer_price);
                             } else {
-                                array_push($total, $totals_prodcut->price);
+                                $total_price = $totals_prodcut->price * $total_prodcut->quantity;
+
+                                array_push($total, $total_price);
                             }
                         }
                     }
