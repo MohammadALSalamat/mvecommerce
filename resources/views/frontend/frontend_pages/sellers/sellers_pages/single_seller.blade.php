@@ -69,23 +69,20 @@
                                         @endphp
                                         @foreach ( $vednors_products_top_sellers as $top_selling)
                                         @php
-                                             $avareg_review = \App\Models\ProductReview::where('product_id',$top_selling->id)->get();
-                               #review rateing 
-                               $avareg = 0;
-                               $sum = 0;
-                               foreach($avareg_review as $avg){
-                                   $sum += $avg->rate;
-                                   $countavg = count($avareg_review);
-                                   $avareg = $sum / $countavg;
-                                }    
-                                $other_image = explode(',', $top_selling->image);
-                                if(empty($product->child_category_id)|| $top_selling->child_category_id == null){
-                                $category_name = \App\Models\category::where('id' , $top_selling->category_id)->first();
-                                }
+                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_selling->id)->get();
+                                        #review rateing 
+                                        $avareg = 0;
+                                        $sum = 0;
+                                        foreach($avareg_review as $avg){
+                                            $sum += $avg->rate;
+                                            $countavg = count($avareg_review);
+                                            $avareg = $sum / $countavg;
+                                            }    
+                                        $other_image = explode(',', $top_selling->image);
                                         @endphp
                                         <div class="product product-widget">
                                             <figure class="product-media">
-                                                <a href="{{ route('shop_special_category',$category_name->slug) }}">
+                                                <a href="{{ route('singleproduct',$top_selling->slug) }}">
                                                     @if(count($other_image) > 1)
                                                     <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                                     height: 100px !important;object-fit: contain;" />
@@ -99,7 +96,7 @@
                                             </figure>
                                             <div class="product-details">
                                                 <h4 class="product-name">
-                                                    <a href="product-default.html">{{ $category_name }}</a>
+                                                    <a href="{{ route('singleproduct',$top_selling->slug) }}">{{ $top_selling->title }}</a>
                                                 </h4>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
@@ -136,66 +133,67 @@
                                 <div class="widget widget-collapsible widget-products">
                                     <h3 class="widget-title"><span>Top Rated</span></h3>
                                     <div class="widget-body">
-                                        <div class="product product-widget">
+                                        @foreach ($top_reviewed_vendor_product as $product_vendor )
+                                        @php
+                                        $vednors_products_top_sellers = \App\Models\product::where('id', $product_vendor->product_id)->where('vendor_id',$seller->id)->get();
+                                        @endphp
+                                        @foreach ( $vednors_products_top_sellers as $top_selling)
+                                        @php
+                                        $avareg_review = \App\Models\ProductReview::where('product_id',$top_selling->id)->get();
+                                        #review rateing 
+                                        $avareg = 0;
+                                        $sum = 0;
+                                        foreach($avareg_review as $avg){
+                                            $sum += $avg->rate;
+                                            $countavg = count($avareg_review);
+                                            $avareg = $sum / $countavg;
+                                            }    
+                                        $other_image = explode(',', $top_selling->image);
+                                        @endphp
+                                         <div class="product product-widget">
                                             <figure class="product-media">
-                                                <a href="product-default.html">
-                                                    <img src="assets/images/shop/12.jpg" alt="Product" width="100"
-                                                        height="106" />
+                                                <a href="{{ route('singleproduct',$top_selling->slug) }}">
+                                                    @if(count($other_image) > 1)
+                                                    <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                                    height: 100px !important;object-fit: contain;" />
+                                                     <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                                     height: 150px !important;object-fit: contain;" />
+                                                     @else
+                                                     <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                                     height: 100px !important;object-fit: contain;" />
+                                                     @endif
                                                 </a>
                                             </figure>
                                             <div class="product-details">
                                                 <h4 class="product-name">
-                                                    <a href="product-default.html">Classic Simple Backpack</a>
+                                                    <a href="{{ route('singleproduct',$top_selling->slug) }}">{{ $top_selling->title }}</a>
                                                 </h4>
                                                 <div class="ratings-container">
                                                     <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
+                                                        <span class="ratings"   @if (number_format($avareg,1)==5) style="width: 100%;"
+                                                        @elseif(number_format($avareg,1)>= 4.5)
+                                                        style="width: 90%;"
+                                                        @elseif(number_format($avareg,1) >= 4)
+                                                        style="width: 80%;"
+                                                        @elseif(number_format($avareg,1) >= 3.5)
+                                                        style="width: 70%;"
+                                                        @elseif(number_format($avareg,1) >= 3)
+                                                        style="width: 60%;"
+                                                        @elseif(number_format($avareg,1) >= 2.5)
+                                                        style="width: 50%;"
+                                                        @elseif(number_format($avareg,1) >= 2)
+                                                        style="width: 40%;"
+                                                        @else
+                                                        style="width: 20%;"
+                                                        @endif></span>
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
                                                 </div>
-                                                <div class="product-price">$85.00</div>
+                                                <div class="product-price">$220.00</div>
                                             </div>
                                         </div>
-                                        <div class="product product-widget">
-                                            <figure class="product-media">
-                                                <a href="product-default.html">
-                                                    <img src="assets/images/shop/13.jpg" alt="Product" width="100"
-                                                        height="106" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h4 class="product-name">
-                                                    <a href="product-default.html">Smart Watch</a>
-                                                </h4>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-price">$90.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-widget">
-                                            <figure class="product-media">
-                                                <a href="product-default.html">
-                                                    <img src="assets/images/shop/20.jpg" alt="Product" width="100"
-                                                        height="106" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h4 class="product-name">
-                                                    <a href="product-default.html">Pencil Case</a>
-                                                </h4>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-price">$54.00</div>
-                                            </div>
-                                        </div>
+                                       @endforeach
+                                       @endforeach
                                     </div>
                                 </div>
                                 <!-- End of Widget -->
