@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 04 2022 16:56:02 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/SellerController.php
+
+
+Created files:
+* .autogit/logs/log-4-4-2022-16-42-37.txt
+
+
+Deleted files:
+
+
+Renamed files:

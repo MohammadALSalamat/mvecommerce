@@ -48,6 +48,7 @@ class SellerController extends Controller
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
         $count_vendors = User::where('status',0)->count();
         $products_sold = Order::count();
+        $Orders = Order::latest()->get(); // last 6 orders
         $order_product = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
         dd($order_product);
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
@@ -75,7 +76,7 @@ class SellerController extends Controller
                 $countSoldProduct = 0;
             }
         if($current_user){
-            return view('Seller.seller_pages.dashboard',compact('countSoldProduct','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
+            return view('Seller.seller_pages.dashboard',compact('Orders','countSoldProduct','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
         }else{
             return redirect()->route('homepage')->with('error','you do not have permission to access !!!');
         }
