@@ -193,7 +193,6 @@ class frontPageController extends Controller
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
 
         $banner_category = categoryBanner::where('category_place_id',$category_product->id)->get();
-        dd($banner_category);
         //get the sort value from the Ajax
         $sort = '';
         if($request->sort != null){
@@ -235,7 +234,7 @@ class frontPageController extends Controller
         $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
-        return view('frontend.frontend_pages.products.shop_list_products',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
+        return view('frontend.frontend_pages.products.shop_list_products',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
     //still empty 
@@ -243,7 +242,8 @@ class frontPageController extends Controller
     {
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
         //get the sort value from the Ajax
-    
+        $banner_category = categoryBanner::where('category_place_id',$category_product->id)->get();
+
         $sort = '';
         if($request->sort != null){
             $sort = $request->sort; // get the value
@@ -285,7 +285,7 @@ class frontPageController extends Controller
         $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
-        return view('frontend.frontend_pages.products.shop_child_cat',compact('category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
+        return view('frontend.frontend_pages.products.shop_child_cat',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
     public function Single_product($slug)
     {
