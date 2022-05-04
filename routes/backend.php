@@ -60,6 +60,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     // categories banners
     Route::get('/create_category/banners', [CategoryBannerController::class, 'createcategoriesbanners'])->name('createcategoriesbanners');
     Route::post('/add_create_category/banners', [CategoryBannerController::class, 'create_category_banner'])->name('create_category_banner');
+    Route::match(['get', 'post'],'/admin_category_delete/{id}', [CategoryBannerController::class, 'admin_category_delete'])->name('admin_category_delete');
 
 
     

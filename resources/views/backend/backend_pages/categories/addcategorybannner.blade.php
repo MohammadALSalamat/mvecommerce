@@ -196,11 +196,21 @@
                                     @php
                                         $category_details = \App\Models\category::where('id',$attr->category_place_id)->value('title');
                                         $seller_details = \App\Models\Seller::where('id',$attr->seller_id)->value('shop_name');
+                                        $other_image = explode(',', $attr->image_English);
+                                        $other_image_ar = explode(',', $attr->image_Arabic);
                                     @endphp
                                     <tr>
                                         <td>{{ $category_details }}</td>
-                                        <td><img src="{{ asset($attr->image_English) }}" width="100px"></td>
-                                        <td><img src="{{ asset($attr->image_Arabic) }}" width="100px"></td>
+                                        <td>
+                                            @foreach ($other_image as $img)
+                                            <img src="{{ asset($img) }}" width="100px" style="margin-bottom: 10px">
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach ($other_image_ar as $ar_img)
+                                            <img src="{{ asset($ar_img) }}" width="100px" style="margin-bottom: 10px">
+                                            @endforeach
+                                        </td>
                                         <td>{{ $seller_details }}</td>
                                         
                                         <td>
@@ -212,7 +222,7 @@
                                                 <span aria-labelledby="btnSearchDrop2"
                                                     class="mt-1 dropdown-menu dropdown-menu-right">
                                                     <form
-                                                        action="{{ route('admin_gallary_deletproductAttr',$attr->id) }}"
+                                                        action="{{ route('admin_category_delete',$attr->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <a href="" id="cancel-delete" class="dropdown-item dltbtn">

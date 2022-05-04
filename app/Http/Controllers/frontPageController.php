@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
+use App\Models\categoryBanner;
 
 class frontPageController extends Controller
 {
@@ -190,8 +191,10 @@ class frontPageController extends Controller
     public function special_category_product(Request $request , $slug)
     {
         $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
+
+        $banner_category = categoryBanner::where('category_place_id',$category_product->id)->get();
+        dd($banner_category);
         //get the sort value from the Ajax
-    
         $sort = '';
         if($request->sort != null){
             $sort = $request->sort; // get the value
@@ -275,7 +278,6 @@ class frontPageController extends Controller
 
         $count_product =  count($products);
         $route = 'Shop/prodcuts/sub_product';
-       
 
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();

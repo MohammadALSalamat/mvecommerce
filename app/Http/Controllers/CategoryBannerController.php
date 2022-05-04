@@ -30,4 +30,16 @@ class CategoryBannerController extends Controller
 
         return back()->with('message','The banner has been added');
     }
+
+     // delete the category
+     public function admin_category_delete($id)
+     {
+         $delete_current_product = categoryBanner::find($id);
+         if ($delete_current_product) {
+            categoryBanner::where('id', $id)->delete();
+             return back()->with('message', 'The Category banner has been deleted');
+         } else {
+             return back()->with('error', 'The Category Banner is not found');
+         }
+     }
 }
