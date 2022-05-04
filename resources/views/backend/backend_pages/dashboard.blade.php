@@ -164,16 +164,15 @@
                     <tbody>
                       
                         @foreach ($Orders as $order)
-                       
                         <tr>
                           <td class="text-truncate">
-                            @if ($order->payment_status == 1)
-                            <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
-                            Paid
-                            @else
-                            <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
-                            pending
-                            @endif
+                          @if ($order->payment_status == 1)
+                          <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
+                          Paid
+                          @else
+                          <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
+                          pending
+                          @endif
                         </td>
                           <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                           <td class="text-truncate">
