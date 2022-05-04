@@ -527,7 +527,14 @@ class frontPageController extends Controller
         {
             $seller = Seller::where('username',$id)->where('status',1)->first();
             $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
-           
+            $top_selles_vendor = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->get();
+            $vendor_products_top_selles = [];
+            foreach($top_selles_vendor as $product_vendor){
+            $vednors_products_top_sellers = product::where('id', $product_vendor->product_id)->where('vendor_id',$seller->id)->get();
+            array_push($vendor_products_top_selles,$vednors_products_top_sellers);
+           }
+           dd($vendor_products_top_selles);
+
             return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('seller','vendor_product'));
         }
 

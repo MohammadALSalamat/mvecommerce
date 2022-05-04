@@ -63,6 +63,9 @@
                                 <div class="widget widget-collapsible widget-products">
                                     <h3 class="widget-title"><span>Best Selling</span></h3>
                                     <div class="widget-body">
+                                        @php
+                                        $top_selles = \Illuminate\Support\Facades\DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->get();
+                                        @endphp
                                         <div class="product product-widget">
                                             <figure class="product-media">
                                                 <a href="product-default.html">
@@ -218,7 +221,7 @@
                                     @else
                                     <li class="store-address">
                                         <i class="w-icon-map-marker"></i>
-                                       {{$seller->address}},{{ $seller->country }}
+                                    {{$seller->address}},{{ $seller->country }}
                                     </li>
                                         
                                     @endif
