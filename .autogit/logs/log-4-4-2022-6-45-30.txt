@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 04 2022 06:45:30 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/backend/backend_pages/categories/addcategorybannner.blade.php
+
+
+Created files:
+* .autogit/logs/log-4-4-2022-6-32-4.txt
+
+
+Deleted files:
+
+
+Renamed files:
