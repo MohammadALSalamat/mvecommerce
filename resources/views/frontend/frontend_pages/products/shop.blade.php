@@ -172,7 +172,7 @@
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
                                                     <span class="ratings" 
-                                                    @if (number_format($avareg,1)==5) style="width: 100%;"
+                                            @if (number_format($avareg,1)==5) style="width: 100%;"
                                             @elseif(number_format($avareg,1)>= 4.5)
                                             style="width: 90%;"
                                             @elseif(number_format($avareg,1) >= 4)

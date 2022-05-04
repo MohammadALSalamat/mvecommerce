@@ -526,8 +526,8 @@ class frontPageController extends Controller
         public function single_seller($id)
         {
             $seller = Seller::where('username',$id)->where('status',1)->first();
-
             $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
+           
             return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('seller','vendor_product'));
         }
 

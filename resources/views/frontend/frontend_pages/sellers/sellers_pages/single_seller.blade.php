@@ -4,16 +4,7 @@
      <!-- Start of Main -->
      <main class="main">
         <!-- Start of Breadcrumb -->
-        <nav class="breadcrumb-nav">
-            <div class="container">
-                <ul class="breadcrumb bb-no">
-                    <li><a href="demo1.html">Home</a></li>
-                    <li><a href="#">Vendor</a></li>
-                    <li><a href="#">Dokan</a></li>
-                    <li>Store</li>
-                </ul>
-            </div>
-        </nav>
+     
         <!-- End of Breadcrumb -->
 
         <!-- Start of Pgae Contetn -->
@@ -212,8 +203,9 @@
                     <div class="main-content">
                         <div class="store store-banner mb-4">
                             <figure class="store-media">
-                                <img src="{{ asset('/storage/seller/'.$seller->banner_image) }}" alt="Vendor" width="930" height="446"
-                                    style="background-color: #414960;" />
+                                <img src="{{ asset('/storage/seller/'.$seller->banner_image) }}" alt="Vendor" 
+                                    style="background-color: #fff;width: 100% !important;
+                                    height: 450px !important;object-fit: contain;" />
                             </figure>
                             <div class="store-content">
                                 <figure class="mb-3">
@@ -261,43 +253,78 @@
 
                         <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
                             @foreach ($vendor_product as $product)
+                            @php
+                            $avareg_review = \App\Models\ProductReview::where('product_id',$product->id)->get();
+                               #review rateing 
+                               $avareg = 0;
+                               $sum = 0;
+                               foreach($avareg_review as $avg){
+                                   $sum += $avg->rate;
+                                   $countavg = count($avareg_review);
+                                   $avareg = $sum / $countavg;
+                                }    
+                            if(empty($product->child_category_id)|| $product->child_category_id == null){
+                                $category_name = \App\Models\category::where('id' , $product->category_id)->value('title');
+                            }else{
+                                $category_name = \App\Models\category::where('id' , $product->child_category_id)->value('title');
+
+                            }
+                            $other_image = explode(',', $product->image);
+
+                            @endphp
                             <div class="product-wrap">
                                 <div class="text-center product">
                                     <figure class="product-media" >
                                         <a href="{{ route('singleproduct', $product->slug) }}">
-                                            <img src="{{ asset($product->image) }}" alt="Product" style="width: 100% !important;
+                                            @if(count($other_image) > 1)
+                                            <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
                                             height: 150px !important;object-fit: contain;" />
+                                             <img src="{{ asset($other_image[1]) }}" alt="Product" style="width: 100% !important;
+                                             height: 150px !important;object-fit: contain;" />
+                                             @else
+                                             <img src="{{ asset($other_image[0]) }}" alt="Product" style="width: 100% !important;
+                                             height: 150px !important;object-fit: contain;" />
+                                             @endif
                                         </a>
                                         <div class="product-action-horizontal">
                                             <!--Add to cart funtion -->
                                             <a href="" data-product-id="{{$product->id}}" id="add_to_cart{{$product->id}}" data-quantity="1" class="add-to-cart btn-product-icon w-icon-cart btn-cart"
                                                 title="Add to cart"></a>
-
-                                                 <!--Add to wishlist funtion -->
+                                                <!--Add to wishlist funtion -->
                                             <a href="javascript:void(0)" data-id="{{ $product->id }}" id="add_to_wishlist{{ $product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Wishlist"></a>
-
-
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Compare"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quick View"></a>
+                                           
                                         </div>
                                     </figure>
                                     <div class="product-details">
                                         <div class="product-cat">
-                                       
-                                            <span >{{ $product->this_belong_to_category['title']}}</span>
+                                            <span >{{ $category_name}}</span>
                                         </div>
                                         <h3 class="product-name">
                                             <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
                                         </h3>
                                         <div class="ratings-container">
                                             <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
+                                                <span class="ratings" 
+                                                @if (number_format($avareg,1)==5) style="width: 100%;"
+                                            @elseif(number_format($avareg,1)>= 4.5)
+                                            style="width: 90%;"
+                                            @elseif(number_format($avareg,1) >= 4)
+                                            style="width: 80%;"
+                                            @elseif(number_format($avareg,1) >= 3.5)
+                                            style="width: 70%;"
+                                            @elseif(number_format($avareg,1) >= 3)
+                                            style="width: 60%;"
+                                            @elseif(number_format($avareg,1) >= 2.5)
+                                            style="width: 50%;"
+                                            @elseif(number_format($avareg,1) >= 2)
+                                            style="width: 40%;"
+                                            @else
+                                            style="width: 20%;"
+                                            @endif
+                                                ></span>
                                                 <span class="tooltiptext tooltip-top"></span>
                                             </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
                                         </div>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
@@ -314,7 +341,6 @@
                                 </div>
                             </div> 
                             @endforeach
-                           
                         </div>
                     </div>
                     <!-- End of Main Content -->
