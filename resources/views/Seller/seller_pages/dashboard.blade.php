@@ -182,9 +182,7 @@
                             data-original-title="{{ $items->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                               src="{{ $items->image }}" alt="{{ $items->title }}">
-                          </li>
- 
-                        
+                        </li>                       
                         </ul>
                       </td>
                       <td>
@@ -196,7 +194,7 @@
                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
-                      <td class="text-truncate">$@if ($items->offer_price != null)
+                      <td class="text-truncate"> @if ($items->offer_price != null)
                         {{ $items->offer_price }} AED
                       @else
                       {{ $items->price }} AED
