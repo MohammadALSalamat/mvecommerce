@@ -230,14 +230,17 @@
                                     </div>
                                   </div>
                                   <!-- summary section -->
-                                  <div class="col-12" style="padding-left: 0">
-                                    <b>Summary : </b>
-                                    <p style="height: 100px;overflow-y:scroll">{!! $product->Summary !!}</p>
+                                  <b>Summary : </b>
+                                  <div class="col-12" style="padding-bottom:10px;padding-left: 0;height: 100px;overflow-y:scroll">
+                                    <p >{!! $product->Summary !!}</p>
                                   </div>
+
                                   <!-- Description section -->
-                                  <div class="col-12" style="padding-left: 0">
-                                    <b>Description : </b>
-                                    <p>{!! $product->description !!}</p>
+                                  <b>Description : </b>
+                                  <div class="col-12" style="padding-left: 0;height: 100px;overflow-y:scroll">
+                                    <p style="">
+                                      
+                                      {!! $product->description !!}</p>
                                   </div>
                                 </div>
                               </div>
