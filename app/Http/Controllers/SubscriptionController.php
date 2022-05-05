@@ -31,11 +31,25 @@ class SubscriptionController extends Controller
     public function get_card_info(Request $request, $id)
     {
         $data = $request->all();
+        $seller_id = Seller::where('status',1)->where('id',$id)->first();
         dd(Session::get('strip_plan'));
         $add_subscribe_data = new subscription();
         $add_subscribe_data->seller_id = $data['seller_id'];
         $add_subscribe_data->name = $data['card_name'];
         $add_subscribe_data->strip_id = Session::get('strip_plan','strip_id');
+        $add_subscribe_data->strip_plan = Session::get('strip_plan','strip_pan');
+        $add_subscribe_data->quantity = Session::get('strip_plan','quantity');
+        $add_subscribe_data->start_at = Session::get('strip_plan','trials_start');
+        $add_subscribe_data->ends_at = Session::get('strip_plan','ends_at');
+        $add_subscribe_data->value = Session::get('strip_plan','value');
+        $add_subscribe_data->save();
+        if($add_subscribe_data->save()){
+            Session::forget('strip_plan');
+            Seller::where('id',$id)->update([
+                'is_veridy'=> 1,
+            ]);
+        }
+
     }
 
 }
