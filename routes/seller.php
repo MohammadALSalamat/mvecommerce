@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\seller\SellerProductAttribute;
 use App\Http\Controllers\seller\SellerProductController;
 use App\Http\Controllers\seller\sellerSittingsController;
+use App\Http\Controllers\SubscriptionController;
 
 Route::group(['prefix'=>'seller'],function(){
 
@@ -14,9 +15,14 @@ Route::post('/login',[SellerController::class,'login'])->name('seller_login');
 // admin side
 Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::get('/',[SellerController::class,'dashboard'])->name('seller');
-      //Products section
+    
+    //test payment for subscribtion sellers
     Route::get('viewcardPayment/',[SellerController::class,'viewcardPayment'])->name('viewcardPayment');
-      Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');
+    Route::post('Subscription/',[SubscriptionController::class,'get_card_info'])->name('sendinfocard');
+    
+    
+    //Products section
+     Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');
       Route::get('/create_products', [SellerProductController::class, 'createproducts'])->name('seller_createproducts');
       Route::post('/add_new_products', [SellerProductController::class, 'addproducts'])->name('seller_addproducts');
       Route::get('/edit_products/{id}', [SellerProductController::class, 'editproducts'])->name('seller_editproducts');
