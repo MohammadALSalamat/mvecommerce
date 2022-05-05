@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Thu May 05 2022 13:35:43 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/Seller/seller_layoute/unsubscribeSeller.blade.php
+
+
+Created files:
+* .autogit/logs/log-5-4-2022-13-22-12.txt
+
+
+Deleted files:
+
+
+Renamed files:

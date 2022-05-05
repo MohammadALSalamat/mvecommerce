@@ -131,7 +131,7 @@ h1 {
       </div>
     </div>
     <div class="row">
-      <div class="xs-12 md-6 lg-3">
+      <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
         <div class="pricing-table">
           <div class="package-title">
             <span>Free</span>
@@ -139,7 +139,11 @@ h1 {
           <form action="{{ route('viewcardPayment') }}" method="post">
             @csrf
             <input type="hidden" name="value" value="300">
-            <input type="hidden" name="package_name" value="300">
+            <input type="hidden" name="strip_pan" value="Basic">
+            <input type="hidden" name="strip_id" value="1">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="trials_start" value="<?php echo date('Y-m-d H:i:s');?>">
+            <input type="hidden" name="ends_at" value="<?php echo date('Y-m-d H:i:s');?>">
           <div class="package-layout">
             <div class="package-currency">AED</div>
             <div class="package-value">
@@ -169,7 +173,7 @@ h1 {
           </form>
         </div>
       </div>
-      <div class="xs-12 md-6 lg-3">
+      <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
         <div class="pricing-table">
           <div class="package-title">
             <span>Basic</span>
@@ -204,7 +208,7 @@ h1 {
           </button>
         </div>
       </div>
-      <div class="xs-12 md-6 lg-3">
+      <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
         <div class="pricing-table offer">
           <div class="package-title">
             <span>Pro</span>
@@ -240,7 +244,7 @@ h1 {
           </button>
         </div>
       </div>
-      <div class="xs-12 md-6 lg-3">
+      <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
         <div class="pricing-table">
           <div class="package-title">
             <span>Elite</span>
