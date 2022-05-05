@@ -138,12 +138,16 @@ h1 {
           </div>
           <form action="{{ route('viewcardPayment') }}" method="post">
             @csrf
+            @php
+              $today_date = date("Y-m-d H:i:s");
+              $after_30days_end = date('d-m-Y', strtotime($today_date. ' +30 days'));
+            @endphp
             <input type="hidden" name="value" value="300">
             <input type="hidden" name="strip_pan" value="Basic">
             <input type="hidden" name="strip_id" value="1">
             <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="trials_start" value="<?php echo date('Y-m-d H:i:s');?>">
-            <input type="hidden" name="ends_at" value="<?php echo date('Y-m-d H:i:s');?>">
+            <input type="hidden" name="trials_start" value="{{ $today_date }}">
+            <input type="hidden" name="ends_at" value="{{ $after_30days_end }}">
           <div class="package-layout">
             <div class="package-currency">AED</div>
             <div class="package-value">
