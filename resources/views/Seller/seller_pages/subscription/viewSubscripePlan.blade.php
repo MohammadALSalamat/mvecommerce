@@ -35,7 +35,7 @@
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
           <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> Add product </button></a>
+                class="la la-plus"></i> Upgrade The Subscription </button></a>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">View products</h4>
+                <h4 class="card-title">View Your Packcage</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="mb-0 list-inline">
