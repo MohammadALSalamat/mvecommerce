@@ -95,15 +95,35 @@
                             data-toolbar-style="light"><i class="ft-settings"></i></div>
                           </div>
                           <div id="user-options" class="toolbar-icons hidden">
-                            <a  href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"><i class="la la-eye"></i></a>
-                            <a href="{{ route('seller_add_productAttr',$product->id) }}"><i class="ft-plus-circle"></i></a>
-                            <a href="{{ route('seller_add_productAttr',$product->id) }}"><i class="ft-edit-2 light"></i></a>
+                            <a  href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}">
+                              <i class="ft-eye"></i>
+                            </a>
+                            <a href="{{ route('seller_add_productAttr',$product->id) }}"><i class="ft-plus-circle"></i>
+                            </a>
+                            <a href="{{ route('seller_editproducts',$product->id) }}"><i class="ft-edit-2 light"></i></a>
                             <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
                               @csrf
                               <a href="" id="cancel-delete" class="dltbtn"><i class="ft-trash-2 light"></i></a>
                             </form>
                           </div>
-                        
+                          <span class="dropdown">
+                            <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
+                              aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
+                                class="ft-settings"></i></button>
+                            <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
+                              <a href="{{ route('seller_add_productAttr',$product->id) }}" class="dropdown-item"><i
+                                class="ft-plus-circle primary"></i> Add Attributes</a>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"
+                                  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
+                              <a href="{{ route('seller_editproducts',$product->id) }}" class="dropdown-item"><i
+                                  class="ft-edit-2 success"></i> Edit</a>
+                              <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
+                                @csrf
+                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
+                                  Delete</a>
+                              </form>
+                            </span>
+                          </span>
                         </td>
                       </tr>
                       <!-- Modal -->
