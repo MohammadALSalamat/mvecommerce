@@ -136,6 +136,8 @@ h1 {
           <div class="package-title">
             <span>Free</span>
           </div>
+          <form action="{{ route('viewcardPayment') }}" method="post">
+            @csrf
           <div class="package-layout">
             <div class="package-currency">AED</div>
             <div class="package-value">
@@ -161,9 +163,8 @@ h1 {
               <span>1</span> IPv4 &amp; <span>1</span> IPv6
             </div>
           </div>
-          <button class="buy-now">
-           <a href="{{ route('viewcardPayment') }}"><span>Buy now</span></a> 
-          </button>
+           <button type="submit" class="buy-now"><span>Buy now</span></button> 
+          </form>
         </div>
       </div>
       <div class="xs-12 md-6 lg-3">
