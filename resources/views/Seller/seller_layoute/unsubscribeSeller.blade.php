@@ -138,6 +138,8 @@ h1 {
           </div>
           <form action="{{ route('viewcardPayment') }}" method="post">
             @csrf
+            <input type="hidden" name="value" value="300">
+            <input type="hidden" name="package_name" value="300">
           <div class="package-layout">
             <div class="package-currency">AED</div>
             <div class="package-value">
