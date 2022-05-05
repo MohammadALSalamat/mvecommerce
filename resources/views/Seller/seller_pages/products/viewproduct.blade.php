@@ -34,8 +34,8 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> Add product </button></a>
+          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow"
+              type="button"><i class="la la-plus"></i> Add product </button></a>
         </div>
       </div>
     </div>
@@ -75,7 +75,6 @@
                     </thead>
                     <tbody>
                       @foreach ($products as $product)
-
                       <tr>
                         <td>{{ $product->id }}</td>
                         <td><img src="{{asset($product->image)  }}" width="100%" height="50px"
@@ -91,39 +90,24 @@
                         </td>
                         <td>
                           <div class="col-lg-2 col-md-3 col-sm-6 mb-3">
-                            <div data-toolbar="user-options" data-toolbar-animation="standard" class="btn-toolbar btn-toolbar-primary mx-auto"
-                            data-toolbar-style="light"><i class="ft-settings"></i></div>
+                            <div data-toolbar="user-options" data-toolbar-animation="standard"
+                              class="btn-toolbar btn-toolbar-primary mx-auto" data-toolbar-style="light"><i
+                                class="ft-settings"></i></div>
                           </div>
                           <div id="user-options" class="toolbar-icons hidden">
-                            <a  href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}">
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}">
                               <i class="ft-eye"></i>
                             </a>
                             <a href="{{ route('seller_add_productAttr',$product->id) }}"><i class="ft-plus-circle"></i>
                             </a>
-                            <a href="{{ route('seller_editproducts',$product->id) }}"><i class="ft-edit-2 light"></i></a>
+                            <a href="{{ route('seller_editproducts',$product->id) }}"><i
+                                class="ft-edit-2 light"></i></a>
                             <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
                               @csrf
                               <a href="" id="cancel-delete" class="dltbtn"><i class="ft-trash-2 light"></i></a>
                             </form>
                           </div>
-                          <span class="dropdown">
-                            <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
-                              aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
-                                class="ft-settings"></i></button>
-                            <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('seller_add_productAttr',$product->id) }}" class="dropdown-item"><i
-                                class="ft-plus-circle primary"></i> Add Attributes</a>
-                              <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"
-                                  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
-                              <a href="{{ route('seller_editproducts',$product->id) }}" class="dropdown-item"><i
-                                  class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
-                                @csrf
-                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
-                                  Delete</a>
-                              </form>
-                            </span>
-                          </span>
+
                         </td>
                       </tr>
                       <!-- Modal -->
@@ -149,7 +133,8 @@
                               <div class="row">
                                 <!-- left section -->
                                 <div class="col-6" style="padding:9px">
-                                  <img src="{{ $product->image }}" alt="{{ $product->title }}" width="100%" height="auto">
+                                  <img src="{{ $product->image }}" alt="{{ $product->title }}" width="100%"
+                                    height="auto">
                                 </div>
                                 <!-- Right section -->
                                 <div class="col-6">
@@ -251,23 +236,26 @@
                                   </div>
                                   <!-- summary section -->
                                   <b>Summary : </b>
-                                  <div class="col-12" style="padding-bottom:10px;padding-left: 0;height: 100px;overflow-y:scroll">
-                                    <p >{!! $product->Summary !!}</p>
+                                  <div class="col-12"
+                                    style="padding-bottom:10px;padding-left: 0;height: 100px;overflow-y:scroll">
+                                    <p>{!! $product->Summary !!}</p>
                                   </div>
 
                                   <!-- Description section -->
                                   <b>Description : </b>
                                   <div class="col-12" style="padding-left: 0;height: 100px;overflow-y:scroll">
                                     <p style="">
-                                      
+
                                       {!! $product->description !!}</p>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="modal-footer">
-                             <a href="{{ route('seller_add_productAttr',$product->id) }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Add Attribuate</button></a>
-                             <a href="{{ route('seller_editproducts',$product->id) }}"><button  class="btn btn-success">Edit Product</button></a> 
+                              <a href="{{ route('seller_add_productAttr',$product->id) }}"><button type="button"
+                                  class="btn btn-secondary" data-dismiss="modal">Add Attribuate</button></a>
+                              <a href="{{ route('seller_editproducts',$product->id) }}"><button
+                                  class="btn btn-success">Edit Product</button></a>
                             </div>
                           </div>
                         </div>
