@@ -92,10 +92,15 @@ rel="stylesheet">
 <body class="@if (Config::get('app.locale') == 'ar') ar @else en @endif vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     <!-- fixed-top-->
+    @if ($current_user->is_verify == 0)
+    @include('Seller.seller_layoute.unsubscribeSeller')
+    @else 
     @include('Seller/seller_layoute.header')
     @include('Seller/seller_layoute.left_sidebar')
-
     @yield('content')
+    @endif
+
+
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
     <footer class="footer footer-static footer-light navbar-border navbar-shadow">
