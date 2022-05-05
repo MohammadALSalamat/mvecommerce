@@ -26,6 +26,7 @@ data-textdirection="rtl"
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/vendors.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/weather-icons/climacons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/jquery.toolbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/fonts/meteocons/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/morris.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/chartist.css') }}">
@@ -92,6 +93,9 @@ rel="stylesheet">
 <body class="@if (Config::get('app.locale') == 'ar') ar @else en @endif vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     <!-- fixed-top-->
+    @php
+        $current_user = \App\Models\Seller::where('id',Auth::guard('seller')->user()->id)->first();
+    @endphp
     @if ($current_user->is_verify == 0)
     @include('Seller.seller_layoute.unsubscribeSeller')
     @else 
@@ -159,6 +163,8 @@ rel="stylesheet">
     <script src="{{ asset('app-assets/vendors/js/charts/raphael-min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('app-assets/vendors/js/charts/morris.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('app-assets/vendors/js/timeline/horizontal-timeline.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/vendors/js/extensions/jquery.toolbar.min.js') }}" type="text/javascript"></script>
+
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN MODERN JS-->
     <script src="{{ asset('app-assets/js/core/app-menu.js') }}" type="text/javascript"></script>

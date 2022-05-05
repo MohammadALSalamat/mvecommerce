@@ -90,6 +90,17 @@
                           @endif
                         </td>
                         <td>
+                          <div class="col-lg-2 col-md-3 col-sm-6 mb-3">
+                            <div data-toolbar="user-options" data-toolbar-animation="standard" class="btn-toolbar btn-toolbar-primary mx-auto"
+                            data-toolbar-style="primary"><i class="la la-space-shuttle"></i></div>
+                          </div>
+                          <div id="user-options" class="toolbar-icons hidden">
+                            <a href="#"><i class="la la-user"></i></a>
+                            <a href="#"><i class="la la-star-o"></i></a>
+                            <a href="#"><i class="la la-code"></i></a>
+                            <a href="#"><i class="la la-archive"></i></a>
+                            <a href="#"><i class="la la-certificate"></i></a>
+                          </div>
                           <span class="dropdown">
                             <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
                               aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
