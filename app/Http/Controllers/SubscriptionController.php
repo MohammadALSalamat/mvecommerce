@@ -20,7 +20,7 @@ class SubscriptionController extends Controller
             Session::forget('strip_plan');
             Session::put('strip_plan',$data);
         }
-        dd(Session::get('strip_plan'));
+       
         $current_seller = Seller::find(Auth::guard('seller')->user()->id);
 
         return view('Seller.seller_layoute.paymentCard.testcardPayment',compact('current_seller'));
@@ -31,6 +31,7 @@ class SubscriptionController extends Controller
     {
         $data = $request->all();
         dd($data);
+        dd(Session::get('strip_plan'));
     }
 
 }

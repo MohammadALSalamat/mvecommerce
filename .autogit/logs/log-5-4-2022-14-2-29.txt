@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Thu May 05 2022 14:02:29 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/SellerController.php
+* app/Http/Controllers/SubscriptionController.php
+* resources/views/Seller/seller_layoute/unsubscribeSeller.blade.php
+* routes/seller.php
+
+
+Created files:
+* .autogit/logs/log-5-4-2022-13-49-3.txt
+
+
+Deleted files:
+
+
+Renamed files:
