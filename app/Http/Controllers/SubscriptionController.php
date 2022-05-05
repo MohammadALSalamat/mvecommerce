@@ -45,7 +45,7 @@ class SubscriptionController extends Controller
         if($add_subscribe_data->save()){
             Session::forget('strip_plan');
             Seller::where('id',$id)->update([
-                'is_veridy'=> 1,
+                'is_verify'=> 1,
             ]);
             return redirect()->route('view_seller_details')->with('message','Thank you for subscibe please complate your detils info');
         }

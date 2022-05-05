@@ -140,7 +140,7 @@ h1 {
             @csrf
             @php
               $today_date = date("Y-m-d H:i:s");
-              $after_30days_end = date('d-m-Y', strtotime($today_date. ' +30 days'));
+              $after_30days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +30 days'));
             @endphp
             <input type="hidden" name="value" value="300">
             <input type="hidden" name="strip_pan" value="Basic">
