@@ -19,6 +19,13 @@
             </li>
           </ul>
         </li>
+        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span><span class="float-right mr-2 badge badge-pill badge-danger">New</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="#" data-i18n="nav.footers.footer_light"></a>
+            </li>
+            
+          </ul>
+        </li>
         <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings Managment</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('view_seller_details') }}" data-i18n="nav.footers.footer_light">View Profile</a>
