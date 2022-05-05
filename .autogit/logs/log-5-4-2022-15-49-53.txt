@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Thu May 05 2022 15:49:53 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/Seller/seller_layoute/left_sidebar.blade.php
+
+
+Created files:
+* .autogit/logs/log-5-4-2022-15-36-27.txt
+
+
+Deleted files:
+
+
+Renamed files:

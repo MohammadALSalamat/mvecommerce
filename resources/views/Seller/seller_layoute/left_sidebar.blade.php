@@ -19,7 +19,12 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span><span class="float-right mr-2 badge badge-pill badge-danger">New</span></a>
+        <li class=" nav-item"><a href="#"><i class="la la-visa"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span>
+          @php
+            $subscribe_plan = \App\Models\subscription::where('seller_id',Auth::guard('seller')->user()->id)->value('stripe_plan');
+          @endphp
+          <span class="float-right mr-2 badge badge-pill badge-danger">{{ $subscribe_plan }}</span>
+        </a>
           <ul class="menu-content">
             <li><a class="menu-item" href="#" data-i18n="nav.footers.footer_light"></a>
             </li>
