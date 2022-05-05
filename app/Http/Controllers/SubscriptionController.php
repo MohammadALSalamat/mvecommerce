@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seller;
+use App\Models\subscription;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,8 +31,11 @@ class SubscriptionController extends Controller
     public function get_card_info(Request $request, $id)
     {
         $data = $request->all();
-        dd($data);
         dd(Session::get('strip_plan'));
+        $add_subscribe_data = new subscription();
+        $add_subscribe_data->seller_id = $data['seller_id'];
+        $add_subscribe_data->name = $data['card_name'];
+        $add_subscribe_data->strip_id = Session::get('strip_plan','strip_id');
     }
 
 }
