@@ -44,7 +44,9 @@ class SellerController extends Controller
     }
     public function viewcardPayment()
     {
-        return view('Seller.seller_layoute.paymentCard.testcardPayment');
+        $current_seller = Seller::find(Auth::guard('seller')->user()->id);
+
+        return view('Seller.seller_layoute.paymentCard.testcardPayment',compact('current_seller'));
     }
     // admin dashboard
     public function dashboard(){

@@ -18,7 +18,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     
     //test payment for subscribtion sellers
     Route::get('viewcardPayment/',[SellerController::class,'viewcardPayment'])->name('viewcardPayment');
-    Route::post('Subscription/',[SubscriptionController::class,'get_card_info'])->name('sendinfocard');
+    Route::post('Subscription/{id}',[SubscriptionController::class,'get_card_info'])->name('sendinfocard');
     
     
     //Products section

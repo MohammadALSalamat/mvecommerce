@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Thu May 05 2022 11:48:13 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/Seller/seller_layoute/paymentCard/testcardPayment.blade.php
+* routes/seller.php
+
+
+Created files:
+* .autogit/logs/log-5-4-2022-11-34-48.txt
+
+
+Deleted files:
+
+
+Renamed files:
