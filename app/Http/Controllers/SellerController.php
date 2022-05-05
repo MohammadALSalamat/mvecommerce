@@ -42,7 +42,10 @@ class SellerController extends Controller
         return Redirect::back();
   
     }
-
+    public function viewcardPayment()
+    {
+        return view('Seller.seller_layoute.paymentCard.testcardPayment');
+    }
     // admin dashboard
     public function dashboard(){
         $current_user = Seller::find(Auth::guard('seller')->user()->id);

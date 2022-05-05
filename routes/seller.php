@@ -15,7 +15,7 @@ Route::post('/login',[SellerController::class,'login'])->name('seller_login');
 Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::get('/',[SellerController::class,'dashboard'])->name('seller');
       //Products section
-
+    Route::get('viewcardPayment/',[SellerController::class,'viewcardPayment'])->name('viewcardPayment');
       Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');
       Route::get('/create_products', [SellerProductController::class, 'createproducts'])->name('seller_createproducts');
       Route::post('/add_new_products', [SellerProductController::class, 'addproducts'])->name('seller_addproducts');

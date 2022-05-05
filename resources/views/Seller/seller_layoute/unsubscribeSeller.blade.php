@@ -162,7 +162,7 @@ h1 {
             </div>
           </div>
           <button class="buy-now">
-            <span>Buy now</span>
+           <a href="{{ route('viewcardPayment') }}"><span>Buy now</span></a> 
           </button>
         </div>
       </div>
