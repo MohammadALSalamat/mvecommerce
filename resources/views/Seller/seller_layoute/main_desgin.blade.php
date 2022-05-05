@@ -164,6 +164,8 @@ rel="stylesheet">
     <script src="{{ asset('app-assets/vendors/js/charts/morris.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('app-assets/vendors/js/timeline/horizontal-timeline.js') }}" type="text/javascript"></script>
     <script src="{{ asset('app-assets/vendors/js/extensions/jquery.toolbar.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/js/scripts/extensions/toolbar.js') }}" type="text/javascript"></script>
+
 
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN MODERN JS-->
