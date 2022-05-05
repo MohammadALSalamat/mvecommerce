@@ -127,7 +127,7 @@ h1 {
 <div class="container">
     <div class="row">
       <div class="xs-12">
-        <h1>Style 1</h1>
+        <h1>Packages</h1>
       </div>
     </div>
     <div class="row">
@@ -137,9 +137,9 @@ h1 {
             <span>Free</span>
           </div>
           <div class="package-layout">
-            <div class="package-currency">$</div>
+            <div class="package-currency">AED</div>
             <div class="package-value">
-              <div class="value">0</div>
+              <div class="value">300</div>
               <div class="period">/ month</div>
             </div>
           </div>
