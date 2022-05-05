@@ -12,14 +12,12 @@
             </li>
           </ul>
         </li>
-
         <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">Orders Managment</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('view_order') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Orders</a>
             </li>
           </ul>
         </li>
-       
         <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings Managment</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('view_seller_details') }}" data-i18n="nav.footers.footer_light">View Profile</a>
@@ -31,15 +29,14 @@
           <a class="" href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+          {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
                                     
         </li>
         <li>
-
         </li>
       </ul>
     </div>
