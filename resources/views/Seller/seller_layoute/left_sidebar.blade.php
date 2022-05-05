@@ -19,7 +19,7 @@
             </li>
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-visa"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span>
+        <li class=" nav-item"><a href="#"><i class="la la-cc-visa"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span>
           @php
             $subscribe_plan = \App\Models\subscription::where('seller_id',Auth::guard('seller')->user()->id)->value('stripe_plan');
           @endphp
@@ -28,7 +28,6 @@
           <ul class="menu-content">
             <li><a class="menu-item" href="#" data-i18n="nav.footers.footer_light"></a>
             </li>
-            
           </ul>
         </li>
         <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Sittings Managment</span></a>
@@ -39,9 +38,10 @@
           </ul>
         </li>
         <li class=" nav-item">
+         
           <a class="" href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">  <i class="la la-power-off"></i>
           {{ __('Logout') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
