@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\category;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
+use App\Models\category;
 use App\Models\productOrder;
+use App\Models\subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -51,6 +52,13 @@ class SellerController extends Controller
         $Orders = Order::latest()->get(); // last 6 orders
         $order_product = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
+
+        //check if subscripe
+        $subscriptions_reminder_email = subscription::where('seller_id',$current_user->id)->first();
+
+        if(now()->diffInDays(Carbon\Carbon::parse($subscriptions_reminder_email->ends_at) > 29){
+
+        }
         // seller product that got sold
         $total = array(); // get the profit of seller 
         if ($order_product->count() > 0) {
