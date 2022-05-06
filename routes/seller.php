@@ -20,7 +20,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::post('viewcardPayment/',[SubscriptionController::class,'viewcardPayment'])->name('viewcardPayment');
     Route::post('Subscription/{id}',[SubscriptionController::class,'get_card_info'])->name('sendinfocard');
 
-    Route::post('Subscription_Status',[SubscriptionController::class,'viewSubscription_Status'])->name('viewSubscription_Status');
+    Route::get('Subscription_Status',[SubscriptionController::class,'viewSubscription_Status'])->name('viewSubscription_Status');
 
     
     

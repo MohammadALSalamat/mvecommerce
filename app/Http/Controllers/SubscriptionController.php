@@ -56,6 +56,9 @@ class SubscriptionController extends Controller
     
     public function viewSubscription_Status()
     {
-        # code...
+        $seller = Seller::where('status',1)->where('id',Auth::guard('seller')->user()->id)->first();
+
+        $subscriptions = subscription::where('seller_id',$seller->id)->get();
+        return view('Seller.seller_pages.subscription.viewSubscripePlan' ,compact('seller','subscriptions'));
     }
 }

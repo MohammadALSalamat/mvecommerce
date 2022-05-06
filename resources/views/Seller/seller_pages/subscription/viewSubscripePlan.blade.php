@@ -94,13 +94,12 @@
                               aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
                                 class="ft-settings"></i></button>
                             <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('seller_add_productAttr',$product->id) }}" class="dropdown-item"><i
+                              <a href="{{ route('seller_add_productAttr',$subscripe->id) }}" class="dropdown-item"><i
                                 class="ft-plus-circle primary"></i> Add Attributes</a>
-                                <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"
-                                  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
-                              <a href="{{ route('seller_editproducts',$product->id) }}" class="dropdown-item"><i
+                               
+                              <a href="{{ route('seller_editproducts',$subscripe->id) }}" class="dropdown-item"><i
                                   class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
+                              <form action="{{ route('seller_deletproducts',$subscripe->id) }}" method="post">
                                 @csrf
                                 <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
                                   Delete</a>
@@ -109,149 +108,7 @@
                           </span>
                         </td>
                       </tr>
-                      <!-- Modal -->
-                      <div class="modal fade bd-example-modal-lg" id="product{{ $product->id }}" tabindex="-1"
-                        role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">{{ $product->title }}</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            @php
-                            // get user name
-                            $user_full_name = \App\Models\User::where('id',$product->vendor_id)->first();
-                            $Category_Title = \App\Models\category::where('id',$product->category_id)->first();
-                            $Child_Category_Title =
-                            \App\Models\category::where('id',$product->child_category_id)->first();
-                            $Brand_title = \App\Models\brand::where('id',$product->brand_id)->first();
-                            @endphp
-                            <div class="modal-body">
-                              <div class="row">
-                                <!-- left section -->
-                                <div class="col-6" style="padding:9px">
-                                  <img src="{{ $product->image }}" alt="{{ $product->title }}" width="100%" height="auto">
-                                </div>
-                                <!-- Right section -->
-                                <div class="col-6">
-                                  <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                      <b>User : </b>
-                                      <p>
-                                        @if (empty($user_full_name->full_name) || $user_full_name->full_name == null)
-                                        <div class='badge badge-danger'>There is No Vendor</div>
-                                        @else
-                                        <div class='badge badge-success'> {{ $user_full_name->full_name}}</div>
-                                        @endif
-                                      </p>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                      <b>Category : </b>
-                                      <p>
-                                        @if (empty($Category_Title->title) || $Category_Title->title == null)
-                                        <div class='badge badge-danger'>There is No Category</div>
-                                        @else
-                                        <div class='badge badge-success'> {{ $Category_Title->title}}</div>
-                                        @endif
-
-                                      </p>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                      <b>Brand : </b>
-                                      <p>
-                                        @if (empty($Brand_title->title) || $Brand_title->title == null)
-                                        <div class='badge badge-danger'>There is No Brand</div>
-                                        @else
-                                        <div class='badge badge-success'> {{ $Brand_title->title}}</div>
-                                        @endif
-                                      </p>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                      <b>Child Category : </b>
-                                      <p>
-                                        @if (empty($Child_Category_Title->title) || $Child_Category_Title->title ==
-                                        null)
-                                        <div class='badge badge-danger'>There is No Child Category</div>
-                                        @else
-                                        <div class='badge badge-success'>{{ $Child_Category_Title->title}}</div>
-                                        @endif
-                                      </p>
-                                    </div>
-                                  </div>
-
-                                  <!-- Size and conditions section -->
-                                  <div class="row">
-                                    <div class="col-6">
-                                      <b>Size : </b>
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->size }}</div>
-                                      </p>
-                                    </div>
-                                    <div class="col-6">
-                                      <b>Condation : </b>
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->conditions }}</div>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <!-- price and Stock section -->
-                                  <div class="row">
-                                    <div class="col-6">
-                                      <b>Stock : </b>
-                                      @if($product->stock > 10)
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->stock }}</div>
-                                      </p>
-                                      @else
-                                      <p>
-                                        <div class='badge badge-danger'>{{ $product->stock }}</div>
-                                      </p>
-                                      @endif
-                                    </div>
-                                    <div class="col-6">
-                                      <b>Price : </b>
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->price }} $</div>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <!-- discound and Offer Price section -->
-                                  <div class="row">
-                                    <div class="col-6">
-                                      <b>Offer Price : </b>
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->offer_price }}</div>
-                                      </p>
-                                    </div>
-                                    <div class="col-6">
-                                      <b>Discound : </b>
-                                      <p>
-                                        <div class='badge badge-success'>{{ $product->discound }}%</div>
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <!-- summary section -->
-                                  <div class="col-12" style="padding-left: 0">
-                                    <b>Summary : </b>
-                                    <p>{{ $product->Summary }}</p>
-                                  </div>
-                                  <!-- Description section -->
-                                  <div class="col-12" style="padding-left: 0">
-                                    <b>Description : </b>
-                                    <p>{{ $product->description }}</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                             <a href="{{ route('seller_add_productAttr',$product->id) }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Add Attribuate</button></a>
-                             <a href="{{ route('seller_editproducts',$product->id) }}"><button  class="btn btn-success">Edit Product</button></a> 
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                     
                       @endforeach
                     </tbody>
                   </table>
