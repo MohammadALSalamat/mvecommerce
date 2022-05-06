@@ -26,7 +26,7 @@
           <span class="float-right mr-2 badge badge-pill badge-danger">{{ $subscribe_plan }}</span>
         </a>
           <ul class="menu-content">
-            <li><a class="menu-item" href="#" data-i18n="nav.footers.footer_light"></a>
+            <li><a class="menu-item" href="{{ route('viewSubscription_Status') }}" data-i18n="nav.footers.footer_light"> View Status Of Subscription</a>
             </li>
           </ul>
         </li>
