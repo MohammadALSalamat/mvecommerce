@@ -54,21 +54,6 @@ class SellerController extends Controller
         $Orders = Order::latest()->get(); // last 6 orders
         $order_product = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
-
-        //check if subscripe
-        $subscriptions_reminder_email = subscription::where('seller_id',$current_user->id)->first();
-
-        if(Carbon::now()->diffInDays($subscriptions_reminder_email->ends_at) > 28){
-            $emails = array(
-                'seller_email' => $current_user->email,
-            );
-            Mail::send('mails.sellers_Emails.subscription_reminder',function ($message) use($emails) {
-                $message->from('alomda.alslmat@gmail.com', 'ITajer');
-                $message->sender('alomda.alslmat@gmail.com', 'John Doe');
-                $message->to($emails['seller_email'], 'John Doe');
-                $message->subject('reminder subscription');
-            });        
-        }
         // seller product that got sold
         $total = array(); // get the profit of seller 
         if ($order_product->count() > 0) {
