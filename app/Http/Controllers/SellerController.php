@@ -10,9 +10,10 @@ use App\Models\category;
 use App\Models\productOrder;
 use App\Models\subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -57,20 +58,17 @@ class SellerController extends Controller
         //check if subscripe
         $subscriptions_reminder_email = subscription::where('seller_id',$current_user->id)->first();
 
-        if(now()->diffInDays(Carbon\Carbon::parse($subscriptions_reminder_email->ends_at) > 29){
-
-            Mail::send('Html.view', $data, function ($message) {
-                $message->from('john@johndoe.com', 'John Doe');
-                $message->sender('john@johndoe.com', 'John Doe');
-                $message->to('john@johndoe.com', 'John Doe');
-                $message->cc('john@johndoe.com', 'John Doe');
-                $message->bcc('john@johndoe.com', 'John Doe');
-                $message->replyTo('john@johndoe.com', 'John Doe');
-                $message->subject('Subject');
-                $message->priority(3);
-                $message->attach('pathToFile');
+        if(Carbon::now()->diffInDays($subscriptions_reminder_email->ends_at) > 29){
+            $emails=[
+                'seller_email' => $current_user->email,
+            ];
+            Mail::send('mails.sellers_Emails.subscription_reminder',function ($message,$emails) {
+                $message->from('alomda.alslmat@gmail.com', 'ITajer');
+                $message->sender('alomda.alslmat@gmail.com', 'John Doe');
+                $message->to($emails['seller_email'], 'John Doe');
+                $message->subject('reminder subscription');
             });        
-}
+        }
         // seller product that got sold
         $total = array(); // get the profit of seller 
         if ($order_product->count() > 0) {
