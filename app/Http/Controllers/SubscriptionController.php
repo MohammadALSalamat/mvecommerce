@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
+
+    // get the stripe data 
     public function viewcardPayment(Request $request)
     {
         $data = $request->all();
@@ -25,7 +27,7 @@ class SubscriptionController extends Controller
         return view('Seller.seller_layoute.paymentCard.testcardPayment',compact('current_seller'));
     }
 
-
+     // get the data from the card then update the seller status
     public function get_card_info(Request $request, $id)
     {
         $data = $request->all();
@@ -48,6 +50,12 @@ class SubscriptionController extends Controller
             return redirect()->route('view_seller_details')->with('message','Thank you for subscibe please complate your detils info');
         }
 
-    }
 
+        
+    }
+    
+    public function viewSubscription_Status()
+    {
+        # code...
+    }
 }
