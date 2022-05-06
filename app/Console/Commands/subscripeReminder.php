@@ -46,7 +46,6 @@ class subscripeReminder extends Command
 
         //check if subscripe
         foreach($current_users as $current_user){
-
         }
         $subscriptions_reminder_emails = subscription::get();
         foreach($subscriptions_reminder_emails as $subscriptions_reminder_email){
