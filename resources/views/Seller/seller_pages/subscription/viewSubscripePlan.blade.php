@@ -81,7 +81,7 @@
                         <td>{{ $seller->full_name }}</th>
                         <td>{{ $subscripe->name }}</td>
                         <td>{{ $subscripe->stripe_plan }}</td>
-                        <td>{{ $subscripe->added_by }}</td>
+                        <td>{{ date('Y-m-d',strtotime($subscripe->ends_at)) }}</td>
                         <td> @if($seller->is_verify == '1')
                           <div class="badge badge-success">Active</div>
                           @else
