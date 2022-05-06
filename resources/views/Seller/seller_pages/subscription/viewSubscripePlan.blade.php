@@ -65,25 +65,24 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Image</th>
-                        <th>title</th>
-                        <th>Slug</th>
-                        <th>Added By</th>
+                        <th>Seller Name</th>
+                        <th>Card Holder Name</th>
+                        <th> Stripe Plan</th>
+                        <th>Ends At</th>
                         <th>status</th>
                         <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($products as $product)
+                      @foreach ($subscriptions as $subscripe)
 
                       <tr>
-                        <td>{{ $product->id }}</td>
-                        <td><img src="{{asset($product->image)  }}" width="100%" height="50px"
-                            alt="{{ $product->title }}"></th>
-                        <td>{{ $product->title }}</td>
-                        <td>{{ $product->slug }}</td>
-                        <td>{{ $product->added_by }}</td>
-                        <td> @if($product->status == '1')
+                        <td>{{ $subscripe->id }}</td>
+                        <td>{{ $seller->full_name }}</th>
+                        <td>{{ $subscripe->name }}</td>
+                        <td>{{ $subscripe->stripe_plan }}</td>
+                        <td>{{ $subscripe->added_by }}</td>
+                        <td> @if($seller->is_verify == '1')
                           <div class="badge badge-success">Active</div>
                           @else
                           <div class="badge badge-danger">Inactive</div>
