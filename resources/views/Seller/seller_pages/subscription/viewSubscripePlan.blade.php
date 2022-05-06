@@ -81,7 +81,11 @@
                         <td>{{ $seller->full_name }}</th>
                         <td>{{ $subscripe->name }}</td>
                         <td>{{ $subscripe->stripe_plan }}</td>
-                        <td>{{ date('Y-m-d',strtotime($subscripe->ends_at)) }}</td>
+                        <td>
+                          {{ date('Y-m-d',strtotime($subscripe->ends_at)) }}
+                          <br>
+                          <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscripe->ends_at)) }}</strong> Days Left</small>
+                        </td>
                         <td> @if($seller->is_verify == '1')
                           <div class="badge badge-success">Active</div>
                           @else
