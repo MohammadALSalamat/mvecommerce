@@ -62,7 +62,7 @@ class SellerController extends Controller
             $emails = array(
                 'seller_email' => $current_user->email,
             );
-            Mail::send('mails.sellers_Emails.subscription_reminder',function ($message,$emails) {
+            Mail::send('mails.sellers_Emails.subscription_reminder',function ($message) use($emails) {
                 $message->from('alomda.alslmat@gmail.com', 'ITajer');
                 $message->sender('alomda.alslmat@gmail.com', 'John Doe');
                 $message->to($emails['seller_email'], 'John Doe');
