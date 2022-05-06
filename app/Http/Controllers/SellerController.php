@@ -58,10 +58,10 @@ class SellerController extends Controller
         //check if subscripe
         $subscriptions_reminder_email = subscription::where('seller_id',$current_user->id)->first();
 
-        if(Carbon::now()->diffInDays($subscriptions_reminder_email->ends_at) > 29){
-            $emails=[
+        if(Carbon::now()->diffInDays($subscriptions_reminder_email->ends_at) > 28){
+            $emails = array(
                 'seller_email' => $current_user->email,
-            ];
+            );
             Mail::send('mails.sellers_Emails.subscription_reminder',function ($message,$emails) {
                 $message->from('alomda.alslmat@gmail.com', 'ITajer');
                 $message->sender('alomda.alslmat@gmail.com', 'John Doe');
