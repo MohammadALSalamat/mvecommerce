@@ -21,8 +21,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         
-         $schedule->command('emails:send')->everyMinute();
          $schedule->command('schedule:work')->everyMinute();
+         $schedule->command('route:clear')->everyMinute();
+         $schedule->command('view:clear')->everyMinute();
+         $schedule->command('optimize')->everyMinute();
 
     }
 
