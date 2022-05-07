@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected $commands = [
-        '\App\Console\Commands\subscripeReminder'
+        '\App\Console\Commands\subscripeReminder',
     ];
 
 
