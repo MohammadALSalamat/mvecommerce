@@ -158,23 +158,11 @@ h1 {
           <div class="divider"></div>
           <div class="terms">
             <div class="term">
-              <span>1</span> Core
-            </div>
-            <div class="term">
-              <span>512MB</span> RAM
-            </div> 
-            <div class="term">
-              <span>10GB</span> Storage <span>(HDD)</span>
-            </div>          
-            <div class="term">
-              <span>100GB</span> Bandwidth (5Mbit)
-            </div>
-            <div class="term">
-              <span>1</span> IPv4 &amp; <span>1</span> IPv6
+              <span>1</span> Month
             </div>
           </div>
-           <button type="submit" class="buy-now"><span>Buy now</span></button> 
-          </form>
+            <button type="submit" class="buy-now"><span>Buy now</span></button> 
+        </form>
         </div>
       </div>
       <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
