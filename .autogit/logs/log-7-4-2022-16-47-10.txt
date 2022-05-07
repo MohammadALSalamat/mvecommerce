@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sat May 07 2022 16:47:10 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/SubscriptionController.php
+
+
+Created files:
+* .autogit/logs/log-7-4-2022-16-33-43.txt
+
+
+Deleted files:
+
+
+Renamed files:
