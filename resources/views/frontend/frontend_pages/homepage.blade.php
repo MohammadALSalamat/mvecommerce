@@ -12,7 +12,6 @@
         $sponser_banner = \App\Models\sponserAds::where('image_place' ,'homepage_banner')->get();
         @endphp
         @if($sponser_banner->count() > 0)
-
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach($sponser_banner as $key => $slider)
