@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('route:clear')->everyMinute();
          $schedule->command('view:clear')->everyMinute();
          $schedule->command('optimize')->everyMinute();
-         $schedule->command('emails:send')->everyMinute();
+         $schedule->command('emails:send')->daily();
 
     }
 
