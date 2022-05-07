@@ -49,7 +49,6 @@ class SubscriptionController extends Controller
             ]);
             return redirect()->route('view_seller_details')->with('message','Thank you for subscibe please complate your detils info');
         }
-
     }
     
     public function viewSubscription_Status()
