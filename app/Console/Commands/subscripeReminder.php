@@ -49,7 +49,7 @@ class subscripeReminder extends Command
         }
         $subscriptions_reminder_emails = subscription::get();
         foreach($subscriptions_reminder_emails as $subscriptions_reminder_email){
-            if (Carbon::parse($subscriptions_reminder_email->ends_at)->diffInDays(Carbon::now()) >= 10 ) {
+            if (Carbon::parse($subscriptions_reminder_email->ends_at)->diffInDays(Carbon::now()) <= 10 ) {
                 $emails = array('seller_email' => $current_user->email);
                 Mail::send('mails.sellers_Emails.subscription_reminder', $emails, function ($message) use ($emails) {
                     $message->from('support@9yards.ae', 'ITajer');
