@@ -1,4 +1,4 @@
-@extends('Seller.seller_layoute.main_desgin')
+@extends('backend.backend_layoute.main_desgin')
 @section('style')
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
@@ -75,7 +75,6 @@
                     </thead>
                     <tbody>
                       @foreach ($subscriptions as $subscripe)
-
                       <tr>
                         <td>{{ $subscripe->id }}</td>
                         <td>{{ $seller->full_name }}</th>
@@ -112,7 +111,7 @@
                           </span>
                         </td>
                       </tr>
-                     
+                      
                       @endforeach
                     </tbody>
                   </table>

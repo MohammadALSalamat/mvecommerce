@@ -16,12 +16,12 @@
         </li>
         <li class=" nav-item"><a href="#"><i class="la la-cc-visa"></i><span class="menu-title" data-i18n="nav.footers.main">Subscraibe Managment</span>
           @php
-            $subscribe_plan = \App\Models\subscription::where('seller_id',Auth::guard('seller')->user()->id)->value('stripe_plan');
+            $subscribe_plan = \App\Models\subscription::count();
           @endphp
           <span class="float-right mr-2 badge badge-pill badge-danger">{{ $subscribe_plan }}</span>
         </a>
           <ul class="menu-content">
-            <li><a class="menu-item" href="{{ route('viewSubscription_Status') }}" data-i18n="nav.footers.footer_light"> View Status Of Subscription</a>
+            <li><a class="menu-item" href="{{ route('adminside_viewSubscription_Status') }}" data-i18n="nav.footers.footer_light"> View subscribers</a>
             </li>
           </ul>
         </li>

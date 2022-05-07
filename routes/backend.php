@@ -1,22 +1,23 @@
 <?php
 
+use App\Models\categoryBanner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\BrandController;
 
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
+
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShippingController;
-
-use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\AdminviewController;
-use App\Http\Controllers\CategoryBannerController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\SponserAdsController;
-use App\Models\categoryBanner;
+use App\Http\Controllers\AdminbackendController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\CategoryBannerController;
+use App\Http\Controllers\ProductAttributeController;
 
 // ADMIN LOGIN FORM 
 Route::group(['prefix'=>'admin'],function(){
@@ -27,6 +28,13 @@ Route::group(['prefix'=>'admin'],function(){
 // admin side
 Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::get('/',[AdminbackendController::class,'dashboard'])->name('admin');
+
+
+    // subscribe section
+
+    Route::get('Subscription_Status',[SubscriptionController::class,'admin_viewSubscription_Status'])->name('adminside_viewSubscription_Status');
+
+
 
     // banners section
 

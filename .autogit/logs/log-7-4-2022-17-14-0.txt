@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat May 07 2022 17:14:00 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/SubscriptionController.php
+* resources/views/backend/backend_layoute/left_sidebar.blade.php
+
+
+Created files:
+* .autogit/logs/log-7-4-2022-17-0-34.txt
+
+
+Deleted files:
+
+
+Renamed files:
