@@ -168,36 +168,35 @@ h1 {
       <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
         <div class="pricing-table">
           <div class="package-title">
-            <span>Basic</span>
+            <span>Basic ++</span>
           </div>
+          <form action="{{ route('viewcardPayment') }}" method="post">
+            @csrf
+            @php
+              $today_date = date("Y-m-d H:i:s");
+              $after_90days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +90 days'));
+            @endphp
+            <input type="hidden" name="value" value="1000">
+            <input type="hidden" name="strip_pan" value="Basic++">
+            <input type="hidden" name="strip_id" value="1">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="trials_start" value="{{ $today_date }}">
+            <input type="hidden" name="ends_at" value="{{ $after_90days_end }}">
           <div class="package-layout">
-            <div class="package-currency">$</div>
+            <div class="package-currency">AED</div>
             <div class="package-value">
-              <div class="value">29</div>
+              <div class="value">1000</div>
               <div class="period">/ month</div>
             </div>
           </div>
           <div class="divider"></div>
           <div class="terms">
             <div class="term">
-              <span>1</span> Core
-            </div>
-            <div class="term">
-              <span>1GB</span> RAM
-            </div> 
-            <div class="term">
-              <span>20GB</span> Storage <span>(SSD)</span>
-            </div>          
-            <div class="term">
-              <span>500GB</span> Bandwidth (50Mbit)
-            </div>
-            <div class="term">
-              <span>1</span> IPv4 &amp; <span>1</span> IPv6
+              <span>3</span> Month
             </div>
           </div>
-          <button class="buy-now">
-            <span>Buy now</span>
-          </button>
+            <button type="submit" class="buy-now"><span>Buy now</span></button> 
+        </form>
         </div>
       </div>
       <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
@@ -206,34 +205,33 @@ h1 {
             <span>Pro</span>
             <span class="sale">Save 12%</span>
           </div>
+          <form action="{{ route('viewcardPayment') }}" method="post">
+            @csrf
+            @php
+              $today_date = date("Y-m-d H:i:s");
+              $after_180days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +180 days'));
+            @endphp
+            <input type="hidden" name="value" value="1750">
+            <input type="hidden" name="strip_pan" value="Pro">
+            <input type="hidden" name="strip_id" value="1">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="trials_start" value="{{ $today_date }}">
+            <input type="hidden" name="ends_at" value="{{ $after_180days_end }}">
           <div class="package-layout">
-            <div class="package-currency">$</div>
+            <div class="package-currency">AED</div>
             <div class="package-value">
-              <div class="value">49</div>
+              <div class="value">1750</div>
               <div class="period">/ month</div>
             </div>
           </div>
           <div class="divider"></div>
           <div class="terms">
             <div class="term">
-              <span>2</span> Cores
-            </div>
-            <div class="term">
-              <span>2GB</span> RAM
-            </div> 
-            <div class="term">
-              <span>30GB</span> Storage <span>(SSD)</span>
-            </div>          
-            <div class="term">
-              <span>1TB</span> Bandwidth (100Mbit)
-            </div>
-            <div class="term">
-              <span>1</span> IPv4 &amp; <span>1</span> IPv6
+              <span>6</span> Month
             </div>
           </div>
-          <button class="buy-now">
-            <span>Buy now</span>
-          </button>
+            <button type="submit" class="buy-now"><span>Buy now</span></button> 
+        </form>
         </div>
       </div>
       <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
@@ -242,34 +240,33 @@ h1 {
             <span>Elite</span>
             <span class="sale">Save 11%</span>
           </div>
+          <form action="{{ route('viewcardPayment') }}" method="post">
+            @csrf
+            @php
+              $today_date = date("Y-m-d H:i:s");
+              $after_360days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +360 days'));
+            @endphp
+            <input type="hidden" name="value" value="3000">
+            <input type="hidden" name="strip_pan" value="Elite">
+            <input type="hidden" name="strip_id" value="1">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="trials_start" value="{{ $today_date }}">
+            <input type="hidden" name="ends_at" value="{{ $after_360days_end }}">
           <div class="package-layout">
-            <div class="package-currency">$</div>
+            <div class="package-currency">AED</div>
             <div class="package-value">
-              <div class="value">89</div>
+              <div class="value">3000</div>
               <div class="period">/ month</div>
             </div>
           </div>
           <div class="divider"></div>
           <div class="terms">
             <div class="term">
-              <span>4</span> Core
-            </div>
-            <div class="term">
-              <span>4GB</span> RAM
-            </div> 
-            <div class="term">
-              <span>50GB</span> Storage <span>(SSD)</span>
-            </div>          
-            <div class="term">
-              <span>2TB</span> Bandwidth (100Mbit)
-            </div>
-            <div class="term">
-              <span>2</span> IPv4 &amp; <span>2</span> IPv6
+              <span>1</span> year
             </div>
           </div>
-          <button class="buy-now">
-            <span>Buy now</span>
-          </button>
+            <button type="submit" class="buy-now"><span>Buy now</span></button> 
+        </form>
         </div>
       </div>
     </div>
