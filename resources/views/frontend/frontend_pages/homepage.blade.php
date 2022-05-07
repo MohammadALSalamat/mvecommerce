@@ -1030,6 +1030,10 @@
     @if ($item->one_cat_has_many_products-> count() == 0)
 
     @else
+    @php
+    $other_image = explode(',',$item->one_cat_has_many_products[0]->image);
+
+    @endphp
     @if(Config::get('app.locale') == 'en')
     <div class="mb-5 product-wrapper-1 appear-animate">
         <div class="pb-1 mb-4 title-link-wrapper">
@@ -1041,7 +1045,7 @@
         <div class="row">
             <div class="mb-4 col-lg-3 col-sm-4">
                 <div class="banner br-sm"
-                    style="background:url('{{ $item->one_cat_has_many_products[0]->image }}');
+                    style="background:url('{{ $other_image[0] }}');
                     background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
                     <div class="banner-content content-top">
                         <h5 class="mb-2 banner-subtitle font-weight-normal text-white">Weekend Sale</h5>
@@ -1187,7 +1191,7 @@
         <div class="row">
             <div class="mb-4 col-lg-3 col-sm-4">
                 <div class="banner br-sm"
-                    style="background:url('{{ $item->one_cat_has_many_products[0]->image }}');
+                    style="background:url('{{ $other_image[0] }}');
                     background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
                     <div class="banner-content content-top">
                         <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر مبيعا اسبوعيا</h5>
