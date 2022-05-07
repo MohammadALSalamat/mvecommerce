@@ -18,8 +18,7 @@ public function admin_viewSubscription_Status()
     {
         
         $subscriptions = subscription::get();
-        $seller = Seller::get();
-        return view('backend.backend_pages.subscription.admin_viewAllSubscripeSellers' ,compact('sellers','subscriptions'));
+        return view('backend.backend_pages.subscription.admin_viewAllSubscripeSellers' ,compact('subscriptions'));
     }
 
 

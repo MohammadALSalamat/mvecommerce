@@ -75,6 +75,9 @@
                     </thead>
                     <tbody>
                       @foreach ($subscriptions as $subscripe)
+                      @php
+                        $seller = \App\Models\Seller::where('id',$subscripe->seller_id)->first();
+                      @endphp
                       <tr>
                         <td>{{ $subscripe->id }}</td>
                         <td>{{ $seller->full_name }}</th>
