@@ -754,7 +754,7 @@
                     $other_image = explode(',',$new_product->image);
                     @endphp
                     <!-- hide the products after 15 days  -->
-                    @if($days_count < 15) <div class="product-wrap">
+                    @if($days_count < 30) <div class="product-wrap">
                         <div class="text-center product">
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$new_product->slug) }}">
