@@ -514,8 +514,6 @@ class frontPageController extends Controller
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
         }
-
-
         // +++++++++++++++++++++++++++++ VVendors pages ++++++++++++++++++++++++++++//
 
         public function sellers_list()
