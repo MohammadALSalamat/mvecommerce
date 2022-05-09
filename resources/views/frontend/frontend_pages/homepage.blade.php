@@ -782,10 +782,6 @@
                                         class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                         title="Wishlist"></a>
 
-                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#quickview{{ $new_product->id }}"
-                                        class="btn-product-icon btn-quickview w-icon-search" title="Quick View"></a>
-
                                 </div>
                                 <div class="product-label-group">
                                     @if(Config::get('app.locale') == 'en')
@@ -1112,8 +1108,6 @@
                                             id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
                                             class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Add to wishlist"></a>
-                                        <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                            title="Quickview"></a>
 
                                     </div>
                                 </figure>
@@ -1257,8 +1251,7 @@
                                             id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
                                             class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Add to wishlist"></a>
-                                        <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                            title="Quickview"></a>
+                                       
 
                                     </div>
                                 </figure>

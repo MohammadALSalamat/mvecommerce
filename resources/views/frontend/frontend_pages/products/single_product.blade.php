@@ -1408,11 +1408,21 @@
                         }">
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
                                 @foreach ( $vendor_products as $product )
+                                @php
+                                $other_image = explode(',',$product->image);
+                            @endphp
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="{{ route('singleproduct',$product->slug) }}">
-                                            <img src="{{ $product->image }}" alt="Product" style="width: 100%;height:150px;object-fit:contain" />
-                                        </a>
+                                            @if(count($other_image) > 1 )
+                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            <img src="{{ $other_image[1] }}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            @else
+                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            @endif                                        </a>
                                         <div class="product-action-vertical">
                                             <a href="#" data-product-id="{{$single_product->id}}"
                                                 id="add_to_cart{{$single_product->id}}" data-quantity="1"
@@ -1456,8 +1466,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
                                 @endforeach
+                            </div>
+                            
+                            <div class="swiper-pagination">
                             </div>
                         </div>
                     </section>
@@ -1495,11 +1509,21 @@
                         }">
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
                                 @foreach($related_product as $related_products)
+                                @php
+                                    $other_image = explode(',',$related_products->image);
+                                @endphp
                                 <div class="swiper-slide product">
                                     <figure class="product-media " style="height: 150px">
                                         <a href="{{ route('singleproduct',$related_products->slug) }}">
-                                            <img src="{{ $related_products->image }}" alt="Product" style="width: 100%;height:150px;object-fit:contain" />
-                                        </a>
+                                            @if(count($other_image) > 1 )
+                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            <img src="{{ $other_image[1] }}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            @else
+                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                style="height:150px !important; width:100% !important;object-fit:contain" />
+                                            @endif                                        </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
                                                 title="Add to cart"></a>
@@ -1541,7 +1565,10 @@
                                     </div>
                                     @endif
                                 </div>
+                                
                                 @endforeach
+                            </div>
+                            <div class="swiper-pagination">
                             </div>
                         </div>
                     </section>
