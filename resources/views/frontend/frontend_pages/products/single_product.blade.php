@@ -1411,7 +1411,7 @@
                                 <div class="swiper-slide product">
                                     <figure class="product-media">
                                         <a href="{{ route('singleproduct',$product->slug) }}">
-                                            <img src="{{ $product->image }}" alt="Product" width="300" height="338" />
+                                            <img src="{{ $product->image }}" alt="Product" style="width: 100%;height:150px;object-fit:contain" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" data-product-id="{{$single_product->id}}"
@@ -1496,9 +1496,9 @@
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
                                 @foreach($related_product as $related_products)
                                 <div class="swiper-slide product">
-                                    <figure class="product-media " style="height: 380px">
+                                    <figure class="product-media " style="height: 150px">
                                         <a href="{{ route('singleproduct',$related_products->slug) }}">
-                                            <img src="{{ $related_products->image }}" alt="Product" />
+                                            <img src="{{ $related_products->image }}" alt="Product" style="width: 100%;height:150px;object-fit:contain" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
