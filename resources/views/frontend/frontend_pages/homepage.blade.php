@@ -5,6 +5,7 @@
 <!-- Start of Main-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <main class="main">
     <!-- main slider for ads -->
     <section class="intro-section">
