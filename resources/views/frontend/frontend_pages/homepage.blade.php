@@ -8,7 +8,7 @@
 
 <main class="main">
     <!-- main slider for ads -->
-    <section class="intro-section">
+    <section class="intro-section container">
         @php
         $sponser_banner = \App\Models\sponserAds::where('image_place' ,'homepage_banner')->get();
         @endphp
