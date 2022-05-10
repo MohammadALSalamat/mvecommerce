@@ -29,6 +29,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
 use App\Models\categoryBanner;
+use App\Models\Order;
 
 class frontPageController extends Controller
 {
@@ -530,8 +531,6 @@ class frontPageController extends Controller
 
             return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('top_reviewed_vendor_product','top_selles_vendor','seller','vendor_product'));
         }
-
-
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 
     public function loginForm()
@@ -605,6 +604,8 @@ class frontPageController extends Controller
     public function userdashboard()
     {
         $current_user = Auth::user();
+        $user_orders = Order::where('user_id',$current_user->id)->get();
+        dd($user_orders);
         if($current_user){
             // dd($current_user);
             return view('frontend.frontend_pages.auth.user_dashboard', compact('current_user'));
