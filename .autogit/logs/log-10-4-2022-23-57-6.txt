@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 10 2022 23:57:06 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_layout/header.blade.php
+
+
+Created files:
+* .autogit/logs/log-10-4-2022-23-43-40.txt
+
+
+Deleted files:
+
+
+Renamed files:
