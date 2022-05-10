@@ -605,10 +605,9 @@ class frontPageController extends Controller
     {
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
-        dd($user_orders);
         if($current_user){
             // dd($current_user);
-            return view('frontend.frontend_pages.auth.user_dashboard', compact('current_user'));
+            return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user'));
         }else{
             return redirect()->route('loginForm')->with('warning','Login First To have access');
         }

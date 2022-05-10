@@ -138,62 +138,25 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($user_orders as $order)
                                 <tr>
-                                    <td class="order-id">#2321</td>
-                                    <td class="order-date">August 20, 2021</td>
+                                    <td class="order-id">#{{ $order->order_number }}</td>
+                                    <td class="order-date">{{ date('Y m d',strtotime($order->created_at)) }}</td>
                                     <td class="order-status">Processing</td>
                                     <td class="order-total">
-                                        <span class="order-price">$121.00</span> for
-                                        <span class="order-quantity"> 1</span> item
+                                        <span class="order-price">{{ $order->total }} AED </span> for
+                                        <span class="order-quantity"> {{ count($order->product) }}</span> item
                                     </td>
                                     <td class="order-action">
                                         <a href="#"
                                             class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="order-id">#2321</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$150.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-id">#2319</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$201.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-id">#2318</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
-                                    <td class="order-total">
-                                        <span class="order-price">$321.00</span> for
-                                        <span class="order-quantity"> 1</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Go
+                        <a href="{{ route('shop_page') }}" class="btn btn-dark btn-rounded btn-icon-right">Go
                             Shop<i class="w-icon-long-arrow-right"></i></a>
                     </div>
                    
