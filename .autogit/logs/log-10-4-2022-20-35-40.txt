@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 10 2022 20:35:40 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Models/brand.php
+
+
+Created files:
+* .autogit/logs/log-10-4-2022-20-22-14.txt
+
+
+Deleted files:
+
+
+Renamed files:
