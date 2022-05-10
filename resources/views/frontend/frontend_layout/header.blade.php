@@ -236,9 +236,14 @@
                                         <li>
                                             <h4 class="menu-title">Top Brands</h4>
                                             <hr class="divider">
+                                            @php
+                                                $brands = \App\Models\brand::where('cat_id',$category->id)->get();
+                                            @endphp
                                             <ul>
-                                                <li><a href="#">New Arrivals</a>
-                                                </li>
+                                                @foreach ($brands as $brand)
+                                                <li><a href="#">{{ $brand->title }}</a></li>
+                                                    
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li>
