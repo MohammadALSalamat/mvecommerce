@@ -15,10 +15,18 @@ class brand extends Model
         'image',
         'status'
     ];
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function products()
     {
         #relation between brands and products
-        return $this->hasMany('App\Models\product')
+        return $this->hasMany('App\Models\product');
     }
 }
