@@ -237,18 +237,8 @@
                                             <h4 class="menu-title">Top Brands</h4>
                                             <hr class="divider">
                                             <ul>
-                                                <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                                <li><a href="#">New Arrivals</a>
                                                 </li>
-                                                <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
-                                                </li>
-                                                <li><a href="shop-fullwidth-banner.html">Trending</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Bags</a></li>
-                                                <li><a href="shop-fullwidth-banner.html">Accessories</a>
-                                                </li>
-                                                <li><a href="shop-fullwidth-banner.html">Jewlery &
-                                                        Watches</a></li>
                                             </ul>
                                         </li>
                                         <li>

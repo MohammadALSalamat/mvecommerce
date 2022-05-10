@@ -28,6 +28,10 @@ class product extends Model
         return $this->hasOne(category::class,'id');
     }
 
+     public function brands()
+    {
+        return $this->hasOne('App\Models\Brands');
+    }
     public function this_belong_to_category()
     {
         return $this->belongsTo(product::class,'category_id');
