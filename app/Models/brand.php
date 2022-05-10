@@ -2,19 +2,16 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class brand extends Model
 {
     use HasFactory;
-    protected $fillable=
-    [
-        'title',
-        'slug',
-        'image',
-        'status'
-    ];
+    use Sluggable;
+    protected $guarded=[]; 
+
     public function sluggable(): array
     {
         return [
