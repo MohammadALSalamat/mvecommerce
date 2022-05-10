@@ -117,10 +117,27 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ $current_brand->ar_title }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput6">Category Belongs To</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput6" name="cat_id" class="form-control">
+                                                        @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}" @if ($current_brand->cat_id == $category->id) selected @endif>{{ $category->title }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                            <i class="fa fa-picture-o"></i> Choose
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose Brand Logo
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="image" value="{{ $current_brand->image }}">

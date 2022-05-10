@@ -19,7 +19,7 @@ class BrandController extends Controller
     // view create table
     public function createBrand(){
         $categories = DB::table('categories')->select('id','title')->where('is_parent', 0)->where('status', 1)->get();
-        return view('backend.backend_pages.brands.addnewbrand');
+        return view('backend.backend_pages.brands.addnewbrand',compact('categories'));
     }
 
      // create the Brand
@@ -58,7 +58,7 @@ public function addBrand(Request $request)
 public function editBrand($id)
     {
         $current_brand = brand::find($id);
-        $current_categories = DB::table('categories')->select('id','title')->where('is_parent', 0)->where('status', 1)->get();
+        $categories = DB::table('categories')->select('id','title')->where('is_parent', 0)->where('status', 1)->get();
         if ($current_brand) {
             return view('backend.backend_pages.brands.editbrand', compact('current_brand','categories'));
         }else{
@@ -75,7 +75,12 @@ public function editBrand($id)
         if (empty($data['title'])) {
             return back()->with('error', 'Title is requird');
         }
-        
+        if (empty($data['ar_title'])) {
+            return back()->with('error', 'Title is requird');
+        }
+        if (empty($data['cat_id'])) {
+            return back()->with('error', 'Title is requird');
+        }
         if (empty($data['image'])) {
             return back()->with('error', 'Image is requird');
         }

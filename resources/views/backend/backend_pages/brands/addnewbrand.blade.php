@@ -116,17 +116,21 @@ input:checked + .slider:before {
                                                         placeholder="add the title" name="title" value="{{ old('title') }}">
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput6">Ccategory Belongs To</label>
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
                                                 <div class="col-md-9">
-                                                    <select id="projectinput6" name="interested" class="form-control">
-                                                       
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput6">Category Belongs To</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput6" name="cat_id" class="form-control">
                                                         @foreach ($categories as $category)
-                                                            
+                                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                         @endforeach
-                                                        <option value="{{ $category->id }}">design</option>
-                                                       
                                                     </select>
                                                 </div>
                                             </div>
