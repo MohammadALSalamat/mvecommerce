@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
@@ -17,6 +18,7 @@ class BrandController extends Controller
     }
     // view create table
     public function createBrand(){
+        $categories = DB::table('categories')->select('id','title')->where('is_parent', 0)->where('status', 1)->get();
         return view('backend.backend_pages.brands.addnewbrand');
     }
 
@@ -30,6 +32,9 @@ public function addBrand(Request $request)
     if (empty($data['title'])) {
         return back()->with('error','Title is requird');
     }
+    if (empty($data['ar_title'])) {
+        return back()->with('error','Title is requird');
+    }
     if (empty($data['image'])) {
         return back()->with('error', 'Image is requird');
     }
@@ -41,7 +46,9 @@ public function addBrand(Request $request)
 
     $insertbanner = new brand();
     $insertbanner->image = $data['image'];
-    $insertbanner->title = $data['title'];;
+    $insertbanner->cat_id = $data['cat_id'];
+    $insertbanner->title = $data['title'];
+    $insertbanner->ar_title = $data['ar_title'];
     $insertbanner->status = $status;
     $insertbanner->save();
     // insert the data
@@ -51,9 +58,9 @@ public function addBrand(Request $request)
 public function editBrand($id)
     {
         $current_brand = brand::find($id);
-
+        $current_categories = DB::table('categories')->select('id','title')->where('is_parent', 0)->where('status', 1)->get();
         if ($current_brand) {
-            return view('backend.backend_pages.brands.editbrand', compact('current_brand'));
+            return view('backend.backend_pages.brands.editbrand', compact('current_brand','categories'));
         }else{
             return back()->with('error','The ID is not found');
         }
@@ -82,6 +89,8 @@ public function editBrand($id)
 
         'image' => $data['image'],
         'title' => $data['title'],
+        'ar_title' => $data['ar_title'],
+        'cat_id' => $data['cat_id'],
         'status' => $status
         ]);
         return back()->with('message','The Brand has been updated');

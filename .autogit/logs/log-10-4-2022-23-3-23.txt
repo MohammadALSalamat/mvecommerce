@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 10 2022 23:03:23 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/backend/backend_pages/brands/addnewbrand.blade.php
+
+
+Created files:
+* .autogit/logs/log-10-4-2022-22-49-57.txt
+
+
+Deleted files:
+
+
+Renamed files:

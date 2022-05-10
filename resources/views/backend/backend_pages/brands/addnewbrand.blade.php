@@ -121,13 +121,12 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput6">Ccategory Belongs To</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput6" name="interested" class="form-control">
-                                                        <option value="none" selected="" disabled="">Interested in
-                                                        </option>
-                                                        <option value="design">design</option>
-                                                        <option value="development">development</option>
-                                                        <option value="illustration">illustration</option>
-                                                        <option value="branding">branding</option>
-                                                        <option value="video">video</option>
+                                                       
+                                                        @foreach ($categories as $category)
+                                                            
+                                                        @endforeach
+                                                        <option value="{{ $category->id }}">design</option>
+                                                       
                                                     </select>
                                                 </div>
                                             </div>
