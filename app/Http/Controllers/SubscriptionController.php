@@ -70,4 +70,9 @@ public function admin_viewSubscription_Status()
         $subscriptions = subscription::where('seller_id',$seller->id)->get();
         return view('Seller.seller_pages.subscription.viewSubscripePlan' ,compact('seller','subscriptions'));
     }
+    public function FunctionName(Type $var = null)
+    {
+        
+    
+    }
 }
