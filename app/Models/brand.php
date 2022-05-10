@@ -15,4 +15,10 @@ class brand extends Model
         'image',
         'status'
     ];
+
+    public function products()
+    {
+        #relation between brands and products
+        return $this->hasMany('App\Models\product')
+    }
 }
