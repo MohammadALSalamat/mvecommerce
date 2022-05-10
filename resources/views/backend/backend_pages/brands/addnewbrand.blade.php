@@ -118,23 +118,37 @@ input:checked + .slider:before {
                                             </div>
                                             
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput6">Ccategory Belongs To</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput6" name="interested" class="form-control">
+                                                        <option value="none" selected="" disabled="">Interested in
+                                                        </option>
+                                                        <option value="design">design</option>
+                                                        <option value="development">development</option>
+                                                        <option value="illustration">illustration</option>
+                                                        <option value="branding">branding</option>
+                                                        <option value="video">video</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
                                                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Brand Logo
+                                                            <i class="fa fa-picture-o"></i> Choose Logo Brand
                                                         </a>
                                                     </span>
                                                     <input id="thumbnail" class="form-control" type="text" name="image">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
-                                            
+                                           
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Enable</label>
                                                 <div class="col-md-9">
                                                    <!-- Rounded switch -->
                                                         <label class="switch">
-                                                        <input type="checkbox" name="status" vlaue="{{ old('status') == "active" ? 'checked' : ''}}">
+                                                        <input type="checkbox" name="status" vlaue="{{ old('status') == "active" ? 'selected' : ''}}">
                                                         <span class="slider round"></span>
                                                         </label>
                                                 </div>
