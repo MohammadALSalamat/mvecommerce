@@ -39,7 +39,7 @@
                     </li>
                  
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link">Logout</a>
+                        <a href="{{ route('logout_front_user') }}" class="nav-link">Logout</a>
                     </li>
                 </ul>
 
@@ -103,7 +103,7 @@
                             </div>
                             
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="#">
+                                <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
                                         <span class="icon-box-icon icon-logout">
                                             <i class="w-icon-logout"></i>
@@ -123,17 +123,17 @@
                                 <i class="w-icon-orders"></i>
                             </span>
                             <div class="icon-box-content">
-                                <h4 class="mb-0 icon-box-title text-capitalize ls-normal">الطلبات</h4>
+                                <h4 class="mb-0 icon-box-title text-capitalize ls-normal">Orders</h4>
                             </div>
                         </div>
                         <table class="mb-6 shop-table account-orders-table">
                             <thead>
                                 <tr>
-                                    <th class="order-id">رقم الطلب</th>
-                                    <th class="order-date">تاريخ الطلب</th>
-                                    <th class="order-status">حالة الطلب</th>
-                                    <th class="order-total">مجموع</th>
-                                    <th class="order-actions">الفعل</th>
+                                    <th class="order-id">Order</th>
+                                    <th class="order-date">Date</th>
+                                    <th class="order-status">Status</th>
+                                    <th class="order-total">Total</th>
+                                    <th class="order-actions">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,21 +141,22 @@
                                 <tr>
                                     <td class="order-id">#{{ $order->order_number }}</td>
                                     <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
-                                    <td class="order-status">قيد التنفيذ</td>
+                                    <td class="order-status">Processing</td>
                                     <td class="order-total">
-                                        <span class="order-price">{{ $order->total }} د.أ </span> ﻷجل
-                                        <span class="order-quantity"> {{ count($order->product) }}</span> منتجات
+                                        <span class="order-price">{{ $order->total }} AED </span> for
+                                        <span class="order-quantity"> {{ count($order->product) }}</span> item
                                     </td>
                                     <td class="order-action">
                                         <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">رؤية المزيد</a>
+                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
-                        <a href="{{ route('shop_page') }}" class="btn btn-dark btn-rounded btn-icon-right">تصفح المنتجات<i class="w-icon-long-arrow-right"></i></a>
+                        <a href="{{ route('shop_page') }}" class="btn btn-dark btn-rounded btn-icon-right">Go
+                            Shop<i class="w-icon-long-arrow-right"></i></a>
                     </div>
                    
                     <!-- Address Tab -->
@@ -468,7 +469,7 @@
                     </li>
                  
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link">تسجيل الخروج</a>
+                        <a href="{{ route('logout_front_user') }}" class="nav-link">تسجيل الخروج</a>
                     </li>
                 </ul>
 
@@ -529,7 +530,7 @@
                             </div>
                             
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="#">
+                                <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
                                         <span class="icon-box-icon icon-logout">
                                             <i class="w-icon-logout"></i>
@@ -564,19 +565,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($user_orders as $order)
                                 <tr>
-                                    <td class="order-id">#2321</td>
-                                    <td class="order-date">August 20, 2021</td>
-                                    <td class="order-status">Processing</td>
+                                    <td class="order-id">#{{ $order->order_number }}</td>
+                                    <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
+                                    <td class="order-status">قيد التنفيذ</td>
                                     <td class="order-total">
-                                        <span class="order-price">$121.00</span> for
-                                        <span class="order-quantity"> 1</span> item
+                                        <span class="order-price">{{ $order->total }} د.أ </span> ﻷجل
+                                        <span class="order-quantity"> {{ count($order->product) }}</span> منتجات
                                     </td>
                                     <td class="order-action">
                                         <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
+                                        class="btn btn-outline btn-default btn-block btn-sm btn-rounded">رؤية المزيد</a>
                                     </td>
                                 </tr>
+                                @endforeach
                                
                             </tbody>
                         </table>

@@ -1,7 +1,6 @@
     <div class="header-top">
         <div class="container">
             @if(Config::get('app.locale') == 'en')
-
             <div class="header-left">
                 <p class="welcome-msg">Welcome to ITajer Store Get the best Deals with us !</p>
             </div>
@@ -12,11 +11,10 @@
             @endif
             <div class="header-right">
                 <div class="dropdown">
-                    <a href="#currency">USD</a>
-                    {{-- <div class="dropdown-box">
-                        <a href="#USD">USD</a>
-                        <a href="#EUR">EUR</a>
-                    </div> --}}
+                    <a href="#currency">AED</a>
+                    <div class="dropdown-box">
+                        <a href="#USD">AED</a>
+                    </div>
                 </div>
                 <!-- End of DropDown Menu -->
 
