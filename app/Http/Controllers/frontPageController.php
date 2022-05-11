@@ -161,7 +161,13 @@ class frontPageController extends Controller
            $products = $products->whereBetween('price',$price);
        }
 
-       
+        //brands
+        if (!empty($_GET['brand'])) {
+            $slug = explode(',', $_GET['brand']);
+            $brands_ids = brand::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+            // get the products with the selected categories
+            $products = $products->whereIn('brand_id', $brands_ids);
+        }
        // use it for the filtter using ajax-> (sort prodcuts)
        $sort = '';
        if ($request->sort != null) {
@@ -395,7 +401,13 @@ class frontPageController extends Controller
         return redirect()->route('shop_page',$catUrl.$brandsUrl.$price_range_url);
     }
 
+    // auto search products 
 
+    public function autosearch(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+    }
     
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
 

@@ -102,7 +102,7 @@
                             
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
+                    <input type="text" class="form-control" name="search" id="search_text" placeholder="Search in..."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>
@@ -306,7 +306,7 @@
                             
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="search" id="search" placeholder="بحث....."
+                    <input type="text" id="search_text" class="form-control" name="search"  placeholder="بحث....."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>

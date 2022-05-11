@@ -53,6 +53,8 @@
     <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css')}}">
 
     <!-- Default CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
     @if(Config::get('app.locale') == 'en')
     <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/demo1.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css')}}">
@@ -711,6 +713,12 @@
     <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script> 
     <script src="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
+    <!-- Auto Complate search for products -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <script>
+        var autosearchPath = "{{ route('autosearch') }}";
+    </script>
     <!-- Main JS -->
     <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
     @yield('script')

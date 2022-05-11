@@ -31,7 +31,9 @@ Route::get('brands_category/{slug}',[frontPageController::class,'shop_brands'])-
 Route::post('shop_filter',[frontPageController::class, 'shop_filter'])->name('shop_filter');
 
 
+// auto search products
 
+Route::get('autosearch',[frontPageController::class,'autosearch'])->name('autosearch');
 
 
 
