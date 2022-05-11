@@ -109,11 +109,12 @@
                                         btn-icon-left"><i class="w-icon-category"></i><span>Filters</span></a>
                                     <div class="toolbox-item toolbox-sort select-box text-dark">
                                         <label>Sort By :</label>
-                                        <select name="orderby" class="form-control">
+                                        <select name="orderby" class="form-control" id="sortBy">
                                             <option value="default" selected="selected">Default sorting</option>
-                                            <option value="popularity">Sort by popularity</option>
-                                            <option value="rating">Sort by average rating</option>
-                                            <option value="date">Sort by latest</option>
+                                            <option value="alpha-asc">Sort by alpha-asc</option>
+                                            <option value="alpha-desc">Sort by alpha-desc</option>
+                                            <option value="discountLTH">Sort by dicount : low to high</option>
+                                            <option value="discountHTL">Sort by dicount : high to low</option>
                                             <option value="price-low">Sort by pric: low to high</option>
                                             <option value="price-high">Sort by price: high to low</option>
                                         </select>

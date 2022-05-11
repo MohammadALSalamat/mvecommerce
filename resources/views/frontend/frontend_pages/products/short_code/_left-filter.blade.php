@@ -55,6 +55,36 @@
  </div>
  <!-- End of Collapsible Widget -->
 
+ <div class="widget widget-collapsible">
+    <h3 class="widget-title"><label>All Brands</label></h3>
+    <ul class="widget-body filter-items search-ul">
+        <!-- get the category name and check the box if exists -->
+        @if (!empty($_GET['category']))
+        @php
+        $filter_cats = explode(',',$_GET['category']);
+        @endphp
+        @endif
+        <!-- get the category name and check the box if exists -->
+        @if (count($main_categories) > 0)
+        <form action="{{ route('shop_filter') }}" method="POST">
+            @csrf
+            @foreach ($main_categories as $single_cat)
+            <div class="d-flex mb-2 items-center" style="align-items: center;">
+                <input type="checkbox" @if (!empty($filter_cats) && in_array($single_cat->slug,$filter_cats))
+                checked
+                @endif name="category[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
+                onchange="this.form.submit();" >
+                <label class="pl-3" for="{{ $single_cat->slug }}"> {{ $single_cat->title }}
+                    ({{ count($single_cat->one_cat_has_many_products) }})</label>
+            </div>
+            @endforeach
+        </form>
+        @else
+        <li class=" text-red-700"> There is no Categries to Filter</li>
+        @endif
+
+    </ul>
+</div>
  <!-- Start of Collapsible Vendors -->
  <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Vendors</label></h3>
