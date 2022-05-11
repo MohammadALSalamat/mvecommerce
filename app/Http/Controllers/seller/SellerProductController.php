@@ -44,10 +44,10 @@ class SellerProductController extends Controller
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
         }
-        if (empty($data['brand_id']) || $data['brand_id'] == null || $data['brand_id'] == 'none') {
+        if (empty($data['brand']) || $data['brand'] == null || $data['brand'] == 'none') {
         $brand = null;
         }else{
-            $brand = $data['brand_id'];
+            $brand = $data['brand'];
         }
         if (empty($data['summary'])) {
             return back()->with('error', 'Summary is requird');
@@ -130,7 +130,7 @@ class SellerProductController extends Controller
         $current_product= product::find($id); // get the current category
         $user = Auth::guard('seller')->user()->id;
         $vendors = Seller::find(Auth::guard('seller')->user()->id);
-        $brands = $vendors->brand;
+        $brands = brand::get();
         $categories = category::where('is_parent',0)->get();
         $cat_category =category::where('is_parent',1)->get();
         if ($current_product) {
@@ -188,10 +188,10 @@ class SellerProductController extends Controller
               }else{
                   $discound = null;
               }
-              if (empty($data['brand_id']) || $data['brand_id'] == null || $data['brand_id'] == 'none') {
+              if (empty($data['brand']) || $data['brand'] == null || $data['brand'] == 'none') {
                 $brand = null;
                 }else{
-                    $brand = $data['brand_id'];
+                    $brand = $data['brand'];
                 }
             if (!empty($data['status'])) {
                 $status = '1';

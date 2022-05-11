@@ -136,7 +136,7 @@ input:checked + .slider:before {
                                                     </select>
                                                 </div>
                                             </div>
-                                            {{-- <div class="form-group row">
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput76">Brands</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput76" name="brand" class="form-control">
@@ -148,7 +148,7 @@ input:checked + .slider:before {
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="cat_id">Main Category</label>
                                                 <div class="col-md-9">
