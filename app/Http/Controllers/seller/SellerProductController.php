@@ -38,11 +38,16 @@ class SellerProductController extends Controller
 
          $data = $request->all();
          // check if the title is empty
-         if (empty($data['title']) || $data['title'] == null) {
+        if (empty($data['title']) || $data['title'] == null) {
             return back()->with('error', 'Title is requird');
         }
         if (empty($data['category']) || $data['category'] == null || $data['category'] == 'none') {
             return back()->with('error', 'Category is requird');
+        }
+        if (empty($data['brand_id']) || $data['brand_id'] == null || $data['brand_id'] == 'none') {
+        $brand = null;
+        }else{
+            $brand = $data['brand_id'];
         }
         if (empty($data['summary'])) {
             return back()->with('error', 'Summary is requird');
@@ -110,6 +115,7 @@ class SellerProductController extends Controller
         $addproduct->price = $data['price'];
         $addproduct->offer_price = $data['offer_price'];
         $addproduct->discound = $discound;
+        $addproduct->brand_id = $brand;
         $addproduct->added_by = 'seller';
         $addproduct->child_category_id = $child_cat;
         $addproduct->vendor_id = Auth::guard('seller')->user()->id;
@@ -182,7 +188,11 @@ class SellerProductController extends Controller
               }else{
                   $discound = null;
               }
-
+              if (empty($data['brand_id']) || $data['brand_id'] == null || $data['brand_id'] == 'none') {
+                $brand = null;
+                }else{
+                    $brand = $data['brand_id'];
+                }
             if (!empty($data['status'])) {
                 $status = '1';
             } else {
@@ -206,6 +216,7 @@ class SellerProductController extends Controller
         'price' => $data['price'],
         'offer_price' => $data['offer_price'],
         'discound' => $discound,
+        'brand_id' => $brand,
         'child_category_id' => $data['child_category'],
         'vendor_id' => Auth::guard('seller')->user()->id,
         'status' => $status,
