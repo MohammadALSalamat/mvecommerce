@@ -413,13 +413,13 @@ class frontPageController extends Controller
 
         $products_array = array();
         foreach($products_autoSearch as $product){
-            $products_array[]= array('value'=>$product->title,'id'=>$product->id);
+            $products_array[]= array('<img src="'=>$product->image.'" style="width:100px;height:100px">','value'=>$product->title,'id'=>$product->id);
         }
 
         if(count($products_array)){
             return $products_array;
         }else{
-            return ['value','There Is No Reslut Found.....' ,'id'=>''];
+            return ['value','There Is No Reslut Found...' ,'id'=>''];
         }
     }
     

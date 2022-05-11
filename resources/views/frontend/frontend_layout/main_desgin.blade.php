@@ -717,21 +717,24 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
     <script>
-        var autosearchPath = "{{ route('autosearch') }}";
-        $('#search_text').autocomplete({
-      source: function(request,resonse){
-        $.ajax({
-            type: "method",
-            url: autosearchPath,
-            data:{
-                term:request.term;
-            },
-            dataType: "JSON",
-            success: function (data() {
-                resonse(data);
-            },});
-      }
-    });
+        $(document).ready(function () {
+            var autosearchPath = "{{ route('autosearch') }}";
+            $('#search_text').autocomplete({
+            source: function(request,resonse){
+            $.ajax({
+                url: autosearchPath,
+                data:{
+                    term:request.term,
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    resonse(data);
+                },
+            });
+          },
+          minLength:1,
+        }); 
+        });
     </script>
     <!-- Main JS -->
     <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>
