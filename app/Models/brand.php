@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\product;
+use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class brand extends Model
 {
@@ -24,6 +25,6 @@ class brand extends Model
     public function products()
     {
         #relation between brands and products
-        return $this->hasMany('App\Models\product');
+        return $this->hasMany(product::class,'id');
     }
 }
