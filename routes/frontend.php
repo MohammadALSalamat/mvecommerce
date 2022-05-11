@@ -34,6 +34,7 @@ Route::post('shop_filter',[frontPageController::class, 'shop_filter'])->name('sh
 // auto search products
 
 Route::get('autosearch',[frontPageController::class,'autosearch'])->name('autosearch');
+Route::post('search_product',[frontPageController::class,'search_product'])->name('search_product');
 
 
 

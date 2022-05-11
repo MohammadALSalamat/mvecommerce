@@ -92,7 +92,7 @@
                     <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
                         height="45" />
                 </a>
-                <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
                         <select id="category" name="category">
                             <option value="">All Department </option>
@@ -102,7 +102,7 @@
                             
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="search" id="search_text" placeholder="Search in..."
+                    <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>
