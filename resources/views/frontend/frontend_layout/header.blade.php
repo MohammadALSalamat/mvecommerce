@@ -93,6 +93,7 @@
                         height="45" />
                 </a>
                 <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                    @csrf
                     <div class="select-box">
                         <select id="category" name="category">
                             <option value="">All Department </option>

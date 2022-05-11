@@ -428,6 +428,24 @@ class frontPageController extends Controller
     public function search_product(Request $request)
     {
         # get the products
+
+        $query = $request->input('search_product');
+
+        $products = product::where('title','LIKE','%'.$query.'%')->paginate(12);
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+
+        // brands and related products
+
+        $brands_rel_product = brand::with('products')->where('status',1)->get();
+
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        #type of work filter
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
+        $route='shop';
+        
+        return view('frontend.frontend_pages.products.shop',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
+
     }
     
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
