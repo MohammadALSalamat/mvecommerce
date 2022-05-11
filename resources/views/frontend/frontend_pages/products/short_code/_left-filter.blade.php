@@ -8,7 +8,6 @@
              <input type="radio" name="type_of_work" id="all" checked="checked">
              <label class="pl-3" for="all"> All Products</label>
          </div>
-         <form action=""></form>
          @if (count($type_of_work) > 0)
          @foreach ($type_of_work as $single_vendor )
          <div class="d-flex mb-2 items-center" style="align-items: center;">
