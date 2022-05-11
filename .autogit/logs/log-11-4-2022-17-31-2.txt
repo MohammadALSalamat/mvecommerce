@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 11 2022 17:31:02 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* public/front-style/assets/css/demo1.min.css
+* public/front-style/assets/css/style.min.css
+
+
+Created files:
+* .autogit/logs/log-11-4-2022-17-17-28.txt
+
+
+Deleted files:
+
+
+Renamed files:

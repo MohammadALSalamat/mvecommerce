@@ -9568,10 +9568,11 @@ screen and (max-height: 300px) {
     transition: transform 0.35s, -webkit-transform 0.35s;
 }
 
-.overlay-zoom:hover img {
+
+/* .overlay-zoom:hover img {
     -webkit-transform: scale(1.08);
     transform: scale(1.08);
-}
+} */
 
 .overlay-rotate {
     overflow: hidden;

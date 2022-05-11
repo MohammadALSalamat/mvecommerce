@@ -4840,12 +4840,13 @@ blockquote {
     white-space: nowrap
 }
 
-.category-ellipse .category-media {
+
+/* .category-ellipse .category-media {
     border-radius: 50%;
     overflow: hidden;
     border: 0px solid #fff;
     transition: box-shadow 0.1s, border-width 0.1s
-}
+} */
 
 .category-ellipse .category-content {
     margin-top: 1.7rem
@@ -4855,10 +4856,11 @@ blockquote {
     color: #EE432A
 }
 
-.category-ellipse:hover .category-media {
+
+/* .category-ellipse:hover .category-media {
     border-width: 8px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12)
-}
+} */
 
 .category-classic {
     transition: box-shadow 0.3s
@@ -6373,9 +6375,10 @@ textarea {
     transition: transform 0.35s
 }
 
-.overlay-zoom:hover img {
+
+/* .overlay-zoom:hover img {
     transform: scale(1.08)
-}
+} */
 
 .overlay-rotate {
     overflow: hidden
