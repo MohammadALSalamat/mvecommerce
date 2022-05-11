@@ -160,8 +160,7 @@
                                                      <!--Add to wishlist funtion -->
                                                 <a href="javascript:void(0)" data-id="{{ $product->id }}" id="add_to_wishlist{{ $product->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                                     title="Wishlist"></a>
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#quickview{{ $product->id }}" class="btn-product-icon btn-quickview w-icon-search"
-                                                    title="Quick View"></a>
+                                               
                                             </div>
                                         </figure>
                                         <div class="product-details">
@@ -206,13 +205,8 @@
                                         </div>
                                     </div>
                                 </div> 
-                                
                                 @endforeach
                             </div>
-                            @foreach ($products as $product )
-                            
-                            @include('frontend.frontend_layout._quickView')
-                            @endforeach
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
                                     Showing Products
