@@ -325,7 +325,8 @@ class frontPageController extends Controller
 
     public function shop_brands(Request $request, $slug)
     {
-        
+        $data = $request->all();
+        dd($data);
     }
 
     // Shop Filter
