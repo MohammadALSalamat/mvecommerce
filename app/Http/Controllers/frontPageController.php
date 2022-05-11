@@ -351,14 +351,14 @@ class frontPageController extends Controller
                 }
             }
         }
-        $brands = '';
+        $brandsUrl = '';
         if(!empty($data['brand'])){
             dd($data);
             foreach($data['brand'] as $brand){
                 if(empty($brands)){
-                    $brands.='&brand='.$brand;
+                    $brandsUrl.='&brand='.$brand;
                 }else{
-                    $brands.=','.$brand;
+                    $brandsUrl.=','.$brand;
                 }
             }
         }
@@ -386,7 +386,7 @@ class frontPageController extends Controller
         if(!empty($price)){
             $price_range_url.='&price='.$price;
         }
-        return redirect()->route('shop_page',$catUrl.$price_range_url);
+        return redirect()->route('shop_page',$catUrl.$brandsUrl.$price_range_url);
     }
 
 

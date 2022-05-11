@@ -120,7 +120,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                
                             </nav>
                             @if(!empty($products) || $products->count() > 0 )
                             <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
