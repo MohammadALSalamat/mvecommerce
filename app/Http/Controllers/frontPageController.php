@@ -351,6 +351,17 @@ class frontPageController extends Controller
                 }
             }
         }
+        $brands = '';
+        if(!empty($data['brand'])){
+            dd($data);
+            foreach($data['brand'] as $brand){
+                if(empty($brands)){
+                    $brands.='&brand='.$brand;
+                }else{
+                    $brands.=','.$brand;
+                }
+            }
+        }
 
 
         // price filter 
@@ -363,7 +374,6 @@ class frontPageController extends Controller
             } else {
                 $minPrice = $data['min_price'];
             }
-
             if ($data['max_price'] == null || empty($data['max_price'])) {
                 $maxPrice = Helper::maxPrice();
             } else {

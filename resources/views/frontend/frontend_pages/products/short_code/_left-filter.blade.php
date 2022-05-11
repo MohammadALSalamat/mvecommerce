@@ -1,3 +1,5 @@
+<form action="{{ route('shop_filter') }}" method="POST">
+    @csrf
  <!-- Start of Collapsible Widget -->
  <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Vendors Category</label></h3>
@@ -34,8 +36,6 @@
          @endif
          <!-- get the category name and check the box if exists -->
          @if (count($main_categories) > 0)
-         <form action="{{ route('shop_filter') }}" method="POST">
-             @csrf
              @foreach ($main_categories as $single_cat)
              <div class="d-flex mb-2 items-center" style="align-items: center;">
                  <input type="checkbox" @if (!empty($filter_cats) && in_array($single_cat->slug,$filter_cats))
@@ -46,7 +46,6 @@
                      ({{ count($single_cat->one_cat_has_many_products) }})</label>
              </div>
              @endforeach
-         </form>
          @else
          <li class=" text-red-700"> There is no Categries to Filter</li>
          @endif
@@ -66,19 +65,16 @@
         @endif
         <!-- get the category name and check the box if exists -->
         @if (count($brands_rel_product) > 0)
-        <form action="{{ route('shop_filter') }}" method="POST">
-            @csrf
             @foreach ($brands_rel_product as $single_cat)
             <div class="d-flex mb-2 items-center" style="align-items: center;">
                 <input type="checkbox" @if (!empty($filter_brands_rel_product) && in_array($single_cat->slug,$filter_brands_rel_product))
                 checked
-                @endif name="brarnd[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
+                @endif name="brand[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
                 onchange="this.form.submit();" >
                 <label class="pl-3" for="{{ $single_cat->slug }}"> {{ $single_cat->title }}
                     ({{ count($single_cat->products) }})</label>
             </div>
             @endforeach
-        </form>
         @else
         <li class=" text-red-700"> There is no Categries to Filter</li>
         @endif
@@ -114,8 +110,6 @@
              <li><a href="#">$300.00 - $500.00</a></li>
              <li><a href="#">$500.00+</a></li>
          </ul>
-        <form class="price-range" action="{{ route('shop_filter') }}" method="POST" >
-            @csrf
             @if (!empty($_GET['price']))
                 @php
                     if(!empty($_GET['price'])){
@@ -127,10 +121,10 @@
             <span class="delimiter" > - </span>
             <input type="number" data-max="{{ Helper::maxPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[1] }}" @endif name="max_price" class="text-center max_price" placeholder="$max">
                 <button type="submit" href="#" class="btn btn-dark btn-rounded">Go</button>
-        </form>
                 <p><small>Rang of search between {{ Helper::minPrice() }} - {{ Helper::maxPrice() }}</small></p>
      </div>
  </div>
+</form>
  <!-- End of Collapsible Widget -->
 
  <!-- Start of Collapsible Widget -->
