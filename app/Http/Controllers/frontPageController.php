@@ -405,8 +405,22 @@ class frontPageController extends Controller
 
     public function autosearch(Request $request)
     {
-        $data = $request->all();
-        dd($data);
+        $data = $request->get('term','');
+        // get the products
+        $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->get();
+
+        // add the products to an array
+
+        $products_array = array();
+        foreach($products_autoSearch as $product){
+            $products_array[]= array('value'=>$product->title,'id'=>$product->id);
+        }
+
+        if(count($products_array)){
+            return $products_array;
+        }else{
+            return ['value','There Is No Reslut Found.....' ,'id'=>''];
+        }
     }
     
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//

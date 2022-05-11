@@ -718,6 +718,20 @@
 
     <script>
         var autosearchPath = "{{ route('autosearch') }}";
+        $('#search_text').autocomplete({
+      source: function(request,resonse){
+        $.ajax({
+            type: "method",
+            url: autosearchPath,
+            data:{
+                term:request.term;
+            },
+            dataType: "JSON",
+            success: function (data() {
+                resonse(data);
+            },});
+      }
+    });
     </script>
     <!-- Main JS -->
     <script src="{{ asset('front-style/assets/js/main.min.js')}}"></script>

@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 11 2022 23:31:44 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* resources/views/frontend/frontend_layout/header.blade.php
+* resources/views/frontend/frontend_layout/main_desgin.blade.php
+* routes/frontend.php
+
+
+Created files:
+* .autogit/logs/log-11-4-2022-23-18-17.txt
+
+
+Deleted files:
+
+
+Renamed files:
