@@ -4887,12 +4887,13 @@ blockquote {
     transition: top 0.3s, transform 0.3s
 }
 
-.category-classic:hover {
+
+/* .category-classic:hover {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08)
-}
+} */
 
 .category-classic:hover .category-name {
-    transform: translateY(-100%)
+    /* transform: translateY(-100%) */
 }
 
 .category-classic:hover .btn {

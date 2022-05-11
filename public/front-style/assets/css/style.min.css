@@ -6547,7 +6547,8 @@ blockquote {
     white-space: nowrap;
 }
 
-.category-ellipse .category-media {
+
+/* .category-ellipse .category-media {
     border-radius: 50%;
     overflow: hidden;
     border: 0px solid #fff;
@@ -6555,7 +6556,7 @@ blockquote {
     transition: border-width 0.1s, -webkit-box-shadow 0.1s;
     transition: box-shadow 0.1s, border-width 0.1s;
     transition: box-shadow 0.1s, border-width 0.1s, -webkit-box-shadow 0.1s;
-}
+} */
 
 .category-ellipse .category-content {
     margin-top: 1.7rem;
@@ -6565,11 +6566,12 @@ blockquote {
     color: #ee432a;
 }
 
-.category-ellipse:hover .category-media {
+
+/* .category-ellipse:hover .category-media {
     border-width: 8px;
     -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-}
+} */
 
 .category-classic {
     -webkit-transition: -webkit-box-shadow 0.3s;
@@ -6609,14 +6611,15 @@ blockquote {
     transition: top 0.3s, transform 0.3s, -webkit-transform 0.3s;
 }
 
-.category-classic:hover {
+
+/* .category-classic:hover {
     -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
+} */
 
 .category-classic:hover .category-name {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+    /* -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); */
 }
 
 .category-classic:hover .btn {
@@ -6655,11 +6658,12 @@ blockquote {
     letter-spacing: 0;
 }
 
-.category-icon:hover .category-media {
+
+/* .category-icon:hover .category-media {
     border-color: #fff;
     -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .category-icon:hover .category-name {
     color: #ee432a;
@@ -6766,7 +6770,6 @@ blockquote {
 .category-image.media-circle .category-media {
     width: 10rem;
     height: 10rem;
-    border-radius: 50%;
 }
 
 .category-image.text-center p {
@@ -22789,12 +22792,13 @@ aside .sp-sidebar-banner span {
     transition: box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
 }
 
-.shop-default-category .category-ellipse:hover .category-media {
+
+/* .shop-default-category .category-ellipse:hover .category-media {
     -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-}
+} */
 
 .shop-default-category .category-ellipse:hover .category-name {
     color: #ee432a;
