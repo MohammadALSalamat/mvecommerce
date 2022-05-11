@@ -241,8 +241,7 @@
                                             @endphp
                                             <ul>
                                                 @foreach ($brands as $brand)
-                                                <li><a href="#">{{ $brand->title }}</a></li>
-                                                    
+                                                <li><a href="{{ route('shop_brands',$brand->slug) }}">{{ $brand->title }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>

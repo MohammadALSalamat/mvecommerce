@@ -22,6 +22,9 @@ Route::get('/Shop/prodcuts/sub_product/{slug}',[frontPageController::class,'shop
 // single prodcut [age]
 Route::get('single_product/{slug}', [frontPageController::class, 'Single_product'])->name('singleproduct');
 
+// shop for brands 
+
+Route::get('brands_category/{slug}',[frontPageController::class,'shop_brands'])->name('shop_brands');
 
 
 // shop filter routes

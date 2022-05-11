@@ -238,7 +238,6 @@ class frontPageController extends Controller
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_list_products',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
-
     //still empty 
     public function shop_child_cat(Request $request , $slug)
     {
@@ -320,6 +319,13 @@ class frontPageController extends Controller
       }else{
         return back()->with('error','This Product Is Not Valid');
       }
+    }
+
+    // shop for brnads 
+
+    public function shop_brands(Request $request, $slug)
+    {
+        
     }
 
     // Shop Filter
