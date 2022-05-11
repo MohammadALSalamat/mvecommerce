@@ -30,7 +30,7 @@ class product extends Model
 
      public function brands()
     {
-        return $this->hasOne('App\Models\Brands');
+        return $this->hasOne('App\Models\brand');
     }
     public function this_belong_to_category()
     {

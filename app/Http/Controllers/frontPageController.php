@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
+use App\Models\brand;
 use App\Models\categoryBanner;
 use App\Models\Order;
 
@@ -121,6 +122,12 @@ class frontPageController extends Controller
         $products = $products->with('this_belong_to_category')->where(['status' => 1])->paginate(50); 
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
+
+        // brands and related products
+
+        $brands_rel_product = brand::with('products')->get();
+        dd($brands_rel_product);
+
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
