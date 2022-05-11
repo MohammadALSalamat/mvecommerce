@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Wed May 11 2022 16:37:11 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_pages/products/shop.blade.php
+* resources/views/frontend/frontend_pages/products/short_code/_left-filter.blade.php
+
+
+Created files:
+* .autogit/logs/log-11-4-2022-16-23-45.txt
+
+
+Deleted files:
+
+
+Renamed files:
