@@ -125,7 +125,7 @@ class frontPageController extends Controller
 
         // brands and related products
 
-        $brands_rel_product = brand::with('products')->get();
+        $brands_rel_product = brand::with('products')->where('status',1)->get();
         dd($brands_rel_product);
 
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
