@@ -59,23 +59,23 @@
     <h3 class="widget-title"><label>All Brands</label></h3>
     <ul class="widget-body filter-items search-ul">
         <!-- get the category name and check the box if exists -->
-        @if (!empty($_GET['category']))
+        @if (!empty($_GET['brand']))
         @php
-        $filter_cats = explode(',',$_GET['category']);
+        $filter_brands_rel_product = explode(',',$_GET['brand']);
         @endphp
         @endif
         <!-- get the category name and check the box if exists -->
-        @if (count($main_categories) > 0)
+        @if (count($brands_rel_product) > 0)
         <form action="{{ route('shop_filter') }}" method="POST">
             @csrf
-            @foreach ($main_categories as $single_cat)
+            @foreach ($brands_rel_product as $single_cat)
             <div class="d-flex mb-2 items-center" style="align-items: center;">
-                <input type="checkbox" @if (!empty($filter_cats) && in_array($single_cat->slug,$filter_cats))
+                <input type="checkbox" @if (!empty($filter_brands_rel_product) && in_array($single_cat->slug,$filter_brands_rel_product))
                 checked
-                @endif name="category[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
+                @endif name="brarnd[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
                 onchange="this.form.submit();" >
                 <label class="pl-3" for="{{ $single_cat->slug }}"> {{ $single_cat->title }}
-                    ({{ count($single_cat->one_cat_has_many_products) }})</label>
+                    ({{ count($single_cat->products) }})</label>
             </div>
             @endforeach
         </form>
