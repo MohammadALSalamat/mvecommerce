@@ -81,6 +81,13 @@ class frontPageController extends Controller
             // get the products with the selected categories
             $products = $products->whereIn('category_id', $cat_ids);
         }
+        //brands
+        if (!empty($_GET['brand'])) {
+            $slug = explode(',', $_GET['brand']);
+            $brands_ids = brand::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+            // get the products with the selected categories
+            $products = $products->whereIn('brand_id', $brands_ids);
+        }
        // price filter
         if(!empty($_GET['price'])){
             $price = explode('-',$_GET['price']);
@@ -353,9 +360,8 @@ class frontPageController extends Controller
         }
         $brandsUrl = '';
         if(!empty($data['brand'])){
-            dd($data);
             foreach($data['brand'] as $brand){
-                if(empty($brands)){
+                if(empty($brandsUrl)){
                     $brandsUrl.='&brand='.$brand;
                 }else{
                     $brandsUrl.=','.$brand;

@@ -25,6 +25,6 @@ class brand extends Model
     public function products()
     {
         #relation between brands and products
-        return $this->hasMany(product::class);
+        return $this->hasMany(product::class)->where('status',1);
     }
 }
