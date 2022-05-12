@@ -1,7 +1,7 @@
 <form action="{{ route('shop_filter') }}" method="POST">
     @csrf
  <!-- Start of Collapsible Widget -->
- <div class="widget widget-collapsible">
+ {{-- <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Vendors Category</label></h3>
      <ul class="mt-1 widget-body filter-items ">
          <div class="d-flex mb-2 items-center" style="    align-items: center;">
@@ -20,7 +20,7 @@
          @endif
 
      </ul>
- </div>
+ </div> --}}
  <!-- End of Collapsible Widget -->
 
  <!-- Start of Collapsible widget -->

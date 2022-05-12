@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Thu May 12 2022 12:53:29 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* app/Models/Seller.php
+* app/Models/product.php
+
+
+Created files:
+* .autogit/logs/log-12-4-2022-12-40-3.txt
+
+
+Deleted files:
+
+
+Renamed files:
