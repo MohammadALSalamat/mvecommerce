@@ -12,4 +12,9 @@ class Seller extends Authenticatable
 {
     use HasFactory,Notifiable,Billable;
     protected $guard = 'sellers';
+
+    public function products()
+    {
+        return $this->belongsTo(product::class,'vendor_id');
+    }
 }

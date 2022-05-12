@@ -40,6 +40,11 @@ class product extends Model
         return $this->hasMany(product::class, 'category_id')->where('status',1)->limit(10);
     }
 
+    public function sellers()
+    {
+        # related product
+        return $this->hasMany(Seller::class, 'id');
+    }
     // return the product in cart
 
     public static function getProductByCart($id)

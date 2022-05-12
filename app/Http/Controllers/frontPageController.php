@@ -73,7 +73,6 @@ class frontPageController extends Controller
     {
 
         // product filter in shop page get the data from the link top
-
         $products = product::query();
         if (!empty($_GET['category'])) {
             $slug = explode(',', $_GET['category']);
@@ -137,7 +136,6 @@ class frontPageController extends Controller
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
-
         
         return view('frontend.frontend_pages.products.shop',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
