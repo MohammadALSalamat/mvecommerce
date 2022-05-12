@@ -407,7 +407,7 @@ class frontPageController extends Controller
     {
         $data = $request->get('term','');
         // get the products
-        $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->get();
+        $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->orwhere('ar_title','LIKE','%'.$data.'%')->get();
 
         // add the products to an array
 
@@ -415,7 +415,6 @@ class frontPageController extends Controller
         foreach($products_autoSearch as $product){
             $products_array[]= array('image'=>'<img src="'.$product->image.'"style="width:100px;height:100px">','value'=>$product->title,'id'=>$product->id);
         }
-
         if(count($products_array)){
             return $products_array;
         }else{
@@ -430,7 +429,6 @@ class frontPageController extends Controller
         # get the products
 
         $query = $request->input('search_product');
-
         $products = product::where('title','LIKE','%'.$query.'%')->orwhere('ar_title','LIKE','%'.$query.'%')->paginate(12);
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
