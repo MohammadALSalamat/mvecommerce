@@ -1368,66 +1368,16 @@
             }
         }">
         <div class="swiper-wrapper row gutter-no cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/1.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/2.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-            </div>
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/3.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/4.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-            </div>
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/5.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/6.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-            </div>
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/7.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/8.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-            </div>
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/9.png') }}" alt="Brand" width="410"
-                        height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/10.png') }}" alt="Brand"
-                        width="410" height="186" />
-                </figure>
-            </div>
-            <div class="swiper-slide brand-col">
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/11.png') }}" alt="Brand"
-                        width="410" height="186" />
-                </figure>
-                <figure class="brand-wrapper">
-                    <img src="{{ asset('front-style/assets/images/demos/demo1/brands/12.png') }}" alt="Brand"
-                        width="410" height="186" />
-                </figure>
-            </div>
+           @foreach ($brands as $brand)
+           <div class="swiper-slide brand-col">
+               <figure class="brand-wrapper">
+                   <img src="{{ asset($brand->image) }}" alt="{{ $brand->title }}" style="width: 50px;height:50px;" />
+               </figure>
+               
+           </div>
+           @endforeach
+        </div>
+        <div class="swiper-pagination">
         </div>
     </div>
     <!-- Post Wrapper -->
