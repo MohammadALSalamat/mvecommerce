@@ -431,7 +431,7 @@ class frontPageController extends Controller
 
         $query = $request->input('search_product');
 
-        $products = product::where('title','LIKE','%'.$query.'%')->paginate(12);
+        $products = product::where('title','LIKE','%'.$query.'%')->orwhere('ar_title','LIKE','%'.$query.'%')->paginate(12);
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
 
