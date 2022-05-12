@@ -297,17 +297,18 @@
                     <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
                         height="45" />
                 </a>
-                <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                    @csrf
                     <div class="select-box">
                         <select id="category" name="category">
-                            <option value="">الفئات</option>
-                            <option value="shop_business">الاسواق</option>
-                            <option value="personal_business">الفردية</option>
-                            <option value="home_business">المنزلية</option>
+                            <option value="">All Department </option>
+                            <option value="shps_business">Shop Business</option>
+                            <option value="home_business">Home Business</option>
+                            <option value="personal_business">Personal Business</option>
                             
                         </select>
                     </div>
-                    <input type="text" id="search_text" class="form-control" name="search"  placeholder="بحث....."
+                    <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>

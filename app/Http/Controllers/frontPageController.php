@@ -407,7 +407,7 @@ class frontPageController extends Controller
     {
         $data = $request->get('term','');
         // get the products
-        $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->get();
+        $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->orwhere('ar_title','LIKE','%'.$data.'%')->get();
 
         // add the products to an array
 
