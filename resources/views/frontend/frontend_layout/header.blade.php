@@ -92,7 +92,7 @@
                     <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
                         height="45" />
                 </a>
-                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid red">
+                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid #ee432a;border-left:2px solid #ee432a">
                     @csrf
                     <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
                         required />
@@ -289,7 +289,7 @@
                         height="45" />
                 </a>
                 <form method="POST" action="{{ route('search_product') }}" 
-                class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid red">
+                class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid #ee432a">
                     @csrf
                     <input type="text" class="form-control" name="search_product" id="search_text" placeholder="ما الذي تبحث عنه ؟ "
                         required />
