@@ -636,8 +636,8 @@
                                     @else
                                     @endif
                                 </div>
-                                <button class="swiper-button-next"></button>
-                                <button class="swiper-button-prev"></button>
+                                <div class="swiper-pagination">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -699,8 +699,8 @@
                         @endif
                         @endforeach
                     </div>
-                    <button class="swiper-button-prev"></button>
-                            <button class="swiper-button-next"></button>
+                    <div class="swiper-pagination">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1020,7 +1020,6 @@
         @endif
     </div>
     <!-- End of Category Cosmetic Lifestyle -->
-
     <!-- Products Collection  -->
     @foreach ($home_3_Categories as $item)
     @if ($item->one_cat_has_many_products-> count() == 0)
@@ -1028,7 +1027,6 @@
     @else
     @php
     $other_image = explode(',',$item->one_cat_has_many_products[0]->image);
-
     @endphp
     @if(Config::get('app.locale') == 'en')
     <div class="mb-5 product-wrapper-1 appear-animate">
@@ -1082,7 +1080,6 @@
                         @foreach ($item->one_cat_has_many_products as $products_cat)
                         @php
                         $other_image = explode(',',$products_cat->image);
-
                         @endphp
                         <div class="swiper-slide product-col">
                             <div class="text-center product-wrap product">
@@ -1163,8 +1160,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="swiper-button-prev"></button>
-                        <button class="swiper-button-next"></button>
                         <!-- The Modal -->
                         @endforeach
                     </div>
