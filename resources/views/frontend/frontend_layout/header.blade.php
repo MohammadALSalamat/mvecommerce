@@ -92,17 +92,8 @@
                     <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
                         height="45" />
                 </a>
-                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid red">
                     @csrf
-                    <div class="select-box">
-                        <select id="category" name="category">
-                            <option value="">All Department </option>
-                            <option value="shps_business">Shop Business</option>
-                            <option value="home_business">Home Business</option>
-                            <option value="personal_business">Personal Business</option>
-                            
-                        </select>
-                    </div>
                     <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
@@ -297,18 +288,10 @@
                     <img src="{{asset('/front-style/assets/images/itajer_logo.png')}}" alt="logo" width="144"
                         height="45" />
                 </a>
-                <form method="POST" action="{{ route('search_product') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="POST" action="{{ route('search_product') }}" 
+                class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-right: 2px solid red">
                     @csrf
-                    <div class="select-box">
-                        <select id="category" name="category">
-                            <option value="">All Department </option>
-                            <option value="shps_business">Shop Business</option>
-                            <option value="home_business">Home Business</option>
-                            <option value="personal_business">Personal Business</option>
-                            
-                        </select>
-                    </div>
-                    <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
+                    <input type="text" class="form-control" name="search_product" id="search_text" placeholder="ما الذي تبحث عنه ؟ "
                         required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                     </button>
