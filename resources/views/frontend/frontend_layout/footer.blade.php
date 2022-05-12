@@ -103,19 +103,19 @@
                 $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
                 @endphp
                 @foreach($categories as $category )
+                @php
+                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
+                @endphp
+                @if(count($sub_cat) > 0)
                 <div class="category-box w-100">
                     <h6 class="category-name">{{$category->title}} : </h6>
-                    @php
-                    $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
-                    @endphp
-                     @if(count($sub_cat) > 0)
+                     @if(count($sub_cat) > 0 )
                      @foreach ($sub_cat as $single_cat )
                     <a href="#">{{$single_cat->title}}</a>
                     @endforeach
-                    @else
-                    <a href="#" style="color: red">There is No Sub Category For this Category</a>
                      @endif
                 </div>
+                @endif
                 @endforeach
             </div>
         </div>
