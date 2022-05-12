@@ -1369,9 +1369,9 @@
         }">
         <div class="swiper-wrapper row gutter-no cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
            @foreach ($brands as $brand)
-           <div class="swiper-slide brand-col">
+           <div class="swiper-slide brand-col" style="height: 100px;width:100px">
                <figure class="brand-wrapper">
-                   <img src="{{ asset($brand->image) }}" alt="{{ $brand->title }}" style="width: 50px;height:50px;" />
+                   <img src="{{ asset($brand->image) }}" alt="{{ $brand->title }}" style="width: 100px;height:100px;object-fit:contain" />
                </figure>
                
            </div>
