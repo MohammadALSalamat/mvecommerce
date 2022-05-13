@@ -168,15 +168,11 @@ class frontPageController extends Controller
             $price[1] = ceil($price[1]);
             $products = $products->whereBetween('price',$price);
         }
-
-        
         // use it for the filtter using ajax-> (sort prodcuts)
         $sort = '';
         if ($request->sort != null) {
             $sort = $request->sort; // get the value
         }
-        
-        
         if ($products == null) {
         return view('errors.404');
         } else {
@@ -200,20 +196,13 @@ class frontPageController extends Controller
         // Filter Section
         #categories
         $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id', 4)->paginate(50); 
-       
-        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
-
-        // brands and related products
-
-        $brands_rel_product = brand::with('products')->where('status',1)->get();
-
-        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
-        #type of work filter
-        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
+        $category_product = category::with('one_cat_has_many_products')->where('id',4 )->first();
+        $main_categories = category::with('one_cat_has_many_products')->where('parent_id',$category_product->id)->where('status',1)->get();
         
-        return view('frontend.frontend_pages.products.GroceryShop.shop_for_grocry',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
-
+        // brands and related products
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        return view('frontend.frontend_pages.products.GroceryShop.shop_for_grocry',compact('category_product','products','route', 'main_categories', 'main_vendors'));
     } 
 
 
@@ -427,7 +416,7 @@ class frontPageController extends Controller
         dd($data);
     }
 
-    // Shop Filter
+    // Collections Filter
 
     public function shop_filter(Request $request)
     {
@@ -478,6 +467,49 @@ class frontPageController extends Controller
             $price_range_url.='&price='.$price;
         }
         return redirect()->route('shop_page',$catUrl.$brandsUrl.$price_range_url);
+    }
+
+   
+    
+    //Grocery Filter
+    
+    public function Grocery_filter(Request $request)
+    {
+        $data = $request->all();
+
+        $catUrl = '';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl.='&category='.$category;
+                }else{
+                    $catUrl.=','.$category;
+                }
+            }
+        }
+        // price filter 
+        if (!empty($data['min_price']) || !empty($data['max_price'])) {
+            if ($data['min_price'] < Helper::minPrice() || $data['max_price'] > Helper::maxPrice() || $data['min_price'] > $data['max_price']) {
+                return back()->with('error', 'The Price Rang is Not Correct, Search between '. Helper::minPrice() .' And '. Helper::maxPrice());
+            }
+            if ($data['min_price'] == null || empty($data['min_price'])) {
+                $minPrice = Helper::minPrice();
+            } else {
+                $minPrice = $data['min_price'];
+            }
+            if ($data['max_price'] == null || empty($data['max_price'])) {
+                $maxPrice = Helper::maxPrice();
+            } else {
+                $maxPrice = $data['max_price'];
+            }
+            //filter price
+            $price = $minPrice.'-'.$maxPrice;
+        }
+        $price_range_url='';
+        if(!empty($price)){
+            $price_range_url.='&price='.$price;
+        }
+        return redirect()->route('grocery_shop_only',$catUrl.$price_range_url);
     }
 
     // auto search products 

@@ -1,5 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','Shop')
+@section('mytitle','Grocery')
 <!-- Default CSS -->
  <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css') }}">
@@ -27,75 +27,60 @@
                 </div>
                 
                 <div class="container-fluid">
-                    @if(!empty($main_categories) || $main_categories->count() > 0)
-                    <!-- End of Shop Banner -->
-                        <div class="shop-default-category category-ellipse-section mb-6"  style="height: auto !important">
-                            <div class="swiper-container swiper-theme shadow-swiper" style="height: auto !important"
-                                data-swiper-options="{
-                                'spaceBetween': 20,
-                                'slidesPerView': 2,
-                                'breakpoints': {
-                                    '480': {
-                                        'slidesPerView': 3
-                                    },
-                                    '576': {
-                                        'slidesPerView': 4
-                                    },
-                                    '768': {
-                                        'slidesPerView': 6
-                                    },
-                                    '992': {
-                                        'slidesPerView': 7
-                                    },
-                                    '1200': {
-                                        'slidesPerView': 8,
-                                        'spaceBetween': 30
-                                    }
-                                }
-                            }">
-                                <div  style="height: auto !important" class="swiper-wrapper row gutter-lg cols-xl-8 cols-lg-7 cols-md-6 cols-sm-4 cols-xs-3 cols-2">
-                                @foreach ($main_categories as $category)
-                                @if (Config::get('app.locale') == 'en')
-                                <div class="swiper-slide category-wrap">
-                                    <div class="category category-ellipse">
-                                        <figure class="category-media">
-                                            <a href="{{ route('shop_special_category',$category->slug) }}">
-                                                <img src="{{asset($category->image)}}" alt="Categroy"
-                                                    style="background-color: #fff;width:100%;height:120px;object-fit:contain" />
-                                            </a>
-                                        </figure>
-                                        <div class="category-content">
-                                            <h4 class="category-name">
-                                                <a href="{{ route('shop_special_category',$category->slug) }}">{{ $category->title }}</a>
-                                            </h4>
-                                        </div>
-                                    </div>
+                     <!-- Start of Shop Category -->
+            @php
+            $sub_cat = \App\Models\category::where('parent_id',$category_product->id)->where('status',1)->get();
+            @endphp
+            @if($sub_cat->count() > 0)
+            <div class="shop-default-category category-ellipse-section mb-6">
+                <div class="swiper-container swiper-theme shadow-swiper"
+                    data-swiper-options="{
+                    'spaceBetween': 20,
+                    'slidesPerView': 2,
+                    'breakpoints': {
+                        '480': {
+                            'slidesPerView': 3
+                        },
+                        '576': {
+                            'slidesPerView': 4
+                        },
+                        '768': {
+                            'slidesPerView': 6
+                        },
+                        '992': {
+                            'slidesPerView': 7
+                        },
+                        '1200': {
+                            'slidesPerView': 8,
+                            'spaceBetween': 30
+                        }
+                    }
+                }">
+                    <div style="width: 100%;height:auto !important;object-fit:contain" class="swiper-wrapper row gutter-lg cols-xl-8 cols-lg-7 cols-md-6 cols-sm-4 cols-xs-3 cols-2">
+                        @foreach ($sub_cat as $single_cat )
+                        <div class="swiper-slide category-wrap">
+                            <div class="category category-ellipse">
+                                <figure class="category-media">
+                                    <a href="{{ route('shop_child_cat',$single_cat->slug) }}">
+                                        <img src="{{ asset($single_cat->image) }}" alt="Categroy"
+                                            style="width: 100%;height:130px !important;object-fit:contain;background:#fff"  />
+                                    </a>
+                                </figure>
+                                <div class="category-content">
+                                    <h4 class="category-name">
+                                        <a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->title }}</a>
+                                    </h4>
                                 </div>
-                                    
-                                @else
-                                <div class="swiper-slide category-wrap">
-                                    <div class="category category-ellipse">
-                                        <figure class="category-media">
-                                            <a href="{{ route('shop_special_category',$category->slug) }}">
-                                                <img src="{{asset($category->ar_image)}}" alt="Categroy"
-                                                        style="background-color: #fff;width:100%;height:120px;object-fit:contain" />
-                                            </a>
-                                        </figure>
-                                        <div class="category-content">
-                                            <h4 class="category-name">
-                                                <a href="{{ route('shop_special_category',$category->slug) }}">{{ $category->ar_title }}</a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @endforeach
-                                    
-                                </div>
-                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
-                    @endif
+                        @endforeach
+                       
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            @endif
+            <!-- End of Shop Category -->
                     <!-- Start of Shop Category -->
                     <!-- Start of Shop Content -->
                     <div class="shop-content">
@@ -221,15 +206,13 @@
                             <!-- Start of Sidebar Overlay -->
                             <div class="sidebar-overlay"></div>
                             <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-
                             <!-- Start of Sidebar Content -->
                             <div class="sidebar-content scrollable">
                                 <div class="filter-actions">
                                     <label>Filter :</label>
                                     <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
                                 </div>
-                                @include('frontend.frontend_pages.products.short_code._left-filter')
+                                @include('frontend.frontend_pages.products.short_code._left-filter_for_grocery')
                             </div>
                             <!-- End of Sidebar Content -->
                         </aside>

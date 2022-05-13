@@ -32,6 +32,9 @@ Route::get('brands_category/{slug}',[frontPageController::class,'shop_brands'])-
 // shop filter routes
 Route::post('shop_filter',[frontPageController::class, 'shop_filter'])->name('shop_filter');
 
+//grocry filter
+Route::post('grocery_filter',[frontPageController::class, 'grocery_filter'])->name('grocery_filter');
+
 
 // auto search products
 
