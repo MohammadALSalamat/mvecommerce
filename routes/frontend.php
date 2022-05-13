@@ -13,6 +13,8 @@ use App\Http\Controllers\ProductReviewController;
 
 Route::get('/shop',[frontPageController::class,'ShopPage'])->name('shop_page');
 
+Route::get('/grocery',[frontPageController::class,'grocery_shop_only'])->name('grocery_shop_only');
+
 // shop page as list 
 Route::get('/shop_list', [frontPageController::class, 'shop_list'])->name('shop_list');
 

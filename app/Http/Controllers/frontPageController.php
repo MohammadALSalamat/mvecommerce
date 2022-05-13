@@ -196,7 +196,7 @@ class frontPageController extends Controller
                 $products = product::orderBy('discound', 'DESC');
             } 
         }
-        $route='shop';
+        $route='grocery';
         // Filter Section
         #categories
         $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id', 4)->paginate(50); 
@@ -212,7 +212,7 @@ class frontPageController extends Controller
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
         
-        return view('frontend.frontend_pages.products.shop_for_grocry',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
+        return view('frontend.frontend_pages.products.GroceryShop.shop_for_grocry',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
     } 
 
@@ -385,7 +385,7 @@ class frontPageController extends Controller
         return view('frontend.frontend_pages.products.shop_child_cat',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
-    
+
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info

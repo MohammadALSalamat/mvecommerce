@@ -259,9 +259,11 @@
                                 <a href="{{ route('homepage') }}">Home</a>
                             </li>
                             <li class="{{ request()->routeIs('shop_page') ? 'active' : '' }}">
-                                <a href="{{ route('shop_page') }}">Shop</a>
+                                <a href="{{ route('shop_page') }}">Collections</a>
                             </li>
-                            
+                            <li class="{{ request()->routeIs('grocery_shop_only') ? 'active' : '' }}">
+                                <a href="{{ route('grocery_shop_only') }}">Grocery</a>
+                            </li>
                             <li class="{{ request()->routeIs('become_seller') ? 'active' : '' }}">
                                 <a href="{{ route('become_seller') }}">Become A Vendor</a>
                             </li>
@@ -447,7 +449,9 @@
                             <li class="{{ request()->routeIs('shop_page') ? 'active' : '' }}">
                                 <a href="{{ route('shop_page') }}">المتجر</a>
                             </li>
-                            
+                            <li class="{{ request()->routeIs('grocery_shop_only') ? 'active' : '' }}">
+                                <a href="{{ route('grocery_shop_only') }}"> متجر الخضراوات</a>
+                            </li>
                             <li class="{{ request()->routeIs('become_seller') ? 'active' : '' }}">
                                 <a href="{{ route('become_seller') }}">كيف تصبح تاجر</a>
                             </li>
