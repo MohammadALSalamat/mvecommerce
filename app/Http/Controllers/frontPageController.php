@@ -125,7 +125,8 @@ class frontPageController extends Controller
         $route='shop';
         // Filter Section
         #categories
-        $products = $products->with('this_belong_to_category')->where(['status' => 1])->paginate(50); 
+        $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id','!=', 4)->paginate(50); 
+       
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
 
@@ -139,7 +140,83 @@ class frontPageController extends Controller
         
         return view('frontend.frontend_pages.products.shop',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
-    }   
+    } 
+    
+    // Grocery Shop Only 
+    public function grocery_shop_only(Request $request)
+    {
+
+        // product filter in shop page get the data from the link top
+        $products = product::query();
+        if (!empty($_GET['category'])) {
+            $slug = explode(',', $_GET['category']);
+            $cat_ids = category::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+            // get the products with the selected categories
+            $products = $products->whereIn('category_id', $cat_ids);
+        }
+        //brands
+        if (!empty($_GET['brand'])) {
+            $slug = explode(',', $_GET['brand']);
+            $brands_ids = brand::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
+            // get the products with the selected categories
+            $products = $products->whereIn('brand_id', $brands_ids);
+        }
+       // price filter
+        if(!empty($_GET['price'])){
+            $price = explode('-',$_GET['price']);
+            $price[0] = floor($price[0]);
+            $price[1] = ceil($price[1]);
+            $products = $products->whereBetween('price',$price);
+        }
+
+        
+        // use it for the filtter using ajax-> (sort prodcuts)
+        $sort = '';
+        if ($request->sort != null) {
+            $sort = $request->sort; // get the value
+        }
+        
+        
+        if ($products == null) {
+        return view('errors.404');
+        } else {
+            //start the sort depends on the valueof ajax
+            if ($sort == 'price-low') {
+            } elseif ($sort == 'price-low') {
+                $products = product::orderBy('price', 'ASC');
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC');
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC');
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC');
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC');
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC');
+            } 
+        }
+        $route='shop';
+        // Filter Section
+        #categories
+        $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id', 4)->paginate(50); 
+       
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+
+        // brands and related products
+
+        $brands_rel_product = brand::with('products')->where('status',1)->get();
+
+        $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+        #type of work filter
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
+        
+        return view('frontend.frontend_pages.products.shop_for_grocry',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
+
+    } 
+
+
     public function shop_list( Request $request)
     {
        // product filter in shop page get the data from the link top
@@ -255,6 +332,8 @@ class frontPageController extends Controller
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_list_products',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
+
+
     //still empty 
     public function shop_child_cat(Request $request , $slug)
     {
@@ -305,6 +384,8 @@ class frontPageController extends Controller
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         return view('frontend.frontend_pages.products.shop_child_cat',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
+
+    
     public function Single_product($slug)
     {
       $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
