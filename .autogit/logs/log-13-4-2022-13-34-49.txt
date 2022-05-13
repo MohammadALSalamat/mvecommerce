@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Fri May 13 2022 13:34:49 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* resources/views/frontend/frontend_pages/products/GroceryShop/shop_for_grocry.blade.php
+* routes/frontend.php
+
+
+Created files:
+* .autogit/logs/log-13-4-2022-12-27-41.txt
+* resources/views/frontend/frontend_pages/products/short_code/_left-filter_for_grocery.blade.php
+
+
+Deleted files:
+
+
+Renamed files:
