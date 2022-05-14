@@ -42,7 +42,8 @@ class frontPageController extends Controller
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         $sponsers = sponserAds::where('status',1)->get();
-        $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id','!=',4)->get();
+        $home_Grocery_Categories =category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id',4)->get();
         $top_selles = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->get();
         $top_reviewed= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->get();
         $new_products =product::orderBy('created_at','desc')->get();
@@ -62,7 +63,7 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
     }
 
     // login form

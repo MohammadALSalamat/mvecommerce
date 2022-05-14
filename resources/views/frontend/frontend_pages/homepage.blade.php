@@ -1020,10 +1020,9 @@
         @endif
     </div>
     <!-- End of Category Cosmetic Lifestyle -->
-    <!-- Products Collection  -->
+    <!-- Products Collections  -->
     @foreach ($home_3_Categories as $item)
     @if ($item->one_cat_has_many_products-> count() == 0)
-
     @else
     @php
     $other_image = explode(',',$item->one_cat_has_many_products[0]->image);
@@ -1037,42 +1036,18 @@
                 Products<i class="w-icon-long-arrow-right"></i></a>
         </div>
         <div class="row">
-            <div class="mb-4 col-lg-3 col-sm-4">
-                <div class="banner br-sm"
-                    style="background:url('{{ $other_image[0] }}');
-                    background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
-                    <div class="banner-content content-top">
-                        <h5 class="mb-2 banner-subtitle font-weight-normal text-white">Weekend Sale</h5>
-                        <hr class="mb-2 banner-divider bg-light">
-                        <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
-                            New Arrivals<br> <span
-                                class="font-weight-normal text-capitalize text-white">Collection</span>
-                        </h3>
-                        <a href="{{ route('shop_special_category',$item->slug) }}"
-                            class="btn btn-light btn-outline btn-rounded btn-sm text-white">shop Now</a>
-                        <div style="position: absolute;
-                        background: #000;
-                        right: 0;
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        opacity: 0.5;
-                        z-index:-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <!-- End of Banner -->
-            <div class="col-lg-9 col-sm-8">
+            <div class="col-lg-12 col-sm-8">
                 <div class="swiper-container swiper-theme" data-swiper-options="{
                 'spaceBetween': 20,
                 'slidesPerView': 2,
                 'breakpoints': {
                     '992': {
-                        'slidesPerView': 3
+                        'slidesPerView': 4
                     },
                     '1200': {
-                        'slidesPerView': 4
+                        'slidesPerView': 6
                     }
                 }
             }">
@@ -1178,41 +1153,17 @@
                     class="w-icon-long-arrow-left"></i></a>
         </div>
         <div class="row">
-            <div class="mb-4 col-lg-3 col-sm-4">
-                <div class="banner br-sm"
-                    style="background:url('{{ $other_image[0] }}');
-                    background-color: #ebeced; background-repeat:no-repeat;background-size:contain;background-position:center center;height:250px">
-                    <div class="banner-content content-top">
-                        <h5 class="mb-2 banner-subtitle font-weight-normal text-white">الاكثر مبيعا اسبوعيا</h5>
-                        <hr class="mb-2 banner-divider bg-light">
-                        <h3 class="banner-title font-weight-bolder ls-25 text-uppercase text-white">
-                            قسم<br> <span class="font-weight-normal text-capitalize text-white">وصل حديثا</span>
-                        </h3>
-                        <a href="{{ route('shop_special_category',$item->slug) }}"
-                            class="btn btn-light btn-outline btn-rounded btn-sm text-white">تسوق الان</a>
-                        <div style="position: absolute;
-                        background: #000;
-                        right: 0;
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        opacity: 0.5;
-                        z-index:-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- End of Banner -->
-            <div class="col-lg-9 col-sm-8">
+            <div class="col-lg-12 col-sm-8">
                 <div class="swiper-container swiper-theme" data-swiper-options="{
                 'spaceBetween': 20,
                 'slidesPerView': 2,
                 'breakpoints': {
                     '992': {
-                        'slidesPerView': 3
+                        'slidesPerView': 4
                     },
                     '1200': {
-                        'slidesPerView': 4
+                        'slidesPerView': 6
                     }
                 }
             }">
@@ -1314,13 +1265,14 @@
     @endif
     @endif
     @endforeach
-    <!-- End Products Collection  -->
+    <!-- End Products Collections  -->
+
+
     <!-- Slider under view products -->
     @php
     $sponser_adsdown = \App\Models\sponserAds::where('image_place' ,'homepage_under_full_width')->get();
     @endphp
     @if($sponser_adsdown->count() > 0)
-
     <div id="carouselExampleControlsdown" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             @foreach($sponser_adsdown as $key => $slider)
@@ -1348,6 +1300,253 @@
     </div>
     @endif
     <!-- End of Banner Fashion -->
+
+    <!-- Grocery Section -->
+
+@foreach ($home_Grocery_Categories as $item)
+    @if ($item->one_cat_has_many_products-> count() == 0)
+    @else
+    @php
+    $other_image = explode(',',$item->one_cat_has_many_products[0]->image);
+    @endphp
+    @if(Config::get('app.locale') == 'en')
+    <div class="mb-5 product-wrapper-1 appear-animate">
+        <div class="pb-1 mb-4 title-link-wrapper">
+            <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
+            <a href="{{ route('shop_special_category',$item->slug) }}"
+                class="mb-0 font-size-normal font-weight-bold ls-25">More
+                Products<i class="w-icon-long-arrow-right"></i></a>
+        </div>
+        <div class="row">
+           
+            <!-- End of Banner -->
+            <div class="col-lg-12 col-sm-8">
+                <div class="swiper-container swiper-theme" data-swiper-options="{
+                'spaceBetween': 20,
+                'slidesPerView': 2,
+                'breakpoints': {
+                    '992': {
+                        'slidesPerView': 4
+                    },
+                    '1200': {
+                        'slidesPerView': 6
+                    }
+                }
+            }">
+                    <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
+                        @foreach ($item->one_cat_has_many_products as $products_cat)
+                        @php
+                        $other_image = explode(',',$products_cat->image);
+                        @endphp
+                        <div class="swiper-slide product-col">
+                            <div class="text-center product-wrap product">
+                                <figure class="product-media">
+                                    <a href="{{ route('singleproduct',$products_cat->slug) }}">
+
+                                        @if(count($other_image) > 1 )
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        <img src="{{ $other_image[1] }}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @else
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @endif
+                                    </a>
+                                    <div class="product-action-vertical">
+                                        <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}"
+                                            id="add_to_cart{{$products_cat->id}}" data-quantity="1"
+                                            class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                            title="Add to cart"></a>
+                                        <a href="javascript:void(0)" data-id="{{ $products_cat->id }}"
+                                            id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
+                                            class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
+                                            title="Add to wishlist"></a>
+
+                                    </div>
+                                </figure>
+                                <div class="product-details">
+                                    <h4 class="product-name"><a
+                                            href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->title }}</a>
+                                    </h4>
+                                    @php
+                                    $avareg_review =\App\Models\ProductReview::where('product_id',$products_cat->id)->get();
+                                    #review comments
+                                    $avareg = 0;
+                                    $sum = 0;
+                                    foreach($avareg_review as $avg){
+                                    $sum += $avg->rate;
+                                    $countavg = count($avareg_review);
+                                    $avareg = $sum / $countavg;
+                                    }
+                                    @endphp
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
+                                                @elseif(number_format($avareg,1)>= 4.5)
+                                                style="width: 90%;"
+                                                @elseif(number_format($avareg,1) >= 4)
+                                                style="width: 80%;"
+                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                style="width: 70%;"
+                                                @elseif(number_format($avareg,1) >= 3)
+                                                style="width: 60%;"
+                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                style="width: 50%;"
+                                                @elseif(number_format($avareg,1) >= 2)
+                                                style="width: 40%;"
+                                                @else
+                                                style="width: 20%;"
+                                                @endif></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="{{  route('singleproduct',$products_cat->slug)  }}"
+                                            class="rating-reviews">({{ $avareg_review->count() }}
+                                            reviews)</a>
+                                    </div>
+                                    <div class="product-price">
+                                        @if (empty($products_cat->offer_price) || $products_cat->offer_price ==
+                                        null)
+                                        <ins class="new-price">{{ number_format($products_cat->price) }}AED</ins>
+                                        @else
+                                        <ins class="new-price">{{ number_format($products_cat->offer_price) }} AED
+                                        </ins><del class="old-price">{{ number_format($products_cat->price )}} AED</del>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- The Modal -->
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @else
+    <div class="mb-5 product-wrapper-1 appear-animate">
+        <div class="pb-1 mb-4 title-link-wrapper">
+            <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
+            <a href="{{ route('shop_special_category',$item->slug) }}"
+                class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات<i
+                    class="w-icon-long-arrow-left"></i></a>
+        </div>
+        <div class="row">
+            <!-- End of Banner -->
+            <div class="col-lg-12 col-sm-8">
+                <div class="swiper-container swiper-theme" data-swiper-options="{
+                'spaceBetween': 20,
+                'slidesPerView': 2,
+                'breakpoints': {
+                    '992': {
+                        'slidesPerView': 4
+                    },
+                    '1200': {
+                        'slidesPerView': 6
+                    }
+                }
+            }">
+                    <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-2">
+                        @foreach ($item->one_cat_has_many_products as $products_cat)
+                        @php
+                        $other_image = explode(',',$products_cat->image);
+
+                        @endphp
+                        <div class="swiper-slide product-col">
+                            <div class="text-center product-wrap product">
+                                <figure class="product-media">
+                                    <a href="{{ route('singleproduct',$products_cat->slug) }}">
+
+                                        @if(count($other_image) > 1 )
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        <img src="{{ $other_image[1] }}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @else
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        @endif
+                                    </a>
+                                    <div class="product-action-vertical">
+                                        <a href="javascript:void(0)" data-product-id="{{$products_cat->id}}"
+                                            id="add_to_cart{{$products_cat->id}}" data-quantity="1"
+                                            class="add-to-cart btn-product-icon btn-cart w-icon-cart"
+                                            title="Add to cart"></a>
+                                        <a href="javascript:void(0)" data-id="{{ $products_cat->id }}"
+                                            id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
+                                            class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
+                                            title="Add to wishlist"></a>
+                                       
+
+                                    </div>
+                                </figure>
+                                <div class="product-details">
+                                    <h4 class="product-name"><a
+                                            href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->ar_title }}</a>
+                                    </h4>
+                                    @php
+                                    $avareg_review = \App\Models\ProductReview::where('product_id',$products_cat->id)->get();
+                                    #review comments
+                                    $avareg = 0;
+                                    $sum = 0;
+                                    foreach($avareg_review as $avg){
+                                    $sum += $avg->rate;
+                                    $countavg = count($avareg_review);
+                                    $avareg = $sum / $countavg;
+                                    }
+                                    @endphp
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
+                                                @elseif(number_format($avareg,1)>= 4.5)
+                                                style="width: 90%;"
+                                                @elseif(number_format($avareg,1) >= 4)
+                                                style="width: 80%;"
+                                                @elseif(number_format($avareg,1) >= 3.5)
+                                                style="width: 70%;"
+                                                @elseif(number_format($avareg,1) >= 3)
+                                                style="width: 60%;"
+                                                @elseif(number_format($avareg,1) >= 2.5)
+                                                style="width: 50%;"
+                                                @elseif(number_format($avareg,1) >= 2)
+                                                style="width: 40%;"
+                                                @else
+                                                style="width: 20%;"
+                                                @endif></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="{{ route('singleproduct',$products_cat->slug) }}"
+                                            class="rating-reviews">({{ $avareg_review->count() }}
+                                            reviews)</a>
+                                    </div>
+                                    <div class="product-price">
+                                        @if (empty($products_cat->offer_price) || $products_cat->offer_price ==
+                                        null)
+                                        <ins class="new-price">{{ number_format($products_cat->price) }} د.أ </ins>
+                                        @else
+                                        <ins class="new-price">{{ number_format($products_cat->offer_price) }} د.أ
+                                        </ins> - <del class="old-price">{{ number_format($products_cat->price )}} د.أ
+                                        </del>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- The Modal -->
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @endif
+    @endforeach
+
+    <!-- End Grocery Section -->
     <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
     <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
             'spaceBetween': 0,
