@@ -25,7 +25,6 @@
                         @csrf
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input id="email" type="email" class="form-control form-control-lg input-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,7 +37,6 @@
                       <fieldset class="form-group position-relative has-icon-left">
                         
                         <input id="password" type="password" class="form-control form-control-lg input-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -55,7 +53,6 @@
                             <label for="remember-me"> Remember Me</label>
                           </fieldset>
                         </div>
-                        
                         {{-- <div class="col-md-6 col-12 text-center text-md-right">
                             @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
