@@ -450,7 +450,7 @@
                                 <a href="{{ route('shop_page') }}">المتجر</a>
                             </li>
                             <li class="{{ request()->routeIs('grocery_shop_only') ? 'active' : '' }}">
-                                <a href="{{ route('grocery_shop_only') }}"> متجر الخضراوات</a>
+                                <a href="{{ route('grocery_shop_only') }}">  البقالة</a>
                             </li>
                             <li class="{{ request()->routeIs('become_seller') ? 'active' : '' }}">
                                 <a href="{{ route('become_seller') }}">كيف تصبح تاجر</a>

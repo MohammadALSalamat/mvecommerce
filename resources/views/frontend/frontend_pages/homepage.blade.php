@@ -189,7 +189,7 @@
                         أفضل العروض اليوم
                     </h4>
                     @endif
-                    <!-- Slider of the products here -->
+                    <!-- product random of daily deals -->
                     <div class="swiper">
                         <div class="swiper-container swiper-theme nav-top swiper-nav-lg" data-swiper-options="{
                             'spaceBetween': 20,
@@ -505,8 +505,7 @@
                             <button class="swiper-button-next"></button>
                         </div>
                     </div>
-                    <!-- Slider of the products here -->
-
+                    <!-- product random of daily deals -->
                 </div>
             </div>
             <!-- TOP SELLING RIGHT BAR -->
@@ -1303,14 +1302,14 @@
 
     <!-- Grocery Section -->
 
-@foreach ($home_Grocery_Categories as $item)
+    @foreach ($home_Grocery_Categories as $item)
     @if ($item->one_cat_has_many_products-> count() == 0)
     @else
     @php
     $other_image = explode(',',$item->one_cat_has_many_products[0]->image);
     @endphp
     @if(Config::get('app.locale') == 'en')
-    <div class="mb-5 product-wrapper-1 appear-animate">
+    <div class="mb-5 mt-5 product-wrapper-1 appear-animate">
         <div class="pb-1 mb-4 title-link-wrapper">
             <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
             <a href="{{ route('shop_special_category',$item->slug) }}"
@@ -1547,7 +1546,7 @@
     @endforeach
 
     <!-- End Grocery Section -->
-    <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Our Clients</h2>
+    <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Top Brands</h2>
     <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
             'spaceBetween': 0,
             'slidesPerView': 2,
