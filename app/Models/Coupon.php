@@ -23,7 +23,7 @@ class Coupon extends Model
         if($this->type =='fixed'){
             return $this->value;
         }elseif($this->type == 'precentage'){
-         ($this->value / 100) * filter_var($total, FILTER_SANITIZE_NUMBER_INT);
+      return   ($this->value / 100) * $total;
         }else{
             return 0;
         }
