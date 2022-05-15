@@ -166,6 +166,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
 
 
@@ -238,6 +239,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
 
 
