@@ -55,6 +55,7 @@
                             <label for="remember-me"> Remember Me</label>
                           </fieldset>
                         </div>
+                        
                         {{-- <div class="col-md-6 col-12 text-center text-md-right">
                             @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -67,7 +68,12 @@
                     </form>
                   </div>
                 </div>
-                
+                <div class="card-footer">
+                  <div class="">
+                    <p class="float-sm-left text-center m-0"><b  class="card-link">If You Forget password</b></p>
+                    <p class="float-sm-right text-center m-0">Please Contact Programmer </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

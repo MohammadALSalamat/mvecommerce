@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun May 15 2022 16:35:36 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/backend/auth/login.blade.php
+
+
+Created files:
+* .autogit/logs/log-15-4-2022-16-22-10.txt
+
+
+Deleted files:
+
+
+Renamed files:
