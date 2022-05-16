@@ -112,7 +112,7 @@
                         </div>
                     </nav>
                     @if ($count_product > 0)
-                    <div class="product-wrapper row cols-md-4 cols-sm-3 cols-2 scroll-load">
+                    <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                         @foreach ($products as $products_category )
                     @php
                     $avareg_review = \App\Models\ProductReview::where('product_id',$products_category->id)->get();
@@ -142,6 +142,19 @@
                                             title="Add to cart"></a>
                                         <a href="javascript:void(0)" data-id="{{ $products_category->id }}" id="add_to_wishlist{{ $products_category->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Wishlist"></a>
+                                    </div>
+                                    <div class="product-label-group">
+                                        @if(Config::get('app.locale') == 'en')
+                                        @if (!empty($products_category-> discound) || $products_category-> discound != null)
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_category-> discound}}% off</label>
+                                        @endif
+                                        @else
+                                        @if (!empty($products_category-> discound) || $products_category-> discound != null)
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_category-> discound}}% خصم</label>
+                                        @endif
+                                        @endif
                                     </div>
                                 </figure>
                                 <div class="product-details">

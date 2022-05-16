@@ -159,6 +159,19 @@
                                                     title="Wishlist"></a>
                                                
                                             </div>
+                                            <div class="product-label-group">
+                                                @if(Config::get('app.locale') == 'en')
+                                                @if (!empty($product-> discound) || $product-> discound != null)
+                                                <label class="product-label label-discount"
+                                                    style="font-size: 12px">{{$product-> discound}}% off</label>
+                                                @endif
+                                                @else
+                                                @if (!empty($product-> discound) || $product-> discound != null)
+                                                <label class="product-label label-discount"
+                                                    style="font-size: 12px">{{$product-> discound}}% خصم</label>
+                                                @endif
+                                                @endif
+                                            </div>
                                         </figure>
                                         <div class="product-details">
                                             <div class="product-cat">
