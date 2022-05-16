@@ -709,7 +709,6 @@
     <script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{ asset('front-style/assets/vendor/skrollr/skrollr.min.js')}}"></script>
-    
     <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script> 
     <script src="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
