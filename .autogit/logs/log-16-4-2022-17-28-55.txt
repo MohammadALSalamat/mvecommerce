@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 16 2022 17:28:55 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_pages/homepage.blade.php
+* resources/views/frontend/frontend_pages/sellers/sellers_pages/single_seller.blade.php
+
+
+Created files:
+* .autogit/logs/log-16-4-2022-17-15-29.txt
+
+
+Deleted files:
+
+
+Renamed files:
