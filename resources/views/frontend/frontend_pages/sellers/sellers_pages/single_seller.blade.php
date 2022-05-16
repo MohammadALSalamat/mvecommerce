@@ -118,12 +118,10 @@
                                                         @endif></span>
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
-                                                </div>
                                                 @if(Config::get('app.locale') == 'en')
-
                                                 @if (!empty($top_selling->discound) || $top_selling->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
                                                     {{ $top_selling->discound }}% OFF</small>
                                                 @endif
                                                 @else
@@ -134,6 +132,8 @@
                                                     خصم</small>
                                                 @endif
                                                 @endif
+                                                </div>
+                                                
                                                 <div class="product-price">
                                                     @if(Config::get('app.locale') == 'en')
 
@@ -218,6 +218,20 @@
                                                         @endif></span>
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
+                                                    @if(Config::get('app.locale') == 'en')
+                                                @if (!empty($top_selling->discound) || $top_selling->discound != null)
+                                                <small
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
+                                                    {{ $top_selling->discound }}% OFF</small>
+                                                @endif
+                                                @else
+                                                <h4> ملخص</h4>
+                                                @if (!empty($top_selling->discound) || $top_selling->discound != null)
+                                                <small
+                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                                    خصم</small>
+                                                @endif
+                                                @endif
                                                 </div>
                                                 <div class="product-price">
                                                     @if(Config::get('app.locale') == 'en')
@@ -371,6 +385,20 @@
                                                 ></span>
                                                 <span class="tooltiptext tooltip-top"></span>
                                             </div>
+                                            @if(Config::get('app.locale') == 'en')
+                                                @if (!empty($top_selling->discound) || $top_selling->discound != null)
+                                                <small
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
+                                                    {{ $top_selling->discound }}% OFF</small>
+                                                @endif
+                                                @else
+                                                <h4> ملخص</h4>
+                                                @if (!empty($top_selling->discound) || $top_selling->discound != null)
+                                                <small
+                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                                    خصم</small>
+                                                @endif
+                                                @endif
                                         </div>
                                         <div class="product-pa-wrapper">
                                             <div class="product-price">
