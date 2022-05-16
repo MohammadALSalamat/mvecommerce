@@ -41,8 +41,9 @@ Route::post('grocery_filter',[frontPageController::class, 'grocery_filter'])->na
 Route::get('autosearch',[frontPageController::class,'autosearch'])->name('autosearch');
 Route::post('search_product',[frontPageController::class,'search_product'])->name('search_product');
 
+// best dealies page
 
-
+Route::get('best-deals',[frontPageController::class,'best_dealis'])->name('best_deals');
 
 
 Route::get('/',[frontPageController::class,'HomePage'])->name('homepage');

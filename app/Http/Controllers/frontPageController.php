@@ -566,6 +566,59 @@ class frontPageController extends Controller
         return view('frontend.frontend_pages.products.shop',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
     }
+
+
+    // best dealies of the products where has discound more that 30%
+
+    public function best_dealis(Request $request)
+    {
+          // product filter in shop page get the data from the link top
+          $products = product::query();
+          
+          // use it for the filtter using ajax-> (sort prodcuts)
+          $sort = '';
+          if ($request->sort != null) {
+              $sort = $request->sort; // get the value
+          }
+          
+          
+          if ($products == null) {
+          return view('errors.404');
+          } else {
+              //start the sort depends on the valueof ajax
+              if ($sort == 'price-low') {
+              } elseif ($sort == 'price-low') {
+                  $products = product::orderBy('price', 'ASC');
+              } elseif ($sort == 'price-high') {
+                  $products = product::orderBy('price', 'DESC');
+              } elseif ($sort == 'alpha-asc') {
+                  $products = product::orderBy('title', 'ASC');
+              } elseif ($sort == 'alpha-desc') {
+                  $products = product::orderBy('title', 'DESC');
+              } elseif ($sort == 'discountLTH') {
+                  $products = product::orderBy('discound', 'ASC');
+              } elseif ($sort == 'discountHTL') {
+                  $products = product::orderBy('discound', 'DESC');
+              } 
+          }
+          $route='best_Deails/best_deails';
+          // Filter Section
+          #categories
+          $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id','!=', 4)->paginate(50); 
+         
+          $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+          #vendors
+  
+          // brands and related products
+  
+          $brands_rel_product = brand::with('products')->where('status',1)->get();
+  
+          $main_vendors = User::where('status', 'active')->where('role','seller')->get();
+          #type of work filter
+          $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
+         
+        return view('frontend.frontend_pages.products.best_Deails.best_deails');
+    }
     
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
 
