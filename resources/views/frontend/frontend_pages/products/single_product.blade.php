@@ -1,7 +1,9 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle',$single_product->title )
 @section('style')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('front-stylel/assets/vendor/photoswipe/photoswipe.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('front-stylel/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
+<!-- Swiper's CSS -->
 <style>
     .carousel-item {
         width: 100%;
