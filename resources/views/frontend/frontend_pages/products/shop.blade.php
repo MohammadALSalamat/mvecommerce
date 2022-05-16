@@ -18,13 +18,13 @@
                <div class="page-content mb-10">
                 <section class="intro-section container">
                     @php
-                    $sponser_banner = \App\Models\sponserAds::where('image_place' ,'homepage_banner')->get();
+                    $sponser_banner = \App\Models\sponserAds::where('image_place' ,'collection_page_main_banner')->get();
                     @endphp
                     @if($sponser_banner->count() > 0)
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @foreach($sponser_banner as $key => $slider)
-                            @if($slider->image_place == 'homepage_banner')
+                            @if($slider->image_place == 'collection_page_main_banner')
                             <!-- change to the arabic image -->
                             @if(Config::get('app.locale') == 'en')
                             <div class="carousel-item {{ $key == 0 ? 'active':'' }}">

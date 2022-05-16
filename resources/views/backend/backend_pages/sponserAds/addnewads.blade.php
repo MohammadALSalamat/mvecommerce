@@ -159,6 +159,7 @@ input:checked + .slider:before {
                                                        <option value="homepage_under_filter"> Home Page Below the filter </option>
                                                        <option value="homepage_under_full_width"> Home Page Full Width</option>
                                                        <option value="single_product_side_bar"> Single Product On Side bar</option>
+                                                       <option value="collection_page_main_banner"> Collections Page Main Banner</option>
                                                     </select>
                                                 </div>
                                             </div>

@@ -198,12 +198,14 @@ class frontPageController extends Controller
         #categories
         $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id', 4)->paginate(50); 
         #vendors
+        $banner_category = categoryBanner::where('category_place_id',4)->get();
+
         $category_product = category::with('one_cat_has_many_products')->where('id',4 )->first();
         $main_categories = category::with('one_cat_has_many_products')->where('parent_id',$category_product->id)->where('status',1)->get();
         
         // brands and related products
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
-        return view('frontend.frontend_pages.products.GroceryShop.shop_for_grocry',compact('category_product','products','route', 'main_categories', 'main_vendors'));
+        return view('frontend.frontend_pages.products.GroceryShop.shop_for_grocry',compact('banner_category','category_product','products','route', 'main_categories', 'main_vendors'));
     } 
 
 
