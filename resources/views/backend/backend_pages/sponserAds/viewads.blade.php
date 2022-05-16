@@ -59,7 +59,7 @@
               <div class="card-content collapse show">
                 <div class="card-body card-dashboard">
 
-                  <table class="table table-striped table-bordered file-export">
+                  <table class="table table-striped table-bordered file-export table-responsive">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -75,12 +75,17 @@
                       @foreach ($ads as $banner)
                       <tr>
                         <td>{{$banner->id }}</td>
+                        <td>
+                        @php
+                          $vendor_shop_name = \App\Models\Seller::where('id',$banner->seller_id)->value('shop_name');
+                        @endphp
+                        {{ $vendor_shop_name }}
+                        </td>
+                        <td>{{ $banner->image_place }}</td>
                         <td><img src="{{asset($banner->image_English)  }}" width="100%" height="50px"
                             alt="{{ $banner->image_place }}"></td>
-                            <td><img src="{{asset($banner->image_Arabic)  }}" width="100%" height="50px"
+                        <td><img src="{{asset($banner->image_Arabic)  }}" width="100%" height="50px"
                               alt="{{ $banner->image_place }}"></td>
-                        <td>{{ $banner->place }}</td>
-                        <td>{{ $banner->slug }}</td>
                         <td> @if($banner->status == 1)
                           <div class="badge badge-success">Active</div>
                           @else

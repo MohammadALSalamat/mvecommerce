@@ -11,6 +11,7 @@ class SponserAdsController extends Controller
     public function viewaads()
     {
         $ads = sponserAds::get();
+        
         return view('backend.backend_pages.sponserAds.viewads',compact('ads'));
     }
 
@@ -32,7 +33,9 @@ public function addads(Request $request)
     }
    
     if (empty($data['vendor_shop_name'])) {
-        return back()->with('error', 'Description is requird');
+$vendors = null;
+    }else{
+       $vendors = $data['vendor_shop_name'];
     }
     if (empty($data['en_image'])) {
         return back()->with('error', 'Image is requird');
@@ -49,7 +52,7 @@ public function addads(Request $request)
     $insertbanner = new sponserAds();
     $insertbanner->image_English = $data['en_image'];
     $insertbanner->image_Arabic = $data['en_image'];
-    $insertbanner->seller_id = $data['vendor_shop_name'];;
+    $insertbanner->seller_id = $vendors;
     $insertbanner->image_place = $data['image_place'];
     $insertbanner->status = $status;
     $insertbanner->save();

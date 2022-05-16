@@ -1,6 +1,8 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle',$single_product->title )
 @section('style')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
 <!-- Swiper's CSS -->

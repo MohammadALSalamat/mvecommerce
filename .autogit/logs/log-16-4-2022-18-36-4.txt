@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 16 2022 18:36:04 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* resources/views/backend/backend_pages/sponserAds/addnewads.blade.php
+* resources/views/frontend/frontend_pages/products/GroceryShop/shop_for_grocry.blade.php
+* resources/views/frontend/frontend_pages/products/shop.blade.php
+
+
+Created files:
+* .autogit/logs/log-16-4-2022-18-22-38.txt
+
+
+Deleted files:
+
+
+Renamed files:
