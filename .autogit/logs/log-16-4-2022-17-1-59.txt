@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 16 2022 17:01:59 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* public/front-style/assets/vendor/zoom/jquery.zoom.js
+* resources/views/frontend/frontend_pages/products/single_product.blade.php
+
+
+Created files:
+* .autogit/logs/log-16-4-2022-16-48-29.txt
+
+
+Deleted files:
+
+
+Renamed files:

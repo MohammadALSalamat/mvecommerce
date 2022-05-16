@@ -1,8 +1,8 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle',$single_product->title )
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('front-stylel/assets/vendor/photoswipe/photoswipe.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('front-stylel/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
 <!-- Swiper's CSS -->
 <style>
     .carousel-item {
@@ -506,7 +506,7 @@
                                         </div>
                                         <div class="mt-2">
                                             @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name != null)
-                                            Seller : <a href="#"><span>{{ $vendor_info->shop_name }}</span></a>
+                                            Seller : <a href="{{ route('single_seller',$vendor_info->username) }}"><span>{{ $vendor_info->shop_name }}</span></a>
 
                                             @else
                                             Seller : <a href="#"><span>ITajer</span></a>
@@ -1834,7 +1834,8 @@
 @endsection
 
 @section('script')
-
+<script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.js') }}"></script>
+<script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe-ui-default.js') }}"></script>
 <script>
     var checked = [];
     //  add eventlistener listener on parent (listen for change event)
