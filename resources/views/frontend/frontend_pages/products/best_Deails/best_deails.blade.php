@@ -91,6 +91,19 @@
                                                     title="Wishlist"></a>
                                                
                                             </div>
+                                            <div class="product-label-group">
+                                                @if(Config::get('app.locale') == 'en')
+                                                @if (!empty($product-> discound) || $product-> discound != null)
+                                                <label class="product-label label-discount"
+                                                    style="font-size: 12px">{{$product-> discound}}% off</label>
+                                                @endif
+                                                @else
+                                                @if (!empty($product-> discound) || $product-> discound != null)
+                                                <label class="product-label label-discount"
+                                                    style="font-size: 12px">{{$product-> discound}}% خصم</label>
+                                                @endif
+                                                @endif
+                                            </div>
                                         </figure>
                                         <div class="product-details">
                                             <div class="product-cat">
@@ -147,25 +160,6 @@
                             @endif
                         </div>
                         <!-- End of Shop Main Content -->
-
-                        <!-- Start of Sidebar, Shop Sidebar -->
-                        <aside class="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
-                            <!-- Start of Sidebar Overlay -->
-                            <div class="sidebar-overlay"></div>
-                            <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-
-                            <!-- Start of Sidebar Content -->
-                            <div class="sidebar-content scrollable">
-                                <div class="filter-actions">
-                                    <label>Filter :</label>
-                                    <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
-                                </div>
-                                @include('frontend.frontend_pages.products.short_code._left-filter')
-                            </div>
-                            <!-- End of Sidebar Content -->
-                        </aside>
-                        <!-- End of Shop Sidebar -->
                     </div>
                     <!-- End of Shop Content -->
                 </div>

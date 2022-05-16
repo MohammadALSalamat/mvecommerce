@@ -275,7 +275,8 @@
                 </div>
                 <div class="header-right">
                     <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>Track Order</a>
-                    <a href="#"><i class="w-icon-sale"></i>Daily Deals</a>
+                    
+                    <a href="{{ route('best_deals') }}"><i class="w-icon-sale"></i>Best Deals</a>
                 </div>
             </div>
         </div>

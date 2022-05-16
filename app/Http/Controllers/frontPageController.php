@@ -601,23 +601,11 @@ class frontPageController extends Controller
                   $products = product::orderBy('discound', 'DESC');
               } 
           }
-          $route='best_Deails/best_deails';
-          // Filter Section
-          #categories
-          $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('category_id','!=', 4)->paginate(50); 
-         
-          $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
-          #vendors
-  
-          // brands and related products
-  
-          $brands_rel_product = brand::with('products')->where('status',1)->get();
-  
-          $main_vendors = User::where('status', 'active')->where('role','seller')->get();
-          #type of work filter
-          $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
-         
-        return view('frontend.frontend_pages.products.best_Deails.best_deails');
+          $route='best-deals';
+          
+          $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('discound','>',20)->orderBy('discound', 'DESC')->paginate(50);
+          
+        return view('frontend.frontend_pages.products.best_Deails.best_deails',compact('products','route'));
     }
     
 //++++++++++++++++++++++++++++++++ User to Become a Seller Login And Register  +++++++++++++++++++++++++++++++++++++++++++++++++//
