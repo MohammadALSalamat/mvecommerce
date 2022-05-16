@@ -294,13 +294,9 @@
                 <div class="header-right">
                     <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>Track Order</a>
                     @php
-                        $best_deals_checker = \App\Models\product::with('this_belong_to_category')->where(['status' => 1])->where('discound','>',20)->get();
+                        $best_deals_checker = \App\Models\product::where(['status' => 1])->where('discound','>',20)->count();
                     @endphp
-                    <a class="@if ($best_deals_checker > 0 )
-                        grow
-                    @else
-                        
-                    @endif
+                    <a class="@if ($best_deals_checker > 0 ) glow @else @endif
                     " href="{{ route('best_deals') }}"><i class="w-icon-sale glow"></i>Best Deals</a>
                 </div>
             </div>
