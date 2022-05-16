@@ -16,16 +16,40 @@
             <!-- End of Page Content -->
                <!-- Start of Page Content -->
                <div class="page-content mb-10">
-                <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6"
-                    style="background-image: url(assets/images/shop/banner2.jpg); background-color: #FFC74E;">
-                    <div class="container banner-content">
-                        <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
-                        <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10">Smart Watches</h3>
-                        <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
-                            Now<i class="w-icon-long-arrow-right"></i></a>
+                <section class="intro-section container">
+                    @php
+                    $sponser_banner = \App\Models\sponserAds::where('image_place' ,'homepage_banner')->get();
+                    @endphp
+                    @if($sponser_banner->count() > 0)
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($sponser_banner as $key => $slider)
+                            @if($slider->image_place == 'homepage_banner')
+                            <!-- change to the arabic image -->
+                            @if(Config::get('app.locale') == 'en')
+                            <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                                <img src="{{url($slider->image_English)}}" class="d-block w-100" alt="{{ $slider->image_place }}">
+                            </div>
+                            @else
+                            <div class="carousel-item {{ $key == 0 ? 'active':'' }}">
+                                <img src="{{url($slider->image_Arabic)}}" class="d-block w-100" alt="{{ $slider->image_place }}">
+                            </div>
+                            @endif
+                            <!-- change to the arabic image -->
+                            @endif
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
-                </div>
-                
+                    @endif
+                </section>
                 <div class="container-fluid">
                     @if(!empty($main_categories) || $main_categories->count() > 0)
                     <!-- End of Shop Banner -->
