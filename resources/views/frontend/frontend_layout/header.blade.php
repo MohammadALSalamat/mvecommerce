@@ -1,4 +1,22 @@
-    <div class="header-top">
+   <!-- Make the text best deals Glowing if there is products -->
+   <style>
+    .glow {
+  color: #000;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #e60000, 0 0 8px #e60000, 0 0 10px #e60000, 0 0 12px #e60000, 0 0 14px #e60000;
+  }
+  
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 4px #ff6969, 0 0 6px #ff6969, 0 0 8px #ff6969, 0 0 10px #ff6969, 0 0 12px #ff6969, 0 0 15px #ff6969;
+  }
+}
+   </style>
+   <div class="header-top">
         <div class="container">
             @if(Config::get('app.locale') == 'en')
             <div class="header-left">
@@ -275,8 +293,15 @@
                 </div>
                 <div class="header-right">
                     <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>Track Order</a>
-                    
-                    <a href="{{ route('best_deals') }}"><i class="w-icon-sale"></i>Best Deals</a>
+                    @php
+                        $best_deals_checker = \App\Models\product::with('this_belong_to_category')->where(['status' => 1])->where('discound','>',20)->get();
+                    @endphp
+                    <a class="@if ($best_deals_checker > 0 )
+                        grow
+                    @else
+                        
+                    @endif
+                    " href="{{ route('best_deals') }}"><i class="w-icon-sale glow"></i>Best Deals</a>
                 </div>
             </div>
         </div>

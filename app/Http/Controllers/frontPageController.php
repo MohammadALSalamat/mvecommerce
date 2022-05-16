@@ -58,7 +58,7 @@ class frontPageController extends Controller
         $products_bestSelling = product::wherein('id',$get_product_top_selling_ids)->get();
         $products_review_ids = product::get();
         $products_review_ids_array = array();
-      
+        
         foreach($products_review_ids as $all_ids){
             array_push($products_review_ids_array,$all_ids->id);
         }
