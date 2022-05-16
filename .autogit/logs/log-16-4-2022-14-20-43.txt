@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 16 2022 14:20:43 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-16-4-2022-1-59-35.txt
+* resources/views/frontend/frontend_pages/products/best_Deails/best_deails.blade.php
+
+
+Deleted files:
+
+
+Renamed files:
