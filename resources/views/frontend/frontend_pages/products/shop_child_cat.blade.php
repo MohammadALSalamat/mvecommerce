@@ -143,7 +143,7 @@
                                         <a href="javascript:void(0)" data-id="{{ $products_category->id }}" id="add_to_wishlist{{ $products_category->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Wishlist"></a>
                                     </div>
-                                    <div class="product-label-group" style="left:0rem !important">
+                                    <div class="product-label-group" style="left:0rem !important;top:0rem !important">
                                         @if(Config::get('app.locale') == 'en')
                                         @if (!empty($products_category-> discound) || $products_category-> discound != null)
                                         <label class="product-label label-discount"

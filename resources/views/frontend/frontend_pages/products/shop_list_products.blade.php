@@ -129,7 +129,7 @@
                         <div class="product-wrap">
                             <div class="product text-center">
                                 <figure class="product-media">
-                                    <a href="product-default.html">
+                                    <a href="{{ route('shop_special_category',$category_product->slug) }}">
                                         @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product" style="width: 100%;height:200px !important;object-fit:contain;"/>
                                         <img src="{{ $other_image[1] }}" alt="Product" style="width: 100%;height:200px !important;object-fit:contain;" />
@@ -143,7 +143,7 @@
                                         <a href="javascript:void(0)" data-id="{{ $products_category->id }}" id="add_to_wishlist{{ $products_category->id }}" data-quantity="1" class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Wishlist"></a>
                                     </div>
-                                    <div class="product-label-group">
+                                    <div class="product-label-group" style="left:0rem !important;top:0rem !important">
                                         @if(Config::get('app.locale') == 'en')
                                         @if (!empty($products_category-> discound) || $products_category-> discound != null)
                                         <label class="product-label label-discount"

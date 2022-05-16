@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 16 2022 15:14:26 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/frontend/frontend_pages/products/shop.blade.php
+* resources/views/frontend/frontend_pages/products/shop_child_cat.blade.php
+* resources/views/frontend/frontend_pages/products/shop_list_products.blade.php
+
+
+Created files:
+* .autogit/logs/log-16-4-2022-15-1-0.txt
+
+
+Deleted files:
+
+
+Renamed files:
