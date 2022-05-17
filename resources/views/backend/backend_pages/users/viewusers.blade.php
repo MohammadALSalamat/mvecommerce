@@ -107,16 +107,23 @@
                         <td><img src="{{asset('/storage/seller/'.$user->photo)}}" style="width:100%;height:50px;object-fit:contain" alt="{{ $user->title }}"></th>
                         <td>{{ $user->full_name }}</td>
                         <td>{{ $user->type_of_work }}</td>
-                        <td>
-                          {{ date('Y-m-d',strtotime($user->ends_at)) }}
-                          <br>
-                          <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($user->ends_at)) }}</strong> Days Left</small>
-                        </td>
+                       
                         <td> @if($user->status == 1)
                           <div class="badge badge-success">Active</div>
                           @else
                           <div class="badge badge-danger">Inactive</div>
                           @endif
+                        </td>
+                        <td>
+                          @php
+                              $subscribe_seller = \App\Models\subscription::where('seller_id',$user->id)->get();
+                          @endphp
+                          @foreach ($subscribe_seller as $subscribe)
+                          {{ date('Y-m-d',strtotime($subscribe->ends_at)) }}
+                              
+                          <br>
+                          <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscribe->ends_at)) }}</strong> Days Left</small>
+                          @endforeach
                         </td>
                         @if (Config::get('app.locale') == 'en')
                         <td>
@@ -175,7 +182,7 @@
                               <div class="row">
                                 <!-- left section -->
                                 <div class="col-6" style="padding:9px">
-                                  <img src="{{ asset($user->photo) }}" alt="{{ $user->full_name }}">
+                                  <img src="{{ asset('/storage/seller/'.$user->photo) }}" alt="{{ $user->full_name }}" style="width: 100%;height:auto">
                                 </div>
                                 <!-- Right section -->
                                 <div class="col-6">
@@ -233,6 +240,22 @@
                                       <b>Role : </b>
                                       <p>
                                         <div class='badge badge-success'>{{ $user->role }}</div>
+                                      </p>
+                                    </div>
+                                    <div class="col-12">
+                                      <b>Subsciption : </b>
+                                      <p>
+                                        <div class='badge badge-success'> 
+                                           @php
+                                          $subscribe_seller = \App\Models\subscription::where('seller_id',$user->id)->get();
+                                      @endphp
+                                      @foreach ($subscribe_seller as $subscribe)
+                                      {{ date('Y-m-d',strtotime($subscribe->ends_at)) }}
+                                          
+                                      <br>
+                                      <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscribe->ends_at)) }}</strong> Days Left</small>
+                                      @endforeach
+                                    </div>
                                       </p>
                                     </div>
 
@@ -305,7 +328,22 @@
                                         <div class='badge badge-success'>{{ $user->role }}</div>
                                       </p>
                                     </div>
-
+                                    <div class="col-12">
+                                      <b>Subsciption : </b>
+                                      <p>
+                                        <div class='badge badge-success'> 
+                                           @php
+                                          $subscribe_seller = \App\Models\subscription::where('seller_id',$user->id)->get();
+                                      @endphp
+                                      @foreach ($subscribe_seller as $subscribe)
+                                      {{ date('Y-m-d',strtotime($subscribe->ends_at)) }}
+                                          
+                                      <br>
+                                      <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscribe->ends_at)) }}</strong> Days Left</small>
+                                      @endforeach
+                                    </div>
+                                      </p>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
