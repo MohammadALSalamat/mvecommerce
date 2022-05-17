@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 17 2022 11:06:46 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Mail/OrderEmailForAdmin.php
+* app/Models/Coupon.php
+* resources/views/frontend/frontend_layout/_cart-lists.blade.php
+* resources/views/frontend/frontend_layout/header.blade.php
+
+
+Created files:
+* .autogit/logs/log-17-4-2022-10-53-21.txt
+
+
+Deleted files:
+
+
+Renamed files:
