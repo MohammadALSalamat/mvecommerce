@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Helper;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\brand;
+use App\Models\Order;
 use App\Models\banner;
 use App\Models\Seller;
 use App\Models\product;
@@ -13,10 +15,12 @@ use App\Models\sponserAds;
 use App\Models\productOrder;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
+use App\Models\categoryBanner;
 use App\Models\productGallary;
 use App\Mail\verficationVendors;
 use App\Models\productAttribute;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -28,9 +32,6 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\verfication_admin_email_for_vendors;
-use App\Models\brand;
-use App\Models\categoryBanner;
-use App\Models\Order;
 
 class frontPageController extends Controller
 {
@@ -778,6 +779,7 @@ class frontPageController extends Controller
 
     public function loginForm()
     {
+        Session::put('url.intended',URL::previous());
         #show the login form
 
         return view('frontend.frontend_pages.auth.loginForm');

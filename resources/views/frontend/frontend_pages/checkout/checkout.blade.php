@@ -271,8 +271,8 @@
                                                         <b>Total</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value']}} AED</b>
-                                                        <input type="hidden" name="total_with_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value']}}">
+                                                        <b> {{(float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value']}} AED</b>
+                                                        <input type="hidden" name="total_with_copuon" value="{{(float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value']}}">
                                                         <input type="hidden" name="total_without_copuon" value="0">
                                                         <input type="hidden" name="coupon_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon')['value'] }}">             
                                                     </td>

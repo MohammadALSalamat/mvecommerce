@@ -189,7 +189,7 @@
                             <label>Subtotal:</label>
                             @if(session()->has('coupon'))
                             <span class="price">AED
-                                {{ filter_var(\Gloudemans\Shoppingcart\Facades\Cart::subtotal() , FILTER_SANITIZE_NUMBER_INT) - number_format(session('coupon')['value'],2) }}</span>
+                                {{ (float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - number_format(session('coupon')['value'],2) }}</span>
                             @else
                             <span class="price">AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
                             @endif
@@ -381,7 +381,7 @@
                             <label>المجموع:</label>
                             @if(session()->has('coupon'))
                             <span class="price"> د.إ
-                                {{ filter_var(\Gloudemans\Shoppingcart\Facades\Cart::subtotal() , FILTER_SANITIZE_NUMBER_INT) - number_format(session('coupon')['value'],2) }}</span>
+                                {{ (float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - number_format(session('coupon')['value'],2) }}</span>
                             @else
                             <span class="price"> د.إ {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
                             @endif
