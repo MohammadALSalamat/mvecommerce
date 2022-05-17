@@ -85,7 +85,7 @@
                         <th>Full Name</th>
                         <th>Role</th>
                         <th>status</th>
-                        <th>payment</th>
+                        <th>Subsciption</th>
                         <th>action</th>
                       </tr>
                       @else
@@ -95,7 +95,7 @@
                         <th>الاسم الكامل</th>
                         <th>الوظيفة</th>
                         <th>الحالة</th>
-                        <th>الدفع</th>
+                        <th>الاشتراك</th>
                         <th>الفعل</th>
                       </tr>
                       @endif
@@ -329,7 +329,7 @@
                                       </p>
                                     </div>
                                     <div class="col-12">
-                                      <b>Subsciption : </b>
+                                      <b>الاشتراك : </b>
                                       <p>
                                         <div class='badge badge-success'> 
                                            @php
