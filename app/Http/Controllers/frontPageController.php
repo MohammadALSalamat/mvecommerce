@@ -728,6 +728,14 @@ class frontPageController extends Controller
                 'address' => $data['address'],
                 'country' =>$data['country']
             ];
+            try {
+                Mail::to($data['email'])->send(new verficationVendors($newdata));
+                //send the data to admin to verify the user 
+                Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
+            } catch (\Throwable $th) {
+                //throw $th;
+                return back()->with('error','your email has problem');
+            }
             
             $addnewvendor = new Seller();
             $addnewvendor->full_name = $data['name'];
@@ -747,14 +755,6 @@ class frontPageController extends Controller
             $addnewvendor->type_of_work = $data['type_of_work'];
             $addnewvendor->save();
 
-            try {
-                Mail::to($data['email'])->send(new verficationVendors($newdata));
-                //send the data to admin to verify the user 
-                Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
-            } catch (\Throwable $th) {
-                //throw $th;
-                return back()->with('error','your email has problem');
-            }
         
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
