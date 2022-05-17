@@ -129,12 +129,36 @@
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                Thank you For your registered on ITajer website, <br> Our Team will view your request and updates you ASAP <br> If you have question you can Call us :0501413429 <br> Or Send us an email on : alomda.alslmat@gmail.com
+                                                Thank you For your registered on ITajer website, <br> We would like to Congrats you that your account has been activated and you can now visit your dashboard to add your products <br> before you do that you have to complate all the steps after login <br>If you have any counsirn please Send us an email on : alomda.alslmat@gmail.com
                                             </p>
                                         </td>
                                     </tr>
                                 </table>
 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style=" padding: 35px; background-color: #ff7361;" bgcolor="#1b9ba3">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                    <tr>
+                                        <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
+                                            <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
+                                                Click Here To login to your dashboard.
+                                            </h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" style="padding: 25px 0 15px 0;">
+                                            <table border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
+                                                        <a href="#" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Seller Dashboard</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
