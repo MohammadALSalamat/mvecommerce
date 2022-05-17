@@ -19,13 +19,13 @@
     <div class="content-header row">
       @if (Config::get('app.locale') == 'en')
       <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
-        <h3 class="mb-0 content-header-title d-inline-block">Users Table</h3>
+        <h3 class="mb-0 content-header-title d-inline-block">Sellers Table</h3>
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('admin') }}">dashboard</a>
               </li>
-              <li class="breadcrumb-item"><a href="{{ route('viewusers') }}">View Users</a>
+              <li class="breadcrumb-item"><a href="{{ route('viewusers') }}">View Sellers</a>
             </ol>
           </div>
         </div>
@@ -47,7 +47,7 @@
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
           <a href="{{ route('createusers') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> Add Brand </button></a>
+                class="la la-plus"></i> Add Seller </button></a>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body card-dashboard">
-                  <table class="table table-striped table-bordered file-export">
+                  <table class="table table-striped table-bordered file-export table-responsive">
                     <thead>
                       @if (Config::get('app.locale') == 'en')
                       <tr>
@@ -85,6 +85,7 @@
                         <th>Full Name</th>
                         <th>Role</th>
                         <th>status</th>
+                        <th>payment</th>
                         <th>action</th>
                       </tr>
                       @else
@@ -102,10 +103,10 @@
                       @foreach ($Users as $user)
                       <tr>
                         <td>{{ $user->id }}</td>
-                        <td><img src="{{asset($user->photo)}}" width="100%" height="50px" alt="{{ $user->title }}"></th>
+                        <td><img src="{{asset('/storage/seller/'.$user->photo)}}" style="width:100%;height:50px;object-fit:contain" alt="{{ $user->title }}"></th>
                         <td>{{ $user->full_name }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td> @if($user->status == 'active')
+                        <td>{{ $user->type_of_work }}</td>
+                        <td> @if($user->status == 1)
                           <div class="badge badge-success">Active</div>
                           @else
                           <div class="badge badge-danger">Inactive</div>

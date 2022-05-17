@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function viewusers()
     {
-        $Users = User::where('status', 'active')->get();
+        $Users = Seller::where('status',1)->get();
         return view('backend.backend_pages.users.viewusers',compact('Users'));
     }
 
