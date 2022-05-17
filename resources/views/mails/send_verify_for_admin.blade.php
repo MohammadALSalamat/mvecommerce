@@ -123,74 +123,16 @@
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                                             <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
                                             <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                                                Thank You For Your Order!
+                                               Dear Admin !
                                             </h2>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                We will confirm the precise delivery date once your item(s) have been shipped. You can view the status of your order or make changes to it by visiting Your Orders on Itajer Shop. </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" style="padding-top: 20px;">
-                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                                                <tr>
-                                                    <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                        Order Confirmation #
-                                                    </td>
-                                                    <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                       {{$order_email_imfo['order_number']}}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                        Purchased Item ({{$order_email_imfo['count_items']}})
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                      {{$order_email_imfo['sub_total']}} AED
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                        Shipping + Handling
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                      {{$order_email_imfo['delivary_charge']}} AED
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                        Coupon(s)
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                      {{$order_email_imfo['coupon']}} AED
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" style="padding-top: 20px;">
-                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        TOTAL
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                      {{$order_email_imfo['total']}} AED
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        Selected Payment Method
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                      {{$order_email_imfo['payment_method']}}
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                Below is The Details of a new seller wants to register to your website
+
+                                            </p>
                                         </td>
                                     </tr>
                                 </table>
@@ -207,9 +149,11 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Delivery Address</p>
-                                                            <p>675 Massachusetts Avenue<br>11th Floor<br>Cambridge, MA 02139</p>
-
+                                                            <p style="font-weight: 800;">Seller Info</p>
+                                                            <p> <b>Name : </b> {{ $adminData['full_name'] }}</p>
+                                                            <p> <b>Email : </b> {{ $adminData['email'] }}</p>
+                                                            <p> <b>Phone Number : </b> {{ $adminData['phone'] }}</p>
+                                                            <p> <b>Business : </b> {{ $adminData['type_of_work'] }}</p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -218,8 +162,10 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Estimated Delivery Date</p>
-                                                            <p>January 1st, 2016</p>
+                                                            <p style="font-weight: 800;">Seller Info</p>
+                                                            <p> <b>Business Name : </b> {{ $adminData['shopname'] }}</p>
+                                                            <p> <b>Adress : </b> {{ $adminData['address'] }}</p>
+                                                            <p> <b>Country : </b> {{ $adminData['country'] }}</p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -235,7 +181,7 @@
                                     <tr>
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                                             <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
-                                                We Will be happy to see you again.
+                                                Click Here To active the seller Account.
                                             </h2>
                                         </td>
                                     </tr>
@@ -244,7 +190,7 @@
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                        <a href="#" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
+                                                        <a href="#" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Active Seller</a>
                                                     </td>
                                                 </tr>
                                             </table>
