@@ -120,7 +120,7 @@ class OrderController extends Controller
             $final_total = $total ;
         }
         $ordernumber = rand(1,10000000);
-        dd($final_total);
+        
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {
             $order = new Order();
@@ -143,7 +143,6 @@ class OrderController extends Controller
             $order->spostcode = $data['spostcode'];
             $order->order_number = $ordernumber;
             $order->total = $final_total;
-            
             $order->sub_total = $total;
             $order->payment_method = $data['cod'];
             // $order->condition = 'pending';
@@ -174,6 +173,7 @@ class OrderController extends Controller
                 'delivary_charge'=>$shipping_paid,
                 'count_items' => count(Cart::instance('shopping')->content())
             ];
+            dd($order_email_imfo);
             
             try {
                 dispatch(new OrderEmail($order_email_imfo));
