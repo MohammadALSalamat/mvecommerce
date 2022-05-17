@@ -115,14 +115,14 @@ class OrderController extends Controller
             $total = 0;
         }
 
+        dd($total);
         if($shipping_paid == 0){
             $final_total = $total;  
         }else{
-            $final_total = $total + number_format($shipping_paid);
+            $final_total = $total + $shipping_paid;
         }
         $ordernumber = rand(1,10000000);
         
-dd($final_total);
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {
             $order = new Order();
