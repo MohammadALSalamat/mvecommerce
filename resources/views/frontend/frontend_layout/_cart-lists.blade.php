@@ -85,13 +85,13 @@
                </div>
                <div class="cart-subtotal d-flex align-items-center justify-content-between">
                    <label class="ls-25">Coupon </label>
-                   <span>AED {{\Illuminate\Support\Facades\Session::get('coupon')['value'] }}</span>
+                   <span>AED {{(int)\Illuminate\Support\Facades\Session::get('coupon')['value'] }}</span>
                </div>
                @else
                <div class="cart-subtotal d-flex align-items-center justify-content-between">
 
                    <label class="ls-25">Subtotal</label>
-                   <span>AED {{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
+                   <span>AED {{ (int)\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
                </div>
 
                <div class="cart-subtotal d-flex align-items-center justify-content-between">
@@ -180,12 +180,12 @@
                <div class="order-total d-flex justify-content-between align-items-center">
                    <label>Total</label>
                    <span class="ls-50">AED
-                       {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
+                       {{(int)\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - (int)session('coupon')['value'] }}</span>
                </div>
                @else
                <div class="order-total d-flex justify-content-between align-items-center">
                    <label>Total</label>
-                   <span class="ls-50">AED {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
+                   <span class="ls-50">AED {{(int)\Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</span>
                </div>
                @endif
                <a href="{{ route('checkout') }}"

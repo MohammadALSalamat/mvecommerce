@@ -21,9 +21,9 @@ class Coupon extends Model
     public function discount($total)
     {
         if($this->type =='fixed'){
-            return $this->value;
+            return (int)$this->value;
         }elseif($this->type == 'precentage'){
- return  ($this->value / 100) * $total;
+            return  (int)($this->value / 100) * (int)$total;
         }else{
             return 0;
         }

@@ -33,6 +33,6 @@ class OrderEmailForAdmin extends Mailable implements ShouldQueue
         return $this->from('support@9yards.ae')
         ->subject('New Order has been Purchased')
         ->view('mails.order_admin_email')
-        ->with('order_email_imfo', $this->data);
+        ->with('order_email_imfo', $this->order_email_imfo);
     }
 }
