@@ -95,6 +95,7 @@
                         <th>الاسم الكامل</th>
                         <th>الوظيفة</th>
                         <th>الحالة</th>
+                        <th>الدفع</th>
                         <th>الفعل</th>
                       </tr>
                       @endif
@@ -106,6 +107,11 @@
                         <td><img src="{{asset('/storage/seller/'.$user->photo)}}" style="width:100%;height:50px;object-fit:contain" alt="{{ $user->title }}"></th>
                         <td>{{ $user->full_name }}</td>
                         <td>{{ $user->type_of_work }}</td>
+                        <td>
+                          {{ date('Y-m-d',strtotime($user->ends_at)) }}
+                          <br>
+                          <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($user->ends_at)) }}</strong> Days Left</small>
+                        </td>
                         <td> @if($user->status == 1)
                           <div class="badge badge-success">Active</div>
                           @else
