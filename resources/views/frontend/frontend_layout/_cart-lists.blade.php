@@ -180,7 +180,7 @@
                <div class="order-total d-flex justify-content-between align-items-center">
                    <label>Total</label>
                    <span class="ls-50">AED
-                       {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }}</span>
+                       {{filter_var(\Gloudemans\Shoppingcart\Facades\Cart::subtotal() , FILTER_SANITIZE_NUMBER_INT) - number_format(session('coupon')['value'],2) }}</span>
                </div>
                @else
                <div class="order-total d-flex justify-content-between align-items-center">
@@ -378,7 +378,7 @@
             <div class="order-total d-flex justify-content-between align-items-center">
                 <label>المبلغ الكلي</label>
                 <span class="ls-50">
-                    {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal() - session('coupon')['value'] }} د.أ</span>
+                    {{filter_var(\Gloudemans\Shoppingcart\Facades\Cart::subtotal() , FILTER_SANITIZE_NUMBER_INT) - number_format(session('coupon')['value'],2) }} د.أ</span>
             </div>
             @else
             <div class="order-total d-flex justify-content-between align-items-center">
