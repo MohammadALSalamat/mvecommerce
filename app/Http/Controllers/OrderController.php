@@ -115,13 +115,13 @@ class OrderController extends Controller
             $total = 0;
         }
 
-        dd($total);
         if($shipping_paid == 0){
             $final_total = $total;  
         }else{
-            $final_total = $total + $shipping_paid;
+            $final_total = (float) str_replace(',','',$total) + $shipping_paid;
         }
         $ordernumber = rand(1,10000000);
+        
         
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {
@@ -145,7 +145,7 @@ class OrderController extends Controller
             $order->spostcode = $data['spostcode'];
             $order->order_number = $ordernumber;
             $order->total = $final_total;
-            $order->sub_total = $total;
+            $order->sub_total = (float) str_replace(',','',$total);
             $order->payment_method = $data['cod'];
             // $order->condition = 'pending';
             // $order->status = 0;
@@ -175,7 +175,6 @@ class OrderController extends Controller
                 'delivary_charge'=>$shipping_paid,
                 'count_items' => count(Cart::instance('shopping')->content())
             ];
-            dd($order_email_imfo);
             
             try {
                 dispatch(new OrderEmail($order_email_imfo));
