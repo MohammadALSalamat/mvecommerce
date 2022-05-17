@@ -149,7 +149,7 @@ class OrderController extends Controller
             // $order->status = 0;
             $order->delivary_charge = $shipping_paid;
             $order->coupon = $coupon_value;
-
+            dd(count($order->product));
             $order_email_imfo = [
                 'full_name' => $data['full_name'],
                 'sfull_name' => $sfull_name,
@@ -173,6 +173,7 @@ class OrderController extends Controller
                 'coupon'=>$coupon_value,
                 'payment_method' => $data['cod'],
                 'delivary_charge'=>$shipping_paid,
+                'count_items' => count($order->product),
             ];
             
             try {
