@@ -11,16 +11,16 @@ class OrderEmailForAdmin extends Mailable implements ShouldQueue
 {
     use  Queueable,SerializesModels;
     
-    public $data;
+    public $order_email_imfo;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order_email_imfo)
     {
-        $this->data = $data;
+        $this->order_email_imfo = $order_email_imfo;
     }
 
     /**
@@ -31,8 +31,8 @@ class OrderEmailForAdmin extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->from('support@9yards.ae')
-        ->subject('New Order')
+        ->subject('New Order has been Purchased')
         ->view('mails.order_admin_email')
-        ->with('data', $this->data);
+        ->with('order_email_imfo', $this->data);
     }
 }

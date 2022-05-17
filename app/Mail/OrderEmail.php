@@ -29,7 +29,7 @@ class OrderEmail extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->from('support@9yards.ae')
-        ->subject('Order Recipt')
+        ->subject('Order Recipt #'.$this->order_email_imfo['order_number'])
         ->view('mails.order_user_complate')
         ->with('order_email_imfo', $this->order_email_imfo);
     }

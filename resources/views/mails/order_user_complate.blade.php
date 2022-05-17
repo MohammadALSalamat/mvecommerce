@@ -141,15 +141,15 @@
                                                         Order Confirmation #
                                                     </td>
                                                     <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                        2345678
+                                                       {{$order_email_imfo['order_number']}}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                        Purchased Item (1)
+                                                        Purchased Item ({{$order_email_imfo['count_items']}})
                                                     </td>
                                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                        $100.00
+                                                      {{$order_email_imfo['sub_total']}} AED
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -157,7 +157,7 @@
                                                         Shipping + Handling
                                                     </td>
                                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                        $10.00
+                                                      {{$order_email_imfo['delivary_charge']}} AED
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -165,7 +165,7 @@
                                                         Coupon(s)
                                                     </td>
                                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                        $5.00
+                                                      {{$order_email_imfo['coupon']}} AED
                                                     </td>
                                                 </tr>
                                             </table>
@@ -179,7 +179,7 @@
                                                         TOTAL
                                                     </td>
                                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        $115.00
+                                                      {{$order_email_imfo['total']}} AED
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -187,7 +187,7 @@
                                                         Selected Payment Method
                                                     </td>
                                                     <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        Visa
+                                                      {{$order_email_imfo['payment_method']}}
                                                     </td>
                                                 </tr>
                                             </table>

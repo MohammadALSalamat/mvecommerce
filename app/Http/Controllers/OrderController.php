@@ -172,12 +172,12 @@ class OrderController extends Controller
                 'coupon'=>$coupon_value,
                 'payment_method' => $data['cod'],
                 'delivary_charge'=>$shipping_paid,
-                'count_items' => count(Cart::instance('shopping')->content()),
+                'count_items' => count(Cart::instance('shopping')->content())
             ];
             
             try {
                 dispatch(new OrderEmail($order_email_imfo));
-                dispatch(new OrderEmailForAdmin($data));
+                dispatch(new OrderEmailForAdmin($order_email_imfo));
             } catch (\Throwable $th) {
                 return back()->with('error','there is something went wrong, your order did not complate yet!!');
             }
