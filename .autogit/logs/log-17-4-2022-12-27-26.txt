@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 17 2022 12:27:26 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/OrderController.php
+* resources/views/mails/order_admin_email.blade.php
+
+
+Created files:
+* .autogit/logs/log-17-4-2022-12-13-55.txt
+
+
+Deleted files:
+
+
+Renamed files:
