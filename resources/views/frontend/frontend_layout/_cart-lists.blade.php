@@ -180,7 +180,7 @@
                <div class="order-total d-flex justify-content-between align-items-center">
                    <label>Total</label>
                    <span class="ls-50">AED
-                       {{(float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - number_format(session('coupon')['value'],2) }}</span>
+                       {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'],2) }}</span>
                </div>
                @else
                <div class="order-total d-flex justify-content-between align-items-center">
@@ -378,7 +378,7 @@
             <div class="order-total d-flex justify-content-between align-items-center">
                 <label>المبلغ الكلي</label>
                 <span class="ls-50">
-                    {{(float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - number_format(session('coupon')['value'],2) }} د.أ</span>
+                    {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'],2) }} د.أ</span>
             </div>
             @else
             <div class="order-total d-flex justify-content-between align-items-center">

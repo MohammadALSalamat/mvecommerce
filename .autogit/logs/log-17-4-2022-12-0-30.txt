@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 17 2022 12:00:30 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/frontPageController.php
+* resources/views/frontend/frontend_layout/_cart-lists.blade.php
+* resources/views/frontend/frontend_layout/header.blade.php
+* resources/views/frontend/frontend_pages/checkout/checkout.blade.php
+
+
+Created files:
+* .autogit/logs/log-17-4-2022-11-47-4.txt
+
+
+Deleted files:
+
+
+Renamed files:

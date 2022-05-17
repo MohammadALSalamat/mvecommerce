@@ -208,7 +208,12 @@
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                             <p style="font-weight: 800;">Delivery Address</p>
-                                                            <p>675 Massachusetts Avenue<br>11th Floor<br>Cambridge, MA 02139</p>
+                                                            <p> 
+                                                                Name : {{ $order_email_imfo['full_name'] }}<br>
+                                                                675 Massachusetts Avenue
+                                                                <br>11th Floor
+                                                                <br>Cambridge, MA 02139
+                                                            </p>
 
                                                         </td>
                                                     </tr>

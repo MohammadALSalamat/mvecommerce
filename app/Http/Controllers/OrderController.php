@@ -148,7 +148,7 @@ class OrderController extends Controller
             // $order->condition = 'pending';
             // $order->status = 0;
             $order->delivary_charge = $shipping_paid;
-            
+            dd($data);
             $order_email_imfo = [
                 'full_name' => $data['full_name'],
                 'sfull_name' => $sfull_name,
