@@ -312,11 +312,6 @@
         </main>
         <!-- End of Main -->
             <!-- Main JS -->
-    <script src="{{ asset('front-style/assets/vendor/nouislider/nouislider.min.js') }}"></script>
-    <script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('front-style/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script>
-    <script src="{{ asset('front-style/assets/js/main.min.js') }}"></script>
 @endsection
 
 @section('script')
