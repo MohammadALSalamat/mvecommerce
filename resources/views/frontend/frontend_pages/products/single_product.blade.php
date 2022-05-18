@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
 <!-- Swiper's CSS -->
+
 <style>
     .carousel-item {
         width: 100%;
@@ -230,6 +231,7 @@
         color: #000
     }
 </style>
+
 <style>
     .row>.column {
         padding: 0 8px;
@@ -407,6 +409,7 @@
         padding: 10px;
     }
 </style>
+
 @endsection
 @section('content')
 <!-- Start of Main -->
@@ -1838,6 +1841,7 @@
 @section('script')
 <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.js') }}"></script>
 <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe-ui-default.js') }}"></script>
+
 <script>
     var checked = [];
     //  add eventlistener listener on parent (listen for change event)
@@ -1883,6 +1887,7 @@
 </script>
 
 <!--add  products to cart -->
+
 <script>
     $(document).on('click', '.qty', function() {
         var id = $(this).data('id');
@@ -1926,7 +1931,9 @@
         });
     }
 </script>
+
 <!--add frequntly products to cart -->
+
 <script>
     function update_ids(rawId_feq) {
         var token = "{{ csrf_token() }}";
@@ -1952,6 +1959,7 @@
         });
     }
 </script>
+
 <script>
     function openModal() {
         document.getElementById("myModal").style.display = "block";

@@ -1,12 +1,7 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle','Grocery')
 <!-- Default CSS -->
-<!-- Plugins CSS -->
-<link rel="stylesheet" href="{{ asset('front-style/assets/vendor/swiper/swiper-bundle.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/nouislider/nouislider.min.css') }}">
-<link rel="stylesheet" type="text/css"
-    href="{{ asset('front-style/assets/vendor/magnific-popup/magnific-popup.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css') }}">
+
 @section('content')
 <!-- Start of Main -->
 <main class="main">
@@ -223,11 +218,7 @@
 </main>
 <!-- End of Main -->
 <!-- Main JS -->
-<script src="{{ asset('front-style/assets/vendor/nouislider/nouislider.min.js') }}"></script>
-<script src="{{ asset('front-style/assets/vendor/jquery.countdown/jquery.countdown.min.js') }}"></script>
-<script src="{{ asset('front-style/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-<script src="{{ asset('front-style/assets/vendor/zoom/jquery.zoom.js') }}"></script>
-<script src="{{ asset('front-style/assets/js/main.min.js') }}"></script>
+
 @endsection
 
 @section('script')
