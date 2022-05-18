@@ -6,13 +6,26 @@
     <!-- End of .mobile-menu-close -->
 
     <div class="mobile-menu-container scrollable">
-        <form action="#" method="get" class="input-wrapper">
-            <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+        @if(Config::get('app.locale') == 'en')
+
+        <form method="POST" action="{{ route('search_product') }}" class="header-search input-wrapper" style="border-right: 2px solid #ee432a;border-left:2px solid #ee432a">
+            @csrf
+            <input type="text" class="form-control" name="search_product" id="search_text" placeholder="Search in..."
                 required />
-            <button class="btn btn-search" type="submit">
-                <i class="w-icon-search"></i>
+            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
             </button>
         </form>
+        @else
+        <form method="POST" action="{{ route('search_product') }}" 
+                class="input-wrapper header-search" >
+                    @csrf
+                    <input type="text" class="form-control" name="search_product" id="search_text" placeholder="ما الذي تبحث عنه ؟ "
+                        required />
+                    <button class="btn btn-search" type="submit">
+                        <i class="w-icon-search"></i>
+                    </button>
+                </form>
+      @endif
         <!-- End of Search Form -->
         <div class="tab">
             <ul class="nav nav-tabs" role="tablist">

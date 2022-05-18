@@ -96,7 +96,7 @@
     <!-- End of Scroll Top -->
 
     <!-- Start of Mobile Menu -->
-    @include('frontend.frontend_layout.mobile_sections.moblie_menu')
+    @include('frontend.frontend_layout.mobile_sections.mobile_menu')
     <!-- End of Mobile Menu -->
 
     <!-- Start of Newsletter popup -->
