@@ -86,31 +86,38 @@
                 <!-- Start of Shop Main Content -->
                 <div class="main-content">
                     <nav class="toolbox sticky-toolbox sticky-content fix-top">
-                        <div class="toolbox-left">
-                            <div class="toolbox-item toolbox-sort select-box text-dark">
-                                <label>Sort By :</label>
-                                <select name="orderby" class="form-control" id="sortBy">
-                                    <option value="default" >Default sorting</option>
-                                    <option value="alpha-asc">Sort by alpha-asc</option>
-                                    <option value="alpha-desc">Sort by alpha-desc</option>
-                                    <option value="discountLTH">Sort by dicount : low to high</option>
-                                    <option value="discountHTL">Sort by dicount : high to low</option>
-                                    <option value="price-low">Sort by pric: low to high</option>
-                                    <option value="price-high">Sort by price: high to low</option>
-                                </select>
+                        @if(Config::get('app.locale') == 'en')
+                            <div class="toolbox-left">
+                                <div class="toolbox-item toolbox-sort select-box text-dark">
+                                    <label>Sort By :</label>
+                                    <select name="orderby" class="form-control" id="sortBy">
+                                        <option value="default" selected="selected">Default sorting</option>
+                                        <option value="alpha-asc">Sort by alpha-asc</option>
+                                        <option value="alpha-desc">Sort by alpha-desc</option>
+                                        <option value="discountLTH">Sort by dicount : low to high</option>
+                                        <option value="discountHTL">Sort by dicount : high to low</option>
+                                        <option value="price-low">Sort by pric: low to high</option>
+                                        <option value="price-high">Sort by price: high to low</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="toolbox-right">
-                            <div class="toolbox-item toolbox-show select-box">
-                                <select name="count" class="form-control">
-                                    <option value="9">Show 9</option>
-                                    <option value="12" selected="selected">Show 12</option>
-                                    <option value="24">Show 24</option>
-                                    <option value="36">Show 36</option>
-                                </select>
+                            @else
+                            <div class="toolbox-left">
+                                <div class="toolbox-item toolbox-sort select-box text-dark">
+                                    <label>ترتيب حسب :</label>
+                                    <select name="orderby" class="form-control" id="sortBy">
+                                        <option value="default" selected="selected">الترتيب العادي</option>
+                                        <option value="alpha-asc">ترتيب حسب الاحرف تنازليا</option>
+                                        <option value="alpha-desc">ترتيب حسب الاحرف تصاعديا</option>
+                                        <option value="discountLTH">ترتيب حسب العروض : من الاقل الى اﻷكثر</option>
+                                        <option value="discountHTL">ترتيب حسب العروض : من اﻷكثر الى اﻷقل</option>
+                                        <option value="price-low">ترتيب حسب السعر : من الاقل الى اﻷكثر</option>
+                                        <option value="price-high">ترتيب حسب السعر : من اﻷكثر الى اﻷقل</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </nav>
+                            @endif
+                </nav>
                     @if ($count_product > 0)
                     <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                         @foreach ($products as $products_category )
