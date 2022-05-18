@@ -122,7 +122,7 @@
             </div>
             @endforeach
         @else
-        <li class=" text-red-700"> There is no Categries to Filter</li>
+        <li class=" text-red-700"> لا يوجد ماركات متاحة</li>
         @endif
 
     </ul>
@@ -152,13 +152,6 @@
 <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Price</label></h3>
      <div class="widget-body">
-         <ul class="filter-items search-ul">
-             <li><a href="#">$0.00 - $100.00</a></li>
-             <li><a href="#">$100.00 - $200.00</a></li>
-             <li><a href="#">$200.00 - $300.00</a></li>
-             <li><a href="#">$300.00 - $500.00</a></li>
-             <li><a href="#">$500.00+</a></li>
-         </ul>
             @if (!empty($_GET['price']))
                 @php
                     if(!empty($_GET['price'])){
