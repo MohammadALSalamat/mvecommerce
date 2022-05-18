@@ -18079,7 +18079,7 @@ body:not(.loaded) .intro-section .swiper-button-prev {
 }
 
 .widget-products .widget-body {
-    padding: 2.6rem 2rem 2.3rem;
+    padding: 2.6rem 5px 2.3rem;
     -webkit-transition: border-color 0.3s;
     transition: border-color 0.3s;
 }
