@@ -146,17 +146,17 @@
                                 @else
                                 <div class="toolbox-left">
                                     <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
-                                        btn-icon-left"><i class="w-icon-category"></i><span>Filters</span></a>
+                                        btn-icon-left"><i class="w-icon-category"></i><span>فلتر</span></a>
                                     <div class="toolbox-item toolbox-sort select-box text-dark">
-                                        <label>Sort By :</label>
+                                        <label>ترتيب حسب :</label>
                                         <select name="orderby" class="form-control" id="sortBy">
-                                            <option value="default" selected="selected">Default sorting</option>
-                                            <option value="alpha-asc">Sort by alpha-asc</option>
-                                            <option value="alpha-desc">Sort by alpha-desc</option>
-                                            <option value="discountLTH">Sort by dicount : low to high</option>
-                                            <option value="discountHTL">Sort by dicount : high to low</option>
-                                            <option value="price-low">Sort by pric: low to high</option>
-                                            <option value="price-high">Sort by price: high to low</option>
+                                            <option value="default" selected="selected">الترتيب العادي</option>
+                                            <option value="alpha-asc">ترتيب حسب الاحرف تنازليا</option>
+                                            <option value="alpha-desc">ترتيب حسب الاحرف تصاعديا</option>
+                                            <option value="discountLTH">ترتيب حسب العروض : من الاقل الى اﻷكثر</option>
+                                            <option value="discountHTL">ترتيب حسب العروض : من اﻷكثر الى اﻷقل</option>
+                                            <option value="price-low">ترتيب حسب السعر : من الاقل الى اﻷكثر</option>
+                                            <option value="price-high">ترتيب حسب السعر : من اﻷكثر الى اﻷقل</option>
                                         </select>
                                     </div>
                                 </div>
@@ -220,7 +220,13 @@
                                             <div class="product-cat">
                                             </div>
                                             <h3 class="product-name">
+                                                @if(Config::get('app.locale') == 'en')
+
                                                 <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
+                                                @else
+                                                <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title}}</a>
+
+                                                @endif
                                             </h3>
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
@@ -246,12 +252,24 @@
                                             </div>
                                             <div class="product-pa-wrapper">
                                                 <div class="product-price">
-                                                    @if ( empty($product->offer_price) || $product->offer_price == null)
-                                                   <ins> {{ number_format($product->price,2)}} AED </ins>
-                                                        
+                                                    @if(Config::get('app.locale') == 'en')
+                                                    <ins class="new-price">
+                                                        @if(empty($product->offer_price) ||
+                                                        $product->offer_price == null)
+                                                        {{ number_format($product->price) }} AED
+                                                        @else {{ number_format($product->offer_price) }} AED - <del
+                                                            style="color:#ccc"> {{ number_format($product->price) }} AED </del>
+                                                        @endif
+                                                    </ins>
                                                     @else
-                                                        
-                                                    <ins> {{ number_format($product->offer_price,2)}} AED </ins> - <del style="color: #ccc">{{ number_format($product->price,2)}} AED</del>
+                                                    <ins class="new-price">
+                                                        @if(empty($product->offer_price) ||
+                                                        $product->offer_price == null)
+                                                        {{ number_format($product->price) }} د.أ
+                                                        @else {{ number_format($product->offer_price) }} د.أ - <del
+                                                            style="color:#ccc"> {{ number_format($product->price) }} د.أ </del>
+                                                        @endif
+                                                    </ins>
                                                     @endif
                                                 </div>
                                             </div>
@@ -262,7 +280,11 @@
                             </div>
                             <div class="toolbox toolbox-pagination justify-content-between">
                                 <p class="mb-2 showing-info mb-sm-0">
+                                    @if(Config::get('app.locale') == 'en')
                                     Showing Products
+                                    @else
+                                    رؤية المنتجات
+                                    @endif
                                 </p>
                                 {{ $products->appends($_GET)->links('vendor.pagination.custompage') }}
                             </div>
@@ -277,14 +299,9 @@
                             <!-- Start of Sidebar Overlay -->
                             <div class="sidebar-overlay"></div>
                             <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-
                             <!-- Start of Sidebar Content -->
                             <div class="sidebar-content scrollable">
-                                <div class="filter-actions">
-                                    <label>Filter :</label>
-                                    <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
-                                </div>
+                            
                                 @include('frontend.frontend_pages.products.short_code._left-filter')
                             </div>
                             <!-- End of Sidebar Content -->

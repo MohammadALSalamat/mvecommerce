@@ -1,30 +1,7 @@
 <form action="{{ route('shop_filter') }}" method="POST">
-    @csrf
- <!-- Start of Collapsible Widget -->
- {{-- <div class="widget widget-collapsible">
-     <h3 class="widget-title"><label>Vendors Category</label></h3>
-     <ul class="mt-1 widget-body filter-items ">
-         <div class="d-flex mb-2 items-center" style="    align-items: center;">
-             <input type="radio" name="type_of_work" id="all" checked="checked">
-             <label class="pl-3" for="all"> All Products</label>
-         </div>
-         @if (count($type_of_work) > 0)
-         @foreach ($type_of_work as $single_vendor )
-         <div class="d-flex mb-2 items-center" style="align-items: center;">
-             <input type="radio" name="type_of_work" id="{{ $single_vendor }}">
-             <label class="pl-3" for="{{ $single_vendor }}"> {{ $single_vendor }}</label>
-         </div>
-         @endforeach
-         @else
-         <li class=" text-red-700"> There is no Vendor to Filter</li>
-         @endif
-
-     </ul>
- </div> --}}
- <!-- End of Collapsible Widget -->
-
- <!-- Start of Collapsible widget -->
- <div class="widget widget-collapsible">
+@csrf
+<!-- Start of Collapsible widget -->
+<div class="widget widget-collapsible">
      <h3 class="widget-title"><label>All Categories</label></h3>
      <ul class="widget-body filter-items search-ul">
          <!-- get the category name and check the box if exists -->
@@ -50,10 +27,10 @@
          @endif
 
      </ul>
- </div>
- <!-- End of Collapsible Widget -->
+</div>
+<!-- End of Collapsible Widget -->
 
- <div class="widget widget-collapsible">
+<div class="widget widget-collapsible">
     <h3 class="widget-title"><label>All Brands</label></h3>
     <ul class="widget-body filter-items search-ul">
         <!-- get the category name and check the box if exists -->
@@ -80,8 +57,8 @@
 
     </ul>
 </div>
- <!-- Start of Collapsible Vendors -->
- <div class="widget widget-collapsible">
+<!-- Start of Collapsible Vendors -->
+<div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Vendors</label></h3>
      <ul class="mt-1 widget-body filter-items ">
          @if (count($main_vendors) > 0)
@@ -95,11 +72,11 @@
          @endif
 
      </ul>
- </div>
- <!-- End of Collapsible Vendors -->
+</div>
+<!-- End of Collapsible Vendors -->
 
- <!-- Start of Collapsible Widget -->
- <div class="widget widget-collapsible">
+<!-- Start of Collapsible Widget -->
+<div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Price</label></h3>
      <div class="widget-body">
          <ul class="filter-items search-ul">
@@ -122,33 +99,5 @@
                 <button type="submit" href="#" class="btn btn-dark btn-rounded">Go</button>
                 <p><small>Rang of search between {{ Helper::minPrice() }} - {{ Helper::maxPrice() }}</small></p>
      </div>
- </div>
+</div>
 </form>
- <!-- End of Collapsible Widget -->
-
- <!-- Start of Collapsible Widget -->
- {{-- <div class="widget widget-collapsible">
-     <h3 class="widget-title"><label>Size</label></h3>
-     <ul class="mt-1 widget-body filter-items item-check">
-         <li><a href="#">Extra Large</a></li>
-         <li><a href="#">Large</a></li>
-         <li><a href="#">Medium</a></li>
-         <li><a href="#">Small</a></li>
-     </ul>
- </div> --}}
- <!-- End of Collapsible Widget -->
-
- <!-- Start of Collapsible Widget -->
- {{-- <div class="widget widget-collapsible">
-     <h3 class="widget-title"><label>Color</label></h3>
-     <ul class="mt-1 widget-body filter-items item-check">
-         <li><a href="#">Black</a></li>
-         <li><a href="#">Blue</a></li>
-         <li><a href="#">Brown</a></li>
-         <li><a href="#">Green</a></li>
-         <li><a href="#">Grey</a></li>
-         <li><a href="#">Orange</a></li>
-         <li><a href="#">Yellow</a></li>
-     </ul>
- </div> --}}
- <!-- End of Collapsible Widget -->
