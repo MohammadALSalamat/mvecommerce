@@ -151,7 +151,7 @@
 <!-- Start of Collapsible Widget -->
 <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Price</label></h3>
-     <div class="widget-body">
+     <div class="widget-body row">
             @if (!empty($_GET['price']))
                 @php
                     if(!empty($_GET['price'])){
@@ -159,11 +159,18 @@
                     }
                 @endphp
             @endif
-            <input type="number" name="min_price" data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @endif class="text-center min_price form-control" placeholder="$min">
-            <span class="delimiter" > - </span>
-            <input type="number" data-max="{{ Helper::maxPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[1] }}" @endif name="max_price" class="text-center max_price" placeholder="$max">
+            <div class="col-12 col-md-4">
+                <input type="number" name="min_price"  data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @else value="{{ Helper::minPrice() }}" @endif class="text-center min_price form-control" placeholder="$min">
+            </div>
+            <div class="col-12 col-md-4">
+                <input type="number" data-max="{{ Helper::maxPrice() }}"  @if (!empty($_GET['price'])) value="{{ $price[1] }}" @else value="{{ Helper::maxPrice() }}" @endif name="max_price" class="text-center max_price form-control" placeholder="$max">
+            </div>
+            <div class="col-12 col-md-4">
+
                 <button type="submit" href="#" class="btn btn-dark btn-rounded">Go</button>
+            </div>
                 <p><small>Rang of search between {{ Helper::minPrice() }} - {{ Helper::maxPrice() }}</small></p>
+
      </div>
 </div>
 </form>
