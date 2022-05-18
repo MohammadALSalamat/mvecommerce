@@ -608,7 +608,7 @@
                                                 <h4> ملخص</h4>
                                                 @if (!empty($top_sellings->discound) || $top_sellings->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_sellings->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
