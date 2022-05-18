@@ -159,7 +159,7 @@
                     }
                 @endphp
             @endif
-            <input type="number" name="min_price" data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @endif class="text-center min_price" placeholder="$min">
+            <input type="number" name="min_price" data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @endif class="text-center min_price form-control" placeholder="$min">
             <span class="delimiter" > - </span>
             <input type="number" data-max="{{ Helper::maxPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[1] }}" @endif name="max_price" class="text-center max_price" placeholder="$max">
                 <button type="submit" href="#" class="btn btn-dark btn-rounded">Go</button>
