@@ -165,12 +165,22 @@
                                     </div>
                                 </figure>
                                 <div class="product-details">
+                                    @if(Config::get('app.locale') == 'en')
+
                                     <div class="product-cat">
                                         <a href="{{ route('shop_special_category',$category_product->slug) }}">{{ $category_product->title }}</a>
                                     </div>
                                     <h4 class="product-name">
                                         <a href="{{ route('singleproduct',$products_category->slug) }}">{{ $products_category->title }}</a>
                                     </h4>
+                                    @else 
+                                    <div class="product-cat">
+                                        <a href="{{ route('shop_special_category',$category_product->slug) }}">{{ $category_product->ar_title }}</a>
+                                    </div>
+                                    <h4 class="product-name">
+                                        <a href="{{ route('singleproduct',$products_category->slug) }}">{{ $products_category->ar_title }}</a>
+                                    </h4>
+                                    @endif
                                     <div class="ratings-container">
                                         <div class="ratings-full">
                                             <span class="ratings" 
