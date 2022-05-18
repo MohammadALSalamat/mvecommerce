@@ -35,7 +35,7 @@
 @else
 <!-- Start of Collapsible widget -->
 <div class="widget widget-collapsible">
-    <h3 class="widget-title"><label>كل اﻷقسام</label></h3>
+    <h3 class="widget-title"><label>جمبع اﻷقسام</label></h3>
     <ul class="widget-body filter-items search-ul">
         <!-- get the category name and check the box if exists -->
         @if (!empty($_GET['category']))
@@ -101,7 +101,7 @@
 @else
 
 <div class="widget widget-collapsible">
-    <h3 class="widget-title"><label>All Brands</label></h3>
+    <h3 class="widget-title"><label>جميع الماركات</label></h3>
     <ul class="widget-body filter-items search-ul">
         <!-- get the category name and check the box if exists -->
         @if (!empty($_GET['brand']))
