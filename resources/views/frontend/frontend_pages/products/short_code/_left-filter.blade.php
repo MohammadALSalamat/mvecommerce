@@ -130,6 +130,8 @@
 
 @endif
 
+@if(Config::get('app.locale') == 'en')
+
 <!-- Start of Collapsible Vendors -->
 <div class="widget widget-collapsible">
      <h3 class="widget-title"><label>Vendors</label></h3>
@@ -147,6 +149,31 @@
      </ul>
 </div>
 <!-- End of Collapsible Vendors -->
+@else
+
+<!-- Start of Collapsible Vendors -->
+<div class="widget widget-collapsible">
+    <h3 class="widget-title"><label>البائعون</label></h3>
+    <ul class="mt-1 widget-body filter-items ">
+        @if (count($main_vendors) > 0)
+        @foreach ($main_vendors as $single_vendor )
+        @if($single_vendor->shop_name != null)
+        <li><a href="#">{{ $single_vendor->shop_name }}</a></li>
+        @endif
+        @endforeach
+        @else
+        <li class=" text-red-700"> لايوجد بائعون متاحون </li>
+        @endif
+
+    </ul>
+</div>
+<!-- End of Collapsible Vendors -->
+
+@endif
+
+
+
+@if(Config::get('app.locale') == 'en')
 
 <!-- Start of Collapsible Widget -->
 <div class="widget widget-collapsible">
@@ -160,10 +187,10 @@
                 @endphp
             @endif
             <div class="col-12 col-md-4">
-                <input type="number" name="min_price"  data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @else value="{{ Helper::minPrice() }}" @endif class="text-center min_price form-control form-control-sm" placeholder="$min">
+                <input type="number" name="min_price"  data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @else value="{{ Helper::minPrice() }}" @endif class="text-center min_price form-control form-control-sm" placeholder="$min" style="padding:3px 5px">
             </div>
             <div class="col-12 col-md-4">
-                <input type="number" data-max="{{ Helper::maxPrice() }}"  @if (!empty($_GET['price'])) value="{{ $price[1] }}" @else value="{{ Helper::maxPrice() }}" @endif name="max_price" class="text-center max_price form-control form-control-sm" placeholder="$max">
+                <input type="number" data-max="{{ Helper::maxPrice() }}"  @if (!empty($_GET['price'])) value="{{ $price[1] }}" @else value="{{ Helper::maxPrice() }}" @endif name="max_price" class="text-center max_price form-control form-control-sm" placeholder="$max" style="padding:3px 5px">
             </div>
             <div class="col-12 col-md-3">
 
@@ -173,4 +200,32 @@
 
      </div>
 </div>
+
+@else
+<div class="widget widget-collapsible">
+     <h3 class="widget-title"><label>السعر</label></h3>
+     <div class="widget-body row" style="margin-top: 3px;margin-bottom:3px">
+            @if (!empty($_GET['price']))
+                @php
+                    if(!empty($_GET['price'])){
+                        $price=explode('-',$_GET['price']);
+                    }
+                @endphp
+            @endif
+            <div class="col-12 col-md-4">
+                <input type="number" name="min_price"  data-min="{{ Helper::minPrice() }}" @if (!empty($_GET['price'])) value="{{ $price[0] }}" @else value="{{ Helper::minPrice() }}" @endif class="text-center min_price form-control form-control-sm" placeholder="$min" style="padding:3px 5px">
+            </div>
+            <div class="col-12 col-md-4">
+                <input type="number" data-max="{{ Helper::maxPrice() }}"  @if (!empty($_GET['price'])) value="{{ $price[1] }}" @else value="{{ Helper::maxPrice() }}" @endif name="max_price" class="text-center max_price form-control form-control-sm" placeholder="$max" style="padding:3px 5px">
+            </div>
+            <div class="col-12 col-md-3">
+
+                <button type="submit" class="btn btn-danger btn-rounded">بحث</button>
+            </div>
+                <p><small style="color:red">قيمة البحث بين القيمتين فقط   {{ Helper::minPrice() }} - {{ Helper::maxPrice() }} </small></p>
+
+     </div>
+</div>
+
+@endif
 </form>
