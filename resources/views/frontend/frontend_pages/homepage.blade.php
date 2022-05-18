@@ -598,7 +598,7 @@
                                                             ></span>
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
-                                                    @if(Config::get('app.locale') == 'en')
+                                                @if(Config::get('app.locale') == 'en')
                                                 @if (!empty($top_sellings->discound) || $top_sellings->discound != null)
                                                 <small
                                                     style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
@@ -607,7 +607,7 @@
                                                 @else
                                                 @if (!empty($top_sellings->discound) || $top_sellings->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_sellings->discound }}%
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_sellings->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
