@@ -222,7 +222,7 @@
 
                 <button type="submit" class="btn btn-danger btn-rounded">بحث</button>
             </div>
-                <p><small style="color:red">قيمة البحث بين القيمتين فقط   {{ Helper::minPrice() }} - {{ Helper::maxPrice() }} </small></p>
+                <p style="margin:5px 0"><small style="color:red">قيمة البحث بين القيمتين فقط   {{ Helper::minPrice() }} - {{ Helper::maxPrice() }} </small></p>
 
      </div>
 </div>
