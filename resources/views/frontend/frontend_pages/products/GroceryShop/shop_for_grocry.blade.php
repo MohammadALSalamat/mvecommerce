@@ -57,9 +57,17 @@
                                 </figure>
                                 <div class="category-content">
                                     <h4 class="category-name">
+                                        @if(Config::get('app.locale') == 'en')
+
                                         <a
                                             href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->title }}</a>
-                                    </h4>
+                                        @else
+                                        <a
+                                        href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->ar_title }}</a>
+
+                                        @endif
+                                   
+                                        </h4>
                                 </div>
                             </div>
                         </div>
@@ -77,22 +85,41 @@
                 <!-- Start of Shop Main Content -->
                 <div class="main-content">
                     <nav class="toolbox sticky-toolbox sticky-content fix-top">
-                        <div class="toolbox-left">
-                            <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
+                        @if(Config::get('app.locale') == 'en')
+                                <div class="toolbox-left">
+                                    <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
                                         btn-icon-left"><i class="w-icon-category"></i><span>Filters</span></a>
-                            <div class="toolbox-item toolbox-sort select-box text-dark">
-                                <label>Sort By :</label>
-                                <select name="orderby" class="form-control" id="sortBy">
-                                    <option value="default" selected="selected">Default sorting</option>
-                                    <option value="alpha-asc">Sort by alpha-asc</option>
-                                    <option value="alpha-desc">Sort by alpha-desc</option>
-                                    <option value="discountLTH">Sort by dicount : low to high</option>
-                                    <option value="discountHTL">Sort by dicount : high to low</option>
-                                    <option value="price-low">Sort by pric: low to high</option>
-                                    <option value="price-high">Sort by price: high to low</option>
-                                </select>
-                            </div>
-                        </div>
+                                    <div class="toolbox-item toolbox-sort select-box text-dark">
+                                        <label>Sort By :</label>
+                                        <select name="orderby" class="form-control" id="sortBy">
+                                            <option value="default" selected="selected">Default sorting</option>
+                                            <option value="alpha-asc">Sort by alpha-asc</option>
+                                            <option value="alpha-desc">Sort by alpha-desc</option>
+                                            <option value="discountLTH">Sort by dicount : low to high</option>
+                                            <option value="discountHTL">Sort by dicount : high to low</option>
+                                            <option value="price-low">Sort by pric: low to high</option>
+                                            <option value="price-high">Sort by price: high to low</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="toolbox-left">
+                                    <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
+                                        btn-icon-left"><i class="w-icon-category"></i><span>فلتر</span></a>
+                                    <div class="toolbox-item toolbox-sort select-box text-dark">
+                                        <label>ترتيب حسب :</label>
+                                        <select name="orderby" class="form-control" id="sortBy">
+                                            <option value="default" selected="selected">الترتيب العادي</option>
+                                            <option value="alpha-asc">ترتيب حسب الاحرف تنازليا</option>
+                                            <option value="alpha-desc">ترتيب حسب الاحرف تصاعديا</option>
+                                            <option value="discountLTH">ترتيب حسب العروض : من الاقل الى اﻷكثر</option>
+                                            <option value="discountHTL">ترتيب حسب العروض : من اﻷكثر الى اﻷقل</option>
+                                            <option value="price-low">ترتيب حسب السعر : من الاقل الى اﻷكثر</option>
+                                            <option value="price-high">ترتيب حسب السعر : من اﻷكثر الى اﻷقل</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @endif
                     </nav>
                     @if(!empty($products) || $products->count() > 0 )
                     <div class="product-wrapper row cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
@@ -142,8 +169,15 @@
                                     <div class="product-cat">
                                     </div>
                                     <h3 class="product-name">
+                                        @if(Config::get('app.locale') == 'en')
+
                                         <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
+                                        @else
+                                        <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title}}</a>
+
+                                        @endif
                                     </h3>
+                                    
                                     <div class="ratings-container">
                                         <div class="ratings-full">
                                             <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
@@ -167,14 +201,25 @@
                                     </div>
                                     <div class="product-pa-wrapper">
                                         <div class="product-price">
-                                            @if ( empty($product->offer_price) || $product->offer_price == null)
-                                            <ins> {{ number_format($product->price,2)}} AED </ins>
-
-                                            @else
-
-                                            <ins> {{ number_format($product->offer_price,2)}} AED </ins> - <del
-                                                style="color: #ccc">{{ number_format($product->price,2)}} AED</del>
-                                            @endif
+                                            @if(Config::get('app.locale') == 'en')
+                                                    <ins class="new-price">
+                                                        @if(empty($product->offer_price) ||
+                                                        $product->offer_price == null)
+                                                        {{ number_format($product->price) }} AED
+                                                        @else {{ number_format($product->offer_price) }} AED - <del
+                                                            style="color:#ccc"> {{ number_format($product->price) }} AED </del>
+                                                        @endif
+                                                    </ins>
+                                                    @else
+                                                    <ins class="new-price">
+                                                        @if(empty($product->offer_price) ||
+                                                        $product->offer_price == null)
+                                                        {{ number_format($product->price) }} د.أ
+                                                        @else {{ number_format($product->offer_price) }} د.أ - <del
+                                                            style="color:#ccc"> {{ number_format($product->price) }} د.أ </del>
+                                                        @endif
+                                                    </ins>
+                                                    @endif
                                         </div>
                                     </div>
                                 </div>
