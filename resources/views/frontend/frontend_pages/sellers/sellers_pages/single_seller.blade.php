@@ -98,9 +98,15 @@
                                     <div class="product-cat">
                                         <span>{{ $category_name}}</span>
                                     </div>
+                                    @if(Config::get('app.locale') == 'en')
                                     <h3 class="product-name">
                                         <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->title}}</a>
                                     </h3>
+                                    @else
+                                    <h3 class="product-name">
+                                        <a href="{{ route('singleproduct',$product->slug) }}">{{ $product->ar_title}}</a>
+                                    </h3>
+                                    @endif
                                     <div class="ratings-container">
                                         <div class="ratings-full">
                                             <span class="ratings" @if (number_format($avareg,1)==5) style="width: 100%;"
@@ -139,11 +145,19 @@
                                     </div>
                                     <div class="product-pa-wrapper">
                                         <div class="product-price">
-                                            @if ( empty($product->offer_price) || $product->offer_price == null)
-                                            <ins> {{ $product->price}} AED </ins>
+                                            
+                                            @if(Config::get('app.locale') == 'en')
+                                            @if(empty($product->offer_price) ||
+                                            $product->offer_price == null)
+                                            {{ $product->price }} AED
+                                            @else <del>{{ $product->price }} AED </del> -
+                                            {{ $product->offer_price }} AED @endif
                                             @else
-                                            <ins> {{ $product->offer_price}} AED </ins> - <del>{{ $product->price}}
-                                                AED</del>
+                                            @if(empty($product->offer_price) ||
+                                            $product->offer_price == null)
+                                            {{ $product->price }} د.أ
+                                            @else <del>{{ $product->price }} د.أ </del> -
+                                            {{ $product->offer_price }} د.أ @endif
                                             @endif
                                         </div>
                                     </div>
