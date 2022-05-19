@@ -258,7 +258,7 @@
                                         <li>
                                             <div class="banner-fixed menu-banner menu-banner2">
                                                 <figure>
-                                                    <img src="{{ asset('front-style/assets/images/menu/banner-2.jpg') }}" alt="Menu Banner"
+                                                    <img src="{{ asset('front-style/assets/images/menu/logobanner.png') }}" alt="Menu Banner"
                                                         width="235" height="347" />
                                                 </figure>
                                             </div>
@@ -437,20 +437,19 @@
                                         <li>
                                             <h4 class="menu-title">العلامات التجارية</h4>
                                             <hr class="divider">
-                                            <ul>
-                                                <li><a href="#">مرسيدس</a>
-                                                </li>
-                                                <li><a href="#">اودي</a>
-                                                </li>
-                                                <li><a href="#">لولو ماركت</a></li>
-                                                <li><a href="#">اديداس</a></li>
-                                                
-                                            </ul>
+                                            @php
+                                            $brands = \App\Models\brand::where('cat_id',$category->id)->get();
+                                        @endphp
+                                        <ul>
+                                            @foreach ($brands as $brand)
+                                            <li><a href="{{ route('shop_brands',$brand->slug) }}">{{ $brand->ar_title }}</a></li>
+                                            @endforeach
+                                        </ul>
                                         </li>
                                         <li>
                                             <div class="banner-fixed menu-banner menu-banner2">
                                                 <figure>
-                                                    <img src="{{ asset('front-style/assets/images/menu/banner-2.jpg') }}" alt="Menu Banner"
+                                                    <img src="{{ asset('front-style/assets/images/menu/logobanner.png') }}" alt="Menu Banner"
                                                         width="235" height="347" />
                                                 </figure>
                                             </div>
