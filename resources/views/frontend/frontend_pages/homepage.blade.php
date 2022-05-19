@@ -1220,9 +1220,18 @@
                                             id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
                                             class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Add to wishlist"></a>
-                                       
-
                                     </div>
+                                    @if (!empty($products_cat-> discound) || $products_cat-> discound != null)
+                                    <div class="product-label-group">
+                                        @if(Config::get('app.locale') == 'en')
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_cat-> discound}}% OFF</label>
+                                        @else
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_cat-> discound}}% خصم</label>
+                                        @endif
+                                    </div>
+                                    @endif
                                 </figure>
                                 <div class="product-details">
                                     <h4 class="product-name"><a
@@ -1512,9 +1521,18 @@
                                             id="add_to_wishlist{{ $products_cat->id }}" data-quantity="1"
                                             class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                             title="Add to wishlist"></a>
-                                       
-
                                     </div>
+                                    @if (!empty($products_cat-> discound) || $products_cat-> discound != null)
+                                    <div class="product-label-group">
+                                        @if(Config::get('app.locale') == 'en')
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_cat-> discound}}% OFF</label>
+                                        @else
+                                        <label class="product-label label-discount"
+                                            style="font-size: 12px">{{$products_cat-> discound}}% خصم</label>
+                                        @endif
+                                    </div>
+                                    @endif
                                 </figure>
                                 <div class="product-details">
                                     <h4 class="product-name"><a
