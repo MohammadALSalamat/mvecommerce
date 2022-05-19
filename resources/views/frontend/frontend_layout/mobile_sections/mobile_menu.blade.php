@@ -27,6 +27,7 @@
                 </form>
       @endif
         <!-- End of Search Form -->
+        @if(Config::get('app.locale') == 'en')
         <div class="tab">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
@@ -37,6 +38,7 @@
                 </li>
             </ul>
         </div>
+       
         <div class="tab-content">
             <div class="tab-pane active" id="main-menu">
                 <ul class="mobile-menu">
@@ -81,5 +83,65 @@
                 </ul>
             </div>
         </div>
+
+        @else
+
+        <div class="tab">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a href="#main-menu" class="nav-link active">القائمة الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#categories" class="nav-link">اﻷقسام</a>
+                </li>
+            </ul>
+        </div>
+       
+        <div class="tab-content">
+            <div class="tab-pane active" id="main-menu">
+                <ul class="mobile-menu">
+                    <li class="{{ request()->routeIs('homepage') ? 'active' : '' }}">
+                        <a href="{{ route('homepage') }}"> الرئيسية</a>
+                    </li>
+                    <li class="{{ request()->routeIs('shop_page') ? 'active' : '' }}">
+                        <a href="{{ route('shop_page') }}">المتجر</a>
+                    </li>
+                    <li class="{{ request()->routeIs('grocery_shop_only') ? 'active' : '' }}">
+                        <a href="{{ route('grocery_shop_only') }}">البقالة</a>
+                    </li>
+                    <li class="{{ request()->routeIs('become_seller') ? 'active' : '' }}">
+                        <a href="{{ route('become_seller') }}">كيف تصبح تاجر ؟</a>
+                    </li>
+                    <li class="{{ request()->routeIs('sellers_list') ? 'active' : '' }}" >
+                        <a href="{{ route('sellers_list') }}">التجار</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="categories">
+                <ul class="mobile-menu">
+                    @php
+                        $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
+                    @endphp
+                    @foreach($categories as $category )
+                    <li> <a href="{{ route('shop_special_category',$category->slug) }}">
+                        {{$category->ar_title}}
+                    </a>
+                    @php
+                    $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
+                    @endphp
+                    @if($sub_cat->count()>0)
+                        <ul>
+                            @foreach ($sub_cat as $single_cat )
+                                <li><a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{$single_cat->ar_title}}</a></li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
+        @endif
     </div>
 </div>

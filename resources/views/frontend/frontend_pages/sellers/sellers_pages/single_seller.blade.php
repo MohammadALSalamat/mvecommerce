@@ -128,10 +128,10 @@
                                                     {{ $top_selling->discound }}% OFF</small>
                                                 @endif
                                                 @else
-                                                <h4> ملخص</h4>
+                                                
                                                 @if (!empty($top_selling->discound) || $top_selling->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_selling->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
@@ -231,10 +231,10 @@
                                                     {{ $top_selling->discound }}% OFF</small>
                                                 @endif
                                                 @else
-                                                <h4> ملخص</h4>
+                                                
                                                 @if (!empty($top_selling->discound) || $top_selling->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_selling->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
@@ -406,10 +406,10 @@ height: 150px !important;object-fit: contain;" />
                                             {{ $product->discound }}% OFF</small>
                                         @endif
                                         @else
-                                        <h4> ملخص</h4>
+                                        
                                         @if (!empty($product->discound) || $product->discound != null)
                                         <small
-                                            style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $single_product->discound }}%
+                                            style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $product->discound }}%
                                             خصم</small>
                                         @endif
                                         @endif
