@@ -48,7 +48,8 @@ Route::get('best-deals',[frontPageController::class,'best_dealis'])->name('best_
 
 Route::get('/',[frontPageController::class,'HomePage'])->name('homepage');
 
-
+Route::post('api/fetch-states', [OrderController::class, 'fetchState']);
+Route::post('api/fetch-cities', [OrderController::class, 'fetchCity']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

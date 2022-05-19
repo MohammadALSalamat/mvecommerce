@@ -335,6 +335,24 @@
                                     </div>
                                    
                                 </div>
+                                <div class="form-group mb-3">
+                                    <select  id="country-dd" class="form-control">
+                                        <option value="">Select Country</option>
+                                        @foreach ($countries as $data)
+                                        <option value="{{$data->id}}">
+                                            {{$data->country}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <select id="state-dd" class="form-control">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select id="city-dd" class="form-control">
+                                    </select>
+                                </div
                                 <div class="form-group">
                                         <label>المدينة *</label>
                                     <input type="text" placeholder="House number and street name"
@@ -671,7 +689,7 @@ alert('other')
                     $('#city-dd').html('<option value="">Select City</option>');
                     $.each(res.cities, function (key, value) {
                         $("#city-dd").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                            .id + '">' + value.city + '</option>');
                     });
                 }
             });

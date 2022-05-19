@@ -27,22 +27,21 @@ class OrderController extends Controller
     {
         $user = User::where('id',auth()->user()->id)->first();
         $shipping_adress = Shipping::where('status',1)->get();
-        $data['countries'] = Country::get(["name", "id"]);
-        dd($$data['countries']);
-        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user'));
+        $countries = Country::get();
+        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries'));
     }
 
     // cities and countries dropdown
 
     public function fetchState(Request $request)
     {
-        $data['states'] = State::where("country_id",$request->country_id)->get(["name", "id"]);
-        return response()->json($data);
+        $states = State::where("country_id",$request->country_id)->get();
+        return response()->json($states);
     }
     public function fetchCity(Request $request)
     {
-        $data['cities'] = City::where("state_id",$request->state_id)->get(["name", "id"]);
-        return response()->json($data);
+        $cities = City::where("state_id",$request->state_id)->get();
+        return response()->json($cities);
     }
 
 
