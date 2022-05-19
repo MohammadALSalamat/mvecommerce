@@ -18,21 +18,8 @@
                     <a href="#" class="sidebar-toggle"><i class="fas fa-chevron-right"></i></a>
                     <div class="sidebar-content">
                         <div class="sticky-sidebar">
-                            {{-- <div class="widget widget-collapsible widget-categories">
-                                    <h3 class="widget-title"><span>All Categories</span></h3>
-                                    <ul class="widget-body filter-items search-ul">
-                                        <li><a href="#">Clothing</a></li>
-                                        <li><a href="#">Computers</a></li>
-                                        <li><a href="#">Electronics</a></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">Furniture</a></li>
-                                        <li><a href="#">Games</a></li>
-                                        <li><a href="#">Kitchen</a></li>
-                                        <li><a href="#">Shoes</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                    </ul>
-                                </div> --}}
                             <!-- End of Widget -->
+                            @if(Config::get('app.locale') == 'en')
                             <div class="widget widget-collapsible widget-contact">
                                 <h3 class="widget-title"><span>Contact Vendor</span></h3>
                                 <div class="widget-body">
@@ -46,19 +33,10 @@
                                     <a href="#" class="btn btn-dark btn-rounded">Send Message</a>
                                 </div>
                             </div>
+                            @else
+
+                            @endif
                             <!-- End of Widget -->
-                            {{-- <div class="widget widget-collapsible widget-time">
-                                    <h3 class="widget-title"><span>Store Time</span></h3>
-                                    <ul class="widget-body">
-                                        <li><label>Sunday</label></li>
-                                        <li><label>Monday</label></li>
-                                        <li><label>Tuesday</label></li>
-                                        <li><label>Wednesday</label></li>
-                                        <li><label>Thursday</label></li>
-                                        <li><label>Friday</label></li>
-                                        <li><label>Saturday</label></li>
-                                    </ul>
-                                </div> --}}
                             <!-- End of Widget -->
                             <div class="widget widget-collapsible widget-products">
                                 <h3 class="widget-title"><span>Best Selling</span></h3>
@@ -277,45 +255,7 @@
                                     height: 450px !important;object-fit: contain;" />
                             @endif
                         </figure>
-                        <div class="store-content">
-                            <figure class="mb-3">
-                                <img src="{{ asset('/storage/seller/'.$seller->brand) }}" alt="Brand" width="100px"
-                                    height="100px" style="object-fit: contain" />
-                            </figure>
-                            <h4 class="store-title">{{ $seller->full_name}}</h4>
-                            <ul class="seller-info-list list-style-none mb-6">
-                                @if (empty($seller->address) || $seller->address ==null)
-                                @else
-                                <li class="store-address">
-                                    <i class="w-icon-map-marker"></i>
-                                    {{$seller->address}},{{ $seller->country }}
-                                </li>
-
-                                @endif
-                                <li class="store-phone">
-                                    <a href="tel:{{ $seller->phone }}">
-                                        <i class="w-icon-phone"></i>
-                                        {{ $seller->phone }}
-                                    </a>
-                                </li>
-                                {{-- <li class="store-rating">
-                                        <i class="w-icon-star-full"></i>
-                                        4.33 rating from 3 reviews
-                                    </li> --}}
-                                <li class="store-open">
-                                    <i class="w-icon-cart"></i>
-                                    Store Open
-                                </li>
-                            </ul>
-                            {{-- <div class="social-icons social-no-color border-thin">
-                                    <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                    <a href="#" class="social-icon social-google w-icon-google"></a>
-                                    <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                                    <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
-                                    <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-                                    <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
-                                </div> --}}
-                        </div>
+                      
                     </div>
                     <!-- End of Store Banner -->
 
