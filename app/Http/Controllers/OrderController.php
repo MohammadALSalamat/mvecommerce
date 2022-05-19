@@ -48,15 +48,16 @@ class OrderController extends Controller
     public function checkout_process(Request $request)
     {
         $data = $request->all();
-        $coutryName = Country::where('id',$data['country'])->value('country');
-        $state = Region::where("country_id",$data['country'])->first();
+        $coutryName = Country::where('id',$data['country'])->first();
+        $state = Region::where("country_id",$coutryName->id)->first();
+        $cityNamme = City::where("region_id",$state->id)->first();
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
         }
-        if (empty($data['city']) || $data['city'] == null) {
+        if (empty($cityNamme->city) || $cityNamme->city == null) {
             $city = $state->region;
         }else{
-            $city = $data['city'];
+            $city = $cityNamme->city;
         }
         if (empty($data['address']) || $data['address'] == null) {
             return back()->with('error', 'Billing Address Feild Is Required');
@@ -87,7 +88,7 @@ class OrderController extends Controller
             $scity = $data['scity'];
         }
         if (empty($data['state']) || $data['state'] == null) {
-            return back()->with('error', 'Bbilling State Feild Is Required');
+            return back()->with('error', 'Billing State Feild Is Required');
         }
         if (empty($data['spostcode']) || $data['spostcode'] == null) {
             $spostcode = $data['postcode'];
@@ -152,10 +153,10 @@ class OrderController extends Controller
             $order->user_id = $data['user_id'];
             $order->full_name = $data['full_name'];
             $order->sfull_name = $sfull_name;
-            $order->city = $data['city'];
-            $order->country = $data['country'];
+            $order->city = $city;
+            $order->country = $coutryName;
             $order->address = $data['address'];
-            $order->state = $data['state'];
+            $order->state = $state->regoin;
             $order->scity = $scity;
             $order->scountry = $scountry;
             $order->sstate = $sstate;
@@ -176,8 +177,8 @@ class OrderController extends Controller
             $order_email_imfo = [
                 'full_name' => $data['full_name'],
                 'sfull_name' => $sfull_name,
-                'city' => $data['city'],
-                'country' => $data['country'],
+                'city' => $cityNamme->city,
+                'country' => $coutryName->country,
                 'address' => $data['address'],
                 'state' => $data['state'],
                 'scity' => $scity,
