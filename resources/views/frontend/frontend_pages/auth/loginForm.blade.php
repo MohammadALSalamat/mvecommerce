@@ -63,17 +63,16 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror </div>
-                                <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                <div class="form-checkbox d-flex align-items-center">
+                                    <input class="form-check-input mr-2" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember1">Remember me</label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" style="text-align:right;" href="{{ route('password.request') }}">
                                     Lost your password ?
                                 </a>
                                 @endif
-
                                 <button type="submit" class="btn btn-dangar"
                                     style="background: red;color:#fff;width:50%">Log In </button>
                             </form>
@@ -221,13 +220,13 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror </div>
-                                <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                <div class="form-checkbox d-flex align-items-center">
+                                    <input class="form-check-input mr-2" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember1">تذكرني</label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link " style="text-align:right;" href="{{ route('password.request') }}">
                                     هل نسيت كلمة السر؟
                                 </a>
                                 @endif
