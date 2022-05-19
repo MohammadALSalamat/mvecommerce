@@ -49,7 +49,7 @@ class OrderController extends Controller
     {
         $data = $request->all();
         $coutryName = Country::where('id',$data['country'])->first();
-        $state = Region::where("country_id",$coutryName->id)->first();
+        $state = Region::where("id",$data['state'])->first();
         $cityNamme = City::where("region_id",$state->id)->first();
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
@@ -62,7 +62,7 @@ class OrderController extends Controller
         if (empty($data['address']) || $data['address'] == null) {
             return back()->with('error', 'Billing Address Feild Is Required');
         }
-        if (empty($coutryName) || $coutryName == null) {
+        if (empty($coutryName->country) || $coutryName->country == null) {
             return back()->with('error', 'Billing Country Feild Is Required');
         }
         if (empty($data['postcode']) || $data['postcode'] == null) {
@@ -87,7 +87,7 @@ class OrderController extends Controller
         } else {
             $scity = $data['scity'];
         }
-        if (empty($data['state']) || $data['state'] == null) {
+        if (empty($state->region) || $state->region == null) {
             return back()->with('error', 'Billing State Feild Is Required');
         }
         if (empty($data['spostcode']) || $data['spostcode'] == null) {
@@ -177,10 +177,10 @@ class OrderController extends Controller
             $order_email_imfo = [
                 'full_name' => $data['full_name'],
                 'sfull_name' => $sfull_name,
-                'city' => $cityNamme->city,
+                'city' => $city,
                 'country' => $coutryName->country,
                 'address' => $data['address'],
-                'state' => $data['state'],
+                'state' => $state->region,
                 'scity' => $scity,
                 'scountry' => $scountry,
                 'sstate' => $sstate,
