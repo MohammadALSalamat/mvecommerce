@@ -49,20 +49,20 @@ class OrderController extends Controller
     {
         $data = $request->all();
         $coutryName = Country::where('id',$data['country'])->first();
-        $state = Region::where("id",$data['state'])->first();
-        $cityNamme = City::where("region_id",$state->id)->first();
+        $stateName = Region::where("id",$data['state'])->first();
+        $cityNamme = City::where("region_id",$stateName['id'])->first();
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
         }
-        if (empty($cityNamme->city) || $cityNamme->city == null) {
-            $city = $state->region;
+        if (empty($cityNamme['city']) || $cityNamme['city'] == null) {
+            $city = $stateName['region'];
         }else{
-            $city = $cityNamme->city;
+            $city = $cityNamme['city'];
         }
         if (empty($data['address']) || $data['address'] == null) {
             return back()->with('error', 'Billing Address Feild Is Required');
         }
-        if (empty($coutryName->country) || $coutryName->country == null) {
+        if (empty($coutryName['country']) || $coutryName['country'] == null) {
             return back()->with('error', 'Billing Country Feild Is Required');
         }
         if (empty($data['postcode']) || $data['postcode'] == null) {
@@ -87,7 +87,7 @@ class OrderController extends Controller
         } else {
             $scity = $data['scity'];
         }
-        if (empty($state->region) || $state->region == null) {
+        if (empty($stateName['region']) || $stateName['region'] == null) {
             return back()->with('error', 'Billing State Feild Is Required');
         }
         if (empty($data['spostcode']) || $data['spostcode'] == null) {
@@ -96,7 +96,7 @@ class OrderController extends Controller
             $spostcode = $data['spostcode'];
         }
         if (empty($data['sstate']) || $data['sstate'] == null) {
-            $sstate = $state->region;
+            $sstate = $stateName['region'];
         } else {
             $sstate = $data['sstate'];
         }
@@ -146,7 +146,6 @@ class OrderController extends Controller
         }
         $ordernumber = rand(1,10000000);
         
-        
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {
             $order = new Order();
@@ -154,9 +153,9 @@ class OrderController extends Controller
             $order->full_name = $data['full_name'];
             $order->sfull_name = $sfull_name;
             $order->city = $city;
-            $order->country = $coutryName;
+            $order->country = $coutryName['country'];
             $order->address = $data['address'];
-            $order->state = $state->regoin;
+            $order->state = $stateName['region'];
             $order->scity = $scity;
             $order->scountry = $scountry;
             $order->sstate = $sstate;
@@ -178,9 +177,9 @@ class OrderController extends Controller
                 'full_name' => $data['full_name'],
                 'sfull_name' => $sfull_name,
                 'city' => $city,
-                'country' => $coutryName->country,
+                'country' => $coutryName['country'],
                 'address' => $data['address'],
-                'state' => $state->region,
+                'state' => $stateName['region'],
                 'scity' => $scity,
                 'scountry' => $scountry,
                 'sstate' => $sstate,
