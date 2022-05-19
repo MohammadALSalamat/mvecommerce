@@ -666,6 +666,7 @@ alert('other')
                 dataType: 'json',
                 success: function (result) {
                     $('#state-dd').html('<option value="">Select State</option>');
+                    alert(result.states);
                     $.each(result.states, function (key, value) {
                         $("#state-dd").append('<option value="' + value.id + '">' + value.region + '</option>');
                     });
