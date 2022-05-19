@@ -18,6 +18,12 @@ class category extends Model
         return $this->hasMany(product::class,'category_id');
     }
 
+    // products related to child cat
+
+    public function one_child_cat_has_many_products(){
+        return $this->hasMany(product::class,'child_category_id');
+    }
+
     // child category ajax submit for product form
 
     public static function get_category_child_by_parent_id($id)

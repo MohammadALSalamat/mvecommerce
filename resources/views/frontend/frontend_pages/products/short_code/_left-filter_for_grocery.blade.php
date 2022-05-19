@@ -20,7 +20,7 @@
                  @endif name="category[]" value="{{ $single_cat->slug }}" id="{{ $single_cat->slug }}"
                  onchange="this.form.submit();" >
                  <label class="pl-3" for="{{ $single_cat->slug }}"> {{ $single_cat->title }}
-                     ({{ count($single_cat->one_cat_has_many_products) }})</label>
+                     ({{ count($single_cat->one_child_cat_has_many_products) }})</label>
              </div>
              @endforeach
          @else
