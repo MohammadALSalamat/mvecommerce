@@ -2,33 +2,15 @@
 @section('mytitle','Vendors List')
 @section('content')
         <!-- Start of Main -->
-        <main class="main">
+        <main class="main mt-5">
             <!-- Start of Breadcrumb -->
-            @include('frontend.frontend_layout._breadcrumb')
+           
             <!-- End of Breadcrumb -->
 
             <!-- Start of Pgae Contetn -->
             <div class="page-content mb-8">
                 <div class="container">
-                    <!-- Start of Vendor Filter -->
-                    <div class="vendor-filter mb-4">
-                        <div class="vendor-filter-left mr-auto">
-                            <div class="select-box mb-2 mr-2">
-                                <select name="sortby" class="form-control">
-                                    <option value="date" selected="selected">By date</option>
-                                    <option value="alphabet">By Alphabetically</option>
-                                    <option value="category">By Category</option>
-                                    <option value="shipping">By Shipping</option>
-                                </select>
-                            </div>
-                            <a href="#" class="btn btn-rounded mb-2 mr-4">Sort</a>
-                        </div>
-                        <div class="vendor-filter-right">
-                            <label class="d-inline-block font-size-md text-dark mb-2">Viewing all {{ $sellers->count() }} vendors</label>
-                        </div>
-                    </div>
-                    <!-- End of Vendor Filter -->
-
+                    
                     <!-- Start of Vendor Store -->
                     <div class="row cols-lg-3 cols-sm-2">
                         @foreach ($sellers as $seller )
