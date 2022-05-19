@@ -323,12 +323,12 @@
                             @else
                             <div class="col-lg-7 pr-lg-4 mb-4">
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
-                                    Billing Details
+                                    معلومات الفاتورة
                                 </h3>
                                 <div class="row gutter-sm">
                                     <div class="col-xs-12">
                                         <div class="form-group">
-                                            <label>Full name *</label>
+                                            <label>الاسم الكامل *</label>
                                             <input type="text" class="form-control form-control-md" id="full_name" name="full_name"
                                                 required value="{{ $user->full_name }}">
                                         </div>
@@ -336,13 +336,13 @@
                                    
                                 </div>
                                 <div class="form-group">
-                                        <label>Country *</label>
+                                        <label>المدينة *</label>
                                     <input type="text" placeholder="House number and street name"
                                         class="form-control form-control-md mb-2" name="country" id="country" required value="{{ $user->country }}">
                                     
                                 </div>
                                 <div class="form-group">
-                                    <label>Street address *</label>
+                                    <label>الشارع *</label>
                                     <input type="text" placeholder="House number and street name"
                                         class="form-control form-control-md mb-2" name="address" id="address" required value="{{ $user->address }}">
                                     
@@ -350,7 +350,7 @@
                                 <div class="row gutter-sm">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Town / City *</label>
+                                            <label>المدينة *</label>
                                             <input type="text" id="city" class="form-control form-control-md" name="city" required value="{{ $user->city }}">
                                         </div>
                                         <div class="form-group">
@@ -631,5 +631,51 @@ $('#spostcode').val($('#postcode').val());
 alert('other')
 }
     })
+</script>
+<!-- Country and Cities selection  -->
+<script>
+    $(document).ready(function () {
+        $('#country-dd').on('change', function () {
+            var idCountry = this.value;
+            $("#state-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-states')}}",
+                type: "POST",
+                data: {
+                    country_id: idCountry,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dd").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#city-dd').html('<option value="">Select City</option>');
+                }
+            });
+        });
+        $('#state-dd').on('change', function () {
+            var idState = this.value;
+            $("#city-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-cities')}}",
+                type: "POST",
+                data: {
+                    state_id: idState,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (res) {
+                    $('#city-dd').html('<option value="">Select City</option>');
+                    $.each(res.cities, function (key, value) {
+                        $("#city-dd").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
 </script>
 @endsection
