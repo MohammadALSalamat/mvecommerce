@@ -667,8 +667,7 @@ alert('other')
                 success: function (result) {
                     $('#state-dd').html('<option value="">Select State</option>');
                     $.each(result.states, function (key, value) {
-                        $("#state-dd").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
+                        $("#state-dd").append('<option value="' + value.id + '">' + value.region + '</option>');
                     });
                     $('#city-dd').html('<option value="">Select City</option>');
                 }

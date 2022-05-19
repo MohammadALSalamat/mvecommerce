@@ -7,10 +7,11 @@ use App\Models\City;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\State;
+use App\Models\Region;
 use App\Models\Seller;
 use App\Models\Country;
-use App\Models\product;
 
+use App\Models\product;
 use App\Jobs\OrderEmail;
 use App\Models\Shipping;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class OrderController extends Controller
     {
         $user = User::where('id',auth()->user()->id)->first();
         $shipping_adress = Shipping::where('status',1)->get();
-        $countries = Country::get();
+        $countries = Country::get(["country", "id"]);
         return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries'));
     }
 
@@ -35,12 +36,12 @@ class OrderController extends Controller
 
     public function fetchState(Request $request)
     {
-        $states = State::where("country_id",$request->country_id)->get();
-        return response()->json($states);
+        $states = Region::where("country_id",$request->country_id)->get(["region", "id"]);
+        return $states;
     }
     public function fetchCity(Request $request)
     {
-        $cities = City::where("state_id",$request->state_id)->get();
+        $cities = City::where("state_id",$request->state_id)->get(["city", "id"]);
         return response()->json($cities);
     }
 
