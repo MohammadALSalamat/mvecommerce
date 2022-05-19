@@ -485,7 +485,11 @@
                 </div>
                 <div class="header-right">
                     <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>مسار الشحنة</a>
-                    <a href="#"><i class="w-icon-sale"></i>أفضل العروض</a>
+                    @php
+                    $best_deals_checker = \App\Models\product::where(['status' => 1])->where('discound','>',20)->count();
+                @endphp
+                    <a class="@if ($best_deals_checker > 0 ) glow @else @endif
+                        " href="{{ route('best_deals') }}"><i class="w-icon-sale glow"></i> أفضل العروض</a>
                 </div>
             </div>
         </div>

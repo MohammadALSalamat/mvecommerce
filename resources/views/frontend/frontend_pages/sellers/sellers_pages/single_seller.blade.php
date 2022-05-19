@@ -131,7 +131,7 @@
                                                 
                                                 @if (!empty($top_selling->discound) || $top_selling->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_selling->discound }}%
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_selling->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
@@ -234,7 +234,7 @@
                                                 
                                                 @if (!empty($top_selling->discound) || $top_selling->discound != null)
                                                 <small
-                                                    style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $top_selling->discound }}%
+                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_selling->discound }}%
                                                     خصم</small>
                                                 @endif
                                                 @endif
@@ -409,7 +409,7 @@ height: 150px !important;object-fit: contain;" />
                                         
                                         @if (!empty($product->discound) || $product->discound != null)
                                         <small
-                                            style="font-size:12px;background: green;color:#fff;padding:10px 20px;border-radius:20px;margin-left:10px">{{ $product->discound }}%
+                                            style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $product->discound }}%
                                             خصم</small>
                                         @endif
                                         @endif
