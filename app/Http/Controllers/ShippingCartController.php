@@ -22,7 +22,7 @@ class ShippingCartController extends Controller
 
         // this has a model in the product model
         $product = product::getProductByCart($product_id);
-        dd($product);
+    
 
         if(!empty($product[0]['offer_price']) || $product[0]['offer_price'] != null){
             $price = $product[0]['offer_price'];
@@ -35,7 +35,7 @@ class ShippingCartController extends Controller
             $cart_array[]= $item->id;
 
         }
-        $result = Cart::instance('shopping')->add($product_id,$product[0]['title'],$product[0]['ar_title'], $product_qant,$price)->associate('App\Models\product');
+        $result = Cart::instance('shopping')->add($product_id,$product[0]['title'], $product_qant,$price)->associate('App\Models\product');
         if ($result) {
             $response['status'] = true;
             $response['product_id'] = $product_id;

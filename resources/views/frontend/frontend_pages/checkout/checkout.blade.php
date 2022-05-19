@@ -2,8 +2,11 @@
 @section('mytitle','CheckOut' )
 @section('content')
  <!-- Start of Main -->
+
         <main class="main checkout">
             <!-- Start of Breadcrumb -->
+            @if(Config::get('app.locale') == 'en')
+
             <nav class="breadcrumb-nav">
                 <div class="container">
                     <ul class="breadcrumb shop-breadcrumb bb-no">
@@ -13,9 +16,19 @@
                     </ul>
                 </div>
             </nav>
+@else
+            <nav class="breadcrumb-nav">
+                <div class="container">
+                    <ul class="breadcrumb shop-breadcrumb bb-no">
+                        <li><a href="#">اكتمال الدفع</a></li>
+                        <li><a href="{{ route('checkout') }}">صفحة الدفع</a></li>
+                        <li class="active"><a href="{{ route('viewcart') }}">سلة المشتريات</a></li>
+                    </ul>
+                </div>
+            </nav>
             <!-- End of Breadcrumb -->
 
-
+@endif
             <!-- Start of PageContent -->
             <div class="page-content">
                 <div class="container">
@@ -66,8 +79,6 @@
                         <div class="row mb-9">
                             <!-- hidden info for checkout -->
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
-
-
                             <div class="col-lg-7 pr-lg-4 mb-4">
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                     Billing Details
