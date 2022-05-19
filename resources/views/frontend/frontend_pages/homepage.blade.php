@@ -939,9 +939,9 @@
                         <div class="product-details">
                             <h4 class="product-name"><a href="{{ route('singleproduct',$top_selling->slug) }}">
                                     @if(Config::get('app.locale') == 'en')
-                                    {{ $top_sellings->title }}
+                                    {{ $top_selling->title }}
                                     @else
-                                    {{ $top_sellings->ar_title }}
+                                    {{ $top_selling->ar_title }}
                                     @endif
                                 </a>
                             </h4>
@@ -1599,7 +1599,11 @@
     @endforeach
 
     <!-- End Grocery Section -->
+    @if(Config::get('app.locale') == 'en')
     <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">Top Brands</h2>
+    @else
+    <h2 class="mt-4 mb-4 title title-underline ls-normal appear-animate">العلامات التجارية</h2>
+    @endif
     <div class="swiper-container swiper-theme brands-wrapper mb-9 appear-animate" data-swiper-options="{
             'spaceBetween': 0,
             'slidesPerView': 2,
@@ -1631,142 +1635,6 @@
         <div class="swiper-pagination">
         </div>
     </div>
-    <!-- Post Wrapper -->
-    {{-- <h2 class="mb-4 title title-underline ls-normal appear-animate">Your Recent Views</h2>
-        <div class="pb-4 mb-8 swiper-container swiper-theme shadow-swiper appear-animate" data-swiper-options="{
-            'spaceBetween': 20,
-            'slidesPerView': 2,
-            'breakpoints': {
-                '576': {
-                    'slidesPerView': 3
-                },
-                '768': {
-                    'slidesPerView': 5
-                },
-                '992': {
-                    'slidesPerView': 6
-                },
-                '1200': {
-                    'slidesPerView': 8
-                }
-            }
-        }">
-            <div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-2">
-                <div class="mb-0 swiper-slide product-wrap">
-                    <div class="text-center product product-absolute">
-                        <figure class="product-media">
-                            <a href="product-defaproduct-default.html">
-                                <img src="{{asset('front-style/assets/images/demos/demo1/products/7-1.jpg')}}"
-    alt="Category image" width="130" height="146" style="background-color: #fff" />
-    </a>
-    </figure>
-    <h4 class="product-name">
-        <a href="product-default.html">Women's Fashion Handbag</a>
-    </h4>
-    </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-2.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">Electric Frying Pan</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-3.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">Black Winter Skating</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-4.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">HD Television</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-5.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">Home Sofa</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-6.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">USB Receipt</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-7.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">Electric Rice-Cooker</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    <div class="mb-0 swiper-slide product-wrap">
-        <div class="text-center product product-absolute">
-            <figure class="product-media">
-                <a href="product-defaproduct-default.html">
-                    <img src="{{asset('front-style/assets/images/demos/demo1/products/7-8.jpg')}}" alt="Category image"
-                        width="130" height="146" style="background-color: #fff" />
-                </a>
-            </figure>
-            <h4 class="product-name">
-                <a href="product-default.html">Table Lamp</a>
-            </h4>
-        </div>
-    </div>
-    <!-- End of Product Wrap -->
-    </div>
-    <div class="swiper-pagination"></div>
-    </div> --}}
     <!-- End of Reviewed Producs -->
     </div>
     <!--End of Catainer -->
