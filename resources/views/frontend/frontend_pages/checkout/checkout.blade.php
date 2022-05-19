@@ -72,7 +72,6 @@
                                     <select name="city" id="city-dd" class="form-control">
                                     </select>
                                 </div>
-                                
                                 <div class="form-group">
                                     <label>Street address *</label>
                                     <input type="text" placeholder="House number and street name"
@@ -88,7 +87,6 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                       
                                         <div class="form-group">
                                             <label>Phone *</label>
                                             <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ $user->phone }}">

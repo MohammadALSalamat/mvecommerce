@@ -45,22 +45,23 @@ class OrderController extends Controller
         return response()->json($data);
     }
 
-
-
-
     public function checkout_process(Request $request)
     {
         $data = $request->all();
+        $coutryName = Country::where('id',$data['country'])->value('country');
+        $state = Region::where("country_id",$data['country'])->first();
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
         }
         if (empty($data['city']) || $data['city'] == null) {
-            return back()->with('error', 'Billing City Feild Is Required');
+            $city = $state->region;
+        }else{
+            $city = $data['city'];
         }
         if (empty($data['address']) || $data['address'] == null) {
             return back()->with('error', 'Billing Address Feild Is Required');
         }
-        if (empty($data['country']) || $data['country'] == null) {
+        if (empty($coutryName) || $coutryName == null) {
             return back()->with('error', 'Billing Country Feild Is Required');
         }
         if (empty($data['postcode']) || $data['postcode'] == null) {
@@ -76,12 +77,12 @@ class OrderController extends Controller
             return back()->with('error', 'Billing Phone Feild Is Required');
         }
         if (empty($data['scountry']) || $data['scountry'] == null) {
-            $scountry = $data['country'];
+            $scountry = $coutryName;
         } else {
             $scountry = $data['scountry'];
         }
         if (empty($data['scity']) || $data['scity'] == null) {
-            $scity = $data['city'];
+            $scity = $city;
         } else {
             $scity = $data['scity'];
         }
@@ -94,7 +95,7 @@ class OrderController extends Controller
             $spostcode = $data['spostcode'];
         }
         if (empty($data['sstate']) || $data['sstate'] == null) {
-            $sstate = $data['state'];
+            $sstate = $state->region;
         } else {
             $sstate = $data['sstate'];
         }
