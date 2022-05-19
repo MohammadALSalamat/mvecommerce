@@ -271,12 +271,10 @@
                     <div class="store store-banner mb-4">
                         <figure class="store-media">
                             @if (empty( $seller->banner_image) || $seller->banner_image == null)
-                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Product" style="width: 100% !important;
-height: 150px !important;object-fit: contain;" />
+                            <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Product" style="width: 100% !important;height: 150px !important;object-fit: contain;" />
                             @else
                             <img src="{{ asset('/storage/seller/'.$seller->banner_image) }}" alt="Vendor" style="background-color: #fff;width: 100% !important;
                                     height: 450px !important;object-fit: contain;" />
-
                             @endif
                         </figure>
                         <div class="store-content">
