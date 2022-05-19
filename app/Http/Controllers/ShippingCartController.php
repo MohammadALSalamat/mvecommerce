@@ -22,7 +22,7 @@ class ShippingCartController extends Controller
 
         // this has a model in the product model
         $product = product::getProductByCart($product_id);
-
+        
         if(!empty($product[0]['offer_price']) || $product[0]['offer_price'] != null){
             $price = $product[0]['offer_price'];
         }else{
