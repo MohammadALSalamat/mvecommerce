@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use App\Models\City;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\State;
 use App\Models\Seller;
+use App\Models\Country;
 use App\Models\product;
+
 use App\Jobs\OrderEmail;
-use PDF;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 use App\Jobs\orderVendorEmail;
-
 use App\Jobs\OrderEmailForAdmin;
-use App\Models\Shipping;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -24,8 +27,27 @@ class OrderController extends Controller
     {
         $user = User::where('id',auth()->user()->id)->first();
         $shipping_adress = Shipping::where('status',1)->get();
+        $data['countries'] = Country::get(["name", "id"]);
+        dd($$data['countries']);
         return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user'));
     }
+
+    // cities and countries dropdown
+
+    public function fetchState(Request $request)
+    {
+        $data['states'] = State::where("country_id",$request->country_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+    public function fetchCity(Request $request)
+    {
+        $data['cities'] = City::where("state_id",$request->state_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+
+
+
+
     public function checkout_process(Request $request)
     {
         $data = $request->all();
