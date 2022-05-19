@@ -52,7 +52,8 @@
                                    
                                 </div>
                                 <div class="form-group mb-3">
-                                    <select  id="country-dd" class="form-control">
+                                    <label>Country *</label>
+                                    <select  id="country-dd" name="country" class="form-control">
                                         <option value="">Select Country</option>
                                         @foreach ($countries as $data)
                                         <option value="{{$data->id}}">
@@ -62,19 +63,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <select id="state-dd" class="form-control">
+                                    <label>State *</label>
+                                    <select name="state" id="state-dd" class="form-control">
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="city-dd" class="form-control">
+                                    <label>City *</label>
+                                    <select name="city" id="city-dd" class="form-control">
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                        <label>Country *</label>
-                                    <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="country" id="country" required value="{{ $user->country }}">
-                                    
-                                </div>
+                                
                                 <div class="form-group">
                                     <label>Street address *</label>
                                     <input type="text" placeholder="House number and street name"
@@ -83,22 +81,14 @@
                                 </div>
                                 <div class="row gutter-sm">
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Town / City *</label>
-                                            <input type="text" id="city" class="form-control form-control-md" name="city" required value="{{ $user->city }}">
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label>ZIP *</label>
                                             <input type="text" id="postcode" class="form-control form-control-md" name="postcode" required value="{{ $user->postcode }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State *</label>
-                                            <div class="select-box">
-                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ $user->stat }}">
-                                            </div>
-                                        </div>
+                                       
                                         <div class="form-group">
                                             <label>Phone *</label>
                                             <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ $user->phone }}">

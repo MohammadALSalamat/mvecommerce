@@ -41,7 +41,7 @@ class OrderController extends Controller
     }
     public function fetchCity(Request $request)
     {
-        $data['cities'] = City::where("state_id",$request->state_id)->get(["city", "id"]);
+        $data['cities'] = City::where("region_id",$request->state_id)->get(["city", "id"]);
         return response()->json($data);
     }
 
