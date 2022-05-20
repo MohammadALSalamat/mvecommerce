@@ -209,10 +209,9 @@
                                 height="45" />
                         </a>
                         <div class="widget-body">
-                            <p class="widget-about-title">Got Question? Call us 24/7</p>
+                            <p class="widget-about-title">هل لديك سؤال ؟ تواصل معنا نحن في الخدمة.</p>
                             <a href="tel:18005707777" class="widget-about-call">1-800-570-7777</a>
-                            <p class="widget-about-desc">Register now to get updates on pronot get up icons
-                                & coupons ster now toon.
+                            <p class="widget-about-desc">سجل حسابك اﻷن ليصلك كل جديد معنا
                             </p>
                             <div class="social-icons social-icons-colored">
                                 <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
@@ -226,40 +225,37 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
-                        <h3 class="widget-title">Company</h3>
+                        <h3 class="widget-title">اساسيات الشركة</h3>
                         <ul class="widget-body">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="#">Team Member</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="#">Affilate</a></li>
-                            <li><a href="#">Order History</a></li>
+                            <li><a href="about-us.html">عن الشركة</a></li>
+                            <li><a href="#">الوظائف</a></li>
+                            <li><a href="contact-us.html">تواصل معنا</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
-                        <h4 class="widget-title">My Account</h4>
+                        <h4 class="widget-title">حساب العميل</h4>
                         <ul class="widget-body">
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="login.html">Sign In</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="wishlist.html">My Wishlist</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">تتبع الشحنة</a></li>
+                            <li><a href="cart.html">السلة</a></li>
+                            <li><a href="login.html">تسجيل الدخول</a></li>
+                            <li><a href="#">المساعدة</a></li>
+                            <li><a href="wishlist.html">المفضلة</a></li>
+                            <li><a href="#">الخصوصية</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4>
+                        <h4 class="widget-title">خدمات العميل</h4>
                         <ul class="widget-body">
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Product Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Term and Conditions</a></li>
+                            <li><a href="#">طرق الدفع</a></li>
+                            <li><a href="#">أعادة النقود</a></li>
+                            <li><a href="#">أعادة المنتج</a></li>
+                            <li><a href="#">مركز الدعم</a></li>
+                            <li><a href="#">التسوق</a></li>
+                            <li><a href="#">اﻷحكام والشروط</a></li>
                         </ul>
                     </div>
                 </div>
@@ -276,10 +272,10 @@
                 @endphp
                 @if(count($sub_cat) > 0)
                 <div class="category-box w-100">
-                    <h6 class="category-name">{{$category->title}} : </h6>
+                    <h6 class="category-name">{{$category->ar_title}} : </h6>
                      @if(count($sub_cat) > 0 )
                      @foreach ($sub_cat as $single_cat )
-                    <a href="#">{{$single_cat->title}}</a>
+                    <a href="#">{{$single_cat->ar_title}}</a>
                     @endforeach
                      @endif
                 </div>
