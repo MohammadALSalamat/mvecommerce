@@ -780,6 +780,7 @@ class frontPageController extends Controller
         {
             #send email to vendor from the user
             $data = $request->all();
+            $seller = Seller::where('id',$data['sellerr_id'])->where('status',1)->first();
             dd($data);
             if(empty($data['name']) || $data['name'] == null){
                 return back()->with('error','The name is reqired');
@@ -790,8 +791,14 @@ class frontPageController extends Controller
             if(empty($data['message']) || $data['message'] == null){
                 return back()->with('error','The message is reqired');
             }
+            $data_info= [
+                'name' => $data['name'],
+                'email' => $data['email_vendor'],
+                'message' => $data['message'],
+                'vendor_email' => $seller->email,
+            ];
 
-            Mail::to('alomda.alslmat@gmail.com')->send(new Single_vendor_email_help($data)); // send email to admin
+            Mail::to($seller->email)->send(new Single_vendor_email_help($data_info)); // send email to admin
 
         }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//

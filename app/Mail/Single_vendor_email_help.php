@@ -11,14 +11,15 @@ class Single_vendor_email_help extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +29,10 @@ class Single_vendor_email_help extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('support@9yards.ae')
+        ->subject('User Request')
+        ->cc('alomda.alslmat@gmail.com')
+        ->view('mails.single_vendor_email_help')
+        ->with('data', $this->data);
     }
 }
