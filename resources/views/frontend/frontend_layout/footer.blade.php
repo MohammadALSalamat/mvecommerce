@@ -5,7 +5,7 @@
     <div class="footer-newsletter bg-primary">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-xl-5 col-lg-6">
+                <div class="col-xl-6 col-lg-6">
                     <div class="text-white icon-box icon-box-side">
                         <div class="icon-box-icon d-inline-flex">
                             <i class="w-icon-user"></i>
@@ -18,15 +18,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 col-xl-5 col-lg-6 col-md-9 mt-lg-0 ">
+                <div class="mt-4 col-xl-3 col-lg-3 col-md-9 mt-lg-0 ">
                     <div class="text-white icon-box icon-box-side">
                         <div class="icon-box-icon d-inline-flex">
-                            <i class=" w-icon-envelop2"></i>
+                            <i class=" w-icon-envelop2 " style="font-size: 20px"></i>
                         </div>
                         <div class="icon-box-content">
-                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">We're Always Here To Help
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">Help Center
                             </h4>
-                            <p class="text-white">Reach out to us through any of these support channels
+                            <p class="text-white">email.help@itajer.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 col-xl-3 col-lg-3col-md-9 mt-lg-0 ">
+                    <div class="text-white icon-box icon-box-side">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class=" w-icon-user" style="font-size: 20px"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">Email For Help
+                            </h4>
+                            <p class="text-white">Email.support@itajer.com
                             </p>
                         </div>
                     </div>
