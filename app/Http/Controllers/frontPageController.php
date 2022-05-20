@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Single_vendor_email_help;
 use Helper;
 use Carbon\Carbon;
 use App\Models\User;
@@ -773,6 +774,25 @@ class frontPageController extends Controller
             $top_reviewed_vendor_product= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->take(6)->get();
 
             return view('frontend.frontend_pages.sellers.sellers_pages.single_seller',compact('top_reviewed_vendor_product','top_selles_vendor','seller','vendor_product'));
+        }
+
+        public function vendor_email_help(Request $request)
+        {
+            #send email to vendor from the user
+            $data = $request->all();
+            dd($data);
+            if(empty($data['name']) || $data['name'] == null){
+                return back()->with('error','The name is reqired');
+            }
+            if(empty($data['email_vendor']) || $data['email_vendor'] == null){
+                return back()->with('error','The email is reqired');
+            }
+            if(empty($data['message']) || $data['message'] == null){
+                return back()->with('error','The message is reqired');
+            }
+
+            Mail::to('alomda.alslmat@gmail.com')->send(new Single_vendor_email_help($data)); // send email to admin
+
         }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 

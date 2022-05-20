@@ -5,7 +5,7 @@
         <form action="{{ route('vendor_email_help') }}" method="post">
             @csrf
         <input type="text" class="form-control" name="name" required id="name" placeholder="Your Name" />
-        <input type="text" class="form-control" name="email_vendor" required id="email_1" placeholder="you@example.com" />
+        <input type="email" class="form-control" name="email_vendor" required id="email_1" placeholder="you@example.com" />
         <textarea name="message" maxlength="1000" cols="25" rows="6" placeholder="Type your messsage..."
             class="form-control" required="required"></textarea>
         <button class="btn btn-dark btn-rounded" type="submit">Send Message</button>
