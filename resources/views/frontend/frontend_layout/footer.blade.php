@@ -8,24 +8,28 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="text-white icon-box icon-box-side">
                         <div class="icon-box-icon d-inline-flex">
-                            <i class="w-icon-envelop3"></i>
+                            <i class="w-icon-user"></i>
                         </div>
                         <div class="icon-box-content">
-                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">Subscribe To
-                                Our Newsletter</h4>
-                            <p class="text-white">Get all the latest information on Events, Sales and Offers.
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">We're Always Here To Help
+                            </h4>
+                            <p class="text-white">Reach out to us through any of these support channels
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 col-xl-7 col-lg-6 col-md-9 mt-lg-0 ">
-                    <form action="#" method="get"
-                        class="input-wrapper input-wrapper-inline input-wrapper-rounded">
-                        <input type="email" class="mr-2 bg-white form-control" name="email" id="email"
-                            placeholder="Your E-mail Address" />
-                        <button class="btn btn-dark btn-rounded" type="submit">Subscribe<i
-                                class="w-icon-long-arrow-right"></i></button>
-                    </form>
+                <div class="mt-4 col-xl-5 col-lg-6 col-md-9 mt-lg-0 ">
+                    <div class="text-white icon-box icon-box-side">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class=" w-icon-envelop2"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">We're Always Here To Help
+                            </h4>
+                            <p class="text-white">Reach out to us through any of these support channels
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
