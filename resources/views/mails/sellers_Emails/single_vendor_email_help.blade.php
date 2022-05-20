@@ -129,9 +129,13 @@
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                There is a message from {{ $data_info['name'] }} , <br> The user has sent you a message as below
+                                                There is a message from {{ $data_info['name'] }} , <br> The user has sent you a message as below. <b>( Please contact the user on his email as below)</b>
+                                                <br><br>
+                                                <b>{{ $data_info['name'] }}('s) Email:</b> <br>
+                                                <p>{{ $data_info['email'] }}</p>
                                                 <br>
-                                                User Message :: <br>
+                                                <br>
+                                                <b>{{ $data_info['name'] }}('s) Message:</b> <br>
                                                 {{ $data_info['message'] }}
                                             </p>
                                         </td>
@@ -146,7 +150,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px;">
                                         <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #777777;">
-                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. <a href="#" target="_blank" style="color: #777777;">unsusbscribe</a>.
+                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email.
                                         </p>
                                     </td>
                         </tr>

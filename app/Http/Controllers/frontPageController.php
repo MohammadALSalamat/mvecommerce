@@ -780,8 +780,7 @@ class frontPageController extends Controller
         {
             #send email to vendor from the user
             $data = $request->all();
-            $seller = Seller::where('id',$data['sellerr_id'])->where('status',1)->first();
-            dd($data);
+            $seller = Seller::where('id',$data['seller_id'])->where('status',1)->first();
             if(empty($data['name']) || $data['name'] == null){
                 return back()->with('error','The name is reqired');
             }
@@ -799,6 +798,8 @@ class frontPageController extends Controller
             ];
 
             Mail::to($seller->email)->send(new Single_vendor_email_help($data_info)); // send email to admin
+
+            return back()->with('message','Thannk you for your submition , Your email has been sent')
 
         }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
