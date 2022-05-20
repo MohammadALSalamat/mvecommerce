@@ -799,7 +799,7 @@ class frontPageController extends Controller
 
             Mail::to($seller->email)->send(new Single_vendor_email_help($data_info)); // send email to admin
 
-            return back()->with('message','Thannk you for your submition , Your email has been sent')
+            return back()->with('message','Thank you for your submition , Your email has been sent');
 
         }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
