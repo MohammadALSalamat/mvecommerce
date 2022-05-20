@@ -2,13 +2,14 @@
  <footer class="footer appear-animate" data-animation-options="{
     'name': 'fadeIn'
 }">
+@if(Config::get('app.locale') == 'en')
     <div class="footer-newsletter bg-primary">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-xl-6 col-lg-6">
                     <div class="text-white icon-box icon-box-side">
                         <div class="icon-box-icon d-inline-flex">
-                            <i class="w-icon-user"></i>
+                            <i class="w-icon-headphone"></i>
                         </div>
                         <div class="icon-box-content">
                             <h4 class="text-white icon-box-title text-uppercase font-weight-bold">We're Always Here To Help
@@ -47,10 +48,59 @@
             </div>
         </div>
     </div>
+
+    @else
+    <div class="footer-newsletter bg-primary">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="text-white icon-box icon-box-side">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class="w-icon-headphone"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">متواجدين دائمًا لمساعدتك
+                            </h4>
+                            <p class="text-white">تواصل معنا من خلال أي من قنوات الدعم التالية:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 col-xl-3 col-lg-3 col-md-9 mt-lg-0 ">
+                    <div class="text-white icon-box icon-box-side">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class=" w-icon-envelop2 " style="font-size: 20px"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">مركز المساعدة
+                            </h4>
+                            <p class="text-white">email.help@itajer.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 col-xl-3 col-lg-3col-md-9 mt-lg-0 ">
+                    <div class="text-white icon-box icon-box-side">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class=" w-icon-user" style="font-size: 20px"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="text-white icon-box-title text-uppercase font-weight-bold">الدعم عبر الإيميل
+                            </h4>
+                            <p class="text-white">Email.support@itajer.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="container">
         <div class="footer-top">
             <div class="row">
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 col-xs-6">
                     <div class="widget widget-about">
                         <a href="demo1.html" class="logo-footer">
                             <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" alt="logo-footer" width="144"
@@ -62,7 +112,6 @@
                             <p class="widget-about-desc">Register now to get updates on pronot get up icons
                                 & coupons ster now toon.
                             </p>
-
                             <div class="social-icons social-icons-colored">
                                 <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
                                 <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
@@ -73,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
                         <h3 class="widget-title">Company</h3>
                         <ul class="widget-body">
@@ -86,7 +135,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
                         <h4 class="widget-title">My Account</h4>
                         <ul class="widget-body">
@@ -99,7 +148,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 col-xs-6">
                     <div class="widget">
                         <h4 class="widget-title">Customer Service</h4>
                         <ul class="widget-body">
