@@ -181,7 +181,7 @@
                     <!-- Installation
 		============================ -->
                     <section id="idocs_installation">
-                        <h2>Installation</h2>
+                        <h2>Basic Info</h2>
                         <p class="lead">Follow the steps below to setup your site template:</p>
                         <ol>
                             <li>Unzip the downloaded package and open the <strong>/HTML</strong> folder to find all the
