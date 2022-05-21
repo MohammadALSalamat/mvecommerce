@@ -25,7 +25,10 @@ class SellerController extends Controller
     {
         return view('Seller.auth.login');
     }
-   
+    public function documentaion()
+    {
+        return view('Seller.documentaion.documentaioin_seller');
+    }
     public function login(Request $request)
     {
         $email = $request->email;
@@ -36,16 +39,13 @@ class SellerController extends Controller
             return back()->with('error', 'you dont have permission');
         }
     }
-   
     public function switchLang($lang)
     {
         if (array_key_exists($lang, Config::get('languages'))) {
             Session::put('applocale', $lang);
         }
         return Redirect::back();
-  
     }
-   
     // admin dashboard
     public function dashboard(){
         $current_user = Seller::find(Auth::guard('seller')->user()->id);

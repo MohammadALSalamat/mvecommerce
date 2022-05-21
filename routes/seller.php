@@ -23,6 +23,9 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::get('Subscription_Status',[SubscriptionController::class,'viewSubscription_Status'])->name('viewSubscription_Status');
 
     
+    // documentation for seller
+
+    Route::get('documentaion',[SellerController::class,'documentaion'])->name('documentaion');
     
     //Products section
      Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');

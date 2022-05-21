@@ -5,6 +5,8 @@
         <li class=" nav-item"><a href="{{ route('seller') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="float-right mr-2 badge badge-info badge-pill">0</span></a>
         </li>
         <li class=" nav-item" 
+        ><a href="{{ route('documentaion') }}"><i class="la la-book"></i><span class="menu-title" data-i18n="nav.templates.main">Documentaion</span></a></li>
+        <li class=" nav-item" 
         ><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">Products Managment</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="{{ route('seller_viewproducts') }}" data-i18n="nav.templates.vert.main">View Products</a>
