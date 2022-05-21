@@ -1,19 +1,54 @@
    <!-- Make the text best deals Glowing if there is products -->
    <style>
-    .glow {
+.glow {
   color: #000;
   text-align: center;
-  animation: glow 1s ease-in-out infinite alternate;
+  /* animation: glow 1s ease-in-out infinite alternate; */
+  animation: heartbeat 3s ease-in-out infinite alternate;
+
 }
 
-@-webkit-keyframes glow {
+@keyframes heartbeat
+{
+  0%
+  {
+    transform: scale( .75 );
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #e60000, 0 0 8px #e60000, 0 0 10px #e60000, 0 0 12px #e60000, 0 0 14px #e60000;
+
+  }
+  20%
+  {
+    transform: scale( 1 );
+  }
+  40%
+  {
+    transform: scale( .75 );
+  }
+  60%
+  {
+    transform: scale( 1 );
+  }
+  80%
+  {
+    transform: scale( .75 );
+  }
+  100%
+  {
+    transform: scale( .75 );
+    text-shadow: 0 0 2px #fff, 0 0 4px #ff6969, 0 0 6px #ff6969, 0 0 8px #ff6969, 0 0 10px #ff6969, 0 0 12px #ff6969, 0 0 15px #ff6969;
+
+  }
+  
+}
+
+/* @-webkit-keyframes glow {
   from {
     text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #e60000, 0 0 8px #e60000, 0 0 10px #e60000, 0 0 12px #e60000, 0 0 14px #e60000;
   }
   
   to {
     text-shadow: 0 0 2px #fff, 0 0 4px #ff6969, 0 0 6px #ff6969, 0 0 8px #ff6969, 0 0 10px #ff6969, 0 0 12px #ff6969, 0 0 15px #ff6969;
-  }
+  } */
 }
    </style>
    <div class="header-top">
