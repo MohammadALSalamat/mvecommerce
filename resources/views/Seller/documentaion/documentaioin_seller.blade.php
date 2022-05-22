@@ -199,13 +199,10 @@
 		============================ -->
                     <section id="idocs_html_structure">
                         <h2>Panel Structure</h2>
-                        <p>iDocs follows a simple and easy to customize coding structure. Here is the sample for your
+                        <p>Itajer follows a simple and easy to customize and add the products. Here is the sample for your
                             reference:<br>
-                            The template is based on <a class="ml-1" target="_blank" href="https://getbootstrap.com/"><i
-                                    class="fas fa-external-link-alt"></i> Bootstrap Framework</a></p>
-                        <p class="alert alert-info">If you need more information, please visit bootstrap site: <a
-                                target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/layout/grid/">https://getbootstrap.com</a></p>
+                            The template is based on <b class="ml-1" "></i> Left side bar & Right side Panel</b></p>
+                            <img src="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}" alt="dashboard" style="width: 100%" >
                     </section>
 
                     <hr class="divider">
