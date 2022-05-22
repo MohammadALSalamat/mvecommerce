@@ -105,6 +105,9 @@
                             <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Size to Product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_header1">Add New Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_navbar1">Add Frequently Bought Together </a></li>
+                            </ul>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#idocs_content">Content</a>
