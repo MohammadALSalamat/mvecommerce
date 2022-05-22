@@ -92,23 +92,19 @@
                 <ul class="nav flex-column ">
                     <li class="nav-item"><a class="nav-link active" href="#idocs_start">Getting Started</a>
                         <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#idocs_installation">Installation</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_html_structure">HTML Structure</a>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_installation">Basic Info</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_html_structure">Admin Panel Structure</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_sass">Sass</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_color_schemes">Color Schemes</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_theme_customization">Customization</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_logo_settings">Logo Settings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_sass">Main Sections</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#idocs_layout">Layout</a>
+                    <li class="nav-item"><a class="nav-link" href="#idocs_layout">Products</a>
                         <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#idocs_header">Header</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_navbar">Navbar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Sidebar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_footer">Footer</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Box Layout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_header">View Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_navbar">Edit Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Size to Product</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#idocs_content">Content</a>
