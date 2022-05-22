@@ -184,11 +184,12 @@
                         <p class="lead">Follow the steps below to view your site template:</p>
                         <p>
                             Itajer Seller admin panel is the place where the seller can control his section on the main website 
-                            <a href="{{ route('homepage') }}" target="_blank"> https://itajer.com</a> from now on the below info will guid you 
+                           <br> <a href="{{ route('homepage') }}" target="_blank"> <i
+                                class="fas fa-external-link-alt"></i> Itajer Home Page</a> from now on the below info will guid you 
                             to be able to use your panel perfectly!!.
                         </p>
                         <p>
-                            Now let's start with the first section which is the stacture of the panel.
+                            Now let's start with the first section which is <code>Panel Structure</code>.
                         </p>
                     </section>
 
@@ -197,65 +198,11 @@
                     <!-- HTML Structure
 		============================ -->
                     <section id="idocs_html_structure">
-                        <h2>HTML Structure</h2>
+                        <h2>Panel Structure</h2>
                         <p>iDocs follows a simple and easy to customize coding structure. Here is the sample for your
                             reference:<br>
                             The template is based on <a class="ml-1" target="_blank" href="https://getbootstrap.com/"><i
                                     class="fas fa-external-link-alt"></i> Bootstrap Framework</a></p>
-                        <pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-
-&lt;!-- Your Title, Description, Stylesheets
-============================================= --&gt;
-
-&lt;/head&gt;
-
-&lt;body data-spy=&quot;scroll&quot; data-target=&quot;.idocs-navigation&quot; data-offset=&quot;125&quot;&gt;
-
-&lt;!-- Document Wrapper   
-=============================== --&gt;
-&lt;div id=&quot;main-wrapper&quot;&gt; 
-  
-  &lt;!-- Header
-  ============================ --&gt;
-  &lt;header id=&quot;header&quot; class=&quot;sticky-top&quot;&gt;
-   ......
-  &lt;/header&gt;
-  &lt;!-- Header End --&gt; 
-  
-  &lt;!-- Content
-  ============================ --&gt;
-  &lt;div id=&quot;content&quot; role=&quot;main&quot;&gt; 
-    
-    &lt;!-- Sidebar Navigation
-    ============================ --&gt;
-    &lt;div class=&quot;idocs-navigation bg-light&quot;&gt;
-     .....
-    &lt;/div&gt;
-    
-    &lt;!-- Docs Content
-    ============================ --&gt;
-    &lt;div class=&quot;idocs-content&quot;&gt;
-      &lt;div class=&quot;container&quot;&gt;
-        .......
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- Content end --&gt; 
-  
-  &lt;!-- Footer --&gt;
-  &lt;footer id=&quot;footer&quot; class=&quot;section bg-dark footer-text-light&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt; ...... &lt;/div&gt;
-  &lt;/footer&gt;
-  &lt;!-- Footer end --&gt; 
-  
-&lt;/div&gt;
-&lt;!-- Document Wrapper end --&gt; 
-
-&lt;!-- JavaScript --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
                         <p class="alert alert-info">If you need more information, please visit bootstrap site: <a
                                 target="_blank"
                                 href="https://getbootstrap.com/docs/4.4/layout/grid/">https://getbootstrap.com</a></p>
