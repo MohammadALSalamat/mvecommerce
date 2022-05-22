@@ -207,14 +207,14 @@
                                 alt="image" style="width: 600px"></a>
                                 <p> The Above Image is the dashboard with out any information where the lest side <b> The black one </b> <br>
                                 is where the user can go through the dashborad and select the section that he wants. and it containes
-                                <code><ol>
-                                        <li>Dashboard to view the statistic Informations</li>
-                                        <li>documentaion to view the guid book </li>
-                                        <li>Products to view the products and every thing related to products </li>
-                                        <li>Orders to view the Sold Products Invoices and every thing related to orders </li>
-                                        <li>Subscribtion to view the the seller package status and the Expired Date</li>
-                                        <li>Sittings to view the the seller details </li>
-                                    </ol></code>
+                                <code><ul>
+                                        <li>Dashboard </li>
+                                        <li>documentaion </li>
+                                        <li>Products </li>
+                                        <li>Orders </li>
+                                        <li>Subscribtion </li>
+                                        <li>Sittings</li>
+                                    </ul></code>
                                 </p>
 
                                 <p> Once the seller start getting notification and add products <b>The Dashboard </b> will be filled with the Important info Such as the below image</p>
@@ -228,16 +228,19 @@
                     <!-- Sass
 		============================ -->
                     <section id="idocs_sass">
-                        <h2>Sass</h2>
-                        <p>We have added SASS <code>.scss</code> files in template. If you know how to use SASS you can
-                            change sass files and compile the css as well.
-                            You can find sass file here - <code>HTML/assets/sass</code></p>
-                        <p>Open the <code>sass/_variables.scss</code> and Edit the values according to your needs. If
-                            you need more Advanced Setup then you can Edit the Respective Files yourself which have been
-                            branched inside the same Folder. It is completely at your discretion only to include the
-                            Required <code>.scss</code> Files you need to minimize the amount of CSS & including only
-                            the Styles of the Blocks you need. This can be setup in your <code>stylesheet.scss</code>
-                            File.</p>
+                        <h2>Main Sections</h2>
+                        <p>As Above there are few sections that seller must focus onn to get things done correctly!!</p>
+                        <code><ol>
+                            <li>Dashboard to view the statistic Informations</li>
+                            <li>documentaion to view the guid book </li>
+                            <li>Products to view the products and every thing related to products </li>
+                            <li>Orders to view the Sold Products Invoices and every thing related to orders </li>
+                            <li>Subscribtion to view the the seller package status and the Expired Date</li>
+                            <li>Sittings to view the the seller details </li>
+                        </ol></code>
+                        <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products.png') }}"><img
+                            src="{{ asset('storage/documentaion/left_side_bar_products.png') }}" class="img-fluid img-thumbnail"
+                            alt="image" style="width: 200px;height:100%"></a>
                     </section>
 
                     <hr class="divider">
