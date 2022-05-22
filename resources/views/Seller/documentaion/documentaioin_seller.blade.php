@@ -107,7 +107,7 @@
                             <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Size to Product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_header1">Add New Products</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_navbar1">Add Frequently Bought Together </a></li>
-                            </ul>
+                           
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#idocs_content">Content</a>
@@ -177,33 +177,19 @@
 
                     <hr class="divider">
 
-                    <!-- Installation
+                    <!-- basic Info
 		============================ -->
                     <section id="idocs_installation">
                         <h2>Basic Info</h2>
-                        <p class="lead">Follow the steps below to setup your site template:</p>
-                        <ol>
-                            <li>Unzip the downloaded package and open the <strong>/HTML</strong> folder to find all the
-                                template files. You will need to upload these files to your hosting web server using FTP
-                                or localhost in order to use it on your website.</li>
-                            <li>Below is the folder structure and needs to be uploaded to your website or localhost root
-                                directory:
-                                <ul>
-                                    <li><code>HTML/documentaion</code> - Contains all of the assets referenced
-                                        <ul>
-                                            <li><code>HTML/css</code> - Stylesheet files</li>
-                                            <li><code>HTML/images</code> - Images files</li>
-                                            <li><code>HTML/js</code> - Javacript files</li>
-                                            <li><code>HTML/sass</code> - Sass files</li>
-                                            <li><code>HTML/vendor</code> – All external libs.</li>
-                                        </ul>
-                                    </li>
-                                    <li><code>HTML/index.html</code> - Homepage
-                                </ul>
-                            </li>
-                            <li>You should upload all or specific HTML files as per your need.</li>
-                            <li>You are good to go for adding your content now!</li>
-                        </ol>
+                        <p class="lead">Follow the steps below to view your site template:</p>
+                        <p>
+                            Itajer Seller admin panel is the place where the seller can control his section on the main website 
+                            <a href="{{ route('homepage') }}" target="_blank"> https://itajer.com</a> from now on the below info will guid you 
+                            to be able to use your panel perfectly!!.
+                        </p>
+                        <p>
+                            Now let's start with the first section which is the stacture of the panel.
+                        </p>
                     </section>
 
                     <hr class="divider">
