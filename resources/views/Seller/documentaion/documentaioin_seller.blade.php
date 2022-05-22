@@ -202,7 +202,9 @@
                         <p>Itajer follows a simple and easy to customize and add the products. Here is the sample for your
                             reference:<br>
                             The template is based on <b class="ml-1" "></i> Left side bar & Right side Panel</b></p>
-                            <img src="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}" alt="dashboard" style="width: 100%" >
+                            <a class="popup-img" href="{{ asset('storage/documentaion/dashboard_without_content.png') }}"><img
+                                src="{{ asset('storage/documentaion/dashboard_without_content.png') }}" class="img-fluid img-thumbnail"
+                                alt="image" style="width: 600px"></a>
                     </section>
 
                     <hr class="divider">
