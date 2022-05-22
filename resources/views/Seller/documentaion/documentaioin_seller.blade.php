@@ -205,6 +205,22 @@
                             <a class="popup-img" href="{{ asset('storage/documentaion/dashboard_without_content.png') }}"><img
                                 src="{{ asset('storage/documentaion/dashboard_without_content.png') }}" class="img-fluid img-thumbnail"
                                 alt="image" style="width: 600px"></a>
+                                <p> The Above Image is the dashboard with out any information where the lest side <b> The black one </b> <br>
+                                is where the user can go through the dashborad and select the section that he wants. and it containes
+                                <code><ol>
+                                        <li>Dashboard to view the statistic Informations</li>
+                                        <li>documentaion to view the guid book </li>
+                                        <li>Products to view the products and every thing related to products </li>
+                                        <li>Orders to view the Sold Products Invoices and every thing related to orders </li>
+                                        <li>Subscribtion to view the the seller package status and the Expired Date</li>
+                                        <li>Sittings to view the the seller details </li>
+                                    </ol></code>
+                                </p>
+
+                                <p> Once the seller start getting notification and add products <b>The Dashboard </b> will be filled with the Important info Such as the below image</p>
+                                <a class="popup-img" href="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}"><img
+                                    src="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}" class="img-fluid img-thumbnail"
+                                    alt="image" style="width: 600px"></a>
                     </section>
 
                     <hr class="divider">
