@@ -101,11 +101,11 @@
                     <li class="nav-item"><a class="nav-link" href="#idocs_layout">Products</a>
                         <ul class="nav flex-column">
                             <li class="nav-item"><a class="nav-link" href="#idocs_header">View Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_addnewproduct">Add New Products</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_navbar">Edit Products</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Size to Product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_header1">Add New Products</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_navbar1">Add Frequently Bought Together </a></li>
                            
                         </ul>
@@ -252,6 +252,12 @@
                     <section id="idocs_layout">
                         <h2>Products Managments </h2>
                         <p class="lead mb-5">Products Section where the seller can View , Edit , Add Attributs , delete products</p>
+                       
+                    </section>
+
+                    <!-- Header
+		============================ -->
+                    <section id="idocs_header">
                         <ul>
                             <code><li> View Produts </li></code>
                             <p>to view all the products click on the <strong>left side bar</strong> view products tab as shown below</p>
@@ -269,101 +275,13 @@
                         </ul>
                     </section>
 
-                    <!-- Header
-		============================ -->
-                    <section id="idocs_header">
-                        <h2>Header</h2>
-                        <p>The list of various header types & its descriptions are provided below for your reference:
-                        </p>
-
-                        <h4>Light</h4>
-                        <p>Header with white background Color & Dark text. <span class="text-info">See below image and
-                                code for more inforamtion.</span></p>
-                        <p><a class="popup-img" href="assets/images/header-light.jpg"><img class="img-fluid border"
-                                    src="assets/images/header-light.jpg" alt=""></a></p>
-                        <pre><code class="html">&lt;!-- Header
-============================ --&gt;
-&lt;header id=&quot;header&quot; class=&quot;sticky-top&quot;&gt; 
-  &lt;!-- Navbar --&gt;
-  &lt;nav class=&quot;primary-menu navbar navbar-expand-lg&quot;&gt;
-    &lt;div class=&quot;container-fluid&quot;&gt; 
-      .....
-    &lt;/div&gt;
-  &lt;/nav&gt;
-  &lt;!-- Navbar End --&gt; 
-&lt;/header&gt;
-&lt;!-- Header End --&gt;
-</code></pre>
-
-                        <h4>Dark</h4>
-                        <p>Header with dark background & Light text. <span class="text-info">See below image and code
-                                for more inforamtion.</span></p>
-                        <p><a class="popup-img" href="assets/images/header-dark.jpg"><img class="img-fluid border"
-                                    src="assets/images/header-dark.jpg" alt=""></a></p>
-                        <p>Add the <code>.bg-dark</code> and <code>.navbar-text-light</code> Class to the
-                            <code>&lt;nav&gt;</code> Tag to display a Dark Header.</p>
-                        <pre><code class="html">&lt;!-- Header
-============================ --&gt;
-&lt;header id=&quot;header&quot; class=&quot;sticky-top&quot;&gt; 
-  &lt;!-- Navbar --&gt;
-  &lt;nav class=&quot;primary-menu navbar navbar-expand-lg bg-dark navbar-text-light&quot;&gt;
-    &lt;div class=&quot;container-fluid&quot;&gt; 
-      .....
-    &lt;/div&gt;
-  &lt;/nav&gt;
-  &lt;!-- Navbar End --&gt; 
-&lt;/header&gt;
-&lt;!-- Header End --&gt;
-</code></pre>
-                    </section>
-
                     <hr class="divider">
 
                     <!-- Navbar
 		============================ -->
-                    <section id="idocs_navbar">
-                        <h2>Navbar</h2>
-                        <p class="lead">Documentation and examples for powerful responsive navigation header</p>
-                        <h4 class="mt-5">Left align</h4>
-                        <p>Header with Navigation alligned Left. <span class="text-info">See below image and code for
-                                more inforamtion.</span></p>
-                        <p><a class="popup-img" href="assets/images/navbar-left.jpg"><img class="img-fluid border"
-                                    src="assets/images/navbar-left.jpg" alt=""></a></p>
-                        <p>Add the <code>.justify-content-left</code> class to the element of collapse to display a
-                            align left navbar.</p>
-                        <pre><code class="html">&lt;div id=&quot;header-nav&quot; class=&quot;collapse navbar-collapse justify-content-start&quot;&gt;
-  &lt;ul class=&quot;navbar-nav&quot;&gt;
-    .......
-  &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
+                    <section id="addnewproduct">
+                        <h2>Add New Products</h2>
 
-                        <h4 class="mt-5">Right align</h4>
-                        <p>Header with Navigation alligned Right. <span class="text-info">See below image and code for
-                                more inforamtion.</span></p>
-                        <p><a class="popup-img" href="assets/images/navbar-right.jpg"><img class="img-fluid border"
-                                    src="assets/images/navbar-left.jpg" alt=""></a></p>
-                        <p>Add the <code>.justify-content-end</code> class to the element of collapse to display a align
-                            right navbar.</p>
-                        <pre><code class="html">&lt;div id=&quot;header-nav&quot; class=&quot;collapse navbar-collapse justify-content-end&quot;&gt;
-  &lt;ul class=&quot;navbar-nav&quot;&gt;
-    .......
-  &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-
-                        <h4 class="mt-5">Center Align</h4>
-                        <p>Header with Navigation alligned Center. <span class="text-info">See below image and code for
-                                more inforamtion.</span></p>
-                        <p><img class="img-fluid border" src="assets/images/navbar-center.jpg" alt=""></p>
-                        <p>Add the <code>.justify-content-center</code> class to the element of collapse to display a
-                            align center navbar.</p>
-                        <pre><code class="html">&lt;div id=&quot;header-nav&quot; class=&quot;collapse navbar-collapse justify-content-center&quot;&gt;
-  &lt;ul class=&quot;navbar-nav&quot;&gt;
-    .......
-  &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
                     </section>
 
                     <hr class="divider">
@@ -372,171 +290,7 @@
 		============================ -->
                     <section id="idocs_sidebar">
                         <h2>Sidebar</h2>
-                        <p class="lead">We have built fixed sidebar navigation with <a target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/components/scrollspy/">bootstrap scrollspy</a>
-                            function for docs layout. which is automatically update navigation based on scroll position
-                            to indicate which link is currently active in the viewport.</p>
-                        <p>The example below sidebar vertical navigation with bootstrap <a target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/components/navs/">navs</a> and <a
-                                target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/components/scrollspy/">scrollspy</a> components
-                            and section of docs content.</p>
-                        <pre class="pre-scrollable"><code class="html">&lt;!-- Sidebar Navigation
-============================ --&gt;
-&lt;div class=&quot;idocs-navigation bg-light&quot;&gt;
-  &lt;ul class=&quot;nav flex-column &quot;&gt;
-    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; href=&quot;#item_1&quot;&gt;Item 1&lt;/a&gt;
-      &lt;ul class=&quot;nav flex-column&quot;&gt;
-        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_1_1&quot;&gt;Sub Item 1.1&lt;/a&gt;&lt;/li&gt;
-        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_1_2&quot;&gt;Sub Item 1.2&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_2&quot;&gt;Item 2&lt;/a&gt;
-      &lt;ul class=&quot;nav flex-column&quot;&gt;
-        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_2_1&quot;&gt;Sub Item 2.1&lt;/a&gt;&lt;/li&gt;
-        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_2_2&quot;&gt;Sub Item 2.2&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_3&quot;&gt;Item 3&lt;/a&gt;&lt;/li&gt;
-    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#item_4&quot;&gt;Item 4&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;!-- Docs Content
-============================ --&gt;
-&lt;div class=&quot;idocs-content&quot;&gt;
-  &lt;div class=&quot;container&quot;&gt; 
-    
-    &lt;!-- Item 1 --&gt;
-    &lt;section id=&quot;item_1&quot;&gt;
-      &lt;h2&gt;Item 1&lt;/h2&gt;
-      &lt;p&gt;...&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;hr class=&quot;divider&quot;&gt;
-    
-        &lt;!-- Item 1.1 --&gt;
-        &lt;section id=&quot;item_1_1&quot;&gt;
-          &lt;h2&gt;Item 1.1&lt;/h2&gt;
-          &lt;p&gt;...&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;hr class=&quot;divider&quot;&gt;
-        
-        &lt;!-- Item 1.2 --&gt;
-        &lt;section id=&quot;item_1_2&quot;&gt;
-          &lt;h2&gt;Item 1.2&lt;/h2&gt;
-          &lt;p&gt;...&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;hr class=&quot;divider&quot;&gt;
-    
-    &lt;!-- Item 2 --&gt;
-    &lt;section id=&quot;item_2&quot;&gt;
-      &lt;h2&gt;Item 2&lt;/h2&gt;
-      &lt;p&gt;...&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;hr class=&quot;divider&quot;&gt;
-    
-        &lt;!-- Item 2.1 --&gt;
-        &lt;section id=&quot;item_2_1&quot;&gt;
-          &lt;h2&gt;Item 2.1&lt;/h2&gt;
-          &lt;p&gt;...&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;hr class=&quot;divider&quot;&gt;
-        
-        &lt;!-- Item 2.2 --&gt;
-        &lt;section id=&quot;item_2_2&quot;&gt;
-          &lt;h2&gt;Item 2.2&lt;/h2&gt;
-          &lt;p&gt;...&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;hr class=&quot;divider&quot;&gt;
-    
-    &lt;!-- Item 3 --&gt;
-    &lt;section id=&quot;item_3&quot;&gt;
-      &lt;h2&gt;Item 3&lt;/h2&gt;
-      &lt;p&gt;...&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;hr class=&quot;divider&quot;&gt;
-    
-    &lt;!-- Item 4 --&gt;
-    &lt;section id=&quot;item_4&quot;&gt;
-      &lt;h2&gt;Item 4&lt;/h2&gt;
-      &lt;p&gt;...&lt;/p&gt;
-    &lt;/section&gt;
-    
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-                        <h4>Light Sidebar:</h4>
-                        <p>Light background Color & Dark text for light sidebar. See below image and code for more
-                            inforamtion.</p>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <p><a class="popup-img" href="assets/images/sidebar-light.jpg"><img
-                                            class="img-fluid border" src="assets/images/sidebar-light.jpg" alt=""></a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <p>Add the <code>.bg-light</code> class to the main sidebar navigation div element to display a
-                            light sidebar.</p>
-                        <pre><code>&lt;!-- Sidebar Navigation
-============================ --&gt;
-&lt;div class=&quot;idocs-navigation bg-light&quot;&gt;
-  ....
-&lt;/div&gt;</code></pre>
-
-                        <h4>Dark Sidebar:</h4>
-                        <p>Dark background Color & Light text for dark sidebar. See below image and code for more
-                            inforamtion.</p>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <p><a class="popup-img" href="assets/images/sidebar-dark.jpg"><img
-                                            class="img-fluid border" src="assets/images/sidebar-dark.jpg" alt=""></a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <p>Add the <code>.bg-dark</code> and <code>.docs-navigation-dark</code> class to the main
-                            sidebar navigation div element to display a dark sidebar.</p>
-                        <pre><code>&lt;!-- Sidebar Navigation
-============================ --&gt;
-&lt;div class=&quot;idocs-navigation bg-dark docs-navigation-dark&quot;&gt;
-  ....
-&lt;/div&gt;</code></pre>
-                    </section>
-
-                    <hr class="divider">
-
-                    <!-- Footer
-		============================ -->
-                    <section id="idocs_footer">
-                        <h2>Footer</h2>
-                        <p>The list of various footer types & its descriptions are provided below for your reference:
-                        </p>
-                        <h4>Light Footer</h4>
-                        <p>Footer with white background Color & Dark text. See below code for more inforamtion.</p>
-                        <pre><code class="html">&lt;!-- Footer
-============================================= --&gt;
-  &lt;footer id=&quot;footer&quot; class=&quot;section bg-light&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-    	..........
-    &lt;/div&gt;
-  &lt;/footer&gt;
-&lt;!-- Footer end --&gt;</code></pre>
-                        <h4>Dark Footer</h4>
-                        <p>Footer with dark background color & Light text. See below code for more inforamtion.</p>
-                        <p>Add the <code>.bg-dark</code> and <code>.footer-text-light</code> Class to the
-                            <code>footer</code> Tag to display a Dark footer.</p>
-                        <pre><code class="html">&lt;!-- Footer
-============================================= --&gt;
-&lt;footer id=&quot;footer&quot; class=&quot;section bg-dark footer-text-light&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-    	..........
-    &lt;/div&gt;
-&lt;/footer&gt;
-&lt;!-- Footer end --&gt;</code></pre>
+                        
                     </section>
 
                     <hr class="divider">
@@ -545,11 +299,7 @@
 		============================ -->
                     <section id="idocs_box_layout">
                         <h2>Box Layout Style</h2>
-                        <div>
-                            <p>Default Layout Style is wide. Please add the <code>.box</code> class to the
-                                <code>&lt;body&gt;</code> Tag for box layout.</p>
-                            <pre><code class="html">&lt;body class="box" data-spy="scroll" data-target=".idocs-navigation" data-offset="125"&gt;</code></pre>
-                        </div>
+                        <
                     </section>
 
                     <hr class="divider">
@@ -558,8 +308,7 @@
 		============================ -->
                     <section id="idocs_content">
                         <h2>Content</h2>
-                        <p class="lead mb-5">Documentation and examples for displaying typography, code, table, image
-                            and video and more..</p>
+                        
                     </section>
 
                     <!-- Typography
