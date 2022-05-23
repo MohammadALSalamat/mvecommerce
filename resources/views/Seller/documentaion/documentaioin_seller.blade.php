@@ -253,8 +253,12 @@
                         <h2>Products Managments </h2>
                         <p class="lead mb-5">Products Section where the seller can View , Edit , Add Attributs , delete products</p>
                         <ul>
-                            <li>View Produts</li>
-                            <p>to view all the products click on the left side bar view products tab as shown below</p>
+                            <code><li> View Produts </li></code>
+                            <p>to view all the products click on the <strong>left side bar</strong> view products tab as shown below</p>
+                            <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}"><img
+                                src="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}" class="img-fluid img-thumbnail"
+                                alt="image" style="width: 200px;height:100%"></a>
+                                <p>Then the right bar will show the detailes of the products </p>
                         </ul>
                     </section>
 
