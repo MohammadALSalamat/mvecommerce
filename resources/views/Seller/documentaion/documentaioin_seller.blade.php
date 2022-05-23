@@ -229,7 +229,7 @@
 		============================ -->
                     <section id="idocs_sass">
                         <h2>Main Sections</h2>
-                        <p>As Above there are few sections that seller must focus onn to get things done correctly!!</p>
+                        <p>As Above there are few sections that seller must focus on to get things done correctly!!</p>
                         <code><ol>
                             <li>Dashboard to view the statistic Informations</li>
                             <li>documentaion to view the guid book </li>
@@ -241,6 +241,8 @@
                         <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products.png') }}"><img
                             src="{{ asset('storage/documentaion/left_side_bar_products.png') }}" class="img-fluid img-thumbnail"
                             alt="image" style="width: 200px;height:100%"></a>
+
+                            <p>Below will go deep with each of the sections so lets start with <code>Products.</code></p>
                     </section>
 
                     <hr class="divider">
@@ -248,7 +250,7 @@
                     <!-- Layout
 		============================ -->
                     <section id="idocs_layout">
-                        <h2>Layout</h2>
+                        <h2>Products Managments </h2>
                         <p class="lead mb-5">Documentation and examples for header, navbar, sidebar, footer</p>
                     </section>
 
