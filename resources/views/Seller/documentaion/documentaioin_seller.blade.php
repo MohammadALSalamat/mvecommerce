@@ -258,7 +258,14 @@
                             <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}"><img
                                 src="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}" class="img-fluid img-thumbnail"
                                 alt="image" style="width: 200px;height:100%"></a>
-                                <p>Then the right bar will show the detailes of the products </p>
+                                <p>Then the right bar will show the detailes of the products like the below <b> (in the Empty case you will see nothing)</b> </p>
+                                <a class="popup-img" href="{{ asset('storage/documentaion/products_view_without_data.png') }}"><img
+                                    src="{{ asset('storage/documentaion/products_view_without_data.png') }}" class="img-fluid img-thumbnail"
+                                    alt="image" style="width: 100%;"></a>
+                                    <p>Once the seller add products <strong>(this what we will talk about next section)</strong> the products will be inserted in view section then the seller will be able to do the needed for the products (Edit,delete and add more features) as shown below</p>
+                                    <a class="popup-img" href="{{ asset('storage/documentaion/view_prodcuts_with_data.png') }}"><img
+                                        src="{{ asset('storage/documentaion/view_prodcuts_with_data.png') }}" class="img-fluid img-thumbnail"
+                                        alt="image" style="width: 100%;"></a>
                         </ul>
                     </section>
 
