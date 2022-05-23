@@ -288,7 +288,7 @@
 
                     <!-- Sidebar
 		============================ -->
-                    <section id="idocs_sidebar">
+                    <section id="idocs_navbar">
                         <h2>Sidebar</h2>
                         
                     </section>
@@ -297,7 +297,7 @@
 
                     <!-- Box Layout Style
 		============================ -->
-                    <section id="idocs_box_layout">
+                    <section id="idocs_sidebar">
                         <h2>Box Layout Style</h2>
                         <
                     </section>
@@ -306,93 +306,16 @@
 
                     <!-- Content
 		============================ -->
-                    <section id="idocs_content">
+                    <section id="idocs_footer">
                         <h2>Content</h2>
                         
                     </section>
 
                     <!-- Typography
 		============================ -->
-                    <section id="idocs_typography">
+                    <section id="idocs_box_layout">
                         <h2>Typography</h2>
-                        <p class="text-4">Documentation and examples for typography, headings, body text, lists, and
-                            more.</p>
-                        <h3>Headings</h3>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Heading</th>
-                                    <th>Example</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>&lt;h1&gt;&lt;/h1&gt;</code></td>
-                                    <td>
-                                        <h1>h1. Heading</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>&lt;h2&gt;&lt;/h2&gt;</code></td>
-                                    <td>
-                                        <h2>h2. Heading</h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>&lt;h3&gt;&lt;/h3&gt;</code></td>
-                                    <td>
-                                        <h3>h3. Heading</h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>&lt;h4&gt;&lt;/h4&gt;</code></td>
-                                    <td>
-                                        <h4>h4. Heading</h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>&lt;h5&gt;&lt;/h5&gt;</code></td>
-                                    <td>
-                                        <h5>h5. Heading</h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>&lt;h6&gt;&lt;/h6&gt;</code></td>
-                                    <td>
-                                        <h6>h6. Heading</h6>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h3 class="mt-5">Lead</h3>
-                        <p>Make a paragraph stand out by adding <code>.lead</code></p>
-                        <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Anim
-                            pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        </p>
-                        <pre><code class="html">&lt;p class=&quot;lead&quot;&gt;
-   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-&lt;/p&gt;</code></pre>
-
-                        <h3 class="mt-5">Inline Text elements</h3>
-                        <p>You can use the mark tag to <mark>highlight</mark> text.</p>
-                        <p><del>This line of text is meant to be treated as deleted text.</del></p>
-                        <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
-                        <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-                        <p><u>This line of text will render as underlined</u></p>
-                        <p><small>This line of text is meant to be treated as fine print.</small></p>
-                        <p><strong>This line rendered as bold text.</strong></p>
-                        <p><em>This line rendered as italicized text.</em></p>
-
-                        <pre><code class="html">&lt;p&gt;You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;This line of text is meant to be treated as deleted text.&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;s&gt;This line of text is meant to be treated as no longer accurate.&lt;/s&gt;&lt;/p&gt;
-&lt;p&gt;&lt;ins&gt;This line of text is meant to be treated as an addition to the document.&lt;/ins&gt;&lt;/p&gt;
-&lt;p&gt;&lt;u&gt;This line of text will render as underlined&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;&lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;This line rendered as bold text.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This line rendered as italicized text.&lt;/em&gt;&lt;/p&gt;
-</code></pre>
+                       
                     </section>
 
                     <hr class="divider">
@@ -401,37 +324,7 @@
 		============================ -->
                     <section id="idocs_code">
                         <h2>Code</h2>
-                        <p class="text-4">Documentation and examples for displaying inline and multiline blocks of code
-                        </p>
-
-                        <h3 class="mt-5">Inline code</h3>
-                        <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>. <span class="text-info">Be sure
-                                to escape HTML angle brackets</span>.</p>
-
-                        <p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
-                        <pre><code class="html">For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.</code></pre>
-
-                        <h3 class="mt-5">Code blocks</h3>
-                        <p>Use <code>&lt;pre&gt;</code>s for multiple lines of code. <span class="text-info">Once again,
-                                be sure to escape any angle brackets in the code for proper rendering</span>. You may
-                            optionally add the <code>.pre-scrollable</code> class, which will set a max-height of 340px
-                            and provide a y-axis scrollbar.</p>
-                        <p><strong>For example:</strong></p>
-                        <pre><code class="html">&lt;p&gt;Sample text here...&lt;/p&gt;
-&lt;p&gt;And another line of sample text here...&lt;/p&gt;
-</code></pre>
-                        <p><strong>Have to use something like:</strong></p>
-                        <pre><code class="html">&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;And another line of sample text here...&amp;lt;/p&amp;gt;
-&lt;/pre&gt;&lt;/code&gt;
-</code></pre>
-
-                        <h3 class="mt-5">Syntax highlighter</h3>
-                        <p>We use <strong><a target="_blank" href="https://highlightjs.org/">Highlight Js</a></strong>
-                            for syntax highlight code snippet.</p>
-                        <p>You can refer more information here: <a class="btn btn-primary" target="_blank"
-                                href="https://highlightjs.org/usage/"><i class="fas fa-external-link-alt mr-1"></i> How
-                                to use highlight.js</a></p>
+                      
                     </section>
 
                     <hr class="divider">
