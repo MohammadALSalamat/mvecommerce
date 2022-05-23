@@ -251,7 +251,11 @@
 		============================ -->
                     <section id="idocs_layout">
                         <h2>Products Managments </h2>
-                        <p class="lead mb-5">Documentation and examples for header, navbar, sidebar, footer</p>
+                        <p class="lead mb-5">Products Section where the seller can View , Edit , Add Attributs , delete products</p>
+                        <ul>
+                            <li>View Produts</li>
+                            <p>to view all the products click on the left side bar view products tab as shown below</p>
+                        </ul>
                     </section>
 
                     <!-- Header
