@@ -338,10 +338,24 @@
                                 <li><b>Arabic Summary : </b> Short description about the product (Arabic Language)</li>
                                 <li><b>Description: </b> Long Description about the product (English Language)</li>
                                 <li><b>Arabic Description : </b> Long Description about the product (Arabic Language)</li>
-                                <li><b>Additional Info : </b> Add some features or some other information for the product  (English Language)</li>
-                                <li><b>Arabic Additional Info  : </b> Add some features or some other information for the product  (Arabic Language)</li>
+                                
+                                <li><b>Choose Image : </b> Product image that will appear for user</li>
                                 <li><b>Price : </b> Product Price</li>
                               </ul></code>
+
+                              <b> * Not Required Forms * </b>
+                              <code>
+                                  <ul>
+                                <li><b>Choose Size Guid : </b> Add size guid table as an image for the product (Clothes type) or you can add some other images with diffrenet colors or featuers </li>
+                                    <li><b>Additional Info : </b> Add some features or some other information for the product  (English Language)</li>
+                                    <li><b>Arabic Additional Info  : </b> Add some features or some other information for the product  (Arabic Language)</li>
+                                    <li><b>Return Policy : </b> Add some Policy for the product  (English Language)</li>
+                                    <li><b>Arabic Return Policy   : </b> Add some Policy for the product  (Arabic Language)</li>
+                                    <li><b>Stock : </b> Add number of items in stock ( if you keep it empty then the product will be in stock )</li>
+                                    <li> <b> Offer Price : </b> Add a special price if you have then the system will count the <b>(discound)</b> automaticlly</li>
+                                    <li><b> Frequently Bought Together : </b> This option if the seller want to add a group of products to buy them togother.</li>
+                                  </ul>
+                              </code>
 
                     </section>
 
