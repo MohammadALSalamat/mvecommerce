@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\seller\SellerOrderController;
 use App\Http\Controllers\seller\SellerProductAttribute;
 use App\Http\Controllers\seller\SellerProductController;
 use App\Http\Controllers\seller\sellerSittingsController;
@@ -51,7 +52,14 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     // get child category
     Route::post('/category/{id}/child',[SellerProductController::class,'get_category_child_by_parent_id']);
 
-  
+  // orders sections
+  Route::get('vieworders', [SellerOrderController::class, 'view_order'])->name('view_order');
+  Route::get('view_singleOrder/{id}',[SellerOrderController::class,'singleOrder'])->name('singleOrder');
+
+  // get the invoice template
+  Route::get('invoice_template/{id}',[SellerOrderController::class,'invoice_template'])->name('invoice_template');
+  Route::get('generate-invoice-pdf/{id}', [SellerOrderController::class,'generateInvoicePDF'])->name('pdfviewer');
+
 
 });
 

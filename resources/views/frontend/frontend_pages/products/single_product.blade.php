@@ -438,7 +438,7 @@
                                                 @endphp
                                                 <img src="{{ asset($other_image[0]) }}"
                                                     data-zoom-image="{{asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}" style="width: 300px;height:400px">
+                                                    alt="{{ $single_product->title }}"  >
                                             </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )

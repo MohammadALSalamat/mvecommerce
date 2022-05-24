@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('Seller.seller_layoute.main_desgin')
 @section('style')
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
@@ -24,9 +24,9 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Home</a>
               </li>
-              <li class="breadcrumb-item"><a href="#">DataTables</a>
+              <li class="breadcrumb-item"><a href="#">Ordere DataTables</a>
               </li>
-              <li class="breadcrumb-item active">Advanced DataTable
+              <li class="breadcrumb-item active">Orders DataTable
               </li>
             </ol>
           </div>
@@ -47,7 +47,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">View products</h4>
+                <h4 class="card-title">View Orders</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="mb-0 list-inline">
