@@ -405,6 +405,11 @@
 		============================ -->
                     <section id="idocs_sidebar">
                         <h2>Add Attributes To Products</h2>
+                        <p>For now there are 2 types of attibutes sellers can add to the products</p>
+                        <ol>
+                            <li>Products Sizes</li>
+                            <li>Products Gallery</li>
+                        </ol>
                         
                     </section>
 
