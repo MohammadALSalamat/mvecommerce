@@ -87,7 +87,7 @@
         </div>
         <div class="content-body">
             <!-- Size Form And Table -->
-            <section class="basic-select2">
+            {{-- <section class="basic-select2">
                 <div class="row">
                     <div class="col-xl-7 col-lg-12">
                         <div class="card">
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <!-- // Images Gallary for the product -->
             <section class="basic-select2">
                 <div class="row">
@@ -252,9 +252,9 @@
                                     <div id="productAttr1" style="overflow: scroll; padding-left:10px;height:220px"
                                         data-mfield-options='{"section": ".group","btnAdd":"#btnAdd-1","btnRemove":".btnRemove"}'>
                                         <div class="row">
-                                            <div class="col-md-12"><button type="button" id="btnAdd-1"
+                                            {{-- <div class="col-md-12"><button type="button" id="btnAdd-1"
                                                     class="btn btn-sm mb-2 btn-primary"><i class="la la-plus"></i>Attribute
-                                                </button></div>
+                                                </button></div> --}}
                                         </div>
                                         <div class="row group mb-2">
                                             <div class="col-md-9">

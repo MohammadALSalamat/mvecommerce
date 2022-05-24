@@ -396,7 +396,7 @@
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/edit_product.mp4') }}" type="video/mp4">
                             Your browser does not support the video tag.
-                          </video>
+                        </video>
                     </section>
 
                     <hr class="divider">
@@ -405,9 +405,8 @@
 		============================ -->
                     <section id="idocs_sidebar">
                         <h2>Add Attributes To Products</h2>
-                        <p>For now there are 2 types of attibutes sellers can add to the products</p>
+                        <p>For now the seller can just add some images to be shown in the single product page</p>
                         <ol>
-                            <li>Products Sizes</li>
                             <li>Products Gallery</li>
                         </ol>
                         
@@ -418,8 +417,12 @@
                     <!-- Content
 		============================ -->
                     <section id="idocs_footer">
-                        <h2>Content</h2>
-                        
+                        <h2>Products Gallery</h2>
+                        <p> below the video shows how to add a gallery to the product </p>
+                        <video width="100%" height="440" controls>
+                            <source src="{{ asset('storage/documentaion/videos/gallery_product.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </section>
 
                     <!-- Typography
