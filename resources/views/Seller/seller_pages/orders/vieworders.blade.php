@@ -76,7 +76,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($Orders as $order)
+                      @foreach ($Orders as $items_order)
+                      @foreach ( $items_order->orders as $order )
+                        
+                      @endforeach
                       <tr>
                         <td class="text-truncate">
                           @if ($order->payment_status == 1)
@@ -86,7 +89,7 @@
                           <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
                           pending
                           @endif
-                      </td>
+                        </td>
                         <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
