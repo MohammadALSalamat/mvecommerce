@@ -404,8 +404,8 @@
                     <!-- Box Layout Style
 		============================ -->
                     <section id="idocs_sidebar">
-                        <h2>Box Layout Style</h2>
-                        <
+                        <h2>Add Attributes To Products</h2>
+                        
                     </section>
 
                     <hr class="divider">
