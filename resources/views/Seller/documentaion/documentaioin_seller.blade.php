@@ -333,15 +333,14 @@
                                   <li><b>Main Category : </b> the product category                               
                                     <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> If the Main Category has a sub category then there will be form will appear under it to select the sub category or you can keep it empty to append the product to main category ONLY</p>                                  
                                 </li>
-                                  <li><b>Sub Category : </b> Hidden Field appears when you select a Main Category has sub categories.</li>
-                                  <li><b>Summary : </b> Short description about the product (English Language)</li>
-                                  <li><b>Arabic Summary : </b> Short description about the product (Arabic Language)</li>
-                                  <li><b>Description: </b> Long Description about the product (English Language)</li>
-                                  <li><b>Arabic Description : </b> Long Description about the product (Arabic Language)</li>
-                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
-                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
-                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
-                                 
+                                <li><b>Sub Category : </b> Hidden Field appears when you select a Main Category has sub categories.</li>
+                                <li><b>Summary : </b> Short description about the product (English Language)</li>
+                                <li><b>Arabic Summary : </b> Short description about the product (Arabic Language)</li>
+                                <li><b>Description: </b> Long Description about the product (English Language)</li>
+                                <li><b>Arabic Description : </b> Long Description about the product (Arabic Language)</li>
+                                <li><b>Additional Info : </b> Add some features or some other information for the product  (English Language)</li>
+                                <li><b>Arabic Additional Info  : </b> Add some features or some other information for the product  (Arabic Language)</li>
+                                <li><b>Price : </b> Product Price</li>
                               </ul></code>
 
                     </section>
