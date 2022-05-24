@@ -105,8 +105,7 @@
                             <li class="nav-item"><a class="nav-link" href="#idocs_navbar">Edit Products</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a></li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Size to Product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_navbar1">Add Frequently Bought Together </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Frequently Bought Together </a></li>
                            
                         </ul>
                     </li>
@@ -423,120 +422,24 @@
                             <source src="{{ asset('storage/documentaion/videos/gallery_product.mp4') }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        <hr class="divider">
                     </section>
 
                     <!-- Typography
 		============================ -->
                     <section id="idocs_box_layout">
-                        <h2>Frequently Bought Together</h2>
+                        <h2> Frequently Bought Together</h2>
                        
-                       <p> * Video below is to show the product after inserting along with Frequently Bought Together * </p>
+                       <p> * Video below is to show how to add new product  with Frequently Bought Together * </p>
 
                        <video width="100%" height="440" controls>
-                            <source src="{{ asset('storage/documentaion/videos/frequently_bought_together.mp4') }}" type="video/mp4">
+                            <source src="{{ asset('storage/documentaion/videos/full_add_product_.mp4') }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </section>
 
                     <hr class="divider">
 
-                    <!-- Code
-		============================ -->
-                    <section id="idocs_code">
-                        <h2>Code</h2>
-                      
-                    </section>
-
-                    <hr class="divider">
-
-                    <!-- Table
-		============================ -->
-                    <section id="idocs_table">
-                        <h2>Table</h2>
-                        <p class="text-4">Documentation and examples for opt-in styling of tables.</p>
-                        <p>iDocs is based on Bootstrap 4, so you can easily use Bootstrap's table classes to style your
-                            table. <a class="ml-1" target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/content/tables/"><i
-                                    class="fas fa-external-link-alt"></i> Bootstrap Documentation</a></p>
-
-                        <h3 class="mt-5">Bordered</h3>
-                        <pre><code class="html">&lt;table class=&quot;table table-bordered&quot;&gt;
-   .......
-&lt;/table&gt;</code></pre>
-
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h3 class="mt-5">Striped</h3>
-                        <pre><code class="html">&lt;table class=&quot;table table-bordered table-striped&quot;&gt;
-   .......
-&lt;/table&gt;</code></pre>
-
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p><span class="badge badge-danger text-uppercase mr-2">Note</span>You can refer more
-                            information in Bootstrap Documentation here: <a class="btn btn-primary" target="_blank"
-                                href="https://getbootstrap.com/docs/4.4/content/tables/"><i
-                                    class="fas fa-external-link-alt mr-1"></i> Bootstrap Documentation</a></p>
-                    </section>
-
-                    <hr class="divider">
 
                     <!-- Icons
 		============================ -->
