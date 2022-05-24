@@ -391,8 +391,12 @@
                     <!-- Sidebar
 		============================ -->
                     <section id="idocs_navbar">
-                        <h2>Sidebar</h2>
-                        
+                        <h2>Edit Products</h2>
+                        <p> Once the seller add the products he can edit on each of them as shown below.</p>
+                        <video width="100%" height="440" controls>
+                            <source src="{{ asset('storage/documentaion/videos/edit_product.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
                     </section>
 
                     <hr class="divider">
