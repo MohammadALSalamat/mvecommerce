@@ -324,6 +324,25 @@
 
                               <h3 class="mt-2 mb-2">Add Real Product and Fill the form</h3>
 
+                              <p>As we have seen that the form needs to be filled to add the new product so there are some tricks can help to get the best options </p>
+
+                              <b> * Required Forms * </b>
+                              <code><ul>
+                                  <li><b>Title : </b> the product name (English Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Main Category : </b> the product category                               
+                                    <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> If the Main Category has a sub category then there will be form will appear under it to select the sub category or you can keep it empty to append the product to main category ONLY</p>                                  
+                                </li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                  <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
+                                 
+                              </ul></code>
+
                     </section>
 
                     <hr class="divider">
