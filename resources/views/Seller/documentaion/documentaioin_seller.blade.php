@@ -279,7 +279,7 @@
 
                     <!-- Navbar
 		============================ -->
-                    <section id="addnewproduct">
+                    <section id="idocs_addnewproduct">
                         <h2>Add New Products</h2>
 
                     </section>
