@@ -428,8 +428,14 @@
                     <!-- Typography
 		============================ -->
                     <section id="idocs_box_layout">
-                        <h2>Typography</h2>
+                        <h2>Frequently Bought Together</h2>
                        
+                       <p> * Video below is to show the product after inserting along with Frequently Bought Together * </p>
+
+                       <video width="100%" height="440" controls>
+                            <source src="{{ asset('storage/documentaion/videos/frequently_bought_together.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </section>
 
                     <hr class="divider">
