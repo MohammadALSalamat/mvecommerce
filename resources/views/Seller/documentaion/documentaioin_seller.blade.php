@@ -313,6 +313,7 @@
                                 Your browser does not support the video tag.
                               </video>
 
+                              <h3 class="mt-2 mb-2">Show the forms of add new product </h3>
                               <p> Once the seller enter the add product page he can fill the required data of inupts then save them as shown the below video  </p>
                               <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Itajer is a multi language website so there are 2 types of forms <b>(Arabic & English)</b>  so do not miss any of them becuase the once that the seller will fill it will be shown in the front side as it is.</p>
                             
@@ -320,6 +321,9 @@
                                 <source src="{{ asset('storage/documentaion/videos/add_new_product_fill.mp4') }}" type="video/mp4">
                                 Your browser does not support the video tag.
                               </video>
+
+                              <h3 class="mt-2 mb-2">Add Real Product and Fill the form</h3>
+
                     </section>
 
                     <hr class="divider">
