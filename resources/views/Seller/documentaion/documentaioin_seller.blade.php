@@ -360,22 +360,29 @@
                               <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Enable button is to make the product active or not</p>                                  
 
                               <div class="row">
+                                  <div class="col-6">
+                                <b>* Video below is to add other image so when user hover on the product image will see other one *</b>
+                                <video width="100%" height="440" controls>
+                                    <source src="{{ asset('storage/documentaion/videos/add_product_other_image.mp4') }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
                                 <div class="col-6">
-                                    <b>* Video below is to show the product after adding the offer price*</b>
+                                    <b>* Video below is to show the product after adding the offer price & hover image option*</b>
                                     <video width="100%" height="440" controls>
                                         <source src="{{ asset('storage/documentaion/videos/tricks_products.mp4') }}" type="video/mp4">
                                         Your browser does not support the video tag.
                                       </video>
                                 </div>
-                                  <div class="col-6">
-                                      <b>* Video below is to show the product after inserting along with Frequently Bought Together *</b>
-                                      <video width="100%" height="440" controls>
-                                          <source src="{{ asset('storage/documentaion/videos/single_product.mp4') }}" type="video/mp4">
-                                          Your browser does not support the video tag.
-                                        </video>
-                                  </div>
-
-                              </div>
+                                
+                            </div>
+                            <div class="mt-4 mb-4">
+                                <b class="mb-4">* Video below is to show the product after inserting along with Frequently Bought Together *</b>
+                            <video width="100%" height="440" controls>
+                                <source src="{{ asset('storage/documentaion/videos/single_product.mp4') }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                              </video>
+                            </div>
                     </section>
 
                     <hr class="divider">
