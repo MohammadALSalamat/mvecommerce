@@ -438,7 +438,7 @@
                                                 @endphp
                                                 <img src="{{ asset($other_image[0]) }}"
                                                     data-zoom-image="{{asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}" width="800" height="900">
+                                                    alt="{{ $single_product->title }}" style="width: 300px;height:400px">
                                             </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
@@ -766,11 +766,14 @@
                         @else
                         <h2 class="title title-underline">يُباع معها أيضًا </h2>
                         @endif
+                        @php
+                        $single_product_frq =explode(',',$single_product->image);
+                        @endphp
                         <div class="pb-4 mt-8 bought-together-products bought-together-products-prices row">
                             <div class="col-8" style="overflow-x: scroll; display: flex;">
                                 <div class="text-center product product-wrap">
                                     <figure class="product-media">
-                                        <img src="{{ $single_product->image }}" alt="{{ $single_product->title }}"
+                                        <img src="{{ $single_product_frq[0] }}" alt="{{ $single_product->title }}"
                                             style="width: 100% !important; height:100px !important;object-fit: contain;" />
                                         <div class="product-checkbox">
                                             <input type="checkbox"
