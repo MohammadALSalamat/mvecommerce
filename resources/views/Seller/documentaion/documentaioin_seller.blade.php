@@ -357,6 +357,25 @@
                                   </ul>
                               </code>
 
+                              <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Enable button is to make the product active or not</p>                                  
+
+                              <div class="row">
+                                <div class="col-6">
+                                    <b>* Video below is to show the product after adding the offer price*</b>
+                                    <video width="100%" height="440" controls>
+                                        <source src="{{ asset('storage/documentaion/videos/tricks_products.mp4') }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                      </video>
+                                </div>
+                                  <div class="col-6">
+                                      <b>* Video below is to show the product after inserting along with Frequently Bought Together *</b>
+                                      <video width="100%" height="440" controls>
+                                          <source src="{{ asset('storage/documentaion/videos/single_product.mp4') }}" type="video/mp4">
+                                          Your browser does not support the video tag.
+                                        </video>
+                                  </div>
+
+                              </div>
                     </section>
 
                     <hr class="divider">
