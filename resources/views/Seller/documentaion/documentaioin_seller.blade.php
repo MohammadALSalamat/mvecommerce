@@ -284,7 +284,7 @@
                         <p>There are 2 ways to view the add products form</p>
                         <ol>
                             <li> Add product button on top right of the <code>view products page</code> </li>
-                            <li> Create product on the <code> left side bar </code></li>
+                            <li> Create products on the <code> left side bar </code></li>
                            
                         </ol>
                         <p> as shown below the place of buttons</p>
@@ -303,6 +303,15 @@
                             </div>
 
                         </div>
+                        <p>Once the seller click one of the above buttons will be  redirect to the add product from where he will be able to fill the needed section to create a new product as shown below </p>
+                        <a class="popup-img" href="{{ asset('storage/documentaion/add_new_product_table.png') }}"><img
+                            src="{{ asset('storage/documentaion/add_new_product_table.png') }}" class="img-fluid img-thumbnail"
+                            alt="image" style="width: 100%;"></a>
+                            <p>Click the video below to see more about add new product</p>
+                            <video width="320" height="240" controls>
+                                <source src="{{ asset('storage/documentaion/add_product_video.mp4') }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                              </video>
                     </section>
 
                     <hr class="divider">
