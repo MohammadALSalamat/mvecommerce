@@ -281,7 +281,28 @@
 		============================ -->
                     <section id="idocs_addnewproduct">
                         <h2>Add New Products</h2>
+                        <p>There are 2 ways to view the add products form</p>
+                        <ol>
+                            <li> Add product button on top right of the <code>view products page</code> </li>
+                            <li> Create product on the <code> left side bar </code></li>
+                           
+                        </ol>
+                        <p> as shown below the place of buttons</p>
 
+                        <div class="row">
+                            <div class="col-6">
+                                <a class="popup-img" href="{{ asset('storage/documentaion/addproductbutton.png') }}"><img
+                                    src="{{ asset('storage/documentaion/addproductbutton.png') }}" class="img-fluid img-thumbnail"
+                                    alt="image" style="width: 100%;"></a>
+                            </div>
+
+                            <div class="col-6">
+                                <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}"><img
+                                    src="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}" class="img-fluid img-thumbnail"
+                                    alt="image" style="width: 100%;"></a>
+                            </div>
+
+                        </div>
                     </section>
 
                     <hr class="divider">
