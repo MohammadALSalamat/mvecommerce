@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\seller;
 
-use App\Models\Order;
 use PDF;
+use App\Models\Order;
+use App\Models\Seller;
+use App\Models\product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SellerOrderController extends Controller
 {
@@ -13,8 +16,10 @@ class SellerOrderController extends Controller
 
     public function view_order()
     {
-        $Orders = Order::get();
-        dd($Orders);
+        $current_user = Seller::find(Auth::guard('seller')->user()->id);
+
+        $Orders = product::with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
+        
         return view('Seller.seller_pages.orders.vieworders',compact('Orders'));
     }
 
