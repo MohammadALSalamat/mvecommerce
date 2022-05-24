@@ -307,9 +307,9 @@
                         <a class="popup-img" href="{{ asset('storage/documentaion/add_new_product_table.png') }}"><img
                             src="{{ asset('storage/documentaion/add_new_product_table.png') }}" class="img-fluid img-thumbnail"
                             alt="image" style="width: 100%;"></a>
-                            <p>Click the video below to see more about add new product</p>
-                            <video width="320" height="240" controls>
-                                <source src="{{ asset('storage/documentaion/add_product_video.mp4') }}" type="video/mp4">
+                            <p>Click the video below to see more about how to view <code> add new product </code> form</p>
+                            <video width="100%" height="440" controls>
+                                <source src="{{ asset('storage/documentaion/videos/add_product_video.mp4') }}" type="video/mp4">
                                 Your browser does not support the video tag.
                               </video>
                     </section>
