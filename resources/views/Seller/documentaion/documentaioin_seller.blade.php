@@ -314,10 +314,10 @@
                               </video>
 
                               <p> Once the seller enter the add product page he can fill the required data of inupts then save them as shown the below video  </p>
-                              <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Itajer is a multi language website so there are 2 types of forms <b>(Arabic & English)</b>  so do not miss any of them becuse the once that the seller will fill it will be shown in the front side as it is.</p>
+                              <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Itajer is a multi language website so there are 2 types of forms <b>(Arabic & English)</b>  so do not miss any of them becuase the once that the seller will fill it will be shown in the front side as it is.</p>
                             
                               <video width="100%" height="440" controls>
-                                <source src="{{ asset('storage/documentaion/videos/add_product_video.mp4') }}" type="video/mp4">
+                                <source src="{{ asset('storage/documentaion/videos/add_new_product_fill.mp4') }}" type="video/mp4">
                                 Your browser does not support the video tag.
                               </video>
                     </section>
