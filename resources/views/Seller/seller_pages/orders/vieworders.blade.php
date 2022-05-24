@@ -79,7 +79,7 @@
                       @foreach ($Orders as $items_order)
                       @foreach ( $items_order->orders as $order )
                         
-                      @endforeach
+                      
                       <tr>
                         <td class="text-truncate">
                           @if ($order->payment_status == 1)
@@ -118,15 +118,11 @@
                               alt="{{ $items->title }}">
                             </li>
                             @endforeach
-                            @if(count($quantity) > 3)
-                            <li class="avatar avatar-sm">
-                              <span class="badge badge-info">+1 more</span>
-                            </li>
-                            @endif
+                           
                           </ul>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
+                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items->category_id)->value('title') }}</button>
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -153,6 +149,7 @@
                           </span>
                         </td>
                       </tr>
+                      @endforeach
                       @endforeach
                     </tbody>
                   </table>
