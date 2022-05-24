@@ -353,9 +353,10 @@
                                     <li><b>Arabic Return Policy   : </b> Add some Policy for the product  (Arabic Language)</li>
                                     <li><b>Stock : </b> Add number of items in stock ( if you keep it empty then the product will be in stock )</li>
                                     <li> <b> Offer Price : </b> Add a special price if you have then the system will count the <b>(discound)</b> automaticlly</li>
-                                    <li><b> Frequently Bought Together : </b> This option if the seller want to add a group of products to buy them togother.</li>
+                                    <li><b> Frequently Bought Together : </b> This option if the seller want to add a group of products to buy them togother. (below is a video to show how it looks.)</li>
                                   </ul>
                               </code>
+                              <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Frequently Bought Together can select them from an existing products (the seller must add the products then he can choose them from the dropdown menu)</p>                                  
 
                               <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Enable button is to make the product active or not</p>                                  
 
@@ -377,7 +378,7 @@
                                 
                             </div>
                             <div class="mt-4 mb-4">
-                                <b class="mb-4">* Video below is to show the product after inserting along with Frequently Bought Together *</b>
+                                <b class="mb-4">* Video below is to show the product after inserting along with Frequently Bought Together *</b><br>
                             <video width="100%" height="440" controls>
                                 <source src="{{ asset('storage/documentaion/videos/single_product.mp4') }}" type="video/mp4">
                                 Your browser does not support the video tag.
