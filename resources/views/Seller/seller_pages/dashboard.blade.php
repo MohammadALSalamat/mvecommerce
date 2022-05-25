@@ -14,10 +14,10 @@
                 <div class="media d-flex">
                   <div class="media-body text-left">
                     @if (Config::get('app.locale') == 'en')
-                    <h3 class="success">{{ $countSoldProduct}}</h3>
+                    <h3 class="success">{{ array_sum($sold_products)}}</h3>
                     <h6>Products Sold</h6>
                     @else
-                    <h3 class="success">{{ $countSoldProduct }}</h3>
+                    <h3 class="success">{{ array_sum($sold_products)}}</h3>
                     <h6> البضائع المباعة</h6>
                     @endif
                   </div>

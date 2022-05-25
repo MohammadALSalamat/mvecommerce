@@ -54,16 +54,16 @@ class SellerController extends Controller
         $Orders = Order::latest()->get(); // last 6 orders
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
-        dd($Total_order_products);
-        $countSoldProduct = count($Total_order_products->orders);
-
+      
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
         // seller product that got sold
         $total = array(); // get the profit of seller 
+        $sold_products = array();
         if ($Total_order_products->count() > 0) {
             foreach ($Total_order_products as $profit) {
                     $sold_product = productOrder::where('product_id', $profit->id)->get();
-                   
+                    $countSoldProduct = count($profit->orders);
+                   array_push($sold_products,$countSoldProduct);
                     foreach ($sold_product as $total_prodcut) {
                         // get the total of  products
                         $total_products = product::where('id', $total_prodcut->product_id)->get();
@@ -83,10 +83,10 @@ class SellerController extends Controller
             }else{
                 array_push($total, 0);
                 $sold_product = productOrder::where('product_id', $current_user->id)->get();
-                $countSoldProduct = 0;
+                array_push($sold_products, 0);
             }
         if($current_user){
-            return view('Seller.seller_pages.dashboard',compact('Orders','countSoldProduct','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
+            return view('Seller.seller_pages.dashboard',compact('Orders','sold_products','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
         }else{
             return redirect()->route('homepage')->with('error','you do not have permission to access !!!');
         }
