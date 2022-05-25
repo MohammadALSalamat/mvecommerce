@@ -21,9 +21,10 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="dropdown float-md-right">
+          <a href="{{ route('pdfviewer',$order->id) }}">
           <button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton" type="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download</button>
-
+          </a>
         </div>
       </div>
     </div>

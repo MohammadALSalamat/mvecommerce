@@ -53,12 +53,12 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::post('/category/{id}/child',[SellerProductController::class,'get_category_child_by_parent_id']);
 
   // orders sections
-  Route::get('vieworders', [SellerOrderController::class, 'view_order'])->name('view_order');
-  Route::get('view_singleOrder/{id}',[SellerOrderController::class,'singleOrder'])->name('singleOrder');
+  Route::get('vieworders', [SellerOrderController::class, 'view_order'])->name('view_order_seller');
+  Route::get('view_singleOrder/{id}',[SellerOrderController::class,'singleOrder'])->name('singleOrder_seller');
 
   // get the invoice template
-  Route::get('invoice_template/{id}',[SellerOrderController::class,'invoice_template'])->name('invoice_template');
-  Route::get('generate-invoice-pdf/{id}', [SellerOrderController::class,'generateInvoicePDF'])->name('pdfviewer');
+  Route::get('invoice_template/{id}',[SellerOrderController::class,'invoice_template'])->name('invoice_template_seller');
+  Route::get('generate-invoice-pdf/{id}', [SellerOrderController::class,'generateInvoicePDF'])->name('pdfviewer_seller');
 
 
 });

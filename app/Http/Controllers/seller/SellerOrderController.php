@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\seller;
 
-use PDF;
 use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
+use PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +46,7 @@ class SellerOrderController extends Controller
     public function generateInvoicePDF($id)
     {
         $order = Order::find($id);
+        dd($order);
         $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('general-invoic.pdf');
     }

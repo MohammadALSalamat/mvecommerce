@@ -130,7 +130,7 @@
                               aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
                                 class="ft-settings"></i></button>
                             <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                                <a href="{{ route('singleOrder',$order->id) }}"  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
+                                <a href="{{ route('singleOrder_seller',$order->id) }}"  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
                               <a href="{{ route('editproducts',$order->id) }}" class="dropdown-item"><i
                                   class="ft-edit-2 success"></i> Edit</a>
                               <form action="{{ route('deletproducts',$order->id) }}" method="post">
