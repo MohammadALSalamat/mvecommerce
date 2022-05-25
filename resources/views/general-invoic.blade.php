@@ -11,38 +11,46 @@
     <meta name="author" content="PIXINVENT">
     {{--  <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
     <title>INV-{{ $order->order_number }}</title>
-    <link rel="apple-touch-icon" href="{{ public_path('app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ public_path('app-assets/images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ public_bath('app-assets/images/ico/apple-icon-120.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ public_bath('app-assets/images/ico/favicon.ico') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
         rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/vendors.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/weather-icons/climacons.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/extensions/jquery.toolbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/fonts/meteocons/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/charts/morris.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/charts/chartist.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/charts/chartist-plugin-tooltip.css') }}">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/vendors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/weather-icons/climacons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/extensions/jquery.toolbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/fonts/meteocons/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/charts/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/charts/chartist.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/charts/chartist-plugin-tooltip.css') }}">
     <!-- END VENDOR CSS-->
     <!-- BEGIN MODERN CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/app.css') }}">
     <!-- END MODERN CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/core/menu/menu-types/vertical-menu-modern.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/fonts/simple-line-icons/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/pages/timeline.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/pages/dashboard-ecommerce.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/core/menu/menu-types/vertical-menu-modern.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/fonts/simple-line-icons/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/pages/timeline.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/css/pages/dashboard-ecommerce.css') }}">
         <!-- include summernote css/js -->
-    <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/vendors/css/editors/summernote.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('app-assets/vendors/css/editors/summernote.css') }}">
 
 
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ public_path('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ public_bath('assets/css/style.css') }}">
     <!-- END Custom CSS-->
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
      alpha/css/bootstrap.css" rel="stylesheet">
@@ -68,12 +76,12 @@
             <div id="invoice-company-details" class="row">
               <div class="col-md-6 col-sm-12 text-center text-md-left">
                 <div class="media">
-                  <img src="{{ public_path('front-style/assets/images/itajer_logo.png') }}" width="200px"
+                  <img src="{{ public_bath('front-style/assets/images/itajer_logo.png') }}" width="200px"
                     alt="company logo" class="" />
                 </div>
               </div>
               <div class="col-md-6 col-sm-12 text-center text-md-right">
-                <h2>INVOICE</h2>
+                <h2 style="color:red">INVOICE</h2>
                 <p class="pb-3"># INV-{{ $order->order_number }}</p>
                 <ul class="px-0 list-unstyled">
                   <li>Final Total</li>
@@ -204,27 +212,27 @@
 </body>
 
 <!-- BEGIN VENDOR JS-->
-<script src="{{ public_path('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
-<script src="{{ public_path('app-assets/vendors/js/charts/chartist.min.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/vendors/js/charts/chartist-plugin-tooltip.min.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/vendors/js/charts/raphael-min.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/vendors/js/charts/morris.min.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/vendors/js/timeline/horizontal-timeline.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/vendors/js/extensions/jquery.toolbar.min.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/js/scripts/extensions/toolbar.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/charts/chartist.min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/charts/chartist-plugin-tooltip.min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/charts/raphael-min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/charts/morris.min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/timeline/horizontal-timeline.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/extensions/jquery.toolbar.min.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/js/scripts/extensions/toolbar.js') }}" type="text/javascript"></script>
 
 
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN MODERN JS-->
-<script src="{{ public_path('app-assets/js/core/app-menu.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/js/core/app.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/js/scripts/customizer.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/js/core/app-menu.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/js/core/app.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/js/scripts/customizer.js') }}" type="text/javascript"></script>
 <!-- END MODERN JS-->
 <!-- BEGIN PAGE LEVEL JS-->
-<script src="{{ public_path('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-<script src="{{ public_path('app-assets/js/scripts/editors/editor-summernote.js') }}" type="text/javascript">
+<script src="{{ public_bath('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/js/scripts/editors/editor-summernote.js') }}" type="text/javascript">
 </script>  
-<script src="{{ public_path('app-assets/vendors/js/editors/summernote/summernote.js') }}" type="text/javascript"></script>
+<script src="{{ public_bath('app-assets/vendors/js/editors/summernote/summernote.js') }}" type="text/javascript"></script>
   </html>
