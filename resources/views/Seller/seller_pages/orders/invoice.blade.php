@@ -116,7 +116,7 @@
                 </table>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-4">
               <div class="col-md-7 col-sm-12 text-center text-md-left">
                 <p class="lead">Payment Methods:</p>
                 <div class="row">
