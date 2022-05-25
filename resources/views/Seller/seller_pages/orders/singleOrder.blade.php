@@ -189,7 +189,13 @@
                         <td class="text-truncate p-1">
                           {{ $items->pivot->quantity }}
                         </td>
-                        <td class="text-truncate">{{ $items->price }} AED</td>
+                        <td class="text-truncate">
+                        @if(empty($items->offer_price) || $items->offer_price == null )
+                          {{ $items->price }} AED
+                          @else
+                          {{ $items->offer_price }} AED
+                          @endif
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

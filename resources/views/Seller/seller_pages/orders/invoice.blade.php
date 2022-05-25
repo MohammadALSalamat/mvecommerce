@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('Seller.seller_layoute.main_desgin')
 
 @section('content')
 <div class="app-content content">
@@ -102,9 +102,13 @@
                         </span>
                         <span>{{ $items->title }}</span>
                       </td>
-                      <td class="text-right">{{ Auth()->user()->full_name }}</td>
+                      <td class="text-right">{{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}</td>
                       <td class="text-right">{{ $items->pivot->quantity }}</td>
-                      <td class="text-right">{{ $order->total }}</td>
+                      <td class="text-right"> @if(empty($items->offer_price) || $items->offer_price == null )
+                        {{ $items->price }} 
+                        @else
+                        {{ $items->offer_price }} 
+                        @endif</td>
                     </tr>
                     @endforeach
 
@@ -159,17 +163,11 @@
                       </tr>
                       <tr>
                         <td class="text-bold-800">Total</td>
-                        <td class="text-bold-800 text-right"> {{ $order->total }} AED</td>
+                        <td class="text-bold-800 text-right"> {{ $order->total + $order->delivary_charge + $order->coupon }} AED</td>
                       </tr>
 
                     </tbody>
                   </table>
-                </div>
-                <div class="text-center">
-                  <p>Authorized person</p>
-                  <img src="../../../app-assets/images/pages/signature-scan.png" alt="signature" class="height-100" />
-                  <h6>Amanda Orton</h6>
-                  <p class="text-muted">Managing Director</p>
                 </div>
               </div>
             </div>
@@ -182,10 +180,6 @@
                 <p>You know, being a test pilot isn't always the healthiest business
                   in the world. We predict too much for the next year and yet far
                   too little for the next 10.</p>
-              </div>
-              <div class="col-md-5 col-sm-12 text-center">
-                <button type="button" class="btn btn-info btn-lg my-1"><i class="la la-paper-plane-o"></i> Send
-                  Invoice</button>
               </div>
             </div>
           </div>
