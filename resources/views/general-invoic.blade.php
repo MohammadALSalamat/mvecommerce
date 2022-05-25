@@ -13881,7 +13881,7 @@
             <div id="invoice-company-details" class="row">
               <div class="col-md-6 col-sm-12 text-center text-md-left">
                 <div class="media">
-                  <img src="'../../front-style/front-style/assets/images/itajer_logo.png'" width="200px"
+                  <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="200px"
                     alt="company logo1" />
                 </div>
               </div>
