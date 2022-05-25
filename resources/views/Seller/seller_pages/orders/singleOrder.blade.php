@@ -22,7 +22,7 @@
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('view_order') }}">Home</a>
+              <li class="breadcrumb-item"><a href="{{ route('view_order_seller') }}">Home</a>
               </li>
               
               <li class="breadcrumb-item active">Single Order DataTable
@@ -33,7 +33,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('invoice_template',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
+          <a href="{{ route('invoice_template_seller',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
                 class="la la-plus"></i> View Invoice </button></a>
         </div>
       </div>

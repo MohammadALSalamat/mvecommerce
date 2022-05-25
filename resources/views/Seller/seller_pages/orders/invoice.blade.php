@@ -9,9 +9,9 @@
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('view_order') }}">Home</a>
+              <li class="breadcrumb-item"><a href="{{ route('view_order_seller') }}">Home</a>
               </li>
-              <li class="breadcrumb-item"><a href="{{ route('singleOrder',$order->id) }}">Order</a>
+              <li class="breadcrumb-item"><a href="{{ route('singleOrder_seller',$order->id) }}">Order</a>
               </li>
               <li class="breadcrumb-item active">Invoice Template
               </li>
@@ -21,7 +21,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="dropdown float-md-right">
-          <a href="{{ route('pdfviewer',$order->id) }}">
+          <a href="{{ route('pdfviewer_seller',$order->id) }}">
           <button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton" type="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download</button>
           </a>
@@ -99,7 +99,11 @@
                       <th scope="row">1</th>
                       <td class="text-truncate">
                         <span class="avatar avatar-xs">
-                          <img class="box-shadow-2" src="{{  $items->image}}" alt="avatar">
+                          @php
+                            $other_image = explode(',',$items->image);  
+                          @endphp
+                          <img class="box-shadow-2" src="{{  $other_image[0]}}" alt="avatar">
+                        
                         </span>
                         <span>{{ $items->title }}</span>
                       </td>

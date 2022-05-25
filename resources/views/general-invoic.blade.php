@@ -3191,7 +3191,9 @@ tbody.collapse.show {
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem; }
-
+  .page-break {
+    page-break-after: always;
+}
 .page-link {
   position: relative;
   display: block;
