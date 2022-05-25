@@ -43,7 +43,7 @@
               <p class="pb-3"># INV-{{ $order->order_number }}</p>
               <ul class="px-0 list-unstyled">
                 <li>Final Total</li>
-                <li class="lead text-bold-800">{{ $order->total }} AED</li>
+                <li class="lead text-bold-800">{{ $order->total + $order->delivary_charge + $order->coupon }} AED</li>
               </ul>
             </div>
           </div>
@@ -70,11 +70,11 @@
             </div>
             <div class="col-md-6 col-sm-12 text-center text-md-right">
               <p>
-                <span class="text-muted">Invoice Date :</span> 06/05/2017</p>
+                <span class="text-muted">Invoice Date :</span> {{ date('d-m-y',strtotime($order->created_at)) }}</p>
               <p>
                 <span class="text-muted">Terms :</span> Due on Receipt</p>
               <p>
-                <span class="text-muted">Due Date :</span> 10/05/2017</p>
+                <span class="text-muted">Due Date :</span>{{ date('d-m-y ', strtotime($order->created_at. ' +10 days')) }}</p>
             </div>
           </div>
           <!--/ Invoice Customer Details -->
