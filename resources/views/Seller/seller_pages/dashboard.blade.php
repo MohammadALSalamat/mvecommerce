@@ -97,7 +97,7 @@
               <div class="heading-elements">
                 <ul class="list-inline mb-0">
                   <li><a class="btn btn-sm btn-success box-shadow-2 round btn-min-width pull-right"
-                      href="{{ route('view_order') }}">View All</a></li>
+                      href="{{ route('view_order_seller') }}">View All</a></li>
                 </ul>
               </div>
             </div>
