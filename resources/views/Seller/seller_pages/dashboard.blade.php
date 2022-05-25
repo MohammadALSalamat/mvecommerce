@@ -129,11 +129,8 @@
 
                   </thead>
                   <tbody>
-                    @php
-                       dd($order_product);
-                    @endphp
                     @foreach ($order_product as $items)
-                    @foreach ($items->orders as $order )
+                    @foreach ($items->orders->take(6) as $order )
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
