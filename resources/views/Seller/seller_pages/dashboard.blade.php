@@ -151,7 +151,7 @@
                       </td>
                       <td class="text-truncate p-1">
                         @foreach ( $order->product as $items_seller)
-                      @php
+                        @php
                         $other_image = explode(',',$items_seller->image);
                         @endphp
                         <ul class="list-unstyled users-list m-0">

@@ -19,4 +19,5 @@ public static function maxPrice()
    return floor(\App\Models\product::max('price'));
 }
 
+
 }
