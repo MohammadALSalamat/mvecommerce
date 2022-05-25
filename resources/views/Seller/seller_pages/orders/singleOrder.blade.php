@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('Seller.seller_layoute.main_desgin')
 @section('style')
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
@@ -104,11 +104,12 @@
                               if(count($quantity) > 3){
                                 $last_items = array_slice($quantity, -3, 3, true);
                               }
-                              $other_image = explode(',',$items->image);  
-                            @endphp
+                              @endphp
                             
                             @foreach ($order->product as $items)
-
+                            @php
+                                $other_image = explode(',',$items->image);  
+                            @endphp
                             <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
                             class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
@@ -118,8 +119,11 @@
                             @endforeach
                           </ul>
                         </td>
+                      
                         <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
+                          @foreach ($order->product as $items)
+                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items->category_id)->value('title') }}</button>
+                          @endforeach
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -172,10 +176,12 @@
                     @foreach ($order->product as $items)
                       <tr>
                         <td class="text-truncate">{{ $items->id }}</td>
-                       
+                        @php
+                          $other_image = explode(',',$items->image);  
+                        @endphp
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="{{  $items->image}}"
+                            <img class="box-shadow-2" src="{{  $other_image[0]}}"
                             alt="avatar">
                           </span>
                           <span>{{ $items->title }}</span>

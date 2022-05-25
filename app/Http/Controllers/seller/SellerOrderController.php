@@ -27,7 +27,7 @@ class SellerOrderController extends Controller
     {
        $order = Order::find($id);
        if($order){
-        return view('backend.backend_pages.orders.singleOrder',compact('order'));
+        return view('Seller.seller_pages.orders.singleOrder',compact('order'));
        }else{
            return back()->with('error','this Id is not found');
        }
@@ -38,7 +38,7 @@ class SellerOrderController extends Controller
     {
         $order = Order::find($id);
         if($order){
-            return view('backend.backend_pages.orders.invoice',compact('order'));
+            return view('Seller.seller_pages.orders.invoice',compact('order'));
            }else{
                return back()->with('error','this Id is not found');
            }
