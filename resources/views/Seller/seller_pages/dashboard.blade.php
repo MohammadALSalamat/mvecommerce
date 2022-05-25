@@ -129,8 +129,9 @@
 
                   </thead>
                   <tbody>
-                    @foreach ($order_product as $items)
-                    @foreach ($items->orders->take(6) as $order )
+                    @foreach ($order_product->take(6) as $items)
+                    @foreach ($items->orders->take(1) as $order )
+                    
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
