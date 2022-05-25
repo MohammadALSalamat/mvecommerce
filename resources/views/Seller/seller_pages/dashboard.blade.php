@@ -149,12 +149,15 @@
                         </span>
                         <span>{{ $order->full_name }}</span>
                       </td>
+                      @php
+                        $other_image = explode(',',$items->image);
+                      @endphp
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $items->image }}" alt="{{ $items->title }}">
+                              src="{{ $other_image[0] }}" alt="{{ $items->title }}">
                         </li>                       
                         </ul>
                       </td>
