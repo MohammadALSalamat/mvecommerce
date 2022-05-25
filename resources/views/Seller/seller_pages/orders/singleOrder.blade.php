@@ -18,15 +18,14 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
-        <h3 class="mb-0 content-header-title d-inline-block">Advanced DataTable</h3>
+        <h3 class="mb-0 content-header-title d-inline-block">Single Order DataTable</h3>
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a>
+              <li class="breadcrumb-item"><a href="{{ route('view_order') }}">Home</a>
               </li>
-              <li class="breadcrumb-item"><a href="#">DataTables</a>
-              </li>
-              <li class="breadcrumb-item active">Advanced DataTable
+              
+              <li class="breadcrumb-item active">Single Order DataTable
               </li>
             </ol>
           </div>
@@ -105,16 +104,18 @@
                               if(count($quantity) > 3){
                                 $last_items = array_slice($quantity, -3, 3, true);
                               }
+                              $other_image = explode(',',$items->image);  
                             @endphp
+                            
                             @foreach ($order->product as $items)
+
                             <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
                             class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $items->image }}"
+                              src="{{ $other_image[0] }}"
                               alt="{{ $items->title }}">
                             </li>
                             @endforeach
-                           
                           </ul>
                         </td>
                         <td>
