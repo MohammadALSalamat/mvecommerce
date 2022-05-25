@@ -48,6 +48,6 @@ class SellerOrderController extends Controller
         $order = Order::find($id);
        
         $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('general-invoic.pdf');
+        return $pdf->stream('general-invoic.pdf');
     }
 }
