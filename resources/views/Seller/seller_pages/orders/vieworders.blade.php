@@ -100,28 +100,22 @@
                         </td>
                         <td class="text-truncate p-1">
                           <ul class="list-unstyled users-list m-0">
-                            @php
-                            // get the number of items in each order
-                            $quantity = array();
-                            foreach ($order->product as $items){
-                                array_push($quantity,$items);
-                              }
-                              if(count($quantity) > 3){
-                                $last_items = array_slice($quantity, -3, 3, true);
-                              }
-                              $other_image = explode(',',$items_order->image);
-                            @endphp
-                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items_order->title }}"
-                            class="avatar avatar-sm pull-up">
+                            @foreach ( $order->product as $items_seller)
+                          @php
+                          $other_image = explode(',',$items_seller->image);
+                          @endphp
+                            <li data-toggle="tooltip" data-popup="tooltip-custom"
+                            data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}"
-                              alt="{{ $items_order->title }}">
-                            </li>
-                            
+                                src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+                              </li>                       
+                              @endforeach
                           </ul>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items->category_id)->value('title') }}</button>
+                          @foreach ( $order->product as $items_seller)
+                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
+                          @endforeach
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">

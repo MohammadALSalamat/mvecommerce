@@ -14,7 +14,7 @@
                 <div class="media d-flex">
                   <div class="media-body text-left">
                     @if (Config::get('app.locale') == 'en')
-                    <h3 class="success">{{ $countSoldProduct }}</h3>
+                    <h3 class="success">{{ $countSoldProduct}}</h3>
                     <h6>Products Sold</h6>
                     @else
                     <h3 class="success">{{ $countSoldProduct }}</h3>
@@ -70,7 +70,7 @@
                 <div class="media d-flex">
                   <div class="media-body text-left">
                     <h3 class="danger">{{ $products }}</h3>
-                    <h6>Products</h6>
+                    <h6>Products In Store</h6>
                   </div>
                   <div>
                     <i class="icon-heart danger font-large-2 float-right"></i>
@@ -131,7 +131,6 @@
                   <tbody>
                     @foreach ($order_product->take(6) as $items)
                     @foreach ($items->orders->take(1) as $order )
-                    
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -151,18 +150,18 @@
                         <span>{{ $order->full_name }}</span>
                       </td>
                       <td class="text-truncate p-1">
+                        <ul class="list-unstyled users-list m-0">
                         @foreach ( $order->product as $items_seller)
                         @php
                         $other_image = explode(',',$items_seller->image);
                         @endphp
-                        <ul class="list-unstyled users-list m-0">
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                               src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
                         </li>                       
-                        </ul>
                         @endforeach
+                        </ul>
                       </td>
                       <td>
                         @foreach ( $order->product as $items_seller)
