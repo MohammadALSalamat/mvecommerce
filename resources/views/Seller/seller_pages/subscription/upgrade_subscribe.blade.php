@@ -195,6 +195,7 @@
                     $after_30days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +30 days'));
                     @endphp
                     <input type="hidden" name="value" value="300">
+                    <input type="hidden" name="subscribe_id" value="{{ $subscriptions_user_data->id }}">
                     <input type="hidden" name="strip_pan" value="Basic">
                     <input type="hidden" name="strip_id" value="1">
                     <input type="hidden" name="quantity" value="1">
@@ -229,7 +230,7 @@
                     @if($subscriptions_user_data->stripe_plan == 'Basic') 
                     <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
                     @else
-                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    <button type="submit" class="buy-now"><span>Upgrade Now</span></button>
                     
                     @endif
                 </form>
@@ -250,6 +251,7 @@
                     $after_90days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +90 days'));
                     @endphp
                     <input type="hidden" name="value" value="1000">
+                    <input type="hidden" name="subscribe_id" value="{{ $subscriptions_user_data->id }}">
                     <input type="hidden" name="strip_pan" value="Basic++">
                     <input type="hidden" name="strip_id" value="1">
                     <input type="hidden" name="quantity" value="1">
@@ -265,7 +267,7 @@
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>3</span> Month(s)
+                            <span>3</span> Month(s)<br>
                             @if($subscriptions_user_data->stripe_plan == 'Basic++')
                             <span>Status : </span>@if($seller->is_verify == '1')
                             <div class="badge badge-success">Active</div>
@@ -281,7 +283,7 @@
                     @if($subscriptions_user_data->stripe_plan == 'Basic++') 
                     <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
                     @else
-                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    <button type="submit" class="buy-now"><span>Upgrade Now</span></button>
                     @endif
                 </form>
             </div>
@@ -303,6 +305,7 @@
                     $after_180days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +180 days'));
                     @endphp
                     <input type="hidden" name="value" value="1750">
+                    <input type="hidden" name="subscribe_id" value="{{ $subscriptions_user_data->id }}">
                     <input type="hidden" name="strip_pan" value="Pro">
                     <input type="hidden" name="strip_id" value="1">
                     <input type="hidden" name="quantity" value="1">
@@ -318,7 +321,7 @@
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>6</span> Month(s)
+                            <span>6</span> Month(s)<br>
                             @if($subscriptions_user_data->stripe_plan == 'Pro')
                             <span>Status : </span>@if($seller->is_verify == '1')
                             <div class="badge badge-success">Active</div>
@@ -334,7 +337,7 @@
                     @if($subscriptions_user_data->stripe_plan == 'Pro') 
                     <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
                     @else
-                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    <button type="submit" class="buy-now"><span>Upgrade Now</span></button>
                     
                     @endif                
                 </form>
@@ -355,6 +358,7 @@
                     $after_360days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +360 days'));
                     @endphp
                     <input type="hidden" name="value" value="3000">
+                    <input type="hidden" name="subscribe_id" value="{{ $subscriptions_user_data->id }}">
                     <input type="hidden" name="strip_pan" value="Elite">
                     <input type="hidden" name="strip_id" value="1">
                     <input type="hidden" name="quantity" value="1">
@@ -370,7 +374,7 @@
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>1</span> Year
+                            <span>1</span> Year <br>
                             @if($subscriptions_user_data->stripe_plan == 'Elite')
                             <span>Status : </span>@if($seller->is_verify == '1')
                             <div class="badge badge-success">Active</div>
@@ -386,7 +390,7 @@
                     @if($subscriptions_user_data->stripe_plan == 'Elite') 
                     <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
                     @else
-                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    <button type="submit" class="buy-now"><span>Upgrade Now</span></button>
                     @endif
                 </form>
             </div>

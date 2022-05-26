@@ -44,23 +44,39 @@ public function admin_viewSubscription_Status()
     {
         $data = $request->all();
         $seller_id = Seller::where('status',1)->where('id',$id)->first();
-        $add_subscribe_data = new subscription();
-        $add_subscribe_data->seller_id = $data['seller_id'];
-        $add_subscribe_data->name = $data['card_name'];
-        $add_subscribe_data->stripe_id = Session::get('strip_plan')['strip_id'];
-        $add_subscribe_data->stripe_plan = Session::get('strip_plan')['strip_pan'];
-        $add_subscribe_data->quantity = Session::get('strip_plan')['quantity'];
-        $add_subscribe_data->start_at = Session::get('strip_plan')['trials_start'];
-        $add_subscribe_data->ends_at = Session::get('strip_plan')['ends_at'];
-        $add_subscribe_data->value = Session::get('strip_plan')['value'];
-        $add_subscribe_data->save();
-        if($add_subscribe_data->save()){
+
+        $check_if_the_user_is_subscibed = subscription::where('id',Session::get('strip_plan')['subscribe_id'])->count();
+
+        if($check_if_the_user_is_subscibed > 0 ){
+            subscription::where('id',Session::get('strip_plan')['subscribe_id'])->update([
+                'ends_at' => Session::get('strip_plan')['ends_at'],
+                'stripe_plan' => Session::get('strip_plan')['strip_pan'],
+            ]);
             Session::forget('strip_plan');
             Seller::where('id',$id)->update([
                 'is_verify'=> 1,
             ]);
-            return redirect()->route('view_seller_details')->with('message','Thank you for subscibe please complate your detils info');
+            return redirect()->route('view_seller_details')->with('message','Your Subscibe has been updated');
+        }else{
+            $add_subscribe_data = new subscription();
+            $add_subscribe_data->seller_id = $data['seller_id'];
+            $add_subscribe_data->name = $data['card_name'];
+            $add_subscribe_data->stripe_id = Session::get('strip_plan')['strip_id'];
+            $add_subscribe_data->stripe_plan = Session::get('strip_plan')['strip_pan'];
+            $add_subscribe_data->quantity = Session::get('strip_plan')['quantity'];
+            $add_subscribe_data->start_at = Session::get('strip_plan')['trials_start'];
+            $add_subscribe_data->ends_at = Session::get('strip_plan')['ends_at'];
+            $add_subscribe_data->value = Session::get('strip_plan')['value'];
+            $add_subscribe_data->save();
+            if($add_subscribe_data->save()){
+                Session::forget('strip_plan');
+                Seller::where('id',$id)->update([
+                    'is_verify'=> 1,
+                ]);
+                return redirect()->route('view_seller_details')->with('message','Thank you for subscibe please complate your detils info');
+            }
         }
+
     }
     
     public function viewSubscription_Status()
@@ -74,7 +90,6 @@ public function admin_viewSubscription_Status()
     public function upgrade_subscribtion($id)
     {
         $seller = Seller::where('status',1)->where('id',Auth::guard('seller')->user()->id)->first();
-
         $subscriptions_user_data = subscription::find($id);
         return view('Seller.seller_pages.subscription.upgrade_subscribe',compact('subscriptions_user_data','seller'));
     }
