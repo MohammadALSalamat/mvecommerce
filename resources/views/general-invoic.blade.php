@@ -35,14 +35,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <section class="card" style="width:1500px">
           <div id="invoice-template" class="card-body">
             <!-- Invoice Company Details -->
-            <div id="invoice-company-details" class="row" style="width:1500px; display: table-cell">
-              <div class="col-md-6 col-sm-12 text-center text-md-left" style="width:200px; display: table-cell">
+            <div id="invoice-company-details" class="row" style="width:1500px; display: table">
+              <div  style="width:200px; display: table-cell">
                 <div class="media">
                   <img src="{{ public_path('front-style/assets/images/itajer_logo.png') }}" width="200px"
                     alt="company logo1" />
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right" style="width:1300px;padding-top:0px;margin-top:0px; display: table-cell">
+              <div class="col-md-6 col-sm-12 text-center text-md-right" style="width:500px;padding-top:0px;margin-top:0px">
                 <h2 style="color:red">INVOICE</h2>
                 <p class="pb-3"># INV-{{ $order->order_number }}</p>
                 <ul class="px-0 list-unstyled">
@@ -53,26 +53,28 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             </div>
             <!--/ Invoice Company Details -->
             <!-- Invoice Customer Details -->
-            <div id="invoice-customer-details" class="row pt-2">
-              <div class="col-sm-12 text-center text-md-left">
-                <strong class="text-muted">Bill To</strong>
+            <div id="invoice-customer-details" style=" display: table;margin-top:50px">
+              <div style=" display: table-cell">
+                <div class="col-sm-12 text-center text-md-left">
+                  <strong class="text-muted">Bill To</strong>
+                </div>
+                <div class="col-md-6 col-sm-12 text-center text-md-left">
+                  <ul class="px-0 list-unstyled">
+                    <li class="text-bold-800">{{ $order->full_name }}</li>
+                    <li>{{ $order->address }},</li>
+                    <li>{{ $order->city }},</li>
+                    <li>{{ $order->country }}.</li>
+                  </ul>
+                  <strong class="text-muted">Shipping To</strong>
+                  <ul class="px-0 list-unstyled">
+                    <li class="text-bold-800">{{ $order->sfull_name }}</li>
+                    <li>{{ $order->saddress }},</li>
+                    <li>{{ $order->scity }},</li>
+                    <li>{{ $order->scountry }}.</li>
+                  </ul>
+                </div>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-left">
-                <ul class="px-0 list-unstyled">
-                  <li class="text-bold-800">{{ $order->full_name }}</li>
-                  <li>{{ $order->address }},</li>
-                  <li>{{ $order->city }},</li>
-                  <li>{{ $order->country }}.</li>
-                </ul>
-                <strong class="text-muted">Shipping To</strong>
-                <ul class="px-0 list-unstyled">
-                  <li class="text-bold-800">{{ $order->sfull_name }}</li>
-                  <li>{{ $order->saddress }},</li>
-                  <li>{{ $order->scity }},</li>
-                  <li>{{ $order->scountry }}.</li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right">
+              <div class="col-md-6 col-sm-12 text-center text-md-right" style=" display: table-cell;width:500px">
                 <p>
                   <span class="text-muted">Invoice Date :</span> 06/05/2017</p>
                 <p>
@@ -83,8 +85,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             </div>
             <!--/ Invoice Customer Details -->
             <!-- Invoice Items Details -->
-            <div id="invoice-items-details" class="pt-2">
-              <div class="row" style="page-break-after: always;">
+            <div id="invoice-items-details" style="margin-top:50px" class="pt-2">
+              <div class="row">
                 <div class="table-responsive col-sm-12">
                   <table class="table"  style="width:600px">
                     <thead>
@@ -150,27 +152,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       </tbody>
                     </table>
                   </div>
-                  <div class="text-center">
-                    <p>Authorized person</p>
-                    <img src="../../../app-assets/images/pages/signature-scan.png" alt="signature" class="height-100" />
-                    <h6>Amanda Orton</h6>
-                    <p class="text-muted">Managing Director</p>
-                  </div>
                 </div>
               </div>
             </div>
-            <!-- Invoice Footer -->
-            <div id="invoice-footer">
-              <div class="row">
-                <div class="col-md-7 col-sm-12">
-                  <h6>Terms & Condition</h6>
-                  <p>You know, being a test pilot isn't always the healthiest business
-                    in the world. We predict too much for the next year and yet far
-                    too little for the next 10.</p>
-                </div>
-              </div>
-            </div>
-            <!--/ Invoice Footer -->
           </div>
         </section>
       </div>
