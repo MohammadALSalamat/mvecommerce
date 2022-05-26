@@ -64,10 +64,13 @@ public function admin_viewSubscription_Status()
             try {
                 dispatch(new renewSubscibtionAdmin($email_data));
                 dispatch(new renewSubscibtionUser($email_data));
-                
             } catch (\Throwable $th) {
                 return back()->with('error','The Upgrade is not completed yet, please try again!!');
             }
+            Session::forget('strip_plan');
+            Seller::where('id',$id)->update([
+                'is_verify'=> 1,
+            ]);
             return redirect()->route('view_seller_details')->with('message','Your Subscibe has been updated');
         }else{
             $add_subscribe_data = new subscription();

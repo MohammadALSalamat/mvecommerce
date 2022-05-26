@@ -33,6 +33,6 @@ class renewSubscibtionUser implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('alomda.alslmat@gmail.com')->send( new renewusermail($this->email_data));
+        Mail::to($this->email_data['seller_email'])->send( new renewusermail($this->email_data));
     }
 }

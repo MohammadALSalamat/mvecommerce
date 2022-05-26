@@ -129,9 +129,9 @@
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
                                                 bellow Seller has been Renewing the registerition on ITajer website, <br> Details As Below.
                                                 <br>
-                                                <b> Seller Name : </b> {{ $email_admin['seller_name'] }}<br>
-                                                <b> Expried Date : {{ $email_admin['ends_at'] }}</b>  <br>
-                                                <b> Subscription Plan : </b> {{ $rmail['stripe_plan'] }}
+                                                <b> Seller Name : </b> {{ $email_data['seller_name'] }}<br>
+                                                <b> Expried Date : {{ $email_data['ends_at'] }}</b>  <br>
+                                                <b> Subscription Plan : </b> {{ $email_data['stripe_plan'] }}
                                             </p>
                                         </td>
                                     </tr>

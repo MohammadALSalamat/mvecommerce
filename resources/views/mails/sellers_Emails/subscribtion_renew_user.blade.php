@@ -120,7 +120,7 @@
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                                             <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
                                             <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                                               Dear {{ $email_admin['seller_name'] }} !!!!
+                                               Dear {{ $email_data['seller_name'] }} !!!!
                                             </h2>
                                         </td>
                                     </tr>
@@ -129,8 +129,8 @@
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
                                                 Thank you For Renewing your registerition on ITajer website, <br> We would like to Congrats you that your account has been Extended.
                                                 <br>
-                                                <b> Expried Date : {{ $email_admin['ends_at'] }}</b>  <br>
-                                                <b> Subscription Plan : </b> {{ $rmail['stripe_plan'] }}
+                                                <b> Expried Date : {{ $email_data['ends_at'] }}</b>  <br>
+                                                <b> Subscription Plan : </b> {{ $email_data['stripe_plan'] }}
                                             </p>
                                         </td>
                                     </tr>
