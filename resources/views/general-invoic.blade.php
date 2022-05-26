@@ -24,6 +24,7 @@
         margin:0.9;
         padding:0.9; 
       }
+     
   </style>
 </head>
 
@@ -60,7 +61,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 </div>
                 <div class="col-md-6 col-sm-12 text-center text-md-left">
                   <ul class="px-0 list-unstyled">
-                    <li class="text-bold-800">{{ $order->full_name }}</li>
+                    <li class="text-bold-800" style="font-family: 'dejavu sans', sans-serif !important;  direction: rtl;">{{ $order->full_name }}</li>
                     <li>{{ $order->address }},</li>
                     <li>{{ $order->city }},</li>
                     <li>{{ $order->country }}.</li>
