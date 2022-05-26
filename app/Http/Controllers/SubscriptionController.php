@@ -73,7 +73,9 @@ public function admin_viewSubscription_Status()
 
     public function upgrade_subscribtion($id)
     {
+        $seller = Seller::where('status',1)->where('id',Auth::guard('seller')->user()->id)->first();
+
         $subscriptions_user_data = subscription::find($id);
-        return view('Seller.seller_pages.subscription.upgrade_subscribe',compact('subscriptions_user_data'));
+        return view('Seller.seller_pages.subscription.upgrade_subscribe',compact('subscriptions_user_data','seller'));
     }
 }

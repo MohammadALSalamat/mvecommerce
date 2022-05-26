@@ -22,9 +22,9 @@
         color: rgba(0, 0, 0, 0.87);
     }
 
-    h1 {
+    button {
         margin-top: 0;
-    }
+ button }
 
     .pricing-table {
         display: flex;
@@ -130,6 +130,34 @@
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     }
+    .buy-now {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem auto 2rem;
+        padding: 2px 18px;
+        min-width: 128px;
+        border: none;
+        border-radius: 3px;
+        background-color: #2196F3;
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #fff;
+        line-height: 39px;
+        text-transform: uppercase;
+        overflow: hidden;
+        will-change: box-shadow;
+        transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    }
 
     .pricing-table .buy-now:hover,
     .pricing-table .buy-now:focus {
@@ -144,8 +172,11 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="xs-12">
+        <div class="xs-6" style="float:left;width:50%;margin-top:30px">
             <h1>Packages</h1>
+        </div>
+        <div class="xs-6 " style="float:right;width:50%;margin-top:30px">
+            <button class="buy-now"> Back To Dashboard</button>
         </div>
     </div>
     <div class="row">
@@ -173,17 +204,33 @@
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">300</div>
-                            <div class="period">/ month(s)</div>
+                            <div class="period">/ month</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>1</span> Month(s)
+                            <span>1</span> Month(s)<br>
+                            @if($subscriptions_user_data->stripe_plan == 'Basic')
+                            <span>Status : </span>@if($seller->is_verify == '1')
+                            <div class="badge badge-success">Active</div>
+                            @else
+                            <div class="badge badge-danger">Inactive</div>
+                            @endif <br>
+                            <span>Expird Time : </span> {{ date('Y-m-d',strtotime($subscriptions_user_data->ends_at)) }}
+                           
+                           ( <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscriptions_user_data->ends_at)) }}</strong> Days Left</small>)
+                            @endif
                         </div>
-                    </div>
+                        
+                       
+                    </div> 
+
                     @if($subscriptions_user_data->stripe_plan == 'Basic') 
                     <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
+                    @else
+                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    
                     @endif
                 </form>
             </div>
@@ -212,16 +259,30 @@
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">1000</div>
-                            <div class="period">/ month(s)</div>
+                            <div class="period">/ month</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
                             <span>3</span> Month(s)
+                            @if($subscriptions_user_data->stripe_plan == 'Basic++')
+                            <span>Status : </span>@if($seller->is_verify == '1')
+                            <div class="badge badge-success">Active</div>
+                            @else
+                            <div class="badge badge-danger">Inactive</div>
+                            @endif <br>
+                            <span>Expird Time : </span> {{ date('Y-m-d',strtotime($subscriptions_user_data->ends_at)) }}
+                           
+                           ( <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscriptions_user_data->ends_at)) }}</strong> Days Left</small>)
+                            @endif
                         </div>
                     </div>
+                    @if($subscriptions_user_data->stripe_plan == 'Basic++') 
+                    <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
+                    @else
                     <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    @endif
                 </form>
             </div>
         </div>
@@ -251,16 +312,31 @@
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">1750</div>
-                            <div class="period">/ month(s)</div>
+                            <div class="period">/ month</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
                             <span>6</span> Month(s)
+                            @if($subscriptions_user_data->stripe_plan == 'Pro')
+                            <span>Status : </span>@if($seller->is_verify == '1')
+                            <div class="badge badge-success">Active</div>
+                            @else
+                            <div class="badge badge-danger">Inactive</div>
+                            @endif <br>
+                            <span>Expird Time : </span> {{ date('Y-m-d',strtotime($subscriptions_user_data->ends_at)) }}
+                           
+                           ( <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscriptions_user_data->ends_at)) }}</strong> Days Left</small>)
+                            @endif
                         </div>
                     </div>
+                    @if($subscriptions_user_data->stripe_plan == 'Pro') 
+                    <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
+                    @else
                     <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    
+                    @endif                
                 </form>
             </div>
         </div>
@@ -288,16 +364,30 @@
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">3000</div>
-                            <div class="period">/ month(s)</div>
+                            <div class="period">/ month</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>1</span> year
+                            <span>1</span> Year
+                            @if($subscriptions_user_data->stripe_plan == 'Elite')
+                            <span>Status : </span>@if($seller->is_verify == '1')
+                            <div class="badge badge-success">Active</div>
+                            @else
+                            <div class="badge badge-danger">Inactive</div>
+                            @endif <br>
+                            <span>Expird Time : </span> {{ date('Y-m-d',strtotime($subscriptions_user_data->ends_at)) }}
+                           
+                           ( <small><strong>{{ now()->diffInDays(Carbon\Carbon::parse($subscriptions_user_data->ends_at)) }}</strong> Days Left</small>)
+                            @endif
                         </div>
                     </div>
+                    @if($subscriptions_user_data->stripe_plan == 'Elite') 
+                    <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
+                    @else
                     <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    @endif
                 </form>
             </div>
         </div>
