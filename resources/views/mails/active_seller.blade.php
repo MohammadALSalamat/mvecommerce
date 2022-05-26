@@ -1,5 +1,3 @@
-
-
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -143,7 +141,7 @@
                                     <tr>
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                                             <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
-                                                Click Here To login to your dashboard.
+                                                Click Here To login to your dashboard. <a href="{{ route('seller') }}"> Login Form</a>
                                             </h2>
                                         </td>
                                     </tr>

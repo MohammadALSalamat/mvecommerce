@@ -54,12 +54,10 @@ public function admin_viewSubscription_Status()
                 'ends_at' => Session::get('strip_plan')['ends_at'],
                 'stripe_plan' => Session::get('strip_plan')['strip_pan'],
             ]);
-            Session::forget('strip_plan');
-            Seller::where('id',$id)->update([
-                'is_verify'=> 1,
-            ]);
+            
             $email_data = [
                 'seller_name' => $seller_id->full_name,
+                'seller_email' => $seller_id->email,
                 'stripe_plan' => Session::get('strip_plan')['strip_pan'],
                 'ends_at' => Session::get('strip_plan')['ends_at'],
             ];

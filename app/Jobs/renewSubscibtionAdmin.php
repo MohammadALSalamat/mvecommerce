@@ -33,6 +33,6 @@ class renewSubscibtionAdmin implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('alomda.alslmat@gmail.com')->send( new renewadminmail($this->email_data));
+        Mail::to($this->email_data['seller_email'])->send( new renewadminmail($this->email_data));
     }
 }
