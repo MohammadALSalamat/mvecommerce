@@ -176,7 +176,7 @@
             <h1>Packages</h1>
         </div>
         <div class="xs-6 " style="float:right;width:50%;margin-top:30px">
-            <button class="buy-now"> Back To Dashboard</button>
+           <a href="{{ route('seller') }}"><button class="buy-now"> Back To Dashboard</button></a> 
         </div>
     </div>
     <div class="row">

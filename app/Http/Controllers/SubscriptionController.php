@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Seller;
 use App\Models\subscription;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Jobs\renewSubscibtionUser;
+use App\Jobs\renewSubscibtionAdmin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
@@ -56,6 +58,19 @@ public function admin_viewSubscription_Status()
             Seller::where('id',$id)->update([
                 'is_verify'=> 1,
             ]);
+            $email_data = [
+                'seller_name' => $seller_id->full_name,
+                'stripe_plan' => Session::get('strip_plan')['strip_pan'],
+                'ends_at' => Session::get('strip_plan')['ends_at'],
+
+            ];
+            try {
+                dispatch(new renewSubscibtionAdmin());
+                dispatch(new renewSubscibtionUser());
+                
+            } catch (\Throwable $th) {
+                return back()->with('error','there is something went wrong, your order did not complate yet!!');
+            }
             return redirect()->route('view_seller_details')->with('message','Your Subscibe has been updated');
         }else{
             $add_subscribe_data = new subscription();
