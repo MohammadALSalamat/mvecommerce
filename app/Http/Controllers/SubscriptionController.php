@@ -83,6 +83,17 @@ public function admin_viewSubscription_Status()
             $add_subscribe_data->ends_at = Session::get('strip_plan')['ends_at'];
             $add_subscribe_data->value = Session::get('strip_plan')['value'];
             $add_subscribe_data->save();
+            $email_data = [
+                'seller_name' => $seller_id->full_name,
+                'seller_email' => $seller_id->email,
+                'stripe_plan' => Session::get('strip_plan')['strip_pan'],
+                'ends_at' => Session::get('strip_plan')['ends_at'],
+            ];
+            try {
+                dispatch(new renewSubscibtionAdmin($email_data));
+            } catch (\Throwable $th) {
+                return back()->with('error','The Upgrade is not completed yet, please try again!!');
+            }
             if($add_subscribe_data->save()){
                 Session::forget('strip_plan');
                 Seller::where('id',$id)->update([
