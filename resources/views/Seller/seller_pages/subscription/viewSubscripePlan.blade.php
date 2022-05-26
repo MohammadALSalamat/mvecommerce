@@ -70,7 +70,6 @@
                         <th> Stripe Plan</th>
                         <th>Ends At</th>
                         <th>status</th>
-                        <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -92,25 +91,7 @@
                           <div class="badge badge-danger">Inactive</div>
                           @endif
                         </td>
-                        <td>
-                          <span class="dropdown">
-                            <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
-                              aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
-                                class="ft-settings"></i></button>
-                            <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('seller_add_productAttr',$subscripe->id) }}" class="dropdown-item"><i
-                                class="ft-plus-circle primary"></i> Add Attributes</a>
-                               
-                              <a href="{{ route('seller_editproducts',$subscripe->id) }}" class="dropdown-item"><i
-                                  class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('seller_deletproducts',$subscripe->id) }}" method="post">
-                                @csrf
-                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
-                                  Delete</a>
-                              </form>
-                            </span>
-                          </span>
-                        </td>
+                       
                       </tr>
                      
                       @endforeach
