@@ -1,7 +1,7 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
-alpha/css/bootstrap.css" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
@@ -149,10 +149,13 @@ alpha/css/bootstrap.css" rel="stylesheet">
         </div>
     </div>
     <div class="row">
-        <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
-            <div class="pricing-table">
-                <div class="package-title">
+        <div class="xs-12 md-6 lg-3" style="margin-right: 5px" >
+            <div class="pricing-table @if($subscriptions_user_data->stripe_plan == 'Basic') offer @endif">
+                <div class="package-title" @if($subscriptions_user_data->stripe_plan == 'Basic') style="background-color: red;" @endif>
                     <span>Free</span>
+                    @if($subscriptions_user_data->stripe_plan == 'Basic') 
+                    <span class="sale">Selected</span>
+                    @endif
                 </div>
                 <form action="{{ route('viewcardPayment') }}" method="post">
                     @csrf
@@ -170,23 +173,28 @@ alpha/css/bootstrap.css" rel="stylesheet">
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">300</div>
-                            <div class="period">/ month</div>
+                            <div class="period">/ month(s)</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>1</span> Month
+                            <span>1</span> Month(s)
                         </div>
                     </div>
-                    <button type="submit" class="buy-now"><span>Buy now</span></button>
+                    @if($subscriptions_user_data->stripe_plan == 'Basic') 
+                    <button  class="buy-now" disabled="disabled"><span>Selected</span></button>
+                    @endif
                 </form>
             </div>
         </div>
-        <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
-            <div class="pricing-table">
-                <div class="package-title">
+        <div class="xs-12 md-6 lg-3" style="margin-right: 5px" >
+            <div class="pricing-table @if($subscriptions_user_data->stripe_plan == 'Basic++') offer @endif">
+                <div class="package-title" @if($subscriptions_user_data->stripe_plan == 'Basic++') style="background-color: red;" @endif>
                     <span>Basic ++</span>
+                    @if($subscriptions_user_data->stripe_plan == 'Basic++') 
+                    <span class="sale">Selected</span>
+                    @endif
                 </div>
                 <form action="{{ route('viewcardPayment') }}" method="post">
                     @csrf
@@ -204,24 +212,28 @@ alpha/css/bootstrap.css" rel="stylesheet">
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">1000</div>
-                            <div class="period">/ month</div>
+                            <div class="period">/ month(s)</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>3</span> Month
+                            <span>3</span> Month(s)
                         </div>
                     </div>
                     <button type="submit" class="buy-now"><span>Buy now</span></button>
                 </form>
             </div>
         </div>
-        <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
-            <div class="pricing-table offer">
-                <div class="package-title">
+        <div class="xs-12 md-6 lg-3" style="margin-right: 5px" >
+            <div class="pricing-table @if($subscriptions_user_data->stripe_plan == 'Pro') offer @endif">
+                <div class="package-title" @if($subscriptions_user_data->stripe_plan == 'Pro') style="background-color: red;" @endif>
                     <span>Pro</span>
-                    <span class="sale">Save 12%</span>
+                    @if($subscriptions_user_data->stripe_plan == 'Pro') 
+                    <span class="sale">Selected</span>
+                    @endif
+                    
+
                 </div>
                 <form action="{{ route('viewcardPayment') }}" method="post">
                     @csrf
@@ -239,24 +251,26 @@ alpha/css/bootstrap.css" rel="stylesheet">
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">1750</div>
-                            <div class="period">/ month</div>
+                            <div class="period">/ month(s)</div>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="terms">
                         <div class="term">
-                            <span>6</span> Month
+                            <span>6</span> Month(s)
                         </div>
                     </div>
                     <button type="submit" class="buy-now"><span>Buy now</span></button>
                 </form>
             </div>
         </div>
-        <div class="xs-12 md-6 lg-3" style="margin-right: 10px">
-            <div class="pricing-table">
-                <div class="package-title">
+        <div class="xs-12 md-6 lg-3" style="margin-right: 5px" >
+            <div class="pricing-table @if($subscriptions_user_data->stripe_plan == 'Elite') offer @endif">
+                <div class="package-title" @if($subscriptions_user_data->stripe_plan == 'Elite') style="background-color: red;" @endif>
                     <span>Elite</span>
-                    <span class="sale">Save 11%</span>
+                    @if($subscriptions_user_data->stripe_plan == 'Elite') 
+                    <span class="sale">Selected</span>
+                    @endif
                 </div>
                 <form action="{{ route('viewcardPayment') }}" method="post">
                     @csrf
@@ -274,7 +288,7 @@ alpha/css/bootstrap.css" rel="stylesheet">
                         <div class="package-currency">AED</div>
                         <div class="package-value">
                             <div class="value">3000</div>
-                            <div class="period">/ month</div>
+                            <div class="period">/ month(s)</div>
                         </div>
                     </div>
                     <div class="divider"></div>
