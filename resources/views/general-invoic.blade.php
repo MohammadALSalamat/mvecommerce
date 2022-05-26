@@ -4,16 +4,15 @@
 <head>
   {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
   <title>INV-{{ $order->order_number }}</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta name="description"
       content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
   <meta name="keywords"
       content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
   <meta name="author" content="PIXINVENT">
-  {{--  <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
-
   <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
   <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/vendors.css') }}">
@@ -61,7 +60,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 </div>
                 <div class="col-md-6 col-sm-12 text-center text-md-left">
                   <ul class="px-0 list-unstyled">
-                    <li class="text-bold-800" style="font-family: 'dejavu sans', sans-serif !important;  direction: rtl;">{{ $order->full_name }}</li>
+                    <li class="text-bold-800" style="font-family: 'dejavu sans';  direction: rtl;">{{ $order->full_name }}</li>
                     <li>{{ $order->address }},</li>
                     <li>{{ $order->city }},</li>
                     <li>{{ $order->country }}.</li>

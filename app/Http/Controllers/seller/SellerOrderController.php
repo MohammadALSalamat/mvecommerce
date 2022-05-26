@@ -56,7 +56,7 @@ class SellerOrderController extends Controller
                 'allow_self_signed'=>TRUE
             ]
             ]);
-            $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','isHtml5ParserEnabled'=>true,'isRemoteEnabled'=>true]);
+            $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'dejavu sans','isHtml5ParserEnabled'=>true,'isRemoteEnabled'=>true]);
             $pdf->getDomPDF()->setHttpContext($contxt);
             $pdf = PDF::loadView('general-invoic',compact('order'));
             
