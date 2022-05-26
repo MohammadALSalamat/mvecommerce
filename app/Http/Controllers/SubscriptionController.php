@@ -62,14 +62,13 @@ public function admin_viewSubscription_Status()
                 'seller_name' => $seller_id->full_name,
                 'stripe_plan' => Session::get('strip_plan')['strip_pan'],
                 'ends_at' => Session::get('strip_plan')['ends_at'],
-
             ];
             try {
-                dispatch(new renewSubscibtionAdmin());
-                dispatch(new renewSubscibtionUser());
+                dispatch(new renewSubscibtionAdmin($email_data));
+                dispatch(new renewSubscibtionUser($email_data));
                 
             } catch (\Throwable $th) {
-                return back()->with('error','there is something went wrong, your order did not complate yet!!');
+                return back()->with('error','The Upgrade is not completed yet, please try again!!');
             }
             return redirect()->route('view_seller_details')->with('message','Your Subscibe has been updated');
         }else{
