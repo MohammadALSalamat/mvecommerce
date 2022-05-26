@@ -22,7 +22,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::post('Subscription/{id}',[SubscriptionController::class,'get_card_info'])->name('sendinfocard');
 
     Route::get('Subscription_Status',[SubscriptionController::class,'viewSubscription_Status'])->name('viewSubscription_Status');
-
+    Route::get('upgrade_subscribtion/{id}',[SubscriptionController::class,'upgrade_subscribtion'])->name('upgrade_subscribtion');
     
     // documentation for seller
 

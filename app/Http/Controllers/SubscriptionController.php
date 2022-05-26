@@ -67,7 +67,13 @@ public function admin_viewSubscription_Status()
     {
         $seller = Seller::where('status',1)->where('id',Auth::guard('seller')->user()->id)->first();
 
-        $subscriptions = subscription::where('seller_id',$seller->id)->get();
-        return view('Seller.seller_pages.subscription.viewSubscripePlan' ,compact('seller','subscriptions'));
+        $subscripe = subscription::where('seller_id',$seller->id)->first();
+        return view('Seller.seller_pages.subscription.viewSubscripePlan' ,compact('seller','subscripe'));
+    }
+
+    public function upgrade_subscribtion($id)
+    {
+        $subscriptions_user_data = subscription::find($id);
+        return view('Seller.seller_pages.subscription.upgrade_subscribe');
     }
 }

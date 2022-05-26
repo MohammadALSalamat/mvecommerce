@@ -34,7 +34,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
+          <a href="{{ route('upgrade_subscribtion',$subscripe->id ) }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
                 class="la la-plus"></i> Upgrade The Subscription </button></a>
         </div>
       </div>
@@ -73,8 +73,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($subscriptions as $subscripe)
-
                       <tr>
                         <td>{{ $subscripe->id }}</td>
                         <td>{{ $seller->full_name }}</th>
@@ -93,8 +91,6 @@
                         </td>
                        
                       </tr>
-                     
-                      @endforeach
                     </tbody>
                   </table>
                 </div>
