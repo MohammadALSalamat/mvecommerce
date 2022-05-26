@@ -35,14 +35,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <section class="card" style="width:1500px">
           <div id="invoice-template" class="card-body">
             <!-- Invoice Company Details -->
-            <div id="invoice-company-details" class="row" style="display:inline-block;width:1500px">
-              <div class="col-md-6 col-sm-12 text-center text-md-left" style="width:200px">
+            <div id="invoice-company-details" class="row" style="width:1500px; display: table-cell">
+              <div class="col-md-6 col-sm-12 text-center text-md-left" style="width:200px; display: table-cell">
                 <div class="media">
                   <img src="{{ public_path('front-style/assets/images/itajer_logo.png') }}" width="200px"
                     alt="company logo1" />
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right" style="width:1300px;padding-top:0px;margin-top:0px">
+              <div class="col-md-6 col-sm-12 text-center text-md-right" style="width:1300px;padding-top:0px;margin-top:0px; display: table-cell">
                 <h2 style="color:red">INVOICE</h2>
                 <p class="pb-3"># INV-{{ $order->order_number }}</p>
                 <ul class="px-0 list-unstyled">
