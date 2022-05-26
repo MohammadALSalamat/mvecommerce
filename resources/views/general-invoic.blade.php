@@ -17,6 +17,7 @@
   <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
   <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/vendors.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
 
   <style>
      @page {
@@ -86,7 +87,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div id="invoice-items-details" class="pt-2">
               <div class="row">
                 <div class="table-responsive col-sm-12">
-                  <table class="table">
+                  <table class="table"  style="width:600px">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -100,15 +101,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       @foreach ($order->product as $items)
                       <tr>
                         <th scope="row">1</th>
-                        <td class="text-truncate" >
+                        <td class="text-truncate" style="width:200px">
                           <span class="avatar avatar-xs">
                             <img class="box-shadow-2" src="{{  public_path($items->image)}}" style="width:20px" alt="avatar">
                           </span>
                           <span style="white-space: pre-wrap;">{{ $items->title }}</span>
                         </td>
-                        <td class="text-right" >{{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}</td>
-                        <td class="text-right" >{{ $items->pivot->quantity }}</td>
-                        <td class="text-right" >
+                        <td class="text-right" style="width:100px" >{{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}</td>
+                        <td class="text-right"  style="width:100px">{{ $items->pivot->quantity }}</td>
+                        <td class="text-right"  style="width:100px">
                            @if(empty($items->offer_price) || $items->offer_price == null )
                           {{ $items->price }} 
                           @else
