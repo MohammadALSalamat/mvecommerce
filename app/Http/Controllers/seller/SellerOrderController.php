@@ -5,11 +5,11 @@ namespace App\Http\Controllers\seller;
 use App\Models\Order;
 use App\Models\Seller;
 use App\Models\product;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class SellerOrderController extends Controller
 {
@@ -56,11 +56,10 @@ class SellerOrderController extends Controller
                 'allow_self_signed'=>TRUE
             ]
             ]);
-            $pdf = PDF::setOptions(['isHTML5ParserEnabled'=>true,'isRemoteEnabled'=>true]);
+            $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','isHtml5ParserEnabled'=>true,'isRemoteEnabled'=>true]);
             $pdf->getDomPDF()->setHttpContext($contxt);
-       
-        $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
-
-        return $pdf->stream('general-invoic.pdf');
+            $pdf = PDF::loadView('general-invoic',compact('order'));
+            
+            return $pdf->stream('general-invoic.pdf');
     }
 }
