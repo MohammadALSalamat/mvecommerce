@@ -100,15 +100,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       @foreach ($order->product as $items)
                       <tr>
                         <th scope="row">1</th>
-                        <td class="text-truncate"  word-break: break-all !important;>
+                        <td class="text-truncate" >
                           <span class="avatar avatar-xs">
                             <img class="box-shadow-2" src="{{  public_path($items->image)}}" style="width:20px" alt="avatar">
                           </span>
-                          <span style=" word-break: break-all !important;">{{ $items->title }}</span>
+                          <span style="white-space: pre-wrap;">{{ $items->title }}</span>
                         </td>
-                        <td class="text-right">{{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}</td>
-                        <td class="text-right">{{ $items->pivot->quantity }}</td>
-                        <td class="text-right">
+                        <td class="text-right" >{{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}</td>
+                        <td class="text-right" >{{ $items->pivot->quantity }}</td>
+                        <td class="text-right" >
                            @if(empty($items->offer_price) || $items->offer_price == null )
                           {{ $items->price }} 
                           @else
