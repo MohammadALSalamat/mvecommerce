@@ -47,6 +47,7 @@ class SellerOrderController extends Controller
     public function generateInvoicePDF($id)
     {
         $order = Order::find($id);
+        
 
         $pdf = App::make('dompdf.wrapper');
         $contxt= stream_context_create([
@@ -60,6 +61,6 @@ class SellerOrderController extends Controller
             $pdf->getDomPDF()->setHttpContext($contxt);
             $pdf = PDF::loadView('general-invoic',compact('order'));
             
-            return $pdf->stream('general-invoic.pdf');
+            return $pdf->download('#INV-'.$order->order_number.'-invoic.pdf');
     }
 }
