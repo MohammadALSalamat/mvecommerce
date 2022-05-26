@@ -17,7 +17,6 @@
   <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
   <link rel="stylesheet" type="text/css" href="{{ public_path('app-assets/css/vendors.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
 
   <style>
      @page {
@@ -30,13 +29,13 @@
 
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-  <div class="app-content content">
+  <div class="app-content content" style="width:1500px">
     <div class="content-wrapper">
       <div class="content-body">
-        <section class="card">
+        <section class="card" style="width:1500px">
           <div id="invoice-template" class="card-body">
             <!-- Invoice Company Details -->
-            <div id="invoice-company-details" class="row">
+            <div id="invoice-company-details" class="row" style="display:inline-block;width:1500px">
               <div class="col-md-6 col-sm-12 text-center text-md-left">
                 <div class="media">
                   <img src="{{ public_path('front-style/assets/images/itajer_logo.png') }}" width="200px"
@@ -85,7 +84,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <!--/ Invoice Customer Details -->
             <!-- Invoice Items Details -->
             <div id="invoice-items-details" class="pt-2">
-              <div class="row">
+              <div class="row" style="page-break-after: always;">
                 <div class="table-responsive col-sm-12">
                   <table class="table"  style="width:600px">
                     <thead>
@@ -100,8 +99,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                     <tbody>
                       @foreach ($order->product as $items)
                       <tr>
-                        <th scope="row">1</th>
-                        <td class="text-truncate" style="width:200px">
+                        <th scope="row" style="width: 100px">1</th>
+                        <td class="text-truncate" style="width:300px">
                           <span class="avatar avatar-xs">
                             <img class="box-shadow-2" src="{{  public_path($items->image)}}" style="width:20px" alt="avatar">
                           </span>
@@ -125,7 +124,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="row">
                 <div class="col-md-7 col-sm-12 text-center text-md-left">
-
                 </div>
                 <div class="col-md-5 col-sm-12">
                   <p class="lead">Total due</p>
