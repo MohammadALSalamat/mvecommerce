@@ -432,6 +432,11 @@
                                 target="_blank" href="https://dribbble.com/harnishdesign">@Dribbble</a></p>
 
                                 <h3 id="v1-2">Orders</h3>
+                                <p> There are two way(s) to view all orders  </p>
+                                <ol>
+                                    <li> <code> View All </code> button on the dashboard below the statistice boards </li>
+                                    <li> from the left bar under the <code> Order(s) Managments </code> </li>
+                                </ol>
                                 <p> The seller will be able to view the purchased product(s) beside view the invoices and download the invoices as a PDF</p>
                                 <p> below the video will show how to view the orders and download the invoices</p>
                                 <video width="100%" height="440" controls>
@@ -440,29 +445,19 @@
                                 </video>
                                 <hr class="divider">         
                                 <h3 id="v1-1">Subscriptions</h3>
-                        <ul class="changelog">
-                            <li><span class="badge badge-success">Added</span> Your information here for added new
-                                feature</li>
-                            <li><span class="badge badge-danger">Fixed</span> Some minor bugs for browser compatibility
-                            </li>
-                            <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
-                            <li><span class="badge badge-info">Updated</span> FontAwesome to Latest Version</li>
-                            <li><span class="badge badge-info">Updated</span> Bootstrap to Latest Version</li>
-                            <li><span class="badge badge-info">Updated</span> Improvements in CSS and JS</li>
-                        </ul>
-
-                        <hr class="divider">
-                        <h3 id="v1-0">Seller Sittings</h3>
-                        <ul class="changelog">
-                            <li><span class="badge badge-success">Added</span> Your information here for added new
-                                feature</li>
-                            <li><span class="badge badge-danger">Fixed</span> Some minor bugs for browser compatibility
-                            </li>
-                            <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
-                            <li><span class="badge badge-info">Updated</span> FontAwesome to Latest Version</li>
-                            <li><span class="badge badge-info">Updated</span> Bootstrap to Latest Version</li>
-                            <li><span class="badge badge-info">Updated</span> Improvements in CSS and JS</li>
-                        </ul>
+                            
+                                <hr class="divider">
+                                <h3 id="v1-0">Seller Sittings</h3>
+                                <ul class="changelog">
+                                    <li><span class="badge badge-success">Added</span> Your information here for added new
+                                        feature</li>
+                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for browser compatibility
+                                    </li>
+                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
+                                    <li><span class="badge badge-info">Updated</span> FontAwesome to Latest Version</li>
+                                    <li><span class="badge badge-info">Updated</span> Bootstrap to Latest Version</li>
+                                    <li><span class="badge badge-info">Updated</span> Improvements in CSS and JS</li>
+                                </ul>
                     </section>
 
                 </div>
