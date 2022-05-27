@@ -431,20 +431,15 @@
                                 target="_blank" href="http://twitter.com/harnishdesign">@twitter</a> / <a
                                 target="_blank" href="https://dribbble.com/harnishdesign">@Dribbble</a></p>
 
-                                <h3 id="v1-2">Orders <small class="text-muted">(12 Oct, 2020)</small></h3>
-                                <ul class="changelog">
-                                    <li><span class="badge badge-success">Added</span> Your information here for added new
-                                        feature</li>
-                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for browser compatibility
-                                    </li>
-                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
-                                    <li><span class="badge badge-info">Updated</span> FontAwesome to Latest Version</li>
-                                    <li><span class="badge badge-info">Updated</span> Bootstrap to Latest Version</li>
-                                    <li><span class="badge badge-info">Updated</span> Improvements in CSS and JS</li>
-                                </ul>
-        
+                                <h3 id="v1-2">Orders</h3>
+                                <p> The seller will be able to view the purchased product(s) beside view the invoices and download the invoices as a PDF</p>
+                                <p> below the video will show how to view the orders and download the invoices</p>
+                                <video width="100%" height="440" controls>
+                                    <source src="{{ asset('storage/documentaion/videos/order_video.mp4') }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                                 <hr class="divider">         
-                                <h3 id="v1-1">Subscriptions <small class="text-muted">(12 Oct, 2020)</small></h3>
+                                <h3 id="v1-1">Subscriptions</h3>
                         <ul class="changelog">
                             <li><span class="badge badge-success">Added</span> Your information here for added new
                                 feature</li>
@@ -457,7 +452,7 @@
                         </ul>
 
                         <hr class="divider">
-                        <h3 id="v1-0">Seller Sittings <small class="text-muted">(12 Oct, 2020)</small></h3>
+                        <h3 id="v1-0">Seller Sittings</h3>
                         <ul class="changelog">
                             <li><span class="badge badge-success">Added</span> Your information here for added new
                                 feature</li>
@@ -478,23 +473,13 @@
 
         <!-- Footer
   ============================ -->
-        <footer id="footer" class="section bg-dark footer-text-light">
+        <footer id="footer" class="section bg-danger footer-text-light">
             <div class="container">
-                <ul class="social-icons social-icons-lg social-icons-muted justify-content-center mb-3">
-                    <li><a data-toggle="tooltip" href="https://twitter.com/harnishdesign/" target="_blank" title=""
-                            data-original-title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                    <li><a data-toggle="tooltip" href="http://www.facebook.com/harnishdesign/" target="_blank" title=""
-                            data-original-title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a data-toggle="tooltip" href="http://www.dribbble.com/harnishdesign/" target="_blank" title=""
-                            data-original-title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
-                    <li><a data-toggle="tooltip" href="http://www.github.com/" target="_blank" title=""
-                            data-original-title="GitHub"><i class="fab fa-github"></i></a></li>
-                </ul>
-                <p class="text-center">Copyright &copy; 2020 <a
-                        href="http://www.harnishdesign.net/idocs-one-page-documentation-html-template/">iDocs</a>. All
+                <p class="text-center text-white">Copyright &copy; 2022 <a
+                        href="{{ route('homepage') }}" class="text-white">ITajer</a>. All
                     Rights Reserved.</p>
-                <p class="text-2 text-center mb-0">Design &amp; Develop by <a class="btn-link" target="_blank"
-                        href="http://www.harnishdesign.net/">HarnishDesign</a>.</p>
+                <p class="text-2 text-center mb-0 text-white">Design &amp; Develop by <a class="btn-link text-white" target="_blank"
+                        href="http://9yards.ae">9yards Team</a>.</p>
             </div>
         </footer>
         <!-- Footer end -->
