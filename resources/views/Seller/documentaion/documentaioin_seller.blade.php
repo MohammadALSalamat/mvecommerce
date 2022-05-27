@@ -536,19 +536,19 @@
 ============================ -->
         <div class="idocs-navigation bg-light">
             <ul class="nav flex-column ">
-                <li class="nav-item"><a class="nav-link active" href="#idocs_start">Getting Started</a>
+                <li class="nav-item"><a class="nav-link active" href="#idocs_start">ابدء</a>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#idocs_installation">Basic Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#idocs_html_structure">Admin Panel Structure</a>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_installation">معلومات أساسية</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_html_structure">هيكل لوحة الإدارة</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#idocs_sass">Main Sections</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_sass">الأقسام الرئيسية</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#idocs_layout">Products</a>
+                <li class="nav-item"><a class="nav-link" href="#idocs_layout">منتجات</a>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#idocs_header">View Products</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#idocs_addnewproduct">Add New Products</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#idocs_navbar">Edit Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_header">مشاهدة المنتجات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_addnewproduct">أضف منتجات جديدة</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#idocs_navbar">تحرير المنتجات</a></li>
                         <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Frequently Bought Together </a></li>
