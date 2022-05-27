@@ -455,6 +455,10 @@
                                 <h3 id="v1-0">Seller Sittings</h3>
                                 <p> The final things are how the seller can edit the personal , company details </p>
                                 <p> below is a video to show how to do the things </p>
+                                <video width="100%" height="440" controls>
+                                    <source src="{{ asset('storage/documentaion/videos/seller_sittings.mp4') }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                     </section>
 
                 </div>
