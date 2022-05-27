@@ -445,19 +445,15 @@
                                 </video>
                                 <hr class="divider">         
                                 <h3 id="v1-1">Subscriptions</h3>
-                            
+                                <p> The subscribe is what the seller select from the begging then he will be able to upgarde the package or view the current package </p>
+                                <p> below is a video to show the subscription</p>
+                                <video width="100%" height="440" controls>
+                                    <source src="{{ asset('storage/documentaion/videos/subscription.mp4') }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                                 <hr class="divider">
                                 <h3 id="v1-0">Seller Sittings</h3>
-                                <ul class="changelog">
-                                    <li><span class="badge badge-success">Added</span> Your information here for added new
-                                        feature</li>
-                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for browser compatibility
-                                    </li>
-                                    <li><span class="badge badge-danger">Fixed</span> Some minor bugs for responsive</li>
-                                    <li><span class="badge badge-info">Updated</span> FontAwesome to Latest Version</li>
-                                    <li><span class="badge badge-info">Updated</span> Bootstrap to Latest Version</li>
-                                    <li><span class="badge badge-info">Updated</span> Improvements in CSS and JS</li>
-                                </ul>
+                                
                     </section>
 
                 </div>
