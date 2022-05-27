@@ -453,7 +453,8 @@
                                 </video>
                                 <hr class="divider">
                                 <h3 id="v1-0">Seller Sittings</h3>
-                                
+                                <p> The final things are how the seller can edit the personal , company details </p>
+                                <p> below is a video to show how to do the things </p>
                     </section>
 
                 </div>
