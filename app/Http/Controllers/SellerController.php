@@ -50,12 +50,13 @@ class SellerController extends Controller
     public function dashboard(){
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
         $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
-        dd($notify_subscripe);
+        
         if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) > 10 ){
            $message_notify ='your days left is less than 10 days please subscripe before '. $notify_subscripe->ends_at . ' Otherwise your account will not work';
         }else{
             $message_notify = null;
         }
+
         $count_vendors = User::where('status',0)->count();
         $products_sold = Order::count();
         $Orders = Order::latest()->get(); // last 6 orders
