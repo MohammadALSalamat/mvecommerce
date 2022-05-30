@@ -6,6 +6,11 @@
     </div>
     <div class="content-body">
       <!-- eCommerce statistic -->
+      @if (!empty($message_notify))
+      <div class="alert alert-danger" role="alert">
+       {{$message_notify}}       
+      </div>
+      @endif
       <div class="row">
         <div class="col-xl-4 col-lg-6 col-12">
           <div class="card pull-up">

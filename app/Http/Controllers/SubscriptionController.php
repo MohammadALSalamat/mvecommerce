@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Seller;
 use App\Models\subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Jobs\renewSubscibtionUser;
 use App\Jobs\renewSubscibtionAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,7 @@ public function admin_viewSubscription_Status()
     {
         
         $subscriptions = subscription::get();
+     
         return view('backend.backend_pages.subscription.admin_viewAllSubscripeSellers' ,compact('subscriptions'));
     }
 
