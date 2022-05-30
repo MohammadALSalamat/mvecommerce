@@ -51,10 +51,16 @@ class SellerController extends Controller
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
         $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
         
-        if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) > 10 ){
-           $message_notify ='your days left is less than 10 days please subscripe before '. $notify_subscripe->ends_at . ' Otherwise your account will not work';
+        if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
+           $message_notify ='your days left is less than 10 days please subscripe before /  '. $notify_subscripe->ends_at .'/ Just ' . Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) . ' Days left Otherwise your account will not work';
         }else{
             $message_notify = null;
+        }
+
+        if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
+            Seller::where('id',$current_user->id)->update([
+                'is_verify'=> 0,
+            ]);
         }
 
         $count_vendors = User::where('status',0)->count();

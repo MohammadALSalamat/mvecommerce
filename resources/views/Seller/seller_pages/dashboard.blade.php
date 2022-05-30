@@ -8,7 +8,7 @@
       <!-- eCommerce statistic -->
       @if (!empty($message_notify))
       <div class="alert alert-danger" role="alert">
-       {{$message_notify}}       
+       {{$message_notify}} 
       </div>
       @endif
       <div class="row">
