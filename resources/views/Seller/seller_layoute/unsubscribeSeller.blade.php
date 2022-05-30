@@ -142,6 +142,8 @@ h1 {
               $today_date = date("Y-m-d H:i:s");
               $after_30days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +30 days'));
             @endphp
+                        <input type="hidden" name="subscribe_id" value="{{ auth('seller')->user()->id}}">
+
             <input type="hidden" name="value" value="300">
             <input type="hidden" name="strip_pan" value="Basic">
             <input type="hidden" name="strip_id" value="1">
@@ -176,6 +178,7 @@ h1 {
               $today_date = date("Y-m-d H:i:s");
               $after_90days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +90 days'));
             @endphp
+                        <input type="hidden" name="subscribe_id" value="{{ auth('seller')->user()->id}}">
             <input type="hidden" name="value" value="1000">
             <input type="hidden" name="strip_pan" value="Basic++">
             <input type="hidden" name="strip_id" value="1">
@@ -211,6 +214,7 @@ h1 {
               $today_date = date("Y-m-d H:i:s");
               $after_180days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +180 days'));
             @endphp
+            <input type="hidden" name="subscribe_id" value="{{ auth('seller')->user()->id}}">
             <input type="hidden" name="value" value="1750">
             <input type="hidden" name="strip_pan" value="Pro">
             <input type="hidden" name="strip_id" value="1">
@@ -246,6 +250,7 @@ h1 {
               $today_date = date("Y-m-d H:i:s");
               $after_360days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +360 days'));
             @endphp
+            <input type="hidden" name="subscribe_id" value="{{ auth('seller')->user()->id}}">
             <input type="hidden" name="value" value="3000">
             <input type="hidden" name="strip_pan" value="Elite">
             <input type="hidden" name="strip_id" value="1">
