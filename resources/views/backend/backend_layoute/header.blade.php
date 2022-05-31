@@ -20,7 +20,7 @@
        </li>
      </ul>
    </div>
-   <div class="navbar-container content">
+   {{-- <div class="navbar-container content">
      <div class="collapse navbar-collapse" id="navbar-mobile">
        <ul class="float-left mr-auto nav navbar-nav">
          <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
@@ -50,7 +50,13 @@
              <span class="avatar avatar-online">
                <img src="{{ asset('app-assets/images/portrait/small/avatar-s-19.png') }}" alt="avatar"><i></i></span>
           </a>
-          
+          <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i>
+              تعديل ملفي</a>
+            <a class="dropdown-item" href="#"><i class="ft-mail"></i> بريدي</a>
+            <a class="dropdown-item" href="#"><i class="ft-check-square"></i> المهمات</a>
+            <a class="dropdown-item" href="#"><i class="ft-message-square"></i> رسائل</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> تسجيل خروج</a>
+          </div>
         </li>  
          @endif
          <li class="dropdown dropdown-language nav-item">
@@ -59,7 +65,7 @@
          <li class="dropdown dropdown-language nav-item">
            <a class=" nav-link" href="{{ route('lang.switch','ar') }}">Arabic</a>
          </li>
-         {{-- <li class="dropdown dropdown-notification nav-item">
+         <li class="dropdown dropdown-notification nav-item">
            <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
              <span class="badge badge-pill badge-default badge-danger badge-up badge-glow">5</span>
            </a>
@@ -217,10 +223,10 @@
              <li class="dropdown-menu-footer"><a class="text-center dropdown-item text-muted"
                  href="javascript:void(0)">Read all messages</a></li>
            </ul>
-         </li> --}}
+         </li>
        </ul>
      </div>
-   </div>
+   </div> --}}
  </div>
 </nav>
 

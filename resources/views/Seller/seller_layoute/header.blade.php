@@ -19,7 +19,7 @@
        </li>
      </ul>
    </div>
-   <div class="navbar-container content">
+   {{-- <div class="navbar-container content">
      <div class="collapse navbar-collapse" id="navbar-mobile">
        <ul class="float-left mr-auto nav navbar-nav">
          <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
@@ -231,7 +231,7 @@
          </li>
        </ul>
      </div>
-   </div>
+   </div> --}}
  </div>
 </nav>
 
