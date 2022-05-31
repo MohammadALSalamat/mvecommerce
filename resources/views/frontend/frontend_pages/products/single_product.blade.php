@@ -438,7 +438,7 @@
                                                 @endphp
                                                 <img src="{{ asset($other_image[0]) }}"
                                                     data-zoom-image="{{asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}"  style="height: 400px !important;width:100% !important;object-fit:contain">
+                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
                                             </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
@@ -446,7 +446,7 @@
                                             <figure class="product-image">
                                                 <img src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" style="height: 400px !important;width:100% !important;object-fit:cover">
+                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
                                             </figure>
                                         </div>
                                         @endforeach
