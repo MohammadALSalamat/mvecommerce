@@ -73,10 +73,12 @@
                     </thead>
                     <tbody>
                       @foreach ($products as $product)
-
+                      @php
+                        $other_image = explode(',',$product->image);
+                      @endphp
                       <tr>
                         <td>{{ $product->id }}</td>
-                        <td><img src="{{asset($product->image)  }}" width="100%" height="50px"
+                        <td><img src="{{asset($other_image[0])  }}" width="100%" height="50px"
                             alt="{{ $product->title }}"></th>
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->slug }}</td>

@@ -113,6 +113,7 @@ class SellerProductController extends Controller
         $addproduct->category_id = $data['category'];
         $addproduct->stock = $data['stock'];
         $addproduct->price = $data['price'];
+        $addproduct->sku = $data['sku'];
         $addproduct->offer_price = $data['offer_price'];
         $addproduct->discound = $discound;
         $addproduct->brand_id = $brand;
@@ -219,6 +220,7 @@ class SellerProductController extends Controller
         'offer_price' => $data['offer_price'],
         'discound' => $discound,
         'brand_id' => $brand,
+        'sku' => $data['sku'],
         'child_category_id' => $data['child_category'],
         'vendor_id' => Auth::guard('seller')->user()->id,
         'status' => $status,
