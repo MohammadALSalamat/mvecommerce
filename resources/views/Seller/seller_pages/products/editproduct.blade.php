@@ -288,7 +288,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput5">SKU</label>
                                                 <div class="col-md-9">
                                                   <input type="text" id="projectinput5" class="form-control"
-                                                    placeholder="add the sku for the product" name="sku" value="{{ $surrennt_product->sku }}">
+                                                    placeholder="add the sku for the product" name="sku" value="{{ $current_product->sku }}">
                                                 </div>
                                               </div>
                                             <div class="form-group row">
@@ -305,7 +305,17 @@ input:checked + .slider:before {
                                                         placeholder="Add The Offer Price Value" step="any" name="offer_price" value="{{ $current_product->offer_price }}">
                                                 </div>
                                             </div>
-                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput56">Frequently Bought Together</label>
+                                                <div class="col-md-9">
+                                                  <select name="field2[]" id="field2" multiple multiselect-search="true"
+                                                    multiselect-select-all="true" multiselect-max-items="3">
+                                                    @foreach ($products as $product)
+                                                    <option value="{{ $product->id }}"> {{ $product->title }}</option>
+                                                    @endforeach
+                                                  </select>
+                                                </div>
+                                              </div>
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Enable</label>
                                                 <div class="col-md-9">

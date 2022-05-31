@@ -506,7 +506,12 @@
                                                     href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
                                         </div>
                                         <div class="product-sku">
-                                            SKU: <span>MS46891340</span>
+                                            SKU: <span>
+                                                @if(empty($single_product->sku) || $single_product->sku == null)
+                                                MS46891340
+                                                @else
+                                                {{ $single_product->sku }}
+                                                @endif</span>
                                         </div>
                                         <div class="mt-2">
                                             @if (!empty($vendor_info->shop_name) || $vendor_info->shop_name != null)
