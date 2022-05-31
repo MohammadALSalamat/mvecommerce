@@ -3,8 +3,6 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.css">
 
 
@@ -433,7 +431,7 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide">
-                                            <figure class="product-image zoo-item" >
+                                            <figure class="product-image" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
@@ -455,8 +453,6 @@
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
-                                    <a href="#" class="product-gallery-btn product-image-full"><i
-                                            class="w-icon-zoom"></i></a>
                                 </div>
                                 <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
                                     'navigation': {
@@ -1908,8 +1904,6 @@
 @section('script')
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-<script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.js') }}"></script>
-<script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe-ui-default.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.js"></script>
 
 <!-- Starting the ZooMove -->
