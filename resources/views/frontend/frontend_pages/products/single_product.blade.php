@@ -5,7 +5,8 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/vendor/photoswipe/default-skin/default-skin.min.css') }}">
-<!-- Swiper's CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.css">
+
 
 <style>
     .carousel-item {
@@ -432,20 +433,21 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide">
-                                            <figure class="product-image">
+                                            <figure class="product-image zoo-item" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
-                                                <img src="{{ asset($other_image[0]) }}"
-                                                    data-zoom-image="{{asset($other_image[0]) }}"
+                                                <img class="zoo-item"  
+                                                    src="{{ asset($other_image[0]) }}"
+                                                    data-zoo-image="{{asset($other_image[0]) }}"
                                                     alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
                                             </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
-                                                <img src="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
+                                                <img class="zoo-item" src="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    data-zoo-image="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
                                             </figure>
                                         </div>
@@ -1904,9 +1906,16 @@
 @endsection
 
 @section('script')
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe.js') }}"></script>
 <script src="{{ asset('front-style/assets/vendor/photoswipe/photoswipe-ui-default.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.js"></script>
 
+<!-- Starting the ZooMove -->
+<script>
+    $('.zoo-item').ZooMove();
+ </script>
 <script>
     var checked = [];
     //  add eventlistener listener on parent (listen for change event)
