@@ -3,8 +3,9 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.css">
-
+<style>
+    .zoo-item{position:absolute;width:100%;height:100%;transition:all 150ms linear;overflow:hidden;display:flex;align-items:center;justify-content:center}.zoo-item .zoo-img{position:absolute;top:0;left:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover;transition:transform .5s ease-out}
+</style>
 
 <style>
     .carousel-item {
@@ -431,7 +432,7 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide">
-                                            <figure class="product-image" >
+                                            <figure class="product-image" style="position: relative" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
