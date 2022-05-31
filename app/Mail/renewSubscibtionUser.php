@@ -29,7 +29,7 @@ class renewSubscibtionUser extends Mailable
     public function build()
     {
         return $this->from('support@9yards.ae')
-        ->subject('New Order your Product')
+        ->subject('Renew Subscription')
         ->view('mails.sellers_Emails.subscribtion_renew_user')
         ->with('email_data', $this->email_data);
     }   

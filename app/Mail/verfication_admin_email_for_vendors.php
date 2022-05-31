@@ -30,7 +30,7 @@ class verfication_admin_email_for_vendors extends Mailable implements ShouldQueu
     public function build()
     {
         return $this->from('support@9yards.ae')
-        ->subject('Vvendor Info Registration')
+        ->subject('Vendor Info Registration')
         ->view('mails.send_verify_for_admin')
         ->attach($this->adminData['license'])
         ->with('adminData', $this->adminData);

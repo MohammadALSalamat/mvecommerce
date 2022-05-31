@@ -30,7 +30,7 @@ class verficationVendors extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->from('support@9yards.ae')
-        ->subject('vendor Regirstaion')
+        ->subject('Vendor Regirstaion')
         ->view('mails.verify_vendors')
         ->with('newdata', $this->newdata);
     }
