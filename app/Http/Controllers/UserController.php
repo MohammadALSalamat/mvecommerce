@@ -34,17 +34,22 @@ class UserController extends Controller
     {
         $data = $request->all();
         //email validation
-        $Emailrepate = User::where('email',$data['email'])->count();
         if ($data['role'] == 'seller') {
+            $Emailrepate = Seller::where('email',$data['email'])->count();
             $usernamerepate = Seller::where('username', $data['username'])->count();
-            if ($Emailrepate > 0) {
-                return back()->with('error', ' The Email Is Already There');
+            if ($usernamerepate > 0) {
+                return back()->with('error', ' The Email in sellers table Is Already There');
             }
             if ($usernamerepate > 0) {
-                return back()->with('error', ' The User Name Is Already There');
+                return back()->with('error', ' The User Name in sellers table Is Already There');
             }
-        }elseif($data['role'] == 'seller'){
+        }elseif($data['role'] == 'admin'){
+            $usernamerepate = Adminview::where('email', $data['email'])->count();
+            if ($usernamerepate > 0) {
+                return back()->with('error', ' The Email in admin table Is Already There');
+            }
         }else{
+            $Emailrepate = User::where('email',$data['email'])->count();
             $usernamerepate = User::where('username', $data['username'])->count();
             if ($Emailrepate > 0) {
                 return back()->with('error', ' The Email Is Already There');
@@ -88,13 +93,10 @@ class UserController extends Controller
         }elseif($data['role'] == 'admin'){
             $newuser = new Adminview();
             $newuser->full_name = $data['full_name'];
-            $newuser->username = $data['username'];
             $newuser->email = $data['email'];
             $newuser->password = $password;
-            $newuser->added_by = $data['role'];
             $newuser->photo = $data['image'];
             $newuser->phone = $data['phone'];
-            $newuser->address = $data['address'];
             $newuser->status = $status;
             $newuser->save(); 
         }else{
