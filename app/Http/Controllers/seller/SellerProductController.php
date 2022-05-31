@@ -131,11 +131,13 @@ class SellerProductController extends Controller
         $user = Auth::guard('seller')->user()->id;
         $vendors = Seller::find(Auth::guard('seller')->user()->id);
         $brands = brand::get();
+
         $categories = category::where('is_parent',0)->get();
         $cat_category =category::where('is_parent',1)->get();
+        $products = product::where('vendor_id',$user)->where('added_by','seller')->get();
         if ($current_product) {
 
-            return view('Seller.seller_pages.products.editproduct', compact('current_product','brands','vendors','categories'));
+            return view('Seller.seller_pages.products.editproduct', compact('products','current_product','brands','vendors','categories'));
         } else {
             return back()->with('error', 'The ID is not found');
         }
