@@ -2,67 +2,67 @@
 @section('style')
 <style>
     /* The switch - the box around the slider */
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
-    /* Hide default HTML checkbox */
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-    /* The slider */
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
-    input:checked+.slider {
-        background-color: #2196F3;
-    }
+input:checked + .slider {
+  background-color: #2196F3;
+}
 
-    input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
 
-    input:checked+.slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
 
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
 
-    .slider.round:before {
-        border-radius: 50%;
-    }
+.slider.round:before {
+  border-radius: 50%;
+}
 </style>
 @endsection
 @section('content')
@@ -105,39 +105,30 @@
                             <div class="card-content collpase show">
                                 <div class="card-body">
 
-                                    <form class="form form-horizontal"
-                                        action="{{ route('seller_updateproducts',$current_product->id ) }}"
-                                        method="POST" enctype="multipart/form-data">
+                                    <form class="form form-horizontal" action="{{ route('seller_updateproducts',$current_product->id ) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-clipboard"></i> Requirements</h4>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput5">Title *
-                                                </label>
+                                                <label class="col-md-3 label-control" for="projectinput5">Title * </label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the title" name="title"
-                                                        value="{{ $current_product->title }}">
+                                                        placeholder="add the title" name="title" value="{{ $current_product->title }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput5">Arabic
-                                                    Title</label>
+                                                <label class="col-md-3 label-control" for="projectinput5">Arabic Title</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the title" name="ar_title"
-                                                        value="{{ $current_product->ar_title }}">
+                                                        placeholder="add the title" name="ar_title" value="{{ $current_product->ar_title }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control"
-                                                    for="projectinput56">Vendors</label>
+                                                <label class="col-md-3 label-control" for="projectinput56">Vendors</label>
                                                 <div class="col-md-9">
-                                                    <select id="projectinput56" name="vendor" class="form-control"
-                                                        disabled>
-                                                        <option selected value="{{ $vendors->id }}">
-                                                            {{ $vendors->full_name }}
-                                                        </option>
+                                                    <select id="projectinput56" name="vendor" class="form-control" disabled>
+                                                        <option  selected value="{{ $vendors->id }}" >{{ $vendors->full_name }}
+                                                        </option> 
                                                         {{-- @foreach ($vendors as $vendor)
                                                         <option value="{{ $vendor->id }}" > {{ $vendor->full_name }}
                                                         </option>
@@ -146,15 +137,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control"
-                                                    for="projectinput76">Brands</label>
+                                                <label class="col-md-3 label-control" for="projectinput76">Brands</label>
                                                 <div class="col-md-9">
                                                     <select id="projectinput76" name="brand" class="form-control">
-                                                        <option value="none">
-                                                            <-- Brands -->
+                                                        <option value="none" ><-- Brands -->
                                                         </option>
                                                         @foreach ($brands as $brand)
-                                                        <option value="{{ $brand->id }}" @if($current_product->brand_id == $brand->id) selected @else @endif > {{ $brand->title }}
+                                                        <option value="{{ $brand->id }}" @if($current_product->brand_id == $brand->id) selected @else  @endif > {{ $brand->title }}
                                                         </option>
                                                         @endforeach
                                                     </select>
@@ -165,63 +154,52 @@
                                                 <div class="col-md-9">
                                                     <select id="cat_id" name="category" class="form-control">
                                                         @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected = "selected" @else
-                                                            @endif > {{ $category->title }} </option>
+                                                        <option value="{{ $category->id }}" @if($current_product->category_id == $category->id) selected = "selected" @else  @endif > {{ $category->title }} </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row d-none" id="child_cat_div">
-                                                <label class="col-md-3 label-control" for="child_cat_id">Child
-                                                    Category</label>
+                                                <label class="col-md-3 label-control" for="child_cat_id">Child Category</label>
                                                 <div class="col-md-9">
-                                                    <select id="child_cat_id" name="child_category"
-                                                        class="form-control">
-
+                                                    <select id="child_cat_id" name="child_category" class="form-control">
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control"
-                                                    for="projectinput11">Summary</label>
+                                                <label class="col-md-3 label-control" for="projectinput11">Summary</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote" rows="5" class="form-control"
-                                                        name="summary"
-                                                        placeholder="About Project">{!! $current_product->Summary !!}</textarea>
+                                                    name="summary" placeholder="About Project">{!! $current_product->Summary !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput11">Arabic
-                                                    Summary</label>
+                                                <label class="col-md-3 label-control" for="projectinput11">Arabic Summary</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote_ar1" rows="5" class="form-control"
-                                                        name="ar_summary"
-                                                        placeholder="About Project">{!! $current_product->ar_Summary !!}</textarea>
+                                                    name="ar_summary" placeholder="About Project">{!! $current_product->ar_Summary !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder"
-                                                            class="btn btn-light">
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
                                                             <i class="fa fa-picture-o"></i> Choose Product Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail" class="form-control" type="text"
-                                                        name="filepath" value="{{ $current_product->image }}">
+                                                    <input id="thumbnail" class="form-control" type="text" name="filepath" value="{{ $current_product->image }}">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1"
-                                                            class="btn btn-light">
+                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
                                                             <i class="fa fa-picture-o"></i> Choose Size Guid
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail1" class="form-control" type="text"
-                                                        name="size_guid" value="{{ $current_product->size_guid }}">
+                                                    <input id="thumbnail1" class="form-control" type="text" name="size_guid" value="{{ $current_product->size_guid }}">
                                                 </div>
                                                 <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
@@ -230,117 +208,105 @@
                                                     for="projectinput9">Description</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote1" rows="5" class="form-control"
-                                                        name="comment"
-                                                        placeholder="About Project">{!! $current_product->description !!}</textarea>
+                                                        name="comment" placeholder="About Project">{!! $current_product->description !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput9">Arabic
-                                                    Description</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Description</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote_ar" rows="5" class="form-control"
-                                                        name="ar_comment"
-                                                        placeholder="About Project">{!! $current_product->ar_description !!}</textarea>
+                                                        name="ar_comment" placeholder="About Project">{!! $current_product->ar_description !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput9">Additional
-                                                    Info</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Additional Info</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote2" rows="5" class="form-control"
-                                                        name="additional_info"
-                                                        placeholder="write somthing new">{!! $current_product->additional_info !!}</textarea>
+                                                        name="additional_info" placeholder="write somthing new">{!! $current_product->additional_info !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput9">Arabic
-                                                    Additional Info</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Additional Info</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote_ar2" rows="5" class="form-control"
-                                                        name="ar_additional_info"
-                                                        placeholder="write somthing new">{!! $current_product->ar_additional_info !!}</textarea>
+                                                        name="ar_additional_info" placeholder="write somthing new">{!! $current_product->ar_additional_info !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput9">Return
-                                                    Policy</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Return Policy</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote3" rows="5" class="form-control"
-                                                        name="return_policy"
-                                                        placeholder="Write Something ">{!! $current_product->return_policy !!}</textarea>
+                                                        name="return_policy" placeholder="Write Something ">{!! $current_product->return_policy !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput9">Arabic Return
-                                                    Policy</label>
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">Arabic Return Policy</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote_ar3" rows="5" class="form-control"
-                                                        name="ar_return_policy"
-                                                        placeholder="Write Something ">{!! $current_product->ar_return_policy !!}</textarea>
+                                                        name="ar_return_policy" placeholder="Write Something ">{!! $current_product->ar_return_policy !!}</textarea>
                                                 </div>
                                             </div>
-                                            
+                                            {{-- <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput46">Size</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput46" name="size" class="form-control">
+                                                        <option value="none" ><-- Product Size -->
+                                                        </option>
+                                                        <option value="Small" @if ($current_product->size == "Small" || $current_product->size == "S" ) selected @endif >Small </option>
+                                                        <option value="Medium"  @if ($current_product->size == "Medium" || $current_product->size == "M") selected @endif >Medium </option>
+                                                        <option value="Large"  @if ($current_product->size == "Large" || $current_product->size == "L") selected @endif  >Large </option>
+                                                        <option value="XLarge"  @if ($current_product->size == "XLarge" || $current_product->size == "XL") selected @endif  >XLarge </option>
+                                                    </select>
+                                                </div>
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput96">Condition</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput96" name="condition" class="form-control">
+                                                        <option value="none" ><-- Product condition -->
+                                                        </option>
+                                                        <option value="New" @if ($current_product->conditions == "New") selected @endif >New </option>
+                                                        <option value="Popular" @if ($current_product->conditions == "Popular") selected @endif >Popular </option>
+                                                        <option value="Old" @if ($current_product->conditions == "Old") selected @endif >Old </option>
+                                                        <option value="Second Hand" @if ($current_product->conditions == "Second Hand") selected @endif >Second Hand </option>
+                                                    </select>
+                                                </div>
+                                            </div> --}}
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput30">Stock</label>
                                                 <div class="col-md-9">
                                                     <input type="number" id="projectinput30" class="form-control"
-                                                        placeholder="add the stock value" name="stock"
-                                                        value="{{ $current_product->stock }}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput5">SKU</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the sku for the product" name="sku"
-                                                        value="{{ $current_product->sku }}">
+                                                        placeholder="add the stock value" name="stock" value="{{ $current_product->stock }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput31">Price</label>
                                                 <div class="col-md-9">
                                                     <input type="number" id="projectinput31" class="form-control"
-                                                        placeholder="Add The Price Value" step="any" name="price"
-                                                        value="{{ $current_product->price }}">
+                                                        placeholder="Add The Price Value" step="any" name="price" value="{{ $current_product->price }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput31">Offer
-                                                    Price</label>
+                                                <label class="col-md-3 label-control" for="projectinput31">Offer Price</label>
                                                 <div class="col-md-9">
                                                     <input type="number" id="projectinput31" class="form-control"
-                                                        placeholder="Add The Offer Price Value" step="any"
-                                                        name="offer_price" value="{{ $current_product->offer_price }}">
+                                                        placeholder="Add The Offer Price Value" step="any" name="offer_price" value="{{ $current_product->offer_price }}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput56">Frequently
-                                                    Bought Together</label>
-                                                <div class="col-md-9">
-                                                    <select name="field2[]" id="field2" multiple
-                                                        multiselect-search="true" multiselect-select-all="true"
-                                                        multiselect-max-items="3">
-                                                        @foreach ($products as $product)
-                                                        <option value="{{ $product->id }}" 
-                                                            @if (!empty($current_product->frequantly_boughts_ids) ||
-                                                            $current_product->frequantly_boughts_ids != null)
-                                                            @if (in_array($product->id,$current_product->frequantly_boughts_ids))
-                                                            selected
-                                                            @endif
-                                                            @endif>
-                                                            {{ $product->title }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            
+                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1">Enable</label>
                                                 <div class="col-md-9">
-                                                    <!-- Rounded switch -->
-                                                    <label class="switch">
-                                                        <input type="checkbox" name="status" @if($current_product->status == 1) checked @endif>
+                                                   <!-- Rounded switch -->
+                                                        <label class="switch">
+                                                        <input type="checkbox" name="status"  @if ($current_product->status == 1) checked @endif>
                                                         <span class="slider round"></span>
-                                                    </label>
+                                                        </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -365,38 +331,37 @@
 </div>
 @endsection
 @section('script')
-<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+ <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
-    $('#lfm,#lfm1').filemanager('image');
+     $('#lfm,#lfm1').filemanager('image');
+
 </script>
 <script>
-    var child_cat_id = {
-        {
-            $current_product - > child_category_id
-        }
-    }
-    $('#cat_id').change(function() {
+    var child_cat_id = {{ $current_product->child_category_id }}
+    $('#cat_id').change(function(){
         var cat_id = $(this).val();
-        if (cat_id != null) {
+        if(cat_id != null){
+            
             $.ajax({
-                url: "/seller/category/" + cat_id + "/child",
+                url: "/seller/category/"+cat_id+"/child",
                 type: "POST",
-                data: {
-                    _token: "{{csrf_token()}}",
-                    cat_id: cat_id,
+                data:{
+                    _token:"{{csrf_token()}}",
+                    cat_id:cat_id,
                 },
-                success: function(response) {
+                success:function(response){
                     var html_option = "<option value='' ><-- Child Category --></option>"
-                    if (response.status) {
+                    if(response.status){
                         $('#child_cat_div').removeClass('d-none');
-                        $.each(response.data, function(index, value) {
-                            html_option += "<option value='" + value.id + "'" + (
-                                    child_cat_id == value.id ? 'selected' : '') + ">" +
-                                value.title + "</option>"
+                        $.each(response.data,function(index,value)
+                        {
+                                html_option +="<option value='"+value.id+"'"+(child_cat_id == value.id?'selected':'')+">"+value.title+"</option>"
                         });
-                    } else {
+
+                    }else{
                         $('#child_cat_div').addClass('d-none');
                     }
+
                     $('#child_cat_id').html(html_option);
                 }
             });
