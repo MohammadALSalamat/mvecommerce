@@ -285,6 +285,13 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">SKU</label>
+                                                <div class="col-md-9">
+                                                  <input type="text" id="projectinput5" class="form-control"
+                                                    placeholder="add the sku for the product" name="sku" value="{{ $surrennt_product->sku }}">
+                                                </div>
+                                              </div>
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput31">Price</label>
                                                 <div class="col-md-9">
                                                     <input type="number" id="projectinput31" class="form-control"
