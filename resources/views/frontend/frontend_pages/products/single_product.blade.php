@@ -438,7 +438,7 @@
                                                 @endphp
                                                 <img src="{{ asset($other_image[0]) }}"
                                                     data-zoom-image="{{asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}"  >
+                                                    alt="{{ $single_product->title }}"  style="height: 400px !important;width:100% !important;object-fit:contain">
                                             </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
@@ -446,7 +446,7 @@
                                             <figure class="product-image">
                                                 <img src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" width="800" height="900">
+                                                    alt="{{ $single_product->title }}" style="height: 400px !important;width:100% !important;object-fit:cover">
                                             </figure>
                                         </div>
                                         @endforeach
@@ -463,13 +463,12 @@
                                     }  }">
                                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ asset($other_image[0]) }}" alt="Product Thumb" width="800"
-                                                height="900">
+                                            <img src="{{ asset($other_image[0]) }}" alt="Product Thumb"  style="height: 100px !important;width:100% !important;object-fit:cover">
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="product-thumb swiper-slide">
                                             <img src="{{asset('storage/popups/'.$image->gallery) }}" alt="Product Thumb"
-                                                width="800" height="900">
+                                            style="height: 100px !important;width:100% !important;object-fit:cover">
                                         </div>
                                         @endforeach
                                     </div>
@@ -1442,7 +1441,17 @@
                                                 title="Add to wishlist"></a>
 
                                         </div>
-
+                                        @if (!empty($product-> discound) || $product-> discound != null)
+                                        <div class="product-label-group">
+                                            @if(Config::get('app.locale') == 'en')
+                                            <label class="product-label label-discount"
+                                                style="font-size: 12px">{{$product-> discound}}% OFF</label>
+                                            @else
+                                            <label class="product-label label-discount"
+                                                style="font-size: 12px">{{$product-> discound}}% خصم</label>
+                                            @endif
+                                        </div>
+                                        @endif
                                     </figure>
                                     <div class="product-details text-center">
                                         <div class="product-cat"><a
@@ -1540,6 +1549,17 @@
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
                                         </div>
+                                        @if (!empty($related_products-> discound) || $related_products-> discound != null)
+                                        <div class="product-label-group">
+                                            @if(Config::get('app.locale') == 'en')
+                                            <label class="product-label label-discount"
+                                                style="font-size: 12px">{{$related_products-> discound}}% OFF</label>
+                                            @else
+                                            <label class="product-label label-discount"
+                                                style="font-size: 12px">{{$related_products-> discound}}% خصم</label>
+                                            @endif
+                                        </div>
+                                        @endif
                                     </figure>
                                     @if(Config::get('app.locale') == 'en')
                                     <div class="product-details text-center">
@@ -1726,14 +1746,14 @@
                                                     <figure class="product-media">
                                                         <a href="{{ route('singleproduct',$item->slug) }}">
                                                             @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:100px !important; width:100% !important;object-fit:contain" />
-                                        <img src="{{ $other_image[1] }}" alt="Product"
-                                            style="height:100px !important; width:100% !important;object-fit:contain" />
-                                        @else
-                                        <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:100px !important; width:100% !important;object-fit:contain" />
-                                        @endif
+                                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            <img src="{{ $other_image[1] }}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            @else
+                                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            @endif
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">
@@ -1765,6 +1785,19 @@
                                                                     ></span>
                                                                 <span class="tooltiptext tooltip-top"></span>
                                                             </div>
+                                                            @if(Config::get('app.locale') == 'en')
+                                                            @if (!empty($item->discound) || $item->discound != null)
+                                                            <small
+                                                                style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
+                                                                {{ $item->discound }}% OFF</small>
+                                                            @endif
+                                                            @else
+                                                            @if (!empty($item->discound) || $item->discound != null)
+                                                            <small
+                                                                style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $item->discound }}%
+                                                                خصم</small>
+                                                            @endif
+                                                            @endif
                                                         </div>
                                                         <div class="product-price">
                                                             @if(empty($item->offer_price) ||
@@ -1776,11 +1809,22 @@
                                                     </div>
                                                 </div>
                                                 @else
+                                                @php
+                                                    
+                                                    $other_image = explode(',',$item->image);
+                                                @endphp
                                                 <div class="product product-widget">
                                                     <figure class="product-media">
                                                         <a href="{{ route('singleproduct',$item->slug) }}">
-                                                            <img src="{{ asset($item->image) }}"
-                                                                alt="{{ $item->title }}" width="100" height="113" />
+                                                            @if(count($other_image) > 1 )
+                                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            <img src="{{ $other_image[1] }}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            @else
+                                                            <img src="{{ $other_image[0]}}" alt="Product"
+                                                                style="height:100px !important; width:100% !important;object-fit:contain" />
+                                                            @endif
                                                         </a>
                                                     </figure>
                                                     <div class="product-details">
@@ -1811,6 +1855,19 @@
                                                                     ></span>
                                                                 <span class="tooltiptext tooltip-top"></span>
                                                             </div>
+                                                            @if(Config::get('app.locale') == 'en')
+                                                            @if (!empty($item->discound) || $item->discound != null)
+                                                            <small
+                                                                style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
+                                                                {{ $item->discound }}% OFF</small>
+                                                            @endif
+                                                            @else
+                                                            @if (!empty($item->discound) || $item->discound != null)
+                                                            <small
+                                                                style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $item->discound }}%
+                                                                خصم</small>
+                                                            @endif
+                                                            @endif
                                                         </div>
                                                         <div class="product-price">
                                                             @if(empty($item->offer_price) ||
