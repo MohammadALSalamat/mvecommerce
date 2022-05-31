@@ -35,12 +35,23 @@ class UserController extends Controller
         $data = $request->all();
         //email validation
         $Emailrepate = User::where('email',$data['email'])->count();
-        $usernamerepate = User::where('username', $data['username'])->count();
-        if($Emailrepate > 0){
-            return back()->with('error',' The Email Is Already There');
-        }
-        if ($usernamerepate > 0) {
-            return back()->with('error', ' The User Name Is Already There');
+        if ($data['role'] == 'seller') {
+            $usernamerepate = Seller::where('username', $data['username'])->count();
+            if ($Emailrepate > 0) {
+                return back()->with('error', ' The Email Is Already There');
+            }
+            if ($usernamerepate > 0) {
+                return back()->with('error', ' The User Name Is Already There');
+            }
+        }elseif($data['role'] == 'seller'){
+        }else{
+            $usernamerepate = User::where('username', $data['username'])->count();
+            if ($Emailrepate > 0) {
+                return back()->with('error', ' The Email Is Already There');
+            }
+            if ($usernamerepate > 0) {
+                return back()->with('error', ' The User Name Is Already There');
+            }
         }
         //validation
         if(empty($data['full_name']) || $data['full_name'] == null){
