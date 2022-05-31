@@ -3,9 +3,7 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
-    .zoo-item{position:absolute;width:100%;height:100%;transition:all 150ms linear;overflow:hidden;display:flex;align-items:center;justify-content:center}.zoo-item .zoo-img{position:absolute;top:0;left:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover;transition:transform .5s ease-out}
-</style>
+<link rel="stylesheet" href="{{ asset('front-style/dist/zoomove.css') }}">
 
 <style>
     .carousel-item {
@@ -431,8 +429,8 @@
                                         'prevEl': '.swiper-button-prev'
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
-                                        <div class="swiper-slide">
-                                            <figure class="product-image" style="position: relative" >
+                                        <div class="swiper-slide" style="height: 300px">
+                                            <figure class="product-image" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
@@ -1899,18 +1897,18 @@
     <!-- End of Page Content -->
 </main>
 <!-- End of Main -->
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="{{ asset('front-style/dist/zoomove.js') }}"></script>
 
+<script>
+    $(document).ready(function () {
+        $('.zoo-item').ZooMove();
+    });
+</script>
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.3.0/zoomove.min.js"></script>
-
-<!-- Starting the ZooMove -->
-<script>
-    $('.zoo-item').ZooMove();
- </script>
 <script>
     var checked = [];
     //  add eventlistener listener on parent (listen for change event)
