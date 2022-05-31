@@ -32,12 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="content-header-right col-md-6 col-12">
-        <div class=" float-md-right">
-          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> Upgrade The Subscription </button></a>
-        </div>
-      </div>
+      
     </div>
     <div class="content-body">
 
@@ -47,7 +42,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">View Your Packcage</h4>
+                <h4 class="card-title">View All Packages</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="mb-0 list-inline">
@@ -70,8 +65,7 @@
                         <th> Stripe Plan</th>
                         <th>Ends At</th>
                         <th>status</th>
-                        <th>action</th>
-                      </tr>
+                        </tr>
                     </thead>
                     <tbody>
                       @foreach ($subscriptions as $subscripe)
@@ -94,25 +88,7 @@
                           <div class="badge badge-danger">Inactive</div>
                           @endif
                         </td>
-                        <td>
-                          <span class="dropdown">
-                            <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
-                              aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
-                                class="ft-settings"></i></button>
-                            <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('seller_add_productAttr',$subscripe->id) }}" class="dropdown-item"><i
-                                class="ft-plus-circle primary"></i> Add Attributes</a>
-                               
-                              <a href="{{ route('seller_editproducts',$subscripe->id) }}" class="dropdown-item"><i
-                                  class="ft-edit-2 success"></i> Edit</a>
-                              <form action="{{ route('seller_deletproducts',$subscripe->id) }}" method="post">
-                                @csrf
-                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
-                                  Delete</a>
-                              </form>
-                            </span>
-                          </span>
-                        </td>
+                       
                       </tr>
                       
                       @endforeach
