@@ -431,37 +431,28 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
-                                            <figure >
+                                            <div >
                                                 <div class="zoom-box">
 
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
-                                                <style>
-                                                        .zoom-box .zoom-selector{
-                                                            background-image: url("{{ $other_image[0] }}");
-                                                        }
-                                                </style>
+                                               
                                                 <img  class="imgact"
                                                     src="{{ asset($other_image[0]) }}"
                                                     alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
                                                 </div>
-                                                </figure>
+                                            </div>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <figure >
+                                            <div >
                                                 <div class="zoom-box">
-                                                <style>
-                                                    .zoom-box .zoom-selector{
-                                                        background-image: url("'storage/popups/'{{$image->gallery}}");
-                                                    }
-                                            </style>
                                                 <img class="imgact"
                                                  src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
                                                 </div>
-                                                </figure>
+                                            </div>
                                         </div>
                                         @endforeach
                                     </div>
@@ -1912,19 +1903,21 @@
     <!-- End of Page Content -->
 </main>
 <!-- End of Main -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.js" >
 </script>
 <script src="{{ asset('front-style/dist/jquery.jqZoom.js') }}"></script>
 
 <script>
-    $(function() {
-        $("img").jqZoom({
-            selectorWidth: 100,
-            selectorHeight: 100,
-            viewerWidth: 600,
-            viewerHeight: 500
+        jQuery.noConflict();
+    jQuery(document).ready(function ($) {
+        jQuery("img").jqZoom({
+            selectorWidth: 30,
+            selectorHeight: 30,
+            viewerWidth: 400,
+            viewerHeight: 300
         });
-    })
+        
+    });
 </script>
 @endsection
 
