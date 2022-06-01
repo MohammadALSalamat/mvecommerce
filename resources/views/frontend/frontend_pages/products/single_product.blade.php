@@ -478,7 +478,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-4 col-md-6 mb-md-6">
+                        <div class="mb-4 col-md-6 mb-md-6" style="z-index: 0">
                             <div class="product-details" data-sticky-options="{'minWidth': 767}">
                                 @if(Config::get('app.locale') == 'en')
                                 <h1 class="product-title">{{ $single_product->title }}</h1>
@@ -1912,10 +1912,10 @@
   $(function() {
 
     $(".imgact").jqZoom({
-            selectorWidth: 100,
-            selectorHeight: 100,
-            viewerWidth: 500,
-            viewerHeight: 400
+            selectorWidth: 30,
+            selectorHeight: 30,
+            viewerWidth: 800,
+            viewerHeight: 600
         });
 
   });
