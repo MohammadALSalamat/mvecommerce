@@ -3,31 +3,6 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.js" >
-</script>
-<script src="{{ asset('front-style/dist/jquery.jqzoom-min.js') }}"></script>
-
-<script>
-    (function( $ ) {
-"use strict";
-
-$(function() {
-
-    $(".imgact").jqZoom({
-            selectorWidth: 30,
-            selectorHeight: 30,
-            viewerWidth: 800,
-            viewerHeight: 600
-        });
-
-  });
-
-}(jQuery));
-
-</script>
-
-<link rel="stylesheet" href="{{ asset('front-style/dist/jqzoom.css') }}">
-
 <style>
     .carousel-item {
         width: 100%;
@@ -253,7 +228,6 @@ $(function() {
     }
 </style>
 
-
 <style>
     .row>.column {
         padding: 0 8px;
@@ -432,28 +406,6 @@ $(function() {
     }
 </style>
 
-<style>
-.jqzoom{
-
-	text-decoration:none;
-	float:left;
-}
-
-</style>
-<script type="text/javascript">
-
-$(document).ready(function() {
-	$('.jqzoom').jqzoom({
-            zoomType: 'standard',
-            lens:true,
-            preloadImages: false,
-            alwaysOn:false
-        });
-	
-});
-
-
-</script>
 @endsection
 @section('content')
 <!-- Start of Main -->
@@ -474,31 +426,27 @@ $(document).ready(function() {
                                         'nextEl': '.swiper-button-next',
                                         'prevEl': '.swiper-button-prev'
                                     }}">
-                                    <div class="swiper-wrapper row cols-1 gutter-no" >
+                                    <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" >
-                                            <div class="zoom-box">
-                                            <figure >
+                                            <figure class="product-image" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 $url2= str_replace(basename($other_image[0]) , '', $other_image[0]  ) ;
                                                 $url2=$url2.'thumbs/'.basename($other_image[0]);
-        
                                                 @endphp
-                                                <img  class="imgact"
+                                                <img  
                                                     src="{{ asset($url2) }}"
-                                                    alt="{{ $single_product->title }}" style="width: 100% !important;height:400px;object-fit:contain">
-                                                </figure>
-                                            </div>
+                                                    data-zoom-image="{{asset($other_image[0]) }}"
+                                                    alt="{{ $single_product->title }}"  style="height: 100px !important;width:100px !important;object-fit:contain">
+                                            </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <div class="zoom-box">
-                                            <figure >
-                                                <img class="imgact"
-                                                    src="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:500px !important;object-fit:contain">
+                                            <figure class="product-image">
+                                                <img  src="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    alt="{{ $single_product->title }}" style="height: 400px !important;width:100% !important;object-fit:cover">
                                             </figure>
-                                            </div>
                                         </div>
                                         @endforeach
                                     </div>
@@ -526,7 +474,7 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-4 col-md-6 mb-md-6" style="z-index: 0">
+                        <div class="mb-4 col-md-6 mb-md-6">
                             <div class="product-details" data-sticky-options="{'minWidth': 767}">
                                 @if(Config::get('app.locale') == 'en')
                                 <h1 class="product-title">{{ $single_product->title }}</h1>
@@ -1948,7 +1896,6 @@ $(document).ready(function() {
     </div>
     <!-- End of Page Content -->
 </main>
-<!-- End of Main -->
 
 @endsection
 
@@ -2074,11 +2021,11 @@ $(document).ready(function() {
 
 <script>
     function openModal() {
-        document.getElementById("myModal").setAttribute('style','display:block');
+        document.getElementById("myModal").style.display = "block";
     }
 
     function closeModal() {
-        document.getElementById("myModal").setAttribute('style','display:none');
+        document.getElementById("myModal").style.display = "none";
     }
     var slideIndex = 1;
     showSlides(slideIndex);
@@ -2103,12 +2050,12 @@ $(document).ready(function() {
             slideIndex = slides.length
         }
         for (i = 0; i < slides.length; i++) {
-            slides[i].setAttribute('style','display:none');
+            slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex - 1].setAttribute('style','display:block');
+        slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
