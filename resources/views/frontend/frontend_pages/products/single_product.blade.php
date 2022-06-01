@@ -3,7 +3,7 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ asset('front-style/dist/jquery.jqZoom.css') }}">
 
 <style>
@@ -431,22 +431,37 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
-                                            <figure class="zoom-box" >
+                                            <figure >
+                                                <div class="zoom-box">
+
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
+                                                <style>
+                                                        .zoom-box .zoom-selector{
+                                                            background-image: url("{{ $other_image[0] }}");
+                                                        }
+                                                </style>
                                                 <img  class="imgact"
                                                     src="{{ asset($other_image[0]) }}"
                                                     alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
-                                            </figure>
+                                                </div>
+                                                </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <figure class="zoom-box">
+                                            <figure >
+                                                <div class="zoom-box">
+                                                <style>
+                                                    .zoom-box .zoom-selector{
+                                                        background-image: url("'storage/popups/'{{$image->gallery}}");
+                                                    }
+                                            </style>
                                                 <img class="imgact"
                                                  src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
-                                            </figure>
+                                                </div>
+                                                </figure>
                                         </div>
                                         @endforeach
                                     </div>
@@ -1903,7 +1918,7 @@
 
 <script>
     $(function() {
-        $(".imgact").jqZoom({
+        $("img").jqZoom({
             selectorWidth: 100,
             selectorHeight: 100,
             viewerWidth: 600,

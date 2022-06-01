@@ -1,23 +1,26 @@
-.zoom-box{
+.zoom-box {
     position: relative;
 }
-.zoom-box img{
+
+.zoom-box img {
     vertical-align: bottom;
 }
-.zoom-box .zoom-selector{
+
+.zoom-box .zoom-selector {
     position: absolute;
-    background-image: url("images/selector.png");
     background-repeat: repeat;
     display: none;
     cursor: crosshair;
 }
-.zoom-box .viewer-box{
+
+.zoom-box .viewer-box {
     position: absolute;
-    border: 1px solid rgb(239,237,240);
+    border: 1px solid rgb(239, 237, 240);
     display: none;
     overflow: hidden;
 }
-.zoom-box .viewer-box>img{
+
+.zoom-box .viewer-box>img {
     position: absolute;
     left: 0;
     top: 0;
