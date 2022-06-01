@@ -1907,9 +1907,9 @@
 
 <script>
     (function( $ ) {
-  "use strict";
+"use strict";
 
-  $(function() {
+$(function() {
 
     $(".imgact").jqZoom({
             selectorWidth: 30,
