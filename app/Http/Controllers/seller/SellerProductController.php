@@ -201,6 +201,7 @@ class SellerProductController extends Controller
             } else {
                 $status = '0';
             }
+            dd($data);
         product::where('id', $id)->update([
         'title' => $data['title'],
         'ar_title' => $data['ar_title'],
