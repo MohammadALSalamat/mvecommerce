@@ -431,28 +431,24 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
-                                            <div >
+                                            <figure >
                                                 <div class="zoom-box">
-
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
-                                               
                                                 <img  class="imgact"
                                                     src="{{ asset($other_image[0]) }}"
                                                     alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
                                                 </div>
-                                            </div>
+                                            </figure>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <div >
-                                                <div class="zoom-box">
+                                            <figure >
                                                 <img class="imgact"
-                                                 src="{{asset('storage/popups/'.$image->gallery) }}"
+                                                src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
-                                                </div>
-                                            </div>
+                                            </figure>
                                         </div>
                                         @endforeach
                                     </div>
@@ -1908,16 +1904,22 @@
 <script src="{{ asset('front-style/dist/jquery.jqZoom.js') }}"></script>
 
 <script>
-        jQuery.noConflict();
-    jQuery(document).ready(function ($) {
-        jQuery("img").jqZoom({
+    (function( $ ) {
+  "use strict";
+
+  $(function() {
+
+    $(".imgact").jqZoom({
             selectorWidth: 30,
             selectorHeight: 30,
             viewerWidth: 400,
             viewerHeight: 300
         });
-        
-    });
+
+  });
+
+}(jQuery));
+
 </script>
 @endsection
 
