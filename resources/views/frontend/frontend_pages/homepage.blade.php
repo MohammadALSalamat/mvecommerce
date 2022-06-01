@@ -1170,7 +1170,7 @@
     @else
     <div class="mb-5 product-wrapper-1 appear-animate">
         <div class="pb-1 mb-4 title-link-wrapper">
-            <h2 class="mb-0 title ls-normal">{{ $item->title }}</h2>
+            <h2 class="mb-0 title ls-normal">{{ $item->ar_title }}</h2>
             <a href="{{ route('shop_special_category',$item->slug) }}"
                 class="mb-0 font-size-normal font-weight-bold ls-25">المزيد من المنتجات<i
                     class="w-icon-long-arrow-left"></i></a>
