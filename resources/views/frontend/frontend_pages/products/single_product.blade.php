@@ -431,7 +431,7 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
-                                            <figure class="product-image zoom-box" >
+                                            <figure class="zoom-box" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
@@ -442,7 +442,7 @@
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <figure class="product-image zoom-box">
+                                            <figure class="zoom-box">
                                                 <img class="imgact"
                                                  src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
@@ -1903,7 +1903,7 @@
 
 <script>
     $(function() {
-        $("imgact").jqZoom({
+        $(".imgact").jqZoom({
             selectorWidth: 100,
             selectorHeight: 100,
             viewerWidth: 600,
@@ -2035,11 +2035,11 @@
 
 <script>
     function openModal() {
-        document.getElementById("myModal").style.display = "block";
+        document.getElementById("myModal").setAttribute('style','display:block');
     }
 
     function closeModal() {
-        document.getElementById("myModal").style.display = "none";
+        document.getElementById("myModal").setAttribute('style','display:none');
     }
     var slideIndex = 1;
     showSlides(slideIndex);
@@ -2064,12 +2064,12 @@
             slideIndex = slides.length
         }
         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+            slides[i].setAttribute('style','display:none');
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex - 1].style.display = "block";
+        slides[slideIndex - 1].setAttribute('style','display:block');
         dots[slideIndex - 1].className += " active";
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
