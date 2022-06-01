@@ -2,8 +2,9 @@
 @section('mytitle',$single_product->title )
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" href="{{ asset('front-style/dist/zoomove.css') }}">
+<link rel="stylesheet" href="{{ asset('front-style/dist/jquery.jqZoom.css') }}">
 
 <style>
     .carousel-item {
@@ -430,22 +431,24 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
+                                            <figure class="product-image zoom-box" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
-                                            <figure class="product-image zoo-item" data-zoo-image="{{asset($other_image[0]) }}">
-                                                
+                                                <img  class="imgact"
+                                                    src="{{ asset($other_image[0]) }}"
+                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
                                             </figure>
                                         </div>
-                                        {{-- @foreach ($product_gallary as $image )
+                                        @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
-                                            <figure class="product-image">
-                                                <img class="zoo-item" src="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    data-zoo-image="{{asset('storage/popups/'.$image->gallery) }}"
+                                            <figure class="product-image zoom-box">
+                                                <img class="imgact"
+                                                 src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
                                             </figure>
                                         </div>
-                                        @endforeach --}}
+                                        @endforeach
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
@@ -1894,13 +1897,19 @@
     <!-- End of Page Content -->
 </main>
 <!-- End of Main -->
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-<script src="{{ asset('front-style/dist/zoomove.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
+</script>
+<script src="{{ asset('front-style/dist/jquery.jqZoom.js') }}"></script>
 
 <script>
-    $(document).ready(function () {
-        $('.zoo-item').ZooMove();
-    });
+    $(function() {
+        $("imgact").jqZoom({
+            selectorWidth: 100,
+            selectorHeight: 100,
+            viewerWidth: 600,
+            viewerHeight: 500
+        });
+    })
 </script>
 @endsection
 
