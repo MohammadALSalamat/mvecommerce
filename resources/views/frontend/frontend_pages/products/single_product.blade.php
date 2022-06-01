@@ -441,7 +441,7 @@
                                                 @endphp
                                                 <img  class="imgact"
                                                     src="{{ asset($url2) }}"
-                                                    alt="{{ $single_product->title }}" style="width: 100%;height:auto">
+                                                    alt="{{ $single_product->title }}" style="width: 100% !important;height:400px;object-fit:contain">
                                                 </figure>
                                             </div>
                                         </div>
