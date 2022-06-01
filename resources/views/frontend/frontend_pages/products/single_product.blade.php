@@ -430,17 +430,14 @@
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
                                         <div class="swiper-slide" style="height: 300px">
-                                            <figure class="product-image" >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
-                                                <img class="zoo-item"  
-                                                    src="{{ asset($other_image[0]) }}"
-                                                    data-zoo-image="{{asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
+                                            <figure class="product-image zoo-item" data-zoo-image="{{asset($other_image[0]) }}">
+                                                
                                             </figure>
                                         </div>
-                                        @foreach ($product_gallary as $image )
+                                        {{-- @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure class="product-image">
                                                 <img class="zoo-item" src="{{asset('storage/popups/'.$image->gallery) }}"
@@ -448,7 +445,7 @@
                                                     alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
                                             </figure>
                                         </div>
-                                        @endforeach
+                                        @endforeach --}}
                                     </div>
                                     <button class="swiper-button-next"></button>
                                     <button class="swiper-button-prev"></button>
