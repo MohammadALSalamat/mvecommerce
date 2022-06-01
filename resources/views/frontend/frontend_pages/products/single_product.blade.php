@@ -430,24 +430,24 @@
                                         'prevEl': '.swiper-button-prev'
                                     }}">
                                     <div class="swiper-wrapper row cols-1 gutter-no">
-                                        <div class="swiper-slide" style="height: 300px">
+                                        <div class="swiper-slide" >
+                                            <div class="zoom-box">
                                             <figure >
-                                                <div class="zoom-box">
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
                                                 @endphp
                                                 <img  class="imgact"
                                                     src="{{ asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:100% !important;object-fit:contain">
-                                                </div>
-                                            </figure>
+                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:500px !important;object-fit:contain">
+                                                </figure>
+                                            </div>
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
                                             <figure >
                                                 <img class="imgact"
                                                 src="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
+                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:500px !important;object-fit:cover">
                                             </figure>
                                         </div>
                                         @endforeach
@@ -1910,10 +1910,10 @@
   $(function() {
 
     $(".imgact").jqZoom({
-            selectorWidth: 30,
-            selectorHeight: 30,
-            viewerWidth: 400,
-            viewerHeight: 300
+            selectorWidth: 100,
+            selectorHeight: 100,
+            viewerWidth: 500,
+            viewerHeight: 400
         });
 
   });

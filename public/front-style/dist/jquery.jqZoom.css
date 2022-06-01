@@ -1,5 +1,6 @@
 .zoom-box {
     position: relative;
+    z-index: 300000;
 }
 
 .zoom-box img {
@@ -12,17 +13,19 @@
     background-repeat: repeat;
     display: none;
     cursor: crosshair;
+    z-index: 30000;
 }
 
 .zoom-box .viewer-box {
     position: absolute;
     border: 1px solid rgb(239, 237, 240);
     display: none;
-    overflow: hidden;
+    z-index: 30000;
 }
 
 .zoom-box .viewer-box>img {
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 30000;
 }
