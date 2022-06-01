@@ -95,6 +95,8 @@ class SellerProductController extends Controller
         }else{
             $frequntly = $data['field2'];
         }
+        $url2= str_replace(basename($data['filepath']) , '', $data['filepath']  ) ;
+        $url2=$url2.'thumbs/'.basename($data['filepath']);
         
         // insert the data
         $addproduct = new product();
@@ -201,6 +203,7 @@ class SellerProductController extends Controller
             } else {
                 $status = '0';
             }
+
         product::where('id', $id)->update([
         'title' => $data['title'],
         'ar_title' => $data['ar_title'],

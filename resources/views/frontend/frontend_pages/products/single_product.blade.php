@@ -435,10 +435,13 @@
                                             <figure >
                                                 @php
                                                 $other_image = explode(',',$single_product->image);
+                                                $url2= str_replace(basename($other_image[0]) , '', $other_image[0]  ) ;
+                                                $url2=$url2.'thumbs/'.basename($other_image[0]);
+        
                                                 @endphp
                                                 <img  class="imgact"
-                                                    src="{{ asset($other_image[0]) }}"
-                                                    alt="{{ $single_product->title }}"  style="height: 300px !important;width:500px !important;object-fit:contain">
+                                                    src="{{ asset($url2) }}"
+                                                    alt="{{ $single_product->title }}" style="width: 100%;height:auto">
                                                 </figure>
                                             </div>
                                         </div>
