@@ -429,7 +429,7 @@
                                         'nextEl': '.swiper-button-next',
                                         'prevEl': '.swiper-button-prev'
                                     }}">
-                                    <div class="swiper-wrapper row cols-1 gutter-no">
+                                    <div class="swiper-wrapper row cols-1 gutter-no" >
                                         <div class="swiper-slide" >
                                             <div class="zoom-box">
                                             <figure >
@@ -444,11 +444,13 @@
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="swiper-slide">
+                                            <div class="zoom-box">
                                             <figure >
                                                 <img class="imgact"
-                                                src="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:500px !important;object-fit:cover">
+                                                    src="{{asset('storage/popups/'.$image->gallery) }}"
+                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:500px !important;object-fit:contain">
                                             </figure>
+                                            </div>
                                         </div>
                                         @endforeach
                                     </div>
