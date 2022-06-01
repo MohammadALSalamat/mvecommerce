@@ -2,9 +2,31 @@
 @section('mytitle',$single_product->title )
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="{{ asset('front-style/dist/jquery.jqZoom.css') }}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.js" >
+</script>
+<script src="{{ asset('front-style/dist/jquery.jqzoom-min.js') }}"></script>
+
+<script>
+    (function( $ ) {
+"use strict";
+
+$(function() {
+
+    $(".imgact").jqZoom({
+            selectorWidth: 30,
+            selectorHeight: 30,
+            viewerWidth: 800,
+            viewerHeight: 600
+        });
+
+  });
+
+}(jQuery));
+
+</script>
+
+<link rel="stylesheet" href="{{ asset('front-style/dist/jqzoom.css') }}">
 
 <style>
     .carousel-item {
@@ -231,6 +253,7 @@
     }
 </style>
 
+
 <style>
     .row>.column {
         padding: 0 8px;
@@ -409,6 +432,28 @@
     }
 </style>
 
+<style>
+.jqzoom{
+
+	text-decoration:none;
+	float:left;
+}
+
+</style>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.jqzoom').jqzoom({
+            zoomType: 'standard',
+            lens:true,
+            preloadImages: false,
+            alwaysOn:false
+        });
+	
+});
+
+
+</script>
 @endsection
 @section('content')
 <!-- Start of Main -->
@@ -1904,28 +1949,7 @@
     <!-- End of Page Content -->
 </main>
 <!-- End of Main -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.js" >
-</script>
-<script src="{{ asset('front-style/dist/jquery.jqZoom.js') }}"></script>
 
-<script>
-    (function( $ ) {
-"use strict";
-
-$(function() {
-
-    $(".imgact").jqZoom({
-            selectorWidth: 30,
-            selectorHeight: 30,
-            viewerWidth: 800,
-            viewerHeight: 600
-        });
-
-  });
-
-}(jQuery));
-
-</script>
 @endsection
 
 @section('script')
