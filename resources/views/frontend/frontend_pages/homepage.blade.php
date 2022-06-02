@@ -186,20 +186,19 @@
                             $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
                         @endphp
                             <div class="col-md-6">
-                                <div class="widget widget-products widget-products-bordered h-100">
-                                    <div class="widget-body br-sm h-100">
-                                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal" style="padding:10px"> Best
-                                            Discound Up to {{ $max_discound }} % For  {{ $cardsDiscound->title }}</h4>
+                                
                                             @if (count($cardsDiscound->one_cat_has_many_products) > 2)
-                                            <div class="row">
-                                                @foreach ($cardsDiscound->one_cat_has_many_products->take(4) as $items)
+                                            <div class="row" style="background: red">
+                                                <div class="col-md-6" style="vertical-align: middle;margin:auto">
+                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:24px"> 
+                                                         Up to {{ $max_discound }} % OFF</h2>
+                                                        <h4 class="text-center"> For  {{ $cardsDiscound->title }}</h4>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <figure>
-                                                        <img src="{{ asset($items->image) }}" alt="product"  style="height:100px;background-color: #fff;object-fit:contain;width:100%" />
+                                                        <img src="{{ asset($cardsDiscound->image) }}" alt="product"  style="height:200px;object-fit:contain;width:100%" />
                                                     </figure>
                                                 </div>
-                                                    
-                                                @endforeach
                                             </div>
                                             @else
                                                 <figure>
@@ -208,8 +207,7 @@
                                                 </figure>
                                             @endif
                                     </div>
-                                </div>
-                            </div>
+
                         @endif
                     @endforeach
                 </div>
