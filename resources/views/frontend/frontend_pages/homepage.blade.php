@@ -188,11 +188,12 @@
                             <div class="col-md-6">
                                 
                                             @if (count($cardsDiscound->one_cat_has_many_products) > 2)
-                                            <div class="row" style="background: red">
+                                            <div class="row" style="background: red;border-radius: 10px;
+                                            box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                 <div class="col-md-6" style="vertical-align: middle;margin:auto">
-                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:24px"> 
+                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:23px"> 
                                                          Up to {{ $max_discound }} % OFF</h2>
-                                                        <h4 class="text-center"> For  {{ $cardsDiscound->title }}</h4>
+                                                        <h4 class="text-center text-white"> For  {{ $cardsDiscound->title }}</h4>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <figure>
