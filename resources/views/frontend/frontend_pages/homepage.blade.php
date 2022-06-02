@@ -179,6 +179,7 @@
         <!-- End of Category Banner Wrapper -->
         <div class="mb-8 row deals-wrapper appear-animate">
             <div class="mb-4 col-lg-9">
+              
                 <div class="row">
                     @foreach ($categories as $cardsDiscound)
                         @if(count($cardsDiscound->one_cat_has_many_products) > 1)
@@ -186,13 +187,11 @@
                             $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
                         @endphp
                             <div class="col-md-6">
-                                
-                                            @if (count($cardsDiscound->one_cat_has_many_products) > 2)
-                                            <div class="row" style="background: red;border-radius: 10px;
+                                            <div class="row" style="background: red;border-radius: 15px;
                                             box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                 <div class="col-md-6" style="vertical-align: middle;margin:auto">
                                                     <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:23px"> 
-                                                         Up to {{ $max_discound }} % OFF</h2>
+                                                        Up to {{ $max_discound }} % OFF</h2>
                                                         <h4 class="text-center text-white"> For  {{ $cardsDiscound->title }}</h4>
                                                 </div>
                                                 <div class="col-md-6">
@@ -201,17 +200,11 @@
                                                     </figure>
                                                 </div>
                                             </div>
-                                            @else
-                                                <figure>
-                                                    <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                                                        height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                                                </figure>
-                                            @endif
                                     </div>
-
                         @endif
                     @endforeach
                 </div>
+             
             </div>
             <!-- TOP SELLING RIGHT BAR -->
             <div class="mb-4 col-lg-3">
