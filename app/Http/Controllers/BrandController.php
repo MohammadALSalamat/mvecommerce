@@ -89,9 +89,7 @@ public function editBrand($id)
         } else {
             $status = '0';
         }
-       
         brand::where('id',$id)->update([
-
         'image' => $data['image'],
         'title' => $data['title'],
         'ar_title' => $data['ar_title'],
@@ -101,9 +99,6 @@ public function editBrand($id)
         return back()->with('message','The Brand has been updated');
 
     }
-
-
-
 
  // delete funstion
  public function deletBrand($id)
