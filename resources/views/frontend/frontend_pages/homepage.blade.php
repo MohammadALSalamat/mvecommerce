@@ -192,12 +192,14 @@
                                             Discound Up to {{ $max_discound }} % For  {{ $cardsDiscound->title }}</h4>
                                             @if (count($cardsDiscound->one_cat_has_many_products) > 2)
                                             <div class="row">
+                                                @foreach ($cardsDiscound->one_cat_has_many_products->take(4) as $items)
                                                 <div class="col-md-6">
                                                     <figure>
-                                                        <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                                                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                                        <img src="{{ asset($items->image) }}" alt="product"  style="height:100px;background-color: #fff;object-fit:contain;width:100%" />
                                                     </figure>
                                                 </div>
+                                                    
+                                                @endforeach
                                             </div>
                                             @else
                                                 <figure>
