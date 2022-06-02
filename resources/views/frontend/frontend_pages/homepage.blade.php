@@ -191,6 +191,9 @@
                             <div class="swiper-wrapper row cols-1 gutter-no">
                                 <div class="swiper-slide">
                                     <div class="product product-single row">
+                                        @php
+                                            $categories_discound = 
+                                        @endphp
                                         @foreach ($categories as $cardsDiscound)
                                         @if(count($cardsDiscound->one_cat_has_many_products) > 0)
                                         @php
