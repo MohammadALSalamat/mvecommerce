@@ -192,29 +192,33 @@
                                 <div class="swiper-slide">
                                     <div class="product product-single row">
                                         @foreach ($categories as $cardsDiscound)
-                                            @if(count($cardsDiscound->one_cat_has_many_products) > 0)
-                                            @php
-                                                $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
-                                            @endphp
-                                            <div class="col-md-6">
-                                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
-                                                                <div class="row" style="background: red;border-radius: 15px;
+                                        @if(count($cardsDiscound->one_cat_has_many_products) > 0)
+                                        @php
+                                        $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->orderBy('discound','DESC')->max('discound');
+                                        @endphp
+                                        <div class="col-md-6">
+                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
+                                                <div class="row"
+                                                    style="background: red;border-radius: 15px;
                                                                     box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
-                                                                <div class="col-md-7" style="vertical-align: middle;margin:auto">
-                                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:22px"> 
-                                                                        Up to {{ $max_discound }} % OFF</h2>
-                                                                        <h4 class="text-center text-white"> For  {{ $cardsDiscound->title }}</h4>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <figure>
-                                                                        <img src="{{ asset($cardsDiscound->image) }}" alt="product"  style="height:200px;object-fit:contain;width:100%" />
-                                                                    </figure>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                            </div>
-                                            @endif
-                                            @endforeach
+                                                    <div class="col-md-7" style="vertical-align: middle;margin:auto">
+                                                        <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white"
+                                                            style="padding:10px; font-size:25px">
+                                                            Up to {{ $max_discound }} % OFF</h2>
+                                                        <h4 class="text-center text-white"> For
+                                                            {{ $cardsDiscound->title }}</h4>
+                                                    </div>
+                                                    <div class="col-md-5 ">
+                                                        <figure>
+                                                            <img src="{{ asset($cardsDiscound->image) }}" alt="product"
+                                                                style="height:200px;object-fit:contain;width:100%" />
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        @endif
+                                        @endforeach
                                     </div>
                                     <div class="swiper-pagination">
                                     </div>
@@ -222,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                      
+
                 </div>
             </div>
             <!-- TOP SELLING RIGHT BAR -->
@@ -315,19 +319,21 @@
                                                             ></span>
                                                         <span class="tooltiptext tooltip-top"></span>
                                                     </div>
-                                                @if(Config::get('app.locale') == 'en')
-                                                @if (!empty($top_sellings->discound) || $top_sellings->discound != null)
-                                                <small
-                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
-                                                    {{ $top_sellings->discound }}% OFF</small>
-                                                @endif
-                                                @else
-                                                @if (!empty($top_sellings->discound) || $top_sellings->discound != null)
-                                                <small
-                                                    style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_sellings->discound }}%
-                                                    خصم</small>
-                                                @endif
-                                                @endif
+                                                    @if(Config::get('app.locale') == 'en')
+                                                    @if (!empty($top_sellings->discound) || $top_sellings->discound !=
+                                                    null)
+                                                    <small
+                                                        style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
+                                                        {{ $top_sellings->discound }}% OFF</small>
+                                                    @endif
+                                                    @else
+                                                    @if (!empty($top_sellings->discound) || $top_sellings->discound !=
+                                                    null)
+                                                    <small
+                                                        style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_sellings->discound }}%
+                                                        خصم</small>
+                                                    @endif
+                                                    @endif
                                                 </div>
                                                 @if(Config::get('app.locale') == 'en')
                                                 <div class="product-price">
@@ -765,7 +771,7 @@
                 Products<i class="w-icon-long-arrow-right"></i></a>
         </div>
         <div class="row">
-           
+
             <!-- End of Banner -->
             <div class="col-lg-12 col-sm-8">
                 <div class="swiper-container swiper-theme" data-swiper-options="{
@@ -1016,7 +1022,6 @@
     @endforeach
     <!-- End Products Collections  -->
 
-
     <!-- Slider under view products -->
     @php
     $sponser_adsdown = \App\Models\sponserAds::where('image_place' ,'homepage_under_full_width')->get();
@@ -1067,7 +1072,7 @@
                 Products<i class="w-icon-long-arrow-right"></i></a>
         </div>
         <div class="row">
-           
+
             <!-- End of Banner -->
             <div class="col-lg-12 col-sm-8">
                 <div class="swiper-container swiper-theme" data-swiper-options="{
@@ -1130,7 +1135,8 @@
                                             href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->title }}</a>
                                     </h4>
                                     @php
-                                    $avareg_review =\App\Models\ProductReview::where('product_id',$products_cat->id)->get();
+                                    $avareg_review
+                                    =\App\Models\ProductReview::where('product_id',$products_cat->id)->get();
                                     #review comments
                                     $avareg = 0;
                                     $sum = 0;
@@ -1256,7 +1262,8 @@
                                             href="{{ route('singleproduct',$products_cat->slug) }}">{{ $products_cat->ar_title }}</a>
                                     </h4>
                                     @php
-                                    $avareg_review = \App\Models\ProductReview::where('product_id',$products_cat->id)->get();
+                                    $avareg_review =
+                                    \App\Models\ProductReview::where('product_id',$products_cat->id)->get();
                                     #review comments
                                     $avareg = 0;
                                     $sum = 0;
@@ -1340,14 +1347,15 @@
             }
         }">
         <div class="swiper-wrapper row gutter-no cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-           @foreach ($brands as $brand)
-           <div class="swiper-slide brand-col" style="height: 100px;width:100px">
-               <figure class="brand-wrapper">
-                   <img src="{{ asset($brand->image) }}" alt="{{ $brand->title }}" style="width: 100px;height:100px;object-fit:contain" />
-               </figure>
-               
-           </div>
-           @endforeach
+            @foreach ($brands as $brand)
+            <div class="swiper-slide brand-col" style="height: 100px;width:100px">
+                <figure class="brand-wrapper">
+                    <img src="{{ asset($brand->image) }}" alt="{{ $brand->title }}"
+                        style="width: 100px;height:100px;object-fit:contain" />
+                </figure>
+
+            </div>
+            @endforeach
         </div>
         <div class="swiper-pagination">
         </div>
