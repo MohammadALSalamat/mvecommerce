@@ -18,6 +18,10 @@ class category extends Model
         return $this->hasMany(product::class,'category_id');
     }
 
+    public function best_descound(){
+        return $this->hasMany(product::class,'category_id')->orderBy('discound');
+    }
+
     // products related to child cat
 
     public function one_child_cat_has_many_products(){

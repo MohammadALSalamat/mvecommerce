@@ -191,8 +191,7 @@
                             <div class="swiper-wrapper row cols-1 gutter-no">
                                 <div class="swiper-slide">
                                     <div class="product product-single row">
-                                        
-                                        @foreach ($categories as $cardsDiscound)
+                                        @foreach ($categories->take(4) as $cardsDiscound)
                                         @if(count($cardsDiscound->one_cat_has_many_products) > 0)
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
