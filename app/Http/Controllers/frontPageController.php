@@ -44,7 +44,6 @@ class frontPageController extends Controller
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         $categories_discound = category::with('best_descound')->where('is_parent', 0)->where('status', 1)->get();
-        dd($categories_discound);
         $sponsers = sponserAds::where('status',1)->get();
         $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id','!=',4)->get();
         $home_Grocery_Categories =category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id',4)->get();
@@ -67,7 +66,7 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
        
-        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling'));
+        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound'));
     }
 
     // login form

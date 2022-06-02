@@ -19,7 +19,7 @@ class category extends Model
     }
 
     public function best_descound(){
-        return $this->hasMany(product::class,'category_id')->orderBy('discound');
+        return $this->hasMany(product::class,'category_id')->orderBy('discound','DESC');
     }
 
     // products related to child cat
