@@ -195,12 +195,12 @@
                                         @if(count($cardsDiscound->one_cat_has_many_products) > 0)
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
+                                        dump($max_discound);
                                         @endphp
                                         <div class="col-md-6">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
-                                                    style="background: red;border-radius: 15px;
-                                                                    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
+                                                    style="background: red;border-radius: 15px;box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                     <div class="col-md-7" style="vertical-align: middle;margin:auto">
                                                         <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white"
                                                             style="padding:10px; font-size:25px">
