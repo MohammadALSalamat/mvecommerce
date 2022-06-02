@@ -179,34 +179,51 @@
         <!-- End of Category Banner Wrapper -->
         <div class="mb-8 row deals-wrapper appear-animate">
             <div class="mb-4 col-lg-9">
-              
-                <div class="row">
-                    @foreach ($categories as $cardsDiscound)
-                        @if(count($cardsDiscound->one_cat_has_many_products) > 1)
-                        @php
-                            $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
-                        @endphp
-                            <div class="col-md-6">
-                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
-                                                <div class="row" style="background: red;border-radius: 15px;
-                                                    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
-                                                <div class="col-md-6" style="vertical-align: middle;margin:auto">
-                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:23px"> 
-                                                        Up to {{ $max_discound }} % OFF</h2>
-                                                        <h4 class="text-center text-white"> For  {{ $cardsDiscound->title }}</h4>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <figure>
-                                                        <img src="{{ asset($cardsDiscound->image) }}" alt="product"  style="height:200px;object-fit:contain;width:100%" />
-                                                    </figure>
-                                                </div>
+                <div class="single-product h-100 br-sm">
+                    <h4 class="title-sm title-underline font-weight-bolder ls-normal">
+                        The Best Discound(s) Of Categries
+                    </h4>
+                    <div class="swiper">
+                        <div class="swiper-container swiper-theme nav-top swiper-nav-lg" data-swiper-options="{
+                            'spaceBetween': 20,
+                            'slidesPerView': 1
+                        }">
+                            <div class="swiper-wrapper row cols-1 gutter-no">
+                                <div class="swiper-slide">
+                                    <div class="product product-single row">
+                                        @foreach ($categories as $cardsDiscound)
+                                            @if(count($cardsDiscound->one_cat_has_many_products) > 0)
+                                            @php
+                                                $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
+                                            @endphp
+                                            <div class="col-md-6">
+                                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
+                                                                <div class="row" style="background: red;border-radius: 15px;
+                                                                    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
+                                                                <div class="col-md-7" style="vertical-align: middle;margin:auto">
+                                                                    <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:22px"> 
+                                                                        Up to {{ $max_discound }} % OFF</h2>
+                                                                        <h4 class="text-center text-white"> For  {{ $cardsDiscound->title }}</h4>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <figure>
+                                                                        <img src="{{ asset($cardsDiscound->image) }}" alt="product"  style="height:200px;object-fit:contain;width:100%" />
+                                                                    </figure>
+                                                                </div>
+                                                            </div>
+                                                        </a>
                                             </div>
-                                        </a>
+                                            @endif
+                                            @endforeach
                                     </div>
-                        @endif
-                    @endforeach
+                                    <div class="swiper-pagination">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      
                 </div>
-             
             </div>
             <!-- TOP SELLING RIGHT BAR -->
             <div class="mb-4 col-lg-3">
