@@ -194,9 +194,7 @@
                                         @foreach ($categories as $cardsDiscound)
                                         @if(count($cardsDiscound->one_cat_has_many_products) > 0)
                                         @php
-                                        $max_discound = \App\Models\product::orderBy('discound','ASC')->where('category_id',$cardsDiscound->id)->first();
-                                        
-                                        dump($max_discound);
+                                        $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
                                         <div class="col-md-6">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
