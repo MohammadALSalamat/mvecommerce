@@ -180,7 +180,6 @@
         <div class="mb-8 row deals-wrapper appear-animate">
             <div class="mb-4 col-lg-9">
                 <div class="row">
-                    
                 <div class="col-md-6">
                     <div class="widget widget-products widget-products-bordered h-100">
                         <div class="widget-body br-sm h-100">

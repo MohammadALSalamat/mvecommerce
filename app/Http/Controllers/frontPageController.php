@@ -43,6 +43,7 @@ class frontPageController extends Controller
         //get the data
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        
         $sponsers = sponserAds::where('status',1)->get();
         $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id','!=',4)->get();
         $home_Grocery_Categories =category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id',4)->get();
