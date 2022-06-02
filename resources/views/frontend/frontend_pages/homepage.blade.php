@@ -187,8 +187,9 @@
                             $max_discound = \App\Models\product::where('category_id' ,$cardsDiscound->id)->max('discound');
                         @endphp
                             <div class="col-md-6">
-                                            <div class="row" style="background: red;border-radius: 15px;
-                                            box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
+                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
+                                                <div class="row" style="background: red;border-radius: 15px;
+                                                    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                 <div class="col-md-6" style="vertical-align: middle;margin:auto">
                                                     <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white" style="padding:10px; font-size:23px"> 
                                                         Up to {{ $max_discound }} % OFF</h2>
@@ -200,6 +201,7 @@
                                                     </figure>
                                                 </div>
                                             </div>
+                                        </a>
                                     </div>
                         @endif
                     @endforeach
