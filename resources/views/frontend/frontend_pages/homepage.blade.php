@@ -182,28 +182,74 @@
                 <div class="row">
                     
                 <div class="col-md-6">
-                    <figure>
-                        <img src="https://k.nooncdn.com/cms/pages/20220218/e5bee49ffcaa13a53b1da540633b9dee/en_dk_uae-mega-01-frag.png" alt="product" width="610"
-                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                    </figure>
+                    <div class="widget widget-products widget-products-bordered h-100">
+                        <div class="widget-body br-sm h-100">
+                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
+                                Selling Items</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <figure>
+                                            <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                                height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <figure>
+                                            <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                                height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <figure>
+                                            <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                                height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <figure>
+                                            <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                                height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                                        </figure>
+                                    </div>  
+                                </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <figure>
-                        <img src="https://k.nooncdn.com/cms/pages/20220505/458c0135272d0f8f072746e502793e48/en_dk_uae-mega-03.png" alt="product" width="610"
-                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                    </figure>
+                    <div class="widget widget-products widget-products-bordered h-100">
+                        <div class="widget-body br-sm h-100">
+                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
+                                Selling Items</h4>
+                            <figure>
+                                <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                    height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                            </figure>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <figure>
-                        <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                    </figure>
+                    <div class="widget widget-products widget-products-bordered h-100">
+                        <div class="widget-body br-sm h-100">
+                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
+                                Selling Items</h4>
+                            <figure>
+                                <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                    height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                            </figure>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <figure>
-                        <img src="{{asset($item->image_English)}}" alt="product" width="610"
-                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                    </figure>
+                    <div class="widget widget-products widget-products-bordered h-100">
+                        <div class="widget-body br-sm h-100">
+                            <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
+                                Selling Items</h4>
+                            <figure>
+                                <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
+                                    height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                            </figure>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
