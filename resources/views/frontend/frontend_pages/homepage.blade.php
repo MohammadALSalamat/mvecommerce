@@ -188,8 +188,8 @@
                             <div class="col-md-6">
                                 <div class="widget widget-products widget-products-bordered h-100">
                                     <div class="widget-body br-sm h-100">
-                                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
-                                            Discound Items For  {{ $cardsDiscound->title }}</h4>
+                                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal" style="padding:10px"> Best
+                                            Discound Up to {{ $max_discound }} % For  {{ $cardsDiscound->title }}</h4>
                                             @if (count($cardsDiscound->one_cat_has_many_products) > 2)
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -198,32 +198,12 @@
                                                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                                                     </figure>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <figure>
-                                                        <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                                                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <figure>
-                                                        <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                                                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <figure>
-                                                        <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
-                                                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
-                                                    </figure>
-                                                </div>  
                                             </div>
                                             @else
-                                            <div class="col-md-6">
                                                 <figure>
                                                     <img src="https://k.nooncdn.com/cms/pages/20220505/373fee90706065bcef842dff3cb58c6b/en_dk_uae-mega-01.png" alt="product" width="610"
                                                         height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                                                 </figure>
-                                            </div> 
                                             @endif
                                     </div>
                                 </div>
