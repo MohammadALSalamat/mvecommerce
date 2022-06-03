@@ -48,7 +48,6 @@
             </div>
         </div>
     </div>
-
     @else
     <div class="footer-newsletter bg-primary">
         <div class="container">
@@ -100,13 +99,12 @@
     <div class="container">
         <div class="footer-top">
             <div class="row">
-               
                 @php
                 $categories = \App\Models\category::where('is_parent',0)->where('status',1)->take(6)->get();
                 @endphp
                 @foreach($categories as $category )
                 @php
-                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->take(8)->get();
+                $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->take(8)->get();
                 @endphp
                 @if(count($sub_cat) > 0)
                 <div class="col-lg-2 col-sm-6 col-xs-6">
@@ -123,29 +121,20 @@
                 </div>
                 @endif
                 @endforeach
-             
             </div>
         </div>
         <div class="footer-middle">
             <div class="widget widget-category">
-                @php
-                $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
-                @endphp
-                @foreach($categories as $category )
-                @php
-                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
-                @endphp
-                @if(count($sub_cat) > 0)
                 <div class="category-box w-100">
-                    <h6 class="category-name">{{$category->title}} : </h6>
-                     @if(count($sub_cat) > 0 )
-                     @foreach ($sub_cat as $single_cat )
-                    <a href="#">{{$single_cat->title}}</a>
-                    @endforeach
-                     @endif
+                    <h6 class="category-name">OTHER PAGES : </h6>
+                    
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
                 </div>
-                @endif
-                @endforeach
             </div>
         </div>
         <div class="footer-bottom">
@@ -165,85 +154,42 @@
     <div class="container">
         <div class="footer-top">
             <div class="row">
-                <div class="col-lg-4 col-sm-6 col-xs-6">
-                    <div class="widget widget-about">
-                        <a href="demo1.html" class="logo-footer">
-                            <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" alt="logo-footer" width="144"
-                                height="45" />
-                        </a>
-                        <div class="widget-body">
-                            <p class="widget-about-title">هل لديك سؤال ؟ تواصل معنا نحن في الخدمة.</p>
-                            <a href="tel:18005707777" class="widget-about-call">1-800-570-7777</a>
-                            <p class="widget-about-desc">سجل حسابك اﻷن ليصلك كل جديد معنا
-                            </p>
-                            <div class="social-icons social-icons-colored">
-                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                                <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
-                                <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-xs-6">
+                @php
+                $categories = \App\Models\category::where('is_parent',0)->where('status',1)->take(6)->get();
+                @endphp
+                @foreach($categories as $category )
+                @php
+                $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->take(8)->get();
+                @endphp
+                @if(count($sub_cat) > 0)
+                <div class="col-lg-2 col-sm-6 col-xs-6">
                     <div class="widget">
-                        <h3 class="widget-title">اساسيات الشركة</h3>
+                        <h3 class="widget-title">{{$category->title}} </h3>
                         <ul class="widget-body">
-                            <li><a href="about-us.html">عن الشركة</a></li>
-                            <li><a href="#">الوظائف</a></li>
-                            <li><a href="contact-us.html">تواصل معنا</a></li>
+                            @if(count($sub_cat) > 0 )
+                            @foreach ($sub_cat as $single_cat )
+                            <li><a href="{{route('shop_child_cat',$single_cat->id)}}">{{$single_cat->title}}</a></li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-xs-6">
-                    <div class="widget">
-                        <h4 class="widget-title">حساب العميل</h4>
-                        <ul class="widget-body">
-                            <li><a href="#">تتبع الشحنة</a></li>
-                            <li><a href="cart.html">السلة</a></li>
-                            <li><a href="login.html">تسجيل الدخول</a></li>
-                            <li><a href="#">المساعدة</a></li>
-                            <li><a href="wishlist.html">المفضلة</a></li>
-                            <li><a href="#">الخصوصية</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-xs-6">
-                    <div class="widget">
-                        <h4 class="widget-title">خدمات العميل</h4>
-                        <ul class="widget-body">
-                            <li><a href="#">طرق الدفع</a></li>
-                            <li><a href="#">أعادة النقود</a></li>
-                            <li><a href="#">أعادة المنتج</a></li>
-                            <li><a href="#">مركز الدعم</a></li>
-                            <li><a href="#">التسوق</a></li>
-                            <li><a href="#">اﻷحكام والشروط</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @endif
+                @endforeach
             </div>
         </div>
         <div class="footer-middle">
             <div class="widget widget-category">
-                @php
-                $categories = \App\Models\category::where('is_parent',0)->where('status',1)->get();
-                @endphp
-                @foreach($categories as $category )
-                @php
-                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->get();
-                @endphp
-                @if(count($sub_cat) > 0)
                 <div class="category-box w-100">
-                    <h6 class="category-name">{{$category->ar_title}} : </h6>
-                     @if(count($sub_cat) > 0 )
-                     @foreach ($sub_cat as $single_cat )
-                    <a href="#">{{$single_cat->ar_title}}</a>
-                    @endforeach
-                     @endif
+                    <h6 class="category-name">صفحات أخرى : </h6>
+                    
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
+                    <a href="#">About Us</a>
                 </div>
-                @endif
-                @endforeach
             </div>
         </div>
         <div class="footer-bottom">
