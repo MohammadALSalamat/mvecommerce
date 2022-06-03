@@ -49,7 +49,7 @@ html {
 body {
     margin: 0;
     overflow-x: hidden;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.4rem;
     line-height: 1.6;
     color: #666;
@@ -2437,7 +2437,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-weight: 700;
     line-height: 1.2;
     color: #333;
@@ -2762,7 +2762,7 @@ blockquote {
 }
 
 .font-primary {
-    font-family: Poppins, sans-serif !important;
+    font-family: Cairo, Tahoma, sans-serif !important !important;
 }
 
 .font-secondary {
@@ -3680,7 +3680,7 @@ blockquote {
     position: relative;
     padding: 1.4rem 2rem 1.4rem 3.5rem;
     font-size: 1.4rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     line-height: 1.75;
     border: 1px solid;
     letter-spacing: -0.003em;
@@ -4988,7 +4988,7 @@ blockquote {
     color: #999999;
     font-size: 1.3rem;
     font-weight: 600;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     line-height: 1.7;
     margin-bottom: 0.3rem;
 }
@@ -8059,7 +8059,7 @@ input:-internal-autofill-selected {
     padding: 0.85rem 2rem;
     border: 1px solid #eee;
     font-size: 1.4rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     line-height: 1.5;
     font-weight: 400;
     color: #999;
@@ -8191,7 +8191,7 @@ textarea {
     flex: 1;
     min-width: 40px;
     font-size: 1.4rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     border-width: 1px 1px 1px 0;
 }
 
@@ -10268,7 +10268,7 @@ body .product-popup {
 
 .product {
     position: relative;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1rem;
     color: #020101;
     -webkit-transition: opacity 0.3s, -webkit-box-shadow 0.3s;
@@ -12361,7 +12361,7 @@ del {
 
 .price-range input {
     padding: 0.5rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     color: #999;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -13817,7 +13817,7 @@ del {
 ------------------------------------*/
 
 .testimonial {
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     padding: 0 3rem 1rem;
 }
 
@@ -14553,7 +14553,7 @@ del {
     right: 50%;
     background-color: #333;
     color: #fff;
-    font: 400 1.3rem Poppins, sans-serif;
+    font: 400 1.3rem Cairo, Tahoma, sans-serif !important;
     letter-spacing: 0.01em;
     text-align: center;
     visibility: hidden;
@@ -15795,7 +15795,7 @@ del {
 --------------------------------*/
 
 .header {
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     background: #fff;
     color: #333;
 }
@@ -16093,7 +16093,7 @@ del {
     border-left: 0;
     font-size: 1.2rem;
     letter-spacing: 0;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
 }
 
 .header-search input.form-control::-webkit-input-placeholder {
@@ -16663,7 +16663,7 @@ del {
     z-index: 1;
     left: -8px;
     top: -5px;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.8rem;
@@ -17092,7 +17092,7 @@ del {
 .menu .submenu {
     padding: 2rem 0;
     background: #fff;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 1;
@@ -17470,7 +17470,7 @@ del {
     left: 0;
     bottom: 0;
     z-index: 2400;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     -webkit-transition: visibility 0.4s;
     transition: visibility 0.4s;
 }
@@ -18008,7 +18008,7 @@ del {
 --------------------------------------*/
 
 .footer {
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.3rem;
     background: #f8f8f8;
 }
@@ -19746,7 +19746,7 @@ del {
 
 .shipping-address .form-control {
     padding: 1.15rem 1.2rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.3rem;
     border-color: #eee;
     color: #999;
@@ -22177,7 +22177,7 @@ del {
 #product-tab-reviews .review-form .form-control {
     min-height: 4rem;
     margin-bottom: 2rem;
-    font-family: Poppins, sans-serif;
+    font-family: Cairo, Tahoma, sans-serif !important;
     font-size: 1.3rem;
     border-color: #eee;
     color: #777;

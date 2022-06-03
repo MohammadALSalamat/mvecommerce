@@ -15,7 +15,7 @@
         <div class="container">
         @include('frontend.frontend_pages.products.short_code._adsbanners')
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <!-- Start of Shop Category -->
             @php
             $sub_cat = \App\Models\category::where('parent_id',$category_product->id)->where('status',1)->get();

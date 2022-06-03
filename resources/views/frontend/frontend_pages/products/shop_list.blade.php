@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <!-- End of Shop Banner -->
-                <div class="container-fluid">
+                <div class="container">
                     <!-- Start of Shop Content -->
                     <div class="shop-content">
                         <!-- Start of Sidebar, Shop Sidebar -->

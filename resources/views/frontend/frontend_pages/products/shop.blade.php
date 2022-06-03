@@ -49,7 +49,7 @@
                     </div>
                     @endif
                 </section>
-                <div class="container-fluid">
+                <div class="container">
                     @if(!empty($main_categories) || $main_categories->count() > 0)
                     <!-- End of Shop Banner -->
                         <div class="shop-default-category category-ellipse-section mb-6"  style="height: auto !important">

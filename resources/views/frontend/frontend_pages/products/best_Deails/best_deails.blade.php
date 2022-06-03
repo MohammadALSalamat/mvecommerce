@@ -46,7 +46,7 @@
                 @endif
             </section>
                 
-                <div class="container-fluid">
+                <div class="container">
                    
                     <!-- Start of Shop Category -->
                     <!-- Start of Shop Content -->

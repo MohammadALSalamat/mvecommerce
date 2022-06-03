@@ -445,7 +445,7 @@
                                             <figure class="product-image">
                                                 <img  src="{{asset('storage/popups/'.$image->gallery) }}"
                                                     data-zoom-image="{{asset('storage/popups/'.$image->gallery) }}"
-                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:cover">
+                                                    alt="{{ $single_product->title }}" style="height: 300px !important;width:100% !important;object-fit:contain">
                                             </figure>
                                         </div>
                                         @endforeach
@@ -460,12 +460,12 @@
                                     }  }">
                                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ asset($other_image[0]) }}" alt="Product Thumb"  style="height: 100px !important;width:100% !important;object-fit:cover">
+                                            <img src="{{ asset($other_image[0]) }}" alt="Product Thumb"  style="height: 100px !important;width:100% !important;object-fit:contain">
                                         </div>
                                         @foreach ($product_gallary as $image )
                                         <div class="product-thumb swiper-slide">
                                             <img src="{{asset('storage/popups/'.$image->gallery) }}" alt="Product Thumb"
-                                            style="height: 100px !important;width:100% !important;object-fit:cover">
+                                            style="height: 100px !important;width:100% !important;object-fit:contain">
                                         </div>
                                         @endforeach
                                     </div>
