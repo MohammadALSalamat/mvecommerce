@@ -27,7 +27,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form action="{{ route('vendor_info') }}" method="POST"
-                                        enctype="multipart/form-data" class="icons-tab-steps wizard-notification">
+                                        enctype="multipart/form-data" class="icons-tab-steps wizard-notification" style="direction: ltr;">
                                         @csrf
                                         <!-- Step 1 -->
                                         @if(Config::get('app.locale') == 'en')
