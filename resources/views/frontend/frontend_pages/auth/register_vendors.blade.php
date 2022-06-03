@@ -16,9 +16,7 @@
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">
-
         <div class="content-body">
-
             <!-- Form wzard with step validation section start -->
             <section id="icon-tabs">
                 <div class="row">
@@ -140,7 +138,7 @@
                                         <!-- Step 3 -->
                                         <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>Seller Location
                                         </h6>
-                                        <fieldset>
+                                        <fieldset >
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -167,7 +165,7 @@
                                         </fieldset>
                                         <!-- Step 4 -->
                                         <h6><i class="step-icon la la-file" style="font-size: 20px"></i>Our Policy</h6>
-                                        <fieldset>
+                                        <fieldset >
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -192,7 +190,7 @@
 
                                         <h6><i class="step-icon la la-user" style="font-size: 20px"></i> معلومات البائع
                                         </h6>
-                                        <fieldset>
+                                        <fieldset  style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -250,7 +248,7 @@
                                         </fieldset>
                                         <!-- Step 2 -->
                                         <h6><i class="step-icon la la-home" style="font-size: 20px"></i>معلومات الشركة</h6>
-                                        <fieldset>
+                                        <fieldset  style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -295,7 +293,7 @@
                                         </fieldset>
                                         <!-- Step 3 -->
                                         <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>موقع البائع</h6>
-                                        <fieldset>
+                                        <fieldset style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -322,7 +320,7 @@
                                         </fieldset>
                                         <!-- Step 4 -->
                                         <h6><i class="step-icon la la-file" style="font-size: 20px"></i>خصوصيتنا</h6>
-                                        <fieldset>
+                                        <fieldset style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
