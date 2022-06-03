@@ -178,7 +178,7 @@
         </div>
         <!-- End of Category Banner Wrapper -->
         <div class="mb-8 row deals-wrapper appear-animate">
-            <div class="mb-4 col-lg-9">
+            <div class="mb-4 col-lg-12">
                 <div class="single-product h-100 br-sm">
                     <h4 class="title-sm title-underline font-weight-bolder ls-normal">
                         The Best Discound(s) Of Categries
@@ -191,12 +191,12 @@
                             <div class="swiper-wrapper row cols-1 gutter-no">
                                 <div class="swiper-slide">
                                     <div class="product product-single row">
-                                        @foreach ($categories_discound->take(4) as $cardsDiscound)
+                                        @foreach ($categories_discound as $cardsDiscound)
                                         @if(count($cardsDiscound->one_cat_has_many_products) > 0)
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
                                                     style="background: red;border-radius: 15px;box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
@@ -230,7 +230,7 @@
                 </div>
             </div>
             <!-- TOP SELLING RIGHT BAR -->
-            <div class="mb-4 col-lg-3">
+            {{-- <div class="mb-4 col-lg-3">
                 <div class="widget widget-products widget-products-bordered h-100">
                     <div class="widget-body br-sm h-100">
                         @if(Config::get('app.locale') == 'en')
@@ -377,7 +377,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- End of Deals Wrapper -->
     </div>
@@ -443,7 +443,7 @@
     <!-- End of .category-section top-category -->
     <div class="container">
         @if(Config::get('app.locale') == 'en')
-        <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Departments
+        <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">Popular Department(s)
         </h2>
         @else
         <h2 class="pt-1 mt-10 mb-4 title justify-content-center ls-normal appear-animate">الاقسام اﻷكثر زيارة
@@ -453,10 +453,10 @@
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 @if(Config::get('app.locale') == 'en')
                 <li class="mb-2 mr-2 nav-item">
-                    <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrivals</a>
+                    <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrival(s)</a>
                 </li>
                 <li class="mb-2 mr-2 nav-item">
-                    <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">Best seller</a>
+                    <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">Best selling(s)</a>
                 </li>
                 @else
                 <li class="mb-2 mr-2 nav-item">
