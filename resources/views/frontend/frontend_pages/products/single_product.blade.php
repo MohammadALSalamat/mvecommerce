@@ -2,7 +2,6 @@
 @section('mytitle',$single_product->title )
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <style>
     .carousel-item {
         width: 100%;
@@ -227,7 +226,6 @@
         color: #000
     }
 </style>
-
 <style>
     .row>.column {
         padding: 0 8px;
@@ -405,13 +403,11 @@
         padding: 10px;
     }
 </style>
-
 @endsection
 @section('content')
 <!-- Start of Main -->
 <main class="pb-1 mb-10 main">
     {{-- @include('frontend.frontend_layout._breadcrumb') --}}
-
     <!-- Start of Page Content -->
     <div class="page-content">
         <div class="container">
@@ -480,7 +476,6 @@
                                 <h1 class="product-title">{{ $single_product->title }}</h1>
                                 @else
                                 <h1 class="product-title">{{ $single_product->ar_title }}</h1>
-
                                 @endif
                                 <!-- Brand Logo-->
                                 <div class="product-bm-wrapper">
@@ -560,7 +555,6 @@
                                 @endif
                                 <p>{!! $single_product->ar_Summary !!}</p>
                                 @endif
-
                                 <hr class="product-divider">
                                 <div class="product-price">
                                     @if(Config::get('app.locale') == 'en')
@@ -637,7 +631,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 @else
                                 <hr class="product-divider">
                                 <div class="form-group d-flex">
@@ -649,7 +642,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 @endif
                                 @else
                                 @endif
@@ -1605,7 +1597,6 @@
                         </div>
                     </section>
                     @else
-
                     @endif
                 </div>
                 <!-- End of Main Content -->
@@ -1893,14 +1884,10 @@
                 <!-- End of Sidebar -->
             </div>
         </div>
-    </div>
-    <!-- End of Page Content -->
+    </div><!-- End of Page Content -->
 </main>
-
 @endsection
-
 @section('script')
-
 <script>
     var checked = [];
     //  add eventlistener listener on parent (listen for change event)
@@ -1920,7 +1907,6 @@
         update_ids(rawId_feq);
     });
 </script>
-
 <script>
     var prices = [];
     //  add eventlistener listener on parent (listen for change event)
@@ -1944,9 +1930,7 @@
         return counter + ' AED';
     }
 </script>
-
 <!--add  products to cart -->
-
 <script>
     $(document).on('click', '.qty', function() {
         var id = $(this).data('id');
@@ -1963,7 +1947,6 @@
         update_cart(id, productQuantity)
         $('.single-product-add-to-cart').attr('data-quantity', $('#qty-input-' + id).val());
     });
-
     function update_cart(id, productQuantity) {
         var rowId = id;
         var product_qty = $('#qty-input-' + rowId).val();
@@ -1990,9 +1973,7 @@
         });
     }
 </script>
-
 <!--add frequntly products to cart -->
-
 <script>
     function update_ids(rawId_feq) {
         var token = "{{ csrf_token() }}";
@@ -2018,26 +1999,21 @@
         });
     }
 </script>
-
 <script>
     function openModal() {
         document.getElementById("myModal").style.display = "block";
     }
-
     function closeModal() {
         document.getElementById("myModal").style.display = "none";
     }
     var slideIndex = 1;
-    showSlides(slideIndex);
-
+        showSlides(slideIndex);
     function plusSlides(n) {
         showSlides(slideIndex += n);
     }
-
     function currentSlide(n) {
         showSlides(slideIndex = n);
     }
-
     function showSlides(n) {
         var i;
         var slides = document.getElementsByClassName("mySlides");
