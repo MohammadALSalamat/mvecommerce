@@ -29,7 +29,7 @@ Route::group(['prefix'=>'seller','middleware'=>['seller']],function(){
     Route::get('documentaion',[SellerController::class,'documentaion'])->name('documentaion');
     
     //Products section
-     Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');
+    Route::get('/products', [SellerProductController::class, 'viewproducts'])->name('seller_viewproducts');
       Route::get('/create_products', [SellerProductController::class, 'createproducts'])->name('seller_createproducts');
       Route::post('/add_new_products', [SellerProductController::class, 'addproducts'])->name('seller_addproducts');
       Route::get('/edit_products/{id}', [SellerProductController::class, 'editproducts'])->name('seller_editproducts');
