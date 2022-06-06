@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
     {
         
         $schedule->command('emails:send')->daily();
-        $schedule->command('queue:work --stop-when-empty')->everyMinute();
+        $schedule->command('queue:work ')->everyMinute();
 
     }
 
