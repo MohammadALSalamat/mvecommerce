@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Jun 06 2022 17:27:35 GMT+0400 (Gulf Standard Time)
+------------------------------------------------------
+
+Modified files:
+* public/front-style/dist/jquery.jqZoom.js
+
+
+Created files:
+* .autogit/logs/log-5-4-2022-9-17-12.txt
+
+
+Deleted files:
+
+
+Renamed files:
