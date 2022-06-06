@@ -8,13 +8,10 @@
 
     <title>ITajer | @yield('mytitle')</title>
 
-    <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
-    <meta name="description" content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
-    <meta name="author" content="D-THEMES">
+    {!! SEOMeta::generate() !!}
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{asset('front-style/assets/images/icons/favicon.png')}}">
-
     <!-- WebFont.js -->
     <script>
         WebFontConfig = {
