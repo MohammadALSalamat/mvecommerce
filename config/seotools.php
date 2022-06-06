@@ -15,7 +15,7 @@ return [
             'separator'    => ' - ',
             'keywords'     => ['online','shope','orders','products','delivery','ITAJER'],
             'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'robots'       => 'index,follow', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
@@ -36,8 +36,8 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'ITAJER', // set false to total remove
+            'description' => 'Stay home & order your favourite products. We will deliver them straight to your doorstep. Shop ITAJER products and enjoy fast, reliable delivery. What are you waiting for? 100% original products. Easy Returns. Secure Shopping. Fast Shipping.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
@@ -58,8 +58,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'ITAJER', // set false to total remove
+            'description' => 'Stay home & order your favourite products. We will deliver them straight to your doorstep. Shop ITAJER products and enjoy fast, reliable delivery. What are you waiting for? 100% original products. Easy Returns. Secure Shopping. Fast Shipping.', // set false to total remove
             'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
