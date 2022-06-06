@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Single_vendor_email_help;
 use Helper;
 use Carbon\Carbon;
 use App\Models\User;
@@ -26,6 +25,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\Single_vendor_email_help;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -65,6 +66,8 @@ class frontPageController extends Controller
         foreach($products_review_ids as $all_ids){
             array_push($products_review_ids_array,$all_ids->id);
         }
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
        
         return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound'));
     }
@@ -142,6 +145,9 @@ class frontPageController extends Controller
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->where('added_by','seller')->pluck('type_of_work');
         
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
+
         return view('frontend.frontend_pages.products.shop',compact('brands_rel_product','products','route', 'main_categories', 'main_vendors', 'type_of_work'));
 
     } 
@@ -275,6 +281,9 @@ class frontPageController extends Controller
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
     
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
+
         return view('frontend.frontend_pages.products.shop_list', compact('products','route', 'main_categories', 'main_vendors', 'type_of_work'));
     }
 
@@ -324,6 +333,8 @@ class frontPageController extends Controller
         $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
         return view('frontend.frontend_pages.products.shop_list_products',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
@@ -376,6 +387,10 @@ class frontPageController extends Controller
         $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
+        
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
+        
         return view('frontend.frontend_pages.products.shop_child_cat',compact('banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work'));
     }
 
@@ -399,6 +414,10 @@ class frontPageController extends Controller
      }else{
          $freq_products = product::wherein('id',$single_product->frequantly_boughts_ids)->get(); // get frequantly products
      }
+
+     $current_url = URL::current();
+     SEOMeta::setCanonical($current_url);
+
      $avareg = 0;
                                        $sum = 0;
                                        foreach($avareg_review as $avg){
@@ -514,6 +533,8 @@ class frontPageController extends Controller
         if(!empty($price)){
             $price_range_url.='&price='.$price;
         }
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
         return redirect()->route('grocery_shop_only',$catUrl.$price_range_url);
     }
 
@@ -609,6 +630,9 @@ class frontPageController extends Controller
           
           $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('discound','>',20)->orderBy('discound', 'DESC')->paginate(50);
           
+          $current_url = URL::current();
+          SEOMeta::setCanonical($current_url);
+
         return view('frontend.frontend_pages.products.best_Deails.best_deails',compact('products','route'));
     }
     
@@ -616,11 +640,17 @@ class frontPageController extends Controller
 
         public function become_seller()
         {
+            $current_url = URL::current();
+            SEOMeta::setCanonical($current_url);
             return view('frontend.frontend_pages.sellers.become_seller');
         }
 
         public function view_register_seller_form()
         {
+
+            $current_url = URL::current();
+            SEOMeta::setCanonical($current_url);
+
         return view('frontend.frontend_pages.auth.register_vendors');
         }
         public function vendor_info(Request $request)
@@ -756,7 +786,8 @@ class frontPageController extends Controller
             $addnewvendor->type_of_work = $data['type_of_work'];
             $addnewvendor->save();
 
-        
+            $current_url = URL::current();
+            SEOMeta::setCanonical($current_url);
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
         }
@@ -764,11 +795,15 @@ class frontPageController extends Controller
 
         public function sellers_list()
         {
+            $current_url = URL::current();
+            SEOMeta::setCanonical($current_url);
             $sellers = Seller::where('status',1)->get();
             return view('frontend.frontend_pages.sellers.sellers_pages.sellers_shops',compact('sellers'));
         }
         public function single_seller($id)
         {
+            $current_url = URL::current();
+            SEOMeta::setCanonical($current_url);
             $seller = Seller::where('username',$id)->where('status',1)->first();
             $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
             $top_selles_vendor = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->take(6)->get();
@@ -866,6 +901,8 @@ class frontPageController extends Controller
         Session::forget('coupon');
         Cart::instance('shopping')->destroy();
         Auth::logout();
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
         return redirect()->route('homepage')->with('message','You Have logged out Seccessfuly!!');
     }
 
@@ -876,6 +913,9 @@ class frontPageController extends Controller
     // user dahsboard
     public function userdashboard()
     {
+        $current_url = URL::current();
+        SEOMeta::setCanonical($current_url);
+        
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
         if($current_user){
