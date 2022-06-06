@@ -11,7 +11,7 @@
     {!! SEOMeta::generate() !!}
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{asset('front-style/assets/images/icons/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('front-style/assets/images/icons/itajerfavicon.png')}}">
     <!-- WebFont.js -->
     <script>
         WebFontConfig = {
