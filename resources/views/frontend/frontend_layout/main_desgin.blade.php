@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>ITajer | @yield('mytitle')</title>
+    <meta name="author" content="ITAJER SHOP">
 
     {!! SEOMeta::generate() !!}
 
