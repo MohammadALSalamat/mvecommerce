@@ -50,19 +50,17 @@ class SellerController extends Controller
     public function dashboard(){
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
         $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
-        
-        if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
-           $message_notify ='your days left is less than 10 days please subscripe before /  '. $notify_subscripe->ends_at .'/ Just ' . Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) . ' Days left Otherwise your account will not work';
-        }else{
-            $message_notify = null;
+        $message_notify = null;
+        if(!empty($notify_subscripe) || $notify_subscripe != null){
+            if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
+            $message_notify ='your days left is less than 10 days please subscripe before /  '. $notify_subscripe->ends_at .'/ Just ' . Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) . ' Days left Otherwise your account will not work';
+            }
+            if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) <= 0 ){
+                Seller::where('id',$current_user->id)->update([
+                    'is_verify'=> 0,
+                ]);
+            }
         }
-
-        if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
-            Seller::where('id',$current_user->id)->update([
-                'is_verify'=> 0,
-            ]);
-        }
-
         $count_vendors = User::where('status',0)->count();
         $products_sold = Order::count();
         $Orders = Order::latest()->get(); // last 6 orders

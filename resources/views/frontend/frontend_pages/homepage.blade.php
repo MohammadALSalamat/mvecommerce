@@ -641,9 +641,7 @@
                                     class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                     title="Wishlist"></a>
 
-                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#quickview{{ $top_selling->id }}"
-                                    class="btn-product-icon btn-quickview w-icon-search" title="Quick View"></a>
+                                
 
                             </div>
 
