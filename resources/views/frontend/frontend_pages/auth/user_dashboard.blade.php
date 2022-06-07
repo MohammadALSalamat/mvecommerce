@@ -133,7 +133,6 @@
                                     <th class="order-date">Date</th>
                                     <th class="order-status">Status</th>
                                     <th class="order-total">Total</th>
-                                    <th class="order-actions">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -145,10 +144,6 @@
                                     <td class="order-total">
                                         <span class="order-price">{{ $order->total }} AED </span> for
                                         <span class="order-quantity"> {{ count($order->product) }}</span> item
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                            class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -561,7 +556,6 @@
                                     <th class="order-date">تاريخ</th>
                                     <th class="order-status">الحالة</th>
                                     <th class="order-total">مجموع الدفع</th>
-                                    <th class="order-actions">المزيد</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -573,10 +567,6 @@
                                     <td class="order-total">
                                         <span class="order-price">{{ $order->total }} د.أ </span> ﻷجل
                                         <span class="order-quantity"> {{ count($order->product) }}</span> منتجات
-                                    </td>
-                                    <td class="order-action">
-                                        <a href="#"
-                                        class="btn btn-outline btn-default btn-block btn-sm btn-rounded">رؤية المزيد</a>
                                     </td>
                                 </tr>
                                 @endforeach
