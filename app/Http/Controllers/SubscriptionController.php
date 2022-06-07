@@ -49,7 +49,12 @@ public function admin_viewSubscription_Status()
         $data = $request->all();
         $seller_id = Seller::where('status',1)->where('id',$id)->first();
 
-        $check_if_the_user_is_subscibed = subscription::where('id',Session::get('strip_plan')['subscribe_id'])->count();
+        if(empty(Session::get('strip_plan')['subscribe_id']) || Session::get('strip_plan')['subscribe_id'] == null){
+            $check_if_the_user_is_subscibed = 0;
+        }else{
+
+            $check_if_the_user_is_subscibed = subscription::where('id',Session::get('strip_plan')['subscribe_id'])->count();
+        }
 
         if($check_if_the_user_is_subscibed > 0 ){
             subscription::where('id',Session::get('strip_plan')['subscribe_id'])->update([
