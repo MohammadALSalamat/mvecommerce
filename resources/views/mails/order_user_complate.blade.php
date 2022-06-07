@@ -207,9 +207,13 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Delivery Address</p>
-                                                            <p>675 Massachusetts Avenue<br>11th Floor<br>Cambridge, MA 02139</p>
-
+                                                            <p style="font-weight: 800;">Billing Info</p>
+                                                            <p> 
+                                                                Name : {{ $order_email_imfo['full_name'] }}<br>
+                                                                {{ $order_email_imfo['address'] }}
+                                                                <br>{{ $order_email_imfo['city'] }}
+                                                                <br>{{ $order_email_imfo['country'] }}
+                                                            </p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -218,8 +222,13 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Estimated Delivery Date</p>
-                                                            <p>January 1st, 2016</p>
+                                                            <p style="font-weight: 800;">Shipping Info:</p>
+                                                            <p> 
+                                                                Name : {{ $order_email_imfo['sfull_name'] }}<br>
+                                                                {{ $order_email_imfo['saddress'] }}
+                                                                <br>{{ $order_email_imfo['scity'] }}
+                                                                <br>{{ $order_email_imfo['scountry'] }}
+                                                            </p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -244,7 +253,7 @@
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                        <a href="#" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
+                                                        <a href="{{ route('homepage') }}" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -258,7 +267,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px;">
                                         <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #777777;">
-                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. <a href="#" target="_blank" style="color: #777777;">unsusbscribe</a>.
+                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. 
                                         </p>
                                     </td>
                         </tr>

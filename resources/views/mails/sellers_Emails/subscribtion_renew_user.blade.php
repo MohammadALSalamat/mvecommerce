@@ -127,7 +127,7 @@
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                Thank you For Renewing your registerition on ITajer website, <br> We would like to Congrats you that your account has been Extended.
+                                                Thank you For Renewing/Registration on ITajer website, <br> We would like to Congrats you that your account has been Activated.
                                                 <br>
                                                 <b> Expried Date : {{ $email_data['ends_at'] }}</b>  <br>
                                                 <b> Subscription Plan : </b> {{ $email_data['stripe_plan'] }}
@@ -160,7 +160,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px;">
                                         <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #777777;">
-                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. <a href="#" target="_blank" style="color: #777777;">unsusbscribe</a>.
+                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. 
                                         </p>
                                     </td>
                         </tr>

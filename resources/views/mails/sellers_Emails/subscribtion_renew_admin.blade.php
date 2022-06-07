@@ -127,7 +127,7 @@
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                bellow Seller has been Renewing the registerition on ITajer website, <br> Details As Below.
+                                                bellow Seller has been Renewing/Registered on ITajer website, <br> Details As Below.
                                                 <br>
                                                 <b> Seller Name : </b> {{ $email_data['seller_name'] }}<br>
                                                 <b> Expried Date : {{ $email_data['ends_at'] }}</b>  <br>
@@ -161,7 +161,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px;">
                                         <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #777777;">
-                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email. <a href="#" target="_blank" style="color: #777777;">unsusbscribe</a>.
+                                            Please Note:: This email was sent from a notification-only So Please Do not reply back to this email.
                                         </p>
                                     </td>
                         </tr>
