@@ -130,7 +130,6 @@
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
                                                 Thank you For your registered on ITajer website, <br> Our Team will view your request and updates you ASAP <br> If you have question you can Call us :0501413429 <br> Or Send us an email on : alomda.alslmat@gmail.com
-
                                             </p>
                                         </td>
                                     </tr>
