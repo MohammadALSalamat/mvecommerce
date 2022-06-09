@@ -76,6 +76,26 @@ class frontPageController extends Controller
     {
         return view('frontend.frontend_pages.pages.aboutus');
     }
+    public function refund_can()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
+    public function policy()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
+    public function terms_condations()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
+    public function datascurity()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
+    public function DISCLAIMER()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
 
     // login form
 

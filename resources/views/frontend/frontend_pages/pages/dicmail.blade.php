@@ -21,15 +21,20 @@
                         <div class="col-md-6 pl-lg-8 mb-8">
                             <h4 class="title text-left">DISCLAIMER</h4>
                             <p class="mb-6">
-                                Essentially will use its best efforts to protect your privacy. Authorized employees
-                                within the company on a need-to-know basis only use any information collected from
-                                individual customers. We will not sell, share, or rent your personal information to any
-                                third party or use your e-mail address for unsolicited mail. Any emails sent by the
-                                Company will only be in connection with the provision of agreed services and products.
-                                We will use our best efforts to provide the highest level of support in order to
-                                maintain maximum information security. However, as you are aware – we cannot guarantee
-                                absolute security for the website and therefore cannot be held liable against it in any
-                                manner whatsoever.
+                                This site its content, function, and all information, products, and services contained
+                                in or offered through this site are approved on an "as is" and "as available" basis
+                                without presentations or warranties of any kind. iTajer expressly disclaims all such
+                                representations and warranties either express or implied including without limitation,
+                                warranties of title, merchantability fitness for particular purposes or
+                                non-infringement, and any implied warranties arising from the course of dealing or
+                                course of performance. iTajer does not warrant that this site or its contents will be
+                                complete, accurate, timely, uninterrupted, secure, or error-free or that defects will be
+                                corrected. All information on this site is subject to change without notice, some
+                                jurisdictions do not allow the exclusion of certain warranties so some of the above
+                                exclusions may not apply to you.
+                                <b>Company:</b> iTajer
+                                <b>Customer Care: </b> (info@itajer.ae)
+                                <b> number: </b> +971588052313
                             </p>
                         </div>
                     </div>

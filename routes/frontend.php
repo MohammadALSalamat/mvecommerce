@@ -13,6 +13,15 @@ use App\Http\Controllers\ProductReviewController;
 
 Route::get('/about-us',[frontPageController::class,'aboutUs'])->name('aboutus');
 
+Route::get('/refund-cancellation-policy',[frontPageController::class,'refund_can'])->name('refund_can');
+
+Route::get('/policy',[frontPageController::class,'policy'])->name('policy');
+
+Route::get('/Terms-condations',[frontPageController::class,'terms_condations'])->name('terms_condations');
+
+Route::get('/data-scurtiy',[frontPageController::class,'datascurity'])->name('datascurity');
+Route::get('/DISCLAIMER',[frontPageController::class,'DISCLAIMER'])->name('DISCLAIMER');
+
 
 //shop page for all products frid system
 
