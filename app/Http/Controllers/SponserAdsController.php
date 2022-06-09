@@ -61,9 +61,15 @@ public function addads(Request $request)
 
 }
 
-public function editads()
+public function editads($id)
 {
-    # code...
+    $current_banner = sponserAds::find($id);
+    dd($current_banner);
+    if ($current_banner) {
+        return view('backend.backend_pages.sponserAds.editads', compact('current_banner'));
+    }else{
+        return back()->with('error','The ID is not found');
+    }
 }
 
 }

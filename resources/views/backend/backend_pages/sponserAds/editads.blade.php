@@ -109,62 +109,59 @@ input:checked + .slider:before {
                                         @csrf
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-clipboard"></i> Requirements</h4>
+
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput5">Title</label>
+                                                <label class="col-md-3 label-control" for="projectinput6">Sposered Vendor </label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the title" name="title" value="{{ $current_banner->title }}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1">Slug</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a uniuqe slug" name="slug" value="{{ $current_banner->slug }}">
-                                                </div>
-                                            </div>
-                                            {{-- <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput6">Interested
-                                                    in</label>
-                                                <div class="col-md-9">
-                                                    <select id="projectinput6" name="interested" class="form-control">
-                                                        <option value="none" selected="" disabled="">Interested in
+                                                    <select id="projectinput6" name="vendor_shop_name" class="form-control">
+                                                        <option value="none" selected="" disabled="">Select the vendor by shop name
                                                         </option>
-                                                        <option value="design">design</option>
-                                                        <option value="development">development</option>
-                                                        <option value="illustration">illustration</option>
-                                                        <option value="branding">branding</option>
-                                                        <option value="video">video</option>
+                                                        @if($vendors->count() > 0)
+                                                        @foreach ($vendors as $vendor)
+                                                        <option value="{{ $vendor->id }}">{{ $vendor->shop_name }}</option>
+                                                        @endforeach
+                                                        @else
+                                                        @endif
                                                     </select>
                                                 </div>
-                                            </div> --}}
+                                            </div>
+                                            
                                             <div class="form-group row">
                                                 <div class="input-group col-md-10 offset-2">
                                                     <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                            <i class="fa fa-picture-o"></i> Choose
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose English Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail" class="form-control" type="text" name="filepath" value="{{ $current_banner->image }}">
+                                                    <input id="thumbnail" class="form-control" type="text" name="en_image">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control"
-                                                    for="projectinput9">Description</label>
-                                                <div class="col-md-9">
-                                                    <textarea id="summernote" rows="5" class="form-control"
-                                                        name="comment" placeholder="About Project">{!! $current_banner->description !!}</textarea>
+                                                <div class="input-group col-md-10 offset-2">
+                                                    <span class="input-group-btn">
+                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> Choose Arabic Image
+                                                        </a>
+                                                    </span>
+                                                    <input id="thumbnail1" class="form-control" type="text" name="ar_image">
                                                 </div>
+                                                <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="projectinput1">Is It Banner?</label>
+                                                <label class="col-md-3 label-control" for="projectinput6">Image Place</label>
                                                 <div class="col-md-9">
-                                                   <!-- Rounded switch -->
-                                                        <label class="switch">
-                                                        <input type="checkbox" name="is_banner" @if($current_banner->is_banner == '1') checked @endif">
-                                                        <span class="slider round"></span>
-                                                        </label>
+                                                    <select id="projectinput6" name="image_place" class="form-control">
+                                                        <option value="none" selected="" disabled="">Select The palce to view image
+                                                        </option>
+                                                       <option value="homepage_banner"> Home Page Slider</option>
+                                                       <option value="homepage_under_cat"> Home Page Below the Categories </option>
+                                                       <option value="homepage_under_filter"> Home Page Below the filter </option>
+                                                       <option value="homepage_under_full_width"> Home Page Full Width</option>
+                                                       <option value="single_product_side_bar"> Single Product On Side bar</option>
+                                                       <option value="collection_page_main_banner"> Collections Page Main Banner</option>
+                                                       <option value="best_deals_page_banner"> best Deals Page Banner</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                              <div class="form-group row">
@@ -172,7 +169,7 @@ input:checked + .slider:before {
                                                 <div class="col-md-9">
                                                    <!-- Rounded switch -->
                                                         <label class="switch">
-                                                        <input type="checkbox" name="status" @if($current_banner->status == 'active') checked @endif">
+                                                        <input type="checkbox" name="status" vlaue="{{ old('status') == "active" ? 'selected' : ''}}">
                                                         <span class="slider round"></span>
                                                         </label>
                                                 </div>
