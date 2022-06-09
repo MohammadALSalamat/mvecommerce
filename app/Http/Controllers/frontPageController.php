@@ -78,7 +78,7 @@ class frontPageController extends Controller
     }
     public function refund_can()
     {
-        return view('frontend.frontend_pages.pages.ret_cacncl');
+        return view('frontend.frontend_pages.pages.ret_cancl');
     }
     public function policy()
     {
