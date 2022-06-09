@@ -133,7 +133,7 @@ input:checked + .slider:before {
                                                             <i class="fa fa-picture-o"></i> Choose English Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail" class="form-control" type="text" name="en_image" value="{{ $current_banner->image_place }}">
+                                                    <input id="thumbnail" class="form-control" type="text" name="en_image" value="{{ $current_banner->image_English }}">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
@@ -144,7 +144,7 @@ input:checked + .slider:before {
                                                             <i class="fa fa-picture-o"></i> Choose Arabic Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail1" class="form-control" type="text" name="ar_image">
+                                                    <input id="thumbnail1" class="form-control" type="text" name="ar_image" value="{{ $current_banner->image_Arabic }}">
                                                 </div>
                                                 <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
@@ -154,13 +154,13 @@ input:checked + .slider:before {
                                                     <select id="projectinput6" name="image_place" class="form-control">
                                                         <option value="none" selected="" disabled="">Select The palce to view image
                                                         </option>
-                                                       <option value="homepage_banner"> Home Page Slider</option>
-                                                       <option value="homepage_under_cat"> Home Page Below the Categories </option>
-                                                       <option value="homepage_under_filter"> Home Page Below the filter </option>
-                                                       <option value="homepage_under_full_width"> Home Page Full Width</option>
-                                                       <option value="single_product_side_bar"> Single Product On Side bar</option>
-                                                       <option value="collection_page_main_banner"> Collections Page Main Banner</option>
-                                                       <option value="best_deals_page_banner"> best Deals Page Banner</option>
+                                                       <option value="homepage_banner" @if('homepage_banner' == $current_banner->image_place) selected @endif> Home Page Slider</option>
+                                                       <option value="homepage_under_cat" @if('homepage_under_cat' == $current_banner->image_place) selected @endif> Home Page Below the Categories </option>
+                                                       <option value="homepage_under_filter" @if('homepage_under_filter' == $current_banner->image_place) selected @endif> Home Page Below the filter </option>
+                                                       <option value="homepage_under_full_width" @if('homepage_under_full_width' == $current_banner->image_place) selected @endif> Home Page Full Width</option>
+                                                       <option value="single_product_side_bar" @if('single_product_side_bar' == $current_banner->image_place) selected @endif> Single Product On Side bar</option>
+                                                       <option value="collection_page_main_banner" @if('collection_page_main_banner' == $current_banner->image_place) selected @endif> Collections Page Main Banner</option>
+                                                       <option value="best_deals_page_banner" @if('best_deals_page_banner' == $current_banner->image_place) selected @endif> best Deals Page Banner</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -169,7 +169,7 @@ input:checked + .slider:before {
                                                 <div class="col-md-9">
                                                    <!-- Rounded switch -->
                                                         <label class="switch">
-                                                        <input type="checkbox" name="status" vlaue="{{ old('status') == "active" ? 'selected' : ''}}">
+                                                        <input type="checkbox" name="status" @if($current_banner->status == 1) checked @endif>
                                                         <span class="slider round"></span>
                                                         </label>
                                                 </div>

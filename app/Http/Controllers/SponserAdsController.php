@@ -66,7 +66,6 @@ public function editads($id)
     $current_banner = sponserAds::find($id);
     $vendors = Seller::where('status',1)->get();
 
-    dd($current_banner);
     if ($current_banner) {
         return view('backend.backend_pages.sponserAds.editads', compact('current_banner','vendors'));
     }else{
