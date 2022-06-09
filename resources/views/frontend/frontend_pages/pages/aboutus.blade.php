@@ -6,11 +6,11 @@
 
 <main class="main">
     <!-- Start of Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <h1 class="page-title mb-0">About Us</h1>
-        </div>
+<div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
+    <div class="container">
+        <h1 class="page-title mb-0 text-white">About Us</h1>
     </div>
+</div>
     <!-- End of Page Header -->
 
 <!-- Start of Page Content -->

@@ -128,7 +128,7 @@
                 <div class="category-box w-100">
                     <h6 class="category-name">OTHER PAGES : </h6>
                     
-                    <a href="#">About Us</a>
+                    <a href="{{ route('aboutus') }}">About Us</a>
                     <a href="#">Careers</a>
                     <a href="#">About Us</a>
                     <a href="#">About Us</a>
@@ -183,7 +183,7 @@
                 <div class="category-box w-100">
                     <h6 class="category-name">صفحات أخرى : </h6>
                     
-                    <a href="#">About Us</a>
+                    <a href="{{ route('aboutus') }}">About Us</a>
                     <a href="#">Careers</a>
                     <a href="#">About Us</a>
                     <a href="#">About Us</a>
