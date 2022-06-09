@@ -20,7 +20,6 @@
         <section class="boost-section pt-10 pb-10">
             <div class="container mt-10 mb-9">
                 <div class="row align-items-center mb-10">
-                   
                     <div class="col-md-6 pl-lg-8 mb-8">
                         <h4 class="title text-left">Who are we?</h4>
                         <p class="mb-6">
@@ -80,5 +79,4 @@
     </section>
 </div>
 </main>
-
 @endsection
