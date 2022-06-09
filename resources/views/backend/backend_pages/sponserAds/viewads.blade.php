@@ -95,7 +95,7 @@
                         <td style="width: 19%">
                           <ul class="m-0 list-inline">
                             <li class="list-inline-item">
-                              <a href="{{ route('editbanner',$banner->id) }}">
+                              <a href="{{ route('editads',$banner->id) }}">
                                 <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
                                   data-placement="top" title="Edit">
                                   <i class="la la-edit"></i>
@@ -103,7 +103,7 @@
                               </a>
                             </li>
                             <li class="list-inline-item">
-                              <form action="{{ route('deletbanner',$banner->id) }}" method="post">
+                              <form action="{{ route('deletads',$banner->id) }}" method="post">
                               @csrf
                               <a href="" class="dltbtn">
                                 <button  id="cancel-button" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"

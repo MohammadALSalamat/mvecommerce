@@ -33,7 +33,7 @@ public function addads(Request $request)
     }
    
     if (empty($data['vendor_shop_name'])) {
-$vendors = null;
+        $vendors = null;
     }else{
        $vendors = $data['vendor_shop_name'];
     }
@@ -60,4 +60,10 @@ $vendors = null;
     return back()->with('message','You have insert a new sposer Ads');
 
 }
+
+public function editads()
+{
+    # code...
+}
+
 }

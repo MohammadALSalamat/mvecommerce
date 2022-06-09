@@ -71,13 +71,13 @@ input:checked + .slider:before {
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
-                <h3 class="mb-0 content-header-title d-inline-block">Edit Banners</h3>
+                <h3 class="mb-0 content-header-title d-inline-block">Edit Sponsered Ads</h3>
                 <div class="row breadcrumbs-top d-inline-block">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a>
                             </li>
-                            <li class="breadcrumb-item active"><a href="#">Edit Banners</a>
+                            <li class="breadcrumb-item active"><a href="#">Edit Sponsered Ads</a>
                             </li>
                         </ol>
                     </div>
@@ -91,7 +91,7 @@ input:checked + .slider:before {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="horz-layout-basic">Edit Banner</h4>
+                                <h4 class="card-title" id="horz-layout-basic">Edit Sponsered Ads</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="mb-0 list-inline">
@@ -105,7 +105,7 @@ input:checked + .slider:before {
                             <div class="card-content collpase show">
                                 <div class="card-body">
 
-                                    <form class="form form-horizontal" action="{{ route('updatebanner',$current_banner->id ) }}" method="POST" enctype="multipart/form-data">
+                                    <form class="form form-horizontal" action="{{ route('updateads',$current_banner->id ) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-clipboard"></i> Requirements</h4>
