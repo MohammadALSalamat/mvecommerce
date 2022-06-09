@@ -640,9 +640,6 @@
                                     id="add_to_wishlist{{ $top_selling->id }}" data-quantity="1"
                                     class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                     title="Wishlist"></a>
-
-                                
-
                             </div>
 
                             @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
