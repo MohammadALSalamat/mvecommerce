@@ -78,23 +78,23 @@ class frontPageController extends Controller
     }
     public function refund_can()
     {
-        return view('frontend.frontend_pages.pages.aboutus');
+        return view('frontend.frontend_pages.pages.ret_cacncl');
     }
     public function policy()
     {
-        return view('frontend.frontend_pages.pages.aboutus');
+        return view('frontend.frontend_pages.pages.privacy_policy');
     }
     public function terms_condations()
     {
-        return view('frontend.frontend_pages.pages.aboutus');
+        return view('frontend.frontend_pages.pages.terms_conditions');
     }
     public function datascurity()
     {
-        return view('frontend.frontend_pages.pages.aboutus');
+        return view('frontend.frontend_pages.pages.datascurity');
     }
     public function DISCLAIMER()
     {
-        return view('frontend.frontend_pages.pages.aboutus');
+        return view('frontend.frontend_pages.pages.dicmail');
     }
 
     // login form
