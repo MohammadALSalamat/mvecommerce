@@ -128,11 +128,11 @@
                 <div class="category-box w-100">
                     <h6 class="category-name">OTHER PAGES : </h6>
                     <a href="{{ route('aboutus') }}">About Us</a>
-                    <a href="#">Refund & cancellation Policy</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Data Security</a>
-                    <a href="#">DISCLAIMER</a>
+                    <a href="{{ route('refund_can') }}"> Refund & cancellation Policy</a>
+                    <a href="{{ route('policy') }}">Privacy Policy</a>
+                    <a href="{{ route('terms_condations') }}">Terms & Conditions</a>
+                    <a href="{{ route('datascurity') }}">Data Security</a>
+                    <a href="{{ route('DISCLAIMER') }}">DISCLAIMER</a>
                     <a href="#">Contact us</a>
                 </div>
             </div>
@@ -183,11 +183,11 @@
                 <div class="category-box w-100">
                     <h6 class="category-name">صفحات أخرى : </h6>
                     <a href="{{ route('aboutus') }}">نبذة عنا</a>
-                    <a href="#">سياسة رد الأموال والإلغاء</a>
-                    <a href="#">سياسة الخصوصية</a>
-                    <a href="#">البنود والشروط</a>
-                    <a href="#">أمان البيانات</a>
-                    <a href="#">إخلاء المسؤولية</a>
+                    <a href="{{ route('refund_can') }}">سياسة رد الأموال والإلغاء</a>
+                    <a href="{{ route('policy') }}">سياسة الخصوصية</a>
+                    <a href="{{ route('terms_condations') }}">البنود والشروط</a>
+                    <a href="{{ route('datascurity') }}">أمان البيانات</a>
+                    <a href="{{ route('DISCLAIMER') }}">إخلاء المسؤولية</a>
                     <a href="#">اتصل بنا</a>
                 </div>
             </div>
