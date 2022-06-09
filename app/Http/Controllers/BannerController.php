@@ -111,7 +111,6 @@ public function addbanner(Request $request)
             $is_banner = '0';
         }
         banner::where('id',$id)->update([
-
         'image' => $data['filepath'],
         'title' => $data['title'],
         'slug' => $newslug,

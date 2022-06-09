@@ -123,6 +123,7 @@ class CategoryController extends Controller
                 'title' => $data['title'],
                 'ar_title' => $data['ar_title'],
                 'image' => $data['image'],
+                'ar_image' => $data['ar_image'],
                 'description' => $data['description'],
                 'ar_description' => $data['description'],
                 'is_parent' => $parent,
