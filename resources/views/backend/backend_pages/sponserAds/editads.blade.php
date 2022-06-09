@@ -118,7 +118,7 @@ input:checked + .slider:before {
                                                         </option>
                                                         @if($vendors->count() > 0)
                                                         @foreach ($vendors as $vendor)
-                                                        <option value="{{ $vendor->id }}">{{ $vendor->shop_name }}</option>
+                                                        <option value="{{ $vendor->id }}" @if($vendor->id == $current_banner->seller_id) selected @endif>{{ $vendor->shop_name }}</option>
                                                         @endforeach
                                                         @else
                                                         @endif
@@ -133,7 +133,7 @@ input:checked + .slider:before {
                                                             <i class="fa fa-picture-o"></i> Choose English Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail" class="form-control" type="text" name="en_image">
+                                                    <input id="thumbnail" class="form-control" type="text" name="en_image" value="{{ $current_banner->image_place }}">
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
