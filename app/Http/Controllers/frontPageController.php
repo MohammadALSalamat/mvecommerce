@@ -72,6 +72,11 @@ class frontPageController extends Controller
         return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound'));
     }
 
+    public function aboutus()
+    {
+        return view('frontend.frontend_pages.pages.aboutus');
+    }
+
     // login form
 
  //++++++++++++++++++++++++++++  User Products Section   ++++++++++++++++++++++++++++++//

@@ -9,7 +9,14 @@ use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\ShippingCartController;
 use App\Http\Controllers\ProductReviewController;
 
+// Other Pages
+
+Route::get('/about-us',[frontPageController::class,'aboutUs'])->name('aboutus');
+
+
 //shop page for all products frid system
+
+
 
 Route::get('/shop',[frontPageController::class,'ShopPage'])->name('shop_page');
 
