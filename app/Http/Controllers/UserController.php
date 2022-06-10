@@ -81,6 +81,7 @@ class UserController extends Controller
         $password = Hash::make($data['password']);
         if($data['role'] == 'seller'){
             $newuser = new Seller();
+            dd($newuser->getNextId); 
             $newuser->full_name = $data['full_name'];
             $newuser->username = $data['username'];
             $newuser->email = $data['email'];
