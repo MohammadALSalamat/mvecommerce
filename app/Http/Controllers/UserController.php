@@ -73,7 +73,7 @@ class UserController extends Controller
         }
 
         if (empty($data['status'])|| $data['status'] == null) {
-            $status = 0;
+        $status = 0;
         }else{
         $status = 1;
         }
@@ -89,7 +89,9 @@ class UserController extends Controller
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];
             $newuser->status = $status;
+            $newuser->is_verify = 1;
             $newuser->save();
+
         }elseif($data['role'] == 'admin'){
             $newuser = new Adminview();
             $newuser->full_name = $data['full_name'];
@@ -98,6 +100,7 @@ class UserController extends Controller
             $newuser->photo = $data['image'];
             $newuser->phone = $data['phone'];
             $newuser->status = $status;
+            
             $newuser->save(); 
         }else{
             $newuser = new User();
@@ -110,6 +113,7 @@ class UserController extends Controller
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];
             $newuser->status = $status;
+           
             $newuser->save();
         }
 
