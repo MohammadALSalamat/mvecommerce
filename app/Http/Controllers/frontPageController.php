@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Helper;
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\brand;
 use App\Models\Order;
@@ -12,12 +11,10 @@ use App\Models\Seller;
 use App\Models\product;
 use App\Models\category;
 use App\Models\sponserAds;
-use App\Models\productOrder;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
 use App\Models\categoryBanner;
 use App\Models\productGallary;
-use App\Mail\verficationVendors;
 use App\Models\productAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -35,7 +32,6 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\sellerRegistertionEmail_forAdmin;
-use App\Mail\verfication_admin_email_for_vendors;
 
 class frontPageController extends Controller
 {
