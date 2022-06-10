@@ -676,7 +676,7 @@ class frontPageController extends Controller
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
 
-        return view('frontend.frontend_pages.auth.register_vendors');
+            return view('frontend.frontend_pages.auth.register_vendors');
         }
         public function vendor_info(Request $request)
         {
@@ -718,7 +718,7 @@ class frontPageController extends Controller
             if ($data['license'] == null || empty($data['license'])) {
                 return back()->with('error', 'license is required');
             }
-            //checck email if exist
+            //check email if exist
             $emailCheck = Seller::where('email',$data['email'])->count();
             if($emailCheck > 0){
                 return back()->with('error','Email Is Already Exist');
@@ -810,7 +810,6 @@ class frontPageController extends Controller
             $addnewvendor->shop_name = $data['shop-name'];
             $addnewvendor->type_of_work = $data['type_of_work'];
             $addnewvendor->save();
-
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
