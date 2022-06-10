@@ -811,6 +811,7 @@ class frontPageController extends Controller
             $addnewvendor->added_by ='seller';
             $addnewvendor->shop_name = $data['shop-name'];
             $addnewvendor->type_of_work = $data['type_of_work'];
+            dd('stop');
             $addnewvendor->save();
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
