@@ -786,14 +786,7 @@ class frontPageController extends Controller
                 'address' => $data['address'],
                 'country' =>$data['country']
             ];
-            try {
-                dispatch(new sellerRegistertionEmail($newdata));
-                dispatch(new sellerRegistertionEmail_forAdmin($adminData));
-                //send the data to admin to verify the user 
-            } catch (\Throwable $th) {
-                //throw $th;
-                return back()->with('error','your email has problem');
-            }
+          
             
             $addnewvendor = new Seller();
             $addnewvendor->full_name = $data['name'];
@@ -811,8 +804,15 @@ class frontPageController extends Controller
             $addnewvendor->added_by ='seller';
             $addnewvendor->shop_name = $data['shop-name'];
             $addnewvendor->type_of_work = $data['type_of_work'];
-            dd('stop');
             $addnewvendor->save();
+            try {
+                dispatch(new sellerRegistertionEmail($newdata));
+                dispatch(new sellerRegistertionEmail_forAdmin($adminData));
+                //send the data to admin to verify the user 
+            } catch (\Throwable $th) {
+                //throw $th;
+                return back()->with('error','your email has problem');
+            }
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
