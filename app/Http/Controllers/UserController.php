@@ -78,10 +78,11 @@ class UserController extends Controller
         }else{
         $status = 1;
         }
+        $today_date = date("Y-m-d H:i:s");
+        $after_30days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +30 days'));
         $password = Hash::make($data['password']);
         if($data['role'] == 'seller'){
             $newuser = new Seller();
-            dd($newuser->getNextId); 
             $newuser->full_name = $data['full_name'];
             $newuser->username = $data['username'];
             $newuser->email = $data['email'];
@@ -93,6 +94,19 @@ class UserController extends Controller
             $newuser->status = $status;
             $newuser->is_verify = 1;
             $newuser->save();
+
+            $subscribeFree = new subscription();
+
+            $subscribeFree->seller_id = $newuser->id;
+            $subscribeFree->name = $newuser->full_name;
+            $subscribeFree->value = '300';
+            $subscribeFree->stripe_id = '1';
+            $subscribeFree->stripe_plan ='Basic';
+            $subscribeFree->quantity ='1';
+            $subscribeFree->start_at = $today_date;
+            $subscribeFree->ends_at =$after_30days_end;
+            $subscribeFree->save();
+
 
         }elseif($data['role'] == 'admin'){
             $newuser = new Adminview();
