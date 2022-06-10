@@ -149,7 +149,7 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                     <tr>
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Seller Info</p>
+                                                            <p style="font-weight: 800;">Seller Detatils</p>
                                                             <p> <b>Name : </b> {{ $adminData['full_name'] }}</p>
                                                             <p> <b>Email : </b> {{ $adminData['email'] }}</p>
                                                             <p> <b>Phone Number : </b> {{ $adminData['phone'] }}</p>
@@ -180,9 +180,10 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                                     <tr>
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                                            <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
+                                           <a href="{{ route('seller') }}"><h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
                                                 Click Here To active the seller Account.
                                             </h2>
+                                        </a> 
                                         </td>
                                     </tr>
                                     <tr>
