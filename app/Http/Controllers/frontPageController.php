@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\sellerRegistertionEmail;
 use App\Mail\Single_vendor_email_help;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Config;
@@ -33,6 +34,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
+use App\Jobs\sellerRegistertionEmail_forAdmin;
 use App\Mail\verfication_admin_email_for_vendors;
 
 class frontPageController extends Controller
@@ -785,9 +787,9 @@ class frontPageController extends Controller
                 'country' =>$data['country']
             ];
             try {
-                Mail::to($data['email'])->send(new verficationVendors($newdata));
+                dispatch(new sellerRegistertionEmail($newdata));
+                dispatch(new sellerRegistertionEmail_forAdmin($adminData));
                 //send the data to admin to verify the user 
-                Mail::to('alomda.alslmat@gmail.com')->send(new verfication_admin_email_for_vendors($adminData));
             } catch (\Throwable $th) {
                 //throw $th;
                 return back()->with('error','your email has problem');
