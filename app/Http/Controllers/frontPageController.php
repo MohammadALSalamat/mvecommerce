@@ -353,7 +353,7 @@ class frontPageController extends Controller
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
-        $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
+        $main_vendors = Seller::where('status',1)->where('is_verify' , 1)->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         $current_url = URL::current();
@@ -407,7 +407,7 @@ class frontPageController extends Controller
         // Filter Section
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
-        $main_vendors = Seller::where('status',1)->where('added_by','seller')->get();
+        $main_vendors = Seller::where('status',1)->where('is_verify' , 1)->get();
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         
@@ -820,14 +820,14 @@ class frontPageController extends Controller
         {
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
-            $sellers = Seller::where('status',1)->get();
+            $sellers = Seller::where('status',1)->where('is_verify' , 1)->get();
             return view('frontend.frontend_pages.sellers.sellers_pages.sellers_shops',compact('sellers'));
         }
         public function single_seller($id)
         {
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
-            $seller = Seller::where('username',$id)->where('status',1)->first();
+            $seller = Seller::where('username',$id)->where('status',1)->where('is_verify' , 1)->first();
             $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
             $top_selles_vendor = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->take(6)->get();
             $top_reviewed_vendor_product= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->take(6)->get();
@@ -839,7 +839,7 @@ class frontPageController extends Controller
         {
             #send email to vendor from the user
             $data = $request->all();
-            $seller = Seller::where('id',$data['seller_id'])->where('status',1)->first();
+            $seller = Seller::where('id',$data['seller_id'])->where('status',1)->where('is_verify' , 1)->first();
             if(empty($data['name']) || $data['name'] == null){
                 return back()->with('error','The name is reqired');
             }
