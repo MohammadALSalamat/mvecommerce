@@ -18,12 +18,11 @@
                             <div class="store store-wcmp br-sm">
                                 <figure class="store-banner" style="height: 318px">
                                     @if (empty( $seller->banner_image) || $seller->banner_image == null)
-                                    <img src="{{ asset('front-style/assets/images/vendor/wcmp/1.jpg') }}" alt="Vendor" 
+                                    <img src="{{ asset('front-style/assets/images/defualtSellerbanner.png') }}" alt="Vendor" 
                                     width="400" height="318" style="background-color: #454b63;" />
                                     @else
                                     <img src="{{ asset('/storage/seller/'.$seller->banner_image) }}" alt="Vendor" 
                                         width="400px" height="318px" style="background-color: #454b63;" />
-                                    
                                     @endif
                                 </figure>
                                 <div class="store-content">
