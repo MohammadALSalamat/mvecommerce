@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Adminview;
 use App\Models\Seller;
+use App\Models\subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -113,7 +114,7 @@ class UserController extends Controller
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];
             $newuser->status = $status;
-           
+        
             $newuser->save();
         }
 
