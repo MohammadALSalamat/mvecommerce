@@ -52,7 +52,8 @@
 @section('script')
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA-Fj5APGJBrh2hNmUQaXRaeuP9_zXPvw&libraries=places&callback=initialize"
-    async defer></script>
+    async defer>
+</script>
 <script>
     function initialize() {
         $('form').on('keyup keypress', function(e) {
