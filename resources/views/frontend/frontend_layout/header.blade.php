@@ -240,6 +240,7 @@
             </div>
         </div>
     </div>
+    
     <!-- End of Header Middle -->
     <div class="header-bottom sticky-content fix-top sticky-header">
         <div class="container">
