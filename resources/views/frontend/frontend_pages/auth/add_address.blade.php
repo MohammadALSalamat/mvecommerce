@@ -1,6 +1,25 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle','My Account' )
 @section('style')
+<style>
+.form-control {
+    display: block;
+    width: 100%;
+    min-height: 40px !important;
+    padding: 5px !important;
+    border: 1px solid #333 !important;
+    font-size: 1.4rem;
+    font-family: Cairo, Tahoma, sans-serif !important;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #444 !important;
+    background-color: transparent;
+    border-radius: 7px !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+</style>
 @endsection
 @section('content')
 
@@ -20,8 +39,8 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
-                            <label>Country *</label>
-                            <select  id="country-dd" name="country" class="form-control">
+                            <label style="font-weight:900 !important"> Country *</label>
+                            <select  id="country-dd" name="country" class="form-control form-border-light">
                                 @foreach ($countries as $data)
                                 <option value="252" @if($data->id == 252)
                                     selected
@@ -34,12 +53,12 @@
                             <small> The deliver is inside the <b>UAE</b> only</small>
                         </div>
                         <div class="form-group mb-3">
-                            <label>State *</label>
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important"> State *</label>
                             <select name="state" id="state-dd" class="form-control">
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>City *</label>
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important"> City *</label>
                             <select name="city" id="city-dd" class="form-control">
                             </select>
                         </div>
