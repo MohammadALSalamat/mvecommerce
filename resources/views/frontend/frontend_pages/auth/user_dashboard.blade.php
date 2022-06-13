@@ -173,13 +173,12 @@
                                     <a href="{{ route('deliver_address') }}"> 
                                         <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;"></i> 
                                     </a>
-                                    
-                                    
                                 </div>
                             </div>
+                            @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address ( The  Main Address)</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address @if($user_location->themain_address == 1) ( The  Main Address) @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -193,30 +192,31 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Address:</th>
-                                                    <td>{{ $current_user->address }}</td>
+                                                    <td>{{ $user_location->address }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>City:</th>
-                                                    <td>{{ $current_user->city }}</td>
+                                                    <td>{{ $user_location->city }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Country:</th>
-                                                    <td>{{ $current_user->country }}</td>
+                                                    <td>{{ $user_location->country }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Postcode:</th>
-                                                    <td>{{ $current_user->postcode }}</td>
+                                                    <th>Near Location:</th>
+                                                    <td>{{ $user_location->near_location }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Phone:</th>
-                                                    <td>{{ $current_user->phone }}</td>
+                                                    <td>{{ $user_location->phone }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </address>
-                                    <a href="{{ route('edit_deliverAddress',$current_user->id) }}"> Edit </a> | <a href="{{ route('delete_deliverAddress',$current_user->id) }}"> Delete </a> | <a href="{{ route('set_deliverAddress_asDefualt',$current_user->id) }}"> Set As Defualt</a>
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> Edit </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> Delete </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> Set As Defualt</a>
                                 </div>
                             </div>
+                            @endforeach
                            
                         </div>
                     </div>

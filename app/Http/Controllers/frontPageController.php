@@ -941,13 +941,24 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
+        $user_locations = DB::table('userLocation')->select('*')->where('user_id',$current_user->id);
         if($current_user){
             // dd($current_user);
-            return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user'));
+            return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user','user_locations'));
         }else{
             return redirect()->route('loginForm')->with('warning','Login First To have access');
         }
     }
+
+    // deliver address 
+
+    public function deliver_address($id)
+    {
+        
+        return view('frontend.frontend_pages.auth.add_address');
+    }
+
+
     // update the current user billing address
     public function billingupdate(Request $request,$id)
     {
