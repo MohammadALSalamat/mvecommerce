@@ -299,13 +299,13 @@
                                     <label for="shippingcopybillinginfo" style="color:red">Do you want to Update the shipping address as above data ?</label>
                                 </div>
                                                   
-                                                <button class="mt-3 btn btn-primary">Edit Billing Now</button>
+                                                <button class="mt-3 btn btn-primary">Add / Edit Billing Now</button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Shipping Address</a>
+                                            <a href="#collapse1-1" class="expand">Add / Edit Shipping Address</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
                                             <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
