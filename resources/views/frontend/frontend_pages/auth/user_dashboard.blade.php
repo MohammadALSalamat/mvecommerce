@@ -168,6 +168,14 @@
                             by default.</p>
                         <div class="row">
                             <div class="mb-6 col-sm-6">
+                                <div class="ecommerce-address shipping-address pr-lg-8">
+                                    
+                                       <a href="{{ route('deliver_address') }}"> <i class=" fa fa-plus"></i> </a>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address ( The  Main Address)</h4>
                                     <address class="mb-4">
@@ -204,50 +212,10 @@
                                             </tbody>
                                         </table>
                                     </address>
-                                    <a href=""> Edit </a> | <a href=""> Delete </a>
+                                    <a href="{{ route('edit_deliverAddress',$current_user->id) }}"> Edit </a> | <a href="{{ route('delete_deliverAddress',$current_user->id) }}"> Delete </a> | <a href="{{ route('set_deliverAddress_asDefualt',$current_user->id) }}"> Set As Defualt</a>
                                 </div>
                             </div>
-                            <div class="mb-6 col-sm-6">
-                                <div class="ecommerce-address shipping-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Shipping Address</h4>
-                                    <address class="mb-4">
-                                        <table class="address-table">
-                                             <tbody>
-                                                <tr>
-                                                    <th>Full Name:</th>
-                                                    <td>{{ $current_user->full_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>User Name:</th>
-                                                    <td>{{ $current_user->username }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Address:</th>
-                                                    <td>{{ $current_user->saddress }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>City:</th>
-                                                    <td>{{ $current_user->scity }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Country:</th>
-                                                    <td>{{ $current_user->scountry }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Postcode:</th>
-                                                    <td>{{ $current_user->spostcode }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Phone:</th>
-                                                    <td>{{ $current_user->phone }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </address>
-                                    
-                                </div>
-                            </div>
-                          
+                           
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
