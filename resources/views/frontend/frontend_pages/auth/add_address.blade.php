@@ -15,14 +15,31 @@
     </div>
     <div class="col-12">
         <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
-            <div class="card">
-                <div class="card-header">
-                    <a href="#collapse1-1" class="expand">Add New Deliver Address</a>
-                </div>
-                <div id="collapse1-1" class="card-body collapsed">
+          
                     <form id="demo-form" class="quform from-prevent-multiple-submits" action="" method="post"
                         enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group mb-3">
+                            <label>Country *</label>
+                            <select  id="country-dd" name="country" class="form-control">
+                                <option value="">Select Country</option>
+                                @foreach ($countries as $data)
+                                <option value="{{$data->id}}">
+                                    {{$data->country}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>State *</label>
+                            <select name="state" id="state-dd" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>City *</label>
+                            <select name="city" id="city-dd" class="form-control">
+                            </select>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Address </label>
@@ -55,8 +72,7 @@
                         </div>
                         <button class="mt-3 btn btn-primary">Add New Address</button>
                     </form>
-                </div>
-            </div>
+         
 
         </div>
     </div>

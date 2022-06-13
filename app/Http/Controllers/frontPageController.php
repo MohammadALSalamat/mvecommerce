@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Helper;
+use App\Models\City;
 use App\Models\User;
 use App\Models\brand;
 use App\Models\Order;
 use App\Models\banner;
+use App\Models\Region;
 use App\Models\Seller;
+use App\Models\Country;
 use App\Models\product;
 use App\Models\category;
 use App\Models\sponserAds;
@@ -954,9 +957,21 @@ class frontPageController extends Controller
 
     public function deliver_address()
     {
-        
-        return view('frontend.frontend_pages.auth.add_address');
+        $countries = Country::get(["country", "id"]);
+        return view('frontend.frontend_pages.auth.add_address',compact('countries'));
     }
+ // cities and countries dropdown
+
+ public function fetchState(Request $request)
+ {
+     $data['states'] = Region::where("country_id",$request->country_id)->get(["region", "id"]);
+    return response()->json($data);
+ }
+ public function fetchCity(Request $request)
+ {
+     $data['cities'] = City::where("region_id",$request->state_id)->get(["city", "id"]);
+     return response()->json($data);
+ }
 
 
     // update the current user billing address
