@@ -20,40 +20,40 @@
                 <a href="#collapse1-1" class="expand">Add New Deliver Address</a>
             </div>
             <div id="collapse1-1" class="card-body collapsed">
-                <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
+                <form id="demo-form" class="quform from-prevent-multiple-submits" action=""
                     method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Address </label>
                             <input  type="text" name="address" class="form-control"
-                                id="address" value="{{ $current_user->address }}">
+                                id="address" value="">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPassword4">Country</label>
                             <input type="text" name="country" class="form-control"
-                                id="country" value="{{ $current_user->country }}">
+                                id="country" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">City </label>
                             <input  type="text" name="city" class="form-control"
-                                id="city" value="{{ $current_user->city }}">
+                                id="city" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Post Code </label>
                             <input  type="number" name="postcode"
-                                class="form-control" id="postcode" value="{{ $current_user->postcode }}">
+                                class="form-control" id="postcode" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">State</label>
                             <input  type="text" name="state"
-                                class="form-control" id="state" value="{{ $current_user->stat }}">
+                                class="form-control" id="state" value="">
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                 <a href="#collapse1-1" class="expand">Add / Edit Shipping Address</a>
             </div>
             <div id="collapse1-1" class="card-body collapsed">
-                <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
+                <form id="demo-form" class="quform from-prevent-multiple-submits" action=""
                     method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -80,33 +80,33 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Address </label>
                             <input  type="text" name="saddress" class="form-control"
-                                id="saddress" value="{{ $current_user->saddress }}">
+                                id="saddress" value="">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPassword4">Country</label>
                             <input type="text" name="scountry" class="form-control"
-                                id="scountry" value="{{ $current_user->scountry }}">
+                                id="scountry" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">City </label>
                             <input  type="text" name="scity" class="form-control"
-                                id="scity" value="{{ $current_user->scity }}">
+                                id="scity" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Post Code </label>
                             <input  type="number" name="spostcode"
-                                class="form-control" id="spostcode" value="{{ $current_user->spostcode }}">
+                                class="form-control" id="spostcode" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">State</label>
                             <input  type="text" name="sstate"
-                                class="form-control" id="sstate" value="{{ $current_user->sstat }}">
+                                class="form-control" id="sstate" value="">
                         </div>
                     </div>
                     <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
@@ -132,7 +132,7 @@
                 <a href="#collapse1-1" class="expand">تعديل على موقع وصول الشحنة</a>
             </div>
             <div id="collapse1-1" class="card-body collapsed">
-                <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
+                <form id="demo-form" class="quform from-prevent-multiple-submits" action=""
                     method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -140,33 +140,33 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">الموقع </label>
                             <input  type="text" name="address" class="form-control"
-                                id="address" value="{{ $current_user->address }}">
+                                id="address" value="">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPassword4">البلد</label>
                             <input type="text" name="country" class="form-control"
-                                id="country" value="{{ $current_user->country }}">
+                                id="country" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">المدينة </label>
                             <input  type="text" name="city" class="form-control"
-                                id="city" value="{{ $current_user->city }}">
+                                id="city" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">الرمز البريدي</label>
                             <input  type="number" name="postcode"
-                                class="form-control" id="postcode" value="{{ $current_user->postcode }}">
+                                class="form-control" id="postcode" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">المقاطعة\ الامارة </label>
                             <input  type="text" name="state"
-                                class="form-control" id="state" value="{{ $current_user->stat }}">
+                                class="form-control" id="state" value="">
                         </div>
                     </div>
 
@@ -186,7 +186,7 @@
                 <a href="#collapse1-1" class="expand">تعديل عنوان الشحن</a>
             </div>
             <div id="collapse1-1" class="card-body collapsed">
-                <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
+                <form id="demo-form" class="quform from-prevent-multiple-submits" action=""
                     method="post" enctype="multipart/form-data">
                     @csrf
 
@@ -194,33 +194,33 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">الموقع </label>
                             <input  type="text" name="saddress" class="form-control"
-                                id="saddress" value="{{ $current_user->saddress }}">
+                                id="saddress" value="">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPassword4">البلد</label>
                             <input type="text" name="scountry" class="form-control"
-                                id="scountry" value="{{ $current_user->scountry }}">
+                                id="scountry" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">المدينة </label>
                             <input  type="text" name="scity" class="form-control"
-                                id="scity" value="{{ $current_user->scity }}">
+                                id="scity" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">الرمز البريدي</label>
                             <input  type="number" name="spostcode"
-                                class="form-control" id="spostcode" value="{{ $current_user->spostcode }}">
+                                class="form-control" id="spostcode" value="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">المقاطعة\ الامارة </label>
                             <input  type="text" name="sstate"
-                                class="form-control" id="sstate" value="{{ $current_user->sstat }}">
+                                class="form-control" id="sstate" value="">
                         </div>
                     </div>
                     <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>

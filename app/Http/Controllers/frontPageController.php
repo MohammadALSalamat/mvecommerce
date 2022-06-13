@@ -941,7 +941,7 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
-        $user_locations = DB::table('userLocation')->select('*')->where('user_id',$current_user->id);
+        $user_locations = DB::table('userLocation')->where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);
             return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user','user_locations'));
@@ -952,7 +952,7 @@ class frontPageController extends Controller
 
     // deliver address 
 
-    public function deliver_address($id)
+    public function deliver_address()
     {
         
         return view('frontend.frontend_pages.auth.add_address');
