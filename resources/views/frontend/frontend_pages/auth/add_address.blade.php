@@ -62,36 +62,35 @@
                             <select name="city" id="city-dd" class="form-control">
                             </select>
                         </div>
-                        <div class="form-row">
                             <div class="form-group col-md-12 mb-3">
-                                <label for="inputEmail4">Street name </label>
-                                <input type="text" name="street name" class="form-control" id="address" value="">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
+                                <input type="text" placeholder="e.g Mohammad xxxx" name="full_name" class="form-control" id="full_name" value="">
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="inputPassword4">Building name/no., floor, Apt. or villa no.</label>
-                                <input type="text" name="country" class="form-control" id="country" value="">
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
+                            <div class="form-row d-flex">
+                                <div class="col-md-2 mb-3">
+                                  <span class="form-control" style="margin-right: 5px"><img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="40"
+                                    height="20" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </span>  
+                                </div>    
+                                <div class="form-group col-md-10 mb-3">
+                                    <input type="number" placeholder="e.g Mohammad xxxx" name="full_name" class="form-control" id="full_name" value="">
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group col-md-12 mb-3">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Street name </label>
+                                <input type="text" placeholder="e.g Elctra Street" name="street_name" class="form-control" id="street_name" value="">
+                            </div>
+                            <div class="form-group col-md-12 mb-3">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputPassword4">Building name/no., floor, Apt. or villa no.</label>
+                                <input type="text" placeholder="e.g Royal Rose ,5th floor, Apt 222" name="full_street_info" class="form-control" id="full_street_info" value="">
+                            </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="inputEmail4">Nearest landmark </label>
-                                <input type="text" name="city" class="form-control" id="city" value="">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Nearest landmark </label>
+                                <input type="text" placeholder="e.g oppisate side of ADCB bank" name="near_landmark" class="form-control" id="near_landmark" value="">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">Post Code </label>
-                                <input type="number" name="postcode" class="form-control" id="postcode" value="">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">State</label>
-                                <input type="text" name="state" class="form-control" id="state" value="">
-                            </div>
-                        </div>
-                        <div class="my-4 form-checkbox d-flex align-items-center">
-                        </div>
+                       
                         <button class="mt-3 btn btn-primary">Add New Address</button>
                     </form>
         </div>
