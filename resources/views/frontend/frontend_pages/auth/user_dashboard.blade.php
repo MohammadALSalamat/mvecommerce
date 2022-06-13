@@ -171,7 +171,9 @@
                                 <div class="ecommerce-address shipping-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">Add New Address</h4>
                                     <a href="{{ route('deliver_address',) }}"> 
-                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;"></i> 
+                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                           <h4 style="color:#ccc"> Add Address Here </h4>
+                                        </i> 
                                     </a>
                                 </div>
                             </div>
