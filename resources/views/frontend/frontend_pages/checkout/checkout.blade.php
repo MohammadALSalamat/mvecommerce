@@ -49,7 +49,6 @@
                                                 required value="{{ $user->full_name }}">
                                         </div>
                                     </div>
-                                   
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Country *</label>
@@ -77,21 +76,6 @@
                                     <input type="text" placeholder="House number and street name"
                                         class="form-control form-control-md mb-2" name="address" id="address" required value="{{ $user->address }}">
                                     
-                                </div>
-                                <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        
-                                        <div class="form-group">
-                                            <label>ZIP *</label>
-                                            <input type="text" id="postcode" class="form-control form-control-md" name="postcode" required value="{{ $user->postcode }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Phone *</label>
-                                            <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ $user->phone }}">
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="form-group mb-7">
                                     <label>Email address *</label>

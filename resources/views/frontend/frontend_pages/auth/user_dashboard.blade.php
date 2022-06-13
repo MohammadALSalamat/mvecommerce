@@ -257,7 +257,6 @@
                                             <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4">Address </label>
