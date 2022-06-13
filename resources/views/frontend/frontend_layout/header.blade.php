@@ -630,11 +630,10 @@ div.checkRadioContainer > label > input:checked + i {
                        <span class="cart-label">Cart</span>
                    </a>
                    <div class="dropdown-box">
-                       <div class="cart-header">
-                           <span>Shopping Cart</span>
-                           <a href="#" class="btn-close">Close<i class="w-icon-long-arrow-right"></i></a>
+                    <div class="cart-header">
+                        <span>Shopping Cart</span>
+                        <a href="#" class="btn-close">Close<i class="w-icon-long-arrow-right"></i></a>
                        </div>
-
                        <div class="products" style="overflow-y: auto">
                            @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                            @php
