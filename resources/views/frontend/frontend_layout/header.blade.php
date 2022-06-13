@@ -548,9 +548,9 @@ div.checkRadioContainer > label > input:checked + i {
                                    </div>
                                    @auth
                                    @php
-                                       dump(auth()->user()->address);
+                                    dump(URL::current());
                                    @endphp
-                                   @if(empty(auth()->user()->address) || auth()->user()->address == null)
+                                   @if(empty(auth()->user()->country) || auth()->user()->country == null)
                                    <div class="modal-body">
                                     Delivery options and delivery speeds may vary for different locations <br>
                                     <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses

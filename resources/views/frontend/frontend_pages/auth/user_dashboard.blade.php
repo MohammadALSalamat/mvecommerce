@@ -25,14 +25,16 @@
             <div class="tab tab-vertical row gutter-lg">
                 <ul class="mb-6 nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a href="#account-dashboard" class="nav-link active">Dashboard</a>
+                        <a href="#account-dashboard" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">Orders</a>
                     </li>
         
                     <li class="nav-item">
-                        <a href="#account-addresses" class="nav-link">Addresses</a>
+                        <a href="#account-addresses" class="nav-link @if (URL::current() == 'http://127.0.0.1:8000/dashboard/#account-addresses')
+                            active
+                        @endif">Addresses</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">Account details</a>
