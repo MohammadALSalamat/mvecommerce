@@ -169,7 +169,7 @@
                         <div class="row">
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Billing Address</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address ( The  Main Address)</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -204,7 +204,6 @@
                                             </tbody>
                                         </table>
                                     </address>
-                                   
                                 </div>
                             </div>
                             <div class="mb-6 col-sm-6">
@@ -251,7 +250,7 @@
                                 <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">Edit Billing Address</a>
+                                            <a href="#collapse1-1" class="expand">Add New Deliver Address</a>
                                         </div>
                                         <div id="collapse1-1" class="card-body collapsed">
                                             <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
