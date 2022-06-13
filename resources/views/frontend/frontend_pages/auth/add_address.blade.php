@@ -13,9 +13,8 @@
             <h1 class="mb-0 page-title">My Addresses</h1>
         </div>
     </div>
-    <div class="col-12">
-        <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
-          
+    <div class="col-12 col-md-7 offset-md-2">
+        <div class="">
                     <form id="demo-form" class="quform from-prevent-multiple-submits" action="" method="post"
                         enctype="multipart/form-data">
                         @csrf
@@ -72,8 +71,6 @@
                         </div>
                         <button class="mt-3 btn btn-primary">Add New Address</button>
                     </form>
-         
-
         </div>
     </div>
 </main>
@@ -142,3 +139,51 @@
 </main>
 @endif
 @endsection
+
+@section('script')
+<!-- Country and Cities selection  -->
+<script>
+    $(document).ready(function () {
+        $('#country-dd').on('change', function () {
+            var idCountry = this.value;
+            $("#state-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-states')}}",
+                type: "POST",
+                data: {
+                    country_id: idCountry,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dd").append('<option value="' + value.id + '">' + value.region + '</option>');
+                    });
+                    $('#city-dd').html('<option value="">Select City</option>');
+                }
+            });
+        });
+        $('#state-dd').on('change', function () {
+            var idState = this.value;
+            $("#city-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-cities')}}",
+                type: "POST",
+                data: {
+                    state_id: idState,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (res) {
+                    $('#city-dd').html('<option value="">Select City</option>');
+                    $.each(res.cities, function (key, value) {
+                        $("#city-dd").append('<option value="' + value
+                            .id + '">' + value.city + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+@stop
