@@ -2,22 +2,41 @@
 @section('mytitle','My Account' )
 @section('style')
 <style>
-.form-control {
+.quform .form-control {
     display: block;
     width: 100%;
     min-height: 40px !important;
     padding: 5px !important;
-    border: 1px solid #333 !important;
+    border: 1px solid #888C8C !important;
     font-size: 1.4rem;
     font-family: Cairo, Tahoma, sans-serif !important;
     line-height: 1.5;
     font-weight: 400;
-    color: #444 !important;
+    vertical-align:middle;
     background-color: transparent;
     border-radius: 7px !important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    -webkit-box-shadow: 0 1px 2px rgb(15 17 17 / 15%) inset;
+    box-shadow: 0 1px 2px rgb(15 17 17 / 15%) inset;
     outline: 0;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #888C8C !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #888C8C !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #888C8C !important;
+}
+
+input[type=text],  input[type=number], input[type=tel], input[type=password], input[type=date], input[type=email] {
+    height: 31px;
+    padding: 3px 7px;
+    line-height: normal;
+    color: #000;
 }
 </style>
 @endsection
@@ -68,12 +87,12 @@
                             </div>
                             <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
                             <div class="form-row d-flex">
-                                <div class="col-md-2 mb-3">
-                                  <span class="form-control" style="margin-right: 5px"><img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="40"
-                                    height="20" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </span>  
+                                <div class="col-2 mb-3" style="margin-right: 5px;">
+                                  <strong class="form-control" style="font-weight: 900 !important" ><img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="20"
+                                    height="10" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </strong>  
                                 </div>    
-                                <div class="form-group col-md-10 mb-3">
-                                    <input type="number" placeholder="e.g Mohammad xxxx" name="full_name" class="form-control" id="full_name" value="">
+                                <div class="form-group col-10 mb-3">
+                                    <input type="number" placeholder="e.g 5014xxxxxx" name="full_name" class="form-control" id="full_name" value="">
                                 </div>
                             </div>
                             <div class="form-group col-md-12 mb-3">
