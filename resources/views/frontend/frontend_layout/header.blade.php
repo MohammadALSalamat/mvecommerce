@@ -1,6 +1,41 @@
    <!-- Make the text best deals Glowing if there is products -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    div.checkRadioContainer > label > input {
+	visibility: hidden;
+}
 
+div.checkRadioContainer {
+	max-width: 10em;
+}
+div.checkRadioContainer > label {
+	display: block;
+	border: 2px solid grey;
+	margin-bottom: -2px;
+	cursor: pointer;
+}
+
+div.checkRadioContainer > label:hover {
+	background-color: AliceBlue;
+}
+
+div.checkRadioContainer > label > span {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 2em;
+}
+
+div.checkRadioContainer > label > input + i {
+	visibility: hidden;
+	color: green;
+	margin-left: -0.5em;
+	margin-right: 0.2em;
+}
+
+div.checkRadioContainer > label > input:checked + i {
+	visibility: visible;
+}
+</style>
    <style>
        .modal {
            position: fixed;
@@ -511,31 +546,42 @@
                                            aria-label="Close"></button>
                                    </div>
                                    @auth
-                                   @if(empty(auth()->user()->address ) || auth()->user()->address != null)
+                                   @php
+                                       dump(auth()->user()->address);
+                                   @endphp
+                                   @if(empty(auth()->user()->address) || auth()->user()->address == null)
                                    <div class="modal-body">
                                     Delivery options and delivery speeds may vary for different locations <br>
                                     <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses
                                     </b>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
-                                            class="btn btn-primary">Add New Address</button></a>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
+                                                class="btn btn-primary">Add New Address</button></a>
+                                    </div>
                                    @else
-                                   <form action="{{route('userlocation')}}" method="Post">
+                                   <form action="{{route('userdashboard')}}" method="Post">
                                        <div class="modal-body">
                                            @csrf
-                                           <input type="text" id="address-input" name="address_address"
-                                               class="form-control map-input" style="display:block">
-                                           <div class="form-group" style="display:block">
-                                               <input type="hidden" name="address_latitude" id="address-latitude" />
-                                               <input type="hidden" name="address_longitude" id="address-longitude" />
-                                           </div>
-                                           <div id="address-map-container" style="width:100%;height:400px; mt-2 mb-2 ">
-                                               <div style="width: 100%; height: 100%" id="address-map"></div>
-                                           </div>
+                                           <div class="checkRadioContainer">
+                                            <label>
+                                                <input type="radio" name="radioGroup" />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span>Item 1</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="radioGroup" />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span>Item 2</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="radioGroup" />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span>Item 3</span>
+                                            </label>
+                                        </div>
                                        </div>
                                        <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary"
