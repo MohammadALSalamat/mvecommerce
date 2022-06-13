@@ -40,11 +40,11 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label style="font-weight:900 !important"> Country *</label>
-                            <select  id="country-dd" name="country" class="form-control form-border-light">
+                            <select  id="country-dd" name="country" class="form-control">
+                                <option value="none" selected> <!!-- Select The Country--!!></option>
                                 @foreach ($countries as $data)
-                                <option value="252" @if($data->id == 252)
-                                    selected
-                                    @else
+                                <option  value="{{$data->id}}"  @if($data->id != 252)                                   
+                                    style="display:none"
                                 @endif>
                                     {{$data->country}}
                                 </option>
@@ -57,24 +57,24 @@
                             <select name="state" id="state-dd" class="form-control">
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label style="font-weight: 900 !important;margin-bottom:10px !important"> City *</label>
                             <select name="city" id="city-dd" class="form-control">
                             </select>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">Address </label>
-                                <input type="text" name="address" class="form-control" id="address" value="">
+                            <div class="form-group col-md-12 mb-3">
+                                <label for="inputEmail4">Street name </label>
+                                <input type="text" name="street name" class="form-control" id="address" value="">
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputPassword4">Country</label>
+                                <label for="inputPassword4">Building name/no., floor, Apt. or villa no.</label>
                                 <input type="text" name="country" class="form-control" id="country" value="">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="inputEmail4">City </label>
+                                <label for="inputEmail4">Nearest landmark </label>
                                 <input type="text" name="city" class="form-control" id="city" value="">
                             </div>
                         </div>
