@@ -548,7 +548,7 @@ div.checkRadioContainer > label > input:checked + i {
                                    </div>
                                    @auth
                                    @php
-                                    dump(URL::current());
+                                    dump(URL::current().'/#account-addresses');
                                    @endphp
                                    @if(empty(auth()->user()->country) || auth()->user()->country == null)
                                    <div class="modal-body">
