@@ -603,9 +603,7 @@ div.checkRadioContainer > label > input:checked + i {
                                        <a href="{{route('loginForm')}}" class=""><button type="submit"
                                                class="btn btn-primary">Please login First</button></a>
                                    </div>
-
                                    @endauth
-
                                </div>
                            </div>
                        </div>
