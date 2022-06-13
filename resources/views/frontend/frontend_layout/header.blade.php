@@ -6,13 +6,14 @@
 }
 
 div.checkRadioContainer {
-	max-width: 10em;
+	max-width: 100%;
 }
 div.checkRadioContainer > label {
 	display: block;
 	border: 2px solid grey;
 	margin-bottom: -2px;
 	cursor: pointer;
+    margin: 10px 0
 }
 
 div.checkRadioContainer > label:hover {
@@ -28,7 +29,7 @@ div.checkRadioContainer > label > span {
 div.checkRadioContainer > label > input + i {
 	visibility: hidden;
 	color: green;
-	margin-left: -0.5em;
+	margin-left: 10px;
 	margin-right: 0.2em;
 }
 
@@ -566,20 +567,20 @@ div.checkRadioContainer > label > input:checked + i {
                                        <div class="modal-body">
                                            @csrf
                                            <div class="checkRadioContainer">
-                                            <label>
-                                                <input type="radio" name="radioGroup" />
+                                            <label style=" padding:10px">
+                                                <input type="radio" name="radioGroup" checked  />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span>Item 1</span>
+                                                <span>MOHAMMAD شارع العلم Nirvana travel and tourism, Abu Dhabi Marina Mall</span>
                                             </label>
-                                            <label>
-                                                <input type="radio" name="radioGroup" />
+                                            <label style=" padding:10px">
+                                                <input type="radio" name="radioGroup"   />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span>Item 2</span>
+                                                <span>9yards kalifahlifa first street, Abu Dhabi Abu Dhabi Intl Airport</span>
                                             </label>
-                                            <label>
-                                                <input type="radio" name="radioGroup" />
+                                            <label style=" padding:10px">
+                                                <input type="radio" name="radioGroup"   />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span>Item 3</span>
+                                                <span>Walied Mohammad bin khalifa Tal Al Sanawbar restaurant & Grills, Al Ain Hili</span>
                                             </label>
                                         </div>
                                        </div>
