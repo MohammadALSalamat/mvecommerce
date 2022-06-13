@@ -13,21 +13,25 @@
             <h1 class="mb-0 page-title">My Addresses</h1>
         </div>
     </div>
-    <div class="col-12 col-md-7 offset-md-2">
+    <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
         <div class="">
+            <h3> Add New Address </h3>
                     <form id="demo-form" class="quform from-prevent-multiple-submits" action="" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Country *</label>
                             <select  id="country-dd" name="country" class="form-control">
-                                <option value="">Select Country</option>
                                 @foreach ($countries as $data)
-                                <option value="{{$data->id}}">
+                                <option value="252" @if($data->id == 252)
+                                    selected
+                                    @else
+                                @endif>
                                     {{$data->country}}
                                 </option>
                                 @endforeach
                             </select>
+                            <small> The deliver is inside the <b>UAE</b> only</small>
                         </div>
                         <div class="form-group mb-3">
                             <label>State *</label>
