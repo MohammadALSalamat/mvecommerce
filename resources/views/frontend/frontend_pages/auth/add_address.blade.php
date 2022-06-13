@@ -46,9 +46,9 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
 @if(Config::get('app.locale') == 'en')
 <main class="main">
     <!-- Start of Page Header -->
-    <div class="page-header">
+    <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
         <div class="container">
-            <h1 class="mb-0 page-title">My Addresses</h1>
+            <h1 class="mb-0 page-title text-white">My Addresses</h1>
         </div>
     </div>
     <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
@@ -85,7 +85,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
                                 <input type="text" placeholder="e.g Mohammad xxxx" name="full_name" class="form-control" id="full_name" value="">
                             </div>
-                            <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Phone Number ( Reciver ) </label>
                             <div class="form-row d-flex">
                                 <div class="col-2 mb-3" style="margin-right: 5px;">
                                   <strong class="form-control" style="font-weight: 900 !important" ><img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="20"
@@ -95,6 +95,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                     <input type="number" placeholder="e.g 5014xxxxxx" name="full_name" class="form-control" id="full_name" value="">
                                 </div>
                             </div>
+
                             <div class="form-group col-md-12 mb-3">
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Street name </label>
                                 <input type="text" placeholder="e.g Elctra Street" name="street_name" class="form-control" id="street_name" value="">
@@ -110,7 +111,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                             </div>
                         </div>
                        
-                        <button class="mt-3 btn btn-primary">Add New Address</button>
+                        <button class="mt-3 mb-6 btn btn-primary">Add New Address</button>
                     </form>
         </div>
     </div>
