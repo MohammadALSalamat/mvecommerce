@@ -52,9 +52,12 @@ class OrderController extends Controller
     public function checkout_process(Request $request)
     {
         $data = $request->all();
-        $coutryName = Country::where('id',$data['country'])->first();
-        $stateName = Region::where("id",$data['state'])->first();
-        $cityNamme = City::where("region_id",$stateName['id'])->first();
+        $locations = userLocation::find($data['location_id_selected']);
+        
+        dd($locations);
+        $coutryName = $locations->country;
+        $stateName = $locations->city;
+        $cityNamme = $locations->near_location;
         if(empty($data['full_name']) || $data['full_name'] == null){
             return back()->with('error','Billing Full Name Feild Is Required');
         }
