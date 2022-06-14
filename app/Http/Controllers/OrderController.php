@@ -57,7 +57,6 @@ class OrderController extends Controller
         }
         $locations = userLocation::find($data['location_id_selected']);
         
-        dd($data);
         $coutryName = $locations->country;
         $stateName = $locations->city;
         $cityNamme = $locations->near_location;
@@ -108,20 +107,20 @@ class OrderController extends Controller
             $order->user_id = $data['user_id'];
             $order->full_name = $full_name;
             $order->sfull_name = $full_name;
-            $order->city = $cityNamme;
+            $order->city = $stateName;
             $order->country = $coutryName;
             $order->address = $street;
-            $order->state = $cityNamme;
-            $order->scity = $cityNamme;
+            $order->state = $stateName;
+            $order->scity = $stateName;
             $order->scountry = $coutryName;
-            $order->sstate = $cityNamme;
+            $order->sstate = $stateName;
             $order->saddress = $street;
-            $order->email = $data['email'];
+            $order->email = $userInfo->email;
             $order->note = null;
             $order->phone = $phone;
             $order->sphone = $phone;
-            $order->postcode = null;
-            $order->spostcode = null;
+            $order->postcode = $full_address;
+            $order->spostcode = $full_address;
             $order->order_number = $ordernumber;
             $order->total = $final_total;
             $order->sub_total = (float) str_replace(',','',$total);
@@ -132,20 +131,21 @@ class OrderController extends Controller
             $order_email_imfo = [
                 'full_name' => $full_name,
                 'sfull_name' => $full_name,
-                'city' => $cityNamme,
+                'city' => $stateName,
                 'country' => $coutryName,
                 'address' => $street,
-                'state' => $cityNamme,
-                'scity' => $cityNamme,
+                'state' => $stateName,
+                'scity' => $stateName,
                 'scountry' => $coutryName,
                 'sstate' => $coutryName,
                 'saddress' => $street,
-                'email' => $data['email'],
+                'email' => $userInfo->email,
                 'phone' => $phone,
                 'sphone' => $phone,
                 'order_number' => $ordernumber,
                 'total' => $final_total,
                 'sub_total' => $total,
+                'full_address'=>$full_address,
                 'coupon'=>$coupon_value,
                 'payment_method' => $data['cod'],
                 'delivary_charge'=>$shipping_paid,
