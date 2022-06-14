@@ -1153,6 +1153,31 @@ class frontPageController extends Controller
         return back()->with('error','The address is not there');
 
     }
+
+ }
+
+ public function selected_address(Request $request)
+ {
+    $data = $request->all();
+
+    $current_location = userLocation::find($data['location_id_selected']);
+    $loations = userLocation::where('id','!=',$current_location->id)->get();
+    if($current_location){
+        foreach($loations as $location){
+            userLocation::where('id',$location->id)->update([
+                'themain_address'=> 0
+            ]);
+        }
+        userLocation::where('id',$current_location->id)->update([
+            'themain_address'=> 1
+        ]);
+
+        return back()->with('message','your address has been set to be used in checkout');
+    }else{
+        return back()->with('error','The address is not there');
+
+    }
+    
  }
 
     // update the current user billing address

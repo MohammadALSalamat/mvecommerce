@@ -152,7 +152,7 @@ Route::group(['perfix'=>'user'],function(){
     Route::get('/edit_deliverAddress/{id}',[frontPageController::class,'edit_deliverAddress'])->name('edit_deliverAddress');
     Route::get('/delete_deliverAddress/{id}',[frontPageController::class,'delete_deliverAddress'])->name('delete_deliverAddress');
     Route::get('/set_deliverAddress_asDefualt/{id}',[frontPageController::class,'set_deliverAddress_asDefualt'])->name('set_deliverAddress_asDefualt');
-    
+    Route::post('selected_address',[frontPageController::class,'selected_address'])->name('selected_address');
     Route::post('address_update/{id}',[frontPageController::class, 'address_update'])->name('address_update');
     
     Route::post('shipping/{id}',[frontPageController::class, 'shippingupdate'])->name('shippingupdate');

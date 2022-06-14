@@ -561,12 +561,13 @@ div.checkRadioContainer > label > input:checked + i {
                                                 class="btn btn-primary">Add New Address</button></a>
                                     </div>
                                    @else
-                                   <form action="{{route('userdashboard')}}" method="Post">
+                                   <form action="{{route('selected_address')}}" method="Post">
                                        <div class="modal-body">
                                            @csrf
                                            <div class="checkRadioContainer">
                                             @foreach ($user_locations as $location )
                                             <label style=" padding:10px">
+                                                <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
                                                 <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
                                                 <span> <b> Deliver's Name : </b> {{ $location->full_name }}</span><br>
@@ -579,12 +580,12 @@ div.checkRadioContainer > label > input:checked + i {
                                        <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary"
                                                data-bs-dismiss="modal">Close</button>
-                                               <a href="{{ route('deliver_address') }}"> 
-                                                <button type="button" class=" btn btn-dark">
-                                                    Manage Addresses <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
-                                                </button>
-                                            </a>
-                                           <button type="submit" class="btn btn-primary">Use Location</button>
+                                               <button type="button" class=" btn btn-dark"><a href="{{ route('deliver_address') }}"> 
+                                                
+                                                    Manage  <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
+                                                </a>
+                                            </button>
+                                           <button type="submit" class="btn btn-primary">Save</button>
                                        </div>
                                    </form>
                                    @endif
