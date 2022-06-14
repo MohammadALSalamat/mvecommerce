@@ -1054,7 +1054,6 @@ class frontPageController extends Controller
  public function address_update(Request $request,$id)
  {
     $data = $request->all();
-    dd($data);
     $current_user = User::find($data['user_id']);
     if($current_user){
     if( empty($data['country']) || $data['country'] == null ){
@@ -1082,6 +1081,11 @@ class frontPageController extends Controller
         return back()->with('error', 'the phone is required');
     }
 
+    if($data['phone'] == '+971'.$data['phone']){
+        $phone = $data['phone'];
+    }else{
+        $phone = '+971'.$data['phone'];
+    }
     if (empty($data['street_name']) || $data['street_name'] == null) {
         return back()->with('error', 'the Street name is required');
     }
@@ -1091,14 +1095,21 @@ class frontPageController extends Controller
     }
         $check_ifthe_City_is_UAE = Country::find($data['country']);
         $state = Region::find($data['state']);
-        $city_name = City::find($city);
         
         if($check_ifthe_City_is_UAE->id == 252){
             userLocation::where('id',$id)->update([
-                
+           'user_id' => $current_user->id,
+           'themain_address' => 0,
+           'address' => $data['street_name'],
+           'full_name' => $full_name,
+           'full_street_info' => $data['full_street_info'],
+           'country' => $check_ifthe_City_is_UAE->country,
+           'city' => $state->region,
+           'phone' => $phone,
+           'near_location' => $data['near_landmark'],
             ]);
 
-            return back()->with('message','your address has been saved');
+            return back()->with('message','your address has been Updated');
         }else{
             return back()->with('error','the country is not listed in Delivery area');
         }
