@@ -77,7 +77,47 @@ div.checkRadioContainer > label > input:checked + i {
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                     Billing Details
                                 </h3>
-                                
+                                @if(empty($user_locations) || count($user_locations) == 0 )
+                                   <div class="modal-body">
+                                    Delivery options and delivery speeds may vary for different locations <br>
+                                    <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses
+                                    </b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
+                                                class="btn btn-primary">Add New Address</button></a>
+                                    </div>
+                                   @else
+                                   <form action="{{route('selected_address')}}" method="Post">
+                                       <div class="modal-body">
+                                           @csrf
+                                           <div class="checkRadioContainer">
+                                            @foreach ($user_locations as $location )
+                                            <label style=" padding:10px">
+                                                <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
+                                                <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked @endif  />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span> <b> Deliver's Name : </b> {{ $location->full_name }}</span><br>
+                                                <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
+                                            </label>
+                                            @endforeach
+                                            
+                                        </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary"
+                                               data-bs-dismiss="modal">Close</button>
+                                               <button type="button" class=" btn btn-dark"><a href="{{ route('deliver_address') }}"> 
+                                                
+                                                    Manage  <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
+                                                </a>
+                                            </button>
+                                           <button type="submit" class="btn btn-primary">Save</button>
+                                       </div>
+                                   </form>
+                                   @endif
                             </div>
                             <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
                                 <div class="order-summary-wrapper sticky-sidebar">

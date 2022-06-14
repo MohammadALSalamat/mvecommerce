@@ -14,6 +14,7 @@ use App\Models\Country;
 use App\Models\product;
 use App\Jobs\OrderEmail;
 use App\Models\Shipping;
+use App\Models\userLocation;
 use Illuminate\Http\Request;
 use App\Jobs\orderVendorEmail;
 use App\Jobs\OrderEmailForAdmin;
@@ -29,7 +30,8 @@ class OrderController extends Controller
         $user = User::where('id',auth()->user()->id)->first();
         $shipping_adress = Shipping::where('status',1)->get();
         $countries = Country::get(["country", "id"]);
-        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries'));
+        $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->get();
+        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries','user_locations'));
     }
 
     // cities and countries dropdown
