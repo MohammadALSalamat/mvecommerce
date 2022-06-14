@@ -999,9 +999,21 @@ class frontPageController extends Controller
     }else{
         $full_name = $data['full_name'];
     }
-    
+
+    if (empty($data['phone']) || $data['phone'] == null) {
+        return back()->with('error', 'the phone is required');
+    }
+
+    if (empty($data['street_name']) || $data['street_name'] == null) {
+        return back()->with('error', 'the Street name is required');
+    }
+
+    if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
+        return back()->with('error', 'the building information is required');
+    }
+    dd($data);
         $check_ifthe_City_is_UAE = Country::find($data['country']);
-        if($check_ifthe_City_is_UAE == '252'){
+        if($check_ifthe_City_is_UAE == 252){
 
         }else{
             return back()->with('error','the country is not listed in Delivery area');
@@ -1009,7 +1021,7 @@ class frontPageController extends Controller
     }else{
         return redirect()->route('loginForm')->with('warning','Login First To have access');
     }
-    dd($data);
+    
  }
 
     // update the current user billing address
