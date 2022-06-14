@@ -573,14 +573,17 @@ div.checkRadioContainer > label > input:checked + i {
                                                 <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
                                             </label>
                                             @endforeach
-                                            <a class="btn btn-dark" href="{{ route('deliver_address') }}"> 
-                                                Manage the Addresses <i class="fas fa-gear spinner " style="color:#fff;font-size:20px"></i>
-                                            </a>
+                                            
                                         </div>
                                        </div>
                                        <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary"
                                                data-bs-dismiss="modal">Close</button>
+                                               <a href="{{ route('deliver_address') }}"> 
+                                                <button type="button" class=" btn btn-dark">
+                                                    Manage Addresses <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
+                                                </button>
+                                            </a>
                                            <button type="submit" class="btn btn-primary">Use Location</button>
                                        </div>
                                    </form>
