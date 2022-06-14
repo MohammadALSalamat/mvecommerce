@@ -54,70 +54,16 @@ class OrderController extends Controller
         $data = $request->all();
         $locations = userLocation::find($data['location_id_selected']);
         
-        dd($locations);
+        dd($data);
         $coutryName = $locations->country;
         $stateName = $locations->city;
         $cityNamme = $locations->near_location;
-        if(empty($data['full_name']) || $data['full_name'] == null){
-            return back()->with('error','Billing Full Name Feild Is Required');
-        }
-        if (empty($cityNamme['city']) || $cityNamme['city'] == null) {
-            $city = $stateName['region'];
-        }else{
-            $city = $cityNamme['city'];
-        }
-        if (empty($data['address']) || $data['address'] == null) {
-            return back()->with('error', 'Billing Address Feild Is Required');
-        }
-        if (empty($coutryName['country']) || $coutryName['country'] == null) {
-            return back()->with('error', 'Billing Country Feild Is Required');
-        }
-        if (empty($data['postcode']) || $data['postcode'] == null) {
-            return back()->with('error', 'Billing Post Code Feild Is Required');
-        }
-        if (empty($data['email']) || $data['email'] == null) {
-            return back()->with('error', 'Billing Email Feild Is Required');
-        }
-        if (empty($data['phone']) || $data['phone'] == null) {
-            return back()->with('error', 'Billing Phone Feild Is Required');
-        }
-        if (empty($data['cod']) || $data['cod'] == null) {
-            return back()->with('error', 'Billing Phone Feild Is Required');
-        }
-        if (empty($data['scountry']) || $data['scountry'] == null) {
-            $scountry = $coutryName;
-        } else {
-            $scountry = $data['scountry'];
-        }
-        if (empty($data['scity']) || $data['scity'] == null) {
-            $scity = $city;
-        } else {
-            $scity = $data['scity'];
-        }
-        if (empty($stateName['region']) || $stateName['region'] == null) {
-            return back()->with('error', 'Billing State Feild Is Required');
-        }
-        if (empty($data['spostcode']) || $data['spostcode'] == null) {
-            $spostcode = $data['postcode'];
-        }else{
-            $spostcode = $data['spostcode'];
-        }
-        if (empty($data['sstate']) || $data['sstate'] == null) {
-            $sstate = $stateName['region'];
-        } else {
-            $sstate = $data['sstate'];
-        }
-        if (empty($data['sfull_name']) || $data['sfull_name'] == null) {
-            $sfull_name = $data['full_name'];
-        } else {
-            $sfull_name = $data['sfull_name'];
-        }
+        $full_name = $locations->full_name;
+        $phone = $locations->phone;
+        $full_address = $locations->full_street_info;
+        $street = $locations->address;
 
-        if (empty($data['saddress']) || $data['saddress'] == null) {
-            $saddress = $data['address'];
-        } else {
-            $saddress = $data['saddress'];
-        }
+        
 
         if (empty($data['sub_total']) || $data['sub_total'] == null) {
             return back()->with('error', 'There is an error with the system Please Try later');
@@ -157,22 +103,22 @@ class OrderController extends Controller
         if ($userInfo) {
             $order = new Order();
             $order->user_id = $data['user_id'];
-            $order->full_name = $data['full_name'];
-            $order->sfull_name = $sfull_name;
-            $order->city = $city;
-            $order->country = $coutryName['country'];
-            $order->address = $data['address'];
-            $order->state = $stateName['region'];
-            $order->scity = $scity;
-            $order->scountry = $scountry;
-            $order->sstate = $sstate;
-            $order->saddress = $saddress;
+            $order->full_name = $full_name;
+            $order->sfull_name = $full_name;
+            $order->city = $cityNamme;
+            $order->country = $coutryName;
+            $order->address = $street;
+            $order->state = $cityNamme;
+            $order->scity = $cityNamme;
+            $order->scountry = $coutryName;
+            $order->sstate = $cityNamme;
+            $order->saddress = $street;
             $order->email = $data['email'];
-            $order->note = $data['note'];
-            $order->phone = $data['phone'];
-            $order->sphone = $data['phone'];
-            $order->postcode = $data['postcode'];
-            $order->spostcode = $data['spostcode'];
+            $order->note = null;
+            $order->phone = $phone;
+            $order->sphone = $phone;
+            $order->postcode = null;
+            $order->spostcode = null;
             $order->order_number = $ordernumber;
             $order->total = $final_total;
             $order->sub_total = (float) str_replace(',','',$total);
@@ -181,22 +127,19 @@ class OrderController extends Controller
             // $order->status = 0;
             $order->delivary_charge = $shipping_paid;
             $order_email_imfo = [
-                'full_name' => $data['full_name'],
-                'sfull_name' => $sfull_name,
-                'city' => $city,
-                'country' => $coutryName['country'],
-                'address' => $data['address'],
-                'state' => $stateName['region'],
-                'scity' => $scity,
-                'scountry' => $scountry,
-                'sstate' => $sstate,
-                'saddress' => $saddress,
+                'full_name' => $full_name,
+                'sfull_name' => $full_name,
+                'city' => $cityNamme,
+                'country' => $coutryName,
+                'address' => $street,
+                'state' => $cityNamme,
+                'scity' => $cityNamme,
+                'scountry' => $coutryName,
+                'sstate' => $coutryName,
+                'saddress' => $street,
                 'email' => $data['email'],
-                'note' => $data['note'],
-                'phone' => $data['phone'],
-                'sphone' => $data['phone'],
-                'postcode' => $data['postcode'],
-                'spostcode' => $data['spostcode'],
+                'phone' => $phone,
+                'sphone' => $phone,
                 'order_number' => $ordernumber,
                 'total' => $final_total,
                 'sub_total' => $total,
