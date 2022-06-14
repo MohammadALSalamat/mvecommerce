@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\sellerRegistertionEmail_forAdmin;
+use App\Models\userLocation;
 
 class frontPageController extends Controller
 {
@@ -990,7 +991,9 @@ class frontPageController extends Controller
     }
 
     if (empty($data['city']) || $data['city'] == null) {
-        return back()->with('error', 'the city is required');
+        $city = null;
+    }else{
+        $city = $data['city'];
     }
 
     
@@ -1013,7 +1016,18 @@ class frontPageController extends Controller
     }
     dd($data);
         $check_ifthe_City_is_UAE = Country::find($data['country']);
-        if($check_ifthe_City_is_UAE == 252){
+        $state = Region::find($data['state']);
+        $city_name = City::find($city);
+        
+        if($check_ifthe_City_is_UAE->id == 252){
+            $new_address = new userLocation();
+            $new_address->user_id = $current_user->id;
+            $new_address->themain_address = 0;
+            $new_address->address = $data['street_name'];
+            $new_address->country = $check_ifthe_City_is_UAE->country;
+            $new_address->city = $state->region;
+            $new_address->phone = $data['phone'];
+            $new_address->near_location = $data['near_landmark'];
 
         }else{
             return back()->with('error','the country is not listed in Delivery area');
