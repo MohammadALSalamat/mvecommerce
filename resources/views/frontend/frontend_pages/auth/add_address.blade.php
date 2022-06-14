@@ -84,7 +84,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                         </div>
                             <div class="form-group col-md-12 mb-3">
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Full Name ( Reciver ) </label>
-                                <input type="text" placeholder="e.g Mohammad xxxx" name="full_name" class="form-control" id="full_name" value="">
+                                <input type="text" placeholder="e.g Mohammad xxxx" name="full_name" required class="form-control" id="full_name" value="">
                             </div>
                             <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Phone Number ( Reciver ) </label>
                             <div class="form-row d-flex">
@@ -93,22 +93,22 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                     height="10" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </strong>  
                                 </div>    
                                 <div class="form-group col-10 mb-3">
-                                    <input type="tel" placeholder="e.g 5014xxxxxx" name="phone" class="form-control" id="phone" value="">
+                                    <input type="tel" placeholder="e.g 5014xxxxxx" name="phone" required pattern="[0-9]" class="form-control" id="phone" value="">
                                 </div>
                             </div>
 
                             <div class="form-group col-md-12 mb-3">
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Street name </label>
-                                <input type="text" placeholder="e.g Elctra Street" name="street_name" class="form-control" id="street_name" value="">
+                                <input type="text" placeholder="e.g Elctra Street" name="street_name" required class="form-control" id="street_name" value="">
                             </div>
                             <div class="form-group col-md-12 mb-3">
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputPassword4">Building name/no., floor, Apt. or villa no.</label>
-                                <input type="text" placeholder="e.g Royal Rose ,5th floor, Apt 222" name="full_street_info" class="form-control" id="full_street_info" value="">
+                                <input type="text" placeholder="e.g Royal Rose ,5th floor, Apt 222" required name="full_street_info" class="form-control" id="full_street_info" value="">
                             </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">Nearest landmark </label>
-                                <input type="text" placeholder="e.g oppisate side of ADCB bank" name="near_landmark" class="form-control" id="near_landmark" value="">
+                                <input type="text" placeholder="e.g oppisate side of ADCB bank" required name="near_landmark" class="form-control" id="near_landmark" value="">
                             </div>
                         </div>
                        
