@@ -1028,7 +1028,6 @@ class frontPageController extends Controller
             $new_address->city = $state->region;
             $new_address->phone = $data['phone'];
             $new_address->near_location = $data['near_landmark'];
-
         }else{
             return back()->with('error','the country is not listed in Delivery area');
         }
