@@ -547,7 +547,6 @@ div.checkRadioContainer > label > input:checked + i {
                                            aria-label="Close"></button>
                                    </div>
                                    @auth
-                                   
                                    @if(empty($user_locations) || count($user_locations) == 0 )
                                    <div class="modal-body">
                                     Delivery options and delivery speeds may vary for different locations <br>

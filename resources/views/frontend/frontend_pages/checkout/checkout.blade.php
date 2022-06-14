@@ -2,7 +2,43 @@
 @section('mytitle','CheckOut' )
 @section('content')
  <!-- Start of Main -->
+ <style>
+    div.checkRadioContainer > label > input {
+	visibility: hidden;
+}
 
+div.checkRadioContainer {
+	max-width: 100%;
+}
+div.checkRadioContainer > label {
+	display: block;
+	border: 2px solid grey;
+	margin-bottom: -2px;
+	cursor: pointer;
+    margin: 10px 0
+}
+
+div.checkRadioContainer > label:hover {
+	background-color: AliceBlue;
+}
+
+div.checkRadioContainer > label > span {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 2em;
+}
+
+div.checkRadioContainer > label > input + i {
+	visibility: hidden;
+	color: green;
+	margin-left: 10px;
+	margin-right: 0.2em;
+}
+
+div.checkRadioContainer > label > input:checked + i {
+	visibility: visible;
+}
+</style>
         <main class="main checkout">
             <!-- Start of Breadcrumb -->
             @if(Config::get('app.locale') == 'en')
@@ -41,99 +77,7 @@
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                     Billing Details
                                 </h3>
-                                <div class="row gutter-sm">
-                                    <div class="col-xs-12">
-                                        <div class="form-group">
-                                            <label>Full name *</label>
-                                            <input type="text" class="form-control form-control-md" id="full_name" name="full_name"
-                                                required value="{{ $user->full_name }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label>Country *</label>
-                                    <select  id="country-dd" name="country" class="form-control">
-                                        <option value="">Select Country</option>
-                                        @foreach ($countries as $data)
-                                        <option value="{{$data->id}}">
-                                            {{$data->country}}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label>State *</label>
-                                    <select name="state" id="state-dd" class="form-control">
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>City *</label>
-                                    <select name="city" id="city-dd" class="form-control">
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Street address *</label>
-                                    <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="address" id="address" required value="{{ $user->address }}">
-                                    
-                                </div>
-                                <div class="form-group mb-7">
-                                    <label>Email address *</label>
-                                    <input type="email" class="form-control form-control-md" name="email" required value="{{ $user->email }}">
-                                </div>
-                                <div class="form-group checkbox-toggle pb-2">
-                                    <input type="checkbox" class="custom-checkbox" id="shipping-toggle"
-                                        name="shipping-toggle">
-                                    <label for="shipping-toggle">Ship to a different address?</label>
-                                </div>
-                                <div class="checkbox-content">
-                                    <div class="row gutter-sm">
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <label>Full name *</label>
-                                                <input type="text" id="sfull_name" class="form-control form-control-md" name="sfull_name"
-                                                    required value="{{ $user->full_name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Country *</label>
-                                        <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="scountry" required value=" {{ $user->scountry }}">
-                                    
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Street address *</label>
-                                        <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="saddress" required value=" {{ $user->saddress }}">
-                                    </div>
-                                    <div class="row gutter-sm">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Town / City *</label>
-                                                <input id="scity" type="text" class="form-control form-control-md" name="scity" required value=" {{ $user->scity }} ">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Postcode *</label>
-                                                <input id="spostcode" type="text" class="form-control form-control-md" name="spostcode" required value=" {{ $user->spostcode }} ">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>state</label>
-                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ $user->sstat }} ">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-3">
-                                    <label for="order-notes">Order notes (optional)</label>
-                                    <textarea class="form-control mb-0" id="order-notes" name="note" cols="30"
-                                        rows="4"
-                                        placeholder="Notes about your order, e.g special notes for delivery"></textarea>
-                                </div>
+                                
                             </div>
                             <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
                                 <div class="order-summary-wrapper sticky-sidebar">
