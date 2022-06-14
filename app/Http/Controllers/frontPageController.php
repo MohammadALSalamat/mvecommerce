@@ -1041,6 +1041,16 @@ class frontPageController extends Controller
     
  }
 
+ // update currnt address 
+
+ public function edit_deliverAddress($id)
+ {
+    $countries = Country::get(["country", "id"]);
+    $current_location = userLocation::find($id);
+    $state_name = Region::where('region',$current_location->city)->first();
+    return view('frontend.frontend_pages.auth.edit_address',compact('current_location','state_name','countries'));
+ }
+
  // delete the address from the location
 
  public function delete_deliverAddress($id)
