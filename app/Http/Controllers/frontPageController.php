@@ -68,10 +68,13 @@ class frontPageController extends Controller
         foreach($products_review_ids as $all_ids){
             array_push($products_review_ids_array,$all_ids->id);
         }
+
+        $user_locations = userLocation::where('seller_id',auth()->user()->id)->get();
+
         $current_url = URL::current();
         SEOMeta::setCanonical($current_url);
        
-        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound'));
+        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound','user_locations'));
     }
 
     public function aboutus()
