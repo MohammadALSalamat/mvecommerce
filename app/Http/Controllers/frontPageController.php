@@ -1134,7 +1134,6 @@ class frontPageController extends Controller
  public function set_deliverAddress_asDefualt($id)
  {
     $current_location = userLocation::find($id);
-    dd($current_location);
     $loations = userLocation::where('id','!=',$current_location->id)->get();
     if($current_location){
         foreach($loations as $location){
