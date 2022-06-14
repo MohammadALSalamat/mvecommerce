@@ -565,27 +565,23 @@ div.checkRadioContainer > label > input:checked + i {
                                        <div class="modal-body">
                                            @csrf
                                            <div class="checkRadioContainer">
+                                            @foreach ($user_locations as $location )
                                             <label style=" padding:10px">
-                                                <input type="radio" name="radioGroup" checked  />
+                                                <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span>MOHAMMAD شارع العلم Nirvana travel and tourism, Abu Dhabi Marina Mall</span>
+                                                <span> <b> Deliver's Name : </b> {{ $location->full_name }}</span><br>
+                                                <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
                                             </label>
-                                            <label style=" padding:10px">
-                                                <input type="radio" name="radioGroup"   />
-                                                <i class="fa fa-check fa-2x"></i>
-                                                <span>9yards kalifahlifa first street, Abu Dhabi Abu Dhabi Intl Airport</span>
-                                            </label>
-                                            <label style=" padding:10px">
-                                                <input type="radio" name="radioGroup"   />
-                                                <i class="fa fa-check fa-2x"></i>
-                                                <span>Walied Mohammad bin khalifa Tal Al Sanawbar restaurant & Grills, Al Ain Hili</span>
-                                            </label>
+                                            @endforeach
+                                            <a class="btn btn-dark" href="{{ route('deliver_address') }}"> 
+                                                Manage the Addresses <i class="fas fa-gear spinner " style="color:#fff;font-size:20px"></i>
+                                            </a>
                                         </div>
                                        </div>
                                        <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary"
                                                data-bs-dismiss="modal">Close</button>
-                                           <button type="submit" class="btn btn-primary">Save Location</button>
+                                           <button type="submit" class="btn btn-primary">Use Location</button>
                                        </div>
                                    </form>
                                    @endif
