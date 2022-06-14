@@ -153,8 +153,8 @@ Route::group(['perfix'=>'user'],function(){
     Route::post('/delete_deliverAddress/{id}',[frontPageController::class,'delete_deliverAddress'])->name('delete_deliverAddress');
     Route::post('/set_deliverAddress_asDefualt/{id}',[frontPageController::class,'set_deliverAddress_asDefualt'])->name('set_deliverAddress_asDefualt');
     
+    Route::post('address_update/{id}',[frontPageController::class, 'address_update'])->name('address_update');
     
-    Route::post('billing_update/{id}',[frontPageController::class, 'billingupdate'])->name('billingupdate');
     Route::post('shipping/{id}',[frontPageController::class, 'shippingupdate'])->name('shippingupdate');
     
     // update user password

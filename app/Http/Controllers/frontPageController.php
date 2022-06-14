@@ -1051,6 +1051,61 @@ class frontPageController extends Controller
     return view('frontend.frontend_pages.auth.edit_address',compact('current_location','state_name','countries'));
  }
 
+ public function address_update(Request $request,$id)
+ {
+    $data = $request->all();
+    dd($data);
+    $current_user = User::find($data['user_id']);
+    if($current_user){
+    if( empty($data['country']) || $data['country'] == null ){
+        return back()->with('error','the country is required');
+    }
+    
+    if (empty($data['state']) || $data['state'] == null) {
+        return back()->with('error', 'the state is required');
+    }
+
+    if (empty($data['city']) || $data['city'] == null) {
+        $city = null;
+    }else{
+        $city = $data['city'];
+    }
+
+    
+    if (empty($data['full_name']) || $data['full_name'] == null) {
+        $full_name = $current_user->full_name;
+    }else{
+        $full_name = $data['full_name'];
+    }
+
+    if (empty($data['phone']) || $data['phone'] == null) {
+        return back()->with('error', 'the phone is required');
+    }
+
+    if (empty($data['street_name']) || $data['street_name'] == null) {
+        return back()->with('error', 'the Street name is required');
+    }
+
+    if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
+        return back()->with('error', 'the building information is required');
+    }
+        $check_ifthe_City_is_UAE = Country::find($data['country']);
+        $state = Region::find($data['state']);
+        $city_name = City::find($city);
+        
+        if($check_ifthe_City_is_UAE->id == 252){
+            userLocation::where('id',$id)->update([
+                
+            ]);
+
+            return back()->with('message','your address has been saved');
+        }else{
+            return back()->with('error','the country is not listed in Delivery area');
+        }
+    }else{
+        return redirect()->route('loginForm')->with('warning','Login First To have access');
+    }
+ }
  // delete the address from the location
 
  public function delete_deliverAddress($id)

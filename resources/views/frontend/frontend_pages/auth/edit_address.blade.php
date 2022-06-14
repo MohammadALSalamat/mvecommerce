@@ -54,7 +54,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
     <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
         <div class="">
             <h3> Edit The Address </h3>
-                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('add_deliver_address') }}" method="post"
+                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('address_update',$current_location->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -66,7 +66,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                 <option  value="{{$data->id}}"  @if($data->id != 252)                                   
                                     style="display:none"
                                     @else
-                                    selected disableld
+                                    selected 
                                 @endif>
                                     {{$data->country}}
                                 </option>
