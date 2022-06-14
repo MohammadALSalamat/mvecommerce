@@ -180,7 +180,7 @@
                             @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address @if($user_location->themain_address == 1) ( The  Main Address) @endif</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address @if($user_location->themain_address == 1) <b style="color:red"> ( Defualt Address)</b> @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>

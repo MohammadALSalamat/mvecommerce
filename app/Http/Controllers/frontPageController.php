@@ -945,7 +945,7 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
-        $user_locations = userLocation::where('user_id',$current_user->id)->get();
+        $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);
             return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user','user_locations'));
