@@ -1020,11 +1020,17 @@ class frontPageController extends Controller
         $check_ifthe_City_is_UAE = Country::find($data['country']);
         $state = Region::find($data['state']);
         $city_name = City::find($city);
+        $check_if_user_has_an_address = userLocation::where('user_id',$current_user->id)->count();
+        if($check_if_user_has_an_address == 0){
+            $themain_address = 1;
+        }else{
+            $themain_address = 0;
+        }
         
         if($check_ifthe_City_is_UAE->id == 252){
             $new_address = new userLocation();
             $new_address->user_id = $current_user->id;
-            $new_address->themain_address = 0;
+            $new_address->themain_address = $themain_address;
             $new_address->address = $data['street_name'];
             $new_address->full_name = $full_name;
             $new_address->full_street_info = $data['full_street_info'];

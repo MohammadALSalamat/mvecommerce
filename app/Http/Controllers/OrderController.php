@@ -52,6 +52,9 @@ class OrderController extends Controller
     public function checkout_process(Request $request)
     {
         $data = $request->all();
+        if(empty($data['location_id_selected']) || $data['location_id_selected'] == null){
+            return back()->with('error','Please add an address to deliver.');
+        }
         $locations = userLocation::find($data['location_id_selected']);
         
         dd($data);

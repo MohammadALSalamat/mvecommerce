@@ -51,6 +51,7 @@ div.checkRadioContainer1> label > input:checked + i {
                     </ul>
                 </div>
             </nav>
+            
             @else
             <nav class="breadcrumb-nav">
                 <div class="container">
@@ -83,7 +84,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                     <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses
                                     </b>
                                     </div>
-                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
+                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="button"
                                                 class="btn btn-primary">Add New Address</button></a>
                                    @else
                                        <div class="modal-body">
