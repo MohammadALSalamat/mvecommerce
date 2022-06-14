@@ -148,6 +148,7 @@ Route::group(['perfix'=>'user'],function(){
     //view dashboard
     Route::get('/dashboard',[frontPageController::class,'userdashboard'])->name('userdashboard');
     Route::get('/deliver_address',[frontPageController::class,'deliver_address'])->name('deliver_address');
+    Route::post('/add_deliver_address',[frontPageController::class,'add_deliver_address'])->name('add_deliver_address');
     Route::post('/edit_deliverAddress/{id}',[frontPageController::class,'edit_deliverAddress'])->name('edit_deliverAddress');
     Route::post('/delete_deliverAddress/{id}',[frontPageController::class,'delete_deliverAddress'])->name('delete_deliverAddress');
     Route::post('/set_deliverAddress_asDefualt/{id}',[frontPageController::class,'set_deliverAddress_asDefualt'])->name('set_deliverAddress_asDefualt');

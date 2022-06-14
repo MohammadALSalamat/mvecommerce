@@ -974,6 +974,22 @@ class frontPageController extends Controller
  }
 
 
+ // add new address 
+
+ public function add_deliver_address(Request $request)
+ {
+    $data = $request->all();
+    $current_user = User::find($data['user_id']);
+    if($current_user){
+        $check_ifthe_City_is_UAE = Country::find($data['country']);
+
+
+    }else{
+        return redirect()->route('loginForm')->with('warning','Login First To have access');
+    }
+    dd($data);
+ }
+
     // update the current user billing address
     public function billingupdate(Request $request,$id)
     {

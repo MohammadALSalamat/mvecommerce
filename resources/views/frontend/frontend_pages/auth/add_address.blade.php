@@ -54,9 +54,10 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
     <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
         <div class="">
             <h3> Add New Address </h3>
-                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="" method="post"
+                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('add_deliver_address') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <div class="form-group mb-3">
                             <label style="font-weight:900 !important"> Country *</label>
                             <select  id="country-dd" name="country" class="form-control">
@@ -92,7 +93,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                     height="10" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </strong>  
                                 </div>    
                                 <div class="form-group col-10 mb-3">
-                                    <input type="number" placeholder="e.g 5014xxxxxx" name="full_name" class="form-control" id="full_name" value="">
+                                    <input type="tel" placeholder="e.g 5014xxxxxx" name="full_name" class="form-control" id="full_name" value="">
                                 </div>
                             </div>
 
