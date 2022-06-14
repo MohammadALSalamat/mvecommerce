@@ -1131,6 +1131,28 @@ class frontPageController extends Controller
     }
  }
 
+ public function set_deliverAddress_asDefualt($id)
+ {
+    $current_location = userLocation::find($id);
+    dd($current_location);
+    $loations = userLocation::where('id','!=',$current_location->id)->get();
+    if($current_location){
+        foreach($loations as $location){
+            userLocation::where('id',$location->id)->update([
+                'themain_address'=> 0
+            ]);
+        }
+        userLocation::where('id',$current_location->id)->update([
+            'themain_address'=> 1
+        ]);
+
+        return back()->with('message','your address has been set to be used in checkout');
+    }else{
+        return back()->with('error','The address is not there');
+
+    }
+ }
+
     // update the current user billing address
     public function billingupdate(Request $request,$id)
     {
