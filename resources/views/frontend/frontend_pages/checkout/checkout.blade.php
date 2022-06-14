@@ -3,14 +3,14 @@
 @section('content')
  <!-- Start of Main -->
  <style>
-    div.checkRadioContainer > label > input {
+    div.checkRadioContainer1> label > input {
 	visibility: hidden;
 }
 
-div.checkRadioContainer {
-	max-width: 60%;
+div.checkRadioContainer1 {
+	max-width: 80%;
 }
-div.checkRadioContainer > label {
+div.checkRadioContainer1> label {
 	display: block;
 	border: 2px dashed grey;
 	margin-bottom: -2px;
@@ -18,24 +18,24 @@ div.checkRadioContainer > label {
     margin: 10px 0
 }
 
-div.checkRadioContainer > label:hover {
+div.checkRadioContainer1> label:hover {
 	background-color: AliceBlue;
 }
 
-div.checkRadioContainer > label > span {
+div.checkRadioContainer1> label > span {
 	display: inline-block;
 	vertical-align: top;
 	line-height: 2em;
 }
 
-div.checkRadioContainer > label > input + i {
+div.checkRadioContainer1> label > input + i {
 	visibility: hidden;
 	color: green;
 	margin-left: 10px;
 	margin-right: 0.2em;
 }
 
-div.checkRadioContainer > label > input:checked + i {
+div.checkRadioContainer1> label > input:checked + i {
 	visibility: visible;
 }
 </style>
@@ -75,7 +75,7 @@ div.checkRadioContainer > label > input:checked + i {
 
                             <div class="col-lg-7 pr-lg-4 mb-4">
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
-                                    Billing Details
+                                    Deliver Details ( Reciver)
                                 </h3>
                                 @if(empty($user_locations) || count($user_locations) == 0 )
                                    <div class="modal-body">
@@ -91,7 +91,7 @@ div.checkRadioContainer > label > input:checked + i {
                                    <form action="{{route('selected_address')}}" method="Post">
                                        <div class="modal-body">
                                            @csrf
-                                           <div class="checkRadioContainer">
+                                           <div class="checkRadioContainer1">
                                             @foreach ($user_locations as $location )
                                             <label style=" padding:10px">
                                                 <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
@@ -104,14 +104,11 @@ div.checkRadioContainer > label > input:checked + i {
                                             
                                         </div>
                                        </div>
-                                           <button type="button" class="btn btn-secondary"
-                                               data-bs-dismiss="modal">Close</button>
-                                               <button type="button" class=" btn btn-dark"><a href="{{ route('deliver_address') }}"> 
-                                                
-                                                    Manage  <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
+                                               <button type="button" class=" btn btn-light"><a href="{{ route('deliver_address') }}"> 
+                                                    Manage Locations  <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
                                                 </a>
                                             </button>
-                                           <button type="submit" class="btn btn-primary">Save</button>
+                                           <button type="submit" class="btn btn-primary">Change The Location</button>
                                    </form>
                                    @endif
                             </div>
