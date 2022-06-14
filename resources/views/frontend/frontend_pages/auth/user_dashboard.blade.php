@@ -193,8 +193,12 @@
                                                     <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Address:</th>
+                                                    <th>Street :</th>
                                                     <td>{{ $user_location->address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Full Address:</th>
+                                                    <td>{{ $user_location->full_street_info }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>City:</th>

@@ -945,7 +945,7 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::where('user_id',$current_user->id)->get();
-        $user_locations = DB::table('userLocation')->where('user_id',$current_user->id)->get();
+        $user_locations = userLocation::where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);
             return view('frontend.frontend_pages.auth.user_dashboard', compact('user_orders','current_user','user_locations'));
@@ -1014,7 +1014,6 @@ class frontPageController extends Controller
     if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
         return back()->with('error', 'the building information is required');
     }
-    dd($data);
         $check_ifthe_City_is_UAE = Country::find($data['country']);
         $state = Region::find($data['state']);
         $city_name = City::find($city);
@@ -1024,10 +1023,15 @@ class frontPageController extends Controller
             $new_address->user_id = $current_user->id;
             $new_address->themain_address = 0;
             $new_address->address = $data['street_name'];
+            $new_address->full_name = $full_name;
+            $new_address->full_street_info = $data['full_street_info'];
             $new_address->country = $check_ifthe_City_is_UAE->country;
             $new_address->city = $state->region;
-            $new_address->phone = $data['phone'];
+            $new_address->phone = '+971'.$data['phone'];
             $new_address->near_location = $data['near_landmark'];
+            $new_address->save();
+
+            return back()->with('message','your address has been saved');
         }else{
             return back()->with('error','the country is not listed in Delivery area');
         }
