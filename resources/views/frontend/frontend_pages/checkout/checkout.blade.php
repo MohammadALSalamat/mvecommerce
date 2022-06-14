@@ -94,7 +94,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                                 <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
                                                 <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked  @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span> <b> Deliver's Name : </b> {{ $location->full_name }}</span><br>
+                                                <span style="width:80%"> <b> Deliver's Name : </b> {{ $location->full_name }}@if($location->themain_address == 1)<b style="color:red;float:right">( Deliver to this location )</b></span> @endif<br>
                                                 <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
                                             </label>
                                             @endforeach
