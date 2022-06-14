@@ -30,8 +30,10 @@ class OrderController extends Controller
         $user = User::where('id',auth()->user()->id)->first();
         $shipping_adress = Shipping::where('status',1)->get();
         $countries = Country::get(["country", "id"]);
+        $locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->where('themain_address',1)->first();
         $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->get();
-        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries','user_locations'));
+
+        return view('frontend.frontend_pages.checkout.checkout', compact('shipping_adress','user','countries','locations','user_locations'));
     }
 
     // cities and countries dropdown

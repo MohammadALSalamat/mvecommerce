@@ -564,16 +564,15 @@ div.checkRadioContainer > label > input:checked + i {
                                        <div class="modal-body">
                                            @csrf
                                            <div class="checkRadioContainer">
-                                            @foreach ($user_locations as $location )
+                                            @foreach ($user_locations as $user_location )
                                             <label style=" padding:10px">
-                                                <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
-                                                <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked @endif  />
+                                                <input type="hidden" name="location_id_selected" value="{{ $user_location->id }}">
+                                                <input type="radio" name="radioGroup" @if($user_location->themain_address == 1) checked @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span> <b> Deliver's Name : </b> {{ $location->full_name }}</span><br>
-                                                <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
+                                                <span> <b> Deliver's Name : </b> {{ $user_location->full_name }}</span><br>
+                                                <span> <b>Deliver To : </b> {{ $user_location->address }}, {{ $user_location->full_street_info }} ,{{ $user_location->city}},{{ $user_location->country  }}</span>
                                             </label>
                                             @endforeach
-                                            
                                         </div>
                                        </div>
                                        <div class="modal-footer">

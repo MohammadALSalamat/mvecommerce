@@ -77,7 +77,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                     Deliver Details ( Reciver)
                                 </h3>
-                                @if(empty($user_locations) || count($user_locations) == 0 )
+                                @if(empty($locations) )
                                    <div class="modal-body">
                                     Delivery options and delivery speeds may vary for different locations <br>
                                     <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses
@@ -89,16 +89,15 @@ div.checkRadioContainer1> label > input:checked + i {
                                        <div class="modal-body">
                                            @csrf
                                            <div class="checkRadioContainer1">
-                                            @foreach ($user_locations as $location )
                                             <label style=" padding:10px">
-                                                <input type="hidden" name="location_id_selected" value="{{ $location->id }}">
-                                                <input type="radio" name="radioGroup" @if($location->themain_address == 1) checked  @endif  />
+                                                <input type="hidden" name="location_id_selected" value="{{ $locations->id }}">
+                                                <input type="radio" name="radioGroup" @if($locations->themain_address == 1) checked  @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
-                                                <span style="width:80%"> <b> Deliver's Name : </b> {{ $location->full_name }}@if($location->themain_address == 1)<b style="color:red;float:right">( Deliver to this location )</b></span> @endif<br>
-                                                <span> <b>Deliver To : </b> {{ $location->address }}, {{ $location->full_street_info }} ,{{ $location->city}},{{ $location->country  }}</span>
+                                                <span style="width:80%"> <b> Deliver's Name : </b> {{ $locations->full_name }}@if($locations->themain_address == 1)<b style="color:red;float:right">( Deliver to this location )</b></span> @endif<br>
+                                                <span> <b>Deliver To : </b> {{ $locations->address }}, {{ $locations->full_street_info }} ,{{ $locations->city}},{{ $locations->country  }}</span>
                                             </label>
-                                            @endforeach
                                         </div>
+                                        <strong> Click on the Deliver To (located on the header to change the deliver location)</strong>
                                        </div>
                                    @endif
                             </div>
