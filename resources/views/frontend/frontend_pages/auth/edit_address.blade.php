@@ -46,8 +46,8 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
 @if(Config::get('app.locale') == 'en')
 <main class="main">
     <!-- Start of Page Header -->
+    <div class="container">
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
-        <div class="container">
             <h1 class="mb-0 page-title text-white">My Addresses</h1>
         </div>
     </div>
