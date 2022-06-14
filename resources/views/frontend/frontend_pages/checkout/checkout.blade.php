@@ -8,11 +8,11 @@
 }
 
 div.checkRadioContainer {
-	max-width: 100%;
+	max-width: 60%;
 }
 div.checkRadioContainer > label {
 	display: block;
-	border: 2px solid grey;
+	border: 2px dashed grey;
 	margin-bottom: -2px;
 	cursor: pointer;
     margin: 10px 0
@@ -83,12 +83,10 @@ div.checkRadioContainer > label > input:checked + i {
                                     <b class="mt-2 mb-2">The Current user does not have any address stores so Please Click below to add new addresses
                                     </b>
                                     </div>
-                                    <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
                                         <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
                                                 class="btn btn-primary">Add New Address</button></a>
-                                    </div>
                                    @else
                                    <form action="{{route('selected_address')}}" method="Post">
                                        <div class="modal-body">
@@ -106,7 +104,6 @@ div.checkRadioContainer > label > input:checked + i {
                                             
                                         </div>
                                        </div>
-                                       <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary"
                                                data-bs-dismiss="modal">Close</button>
                                                <button type="button" class=" btn btn-dark"><a href="{{ route('deliver_address') }}"> 
@@ -115,7 +112,6 @@ div.checkRadioContainer > label > input:checked + i {
                                                 </a>
                                             </button>
                                            <button type="submit" class="btn btn-primary">Save</button>
-                                       </div>
                                    </form>
                                    @endif
                             </div>
