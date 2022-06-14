@@ -1081,11 +1081,12 @@ class frontPageController extends Controller
         return back()->with('error', 'the phone is required');
     }
 
-    if($data['phone'] == '+971'.$data['phone']){
+    if(substr($data['phone'],0,4) == '+971'){
         $phone = $data['phone'];
     }else{
         $phone = '+971'.$data['phone'];
     }
+
     if (empty($data['street_name']) || $data['street_name'] == null) {
         return back()->with('error', 'the Street name is required');
     }
