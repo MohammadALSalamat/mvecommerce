@@ -981,9 +981,31 @@ class frontPageController extends Controller
     $data = $request->all();
     $current_user = User::find($data['user_id']);
     if($current_user){
+    if( empty($data['country']) || $data['country'] == null ){
+        return back()->with('error','the country is required');
+    }
+    
+    if (empty($data['state']) || $data['state'] == null) {
+        return back()->with('error', 'the state is required');
+    }
+
+    if (empty($data['city']) || $data['city'] == null) {
+        return back()->with('error', 'the city is required');
+    }
+
+    
+    if (empty($data['full_name']) || $data['full_name'] == null) {
+        $full_name = $current_user->full_name;
+    }else{
+        $full_name = $data['full_name'];
+    }
+    
         $check_ifthe_City_is_UAE = Country::find($data['country']);
+        if($check_ifthe_City_is_UAE == '252'){
 
-
+        }else{
+            return back()->with('error','the country is not listed in Delivery area');
+        }
     }else{
         return redirect()->route('loginForm')->with('warning','Login First To have access');
     }

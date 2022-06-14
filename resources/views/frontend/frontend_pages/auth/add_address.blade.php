@@ -93,7 +93,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                                     height="10" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </strong>  
                                 </div>    
                                 <div class="form-group col-10 mb-3">
-                                    <input type="tel" placeholder="e.g 5014xxxxxx" name="full_name" class="form-control" id="full_name" value="">
+                                    <input type="tel" placeholder="e.g 5014xxxxxx" name="phone" class="form-control" id="phone" value="">
                                 </div>
                             </div>
 
