@@ -1041,6 +1041,19 @@ class frontPageController extends Controller
     
  }
 
+ // delete the address from the location
+
+ public function delete_deliverAddress($id)
+ {
+    $current_location = userLocation::find($id);
+    if($current_location){
+        userLocation::where('id',$id)->delete();
+        return back()->with('message','The address has been deleted');
+    }else{
+        return back()->with('error','the address is not there now');
+    }
+ }
+
     // update the current user billing address
     public function billingupdate(Request $request,$id)
     {
