@@ -75,7 +75,6 @@ class frontPageController extends Controller
         }
         $current_url = URL::current();
         SEOMeta::setCanonical($current_url);
-       
         return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound','user_locations'));
     }
 
@@ -969,6 +968,7 @@ class frontPageController extends Controller
         }else{
             $user_locations = null;
         }
+        dd($user_locations);
         return view('frontend.frontend_pages.auth.add_address',compact('countries','user_locations'));
     }
  // cities and countries dropdown
