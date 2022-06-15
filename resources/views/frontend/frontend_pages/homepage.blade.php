@@ -4,9 +4,18 @@
 @section('style')
 <!--Addinal style for below sections -->
 <style>
+   .category-section img {
+        width: 100% !important;
+        height: 150px;
+        object-fit: contain;
+    }
 @media (max-width:600px){
-    .category-section figure img{
+    .category-section img{
         height: 130px !important;
+    }
+    .best-deals-section img{
+        height: 130px !important;
+
     }
 }
 </style>
@@ -186,7 +195,7 @@
             @endif
         </div>
         <!-- End of Category Banner Wrapper -->
-        <div class="mb-8 row deals-wrapper appear-animate">
+        <div class="mb-8 row deals-wrapper appear-animate best-deals-section">
             <div class="mb-4 col-lg-12">
                 <div class="single-product h-100 br-sm">
                     <h4 class="title-sm title-underline font-weight-bolder ls-normal">
@@ -211,7 +220,7 @@
                                                     style="background: red;border-radius: 15px;box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                     <div class="col-md-7" style="vertical-align: middle;margin:auto">
                                                         <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white"
-                                                            style="padding:10px; font-size:25px">
+                                                            style="padding:10px; font-size:23px">
                                                             Up to {{ $max_discound }} % OFF</h2>
                                                         <h4 class="text-center text-white"> For
                                                             {{ $cardsDiscound->title }}</h4>
@@ -420,7 +429,7 @@
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
                                 <img src="{{asset($category->image)}}" alt="Category"
-                                    style="width: 100% !important;height: 150px !important;object-fit: contain;">
+                                    >
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>
@@ -430,8 +439,7 @@
                         @else
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category"
-                                    style="width: 100% !important;height: 150px !important;object-fit: contain;">
+                                <img src="{{asset($category->image)}}" alt="Category">
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->ar_title}}</h4>
