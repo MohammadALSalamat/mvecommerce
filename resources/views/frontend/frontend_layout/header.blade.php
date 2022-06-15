@@ -518,7 +518,7 @@ div.checkRadioContainer > label > input:checked + i {
            <div class="ml-4 header-right">
                <div class="header-call d-xs-show d-lg-flex align-items-start">
                    <a href="#">
-                       <img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="40"
+                       <img src="{{ asset('front-style/assets/images/itajermapmarker.png')}}" alt="ENG Flag" width="40"
                            height="20" class="dropdown-image " style="margin-right: 6px;margin-top:10px" />
                    </a>
                    <div class="call-info d-lg-show">
