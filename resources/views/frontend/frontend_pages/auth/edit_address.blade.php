@@ -50,7 +50,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
             <h1 class="mb-0 page-title text-white">My Addresses</h1>
         </div>
-    </div>
+   
     <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
         <div class="">
             <h3> Edit The Address </h3>
@@ -117,6 +117,7 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
                     </form>
         </div>
     </div>
+</div>
 </main>
 
 @else

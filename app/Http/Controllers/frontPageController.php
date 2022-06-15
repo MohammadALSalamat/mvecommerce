@@ -968,7 +968,6 @@ class frontPageController extends Controller
         }else{
             $user_locations = null;
         }
-        dd($user_locations);
         return view('frontend.frontend_pages.auth.add_address',compact('countries','user_locations'));
     }
  // cities and countries dropdown
@@ -1064,7 +1063,12 @@ class frontPageController extends Controller
     $countries = Country::get(["country", "id"]);
     $current_location = userLocation::find($id);
     $state_name = Region::where('region',$current_location->city)->first();
-    return view('frontend.frontend_pages.auth.edit_address',compact('current_location','state_name','countries'));
+    if(Auth::check()){
+        $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->get();
+    }else{
+        $user_locations = null;
+    }
+    return view('frontend.frontend_pages.auth.edit_address',compact('current_location','state_name','countries','user_locations'));
  }
 
  public function address_update(Request $request,$id)
