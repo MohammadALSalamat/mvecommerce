@@ -1,4 +1,11 @@
  <!-- Start of Footer -->
+<style>
+    @media (max-width:600px){
+        .footer-top  .row>*{
+            width: 50% !important;
+        }
+    }
+</style>
  <footer class="footer appear-animate" data-animation-options="{
     'name': 'fadeIn'
 }">
@@ -98,7 +105,7 @@
     @if(Config::get('app.locale') == 'en')
     <div class="container">
         <div class="footer-top">
-            <div class="row">
+            <div class="row" >
                 @php
                 $categories = \App\Models\category::where('is_parent',0)->where('status',1)->take(6)->get();
                 @endphp
@@ -107,7 +114,7 @@
                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->take(8)->get();
                 @endphp
                 @if(count($sub_cat) > 0)
-                <div class="col-lg-2 col-sm-4 col-xs-6">
+                <div class="col-lg-2 col-sm-6 col-xs-6">
                     <div class="widget">
                         <h3 class="widget-title">{{$category->title}} </h3>
                         <ul class="widget-body">
