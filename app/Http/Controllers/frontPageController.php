@@ -69,12 +69,10 @@ class frontPageController extends Controller
             array_push($products_review_ids_array,$all_ids->id);
         }
         if(Auth::check()){
-
             $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->get();
         }else{
             $user_locations = null;
         }
-
         $current_url = URL::current();
         SEOMeta::setCanonical($current_url);
        
