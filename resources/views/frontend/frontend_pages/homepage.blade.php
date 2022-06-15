@@ -1,7 +1,16 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle','Home Page')
 @section('content')
-
+@section('style')
+<!--Addinal style for below sections -->
+<style>
+@media (max-width:600px){
+    .category-section figure img{
+        height: 130px !important;
+    }
+}
+</style>
+@endsection
 <!-- Start of Main-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -415,8 +424,7 @@
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>
-                                <a href="{{ route('shop_special_category',$category->slug) }}"
-                                    class="btn btn-primary btn-link btn-underline">Shop Now</a>
+                                
                             </div>
                         </div>
                         @else
@@ -427,8 +435,6 @@
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->ar_title}}</h4>
-                                <a href="{{ route('shop_special_category',$category->slug) }}"
-                                    class="btn btn-primary btn-link btn-underline">أطلب اﻷن</a>
                             </div>
                         </div>
                         @endif

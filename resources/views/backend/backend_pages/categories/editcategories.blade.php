@@ -169,7 +169,7 @@ input:checked + .slider:before {
                                                             <i class="fa fa-picture-o"></i> Edit Arabic Image
                                                         </a>
                                                     </span>
-                                                    <input id="thumbnail1" class="form-control" type="text" name="image" value="{{ $current_category->ar_image }}">
+                                                    <input id="thumbnail1" class="form-control" type="text" name="ar_image" value="{{ $current_category->ar_image }}">
                                                 </div>
                                                 <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
                                             </div>v

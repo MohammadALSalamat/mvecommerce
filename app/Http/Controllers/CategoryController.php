@@ -61,7 +61,7 @@ class CategoryController extends Controller
             $parent_id = $data['parent_id'];
 
         }
-
+        
         // insert the data
         $addCategory = new category();
         $addCategory->title = $data['title'];
