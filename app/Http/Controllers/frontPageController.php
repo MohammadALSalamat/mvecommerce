@@ -964,7 +964,12 @@ class frontPageController extends Controller
     public function deliver_address()
     {
         $countries = Country::get(["country", "id"]);
-        return view('frontend.frontend_pages.auth.add_address',compact('countries'));
+        if(Auth::check()){
+            $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',auth()->user()->id)->get();
+        }else{
+            $user_locations = null;
+        }
+        return view('frontend.frontend_pages.auth.add_address',compact('countries','user_locations'));
     }
  // cities and countries dropdown
 
