@@ -107,7 +107,7 @@
                 $sub_cat = \App\Models\category::where('parent_id',$category->id)->where('status',1)->take(8)->get();
                 @endphp
                 @if(count($sub_cat) > 0)
-                <div class="col-lg-2 col-sm-6 col-xs-6">
+                <div class="col-lg-2 col-sm-4 col-xs-6">
                     <div class="widget">
                         <h3 class="widget-title">{{$category->title}} </h3>
                         <ul class="widget-body">
