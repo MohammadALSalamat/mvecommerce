@@ -515,14 +515,31 @@ div.checkRadioContainer > label > input:checked + i {
                    </button>
                </form>
            </div>
+           <style>
+            .location-mobile{
+                text-align: center;
+
+            }
+
+            .location-mobile img{
+                width: 30px;
+            }
+            .location-info-mobile h4{
+                font-size: 11px;
+            }
+
+            .location-info-mobile p{
+                font-size: 11px;
+            }
+           </style>
            <div class="ml-4 header-right">
-               <div class="header-call d-xs-show d-lg-flex align-items-start">
+               <div class="header-call location-mobile d-lg-flex align-items-start modal-drop" data-bs-toggle="modal" data-bs-target="#exampleModal">
                    <a href="#">
                        <img src="{{ asset('front-style/assets/images/itajermapmarker.png')}}" alt="ENG Flag" width="40"
                            height="20" class="dropdown-image " style="margin-right: 6px;margin-top:10px" />
                    </a>
-                   <div class="call-info d-lg-show">
-                       <div class="modal-drop" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   <div class="call-info location-info-mobile">
+                       <div >
                            <span style="font-size:20px;font-weight:bold;">
                                <a>
                                    <h4 class="m-0" style="margin:0">Deliver To</h4>
