@@ -11,15 +11,19 @@
     }
 @media (max-width:600px){
     .category-section img{
-        height: 130px !important;
+        height: 120px !important;
     }
     .best-deals-section img{
         height: 130px !important;
 
     }
+    .carousel-item{
+        height:unset !important;    
+    }
 }
 </style>
 @endsection
+
 <!-- Start of Main-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -63,25 +67,11 @@
     <!-- End of .intro-section -->
 
     <div class="container">
-        <div class="mt-6 mb-6 swiper-container appear-animate icon-box-wrapper br-sm" data-swiper-options="{
-            'slidesPerView': 1,
-            'loop': false,
-            'breakpoints': {
-                '576': {
-                    'slidesPerView': 2
-                },
-                '768': {
-                    'slidesPerView': 3
-                },
-                '1200': {
-                    'slidesPerView': 4
-                }
-            }
-        }">
+        <div class="mt-6 mb-6">
             <!-- second section -->
             @if(Config::get('app.locale') == 'en')
-            <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+            <div class=" row">
+                <div class=" col-lg-3 col-md-6 col-6 p pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-shipping">
                         <i class="w-icon-truck"></i>
                     </span>
@@ -90,7 +80,7 @@
                         <p class="text-default">For all orders over AED 99</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-payment">
                         <i class="w-icon-bag"></i>
                     </span>
@@ -99,7 +89,7 @@
                         <p class="text-default">We ensure secure payment</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-money">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
                     <span class="icon-box-icon icon-money">
                         <i class="w-icon-money"></i>
                     </span>
@@ -108,7 +98,7 @@
                         <p class="text-default">Any back within 30 days</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-chat">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
                     <span class="icon-box-icon icon-chat">
                         <i class="w-icon-chat"></i>
                     </span>
@@ -119,8 +109,8 @@
                 </div>
             </div>
             @else
-            <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+            <div class=" row ">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-shipping">
                         <i class="w-icon-truck"></i>
                     </span>
@@ -129,7 +119,7 @@
                         <p class="text-default">لجميع الطلبات التي تزيد عن 99 د.أ</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-payment">
                         <i class="w-icon-bag"></i>
                     </span>
@@ -138,7 +128,7 @@
                         <p class="text-default">نحن نضمن الدفع الآمن</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-money">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
                     <span class="icon-box-icon icon-money">
                         <i class="w-icon-money"></i>
                     </span>
@@ -147,7 +137,7 @@
                         <p class="text-default">أي عودة في غضون 30 يومًا</p>
                     </div>
                 </div>
-                <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-chat">
+                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
                     <span class="icon-box-icon icon-chat">
                         <i class="w-icon-chat"></i>
                     </span>
@@ -220,7 +210,7 @@
                                                     style="background: red;border-radius: 15px;box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
                                                     <div class="col-md-7" style="vertical-align: middle;margin:auto">
                                                         <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white"
-                                                            style="padding:10px; font-size:23px">
+                                                            style="padding:10px; font-size:25px">
                                                             Up to {{ $max_discound }} % OFF</h2>
                                                         <h4 class="text-center text-white"> For
                                                             {{ $cardsDiscound->title }}</h4>
@@ -423,7 +413,7 @@
                         }
                     }
                 }">
-                    <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
+                    <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-4 cols-3">
                         @foreach( $categories as $category)
                         @if(Config::get('app.locale') == 'en')
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
@@ -439,10 +429,12 @@
                         @else
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category">
+                                <img src="{{asset($category->image)}}" alt="Category"
+                                    >
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->ar_title}}</h4>
+                                
                             </div>
                         </div>
                         @endif
@@ -654,6 +646,9 @@
                                     id="add_to_wishlist{{ $top_selling->id }}" data-quantity="1"
                                     class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                     title="Wishlist"></a>
+
+                                
+
                             </div>
 
                             @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
