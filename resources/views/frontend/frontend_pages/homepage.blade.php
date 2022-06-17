@@ -62,6 +62,25 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
         </div>
+        @else
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('storage/photos/1/Artboard 10-1001.jpg') }}" class="d-block w-100" alt="slider">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+
+
         @endif
     </section>
     <!-- End of .intro-section -->
@@ -71,7 +90,7 @@
             <!-- second section -->
             @if(Config::get('app.locale') == 'en')
             <div class=" row">
-                <div class=" col-lg-3 col-md-6 col-6 p pt-2 pb-2 icon-box icon-box-side icon-box-primary">
+                <div class=" col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-shipping">
                         <i class="w-icon-truck"></i>
                     </span>
@@ -80,7 +99,7 @@
                         <p class="text-default">For all orders over AED 99</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-payment">
                         <i class="w-icon-bag"></i>
                     </span>
@@ -89,7 +108,7 @@
                         <p class="text-default">We ensure secure payment</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
                     <span class="icon-box-icon icon-money">
                         <i class="w-icon-money"></i>
                     </span>
@@ -98,7 +117,7 @@
                         <p class="text-default">Any back within 30 days</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
                     <span class="icon-box-icon icon-chat">
                         <i class="w-icon-chat"></i>
                     </span>
@@ -110,7 +129,7 @@
             </div>
             @else
             <div class=" row ">
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-shipping">
                         <i class="w-icon-truck"></i>
                     </span>
@@ -119,7 +138,7 @@
                         <p class="text-default">لجميع الطلبات التي تزيد عن 99 د.أ</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary">
                     <span class="icon-box-icon icon-payment">
                         <i class="w-icon-bag"></i>
                     </span>
@@ -128,7 +147,7 @@
                         <p class="text-default">نحن نضمن الدفع الآمن</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-money">
                     <span class="icon-box-icon icon-money">
                         <i class="w-icon-money"></i>
                     </span>
@@ -137,7 +156,7 @@
                         <p class="text-default">أي عودة في غضون 30 يومًا</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-6  pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
+                <div class="col-lg-3 col-md-6 col-6 pt-2 pb-2 icon-box icon-box-side icon-box-primary icon-box-chat">
                     <span class="icon-box-icon icon-chat">
                         <i class="w-icon-chat"></i>
                     </span>
@@ -413,28 +432,28 @@
                         }
                     }
                 }">
-                    <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-4 cols-3">
+                    <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
                         @foreach( $categories as $category)
                         @if(Config::get('app.locale') == 'en')
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category"
-                                    >
+                                <img src="{{asset($category->image)}}" alt="Category">
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->title}}</h4>
-                                
+                                <a href="{{ route('shop_special_category',$category->slug) }}"
+                                    class="btn btn-primary btn-link btn-underline">Shop Now</a>
                             </div>
                         </div>
                         @else
                         <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
                             <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category"
-                                    >
+                                <img src="{{asset($category->image)}}" alt="Category">
                             </a>
                             <div class="category-content">
                                 <h4 class="category-name">{{$category->ar_title}}</h4>
-                                
+                                <a href="{{ route('shop_special_category',$category->slug) }}"
+                                    class="btn btn-primary btn-link btn-underline">أطلب اﻷن</a>
                             </div>
                         </div>
                         @endif
