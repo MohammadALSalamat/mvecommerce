@@ -276,155 +276,7 @@
 
                 </div>
             </div>
-            <!-- TOP SELLING RIGHT BAR -->
-            {{-- <div class="mb-4 col-lg-3">
-                <div class="widget widget-products widget-products-bordered h-100">
-                    <div class="widget-body br-sm h-100">
-                        @if(Config::get('app.locale') == 'en')
-                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">Top Best
-                            Selling Items</h4>
-                        @else
-                        <h4 class="mb-2 title-sm title-underline font-weight-bolder ls-normal">العناصر الأكثر مبيعًا
-                        </h4>
-                        @endif
-                        <div class="swiper">
-                            <div class="swiper-container swiper-theme nav-top" data-swiper-options="{
-                                'slidesPerView': 1,
-                                'spaceBetween': 20,
-                                'breakpoints': {
-                                    '576': {
-                                        'slidesPerView': 2
-                                    },
-                                    '768': {
-                                        'slidesPerView': 3
-                                    },
-                                    '992': {
-                                        'slidesPerView': 1
-                                    }
-                                }
-                            }">
-                                <div class="swiper-wrapper row cols-lg-1 cols-md-3">
-                                    @if ($products_bestSelling_top3->count() > 0 )
-                                    <div class="swiper-slide product-widget-wrap">
-                                        @foreach ($products_bestSelling_top3 as $top_sellings)
-                                        @php
-                                        $avareg_review =
-                                        \App\Models\ProductReview::where('product_id',$top_sellings->id)->get();
-                                        #review rateing
-                                        $avareg = 0;
-                                        $sum = 0;
-                                        foreach($avareg_review as $avg){
-                                        $sum += $avg->rate;
-                                        $countavg = count($avareg_review);
-                                        $avareg = $sum / $countavg;
-                                        }
-                                        $other_image = explode(',',$top_sellings->image);
-                                        @endphp
-                                        <div class="product product-widget bb-no">
-                                            <figure class="product-media">
-                                                <a href="{{ route('singleproduct',$top_sellings->slug) }}">
-                                                    @if(count($other_image) > 1 )
-                                                    <img src="{{ $other_image[0]}}" alt="Product" width="300"
-                                                        height="338" />
-                                                    <img src="{{ $other_image[1] }}" alt="Product" width="330"
-                                                        height="338" />
-                                                    @else
-                                                    <img src="{{ $other_image[0]}}" alt="Product" width="300"
-                                                        height="338" />
-                                                    @endif
-                                                </a>
-                                            </figure>
-
-                                            <div class="product-details">
-                                                <h4 class="product-name">
-                                                    <a href="{{ route('singleproduct',$top_sellings->slug) }}">
-                                                        @if(Config::get('app.locale') == 'en')
-                                                        {{ $top_sellings->title }}
-                                                        @else
-                                                        {{ $top_sellings->ar_title }}
-                                                        @endif
-                                                    </a>
-                                                </h4>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" @if (number_format($avareg,1)==5)
-                                                            style="width: 100%;" @elseif(number_format($avareg,1)>= 4.5)
-                                                            style="width: 90%;"
-                                                            @elseif(number_format($avareg,1) >= 4)
-                                                            style="width: 80%;"
-                                                            @elseif(number_format($avareg,1) >= 3.5)
-                                                            style="width: 70%;"
-                                                            @elseif(number_format($avareg,1) >= 3)
-                                                            style="width: 60%;"
-                                                            @elseif(number_format($avareg,1) >= 2.5)
-                                                            style="width: 50%;"
-                                                            @elseif(number_format($avareg,1) >= 2)
-                                                            style="width: 40%;"
-                                                            @else
-                                                            style="width: 20%;"
-                                                            @endif
-                                                            ></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                    @if(Config::get('app.locale') == 'en')
-                                                    @if (!empty($top_sellings->discound) || $top_sellings->discound !=
-                                                    null)
-                                                    <small
-                                                        style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">
-                                                        {{ $top_sellings->discound }}% OFF</small>
-                                                    @endif
-                                                    @else
-                                                    @if (!empty($top_sellings->discound) || $top_sellings->discound !=
-                                                    null)
-                                                    <small
-                                                        style="font-size:10px;background: green;color:#fff;padding:5px 10px;border-radius:20px;margin-left:5px">{{ $top_sellings->discound }}%
-                                                        خصم</small>
-                                                    @endif
-                                                    @endif
-                                                </div>
-                                                @if(Config::get('app.locale') == 'en')
-                                                <div class="product-price">
-                                                    @if (!empty($top_sellings->offer_price) ||
-                                                    $top_sellings->offer_price != null)
-                                                    <ins class="new-price">{{ number_format($top_sellings->offer_price) }}
-                                                        AED - <del style="color:#ccc">
-                                                            {{ number_format($top_sellings->price) }} AED</del></ins>
-
-                                                    @else
-                                                    <ins class="new-price">{{ number_format($top_sellings->price) }}
-                                                        AED</ins>
-
-                                                    @endif
-                                                </div>
-                                                @else
-                                                <div class="product-price">
-                                                    @if (!empty($top_sellings->offer_price) ||
-                                                    $top_sellings->offer_price != null)
-                                                    <ins class="new-price">{{ number_format($top_sellings->offer_price) }}
-                                                        د.أ - <del style="color:#ccc">
-                                                            {{ number_format($top_sellings->price) }} د.أ</del></ins>
-
-                                                    @else
-                                                    <ins class="new-price">{{ number_format($top_sellings->price) }}
-                                                        د.أ</ins>
-
-                                                    @endif
-                                                </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                    @else
-                                    @endif
-                                </div>
-                                <div class="swiper-pagination">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+           
         </div>
         <!-- End of Deals Wrapper -->
     </div>
@@ -455,25 +307,35 @@
                     <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
                         @foreach( $categories as $category)
                         @if(Config::get('app.locale') == 'en')
-                        <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
-                            <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category">
-                            </a>
-                            <div class="category-content">
-                                <h4 class="category-name">{{$category->title}}</h4>
-                                <a href="{{ route('shop_special_category',$category->slug) }}"
-                                    class="btn btn-primary btn-link btn-underline">Shop Now</a>
+                        <div class="swiper-slide category-wrap">
+                            <div class="category category-ellipse">
+                                <figure class="category-media">
+                                    <a href="{{ route('shop_child_cat',$category->slug) }}">
+                                        <img src="{{ asset($category->image) }}" alt="Categroy"
+                                            style="width: 100%;height:130px !important;object-fit:contain;"  />
+                                    </a>
+                                </figure>
+                                <div class="category-content">
+                                    <h4 class="category-name">
+                                        <a href="{{ route('shop_child_cat',$category->slug) }}">{{ $category->title }}</a>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
                         @else
-                        <div class="swiper-slide category category-classic category-absolute overlay-zoom br-xs">
-                            <a href="{{ route('shop_special_category',$category->slug) }}" class="category-media">
-                                <img src="{{asset($category->image)}}" alt="Category">
-                            </a>
-                            <div class="category-content">
-                                <h4 class="category-name">{{$category->ar_title}}</h4>
-                                <a href="{{ route('shop_special_category',$category->slug) }}"
-                                    class="btn btn-primary btn-link btn-underline">أطلب اﻷن</a>
+                        <div class="swiper-slide category-wrap">
+                            <div class="category category-ellipse">
+                                <figure class="category-media">
+                                    <a href="{{ route('shop_child_cat',$category->slug) }}">
+                                        <img src="{{ asset($category->image) }}" alt="Categroy"
+                                            style="width: 100%;height:130px !important;object-fit:contain;"  />
+                                    </a>
+                                </figure>
+                                <div class="category-content">
+                                    <h4 class="category-name">
+                                        <a href="{{ route('shop_child_cat',$category->slug) }}">{{ $category->ar_title }}</a>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
                         @endif
@@ -781,20 +643,28 @@
                             alt="{{ $item->image_place }}" width="610" height="160"
                             style="background-color: #ecedec;object-fit:cover;width:100%" /></a>
                 </figure>
-                {{-- <div class="mt-0 banner-content y-50">
-                            <h5 class="banner-subtitle font-weight-normal text-dark">Get up to <span
-                                    class="text-secondary font-weight-bolder text-uppercase ls-25">20% Off</span>
-                            </h5>
-                            <h3 class="banner-title text-uppercase">Sports Outfits<br><span
-                                    class="font-weight-normal text-capitalize">Collection</span>
-                            </h3>
-                            <div class="banner-price-info font-weight-normal">Starting at <span
-                                    class="text-secondary font-weight-bolder">$170.00</span>
-                            </div>
-                        </div> --}}
             </div>
         </div>
         @endforeach
+        @else
+            <div class="mb-4 col-md-6">
+                <div class="banner banner-fixed br-xs">
+                    <figure>
+                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                    </figure>
+                   
+                </div>
+            </div>
+            <div class="mb-4 col-md-6">
+                <div class="banner banner-fixed br-xs">
+                    <figure>
+                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                            height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
+                    </figure>
+                   
+                </div>
+            </div>
         @endif
     </div>
     <!-- End of Category Cosmetic Lifestyle -->
@@ -1095,6 +965,25 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
     </div>
+    @else
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('storage/photos/1/Artboard 10-1001.jpg') }}" class="d-block w-100" alt="slider">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
     @endif
     <!-- End of Banner Fashion -->
 
