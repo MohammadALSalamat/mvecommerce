@@ -206,7 +206,7 @@
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed br-xs">
                     <figure>
-                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                        <img src="{{asset('storage/photos/1/banners_new_theme/Artboard 8.png')}}" alt="addproduct" width="610"
                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                     </figure>
                    
@@ -215,7 +215,7 @@
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed br-xs">
                     <figure>
-                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                        <img src="{{asset('storage/photos/1/banners_new_theme/Artboard 8.png')}}" alt="addproduct" width="610"
                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                     </figure>
                    
@@ -650,7 +650,7 @@
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed br-xs">
                     <figure>
-                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                        <img src="{{asset('storage/photos/1/banners_new_theme/Artboard 8.png')}}" alt="addproduct" width="610"
                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                     </figure>
                    
@@ -659,7 +659,7 @@
             <div class="mb-4 col-md-6">
                 <div class="banner banner-fixed br-xs">
                     <figure>
-                        <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" alt="addproduct" width="610"
+                        <img src="{{asset('storage/photos/1/banners_new_theme/Artboard 8.png')}}" alt="addproduct" width="610"
                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                     </figure>
                    

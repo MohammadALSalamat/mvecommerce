@@ -1,5 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','Shop')
+@section('mytitle','Best Deals')
 <!-- Default CSS -->
 
 @section('content')
@@ -43,6 +43,35 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
                 </div>
+                @else
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="margin-top: 20px">
+    <div class="carousel-inner">
+        <!-- change to the arabic image -->
+        @if(Config::get('app.locale') == 'en')
+        <div class="carousel-item active">
+            <a href="#">
+            <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" class="d-block w-100" alt="slider"> 
+            </a>
+        </div>
+        @else
+        <div class="carousel-item active">
+            <a href="#"> 
+                <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" class="d-block w-100" alt="slider">  
+            </a>
+        </div>
+        <!-- change to the arabic image -->
+    </div>
+    @endif
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>
                 @endif
             </section>
                 
