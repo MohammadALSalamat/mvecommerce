@@ -60,13 +60,13 @@
         @if(Config::get('app.locale') == 'en')
         <div class="carousel-item active">
             <a href="#">
-            <img src="{{asset('/storage/photos/1/banners categories/Place-your-ad-here-GIF.gif')}}" class="d-block w-100" alt="slider"> 
+            <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" class="d-block w-100" alt="slider"> 
             </a>
         </div>
         @else
         <div class="carousel-item active">
             <a href="#"> 
-                <img src="{{asset('/storage/photos/1/banners categories/Place-your-ad-here-GIF.gif')}}" class="d-block w-100" alt="slider">  
+                <img src="{{asset('storage/photos/1/Artboard 10-1001.jpg')}}" class="d-block w-100" alt="slider">  
             </a>
         </div>
         <!-- change to the arabic image -->
