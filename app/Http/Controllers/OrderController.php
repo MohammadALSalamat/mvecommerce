@@ -65,7 +65,6 @@ class OrderController extends Controller
         $full_address = $locations->full_street_info;
         $street = $locations->address;
 
-        
 
         if (empty($data['sub_total']) || $data['sub_total'] == null) {
             return back()->with('error', 'There is an error with the system Please Try later');
@@ -99,6 +98,10 @@ class OrderController extends Controller
         }else{
             $final_total = (float) str_replace(',','',$total) + $shipping_paid;
         }
+
+
+        // dd($final_total);
+
         $ordernumber = rand(1,10000000);
         
         $userInfo = User::where('id',$data['user_id'])->first();
