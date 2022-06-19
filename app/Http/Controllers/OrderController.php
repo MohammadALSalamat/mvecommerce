@@ -125,7 +125,7 @@ class OrderController extends Controller
             $order->postcode = $full_address;
             $order->spostcode = $full_address;
             $order->order_number = $ordernumber;
-            $order->total = $final_total;
+            $order->total = (float) str_replace(',','',$final_total);
             $order->sub_total = (float) str_replace(',','',$total);
             $order->payment_method = $data['cod'];
             // $order->condition = 'pending';
