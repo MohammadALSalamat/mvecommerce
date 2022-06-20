@@ -110,11 +110,12 @@ class UserController extends Controller
             $newuser->email = $data['email'];
             $newuser->password = $password;
             $newuser->added_by = $data['role'];
-            $newuser->photo = $logoname;
+            $newuser->brand = $logoname;
             $newuser->banner_image = $filename;
             $newuser->shop_name = $data['shopname'];
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];
+            $newuser->type_of_work = 'home';
             $newuser->status = $status;
             $newuser->is_verify = 1;
             $newuser->save();
