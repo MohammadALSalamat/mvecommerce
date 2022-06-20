@@ -182,8 +182,26 @@ class UserController extends Controller
         $user = Seller::find($id);
         if ($user) {
             $data = $request->all();
-            
-
+            if(!empty($request->file('shopbanner'))){
+                //get the attached License
+                $attachment = $request->file('logo');
+                $logo_filename = time() . '.' . $attachment->getClientOriginalExtension();
+                Storage::disk('public')->put('seller/'.$logo_filename,File::get($attachment));
+                $logoname =$logo_filename;
+    
+            }else{
+                $logoname = $data['old_logo'];
+            }
+            if(!empty($request->file('shopbanner'))){
+                //get the attached License
+                $attachment = $request->file('shopbanner');
+                $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
+                Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
+                $filename =$name_filename;
+    
+            }else{
+                $filename = $data['old_shopbanner'];
+            }
             if (empty($data['status']) || $data['status'] == null) {
                 $status = 0;
             } else {
@@ -191,7 +209,13 @@ class UserController extends Controller
             }
             
             Seller::where('id', $id)->update([
-               
+                'full_name' => $data['full_name'],
+                'username' => $data['username'],
+                'brand' => $logoname,
+                'banner_image' => $filename,
+                'shop_name' => $data['shopname'],
+                'phone' => $data['phone'],
+                'address' => $data['address'],
                 'status' => $status,
             ]);
        

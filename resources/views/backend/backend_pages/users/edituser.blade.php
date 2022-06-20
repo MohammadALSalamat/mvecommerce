@@ -114,14 +114,14 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="projectinput5">Full Name</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput5" class="form-control"
-                                                        placeholder="add the title" disabled name="full_name" value="{{ $current_user->full_name }}">
+                                                        placeholder="add the title"  name="full_name" value="{{ $current_user->full_name }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1"> User Name</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="projectinput1" class="form-control"
-                                                        placeholder="add a user name" disabled name="username" value="{{ $current_user->username }}">
+                                                        placeholder="add a user name"  name="username" value="{{ $current_user->username }}">
                                                 </div>
                                             </div>
                                              <div class="form-group row">
@@ -139,21 +139,34 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="input-group col-md-10 offset-2">
-                                                    <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Image
-                                                        </a>
-                                                    </span>
-                                                    <input disabled id="thumbnail" class="form-control" type="text" name="image"  value="{{ $current_user->photo }}">
+                                                <label class="col-md-3 label-control" for="logo" style="font-size: 15px">Shop Logo / User photo : </label>
+                                                <div class="col-md-9">
+                                                <input type="file" name="logo" class="form-control" id="logo" accept=".png">
+                                                <input type="hidden" name="old_logo" value="{{ $current_user->brand }}">
+                                                
                                                 </div>
-                                                <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="brand" style="font-size: 15px">Shop banner : </label>
+                                                <div class="col-md-9">
+                                                <input type="file" name="shopbanner" class="form-control"
+                                                    id="brand" >
+                                                    <input type="hidden" name="old_shopbanner" value="{{ $current_user->banner_image }}">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput1"> Shop Name</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput1" class="form-control"
+                                                        placeholder="add the shop name" name="shopname" value="{{ $current_user->shop_name }}">
+                                                </div>
                                             </div>
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" disabled for="projectinput1"> Phone Number</label>
                                                 <div class="col-md-9">
                                                     <input type="number" minlength="10" maxlength="13" id="projectinput1" class="form-control"
-                                                        placeholder="add phone number" disabled name="phone" value="{{ $current_user->phone }}">
+                                                        placeholder="add phone number" name="phone" value="{{ $current_user->phone }}">
                                                 </div>
                                             </div>
                                             
@@ -162,7 +175,7 @@ input:checked + .slider:before {
                                                     for="projectinput9">Address</label>
                                                 <div class="col-md-9">
                                                     <textarea id="summernote" rows="5" class="form-control"
-                                                        name="address" disabled placeholder="About Project">{{ $current_user->address }}</textarea>
+                                                        name="address" disabled placeholder="About Project">{!! $current_user->address !!}</textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group row">
