@@ -84,6 +84,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('style')
 
+    <style>
+        .category-section img{
+            width: 75% !important;
+            border: 1px solid red;
+    border-radius: 50% 50% 0px 0px;
+        }
+    </style>
+
 </head>
 
 <body class="home my-account @if(Config::get('app.locale') == 'ar') ar @endif " @if(Config::get('app.locale') == 'en') @else dir="rtl" @endif>
