@@ -74,7 +74,7 @@ class UserController extends Controller
         if (empty($data['role'])|| $data['role'] == null) {
             return back()->with('error', ' Full Name is required');
         }
-        if(!empty($request->file('shopbanner'))){
+        if(!empty($request->file('logo'))){
             //get the attached License
             $attachment = $request->file('logo');
             $logo_filename = time() . '.' . $attachment->getClientOriginalExtension();
@@ -182,7 +182,7 @@ class UserController extends Controller
         $user = Seller::find($id);
         if ($user) {
             $data = $request->all();
-            if(!empty($request->file('shopbanner'))){
+            if(!empty($request->file('logo'))){
                 //get the attached License
                 $attachment = $request->file('logo');
                 $logo_filename = time() . '.' . $attachment->getClientOriginalExtension();
