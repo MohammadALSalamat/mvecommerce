@@ -160,16 +160,10 @@ input:checked + .slider:before {
                                                 </div>
                                                 <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="input-group col-md-10 offset-2">
-                                                    <span class="input-group-btn">
-                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Shop banner
-                                                        </a>
-                                                    </span>
-                                                    <input id="thumbnail1" class="form-control" type="text" name="shopbanner">
-                                                </div>
-                                                <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
+                                            <div class="form-group col-md-10 offset-2">
+                                                <label for="brand" style="font-size: 15px">Shop banner : </label>
+                                                <input type="file" name="shopbanner" class="form-control"
+                                                    id="brand" accept=".png">
                                             </div>
                                             
                                             <div class="form-group row">

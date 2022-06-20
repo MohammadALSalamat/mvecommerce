@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Adminview;
-use App\Models\Seller;
-use App\Models\subscription;
 use App\Models\User;
+use App\Models\Seller;
+use App\Models\Adminview;
+use App\Models\subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -72,6 +74,16 @@ class UserController extends Controller
         if (empty($data['role'])|| $data['role'] == null) {
             return back()->with('error', ' Full Name is required');
         }
+        if(!empty($request->file('shopbanner'))){
+            //get the attached License
+            $attachment = $request->file('shopbanner');
+            $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
+            Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
+            $filename =$name_filename;
+
+        }else{
+            $filename = null;
+        }
 
         if (empty($data['status'])|| $data['status'] == null) {
         $status = 0;
@@ -89,7 +101,7 @@ class UserController extends Controller
             $newuser->password = $password;
             $newuser->added_by = $data['role'];
             $newuser->photo = $data['image'];
-            $newuser->banner_image = $data['shopbanner'];
+            $newuser->banner_image = $filename;
             $newuser->shop_name = $data['shopname'];
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];

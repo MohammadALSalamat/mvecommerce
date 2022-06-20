@@ -100,8 +100,7 @@
                                                             id="type_of_work">
                                                             <option value="">Select Proposal Title : <b
                                                                     style="color: red">*</b></option>
-                                                            <option value="personal">Peronal</option>
-                                                            <option value="home">Home</option>
+\                                                            <option value="home">Home</option>
                                                             <option value="shop">Shop</option>
                                                         </select>
                                                     </div>
