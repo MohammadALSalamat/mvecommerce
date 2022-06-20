@@ -40,7 +40,7 @@ class UserController extends Controller
         if ($data['role'] == 'seller') {
             $Emailrepate = Seller::where('email',$data['email'])->count();
             $usernamerepate = Seller::where('username', $data['username'])->count();
-            if ($usernamerepate > 0) {
+            if ($Emailrepate > 0) {
                 return back()->with('error', ' The Email in sellers table Is Already There');
             }
             if ($usernamerepate > 0) {
