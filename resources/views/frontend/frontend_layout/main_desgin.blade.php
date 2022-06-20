@@ -86,9 +86,24 @@
 
     <style>
         .category-section img{
-            width: 75% !important;
+            width: 70% !important;
             border: 1px solid red;
-    border-radius: 50% 50% 0px 0px;
+            border-radius: 50% 50% 0px 0px;
+        }
+        @media (max-width:578px){
+            .category-section img{
+            width: 50% !important;
+        }
+        }
+        @media (max-width:450px) {
+            .category-section img{
+            width: 70% !important;
+        }
+        }
+        @media (max-width:1024px) {
+            .category-section img{
+            width: 90% !important;
+        }
         }
     </style>
 
