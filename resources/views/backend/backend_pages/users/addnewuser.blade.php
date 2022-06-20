@@ -150,20 +150,17 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="input-group col-md-10 offset-2">
-                                                    <span class="input-group-btn">
-                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
-                                                            <i class="fa fa-picture-o"></i> Choose Image
-                                                        </a>
-                                                    </span>
-                                                    <input id="thumbnail" class="form-control" type="text" name="image">
+                                                <label class="col-md-3 label-control" for="logo" style="font-size: 15px">Shop Logo / User photo : </label>
+                                                <div class="col-md-9">
+                                                <input type="file" name="logo" class="form-control" id="logo" accept=".png">
                                                 </div>
-                                                <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                                             </div>
-                                            <div class="form-group col-md-10 offset-2">
-                                                <label for="brand" style="font-size: 15px">Shop banner : </label>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="brand" style="font-size: 15px">Shop banner : </label>
+                                                <div class="col-md-9">
                                                 <input type="file" name="shopbanner" class="form-control"
                                                     id="brand" accept=".png">
+                                                </div>
                                             </div>
                                             
                                             <div class="form-group row">
@@ -174,7 +171,7 @@ input:checked + .slider:before {
                                                 </div>
                                             </div>
 
-                                             <div class="form-group row">
+                                            <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="projectinput1"> Phone Number</label>
                                                 <div class="col-md-9">
                                                     <input type="number" minlength="10" maxlength="13" id="projectinput1" class="form-control"
