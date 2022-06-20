@@ -89,6 +89,8 @@ class UserController extends Controller
             $newuser->password = $password;
             $newuser->added_by = $data['role'];
             $newuser->photo = $data['image'];
+            $newuser->banner_image = $data['shopbanner'];
+            $newuser->shop_name = $data['shopname'];
             $newuser->phone = $data['phone'];
             $newuser->address = $data['address'];
             $newuser->status = $status;
