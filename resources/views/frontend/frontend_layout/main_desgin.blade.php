@@ -90,17 +90,22 @@
             border: 1px solid red;
             border-radius: 50% 50% 0px 0px;
         }
-        @media (max-width:578px){
+        @media (min-width:451px) AND (max-width:578px){
             .category-section img{
             width: 50% !important;
         }
         }
-        @media (max-width:450px) {
+        @media (min-width:360px) AND (max-width:450px) {
             .category-section img{
             width: 70% !important;
         }
         }
-        @media (max-width:1024px) {
+        @media (max-width:360px) {
+            .category-section img{
+            width: 80% !important;
+        }
+        }
+        @media (min-width:580px) AND (max-width:1024px) {
             .category-section img{
             width: 90% !important;
         }

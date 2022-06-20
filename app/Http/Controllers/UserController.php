@@ -76,6 +76,16 @@ class UserController extends Controller
         }
         if(!empty($request->file('shopbanner'))){
             //get the attached License
+            $attachment = $request->file('logo');
+            $logo_filename = time() . '.' . $attachment->getClientOriginalExtension();
+            Storage::disk('public')->put('seller/'.$logo_filename,File::get($attachment));
+            $logoname =$logo_filename;
+
+        }else{
+            $logoname = null;
+        }
+        if(!empty($request->file('shopbanner'))){
+            //get the attached License
             $attachment = $request->file('shopbanner');
             $name_filename = time() . '.' . $attachment->getClientOriginalExtension();
             Storage::disk('public')->put('seller/'.$name_filename,File::get($attachment));
@@ -100,7 +110,7 @@ class UserController extends Controller
             $newuser->email = $data['email'];
             $newuser->password = $password;
             $newuser->added_by = $data['role'];
-            $newuser->photo = $data['image'];
+            $newuser->photo = $logoname;
             $newuser->banner_image = $filename;
             $newuser->shop_name = $data['shopname'];
             $newuser->phone = $data['phone'];

@@ -159,7 +159,7 @@ input:checked + .slider:before {
                                                 <label class="col-md-3 label-control" for="brand" style="font-size: 15px">Shop banner : </label>
                                                 <div class="col-md-9">
                                                 <input type="file" name="shopbanner" class="form-control"
-                                                    id="brand" accept=".png">
+                                                    id="brand" >
                                                 </div>
                                             </div>
                                             
