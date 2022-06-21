@@ -164,4 +164,8 @@ Route::group(['perfix'=>'user'],function(){
     Route::get('helpus',function(){
         return view('frontend.frontend_pages.pages.helpUs');
         });
+
+Route::post('improve_submit',[helpus::class,'helpusform'])->name('helpusform');
+
+
 });

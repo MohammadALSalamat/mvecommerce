@@ -314,7 +314,7 @@
                                         </li>
                                     </ul>
                                     <footer>
-                                        <form action="" method="POST">
+                                        <form action="{{ route('helpusform') }}" method="POST">
                                             <textarea placeholder="Type your message"></textarea>
                                             <button class="btn btn-primary" type="submit">Send Now</a>
                                         </form>
