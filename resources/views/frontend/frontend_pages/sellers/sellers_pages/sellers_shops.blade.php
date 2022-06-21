@@ -43,7 +43,7 @@
                                             @else
                                             <li class="store-address">
                                                 <i class="w-icon-map-marker"></i>
-                                                <p>{{$seller->address}},{{ $seller->country }}</p>
+                                                <p>{!!$seller->address!!},{{ $seller->country }}</p>
                                             </li>
                                             @endif
                                             <li class="store-rating">
