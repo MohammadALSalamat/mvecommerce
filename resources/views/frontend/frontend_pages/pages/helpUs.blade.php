@@ -293,7 +293,7 @@
                                 </div>
                                 <div class="main1">
                                     <header>
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
+                                        <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" style="width:80px;border-radius:50%;border:3px solid red;padding: 10px 0px" alt="">
                                         <div>
                                             <h2>Send Us your thoughts</h2>
                                             <h3>How Can we imporove the website.</h3>
@@ -311,6 +311,7 @@
                                             <div class="message">
                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                                             </div>
+                                            <form>
                                             <div style="display:flex">
                                             <a href="#" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span id="value">0</span></div>
