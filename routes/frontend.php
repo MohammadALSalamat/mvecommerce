@@ -143,9 +143,7 @@ Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit
 Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.switch');
 
 // user dashboard and settings
-Route::get('helpus',function(){
-    return view('frontend.frontend_pages.pages.helpUs');
-    });
+Route::get('helpus',[HelpUsController::class,'helpus'])->name('helpus');
 
 Route::group(['perfix'=>'user'],function(){
     

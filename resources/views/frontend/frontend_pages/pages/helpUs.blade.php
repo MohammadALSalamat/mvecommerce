@@ -282,18 +282,21 @@
                                     <ul id="chat">
                                         @if(!empty($posts))
                                         @foreach ($posts as $post)
+                                        @php
+                                            $created_at = explode(' ',$post->created_at);
+                                        @endphp
                                         <li class="you">
                                             <div class="entete">
                                                 <span class="status green"></span>
-                                                <h2>Vincent</h2>
-                                                <h3>10:12AM, Today</h3>
+                                                <h2>{{ $current_user->full_name }}</h2>
+                                                <h3>{{ $created_at = $created_at[1] }},AT {{ $created_at = $created_at[0] }}</h3>
                                             </div>
                                             <div class="triangle"></div>
                                             <div class="message">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                {{ $post->content }}
                                             </div>
                                             <div style="display:flex">
-                                            <a href="#" data-type="like" data-post_id="{{ $post_id }}" id="like" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
+                                            <a href="#" data-type="like" data-post_id="{{ $post->id }}" id="like" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span id="value">0</span></div>
                                             </a>
                                             <a href="#" data-type="dislike" id="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>

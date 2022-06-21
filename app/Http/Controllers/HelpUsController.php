@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class HelpUsController extends Controller
 {
+public function helpus()
+{
+    $posts = helpUs::get();
+    $current_user = User::where('id',auth()->user()->id)->first();
+    return view('frontend.frontend_pages.pages.helpUs',compact('posts','current_user'));
+}
+   
+
     public function helpusform(Request $request)
     {
         $data = $request->all();
