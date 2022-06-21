@@ -28,7 +28,7 @@
                             <style>
                                 .aside {
                                     width: 25%;
-                                    height: 800px;
+                                    height:560px;
                                     background-color: #3b3e49;
                                     display: inline-block;
                                     font-size: 15px;
@@ -37,7 +37,7 @@
                             
                                 .main1 {
                                     width: 70%;
-                                    height: 800px;
+                                    height:500px;
                                     display: inline-block;
                                     font-size: 15px;
                                     vertical-align: top;
@@ -70,7 +70,7 @@
                                     padding-left: 0;
                                     margin: 0;
                                     list-style-type: none;
-                                    height: 690px;
+                                    height: 350px;
                                 }
                             
                                 .aside li {
@@ -134,7 +134,7 @@
                                 }
                             
                                 .main1 header {
-                                    height: 110px;
+                                    height: 100px;
                                     padding: 30px 20px 30px 40px;
                                 }
                             
@@ -173,7 +173,7 @@
                                     margin: 0;
                                     list-style-type: none;
                                     overflow-y: scroll;
-                                    height: 535px;
+                                    height: 300px;
                                     border-top: 2px solid #fff;
                                     border-bottom: 2px solid #fff;
                                 }
@@ -243,7 +243,7 @@
                             
                                 .main1 footer textarea {
                                     resize: none;
-                                    border: none;
+                                    border: 1px solid #ccc;
                                     display: block;
                                     width: 100%;
                                     height: 80px;
@@ -312,67 +312,10 @@
                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                                             </div>
                                         </li>
-                                        <li class="me">
-                                            <div class="entete">
-                                                <h3>10:12AM, Today</h3>
-                                                <h2>Vincent</h2>
-                                                <span class="status blue"></span>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="message">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                            </div>
-                                        </li>
-                                        <li class="me">
-                                            <div class="entete">
-                                                <h3>10:12AM, Today</h3>
-                                                <h2>Vincent</h2>
-                                                <span class="status blue"></span>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="message">
-                                                OK
-                                            </div>
-                                        </li>
-                                        <li class="you">
-                                            <div class="entete">
-                                                <span class="status green"></span>
-                                                <h2>Vincent</h2>
-                                                <h3>10:12AM, Today</h3>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="message">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                            </div>
-                                        </li>
-                                        <li class="me">
-                                            <div class="entete">
-                                                <h3>10:12AM, Today</h3>
-                                                <h2>Vincent</h2>
-                                                <span class="status blue"></span>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="message">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                            </div>
-                                        </li>
-                                        <li class="me">
-                                            <div class="entete">
-                                                <h3>10:12AM, Today</h3>
-                                                <h2>Vincent</h2>
-                                                <span class="status blue"></span>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="message">
-                                                OK
-                                            </div>
-                                        </li>
                                     </ul>
                                     <footer>
                                         <textarea placeholder="Type your message"></textarea>
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                                        <a href="#">Send</a>
+                                        <button class="btn btn-primary" type="submit">Send Now</a>
                                     </footer>
                                 </div>
                             </div>
