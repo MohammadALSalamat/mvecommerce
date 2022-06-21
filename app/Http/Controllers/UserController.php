@@ -76,9 +76,9 @@ class UserController extends Controller
         }
         if(!empty($request->file('logo'))){
             //get the attached License
-            $attachment = $request->file('logo');
-            $logo_filename = time() . '.' . $attachment->getClientOriginalExtension();
-            Storage::disk('public')->put('seller/'.$logo_filename,File::get($attachment));
+            $attachment_logo = $request->file('logo');
+            $logo_filename = time() . '.' . $attachment_logo->getClientOriginalExtension();
+            Storage::disk('public')->put('seller/'.$logo_filename,File::get($attachment_logo));
             $logoname =$logo_filename;
 
         }else{
