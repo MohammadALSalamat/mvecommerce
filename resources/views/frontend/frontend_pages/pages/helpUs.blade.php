@@ -294,7 +294,9 @@
                                 <div class="main1">
                                     <header>
                                         <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" style="width:80px;border-radius:50%;border:3px solid red;padding: 10px 0px" alt="">
-                                        <div>
+                                        <div style="display: inline-block;
+                                        line-height: normal;
+                                        vertical-align: middle;">
                                             <h2>Send Us your thoughts</h2>
                                             <h3>How Can we imporove the website.</h3>
                                         </div>
