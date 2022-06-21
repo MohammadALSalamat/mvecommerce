@@ -142,9 +142,7 @@ Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit
 Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.switch');
 
 // user dashboard and settings
-Route::get('helpus',function(){
-return view('frontend.frontend_pages.pages.helpUs');
-});
+
 
 Route::group(['perfix'=>'user'],function(){
     
@@ -163,5 +161,7 @@ Route::group(['perfix'=>'user'],function(){
     // update user password
     Route::post('update_account/{id}',[frontPageController::class, 'update_useraccount'])->name('updateuseraccount');
     
-
+    Route::get('helpus',function(){
+        return view('frontend.frontend_pages.pages.helpUs');
+        });
 });
