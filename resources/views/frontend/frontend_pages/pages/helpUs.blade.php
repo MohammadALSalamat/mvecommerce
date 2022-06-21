@@ -314,8 +314,10 @@
                                         </li>
                                     </ul>
                                     <footer>
-                                        <textarea placeholder="Type your message"></textarea>
-                                        <button class="btn btn-primary" type="submit">Send Now</a>
+                                        <form action="" method="POST">
+                                            <textarea placeholder="Type your message"></textarea>
+                                            <button class="btn btn-primary" type="submit">Send Now</a>
+                                        </form>
                                     </footer>
                                 </div>
                             </div>
