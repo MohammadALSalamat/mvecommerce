@@ -35,6 +35,10 @@ public function helpus()
     public function like_submition(Request $request)
     {
         $data = $request->all();
-        dd($request);
+       if($data['post_type'] == 'like'){
+        dd('test');
+       }else{
+        dd($data);
+       }
     }
 }
