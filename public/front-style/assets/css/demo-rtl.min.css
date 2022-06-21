@@ -5828,7 +5828,7 @@ blockquote {
 }
 
 .category-ellipse .category-media {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     overflow: hidden;
     border: 0px solid #fff;
     -webkit-transition: border-width 0.1s, -webkit-box-shadow 0.1s;

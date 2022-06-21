@@ -120,7 +120,7 @@
                         <ul class="widget-body">
                             @if(count($sub_cat) > 0 )
                             @foreach ($sub_cat as $single_cat )
-                            <li><a href="{{route('shop_child_cat',$single_cat->id)}}">{{$single_cat->title}}</a></li>
+                            <li><a href="{{route('shop_child_cat',$single_cat->slug)}}">{{$single_cat->title}}</a></li>
                             @endforeach
                             @endif
                         </ul>
@@ -171,11 +171,11 @@
                 @if(count($sub_cat) > 0)
                 <div class="col-lg-2 col-sm-6 col-xs-6">
                     <div class="widget">
-                        <h3 class="widget-title">{{$category->title}} </h3>
+                        <h3 class="widget-title">{{$category->ar_title}} </h3>
                         <ul class="widget-body">
                             @if(count($sub_cat) > 0 )
                             @foreach ($sub_cat as $single_cat )
-                            <li><a href="{{route('shop_child_cat',$single_cat->id)}}">{{$single_cat->title}}</a></li>
+                            <li><a href="{{route('shop_child_cat',$single_cat->slug)}}">{{$single_cat->ar_title}}</a></li>
                             @endforeach
                             @endif
                         </ul>
