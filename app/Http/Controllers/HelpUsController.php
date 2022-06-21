@@ -40,7 +40,6 @@ public function helpus()
         $current_post = helpUs::where('id',$data['post_id'])->first();
         $totalLikes = likeDislike::where('help_us_id',$current_post->id)->get();
         
-        dd($current_post);
 
         $liketotal = array();
 
@@ -51,11 +50,15 @@ public function helpus()
             foreach($likes as $like){
                 array_push($liketotal,$like->like);
             }
-            $result = array_sum($liketotal) - 1;
+            $result = array_sum($liketotal) + 1;
+            if($result < 0){
+                $result = 0;
+            }
             likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->update([
-                'like' => $result ,
+                'likes' => $result ,
             ]);
                 $response['status'] = true;
+                $response['liketotal']=$result ;
             return json_encode($response); 
 
             
@@ -64,16 +67,20 @@ public function helpus()
             $add_newlike = new likeDislike();
             $add_newlike->user_id = $current_user->id;
             $add_newlike->help_us_id = $current_post->id;
-            $add_newlike->like = 1;
-            $add_newlike->dislike = 0;
+            $add_newlike->likes = 1;
+            $add_newlike->dislikes = 0;
             $add_newlike->save();
 
+            foreach($totalLikes as $liksresult){
+                array_push($liketotal,$liksresult->likes);
+            }
             if($add_newlike->save){
                 $response['status'] = true;
+                $response['liketotal']=array_sum($liketotal) ;
             }
             //render the header cart value
             if($request->ajax()){
-               $header = view('frontend.frontend_pages.pages.helpus')->render();
+               $header = view('frontend.frontend_pages.pages.helpUs')->render();
                $response['header'] = $header;
            }
            return json_encode($response); 
