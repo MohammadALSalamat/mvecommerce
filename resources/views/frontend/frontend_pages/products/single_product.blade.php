@@ -966,7 +966,7 @@
                                             @else
                                             <li class="store-address">
                                                 <label>Address:</label>
-                                                <span class="detail">{{$vendor_info->address}}</span>
+                                                <span class="detail">{!!$vendor_info->address !!}</span>
                                             </li>
                                             @endif
                                             <li class="store-phone">
