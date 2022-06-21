@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class likeDislike extends Model
 {
     use HasFactory;
+
+    public function posts()
+    {
+        return $this->belongsTo(helpUs::class,'id');
+    }
 }

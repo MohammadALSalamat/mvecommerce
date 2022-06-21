@@ -280,6 +280,8 @@
                                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
                                     </header>
                                     <ul id="chat">
+                                        @if(!empty($posts))
+                                        @foreach ($posts as $post)
                                         <li class="you">
                                             <div class="entete">
                                                 <span class="status green"></span>
@@ -291,15 +293,18 @@
                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                                             </div>
                                             <div style="display:flex">
-                                            <a href="#" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
+                                            <a href="#" data-type="like" data-post_id="{{ $post_id }}" id="like" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span id="value">0</span></div>
                                             </a>
-                                            <a href="#" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
+                                            <a href="#" data-type="dislike" id="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
                                                 <div class="text"><span id="value">0</span></div>
                                             </a>
                                             </div>
                                         </li>
-                                        
+                                        @endforeach
+                                        @else
+                                        <strong>Be the first User gives us a help to imporove.</strong>
+                                        @endif
                                     </ul>
                                     <footer>
                                         <form action="{{ route('helpusform') }}" method="POST">
@@ -322,5 +327,30 @@
         </div>
     </div>
 </main>
+<script>
+    var postid = 0;
+    var Url = {{ route('like_submition') }};
+    $(document).on('click', '.like', function(e) {
+            e.preventDefault();
+            // get the data from products
+            var post_type = $(this).data('id');
+            // start sending info using ajax
+            var token = "{{ csrf_token() }}";
+            var path = "{{ route('cart_delete') }}";
+            $.ajax({
+                url: path,
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    cart_id: cart_id,
+                    _token: token,
+                },
+                success: function(data) {
+                    $('body #header-ajax').html(data['header']);
+                    $('body #cart_lists').html(data['cart_lists']);
+                }
+            });
+        });
 
+</script>
 @endsection
