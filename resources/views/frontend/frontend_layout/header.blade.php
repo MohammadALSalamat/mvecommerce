@@ -701,7 +701,7 @@ div.checkRadioContainer > label > input:checked + i {
        </div>
    </div>
    <!-- End of Header Middle -->
-   <div class="header-bottom sticky-content fix-top sticky-header">
+   <div class="header-bottom ">
        <div class="container">
            <div class="inner-wrap">
                <div class="flex-1 header-left">
@@ -901,7 +901,7 @@ div.checkRadioContainer > label > input:checked + i {
        </div>
    </div>
    <!-- End of Header Middle -->
-   <div class="header-bottom sticky-content fix-top sticky-header">
+   <div class="header-bottom ">
        <div class="container">
            <div class="inner-wrap">
                <div class="flex-1 header-left">
