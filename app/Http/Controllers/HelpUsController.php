@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\helpUs;
+use App\Models\likeDislike;
 use Illuminate\Http\Request;
 
 class HelpUsController extends Controller
@@ -35,8 +36,15 @@ public function helpus()
     public function like_submition(Request $request)
     {
         $data = $request->all();
+        $current_user = User::where('id',$data['user_id'])->first();
+        $current_post = helpUs::where('id',$data['post_id'])->first();
+        dd($current_post);
        if($data['post_type'] == 'like'){
-        dd('test');
+        $check_user_if_checked_thumbs = likeDislike::where('user_id',$current_user->id)->where('post_id',$current_post->id)->count();
+        if($check_user_if_checked_thumbs > 0){
+
+        }
+
        }else{
         dd($data);
        }
