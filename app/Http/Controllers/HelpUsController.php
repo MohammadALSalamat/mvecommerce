@@ -31,4 +31,10 @@ public function helpus()
             return back()->with('error','please login first');
         }
     }
+
+    public function like_submition(Request $request)
+    {
+        $data = $request->all();
+        dd($request);
+    }
 }
