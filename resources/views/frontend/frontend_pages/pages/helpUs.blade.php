@@ -297,10 +297,10 @@
                                             </div>
                                             <div style="display:flex">
                                             <a class="like" href="javascript:valid(0)" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" id="likes" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
-                                                <div class="text"><span id="like">0</span></div>
+                                                <div class="text"><span class="likescount">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             <a href="javascript:valid(0)" class="like" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" data-type="dislike" id="dislikes" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
-                                                <div class="text"><span id="dislike">0</span></div>
+                                                <div class="text"><span class="dislikecount">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             </div>
                                         </li>
@@ -352,8 +352,8 @@
                     _token: token,
                 },
                 success: function(data) {
-                    $('body .main1').html(data['header']);
-                    $('body #like').html(data['liketotal']);
+                    $('body .likescount').html(data['liketotal']);
+                    $('body .dislikecount').html(data['dislikecount']);
                 }
             });
         });
