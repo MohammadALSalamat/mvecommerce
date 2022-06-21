@@ -19,7 +19,7 @@
                 <div class="container mt-10 mb-9">
                     <div class="row align-items-center mb-10">
                         <div class="col-md-12 pl-lg-8 mb-8 ">
-                            <h4 class="title text-left text-center">Help Us To Imporove</h4>
+                            <h4 class="title text-center">Help Us To Imporove</h4>
                             <p class="mb-6 text-center">
                                 Kindly fill the form below to help us to imporove the website as you like,
                                 <br>
@@ -290,7 +290,6 @@
                                             <div class="message">
                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                                             </div>
-                                            <form>
                                             <div style="display:flex">
                                             <a href="#" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span id="value">0</span></div>
@@ -304,6 +303,7 @@
                                     </ul>
                                     <footer>
                                         <form action="{{ route('helpusform') }}" method="POST">
+                                            @csrf
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                             <textarea name="message" placeholder="Type your message"></textarea>
                                             <button class="btn btn-primary" type="submit">Send Now</a>
@@ -312,7 +312,7 @@
                                 </div>
                             </div>
                             @else
-                            <strong style="color: red;"> Please Login First to submit and review the comments <a href="{{ route('loginForm') }}"> Click Here</a> </strong>
+                            <strong style="color: red;"> Please Login First to submit and review the comments </strong><a href="{{ route('loginForm') }}"> Click Here</a> 
                             @endauth
                         </div>
                     </div>
