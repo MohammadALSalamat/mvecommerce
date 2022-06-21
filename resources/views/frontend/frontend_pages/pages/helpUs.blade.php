@@ -289,14 +289,14 @@
                                             <div class="entete">
                                                 <span class="status green"></span>
                                                 <h2>{{ $current_user->full_name }}</h2>
-                                                <h3>{{ $created_at = $created_at[1] }},AT {{ $created_at = $created_at[0] }}</h3>
+                                                <h3>{{ $created_at[0] }},AT {{ $created_at[1] }}</h3>
                                             </div>
                                             <div class="triangle"></div>
                                             <div class="message">
                                                 {{ $post->content }}
                                             </div>
                                             <div style="display:flex">
-                                            <a href="#" data-type="like" data-post_id="{{ $post->id }}" id="like" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
+                                            <a href="#" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" id="like" style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span id="value">0</span></div>
                                             </a>
                                             <a href="#" data-type="dislike" id="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
@@ -331,21 +331,23 @@
     </div>
 </main>
 <script>
-    var postid = 0;
-    var Url = {{ route('like_submition') }};
     $(document).on('click', '.like', function(e) {
-            e.preventDefault();
-            // get the data from products
-            var post_type = $(this).data('id');
+        e.preventDefault();
+        // get the data from products
+            var Url = {{ route('like_submition') }};
+            var post_type = $(this).data('type');
+            var user_id = $(this).data('userid');
+            var post_id = $(this).data('postid');
             // start sending info using ajax
             var token = "{{ csrf_token() }}";
-            var path = "{{ route('cart_delete') }}";
             $.ajax({
-                url: path,
+                url: Url,
                 type: "POST",
                 dataType: "JSON",
                 data: {
-                    cart_id: cart_id,
+                    post_type: post_type,
+                    user_id: user_id,
+                    post_id: post_id,
                     _token: token,
                 },
                 success: function(data) {
