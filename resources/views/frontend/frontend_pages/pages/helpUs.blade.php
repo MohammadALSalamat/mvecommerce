@@ -18,13 +18,14 @@
             <section class="boost-section pt-10 pb-10">
                 <div class="container mt-10 mb-9">
                     <div class="row align-items-center mb-10">
-                        <div class="col-md-12 pl-lg-8 mb-8">
-                            <h4 class="title text-left">Help Us To Imporove</h4>
-                            <p class="mb-6">
+                        <div class="col-md-12 pl-lg-8 mb-8 ">
+                            <h4 class="title text-left text-center">Help Us To Imporove</h4>
+                            <p class="mb-6 text-center">
                                 Kindly fill the form below to help us to imporove the website as you like,
                                 <br>
                                 give us your thoughts how can we make it easier for you to get what you want.
                             </p>
+                            @auth
                             <style>
                                
                             
@@ -303,12 +304,16 @@
                                     </ul>
                                     <footer>
                                         <form action="{{ route('helpusform') }}" method="POST">
-                                            <textarea placeholder="Type your message"></textarea>
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                            <textarea name="message" placeholder="Type your message"></textarea>
                                             <button class="btn btn-primary" type="submit">Send Now</a>
                                         </form>
                                     </footer>
                                 </div>
                             </div>
+                            @else
+                            <strong style="color: red;"> Please Login First to submit and review the comments <a href="{{ route('loginForm') }}"> Click Here</a> </strong>
+                            @endauth
                         </div>
                     </div>
                 </div>

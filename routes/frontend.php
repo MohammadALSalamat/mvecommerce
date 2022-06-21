@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\OrderController;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\HelpUsController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\ShippingCartController;
@@ -165,7 +166,8 @@ Route::group(['perfix'=>'user'],function(){
         return view('frontend.frontend_pages.pages.helpUs');
         });
 
-Route::post('improve_submit',[helpus::class,'helpusform'])->name('helpusform');
+Route::post('improve_submit',[HelpUsController::class,'helpusform'])->name('helpusform');
+Route::post('ajax_like',[HelpUsController::class,'like_submition'])->name('like_submition');
 
 
 });
