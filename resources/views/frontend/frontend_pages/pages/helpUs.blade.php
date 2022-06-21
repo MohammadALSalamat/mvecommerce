@@ -352,8 +352,7 @@
                     _token: token,
                 },
                 success: function(data) {
-                    $('body #header-ajax').html(data['header']);
-                    $('body #cart_lists').html(data['cart_lists']);
+                    $('body .main1').html(data['header']);
                 }
             });
         });
