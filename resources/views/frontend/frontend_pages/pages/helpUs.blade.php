@@ -26,18 +26,11 @@
                                 give us your thoughts how can we make it easier for you to get what you want.
                             </p>
                             <style>
-                                .aside {
-                                    width: 25%;
-                                    height:560px;
-                                    background-color: #3b3e49;
-                                    display: inline-block;
-                                    font-size: 15px;
-                                    vertical-align: top;
-                                }
+                               
                             
                                 .main1 {
-                                    width: 70%;
-                                    height:500px;
+                                    width: 100%;
+                                    height:600px;
                                     display: inline-block;
                                     font-size: 15px;
                                     vertical-align: top;
@@ -274,23 +267,6 @@
                                 }
                             </style>
                             <div>
-                                <div class="aside">
-                                    <header>
-                                        <input type="text" placeholder="search">
-                                    </header>
-                                    <ul>
-                                        <li>
-                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
-                                            <div>
-                                                <h2>Prénom Nom</h2>
-                                                <h3>
-                                                    <span class="status green"></span>
-                                                    Online
-                                                </h3>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
                                 <div class="main1">
                                     <header>
                                         <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" style="width:80px;border-radius:50%;border:3px solid red;padding: 10px 0px" alt="">
