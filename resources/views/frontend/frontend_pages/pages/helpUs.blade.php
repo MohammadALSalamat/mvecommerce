@@ -311,6 +311,12 @@
                                             <div class="message">
                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                                             </div>
+                                            <div style="display:flex">
+                                            <a href="#" style="margin-right:10px;border:1px solid #ccc;border-radius:50%; padding:20px"> <i class="fa fa-thumbs-up"></i>
+                                                <div class="text">Like <br>+<span id="value">99</span></div>
+                                            </a>
+                                            <a href="#"> <i class="fa fa-thumbs-down"></i></a>
+                                            </div>
                                         </li>
                                     </ul>
                                     <footer>
