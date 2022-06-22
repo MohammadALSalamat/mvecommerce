@@ -6,14 +6,19 @@ use App\Models\User;
 use App\Models\helpUs;
 use App\Models\likeDislike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HelpUsController extends Controller
 {
 public function helpus()
 {
     $posts = helpUs::get();
+    if(Auth::check()){
     $current_user = User::where('id',auth()->user()->id)->first();
-    return view('frontend.frontend_pages.pages.helpUs',compact('posts','current_user'));
+        return view('frontend.frontend_pages.pages.helpUs',compact('posts','current_user'));
+    }else{
+        return redirect()->route('loginForm')->with('error','Login First Please');
+    }
 }
    
 
