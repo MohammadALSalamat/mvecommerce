@@ -299,8 +299,8 @@
                                             <a class="like" href="javascript:valid(0)" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}"  style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span class="likescount" data-id = "likescount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
-                                            <a href="javascript:valid(0)" class="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" data-type="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
-                                                <div class="text"><span class="dislikecount" data-id = "dislikecount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
+                                            <a href="javascript:valid(0)" class="like" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" data-type="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
+                                                <div class="text"><span class="dislikecount">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             </div>
                                         </li>
@@ -338,8 +338,6 @@
             var post_type = $(this).data('type');
             var user_id = $(this).data('userid');
             var post_id = $(this).data('postid');
-            var dataIdlike = $('.likescount').data('id');
-            var dataIddislike = $('.dislikecount').data('id');
 
             // start sending info using ajax
             var token = "{{ csrf_token() }}";
@@ -354,8 +352,8 @@
                     _token: token,
                 },
                 success: function(data) {
-                    $('.likescount').data('id').html(data['liketotal']);
-                    $(dataIddislike).html(data['dislikecount']);
+                    $('.likescount').html(data['liketotal']);
+                    $('.dislikecount').html(data['dislikecount']);
                 }
             });
         });
