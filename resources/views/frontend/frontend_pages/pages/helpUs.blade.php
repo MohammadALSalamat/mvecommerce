@@ -337,7 +337,8 @@
     </div>
 </main>
 <script>
-    $(document).on('click', '.like', function(e) {
+    var;
+    $(document).each('click', '.like', function(e) {
         e.preventDefault();
         // get the data from products
             var Url = "{{ route('like_submition') }}";
@@ -359,7 +360,7 @@
                 },
                 success: function(data) {
                     $('.likescount').html(data['liketotal']);
-                    $('.dislikecount').html(data['dislikecount']);
+                    $('.dislikecount').html(data['disliketotal']);
                 }
             });
         });
