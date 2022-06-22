@@ -49,13 +49,13 @@ public function helpus()
         $liketotal = array();
 
        if($data['post_type'] == 'like'){
-        $check_user_if_checked_thumbs = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->count();
-        if($check_user_if_checked_thumbs > 0){
+        $check_user_if_checked_thumbs = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->first();
+        if($check_user_if_checked_thumbs->likes > 0){
             $likes = likeDislike::where('help_us_id',$current_post->id)->get();
             foreach($likes as $like){
                 array_push($liketotal,$like->likes);
             }
-            $result = array_sum($liketotal) + 1;
+            $result = array_sum($liketotal) - 1;
             if($result < 0){
                 $result = 0;
             }
