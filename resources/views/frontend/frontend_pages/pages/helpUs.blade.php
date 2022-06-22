@@ -303,10 +303,10 @@
                                                 style="margin-right:10px;padding:10px 25px;text-align:center"
                                                 @endif > 
                                                 <i class="fa fa-thumbs-up"></i>
-                                                <div class="text"><span class="likescount" data-id = "likescount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
+                                                <div class="text"><span class="likescount{{ $post->id }}" data-id = "likescount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             <a href="javascript:valid(0)" class="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}" data-type="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
-                                                <div class="text"><span class="dislikecount">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
+                                                <div class="text"><span class="dislikecount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             </div>
                                         </li>
@@ -337,8 +337,8 @@
     </div>
 </main>
 <script>
-    var;
-    $(document).each('click', '.like', function(e) {
+
+        $(document).on('click', '.like', function(e) {
         e.preventDefault();
         // get the data from products
             var Url = "{{ route('like_submition') }}";
@@ -359,8 +359,8 @@
                     _token: token,
                 },
                 success: function(data) {
-                    $('.likescount').html(data['liketotal']);
-                    $('.dislikecount').html(data['disliketotal']);
+                    $('.likescount'+post_id).html(data['liketotal']);
+                    $('.dislikecount'+post_id).html(data['disliketotal']);
                 }
             });
         });

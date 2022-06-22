@@ -49,7 +49,6 @@ public function helpus()
         
         if($data['post_type'] == 'like'){
             $check_user_if_checked_thumbs = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->first();
-            dd($check_user_if_checked_thumbs);
         $check_user_if_checked_thumbs_counts = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->count();        
        if($check_user_if_checked_thumbs_counts > 0){
         if ($check_user_if_checked_thumbs->likes == 1) {
