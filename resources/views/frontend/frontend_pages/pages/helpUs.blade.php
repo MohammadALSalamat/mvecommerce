@@ -19,113 +19,26 @@
                 <div class="container mt-10 mb-9">
                     <div class="row align-items-center mb-10">
                         <div class="col-md-12 pl-lg-8 mb-8 ">
-                            <h4 class="title text-center">Help Us To Imporove</h4>
-                            <p class="mb-6 text-center">
-                                Kindly fill the form below to help us to imporove the website as you like,
-                                <br>
-                                give us your thoughts how can we make it easier for you to get what you want.
-                            </p>
+                            
                             @auth
                             <style>
                                
                             
                                 .main1 {
                                     width: 100%;
-                                    height:600px;
+                                    height:800px;
                                     display: inline-block;
                                     font-size: 15px;
                                     vertical-align: top;
                                 }
                             
-                                .aside header {
-                                    padding: 30px 20px;
-                                }
-                            
-                                .aside input {
-                                    width: 100%;
-                                    height: 50px;
-                                    line-height: 50px;
-                                    padding: 0 50px 0 20px;
-                                    background-color: #5e616a;
-                                    border: none;
-                                    border-radius: 3px;
-                                    color: #fff;
-                                    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
-                                    background-repeat: no-repeat;
-                                    background-position: 170px;
-                                    background-size: 40px;
-                                }
-                            
-                                .aside input::placeholder {
-                                    color: #fff;
-                                }
-                            
-                                .aside ul {
-                                    padding-left: 0;
-                                    margin: 0;
-                                    list-style-type: none;
-                                    height: 350px;
-                                }
-                            
-                                .aside li {
-                                    padding: 10px 0;
-                                }
-                            
-                                .aside li:hover {
-                                    background-color: #5e616a;
-                                }
+                               
                             
                                 h2,
                                 h3 {
                                     margin: 0;
                                 }
                             
-                                .aside li img {
-                                    border-radius: 50%;
-                                    margin-left: 20px;
-                                    margin-right: 8px;
-                                }
-                            
-                                .aside li div {
-                                    display: inline-block;
-                                    vertical-align: top;
-                                    margin-top: 12px;
-                                }
-                            
-                                .aside li h2 {
-                                    font-size: 14px;
-                                    color: #fff;
-                                    font-weight: normal;
-                                    margin-bottom: 5px;
-                                }
-                            
-                                .aside li h3 {
-                                    font-size: 12px;
-                                    color: #7e818a;
-                                    font-weight: normal;
-                                }
-                            
-                                .status {
-                                    width: 8px;
-                                    height: 8px;
-                                    border-radius: 50%;
-                                    display: inline-block;
-                                    margin-right: 7px;
-                                }
-                            
-                                .green {
-                                    background-color: #58b666;
-                                }
-                            
-                                .orange {
-                                    background-color: #ff725d;
-                                }
-                            
-                                .blue {
-                                    background-color: #6fbced;
-                                    margin-right: 0;
-                                    margin-left: 7px;
-                                }
                             
                                 .main1 header {
                                     height: 100px;
@@ -167,7 +80,7 @@
                                     margin: 0;
                                     list-style-type: none;
                                     overflow-y: scroll;
-                                    height: 300px;
+                                    height: 600px;
                                     border-top: 2px solid #fff;
                                     border-bottom: 2px solid #fff;
                                 }
@@ -296,12 +209,7 @@
                                                 {{ $post->content }}
                                             </div>
                                             <div style="display:flex">
-                                            <a class="like" href="javascript:valid(0)" data-type="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}"  
-                                                @if (\App\Models\likeDislike::where('help_us_id',$post->id)->where('user_id',$current_user->id)->value('likes') == 1 )
-                                                style="margin-right:10px;padding:10px 25px;text-align:center;color:blue"
-                                                @else
-                                                style="margin-right:10px;padding:10px 25px;text-align:center"
-                                                @endif > 
+                                            <a class="like" href="javascript:valid(0)" data-type="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}"  style="margin-right:10px;padding:10px 25px;text-align:center;color:blue"> 
                                                 <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span class="likescount{{ $post->id }}" data-id = "likescount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
