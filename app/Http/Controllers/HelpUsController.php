@@ -120,10 +120,8 @@ public function helpus()
             likeDislike::where('user_id', $current_user->id)->where('help_us_id', $current_post->id)->update([
                 'dislikes' => 0 ,
             ]);
-            $disliketotal_db= likeDislike::where('help_us_id',$current_post->id)->count('dislikes');
-            dd($disliketotal_db);
             $response['status'] = true;
-            $response['disliketotal']=$disliketotal_db;
+            $response['disliketotal']=$result ;
             return $response;
         }else{
             $likes = likeDislike::where('help_us_id', $current_post->id)->get();
@@ -137,10 +135,8 @@ public function helpus()
             likeDislike::where('user_id', $current_user->id)->where('help_us_id', $current_post->id)->update([
                 'dislikes' => 1 ,
             ]);
-            $disliketotal_db= likeDislike::where('help_us_id',$current_post->id)->count('dislikes');
-
             $response['status'] = true;
-            $response['disliketotal']=$disliketotal_db ;
+            $response['disliketotal']=$result ;
             return $response;
         }
         }else{
@@ -155,9 +151,8 @@ public function helpus()
                 array_push($disliketotal,$liksresult->dislikes);
             }
             if($add_newlike->save){
-                $disliketotal_db= likeDislike::where('help_us_id',$current_post->id)->count('dislikes');
                 $response['status'] = true;
-                $response['disliketotal']=$disliketotal_db ;
+                $response['disliketotal']=array_sum($disliketotal) ;
             }
           
            return $response; 
