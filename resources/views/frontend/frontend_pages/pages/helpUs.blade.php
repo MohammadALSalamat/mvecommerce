@@ -296,10 +296,16 @@
                                                 {{ $post->content }}
                                             </div>
                                             <div style="display:flex">
-                                            <a class="like" href="javascript:valid(0)" data-type="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}"  style="margin-right:10px;padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-up"></i>
+                                            <a class="like" href="javascript:valid(0)" data-type="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}"  
+                                                @if (\App\Models\likeDislike::where('help_us_id',$post->id)->where('user_id',$current_user->id)->value('likes') == 1 )
+                                                style="margin-right:10px;padding:10px 25px;text-align:center;color:blue"
+                                                @else
+                                                style="margin-right:10px;padding:10px 25px;text-align:center"
+                                                @endif > 
+                                                <i class="fa fa-thumbs-up"></i>
                                                 <div class="text"><span class="likescount" data-id = "likescount{{ $post->id }}">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
-                                            <a href="javascript:valid(0)" class="like" data-userid={{ $current_user->id }} data-postid="{{ $post->id }}" data-type="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
+                                            <a href="javascript:valid(0)" class="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}" data-type="dislike" style="padding:10px 25px;text-align:center"> <i class="fa fa-thumbs-down"></i>
                                                 <div class="text"><span class="dislikecount">{{ \App\Models\likeDislike::where('help_us_id',$post->id)->count() }}</span></div>
                                             </a>
                                             </div>

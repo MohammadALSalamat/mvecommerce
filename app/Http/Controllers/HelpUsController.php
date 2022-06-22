@@ -50,22 +50,39 @@ public function helpus()
 
        if($data['post_type'] == 'like'){
         $check_user_if_checked_thumbs = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->first();
-        if($check_user_if_checked_thumbs->likes > 0){
-            $likes = likeDislike::where('help_us_id',$current_post->id)->get();
-            foreach($likes as $like){
-                array_push($liketotal,$like->likes);
+        $check_user_if_checked_thumbs_counts = likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->count();        
+       if($check_user_if_checked_thumbs_counts > 0){
+        if ($check_user_if_checked_thumbs->likes == 1) {
+            $likes = likeDislike::where('help_us_id', $current_post->id)->get();
+            foreach ($likes as $like) {
+                array_push($liketotal, $like->likes);
             }
             $result = array_sum($liketotal) - 1;
-            if($result < 0){
+            if ($result < 0) {
                 $result = 0;
             }
-            likeDislike::where('user_id',$current_user->id)->where('help_us_id',$current_post->id)->update([
-                'likes' => $result ,
+            likeDislike::where('user_id', $current_user->id)->where('help_us_id', $current_post->id)->update([
+                'likes' => 0 ,
             ]);
-                $response['status'] = true;
-                $response['liketotal']=$result ;
-            return json_encode($response); 
-            
+            $response['status'] = true;
+            $response['liketotal']=$result ;
+            return $response;
+        }else{
+            $likes = likeDislike::where('help_us_id', $current_post->id)->get();
+            foreach ($likes as $like) {
+                array_push($liketotal, $like->likes);
+            }
+            $result = array_sum($liketotal) + 1;
+            if ($result < 0) {
+                $result = 0;
+            }
+            likeDislike::where('user_id', $current_user->id)->where('help_us_id', $current_post->id)->update([
+                'likes' => 1 ,
+            ]);
+            $response['status'] = true;
+            $response['liketotal']=$result ;
+            return $response;
+        }
         }else{
             $add_newlike = new likeDislike();
             $add_newlike->user_id = $current_user->id;
