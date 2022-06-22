@@ -337,7 +337,6 @@
     </div>
 </main>
 <script>
-
         $(document).on('click', '.like', function(e) {
         e.preventDefault();
         // get the data from products
