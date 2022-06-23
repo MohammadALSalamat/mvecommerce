@@ -138,7 +138,9 @@ Route::post('checkout/process',[OrderController::class,'checkout_process'])->nam
 
 Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit'])->name('review_submit');
 
+// validation for Seller Regiestration  using AJAX
 Route::post('email-validate', [frontPageController::class, 'checkEmail'])->name('checkEmail');
+Route::post('shopname-validate', [frontPageController::class, 'checkshopname'])->name('checkshopname');
 Route::post('username-validate', [frontPageController::class, 'checkusername'])->name('checkusername');
 
 // channge language

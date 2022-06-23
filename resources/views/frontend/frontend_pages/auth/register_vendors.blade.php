@@ -155,7 +155,7 @@
                                                         <label for="jobTitle2" style="font-size: 15px">Shop Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="shop-name" class="form-control required"
-                                                            id="jobTitle2">
+                                                            id="shopname">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="shortDescription2" style="font-size: 15px">Short
@@ -491,6 +491,44 @@
                 });
             } else {
                 $('#username').after('<div id="username-error" class="text-danger" <strong>username address can not be empty.<strong></div>');
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var startTimer;
+        $('#shopname').on('keyup', function () {
+            clearTimeout(startTimer);
+            let shopname = $(this).val();
+            startTimer = setTimeout(checkshopname, 500, shopname);
+        });
+
+        $('#shopname').on('keydown', function () {
+            clearTimeout(startTimer);
+        });
+
+        function checkshopname(shopname) {
+            $('#shopname-error').remove();
+            if (shopname.length > 1) {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('checkshopname') }}",
+                    data: {
+                        shopname: shopname,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success == false) {
+                            $('#shopname').after('<div id="shopname-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
+                        } else {
+                            $('#shopname').after('<div id="shopname-error" class="text-success" <strong>'+data.message+'<strong></div>');
+                        }
+
+                    }
+                });
+            } else {
+                $('#shopname').after('<div id="shopname-error" class="text-danger" <strong>shopname address can not be empty.<strong></div>');
             }
         }
     });

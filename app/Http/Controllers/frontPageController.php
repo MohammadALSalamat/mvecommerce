@@ -870,6 +870,7 @@ class frontPageController extends Controller
 
         }
 
+        // Validation The Regiester Form 
         public function checkEmail(Request $request)
         {
             $input = $request->only(['email']);
@@ -899,7 +900,7 @@ class frontPageController extends Controller
             $input = $request->only(['username']);
     
             $request_data = [
-                'username' => 'required|unique:sellers,',
+                'username' => 'required|unique:sellers,username|min:4|max:12',
             ];
     
             $validator = Validator::make($input, $request_data);
