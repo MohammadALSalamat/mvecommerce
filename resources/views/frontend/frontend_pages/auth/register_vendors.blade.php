@@ -121,6 +121,7 @@
                                                         {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
                                                         <input type="password" name="password" id="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                                             class=" form-control required">
+                                                            <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">Click To Show Password
                                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                                 </div>
                                                     <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD  </span>
@@ -597,4 +598,15 @@ function ValidatePassword() {
       $("#NewPassword").on('keyup', ValidatePassword)
     });
 </script>
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("NewPassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
 @endsection
