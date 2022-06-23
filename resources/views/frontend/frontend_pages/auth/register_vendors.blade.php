@@ -118,11 +118,12 @@
                                                             class=" form-control required">
                                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                                 </div>
-                                                <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
-                                                <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case character</div>
-                                                <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case character</div>
-                                                <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric character</div>
-                                                <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special character</div>
+                                                    <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD  </span>
+                                                    <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
+                                                    <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case character</div>
+                                                    <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case character</div>
+                                                    <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric character</div>
+                                                    <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special character</div>
                                                 </div>
                                                 
                                         </fieldset>
