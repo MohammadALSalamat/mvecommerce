@@ -12,6 +12,65 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/wizard.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/pickers/daterange/daterange.css') }}">
+<style>
+    #message {
+
+        display: none;
+
+        background: #f1f1f1;
+
+        color: #000;
+
+        position: relative;
+
+        padding: 20px;
+
+        margin-top: 10px;
+
+    }
+
+    #message p {
+
+        padding: 10px 35px;
+
+        font-size: 18px;
+
+    }
+
+    .valid {
+
+        color: rgb(3, 184, 190);
+
+    }
+
+    .valid:before {
+
+        position: relative;
+
+        left: -35px;
+
+        content: “&#10004;
+        ”;
+
+    }
+
+    .invalid {
+
+        color: red;
+
+    }
+
+    .invalid:before {
+
+        position: relative;
+
+        left: -35px;
+
+        content: “&#10006;
+        ”;
+
+    }
+</style>
 @endsection
 @section('content')
 <div class="app-content content">
@@ -25,7 +84,8 @@
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form action="{{ route('vendor_info') }}" method="POST"
-                                        enctype="multipart/form-data" class="icons-tab-steps wizard-notification" style="direction: ltr;">
+                                        enctype="multipart/form-data" class="icons-tab-steps wizard-notification"
+                                        style="direction: ltr;">
                                         @csrf
                                         <!-- Step 1 -->
                                         @if(Config::get('app.locale') == 'en')
@@ -38,7 +98,7 @@
                                                         <label for="firstName2" style="font-size: 15px">Full Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="name" class="form-control"
-                                                            id="firstName2">
+                                                            id="firstName2" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -46,7 +106,7 @@
                                                         <label for="lastName2" style="font-size: 15px">User Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="username" class="form-control"
-                                                            id="lastName2">
+                                                            id="lastName2" value="{{ old('username') }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,14 +116,15 @@
                                                         <label for="emailAddress3" style="font-size: 15px">Email Address
                                                             : <b style="color: red">*</b></label>
                                                         <input type="email" name="email" class="form-control"
-                                                            id="emailAddress3">
+                                                            id="emailAddress3" required value="{{ old('email') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Your Photo : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="file" accept="image/png,image/jpeg,.jpg" name="photo" class="form-control" id="photo">
+                                                        <input type="file" accept="image/png,image/jpeg,.jpg"
+                                                            name="photo" class="form-control" id="photo" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,7 +134,7 @@
                                                         <label for="phoneNumber2" style="font-size: 15px">Phone Number :
                                                             <b style="color: red">*</b></label>
                                                         <input type="tel" name="phone-number" class="form-control"
-                                                            id="phoneNumber2">
+                                                            id="phoneNumber2" required value="{{ old('phone') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -81,11 +142,23 @@
                                                         <label for="date2" style="font-size: 15px">Password : <b
                                                                 style="color: red">*</b></label>
                                                         {{-- <input type="date" name="date" class="form-control" id="date2"> --}}
-                                                        <input type="password" name="password" id="password"
+                                                        <input type="password" name="password" id="psw"
+                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
                                                             class=" form-control">
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div id="message">
+
+                                                    <h3>Password must contain the following:</h3>
+                                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+
+                                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
+                                                    </p>
+
+                                                    <p id="number" class="invalid">A <b>number</b></p>
+
+                                                    <p id="length" class="invalid">Minimum <b>16 characters</b></p>
+                                                </div>
                                         </fieldset>
                                         <!-- Step 2 -->
                                         <h6><i class="step-icon la la-home" style="font-size: 20px"></i>Company
@@ -100,22 +173,27 @@
                                                             id="type_of_work">
                                                             <option value="">Select Proposal Title : <b
                                                                     style="color: red">*</b></option>
-\                                                            <option value="home">Home</option>
+                                                            <option value="home">Home</option>
                                                             <option value="shop">Shop</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="license" style="font-size: 15px">License : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="file" name="license" accept=".pdf" class="form-control"
-                                                            id="license">
-                                                            <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: Max Size is up to 2 MB </small>
+                                                        <input type="file" name="license" accept=".pdf"
+                                                            class="form-control" id="license">
+                                                        <small class="pt-2 pb-2"
+                                                            style="color: red; font-size:12px">NOTE:: Max Size is up to
+                                                            2 MB </small>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="brand" style="font-size: 15px">Your Brand Logo : </label>
+                                                        <label for="brand" style="font-size: 15px">Your Brand Logo :
+                                                        </label>
                                                         <input type="file" name="brand_logo" class="form-control"
                                                             id="brand" accept=".png">
-                                                            <small class="pt-2 pb-2" style="color: red; font-size:12px">NOTE:: If you dont upload your brand logo we will use ITAJER logo </small>
+                                                        <small class="pt-2 pb-2"
+                                                            style="color: red; font-size:12px">NOTE:: If you dont upload
+                                                            your brand logo we will use ITAJER logo </small>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -135,9 +213,10 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 3 -->
-                                        <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>Seller Location
+                                        <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>Seller
+                                            Location
                                         </h6>
-                                        <fieldset >
+                                        <fieldset>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -164,7 +243,7 @@
                                         </fieldset>
                                         <!-- Step 4 -->
                                         <h6><i class="step-icon la la-file" style="font-size: 20px"></i>Our Policy</h6>
-                                        <fieldset >
+                                        <fieldset>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -189,7 +268,7 @@
 
                                         <h6><i class="step-icon la la-user" style="font-size: 20px"></i> معلومات البائع
                                         </h6>
-                                        <fieldset  style="direction: rtl;text-align: right;">
+                                        <fieldset style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -211,7 +290,8 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="emailAddress3" style="font-size: 15px">البريد اﻷلكتروني
+                                                        <label for="emailAddress3" style="font-size: 15px">البريد
+                                                            اﻷلكتروني
                                                             : <b style="color: red">*</b></label>
                                                         <input type="email" name="email" class="form-control"
                                                             id="emailAddress3">
@@ -219,9 +299,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="location2" style="font-size: 15px">الصورة الشخصية : <b
-                                                                style="color: red">*</b></label>
-                                                        <input type="file" accept="image/png,image/jpeg,.jpg" name="photo" class="form-control" id="photo">
+                                                        <label for="location2" style="font-size: 15px">الصورة الشخصية :
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="file" accept="image/png,image/jpeg,.jpg"
+                                                            name="photo" class="form-control" id="photo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,12 +327,14 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 2 -->
-                                        <h6><i class="step-icon la la-home" style="font-size: 20px"></i>معلومات الشركة</h6>
-                                        <fieldset  style="direction: rtl;text-align: right;">
+                                        <h6><i class="step-icon la la-home" style="font-size: 20px"></i>معلومات الشركة
+                                        </h6>
+                                        <fieldset style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label style="font-size: 15px" for="type_of_work"> فئة المشروع :</label>
+                                                        <label style="font-size: 15px" for="type_of_work"> فئة المشروع
+                                                            :</label>
                                                         <select name="type_of_work" class="c-select form-control"
                                                             id="type_of_work">
                                                             <option value="">الرجاء اختيار الفئة : <b
@@ -262,17 +345,22 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="license" style="font-size: 15px">الشهادة( الرخصة التجارية) : <b
-                                                                style="color: red">*</b></label>
-                                                        <input type="file" name="license" accept=".pdf" class="form-control"
-                                                            id="license">
-                                                            <small class="pt-2 pb-2" style="color: red; font-size:12px">ملاحظة:: الحد الافصى للملف هو 2 ميغابايت   </small>
+                                                        <label for="license" style="font-size: 15px">الشهادة( الرخصة
+                                                            التجارية) : <b style="color: red">*</b></label>
+                                                        <input type="file" name="license" accept=".pdf"
+                                                            class="form-control" id="license">
+                                                        <small class="pt-2 pb-2"
+                                                            style="color: red; font-size:12px">ملاحظة:: الحد الافصى
+                                                            للملف هو 2 ميغابايت </small>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="brand" style="font-size: 15px">شعار المتجر : </label>
+                                                        <label for="brand" style="font-size: 15px">شعار المتجر :
+                                                        </label>
                                                         <input type="file" name="brand_logo" class="form-control"
                                                             id="brand" accept=".png">
-                                                            <small class="pt-2 pb-2" style="color: red; font-size:12px">ملاحظة:: اذا تركت هاذا الحقل فارغ فان شعار متحرنا سوف يظهر على متجرك </small>
+                                                        <small class="pt-2 pb-2"
+                                                            style="color: red; font-size:12px">ملاحظة:: اذا تركت هاذا
+                                                            الحقل فارغ فان شعار متحرنا سوف يظهر على متجرك </small>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -283,7 +371,8 @@
                                                             id="jobTitle2">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="shortDescription2" style="font-size: 15px">شرح عن المتجر :</label>
+                                                        <label for="shortDescription2" style="font-size: 15px">شرح عن
+                                                            المتجر :</label>
                                                         <textarea name="shop-description" id="shortDescription2"
                                                             rows="4" class="form-control"></textarea>
                                                     </div>
@@ -291,7 +380,8 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 3 -->
-                                        <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>موقع البائع</h6>
+                                        <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>موقع
+                                            البائع</h6>
                                         <fieldset style="direction: rtl;text-align: right;">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -325,8 +415,8 @@
                                                     <div class="form-group">
                                                         <input type="checkbox" name="agreed_policy"
                                                             class=" form-checkbox form-check-inline" id="meetingName2">
-                                                        <label for="meetingName2" style="font-size: 15px">هل توافق على حصوصيتنا ؟ <b
-                                                                style="color: red">*</b></label>
+                                                        <label for="meetingName2" style="font-size: 15px">هل توافق على
+                                                            حصوصيتنا ؟ <b style="color: red">*</b></label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="seller_note" style="font-size: 15px">ملاحظاتك
@@ -355,6 +445,52 @@
 @endsection
 
 @section('script')
+<script>
+    var myInput = document.getElementById(“psw”);
+    var letter = document.getElementById(“letter”);
+    var capital = document.getElementById(“capital”);
+    var number = document.getElementById(“number”);
+    var length = document.getElementById(“length”)
+    myInput.onfocus = function() {
+        document.getElementById(“message”).style.display = “block”;
+    }
+    myInput.onblur = function() {
+        document.getElementById(“message”).style.display = “none”;
+    }
+    myInput.onkeyup = function() {
+        var lowerCaseLetters = /[a-z]/g;
+        if (myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove(“invalid”);
+            letter.classList.add(“valid”);
+        } else {
+            letter.classList.remove(“valid”);
+            letter.classList.add(“invalid”);
+        }
+        var upperCaseLetters = /[A-Z]/g;
+        if (myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove(“invalid”);
+            capital.classList.add(“valid”);
+        } else {
+            capital.classList.remove(“valid”);
+            capital.classList.add(“invalid”);
+        }
+        var numbers = /[0-9]/g;
+        if (myInput.value.match(numbers)) {
+            number.classList.remove(“invalid”);
+            number.classList.add(“valid”);
+        } else {
+            number.classList.remove(“valid”);
+            number.classList.add(“invalid”);
+        }
+        if (myInput.value.length >= 8) {
+            length.classList.remove(“invalid”);
+            length.classList.add(“valid”);
+        } else {
+            length.classList.remove(“valid”);
+            length.classList.add(“invalid”);
+        }
+    }
+</script>
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
