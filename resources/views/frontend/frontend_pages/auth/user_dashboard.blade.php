@@ -101,6 +101,18 @@
                                     </div>
                                 </a>
                             </div>
+                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
+                                <a href="#account-details" class="link-to-tab">
+                                    <div class="text-center icon-box">
+                                        <span class="icon-box-icon icon-account">
+                                            <i class="w-icon-deliver"></i>
+                                        </span>
+                                        <div class="icon-box-content">
+                                            <p class="mb-0 text-uppercase">Track Order</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                             
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="{{ route('logout_front_user') }}">

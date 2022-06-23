@@ -11,6 +11,7 @@
  .text-success{
      margin-top: 6px;
      font-size: 12px;
+     color: green;
  }
  .glyphicon-remove {
    color: red;
@@ -102,19 +103,19 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="sign-up">
-                            <form action="{{ route('registerusers') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('registerusers') }}" method="POST" >
                                 @csrf
                                 <div class="form-group">
                                     <label>Full Name *</label>
-                                    <input type="text" class="form-control" name="full_name" id="first-name">
+                                    <input type="text" class="form-control" name="full_name" id="first-name" required>
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>Your email address *</label>
-                                    <input type="email" class="form-control" name="email" id="email_user">
+                                    <input type="email" class="form-control" name="email" id="email_user" required>
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>Password *</label>
-                                    <input type="password" class="form-control" name="password" id="password_user">
+                                    <input type="password" class="form-control" name="password" id="password_user" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters">
                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                     <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD  </span>

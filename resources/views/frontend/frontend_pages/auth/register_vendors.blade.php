@@ -120,7 +120,7 @@
                                                         <label for="date2" style="font-size: 15px">Password : <b
                                                                 style="color: red">*</b></label>
                                                         {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
-                                                        <input type="password" name="password" id="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                                        <input type="password" name="password" id="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters"
                                                             class=" form-control required">
                                                             <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">Click To Show Password
                                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
