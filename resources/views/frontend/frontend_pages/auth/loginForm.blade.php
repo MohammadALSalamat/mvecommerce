@@ -1,6 +1,30 @@
 @extends('frontend.frontend_layout.main_desgin')
 @section('mytitle','Login Page' )
 @section('style')
+<style>
+    .danger,
+    .text-danger{
+     color: red;
+     margin-top: 6px;
+     font-size: 12px;
+ }
+ .text-success{
+     margin-top: 6px;
+     font-size: 12px;
+ }
+ .glyphicon-remove {
+   color: red;
+   
+ }
+ .nextdisable{
+     pointer-events: none;
+ 
+ }
+ 
+ .glyphicon-ok {
+   color: green;
+ }
+ </style>
 @if(Config::get('app.locale') == 'en')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css') }}">
@@ -86,45 +110,21 @@
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>Your email address *</label>
-                                    <input type="email" class="form-control" name="email" id="email_1">
+                                    <input type="email" class="form-control" name="email" id="email_user">
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>Password *</label>
-                                    <input type="password" class="form-control" name="password" id="password_1">
+                                    <input type="password" class="form-control" name="password" id="password_user">
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
-                                {{-- <div class="checkbox-content login-vendor">
-                                     <div class="mb-5 form-group">
-                                        <label for="seeAnotherField">What is the type of your work </label>
-                                        <select class="form-control" id="seeAnotherField" name="type_work">
-                                            <option value="personal">Personal</option>
-                                            <option value="mall">Mall</option>
-                                            <option value="home">Home</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-5 form-group">
-                                        <label>User Name *</label>
-                                        <input type="text" class="form-control" name="username" id="first-name">
-                                    </div>
-                                    <div class="mb-5 form-group">
-                                        <label>Shop Name *</label>
-                                        <input type="text" class="form-control" name="shop-name" id="shop-name">
-                                    </div>
-
-                                    <div class="mb-5 form-group">
-                                        <label>Phone Number *</label>
-                                        <input type="text" class="form-control" name="phone-number" id="phone-number">
-                                    </div>
-                                   
-                                    <div class="form-group" id="mall_license">
-                                        <label for="seeAnotherField">Uploade Your License </label>
-                                        <input type="file" accept="application/pdf" name="vendor-mall" class="form-control" id="license" name="mall_license">
-                                    </div>
-                                     <div class="form-group" id="home_passport">
-                                        <label for="seeAnotherField">Uploade Your Passport </label>
-                                        <input type="file" accept="application/pdf" name="vendor-home" class="form-control" id="passport" name="home_passport">
-                                        <small style="color: red">if you dont have a license upload your passport</small>
-                                    </div>
-                                </div> --}}
+                                    <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD  </span>
+                                    <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
+                                    <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case character</div>
+                                    <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case character</div>
+                                    <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric character</div>
+                                    <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special character</div>
+                                </div>
+                               
                                 <div class="mt-0 form-checkbox user-checkbox">
                                     <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
                                         name="check-customer" checked = "true">
@@ -289,13 +289,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var startTimer;
-        $('#email').on('keyup', function () {
+        $('#email_user').on('keyup', function () {
             clearTimeout(startTimer);
             let email = $(this).val();
             startTimer = setTimeout(checkEmail, 500, email);
         });
 
-        $('#email').on('keydown', function () {
+        $('#email_user').on('keydown', function () {
             clearTimeout(startTimer);
         });
 
@@ -311,17 +311,62 @@
                     },
                     success: function(data) {
                         if (data.success == false) {
-                            $('#email').after('<div id="email-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
+                            $('#email_user').after('<div id="email-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
                         } else {
-                            $('#email').after('<div id="email-error" class="text-success" <strong>'+data.message+'<strong></div>');
+                            $('#email_user').after('<div id="email-error" class="text-success" <strong>'+data.message+'<strong></div>');
                         }
 
                     }
                 });
             } else {
-                $('#email').after('<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>');
+                $('#email_user').after('<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>');
             }
         }
+    });
+</script>
+<script>
+    /*Actual validation function*/
+function ValidatePassword() {
+  /*Array of rules and the information target*/
+  var rules = [{
+      Pattern: "[A-Z]",
+      Target: "UpperCase"
+    },
+    {
+      Pattern: "[a-z]",
+      Target: "LowerCase"
+    },
+    {
+      Pattern: "[0-9]",
+      Target: "Numbers"
+    },
+    {
+      Pattern: "[!@@#$%^&*]",
+      Target: "Symbols"
+    }
+  ];
+
+  //Just grab the password once
+  var password = $(this).val();
+
+  /*Length Check, add and remove class could be chained*/
+  /*I've left them seperate here so you can see what is going on */
+  /*Note the Ternary operators ? : to select the classes*/
+  $("#Length").removeClass(password.length > 6 ? "glyphicon-remove" : "glyphicon-ok");
+  $("#Length").addClass(password.length > 6 ? "glyphicon-ok" : "glyphicon-remove");
+
+  
+  /*Iterate our remaining rules. The logic is the same as for Length*/
+  for (var i = 0; i < rules.length; i++) {
+
+    $("#" + rules[i].Target).removeClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-remove" : "glyphicon-ok"); 
+    $("#" + rules[i].Target).addClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-ok" : "glyphicon-remove");
+      }
+    }
+
+    /*Bind our event to key up for the field. It doesn't matter if it's delete or not*/
+    $(document).ready(function() {
+      $("#password_user").on('keyup', ValidatePassword)
     });
 </script>
 {{-- <script>

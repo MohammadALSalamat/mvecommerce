@@ -21,6 +21,7 @@
 }
 .text-success{
     margin-top: 6px;
+    color:green;
     font-size: 12px;
 }
 .glyphicon-remove {
