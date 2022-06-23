@@ -143,6 +143,12 @@ Route::post('email-validate', [frontPageController::class, 'checkEmail'])->name(
 Route::post('shopname-validate', [frontPageController::class, 'checkshopname'])->name('checkshopname');
 Route::post('username-validate', [frontPageController::class, 'checkusername'])->name('checkusername');
 
+// validation in users forms
+Route::post('user_email-validate', [frontPageController::class, 'user_checkEmail'])->name('user_checkEmail');
+
+
+
+
 // channge language
 Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.switch');
 
