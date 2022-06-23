@@ -919,6 +919,30 @@ class frontPageController extends Controller
                 ]);
             }
         }
+        public function checkshopname(Request $request)
+        {
+            $input = $request->only(['shopname']);
+    
+            $request_data = [
+                'shopname' => 'required|unique:sellers,shop_name|min:6|max:20',
+            ];
+    
+            $validator = Validator::make($input, $request_data);
+    
+            // json is null
+            if ($validator->fails()) {
+                $errors = json_decode(json_encode($validator->errors()), 1);
+                return response()->json([
+                    'success' => false,
+                    'message' => array_reduce($errors, 'array_merge', array()),
+                ]);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'The Username is available'
+                ]);
+            }
+        }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 
     public function loginForm()
