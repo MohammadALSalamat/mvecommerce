@@ -197,11 +197,12 @@
                                         @foreach ($posts as $post)
                                         @php
                                             $created_at = explode(' ',$post->created_at);
+                                            $user = \App\Models\User::where('id',$post->user_id)->first();
                                         @endphp
                                         <li class="you">
                                             <div class="entete">
                                                 <span class="status green"></span>
-                                                <h2>{{ $current_user->full_name }}</h2>
+                                                <h2>{{ $user->full_name }}</h2>
                                                 <h3>{{ $created_at[0] }},AT {{ $created_at[1] }}</h3>
                                             </div>
                                             <div class="triangle"></div>
