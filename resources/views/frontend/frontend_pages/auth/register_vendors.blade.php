@@ -23,6 +23,13 @@
     margin-top: 6px;
     font-size: 12px;
 }
+.glyphicon-remove {
+  color: red;
+}
+
+.glyphicon-ok {
+  color: green;
+}
 </style>
 @endsection
 @section('content')
@@ -103,14 +110,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group">
+                                                    <div class="form-group has-feedback">
                                                         <label for="date2" style="font-size: 15px">Password : <b
                                                                 style="color: red">*</b></label>
                                                         {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
-                                                        <input type="password" name="password" id="psw"
-                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                                        <input type="password" name="password" id="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                                             class=" form-control required">
-                                                    </div>
+                                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                                </div>
+                                                <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
+                                                <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case character</div>
+                                                <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case character</div>
+                                                <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric character</div>
+                                                <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special character</div>
                                                 </div>
                                                 
                                         </fieldset>
@@ -531,6 +543,50 @@
                 $('#shopname').after('<div id="shopname-error" class="text-danger" <strong>shopname address can not be empty.<strong></div>');
             }
         }
+    });
+</script>
+<script>
+    /*Actual validation function*/
+function ValidatePassword() {
+  /*Array of rules and the information target*/
+  var rules = [{
+      Pattern: "[A-Z]",
+      Target: "UpperCase"
+    },
+    {
+      Pattern: "[a-z]",
+      Target: "LowerCase"
+    },
+    {
+      Pattern: "[0-9]",
+      Target: "Numbers"
+    },
+    {
+      Pattern: "[!@@#$%^&*]",
+      Target: "Symbols"
+    }
+  ];
+
+  //Just grab the password once
+  var password = $(this).val();
+
+  /*Length Check, add and remove class could be chained*/
+  /*I've left them seperate here so you can see what is going on */
+  /*Note the Ternary operators ? : to select the classes*/
+  $("#Length").removeClass(password.length > 6 ? "glyphicon-remove" : "glyphicon-ok");
+  $("#Length").addClass(password.length > 6 ? "glyphicon-ok" : "glyphicon-remove");
+  
+  /*Iterate our remaining rules. The logic is the same as for Length*/
+  for (var i = 0; i < rules.length; i++) {
+
+    $("#" + rules[i].Target).removeClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-remove" : "glyphicon-ok"); 
+    $("#" + rules[i].Target).addClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-ok" : "glyphicon-remove");
+      }
+    }
+
+    /*Bind our event to key up for the field. It doesn't matter if it's delete or not*/
+    $(document).ready(function() {
+      $("#NewPassword").on('keyup', ValidatePassword)
     });
 </script>
 @endsection
