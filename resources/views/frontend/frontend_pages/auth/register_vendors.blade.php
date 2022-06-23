@@ -13,61 +13,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/wizard.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/pickers/daterange/daterange.css') }}">
 <style>
-    #message {
-
-        display: none;
-
-        background: #f1f1f1;
-
-        color: #000;
-
-        position: relative;
-
-        padding: 20px;
-
-        margin-top: 10px;
-
-    }
-
-    #message p {
-
-        padding: 10px 35px;
-
-        font-size: 18px;
-
-    }
-
-    .valid {
-
-        color: rgb(3, 184, 190);
-
-    }
-
-    .valid:before {
-
-        position: relative;
-
-        left: -35px;
-
-        content: "&#10004;";
-
-    }
-
-    .invalid {
-
-        color: red;
-
-    }
-
-    .invalid:before {
-
-        position: relative;
-
-        left: -35px;
-
-        content: "&#10006;";
-
-    }
+   .danger{
+    color: red;
+    margin-top: 6px;
+    font-size: 12px;
+}
+   }
 </style>
 @endsection
 @section('content')
@@ -75,26 +26,26 @@
     <div class="content-wrapper">
         <div class="content-body">
             <!-- Form wzard with step validation section start -->
-            <section id="icon-tabs">
+            <section id="validation">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    {{-- <div id="message">
+                                        {{-- <div id="message">
 
-                                        <h3>Password must contain the following:</h3>
-                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                            <h3>Password must contain the following:</h3>
+                                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
 
-                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
-                                        </p>
+                                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
+                                            </p>
 
-                                        <p id="number" class="invalid">A <b>number</b></p>
+                                            <p id="number" class="invalid">A <b>number</b></p>
 
-                                        <p id="length" class="invalid">Minimum <b>16 characters</b></p>
-                                    </div> --}}
+                                            <p id="length" class="invalid">Minimum <b>16 characters</b></p>
+                                        </div> --}}
                                     <form action="{{ route('vendor_info') }}" method="POST"
-                                        enctype="multipart/form-data" class="icons-tab-steps wizard-notification"
+                                        enctype="multipart/form-data" class="steps-validation wizard-notification"
                                         style="direction: ltr;">
                                         @csrf
                                         <!-- Step 1 -->
@@ -107,16 +58,16 @@
                                                     <div class="form-group">
                                                         <label for="firstName2" style="font-size: 15px">Full Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="name" class="form-control"
-                                                            id="firstName2" required>
+                                                        <input type="text" name="name" class="form-control required"
+                                                            id="firstName2" >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="lastName2" style="font-size: 15px">User Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="username" class="form-control"
-                                                            id="lastName2" value="{{ old('username') }}" required>
+                                                        <input type="text" name="username" class="form-control required"
+                                                            id="lastName2" value="{{ old('username') }}" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,8 +76,8 @@
                                                     <div class="form-group">
                                                         <label for="emailAddress3" style="font-size: 15px">Email Address
                                                             : <b style="color: red">*</b></label>
-                                                        <input type="email" name="email" class="form-control"
-                                                            id="emailAddress3" required value="{{ old('email') }}">
+                                                        <input type="email" name="email" class="form-control required"
+                                                            id="emailAddress3"  value="{{ old('email') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -134,7 +85,7 @@
                                                         <label for="location2" style="font-size: 15px">Your Photo : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="file" accept="image/png,image/jpeg,.jpg"
-                                                            name="photo" class="form-control" id="photo" required>
+                                                            name="photo" class="form-control required" id="photo" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,18 +94,18 @@
                                                     <div class="form-group">
                                                         <label for="phoneNumber2" style="font-size: 15px">Phone Number :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="tel" name="phone-number" class="form-control"
-                                                            id="phoneNumber2" required value="{{ old('phone') }}">
+                                                        <input type="tel" name="phone-number" class="form-control required"
+                                                            id="phoneNumber2"  value="{{ old('phone') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="date2" style="font-size: 15px">Password : <b
                                                                 style="color: red">*</b></label>
-                                                        {{-- <input type="date" name="date" class="form-control" id="date2"> --}}
+                                                        {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
                                                         <input type="password" name="password" id="psw"
-                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
-                                                            class=" form-control">
+                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                                            class=" form-control required">
                                                     </div>
                                                 </div>
                                                 
@@ -168,7 +119,7 @@
                                                     <div class="form-group">
                                                         <label style="font-size: 15px" for="type_of_work"> Proposal
                                                             Title :</label>
-                                                        <select name="type_of_work" class="c-select form-control"
+                                                        <select name="type_of_work" class="c-select form-control required"
                                                             id="type_of_work">
                                                             <option value="">Select Proposal Title : <b
                                                                     style="color: red">*</b></option>
@@ -180,7 +131,7 @@
                                                         <label for="license" style="font-size: 15px">License : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="file" name="license" accept=".pdf"
-                                                            class="form-control" id="license">
+                                                            class="form-control required" id="license">
                                                         <small class="pt-2 pb-2"
                                                             style="color: red; font-size:12px">NOTE:: Max Size is up to
                                                             2 MB </small>
@@ -188,7 +139,7 @@
                                                     <div class="form-group">
                                                         <label for="brand" style="font-size: 15px">Your Brand Logo :
                                                         </label>
-                                                        <input type="file" name="brand_logo" class="form-control"
+                                                        <input type="file" name="brand_logo" class="form-control required"
                                                             id="brand" accept=".png">
                                                         <small class="pt-2 pb-2"
                                                             style="color: red; font-size:12px">NOTE:: If you dont upload
@@ -199,14 +150,14 @@
                                                     <div class="form-group">
                                                         <label for="jobTitle2" style="font-size: 15px">Shop Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="shop-name" class="form-control"
+                                                        <input type="text" name="shop-name" class="form-control required"
                                                             id="jobTitle2">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="shortDescription2" style="font-size: 15px">Short
                                                             Description :</label>
                                                         <textarea name="shop-description" id="shortDescription2"
-                                                            rows="4" class="form-control"></textarea>
+                                                            rows="4" class="form-control required"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -221,20 +172,20 @@
                                                     <div class="form-group">
                                                         <label for="eventName2" style="font-size: 15px">Address Name :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" class="form-control" name="address"
+                                                        <input type="text" class="form-control required" name="address"
                                                             id="eventName2">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Country Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="country" class="form-control"
+                                                        <input type="text" name="country" class="form-control required"
                                                             id="country">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">City Name :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control"
+                                                        <input type="text" name="city" class="form-control required"
                                                             id="country">
                                                     </div>
                                                 </div>
@@ -256,7 +207,7 @@
                                                         <label for="seller_note" style="font-size: 15px">Seller Note
                                                             :</label>
                                                         <textarea name="seller_note" id="seller_note" rows="4"
-                                                            class="form-control"></textarea>
+                                                            class="form-control required"></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary mt-3 mb-3 w-25 mx-auto">
@@ -273,7 +224,7 @@
                                                     <div class="form-group">
                                                         <label for="firstName2" style="font-size: 15px">الاسم الكامل: <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="name" class="form-control"
+                                                        <input type="text" name="name" class="form-control required"
                                                             id="firstName2">
                                                     </div>
                                                 </div>
@@ -281,7 +232,7 @@
                                                     <div class="form-group">
                                                         <label for="lastName2" style="font-size: 15px">اسم المستخدم : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="username" class="form-control"
+                                                        <input type="text" name="username" class="form-control required"
                                                             id="lastName2">
                                                     </div>
                                                 </div>
@@ -292,7 +243,7 @@
                                                         <label for="emailAddress3" style="font-size: 15px">البريد
                                                             اﻷلكتروني
                                                             : <b style="color: red">*</b></label>
-                                                        <input type="email" name="email" class="form-control"
+                                                        <input type="email" name="email" class="form-control required"
                                                             id="emailAddress3">
                                                     </div>
                                                 </div>
@@ -301,7 +252,7 @@
                                                         <label for="location2" style="font-size: 15px">الصورة الشخصية :
                                                             <b style="color: red">*</b></label>
                                                         <input type="file" accept="image/png,image/jpeg,.jpg"
-                                                            name="photo" class="form-control" id="photo">
+                                                            name="photo" class="form-control required" id="photo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,7 +261,7 @@
                                                     <div class="form-group">
                                                         <label for="phoneNumber2" style="font-size: 15px">رقم الهاتف :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="tel" name="phone-number" class="form-control"
+                                                        <input type="tel" name="phone-number" class="form-control required"
                                                             id="phoneNumber2">
                                                     </div>
                                                 </div>
@@ -318,9 +269,9 @@
                                                     <div class="form-group">
                                                         <label for="date2" style="font-size: 15px">كلمة السر : <b
                                                                 style="color: red">*</b></label>
-                                                        {{-- <input type="date" name="date" class="form-control" id="date2"> --}}
+                                                        {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
                                                         <input type="password" name="password" id="password"
-                                                            class=" form-control">
+                                                            class=" form-control required">
                                                     </div>
                                                 </div>
                                             </div>
@@ -334,7 +285,7 @@
                                                     <div class="form-group">
                                                         <label style="font-size: 15px" for="type_of_work"> فئة المشروع
                                                             :</label>
-                                                        <select name="type_of_work" class="c-select form-control"
+                                                        <select name="type_of_work" class="c-select form-control required"
                                                             id="type_of_work">
                                                             <option value="">الرجاء اختيار الفئة : <b
                                                                     style="color: red">*</b></option>
@@ -347,7 +298,7 @@
                                                         <label for="license" style="font-size: 15px">الشهادة( الرخصة
                                                             التجارية) : <b style="color: red">*</b></label>
                                                         <input type="file" name="license" accept=".pdf"
-                                                            class="form-control" id="license">
+                                                            class="form-control required" id="license">
                                                         <small class="pt-2 pb-2"
                                                             style="color: red; font-size:12px">ملاحظة:: الحد الافصى
                                                             للملف هو 2 ميغابايت </small>
@@ -355,7 +306,7 @@
                                                     <div class="form-group">
                                                         <label for="brand" style="font-size: 15px">شعار المتجر :
                                                         </label>
-                                                        <input type="file" name="brand_logo" class="form-control"
+                                                        <input type="file" name="brand_logo" class="form-control required"
                                                             id="brand" accept=".png">
                                                         <small class="pt-2 pb-2"
                                                             style="color: red; font-size:12px">ملاحظة:: اذا تركت هاذا
@@ -366,14 +317,14 @@
                                                     <div class="form-group">
                                                         <label for="jobTitle2" style="font-size: 15px">اسم المتجر : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="shop-name" class="form-control"
+                                                        <input type="text" name="shop-name" class="form-control required"
                                                             id="jobTitle2">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="shortDescription2" style="font-size: 15px">شرح عن
                                                             المتجر :</label>
                                                         <textarea name="shop-description" id="shortDescription2"
-                                                            rows="4" class="form-control"></textarea>
+                                                            rows="4" class="form-control required"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -387,20 +338,20 @@
                                                     <div class="form-group">
                                                         <label for="eventName2" style="font-size: 15px">عنوانك :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" class="form-control" name="address"
+                                                        <input type="text" class="form-control required" name="address"
                                                             id="eventName2">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">اسم البلد : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="country" class="form-control"
+                                                        <input type="text" name="country" class="form-control required"
                                                             id="country">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">المدينة :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control"
+                                                        <input type="text" name="city" class="form-control required"
                                                             id="country">
                                                     </div>
                                                 </div>
@@ -421,7 +372,7 @@
                                                         <label for="seller_note" style="font-size: 15px">ملاحظاتك
                                                             :</label>
                                                         <textarea name="seller_note" id="seller_note" rows="4"
-                                                            class="form-control"></textarea>
+                                                            class="form-control required"></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary mt-3 mb-3 w-25 mx-auto">
