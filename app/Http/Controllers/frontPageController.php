@@ -869,6 +869,31 @@ class frontPageController extends Controller
             return back()->with('message','Thank you for your submition , Your email has been sent');
 
         }
+
+        public function checkEmail(Request $request)
+        {
+            $input = $request->only(['email']);
+    
+            $request_data = [
+                'email' => 'required|email|unique:users,email',
+            ];
+    
+            $validator = Validator::make($input, $request_data);
+    
+            // json is null
+            if ($validator->fails()) {
+                $errors = json_decode(json_encode($validator->errors()), 1);
+                return response()->json([
+                    'success' => false,
+                    'message' => array_reduce($errors, 'array_merge', array()),
+                ]);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'The email is available'
+                ]);
+            }
+        }
  //++++++++++++++++++++++++++++  User Login Section   ++++++++++++++++++++++++++++++//
 
     public function loginForm()

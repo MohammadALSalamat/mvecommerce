@@ -77,7 +77,7 @@
                                                         <label for="emailAddress3" style="font-size: 15px">Email Address
                                                             : <b style="color: red">*</b></label>
                                                         <input type="email" name="email" class="form-control required"
-                                                            id="emailAddress3"  value="{{ old('email') }}">
+                                                            id="email"  value="{{ old('email') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -395,52 +395,7 @@
 @endsection
 
 @section('script')
-<script>
-    var myInput = document.getElementById("psw");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length")
-    myInput.onfocus = function() {
-        document.getElementById("message").style.display = "block";
-    }
-    myInput.onblur = function() {
-        document.getElementById("message").style.display = "none";
-    }
-    myInput.onkeyup = function() {
-        var lowerCaseLetters = /[a-z]/g;
-        if (myInput.value.match(lowerCaseLetters)) {
-            letter.classList.remove("invalid");
-            letter.classList.add("valid");
-        } else {
-            letter.classList.remove("valid");
-            letter.classList.add("invalid");
-        }
-        var upperCaseLetters = /[A-Z]/g;
-        if (myInput.value.match(upperCaseLetters)) {
-            capital.classList.remove("invalid");
-            capital.classList.add("valid");
-        } else {
-            capital.classList.remove("valid");
-            capital.classList.add("invalid");
-        }
-        var numbers = /[0-9]/g;
-        if (myInput.value.match(numbers)) {
-            number.classList.remove("invalid");
-            number.classList.add("valid");
-        } else {
-            number.classList.remove("valid");
-            number.classList.add("invalid");
-        }
-        if (myInput.value.length >= 8) {
-            length.classList.remove("invalid");
-            length.classList.add("valid");
-        } else {
-            length.classList.remove("valid");
-            length.classList.add("invalid");
-        }
-    }
-</script>
+
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
@@ -459,4 +414,43 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{ asset('app-assets/js/scripts/forms/wizard-steps.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL JS-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var startTimer;
+        $('#email').on('keyup', function () {
+            clearTimeout(startTimer);
+            let email = $(this).val();
+            startTimer = setTimeout(checkEmail, 500, email);
+        });
+
+        $('#email').on('keydown', function () {
+            clearTimeout(startTimer);
+        });
+
+        function checkEmail(email) {
+            $('#email-error').remove();
+            if (email.length > 1) {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('checkEmail') }}",
+                    data: {
+                        email: email,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success == false) {
+                            $('#email').after('<div id="email-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
+                        } else {
+                            $('#email').after('<div id="email-error" class="text-success" <strong>'+data.message+'<strong></div>');
+                        }
+
+                    }
+                });
+            } else {
+                $('#email').after('<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>');
+            }
+        }
+    });
+</script>
 @endsection
