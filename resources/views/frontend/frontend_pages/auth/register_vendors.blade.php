@@ -13,12 +13,16 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/wizard.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/pickers/daterange/daterange.css') }}">
 <style>
-   .danger{
+   .danger,
+   .text-danger{
     color: red;
     margin-top: 6px;
     font-size: 12px;
 }
-   }
+.text-success{
+    margin-top: 6px;
+    font-size: 12px;
+}
 </style>
 @endsection
 @section('content')
@@ -67,7 +71,7 @@
                                                         <label for="lastName2" style="font-size: 15px">User Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="username" class="form-control required"
-                                                            id="lastName2" value="{{ old('username') }}" >
+                                                            id="username" value="{{ old('username') }}" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -449,6 +453,44 @@
                 });
             } else {
                 $('#email').after('<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>');
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var startTimer;
+        $('#username').on('keyup', function () {
+            clearTimeout(startTimer);
+            let username = $(this).val();
+            startTimer = setTimeout(checkusername, 500, username);
+        });
+
+        $('#username').on('keydown', function () {
+            clearTimeout(startTimer);
+        });
+
+        function checkusername(username) {
+            $('#username-error').remove();
+            if (username.length > 1) {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('checkusername') }}",
+                    data: {
+                        username: username,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success == false) {
+                            $('#username').after('<div id="username-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
+                        } else {
+                            $('#username').after('<div id="username-error" class="text-success" <strong>'+data.message+'<strong></div>');
+                        }
+
+                    }
+                });
+            } else {
+                $('#username').after('<div id="username-error" class="text-danger" <strong>username address can not be empty.<strong></div>');
             }
         }
     });

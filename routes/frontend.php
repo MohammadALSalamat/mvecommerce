@@ -139,6 +139,7 @@ Route::post('checkout/process',[OrderController::class,'checkout_process'])->nam
 Route::post('review_submit/{slug}',[ProductReviewController::class,'reviewSubmit'])->name('review_submit');
 
 Route::post('email-validate', [frontPageController::class, 'checkEmail'])->name('checkEmail');
+Route::post('username-validate', [frontPageController::class, 'checkusername'])->name('checkusername');
 
 // channge language
 Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.switch');

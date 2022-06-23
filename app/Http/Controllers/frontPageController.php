@@ -875,7 +875,7 @@ class frontPageController extends Controller
             $input = $request->only(['email']);
     
             $request_data = [
-                'email' => 'required|email|unique:users,email',
+                'email' => 'required|email|unique:sellers,email',
             ];
     
             $validator = Validator::make($input, $request_data);
@@ -891,6 +891,30 @@ class frontPageController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'The email is available'
+                ]);
+            }
+        }
+        public function checkusername(Request $request)
+        {
+            $input = $request->only(['username']);
+    
+            $request_data = [
+                'username' => 'required|unique:sellers,',
+            ];
+    
+            $validator = Validator::make($input, $request_data);
+    
+            // json is null
+            if ($validator->fails()) {
+                $errors = json_decode(json_encode($validator->errors()), 1);
+                return response()->json([
+                    'success' => false,
+                    'message' => array_reduce($errors, 'array_merge', array()),
+                ]);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'The Username is available'
                 ]);
             }
         }
