@@ -792,7 +792,7 @@ div.checkRadioContainer > label > input:checked + i {
                    </nav>
                </div>
                <div class="header-right">
-                   <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>Track Order</a>
+                   <a href="{{ route('helpus') }}" class="d-xl-show"><i class="mr-1 w-icon-comments"></i>Help Us</a>
                    @php
                    $best_deals_checker = \App\Models\product::where(['status' => 1])->where('discound','>',20)->count();
                    @endphp

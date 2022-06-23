@@ -105,7 +105,7 @@
                                 <a href="#account-details" class="link-to-tab">
                                     <div class="text-center icon-box">
                                         <span class="icon-box-icon icon-account">
-                                            <i class="w-icon-deliver"></i>
+                                            <i class="w-icon-shipping"></i>
                                         </span>
                                         <div class="icon-box-content">
                                             <p class="mb-0 text-uppercase">Track Order</p>
