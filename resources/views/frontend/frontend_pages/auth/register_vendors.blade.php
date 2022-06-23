@@ -49,8 +49,7 @@
 
         left: -35px;
 
-        content: “&#10004;
-        ”;
+        content: "&#10004;";
 
     }
 
@@ -66,8 +65,7 @@
 
         left: -35px;
 
-        content: “&#10006;
-        ”;
+        content: "&#10006;";
 
     }
 </style>
@@ -83,6 +81,18 @@
                         <div class="card">
                             <div class="card-content collapse show">
                                 <div class="card-body">
+                                    {{-- <div id="message">
+
+                                        <h3>Password must contain the following:</h3>
+                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+
+                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
+                                        </p>
+
+                                        <p id="number" class="invalid">A <b>number</b></p>
+
+                                        <p id="length" class="invalid">Minimum <b>16 characters</b></p>
+                                    </div> --}}
                                     <form action="{{ route('vendor_info') }}" method="POST"
                                         enctype="multipart/form-data" class="icons-tab-steps wizard-notification"
                                         style="direction: ltr;">
@@ -147,18 +157,7 @@
                                                             class=" form-control">
                                                     </div>
                                                 </div>
-                                                <div id="message">
-
-                                                    <h3>Password must contain the following:</h3>
-                                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-
-                                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
-                                                    </p>
-
-                                                    <p id="number" class="invalid">A <b>number</b></p>
-
-                                                    <p id="length" class="invalid">Minimum <b>16 characters</b></p>
-                                                </div>
+                                                
                                         </fieldset>
                                         <!-- Step 2 -->
                                         <h6><i class="step-icon la la-home" style="font-size: 20px"></i>Company
@@ -446,48 +445,48 @@
 
 @section('script')
 <script>
-    var myInput = document.getElementById(“psw”);
-    var letter = document.getElementById(“letter”);
-    var capital = document.getElementById(“capital”);
-    var number = document.getElementById(“number”);
-    var length = document.getElementById(“length”)
+    var myInput = document.getElementById("psw");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length")
     myInput.onfocus = function() {
-        document.getElementById(“message”).style.display = “block”;
+        document.getElementById("message").style.display = "block";
     }
     myInput.onblur = function() {
-        document.getElementById(“message”).style.display = “none”;
+        document.getElementById("message").style.display = "none";
     }
     myInput.onkeyup = function() {
         var lowerCaseLetters = /[a-z]/g;
         if (myInput.value.match(lowerCaseLetters)) {
-            letter.classList.remove(“invalid”);
-            letter.classList.add(“valid”);
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
         } else {
-            letter.classList.remove(“valid”);
-            letter.classList.add(“invalid”);
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
         }
         var upperCaseLetters = /[A-Z]/g;
         if (myInput.value.match(upperCaseLetters)) {
-            capital.classList.remove(“invalid”);
-            capital.classList.add(“valid”);
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
         } else {
-            capital.classList.remove(“valid”);
-            capital.classList.add(“invalid”);
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
         }
         var numbers = /[0-9]/g;
         if (myInput.value.match(numbers)) {
-            number.classList.remove(“invalid”);
-            number.classList.add(“valid”);
+            number.classList.remove("invalid");
+            number.classList.add("valid");
         } else {
-            number.classList.remove(“valid”);
-            number.classList.add(“invalid”);
+            number.classList.remove("valid");
+            number.classList.add("invalid");
         }
         if (myInput.value.length >= 8) {
-            length.classList.remove(“invalid”);
-            length.classList.add(“valid”);
+            length.classList.remove("invalid");
+            length.classList.add("valid");
         } else {
-            length.classList.remove(“valid”);
-            length.classList.add(“invalid”);
+            length.classList.remove("valid");
+            length.classList.add("invalid");
         }
     }
 </script>
