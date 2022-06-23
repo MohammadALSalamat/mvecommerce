@@ -25,6 +25,11 @@
 }
 .glyphicon-remove {
   color: red;
+  
+}
+.nextdisable{
+    pointer-events: none;
+
 }
 
 .glyphicon-ok {
@@ -575,7 +580,9 @@ function ValidatePassword() {
   /*I've left them seperate here so you can see what is going on */
   /*Note the Ternary operators ? : to select the classes*/
   $("#Length").removeClass(password.length > 6 ? "glyphicon-remove" : "glyphicon-ok");
+  $("#Length").removeClass(password.length > 6 ? "nextdisable" : "next");
   $("#Length").addClass(password.length > 6 ? "glyphicon-ok" : "glyphicon-remove");
+  $("#Length").addClass(password.length > 6 ? "next" : "nextdisable");
   
   /*Iterate our remaining rules. The logic is the same as for Length*/
   for (var i = 0; i < rules.length; i++) {
