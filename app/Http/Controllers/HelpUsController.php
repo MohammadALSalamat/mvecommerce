@@ -174,7 +174,20 @@ public function helpus()
     public function updatepost_text(Request $request,$id)
     {
         $data = $request->all();
-        dd($data);
+        $current_post_toedit = helpUs::find($id);
+        $current_user_toedit = User::where('id',$current_post_toedit->user_id)->first();
+        if($current_post_toedit && $current_user_toedit->id == auth()->user()->id){
+            helpUs::where('id',$current_post_toedit->id)->update([
+                'content'=>$data['message'],
+            ]);
+
+            return redirect()->route('helpus')->with('message','your message has been updated');
+        }else{
+            return back()->with('message','something went wrong');
+
+        }
+
+
     }
 
     public function delete_post(Request $request,$id)
