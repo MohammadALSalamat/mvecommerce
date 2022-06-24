@@ -3,9 +3,11 @@
 @section('content')
 <main class="main">
     <!-- Start of Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <h1 class="page-title mb-0">Become A Vendor</h1>
+    <div class="container">
+        <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
+            <div class="container">
+                <h1 class="page-title mb-0 text-white">Become A Vendor</h1>
+            </div>
         </div>
     </div>
     <!-- End of Page Header -->
@@ -31,6 +33,8 @@
                         tempor incididunt ut labore et dolore magna aliqua. Venenatis tellus in 
                         metus vulputate eu scelerisque felis.
                     </p>
+                    <a href="{{ route('vendor_form') }}" class="btn btn-primery btn-outline btn-rounded ls-25">Register Now</a>
+
                 </div>
             </div>
             <!-- End of Row -->
@@ -272,8 +276,8 @@
         </div>
         <!-- End of Container -->
 
-        <div class="banner parallax" data-parallax-options="{'speed': 10, 'parallaxHeight': '200%', 'offset': -99}"
-            data-image-src="{{ asset('front-style/assets/images/pages/become/3.jpg') }}" style="background-color: #929294;">
+        <div class="banner parallax mb-4" data-parallax-options="{'speed': 10, 'parallaxHeight': '200%', 'offset': -99}"
+            data-image-src="{{ asset('storage/photos/1/Artboard 1 copy-100.jpg') }}" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
             <div class="container">
                 <div class="banner-content text-center">
                     <h2 class="title title-center text-white font-weight-bold">Let’s talk about how we can make
