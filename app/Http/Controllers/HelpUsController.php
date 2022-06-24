@@ -162,13 +162,13 @@ public function helpus()
        }
     }
 
-    public function edit_post(Request $request,$id)
+    public function edit_post(Request $request)
     {
-        $current_post_delete = helpUs::find($id);
+        $current_post_delete = helpUs::find($request->id);
         $current_user_delete = User::where('id',$current_post_delete->user_id)->first();
    
         if($current_post_delete && $current_user_delete->id == auth()->user()->id){
-            
+
         }
     }
 
