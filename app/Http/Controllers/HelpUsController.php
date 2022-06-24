@@ -161,4 +161,12 @@ public function helpus()
 
        }
     }
+
+    public function delete_post(Request $request,$id)
+    {
+     
+     $current_post_delete = helpUs::find($id);
+     dd($current_post_delete); 
+
+    }
 }

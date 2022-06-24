@@ -173,8 +173,8 @@ Route::group(['perfix'=>'user'],function(){
     // update user password
     Route::post('update_account/{id}',[frontPageController::class, 'update_useraccount'])->name('updateuseraccount');
     
-Route::post('Edit-post/{id}',[helpUs::class,'edit_post'])->name('edit_post');
-Route::post('delete-post/{id}',[helpUs::class,'delete_post'])->name('delete_post');
+    Route::post('Edit-post/{id}',[HelpUsController::class,'edit_post'])->name('edit_post');
+    Route::get('delete-post/{id}',[HelpUsController::class,'delete_post'])->name('delete_post');
 
 Route::post('improve_submit',[HelpUsController::class,'helpusform'])->name('helpusform');
 Route::post('ajax_like',[HelpUsController::class,'like_submition'])->name('like_submition');
