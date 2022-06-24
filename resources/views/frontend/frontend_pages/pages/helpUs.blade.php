@@ -212,10 +212,12 @@
                                                         {{ $post->content }}
                                                     </div>
                                                 </div>
+                                                @if ($user->id == auth()->user()->id)
                                                 <div class="col-3">
-                                                    <a href="#"><i class="fa fa-check-circle" style="color: #58b666"></i> Edit Post</a>
-                                                    <a href="#"><i class="fa fa-check-circle" style="color: #58b666"></i> Delete Post</a>
+                                                    <a href="{{ route('edit_post',$post->id) }}"><i class="fa fa-check-circle" style="color: #58b666"></i> Edit Post</a><br>
+                                                    <a href="{{ route('delete_post',$post->id) }}"><i class="fa fa-trash-alt" style="color: #c02409"></i> Delete Post</a>
                                                 </div>
+                                                @endif
                                             </div>
                                             <div style="display:flex">
                                             <a class="like" href="javascript:valid(0)" data-type="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}"  style="margin-right:10px;padding:10px 25px;text-align:center;color:blue"> 
