@@ -206,8 +206,16 @@
                                                 <h3>{{ $created_at[0] }},AT {{ $created_at[1] }}</h3>
                                             </div>
                                             <div class="triangle"></div>
-                                            <div class="message">
-                                                {{ $post->content }}
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <div class="message">
+                                                        {{ $post->content }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <a href="#"><i class="fa fa-check-circle" style="color: #58b666"></i> Edit Post</a>
+                                                    <a href="#"><i class="fa fa-check-circle" style="color: #58b666"></i> Delete Post</a>
+                                                </div>
                                             </div>
                                             <div style="display:flex">
                                             <a class="like" href="javascript:valid(0)" data-type="like" data-userid="{{ $current_user->id }}" data-postid="{{ $post->id }}"  style="margin-right:10px;padding:10px 25px;text-align:center;color:blue"> 
