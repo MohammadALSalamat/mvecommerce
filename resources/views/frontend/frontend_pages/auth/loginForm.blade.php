@@ -384,32 +384,5 @@
         $("#password_user").on('keyup', ValidatePassword)
     });
 </script>
-{{-- <script>
-    $("#seeAnotherField").change(function() {
-        if ($(this).val() == "mall") {
-            $('#mall_license').show();
-            $('#license').attr('required', '');
-            $('#license').attr('data-error', 'This field is required.');
-            $('#home_passport').hide();
-            $('#passport').removeAttr('required');
-            $('#passport').removeAttr('data-error');
-        } else if ($(this).val() == "home"){
-            $('#mall_license').hide();
-            $('#license').removeAttr('required');
-            $('#license').removeAttr('data-error');
-            $('#home_passport').show();
-            $('#passport').attr('required', '');
-            $('#passport').attr('data-error', 'This field is required.');
-        }else{
-             $('#mall_license').hide();
-            $('#license').removeAttr('required');
-            $('#license').removeAttr('data-error');
-              $('#home_passport').hide();
-            $('#passport').removeAttr('required');
-            $('#passport').removeAttr('data-error');
-        }
-    });
-    $("#seeAnotherField").trigger("change");
-</script> --}}
 
 @endsection
