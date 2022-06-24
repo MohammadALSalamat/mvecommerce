@@ -162,11 +162,20 @@ public function helpus()
        }
     }
 
+    
+
     public function delete_post(Request $request,$id)
     {
-     
      $current_post_delete = helpUs::find($id);
-     dd($current_post_delete); 
+     $current_user_delete = User::where('id',$current_post_delete->user_id)->first();
+
+     if($current_post_delete && $current_user_delete->id == auth()->user()->id){
+        helpUs::where('id',$id)->delete();
+        likeDislike::where('help_us_id',$id)->delete();
+        return back()->with('message','Your Post Has Been deleted');
+     }else{
+        return back()->with('warning','You dont have the permision to delete');
+     }
 
     }
 }
