@@ -197,7 +197,7 @@
                                             $created_at = explode(' ',$post->created_at);
                                             $user = \App\Models\User::where('id',$post->user_id)->first();
                                         @endphp
-                                        <form action="">
+                                        <form action="{{ route('updatepost_text',$post->id) }}">
                                         <li class="you">
                                             <div class="entete">
                                                 <span class="status green"></span>
