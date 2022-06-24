@@ -20,6 +20,7 @@
         "laravel/ui": "^3.4",
         "mckenziearts/laravel-notify": "^2.2",
         "predis/predis": "^1.1",
+        "sentry/sentry-laravel": "^2.12",
         "spatie/laravel-sitemap": "^6.1",
         "unisharp/laravel-filemanager": "^2.3",
         "yoeunes/toastr": "^1.2"
