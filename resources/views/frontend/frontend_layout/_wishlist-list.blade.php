@@ -1,7 +1,7 @@
 @if(Config::get('app.locale') == 'en')
 <h3 class="wishlist-title">My wishlist</h3>
+@if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
   <table class="shop-table wishlist-table">
-
       <thead>
           <tr>
               <th class="product-name"><span>Product</span></th>
@@ -12,7 +12,6 @@
           </tr>
       </thead>
       <tbody>
-          @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
           @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content() as $item)
           @php
             $other_image = explode(',', $item->model->image);
@@ -56,19 +55,20 @@
               </td>
           </tr>
           @endforeach
-          @else
-          <h3 class=" bg-red-700 m-10 p-10 text-white text-center w-100"> There is not items to show in the wish list
-          </h3>
-          <a href="{{ route('homepage') }}"><button type="button" class="btn btn-outline-danger"> Countinu Shopping
-              </button></a>
-          @endif
+         f
 
       </tbody>
   </table>
   @else
+  <h3 class=" bg-red-700 m-10 p-10 text-white text-center w-100"> There is not items to show in the wish list
+  </h3>
+  <a href="{{ route('homepage') }}"><button type="button" class="btn btn-outline-danger"> Countinu Shopping
+      </button></a>
+  @endif
+  @else
   <h3 class="wishlist-title">مفضلتي</h3>
+  @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
   <table class="shop-table wishlist-table">
-
       <thead>
           <tr>
               <th class="product-name"><span>المنتج</span></th>
@@ -79,7 +79,6 @@
           </tr>
       </thead>
       <tbody>
-        @if (\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count() > 0 )
         @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content() as $item)
         @php
         $other_image = explode(',', $item->model->image);
@@ -123,12 +122,13 @@
               </td>
           </tr>
           @endforeach
-          @else
-          <h3 class=" bg-red-700 m-10 p-10 text-white text-center w-100"> لايوجد منتجات متاحة
-          </h3>
-          <a href="{{ route('homepage') }}"><button type="button" class="btn btn-outline-danger"> متابعة التسوق </button></a>
-          @endif
+       
 
       </tbody>
   </table>
+  @else
+  <h3 class=" bg-red-700 m-10 p-10 text-white text-center w-100"> لايوجد منتجات متاحة
+  </h3>
+  <a href="{{ route('homepage') }}"><button type="button" class="btn btn-outline-danger"> متابعة التسوق </button></a>
+  @endif
   @endif

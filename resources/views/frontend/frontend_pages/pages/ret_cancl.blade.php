@@ -5,8 +5,8 @@
 
 <main class="main">
     <!-- Start of Page Header -->
+    <div class="container">
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
-        <div class="container">
             <h1 class="page-title mb-0 text-white">Refund & cancellation Policy</h1>
         </div>
     </div>
