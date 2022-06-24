@@ -171,6 +171,12 @@ public function helpus()
         }
     }
 
+    public function updatepost_text(Request $request,$id)
+    {
+        $data = $request->all();
+        dd($data);
+    }
+
     public function delete_post(Request $request,$id)
     {
      $current_post_delete = helpUs::find($id);

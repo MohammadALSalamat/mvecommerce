@@ -20,7 +20,6 @@
                     <div class="row align-items-center mb-10">
                         <div class="col-md-12 pl-lg-8 mb-8 ">
                             
-                            @auth
                             <style>
                                
                             
@@ -198,25 +197,26 @@
                                             $user = \App\Models\User::where('id',$post->user_id)->first();
                                         @endphp
                                         <form action="{{ route('updatepost_text',$post->id) }}">
-                                        <li class="you">
-                                            <div class="entete">
-                                                <span class="status green"></span>
-                                                <h2>{{ $user->full_name }}</h2>
-                                                <h3>{{ $created_at[0] }},AT {{ $created_at[1] }}</h3>
-                                            </div>
-                                            <div class="triangle"></div>
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <textarea class="message">
-                                                        {{ $post->content }}
-                                                    </textarea>
+                                            <li class="you">
+                                                <div class="entete">
+                                                    <span class="status green"></span>
+                                                    <h2>{{ $user->full_name }}</h2>
+                                                    <h3>{{ $created_at[0] }},AT {{ $created_at[1] }}</h3>
                                                 </div>
-                                                <div class="col-3">
-                                                    <button type="submit"><i class="fa fa-check-circle" style="color: #58b666"></i> Update Post</a><br>
+                                                <div class="triangle"></div>
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                        <textarea class="message" name="message">
+                                                            {{ $post->content }}
+                                                        </textarea>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <button type="submit"><i class="fa fa-check-circle" style="color: #58b666"></i> Update Post</a><br>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </form>
+                                            </li>
+                                        </form>
                                     </ul>
                                 </div>
                             </div>
