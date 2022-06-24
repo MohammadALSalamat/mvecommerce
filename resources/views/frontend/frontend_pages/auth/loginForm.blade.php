@@ -3,29 +3,32 @@
 @section('style')
 <style>
     .danger,
-    .text-danger{
-     color: red;
-     margin-top: 6px;
-     font-size: 12px;
- }
- .text-success{
-     margin-top: 6px;
-     font-size: 12px;
-     color: green;
- }
- .glyphicon-remove {
-   color: red;
-   
- }
- .nextdisable{
-     pointer-events: none;
- 
- }
- 
- .glyphicon-ok {
-   color: green;
- }
- </style>
+    .text-danger {
+        color: red;
+        margin-top: 6px;
+        font-size: 12px;
+    }
+
+    .text-success {
+        margin-top: 6px;
+        font-size: 12px;
+        color: green;
+    }
+
+    .glyphicon-remove {
+        color: red;
+
+    }
+
+    .nextdisable {
+        pointer-events: none;
+
+    }
+
+    .glyphicon-ok {
+        color: green;
+    }
+</style>
 @if(Config::get('app.locale') == 'en')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('front-style/assets/css/style.min.css') }}">
@@ -94,7 +97,8 @@
                                     <label for="remember1">Remember me</label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" style="text-align:right;" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" style="text-align:right;"
+                                    href="{{ route('password.request') }}">
                                     Lost your password ?
                                 </a>
                                 @endif
@@ -103,7 +107,7 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="sign-up">
-                            <form action="{{ route('registerusers') }}" method="POST" >
+                            <form action="{{ route('registerusers') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Full Name *</label>
@@ -115,50 +119,57 @@
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>Password *</label>
-                                    <input type="password" class="form-control" name="password" id="password_user" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters">
+                                    <input type="password" class="form-control" name="password" id="password_user"
+                                        required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
+                                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters">
                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
-                                    <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD  </span>
-                                    <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
-                                    <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case character</div>
-                                    <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case character</div>
-                                    <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric character</div>
-                                    <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special character</div>
-                                </div>
-                               
-                                <div class="mt-0 form-checkbox user-checkbox">
-                                    <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
-                                        name="check-customer" checked = "true">
-                                    <label for="check-customer" class="mb-1 check-customer">I am a customer</label>
-                                    <br>
-                                    {{-- <input type="radio" class="custom-checkbox checkbox-round" id="check-seller"
+                                <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD
+                                </span>
+                                <div id="Length" class="glyphicon glyphicon-remove">Must be at least 7 charcters</div>
+                                <div id="UpperCase" class="glyphicon glyphicon-remove">Must have atleast 1 upper case
+                                    character</div>
+                                <div id="LowerCase" class="glyphicon glyphicon-remove">Must have atleast 1 lower case
+                                    character</div>
+                                <div id="Numbers" class="glyphicon glyphicon-remove">Must have atleast 1 numeric
+                                    character</div>
+                                <div id="Symbols" class="glyphicon glyphicon-remove">Must have atleast 1 special
+                                    character</div>
+
+                        <div class="mt-0 form-checkbox user-checkbox">
+                            <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
+                                name="check-customer" checked="true">
+                            <label for="check-customer" class="mb-1 check-customer">I am a customer</label>
+                            <br>
+                            {{-- <input type="radio" class="custom-checkbox checkbox-round" id="check-seller"
                                         name="check-seller">
                                     <label for="check-seller" class="check-seller">I am a vendor</label> --}}
-                                </div>
-                                <p>Your personal data will be used to support your experience
-                                    throughout this website, to manage access to your account,
-                                    and for other purposes described in our <a href="{{ route('policy') }}" class="text-primary">privacy
-                                        policy</a>.</p>
-                                <div class="mb-5 form-checkbox d-flex align-items-center justify-content-between">
-                                    <input type="checkbox" class="custom-checkbox" id="remember" name="remember"
-                                        required="">
-                                    <label for="remember" class="font-size-md">I agree to the <a href="{{ route('policy') }}"
-                                            class="text-primary font-size-md">privacy policy</a></label>
-                                </div>
-                                <button type="submit" class="mx-auto btn btn-dangar"
-                                    style="background: red;color:#fff;width:50%"> Register </button>
-                            </form>
                         </div>
+                        <p>Your personal data will be used to support your experience
+                            throughout this website, to manage access to your account,
+                            and for other purposes described in our <a href="{{ route('policy') }}"
+                                class="text-primary">privacy
+                                policy</a>.</p>
+                        <div class="mb-5 form-checkbox d-flex align-items-center justify-content-between">
+                            <input type="checkbox" class="custom-checkbox" id="remember" name="remember" required="">
+                            <label for="remember" class="font-size-md">I agree to the <a href="{{ route('policy') }}"
+                                    class="text-primary font-size-md">privacy policy</a></label>
+                        </div>
+                        <button type="submit" class="mx-auto btn btn-dangar"
+                            style="background: red;color:#fff;width:50%"> Register </button>
+                        </form>
                     </div>
-                    {{-- <p class="text-center">Sign in with social account</p>
+                </div>
+            </div>
+            {{-- <p class="text-center">Sign in with social account</p>
                     <div class="social-icons social-icon-border-color d-flex justify-content-center">
                         <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
                         <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
                         <a href="#" class="social-icon social-google fab fa-google"></a>
                     </div> --}}
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
     </div>
 </main>
 <!-- End of Main -->
@@ -227,13 +238,14 @@
                                     <label for="remember1">تذكرني</label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link " style="text-align:right;" href="{{ route('password.request') }}">
+                                <a class="btn btn-link " style="text-align:right;"
+                                    href="{{ route('password.request') }}">
                                     هل نسيت كلمة السر؟
                                 </a>
                                 @endif
 
                                 <button type="submit" class="btn btn-dangar"
-                                    style="background: red;color:#fff;width:50%">تسجيل الدخول  </button>
+                                    style="background: red;color:#fff;width:50%">تسجيل الدخول </button>
                             </form>
                         </div>
                         <div class="tab-pane" id="sign-up">
@@ -251,14 +263,16 @@
                                     <label>كلمة السر *</label>
                                     <input type="password" class="form-control" name="password" id="password_1">
                                 </div>
-                                
+
                                 <div class="mt-0 form-checkbox user-checkbox">
-                                    <input type="radio" class="custom-checkbox checkbox-round active" id="check-customer"
-                                        name="check-customer" checked>
+                                    <input type="radio" class="custom-checkbox checkbox-round active"
+                                        id="check-customer" name="check-customer" checked>
                                     <label for="check-customer" class="mb-1 check-customer">تسجيل كمستخدم </label>
                                 </div>
                                 <p>
-                                    سيتم استخدام بياناتك الشخصية لدعم تجربتك في جميع أنحاء هذا الموقع ، وإدارة الوصول إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="#" class="text-primary">خصوصية الشركة</a>.</p>
+                                    سيتم استخدام بياناتك الشخصية لدعم تجربتك في جميع أنحاء هذا الموقع ، وإدارة الوصول
+                                    إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="#" class="text-primary">خصوصية
+                                        الشركة</a>.</p>
                                 <div class="mb-5 form-checkbox d-flex align-items-center justify-content-between">
                                     <input type="checkbox" class="custom-checkbox" id="remember" name="remember"
                                         required="">
@@ -290,13 +304,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var startTimer;
-        $('#email_user').on('keyup', function () {
+        $('#email_user').on('keyup', function() {
             clearTimeout(startTimer);
             let email = $(this).val();
             startTimer = setTimeout(checkEmail, 500, email);
         });
-
-        $('#email_user').on('keydown', function () {
+        $('#email_user').on('keydown', function() {
             clearTimeout(startTimer);
         });
 
@@ -312,62 +325,63 @@
                     },
                     success: function(data) {
                         if (data.success == false) {
-                            $('#email_user').after('<div id="email-error" class="text-danger" <strong>'+data.message[0]+'<strong></div>');
+                            $('#email_user').after(
+                                '<div id="email-error" class="text-danger" <strong>' + data
+                                .message[0] + '<strong></div>');
                         } else {
-                            $('#email_user').after('<div id="email-error" class="text-success" <strong>'+data.message+'<strong></div>');
+                            $('#email_user').after(
+                                '<div id="email-error" class="text-success" <strong>' + data
+                                .message + '<strong></div>');
                         }
-
                     }
                 });
             } else {
-                $('#email_user').after('<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>');
+                $('#email_user').after(
+                    '<div id="email-error" class="text-danger" <strong>Email address can not be empty.<strong></div>'
+                );
             }
         }
     });
 </script>
 <script>
     /*Actual validation function*/
-function ValidatePassword() {
-  /*Array of rules and the information target*/
-  var rules = [{
-      Pattern: "[A-Z]",
-      Target: "UpperCase"
-    },
-    {
-      Pattern: "[a-z]",
-      Target: "LowerCase"
-    },
-    {
-      Pattern: "[0-9]",
-      Target: "Numbers"
-    },
-    {
-      Pattern: "[!@@#$%^&*]",
-      Target: "Symbols"
+    function ValidatePassword() {
+        /*Array of rules and the information target*/
+        var rules = [{
+                Pattern: "[A-Z]",
+                Target: "UpperCase"
+            },
+            {
+                Pattern: "[a-z]",
+                Target: "LowerCase"
+            },
+            {
+                Pattern: "[0-9]",
+                Target: "Numbers"
+            },
+            {
+                Pattern: "[!@@#$%^&*]",
+                Target: "Symbols"
+            }
+        ];
+        //Just grab the password once
+        var password = $(this).val();
+        /*Length Check, add and remove class could be chained*/
+        /*I've left them seperate here so you can see what is going on */
+        /*Note the Ternary operators ? : to select the classes*/
+        $("#Length").removeClass(password.length > 6 ? "glyphicon-remove" : "glyphicon-ok");
+        $("#Length").addClass(password.length > 6 ? "glyphicon-ok" : "glyphicon-remove");
+        /*Iterate our remaining rules. The logic is the same as for Length*/
+        for (var i = 0; i < rules.length; i++) {
+            $("#" + rules[i].Target).removeClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-remove" :
+                "glyphicon-ok");
+            $("#" + rules[i].Target).addClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-ok" :
+                "glyphicon-remove");
+        }
     }
-  ];
-
-  //Just grab the password once
-  var password = $(this).val();
-
-  /*Length Check, add and remove class could be chained*/
-  /*I've left them seperate here so you can see what is going on */
-  /*Note the Ternary operators ? : to select the classes*/
-  $("#Length").removeClass(password.length > 6 ? "glyphicon-remove" : "glyphicon-ok");
-  $("#Length").addClass(password.length > 6 ? "glyphicon-ok" : "glyphicon-remove");
-
-  
-  /*Iterate our remaining rules. The logic is the same as for Length*/
-  for (var i = 0; i < rules.length; i++) {
-
-    $("#" + rules[i].Target).removeClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-remove" : "glyphicon-ok"); 
-    $("#" + rules[i].Target).addClass(new RegExp(rules[i].Pattern).test(password) ? "glyphicon-ok" : "glyphicon-remove");
-      }
-    }
-
     /*Bind our event to key up for the field. It doesn't matter if it's delete or not*/
     $(document).ready(function() {
-      $("#password_user").on('keyup', ValidatePassword)
+        $("#password_user").on('keyup', ValidatePassword)
     });
 </script>
 {{-- <script>
