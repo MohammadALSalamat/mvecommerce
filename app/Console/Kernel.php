@@ -15,20 +15,20 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         '\App\Console\Commands\subscripeReminder',
+        '\App\Console\Commands\siteMapGeneratore',
     ];
 
 
     protected function schedule(Schedule $schedule)
     {
         
-        $schedule->command('queue:work ')->everyMinute(); // emails run on corn jobs
-        $schedule->command('queue:restart ')->everyFiveMinutes();
-        $schedule->command('emails:send')->daily();
+        $schedule->command('queue:work --stop-when-empty')->everyMinute(); // emails run on corn jobs
         $schedule->command('sitemap:generate')->daily();
         $schedule->command('optimize:clear')->everyFifteenMinutes();
         $schedule->command('view:clear')->everyFifteenMinutes();
         $schedule->command('config:clear')->everyFifteenMinutes();
         $schedule->command('route:clear')->everyFifteenMinutes();
+        $schedule->command('emails:send')->daily();
 
     }
 
