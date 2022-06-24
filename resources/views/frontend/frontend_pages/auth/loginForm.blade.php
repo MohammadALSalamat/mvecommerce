@@ -41,7 +41,7 @@
 @section('content')
 @if(Config::get('app.locale') == 'en')
 <!-- Start of Main -->
-<main class="main login-page">
+<main class="main login-page container">
     <!-- Start of Page Header -->
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
         <div class="container">
