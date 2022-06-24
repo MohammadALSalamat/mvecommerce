@@ -9,7 +9,7 @@
     <!-- Start of Page Header -->
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
         <div class="container">
-            <h1 class="page-title mb-0 text-white">My Account </h1>
+            <h1 class="page-title mb-0 text-white">Dashboard </h1>
         </div>
     </div>
     <!-- End of Page Header -->

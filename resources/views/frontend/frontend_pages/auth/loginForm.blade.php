@@ -43,9 +43,9 @@
 <!-- Start of Main -->
 <main class="main login-page">
     <!-- Start of Page Header -->
-    <div class="page-header">
+    <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
         <div class="container">
-            <h1 class="mb-0 page-title">My Account</h1>
+            <h1 class="mb-0 page-title text-white">My Account</h1>
         </div>
     </div>
     <!-- End of Page Header -->
@@ -96,12 +96,12 @@
                                         {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember1">Remember me</label>
                                 </div>
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                 <a class="btn btn-link" style="text-align:right;"
                                     href="{{ route('password.request') }}">
                                     Lost your password ?
                                 </a>
-                                @endif
+                                @endif --}}
                                 <button type="submit" class="btn btn-dangar"
                                     style="background: red;color:#fff;width:50%">Log In </button>
                             </form>
