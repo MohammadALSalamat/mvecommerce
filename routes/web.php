@@ -36,6 +36,7 @@ use App\Http\Controllers\ProductAttributeController;
 
 
 require __DIR__.'/backend.php';
+require __DIR__.'/driver.php';
 require __DIR__.'/seller.php';
 require __DIR__.'/frontend.php';
 
