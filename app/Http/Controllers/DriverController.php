@@ -15,7 +15,7 @@ class DriverController extends Controller
        return view('driver.auth.login');
     }
 
-    public function login(Request $request)
+    public function login_driver(Request $request)
     {
         $email = $request->email;
         $password = $request->password;
