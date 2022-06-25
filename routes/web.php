@@ -67,7 +67,8 @@ Route::group(['prefix'=>'delivery'],function(){
     Route::post('/login',[DeliveryController::class,'login_delivery'])->name('delivery_login');
    });
    Route::group(['prefix'=>'delivery','middleware'=>['delivery']],function(){
-   
+    Route::get('/',[DeliveryController::class,'dashboard'])->name('delivery');
+
 });
 
 

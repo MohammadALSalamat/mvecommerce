@@ -55,13 +55,13 @@ class UserController extends Controller
         }elseif($data['role'] == 'delivery'){
             $usernamerepate = delivery::where('email', $data['email'])->count();
             if ($usernamerepate > 0) {
-                return back()->with('error', ' The Email in admin table Is Already There');
+                return back()->with('error', ' The Email in delivery table Is Already There');
             }
         }else{
             $Emailrepate = User::where('email',$data['email'])->count();
             $usernamerepate = User::where('username', $data['username'])->count();
             if ($Emailrepate > 0) {
-                return back()->with('error', ' The Email Is Already There');
+                return back()->with('error', ' The User Email Is Already There');
             }
             if ($usernamerepate > 0) {
                 return back()->with('error', ' The User Name Is Already There');
