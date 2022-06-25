@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form method="POST" action="{{ route('admin_login') }}">
+                    <form method="POST" action="{{ route('_delivery_admin_login') }}">
                         @csrf
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input id="email" type="email" class="form-control form-control-lg input-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
