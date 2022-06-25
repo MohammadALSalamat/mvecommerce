@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Seller;
 use App\Models\Adminview;
+use App\Models\delivery;
 use App\Models\subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -48,6 +49,11 @@ class UserController extends Controller
             }
         }elseif($data['role'] == 'admin'){
             $usernamerepate = Adminview::where('email', $data['email'])->count();
+            if ($usernamerepate > 0) {
+                return back()->with('error', ' The Email in admin table Is Already There');
+            }
+        }elseif($data['role'] == 'delivery'){
+            $usernamerepate = delivery::where('email', $data['email'])->count();
             if ($usernamerepate > 0) {
                 return back()->with('error', ' The Email in admin table Is Already There');
             }
@@ -103,6 +109,7 @@ class UserController extends Controller
         $today_date = date("Y-m-d H:i:s");
         $after_30days_end = date('Y-m-d H:i:s', strtotime($today_date. ' +30 days'));
         $password = Hash::make($data['password']);
+
         if($data['role'] == 'seller'){
             $newuser = new Seller();
             $newuser->full_name = $data['full_name'];
@@ -132,7 +139,7 @@ class UserController extends Controller
             $subscribeFree->ends_at =$after_30days_end;
             $subscribeFree->save();
 
-
+            
         }elseif($data['role'] == 'admin'){
             $newuser = new Adminview();
             $newuser->full_name = $data['full_name'];
@@ -143,7 +150,16 @@ class UserController extends Controller
             $newuser->status = $status;
             
             $newuser->save(); 
-        }else{
+        } elseif($data['role'] == 'delivery'){
+            $newuser = new delivery();
+            $newuser->full_name = $data['full_name'];
+            $newuser->email = $data['email'];
+            $newuser->password = $password;
+            $newuser->phone = $data['phone'];
+            $newuser->status = $status;
+            $newuser->save(); 
+        }
+        else{
             $newuser = new User();
             $newuser->full_name = $data['full_name'];
             $newuser->username = $data['username'];

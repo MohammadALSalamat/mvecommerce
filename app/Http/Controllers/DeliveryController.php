@@ -16,7 +16,7 @@ class DeliveryController extends Controller
        return view('delivery.auth.login');
     }
 
-    public function login_driver(Request $request)
+    public function login_delivery(Request $request)
     {
         $email = $request->email;
         $password = $request->password;

@@ -144,6 +144,7 @@ input:checked + .slider:before {
                                                         <option value="none" selected="" disabled="">-- Choose The Role Of User --
                                                         </option>
                                                         <option value="admin">admin</option>
+                                                        <option value="delivery">Delivery Admin</option>
                                                         <option value="seller">Seller</option>
                                                         <option value="customer">customer</option>
                                                     </select>
