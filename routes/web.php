@@ -11,6 +11,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AdminviewController;
@@ -58,6 +59,15 @@ Route::get('/clearroute',function(){
 Route::get('/storagelink',function(){
     Artisan::call('storage:link');
     return ' its storage now';
+});
+
+// ADMIN LOGIN FORM 
+Route::group(['prefix'=>'delivery'],function(){
+    Route::get('/login',[DeliveryController::class,'showloginpage_delivery'])->name('delivery_login_form');
+    Route::post('/login',[DeliveryController::class,'login_delivery'])->name('delivery_login');
+   });
+   Route::group(['prefix'=>'delivery','middleware'=>['delivery']],function(){
+   
 });
 
 

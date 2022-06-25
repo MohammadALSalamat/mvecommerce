@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class DeliveryController extends Controller
 {
-    public function showloginpage_driver()
+    public function showloginpage_delivery()
     {
        return view('delivery.auth.login');
     }
