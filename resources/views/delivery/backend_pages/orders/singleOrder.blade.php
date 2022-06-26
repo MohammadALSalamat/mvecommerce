@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('delivery.backend_layoute.main_desgin')
 @section('style')
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
