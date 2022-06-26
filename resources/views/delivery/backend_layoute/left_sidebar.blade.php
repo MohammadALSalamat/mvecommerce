@@ -3,12 +3,12 @@
   <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item"><a href="{{ route('admin') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span></a>
+        <li class=" nav-item"><a href="{{ route('delivery') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span></a>
         </li>
       
         <li class=" nav-item"><a href="#"><i class="la la-arrows-v"></i><span class="menu-title" data-i18n="nav.vertical_nav.main">Orders Management</span></a>
           <ul class="menu-content">
-            <li><a class="menu-item" href="{{ route('view_order') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Orders</a>
+            <li><a class="menu-item" href="{{ route('delivery_view_order') }}" data-i18n="nav.horz_nav.horizontal_navigation_types.main">View Orders</a>
             </li>
           </ul>
         </li>

@@ -18,24 +18,16 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
-        <h3 class="mb-0 content-header-title d-inline-block">Advanced DataTable</h3>
+        <h3 class="mb-0 content-header-title d-inline-block">Orders Table</h3>
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a>
+              <li class="breadcrumb-item"><a href="{{ route('delivery') }}">Home</a>
               </li>
-              <li class="breadcrumb-item"><a href="#">DataTables</a>
-              </li>
-              <li class="breadcrumb-item active">Advanced DataTable
+              <li class="breadcrumb-item active">view orders
               </li>
             </ol>
           </div>
-        </div>
-      </div>
-      <div class="content-header-right col-md-6 col-12">
-        <div class=" float-md-right">
-          <a href="{{ route('createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> Add product </button></a>
         </div>
       </div>
     </div>
@@ -47,7 +39,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">View products</h4>
+                <h4 class="card-title">View Orders</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="mb-0 list-inline">
@@ -147,14 +139,7 @@
                               aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
                                 class="ft-settings"></i></button>
                             <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
-                                <a href="{{ route('singleOrder',$order->id) }}"  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
-                              <a href="{{ route('editproducts',$order->id) }}" class="dropdown-item"><i
-                                  class="ft-edit-2 success"></i> Edit</a>
-                              {{-- <form action="{{ route('deletproducts',$order->id) }}" method="post">
-                                @csrf
-                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
-                                  Delete</a>
-                              </form> --}}
+                                <a href="{{ route('delivery_singleOrder',$order->id) }}"  class="dropdown-item"><i class="ft-eye primary"></i> View More</a>
                             </span>
                           </span>
                         </td>

@@ -1,4 +1,4 @@
-@extends('backend.backend_layoute.main_desgin')
+@extends('delivery.backend_layoute.main_desgin')
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">

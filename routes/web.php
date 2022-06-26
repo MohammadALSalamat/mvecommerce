@@ -61,14 +61,6 @@ Route::get('/storagelink',function(){
     return ' its storage now';
 });
 
-// ADMIN LOGIN FORM 
-Route::group(['prefix'=>'delivery'],function(){
-    Route::get('/login',[DeliveryController::class,'showloginpage_delivery'])->name('delivery_login_form');
-    Route::post('/login',[DeliveryController::class,'login_delivery'])->name('delivery_login');
-   });
-   Route::group(['prefix'=>'delivery','middleware'=>['delivery']],function(){
-    Route::get('/',[DeliveryController::class,'dashboard'])->name('delivery');
 
-});
 
 
