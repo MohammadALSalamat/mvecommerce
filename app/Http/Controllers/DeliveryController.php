@@ -66,6 +66,39 @@ class DeliveryController extends Controller
         }
     }
 
+    public function delivery_view_order()
+    {
+        $Orders = Order::get();
+        return view('delivery.backend_pages.orders.vieworders',compact('Orders'));
+    }
+
+    public function delivery_singleOrder($id)
+    {
+       $order = Order::find($id);
+       if($order){
+        return view('delivery.backend_pages.orders.singleOrder',compact('order'));
+       }else{
+           return back()->with('error','this Id is not found');
+       }
+    }
+
+    // view the invoice 
+    public function delivery_invoice_template($id)
+    {
+        $order = Order::find($id);
+        if($order){
+            return view('delivery.backend_pages.orders.invoice',compact('order'));
+           }else{
+               return back()->with('error','this Id is not found');
+           }
+    }
+    public function delivery_generateInvoicePDF($id)
+    {
+        $order = Order::find($id);
+        $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('general-invoic.pdf');
+    }
+
     public function switchLang($lang)
     {
        if(array_key_exists($lang,Config::get('languages'))){
@@ -73,4 +106,5 @@ class DeliveryController extends Controller
        }
        return Redirect::back();
     }
+
 }
