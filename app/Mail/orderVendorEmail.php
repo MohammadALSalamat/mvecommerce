@@ -17,7 +17,7 @@ class orderVendorEmail extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($data_for_vendor)
     {
         $this->data_for_vendor = $data_for_vendor;
     }

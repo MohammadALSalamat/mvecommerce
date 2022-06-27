@@ -178,12 +178,12 @@ class OrderController extends Controller
                     if(!empty($vendor_email)){
                         $data_for_vendor =[
                             'vendor_name' => $vendor_email->full_name,
+                            'email'=>$vendor_email->email,
                             'qnt' =>$quantity,
                             'order_number'=>$ordernumber,
                             'order_details'=>$order->product,
                         ];
-                        dd($data_for_vendor);
-                        dispatch(new orderVendorEmail($data_for_vendor,$vendor_email));
+                        dispatch(new orderVendorEmail($data_for_vendor));
                     }
                 }
             }

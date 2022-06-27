@@ -144,111 +144,25 @@
                                                         Order Confirmation #
                                                     </td>
                                                     <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                       {{$order['order_number']}}
+                                                       {{$data_for_vendor['order_number']}}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    @foreach ($order->product as $item )
+                                                    @foreach ($data_for_vendor['order_details'] as $item )
                                                     <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                        Purchased Item ({{$order_email_imfo['count_items']}})
+                                                         Item Name :  ({{$item['title']}})
                                                     </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                      {{$order_email_imfo['sub_total']}} AED
-                                                    </td>
+                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                                        Item Quantity :  ({{$item['pivot']['quantity']}})
+                                                   </td>
                                                     @endforeach
                                                 </tr>
                                             </table>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td align="left" style="padding-top: 20px;">
-                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        TOTAL
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                      {{$order_email_imfo['total']}} AED
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                        Selected Payment Method
-                                                    </td>
-                                                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                      {{$order_email_imfo['payment_method']}}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
+                                   
                                 </table>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
-                                    <tr>
-                                        <td align="center" valign="top" style="font-size:0;">
-                                            <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-
-                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                                    <tr>
-                                                        <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Billing Info</p>
-                                                            <p> 
-                                                                Name : {{ $order_email_imfo['full_name'] }}<br>
-                                                                {{ $order_email_imfo['address'] }}
-                                                                <br>{{ $order_email_imfo['city'] }}
-                                                                <br>{{ $order_email_imfo['country'] }}
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                                    <tr>
-                                                        <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                            <p style="font-weight: 800;">Shipping Info:</p>
-                                                            <p> 
-                                                                Name : {{ $order_email_imfo['sfull_name'] }}<br>
-                                                                {{ $order_email_imfo['saddress'] }}
-                                                                <br>{{ $order_email_imfo['scity'] }}
-                                                                <br>{{ $order_email_imfo['scountry'] }}
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center" style=" padding: 35px; background-color: #ff7361;" bgcolor="#1b9ba3">
-                                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                                    <tr>
-                                        <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                                            <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
-                                                We Will be happy to see you again.
-                                            </h2>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" style="padding: 25px 0 15px 0;">
-                                            <table border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                        <a href="{{ route('homepage') }}" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
                             </td>
                         </tr>
                         <tr>

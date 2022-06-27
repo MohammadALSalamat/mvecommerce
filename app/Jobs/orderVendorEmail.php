@@ -15,16 +15,14 @@ class orderVendorEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     public $data_for_vendor;
-    public $vendor_email;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data_for_vendor , $vendor_email)
+    public function __construct($data_for_vendor )
     {
         $this->data_for_vendor = $data_for_vendor;
-        $this->vendor_email = $vendor_email;
     }
 
     /**
@@ -34,7 +32,7 @@ class orderVendorEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->vendor_email->email)->send(new vendorOrderMail($this->data_for_vendor)); // send email to vendor
+        Mail::to($this->data_for_vendor['email'])->send(new vendorOrderMail($this->data_for_vendor)); // send email to vendor
 
     }
 }
