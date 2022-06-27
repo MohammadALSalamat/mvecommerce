@@ -170,15 +170,20 @@ class OrderController extends Controller
                 $order_id =  $order->id;
                 $product_items = product::find($item->id);
                 $quantity = $item->qty;
-                $data_for_vendor =[
-                    'product_id' => $product_id,
-                ];
-                dd($data_for_vendor);
+                
                 $order->product()->attach($product_items,['quantity'=>$quantity]);
                 // send email to vendor
                 $vendors_toSend_email = Seller::where(['id'=>$product_items->vendor_id])->get();
                 foreach($vendors_toSend_email as $vendor_email){
                     if(!empty($vendor_email)){
+                        $produtcsofvendor = product::where('vendor_id',$vendor_email->id)->get();
+                        $data_for_vendor =[
+                            'vendor_name' => $vendor_email->full_name,
+                            'products' => $produtcsofvendor,
+                            'qnt' =>$quantity,
+                            'order_number'=>$ordernumber,
+                        ];
+                        dd($data_for_vendor);
                         dispatch(new orderVendorEmail($order,$vendor_email));
                     }
                 }
