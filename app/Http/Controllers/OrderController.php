@@ -170,6 +170,10 @@ class OrderController extends Controller
                 $order_id =  $order->id;
                 $product_items = product::find($item->id);
                 $quantity = $item->qty;
+                $data_for_vendor =[
+                    'product_id' => $product_id,
+                ];
+                dd($data_for_vendor);
                 $order->product()->attach($product_items,['quantity'=>$quantity]);
                 // send email to vendor
                 $vendors_toSend_email = Seller::where(['id'=>$product_items->vendor_id])->get();
@@ -179,7 +183,6 @@ class OrderController extends Controller
                     }
                 }
             }
-            
             if($save_order){
                 // delete the cart items after submistions
                 Cart::instance('shopping')->destroy();
