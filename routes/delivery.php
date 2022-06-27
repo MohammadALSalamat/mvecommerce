@@ -20,4 +20,6 @@ Route::group(['prefix'=>'delivery'],function(){
     Route::get('invoice_template/{id}',[DeliveryController::class,'delivery_invoice_template'])->name('delivery_invoice_template');
     Route::get('generate-invoice-pdf/{id}', [DeliveryController::class,'delivery_generateInvoicePDF'])->name('delivery_pdfviewer');
 
+    Route::post('update_status_order/{id}',[DeliveryController::class,'update_order_status'])->name('update_order_status');
+
 });

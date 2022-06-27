@@ -60,7 +60,8 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body">
-                  <form class="form">
+                  <form class="form" action="{{ route('update_order_status',$order->id) }}" method="POST">
+                    @csrf
                     <div class="form-body">
                       <h4 class="form-section"><i class="la la-paperclip"></i> Details</h4>
                       <div class="row">
@@ -75,6 +76,7 @@
                           <strong>Order invoice : </strong>
                         </div>
                         <div class="col-md-6">
+                          <input type="hidden" name="order_number" value="{{ $order->order_number }}">
                           {{ $order->order_number  }}
                         </div>
                         <hr class="mt-4">
@@ -176,9 +178,8 @@
                 <div class="card-body">
                   <form class="form">
                     <div class="form-body">
-                      <h4 class="form-section"><i class="la la-paperclip"></i> Requirements</h4>
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                           <table>
                             <tr>
                               <td>Full Name : </td>
@@ -186,44 +187,27 @@
                             </tr>
                             <tr>
                               <td>Phone Number : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $order->phone }}</td>
                             </tr>
                             <tr>
                               <td>Street : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $order->address }}</td>
                             </tr>
                             <tr>
                               <td>City : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $order->city }}</td>
                             </tr>
                             <tr>
                               <td>Country : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $order->country }}</td>
                             </tr>
                             <tr>
                               <td>Near Place : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $order->postcode }}</td>
                             </tr>
                           </table>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="projectinput6">Budget</label>
-                            <select id="projectinput6" name="budget" class="form-control">
-                              <option value="0" selected="" disabled="">Budget</option>
-                              <option value="less than 5000$">less than 5000$</option>
-                              <option value="5000$ - 10000$">5000$ - 10000$</option>
-                              <option value="10000$ - 20000$">10000$ - 20000$</option>
-                              <option value="more than 20000$">more than 20000$</option>
-                            </select>
-                          </div>
-                        </div>
                       </div>
-                    </div>
-                    <div class="form-actions">
-                      <button type="submit" class="btn btn-primary">
-                        <i class="la la-check-square-o"></i> Change Status
-                      </button>
                     </div>
                   </form>
                 </div>
@@ -246,7 +230,32 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body">
-
+                  <table>
+                    <tr>
+                      <td>Full Name : </td>
+                      <td>{{ $order->full_name }}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number : </td>
+                      <td>{{ $order->phone }}</td>
+                    </tr>
+                    <tr>
+                      <td>Street : </td>
+                      <td>{{ $order->address }}</td>
+                    </tr>
+                    <tr>
+                      <td>City : </td>
+                      <td>{{ $order->city }}</td>
+                    </tr>
+                    <tr>
+                      <td>Country : </td>
+                      <td>{{ $order->country }}</td>
+                    </tr>
+                    <tr>
+                      <td>Near Place : </td>
+                      <td>{{ $order->postcode }}</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>

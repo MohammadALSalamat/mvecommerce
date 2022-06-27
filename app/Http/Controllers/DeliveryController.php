@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\delivery_status;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\delivery;
@@ -97,6 +98,28 @@ class DeliveryController extends Controller
         $order = Order::find($id);
         $pdf = PDF::loadView('general-invoic',compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('general-invoic.pdf');
+    }
+
+    public function update_order_status(Request $request,$id)
+    {
+        $data = $request->all();
+        $current_order = Order::find($id);
+        if($current_order->order_number == $data['order_number']){
+            $data_info_email=[
+                'email'=>User::where('id',$order->user_id)->value('email');
+            ];
+            try {
+                dispatch(new delivery_status($data));
+            } catch (\Throwable $th) {
+                return back()->with('error','there is something went wrong, your status did not complate yet!!');
+            }
+            Order::where('order_number',$data['order_number'])->update([
+                'payment_status'=>$data['orderStatus'],
+            ]);
+
+            return back()->with('the user delivery status has been channged')
+
+        }
     }
 
     public function switchLang($lang)
