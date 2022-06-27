@@ -28,7 +28,7 @@ class DeliveryController extends Controller
         $email = $request->email;
         $password = $request->password;
         if (Auth::guard('delivery')->attempt(['email' => $email, 'password' => $password])) {
-           return redirect()->intended(route('delivery'))->with('message','welcome delivery Company');
+        return redirect()->intended(route('delivery'))->with('message','welcome delivery Company');
         }else{
             return back()->with('error','you dont have permission');
         }
