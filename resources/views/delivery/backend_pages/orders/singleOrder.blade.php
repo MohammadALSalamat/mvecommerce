@@ -179,17 +179,32 @@
                       <h4 class="form-section"><i class="la la-paperclip"></i> Requirements</h4>
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="projectinput5">Interested in</label>
-                            <select id="projectinput5" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">Interested in</option>
-                              <option value="design">design</option>
-                              <option value="development">development</option>
-                              <option value="illustration">illustration</option>
-                              <option value="branding">branding</option>
-                              <option value="video">video</option>
-                            </select>
-                          </div>
+                          <table>
+                            <tr>
+                              <td>Full Name : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                            <tr>
+                              <td>Phone Number : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                            <tr>
+                              <td>Street : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                            <tr>
+                              <td>City : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                            <tr>
+                              <td>Country : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                            <tr>
+                              <td>Near Place : </td>
+                              <td>{{ $order->full_name }}</td>
+                            </tr>
+                          </table>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
