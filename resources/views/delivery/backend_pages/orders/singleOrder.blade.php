@@ -86,9 +86,9 @@
                             <select id="projectinput6" name="orderStatus" class="form-control">
                               <option value="pending" @if($order->payment_status == 'pending') selected @endif>pending</option>
                               <option value="inprocess" @if($order->payment_status == 'inprocess') selected @endif>In Proccess</option>
-                              <option value="cancelled" @if($order->payment_status == 'cancelled') selected @endif>Canceled</option>
                               <option value="shipped" @if($order->payment_status == 'shipped') selected @endif>Shipped</option>
                               <option value="completed" @if($order->payment_status == 'completed') selected @endif>Completed</option>
+                              <option value="cancelled" @if($order->payment_status == 'cancelled') selected @endif>Canceled</option>
                             </select>
                           </div>
                         </div>
@@ -301,7 +301,7 @@
                           @if ($order->payment_status == 'completed')
                           <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
                           Completed
-                          @elseif ($order->payment_status == 'inproccess')
+                          @elseif ($order->payment_status == 'inprocess')
                           <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
                           In Proccess
                           @elseif ($order->payment_status == 'shipped')
