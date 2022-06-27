@@ -288,8 +288,8 @@
                         <th>Customer Name</th>
                         <th>Products</th>
                         <th>Categories</th>
-                        <th>Shipping</th>
                         <th>Vendor Name</th>
+                        <th>Shipping</th>
                         <th>Amount</th>
 
                       </tr>
@@ -354,7 +354,7 @@
                         <td>
                           @foreach ( $order->product as $items)
                           <button type="button"
-                            class="btn btn-sm btn-outline-danger round">{{ \App\Models\seller::groupBy('full_name')->where('id',$items->category_id)->value('title') }}</button>
+                            class="btn btn-sm btn-outline-danger round">{{ \App\Models\Seller::groupBy('full_name')->where('id',$items->vendor_id)->value('full_name') }}</button>
                           @endforeach
                         </td>
                         <td>
@@ -399,6 +399,8 @@
                       <tr>
                         <th>ID</th>
                         <th>Product Details</th>
+                        <th>Seller Name</th>
+                        <th>Seller Location</th>
                         <th>Quantity</th>
                         <th>Price</th>
                       </tr>
@@ -414,6 +416,12 @@
                             <img class="box-shadow-2" src="{{  $items->image}}" alt="avatar">
                           </span>
                           <span>{{ $items->title }}</span>
+                        </td>
+                        <td class="text-truncate p-1">
+                          {{ \App\Models\Seller::where('id',$items->vendor_id)->value('full_name') }}
+                        </td>
+                        <td class="text-truncate p-1">
+                          {{ \App\Models\Seller::where('id',$items->vendor_id)->value('address') }},{{ \App\Models\Seller::where('id',$items->vendor_id)->value('city') }},{{ \App\Models\Seller::where('id',$items->vendor_id)->value('country') }}
                         </td>
                         <td class="text-truncate p-1">
                           {{ $items->pivot->quantity }}
