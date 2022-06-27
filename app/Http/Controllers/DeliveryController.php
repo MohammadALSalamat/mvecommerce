@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\delivery_status;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\delivery;
 use App\Models\productOrder;
 use Illuminate\Http\Request;
+use App\Jobs\delivery_status;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
@@ -106,18 +107,24 @@ class DeliveryController extends Controller
         $current_order = Order::find($id);
         if($current_order->order_number == $data['order_number']){
             $data_info_email=[
-                'email'=>User::where('id',$order->user_id)->value('email');
+                'email' => User::where('id',$current_order->user_id)->value('email'),
+                'full_name' => User::where('id',$current_order->user_id)->value('full_name'),
+                'Order_status' => $data['orderStatus'],
+                'order_number' => $current_order->order_number,
             ];
+
+           
             try {
-                dispatch(new delivery_status($data));
+                dispatch(new delivery_status($data_info_email));
             } catch (\Throwable $th) {
                 return back()->with('error','there is something went wrong, your status did not complate yet!!');
             }
+
             Order::where('order_number',$data['order_number'])->update([
                 'payment_status'=>$data['orderStatus'],
             ]);
 
-            return back()->with('the user delivery status has been channged')
+            return back()->with('message','the user delivery status has been channged');
 
         }
     }

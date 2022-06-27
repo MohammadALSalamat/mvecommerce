@@ -14,15 +14,15 @@ use Illuminate\Contracts\Queue\ShouldBeUnique;
 class delivery_status implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $data;
+    public $data_info_email;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data_info_email)
     {
-        $this->data = $data;
+        $this->data_info_email = $data_info_email;
     }
 
     /**
@@ -32,7 +32,7 @@ class delivery_status implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->data['email'])->send(new MailDelivery_status($this->data)); // send email to user
+        Mail::to($this->data_info_email['email'])->send(new MailDelivery_status($this->data_info_email)); // send email to user
 
     }
 }
