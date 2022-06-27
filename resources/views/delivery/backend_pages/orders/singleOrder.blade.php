@@ -86,11 +86,11 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <select id="projectinput6" name="orderStatus" class="form-control">
-                              <option value="pending" selected>pending</option>
-                              <option value="inprocess">In Proccess</option>
-                              <option value="cancelled">Canceled</option>
-                              <option value="shipped">Shipped</option>
-                              <option value="completed">Completed</option>
+                              <option value="pending" @if($order->payment_status == 'pending') selected @endif>pending</option>
+                              <option value="inprocess" @if($order->payment_status == 'inprocess') selected @endif>In Proccess</option>
+                              <option value="cancelled" @if($order->payment_status == 'cancelled') selected @endif>Canceled</option>
+                              <option value="shipped" @if($order->payment_status == 'shipped') selected @endif>Shipped</option>
+                              <option value="completed" @if($order->payment_status == 'completed') selected @endif>Completed</option>
                             </select>
                           </div>
                         </div>

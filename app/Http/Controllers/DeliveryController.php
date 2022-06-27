@@ -111,7 +111,7 @@ class DeliveryController extends Controller
                 'email' => User::where('id',$current_order->user_id)->value('email'),
                 'full_name' => User::where('id',$current_order->user_id)->value('full_name'),
                 'Order_status' => $data['orderStatus'],
-                'order_number' => $current_order->order_number,
+                'order_number' => $data['order_number'],
             ];
 
         dispatch(new delivery_status($data_info_email));

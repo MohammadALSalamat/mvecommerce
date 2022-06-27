@@ -86,7 +86,9 @@
                                     <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                         <tr>
                                             <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                                <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">ITAJER SHOP</h1>
+                                                <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">
+                                                <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="125" height="120" alt="">
+                                                </h1>
                                             </td>
                                         </tr>
                                     </table>
@@ -127,7 +129,7 @@
                                     <tr>
                                         <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                Thank you For your Using Itajer to get your order from , <br> We would like to Inform you that your order <strong>({{ '#'.$data_info_email['order_number'] }} }})</strong> status has been changed to <strong>{{ $data_info_email['Order_status'] }}</strong>{{  }} <br><br>If you have any counsirn please Send us an email on : alomda.alslmat@gmail.com
+                                                Thank you For your Using Itajer to get your order from , <br> We would like to Inform you that your order <strong>({{ '#'.$data_info_email['order_number'] }})</strong> status has been changed to <strong>{{ $data_info_email['Order_status'] }}</strong><br><br>If you have any counsirn please Send us an email on : alomda.alslmat@gmail.com
                                             </p>
                                         </td>
                                     </tr>
