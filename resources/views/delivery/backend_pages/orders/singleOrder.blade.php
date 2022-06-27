@@ -20,15 +20,13 @@
 
     <div class="content-header row">
       <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
-        <h3 class="mb-0 content-header-title d-inline-block">Advanced DataTable</h3>
+        <h3 class="mb-0 content-header-title d-inline-block">Delivery Table</h3>
         <div class="row breadcrumbs-top d-inline-block">
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a>
+              <li class="breadcrumb-item"><a href="{{ route('delivery') }}">Home</a>
               </li>
-              <li class="breadcrumb-item"><a href="#">DataTables</a>
-              </li>
-              <li class="breadcrumb-item active">Advanced DataTable
+              <li class="breadcrumb-item active">Delivery DataTable
               </li>
             </ol>
           </div>
@@ -36,7 +34,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('invoice_template',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow"
+          <a href="{{ route('delivery_invoice_template',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow"
               type="button"><i class="la la-plus"></i> View Invoice </button></a>
         </div>
       </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\delivery;
+use PDF;
 use App\Models\productOrder;
 use Illuminate\Http\Request;
 use App\Jobs\delivery_status;

@@ -9,9 +9,9 @@
           <div class="row breadcrumbs-top d-inline-block">
             <div class="breadcrumb-wrapper col-12">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('view_order') }}">Home</a>
+                <li class="breadcrumb-item"><a href="{{ route('delivery_view_order') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('singleOrder',$order->id) }}">Order</a>
+                <li class="breadcrumb-item"><a href="{{ route('delivery_singleOrder',$order->id) }}">Order</a>
                 </li>
                 <li class="breadcrumb-item active">Invoice Template
                 </li>
@@ -21,7 +21,7 @@
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="dropdown float-md-right">
-           <a href="{{ route('pdfviewer',$order->id) }}"><button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton"
+           <a href="{{ route('delivery_pdfviewer',$order->id) }}"><button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton"
             type="button" >Download</button></a> 
             
           </div>
