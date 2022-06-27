@@ -106,26 +106,25 @@ class DeliveryController extends Controller
         $data = $request->all();
         $current_order = Order::find($id);
         if($current_order->order_number == $data['order_number']){
-            $data_info_email=[
+            $data_info_email =
+            [
                 'email' => User::where('id',$current_order->user_id)->value('email'),
                 'full_name' => User::where('id',$current_order->user_id)->value('full_name'),
                 'Order_status' => $data['orderStatus'],
                 'order_number' => $current_order->order_number,
             ];
 
+        dispatch(new delivery_status($data_info_email));
            
-            try {
-                dispatch(new delivery_status($data_info_email));
-            } catch (\Throwable $th) {
-                return back()->with('error','there is something went wrong, your status did not complate yet!!');
-            }
 
             Order::where('order_number',$data['order_number'])->update([
                 'payment_status'=>$data['orderStatus'],
             ]);
 
-            return back()->with('message','the user delivery status has been channged');
+            return back()->with('message','the user delivery status has been changed');
 
+        }else{
+            return back()->with('error','Order is not there ');
         }
     }
 
