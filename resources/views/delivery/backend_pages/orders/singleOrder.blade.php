@@ -15,9 +15,9 @@
 @section('content')
 
 <div class="app-content content">
-  
+
   <div class="content-wrapper">
-    
+
     <div class="content-header row">
       <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
         <h3 class="mb-0 content-header-title d-inline-block">Advanced DataTable</h3>
@@ -36,8 +36,8 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class=" float-md-right">
-          <a href="{{ route('invoice_template',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
-                class="la la-plus"></i> View Invoice </button></a>
+          <a href="{{ route('invoice_template',$order->id) }}"><button class="px-2 btn btn-primary round btn-glow"
+              type="button"><i class="la la-plus"></i> View Invoice </button></a>
         </div>
       </div>
     </div>
@@ -62,13 +62,20 @@
                 <div class="card-body">
                   <form class="form">
                     <div class="form-body">
-                      <h4 class="form-section"><i class="la la-paperclip"></i> Requirements</h4>
+                      <h4 class="form-section"><i class="la la-paperclip"></i> Details</h4>
                       <div class="row">
                         <div class="col-md-6">
                           <strong>Order Date : </strong>
                         </div>
                         <div class="col-md-6">
                           {{ $order->created_at  }}
+                        </div>
+                        <hr class="mt-4">
+                        <div class="col-md-6">
+                          <strong>Order invoice : </strong>
+                        </div>
+                        <div class="col-md-6">
+                          {{ $order->order_number  }}
                         </div>
                         <hr class="mt-4">
                         <div class="col-md-6">
@@ -113,7 +120,36 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body">
-                 
+                  <div class="row">
+                    <div class="col-md-6">
+                      <strong>
+                        User Name
+                      </strong>
+                    </div>
+                    <div class="col-md-6">
+                      {{ \App\Models\User::where('id',$order->user_id)->value('full_name') }}
+                    </div>
+
+                    <hr class="mt-4">
+                    <div class="col-md-6">
+                      <strong>
+                        Email Address :
+                      </strong>
+                    </div>
+                    <div class="col-md-6">
+                      {{ \App\Models\User::where('id',$order->user_id)->value('email') }}
+                    </div>
+                    <hr class="mt-4">
+                    <div class="col-md-6">
+                      <strong>
+                        Phone Number :
+                      </strong>
+                    </div>
+                    <div class="col-md-6">
+                      {{ $order->phone }}
+                    </div>
+                  </div>
+                  <hr class="mt-4">
                 </div>
               </div>
             </div>
@@ -195,7 +231,7 @@
               </div>
               <div class="card-content collapse show">
                 <div class="card-body">
-                 
+
                 </div>
               </div>
             </div>
@@ -224,16 +260,16 @@
                   <table class="table table-striped table-bordered file-export">
                     <thead>
                       <tr>
-                        <tr>
-                          <th >Status</th>
-                          <th >Invoice#</th>
-                          <th >Customer Name</th>
-                          <th >Products</th>
-                          <th >Categories</th>
-                          <th >Shipping</th>
-                          <th >Amount</th>
-                          
-                        </tr>    
+                      <tr>
+                        <th>Status</th>
+                        <th>Invoice#</th>
+                        <th>Customer Name</th>
+                        <th>Products</th>
+                        <th>Categories</th>
+                        <th>Shipping</th>
+                        <th>Amount</th>
+
+                      </tr>
                       </tr>
                     </thead>
                     <tbody>
@@ -246,12 +282,12 @@
                           <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
                           pending
                           @endif
-                      </td>
+                        </td>
                         <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}"
-                            alt="avatar">
+                            <img class="box-shadow-2"
+                              src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}" alt="avatar">
                           </span>
                           <span>{{ $order->full_name }}</span>
                         </td>
@@ -261,42 +297,42 @@
                             // get the number of items in each order
                             $quantity = array();
                             foreach ($order->product as $items){
-                                array_push($quantity,$items);
-                              }
-                              if(count($quantity) > 3){
-                                $last_items = array_slice($quantity, -3, 3, true);
-                              }
+                            array_push($quantity,$items);
+                            }
+                            if(count($quantity) > 3){
+                            $last_items = array_slice($quantity, -3, 3, true);
+                            }
                             @endphp
                             @foreach ($order->product as $items)
-                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
-                            class="avatar avatar-sm pull-up">
+                            <li data-toggle="tooltip" data-popup="tooltip-custom"
+                              data-original-title="{{ $items->title }}" class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $items->image }}"
-                              alt="{{ $items->title }}">
+                                src="{{ $items->image }}" alt="{{ $items->title }}">
                             </li>
                             @endforeach
-                           
+
                           </ul>
                         </td>
                         <td>
                           @foreach ( $order->product as $items)
-                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::groupBy('title')->where('id',$items->category_id)->value('title') }}</button>
-                          @endforeach 
+                          <button type="button"
+                            class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::groupBy('title')->where('id',$items->category_id)->value('title') }}</button>
+                          @endforeach
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
                             <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 25%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </td>
                         <td class="text-truncate">{{ $order->total }} AED</td>
-                        
+
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -322,23 +358,22 @@
                   <table class="table table-striped table-bordered file-export">
                     <thead>
                       <tr>
-                        <tr>
-                          <th >ID</th>
-                          <th >Product Details</th>
-                          <th >Quantity</th>
-                          <th >Price</th>
-                        </tr>    
+                      <tr>
+                        <th>ID</th>
+                        <th>Product Details</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                      </tr>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach ($order->product as $items)
+                      @foreach ($order->product as $items)
                       <tr>
                         <td class="text-truncate">{{ $items->id }}</td>
-                       
+
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="{{  $items->image}}"
-                            alt="avatar">
+                            <img class="box-shadow-2" src="{{  $items->image}}" alt="avatar">
                           </span>
                           <span>{{ $items->title }}</span>
                         </td>
