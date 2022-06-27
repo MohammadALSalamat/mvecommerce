@@ -65,27 +65,23 @@
                       <h4 class="form-section"><i class="la la-paperclip"></i> Requirements</h4>
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="projectinput5">Interested in</label>
-                            <select id="projectinput5" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">Interested in</option>
-                              <option value="design">design</option>
-                              <option value="development">development</option>
-                              <option value="illustration">illustration</option>
-                              <option value="branding">branding</option>
-                              <option value="video">video</option>
-                            </select>
-                          </div>
+                          <strong>Order Date : </strong>
+                        </div>
+                        <div class="col-md-6">
+                          {{ $order->created_at  }}
+                        </div>
+                        <hr class="mt-4">
+                        <div class="col-md-6">
+                          <strong>Order Status : </strong>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="projectinput6">Budget</label>
-                            <select id="projectinput6" name="budget" class="form-control">
-                              <option value="0" selected="" disabled="">Budget</option>
-                              <option value="less than 5000$">less than 5000$</option>
-                              <option value="5000$ - 10000$">5000$ - 10000$</option>
-                              <option value="10000$ - 20000$">10000$ - 20000$</option>
-                              <option value="more than 20000$">more than 20000$</option>
+                            <select id="projectinput6" name="orderStatus" class="form-control">
+                              <option value="pending" selected>pending</option>
+                              <option value="inprocess">In Proccess</option>
+                              <option value="cancelled">Canceled</option>
+                              <option value="shipped">Shipped</option>
+                              <option value="completed">Completed</option>
                             </select>
                           </div>
                         </div>
@@ -129,7 +125,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-form">Order Details</h4>
+                <h4 class="card-title" id="basic-layout-form"> Billing Details </h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -186,7 +182,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-colored-form-control">User Info</h4>
+                <h4 class="card-title" id="basic-layout-colored-form-control"> Shipping Details </h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -243,7 +239,7 @@
                     <tbody>
                       <tr>
                         <td class="text-truncate">
-                          @if ($order->payment_status == 1)
+                          @if ($order->payment_status == 'completed')
                           <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
                           Paid
                           @else
