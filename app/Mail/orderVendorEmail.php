@@ -11,7 +11,7 @@ class orderVendorEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    private  $order;
+    private  $data_for_vendor;
     /**
      * Create a new message instance.
      *
@@ -19,7 +19,7 @@ class orderVendorEmail extends Mailable implements ShouldQueue
      */
     public function __construct($order)
     {
-        $this->order = $order;
+        $this->data_for_vendor = $data_for_vendor;
     }
 
     /**
@@ -32,6 +32,6 @@ class orderVendorEmail extends Mailable implements ShouldQueue
         return $this->from('support@9yards.ae')
         ->subject('New Order your Product')
         ->view('mails.vendor_order_admin_email')
-        ->with('order', $this->order);
+        ->with('order', $this->data_for_vendor);
     }
 }
