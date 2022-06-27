@@ -68,32 +68,26 @@
     </style>
 
     <body style="margin: 0 !important; padding: 0 !important; background-color: #eeeeee;" bgcolor="#eeeeee">
-
-
         <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Open Sans, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
             For what reason would it be advisable for me to think about business content? That might be little bit risky to have crew member like them.
         </div>
-
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
                 <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
-
                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                         <tr>
                             <td align="center" valign="top" style="font-size:0; padding: 35px;" bgcolor="#F44336">
-
                                 <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;">
                                     <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                         <tr>
                                             <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
                                                 <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">
-                                                <img src="{{ public_path() .'/front-style/assets/images/itajer_logo.png' }}" width="125" height="120" alt="">
+                                                <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="125" height="120" alt="">
                                                 </h1>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
-
                                 <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;" class="mobile-hide">
                                     <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                         <tr>
