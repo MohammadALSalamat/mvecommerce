@@ -78,6 +78,9 @@ class DeliveryController extends Controller
     public function delivery_singleOrder($id)
     {
        $order = Order::find($id);
+
+       
+      
        if($order){
         return view('delivery.backend_pages.orders.singleOrder',compact('order'));
        }else{

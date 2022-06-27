@@ -289,6 +289,7 @@
                         <th>Products</th>
                         <th>Categories</th>
                         <th>Shipping</th>
+                        <th>Vendor Name</th>
                         <th>Amount</th>
 
                       </tr>
@@ -348,6 +349,12 @@
                           @foreach ( $order->product as $items)
                           <button type="button"
                             class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::groupBy('title')->where('id',$items->category_id)->value('title') }}</button>
+                          @endforeach
+                        </td>
+                        <td>
+                          @foreach ( $order->product as $items)
+                          <button type="button"
+                            class="btn btn-sm btn-outline-danger round">{{ \App\Models\seller::groupBy('full_name')->where('id',$items->category_id)->value('title') }}</button>
                           @endforeach
                         </td>
                         <td>
