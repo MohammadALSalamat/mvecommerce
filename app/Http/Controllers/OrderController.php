@@ -176,6 +176,7 @@ class OrderController extends Controller
                 $vendors_toSend_email = Seller::where(['id'=>$product_items->vendor_id])->get();
                 foreach($vendors_toSend_email as $vendor_email){
                     if(!empty($vendor_email)){
+                        $products_of_vendor = product::where('id',$item->id)->where('vendor_id',$vendor_email->id)->get();
                         $data_for_vendor =[
                             'vendor_name' => $vendor_email->full_name,
                             'email'=>$vendor_email->email,
