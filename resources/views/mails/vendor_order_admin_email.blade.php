@@ -158,9 +158,12 @@
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    @foreach ($data_for_vendor['products_of_vendor'] as $item )
+                                                    @foreach ($data_for_vendor['vendor_products'] as $item )
                                                     <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
                                                         Item Name :  ({{$item['title']}})
+                                                    </td>
+                                                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                                        Item Quantity :  ({{$data_for_vendor['qnt']}})
                                                     </td>
                                                     @endforeach
                                                 </tr>
