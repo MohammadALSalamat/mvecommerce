@@ -8,9 +8,11 @@ use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class frontPageApiController extends Controller
 {
+    // ++++++++++++++++++++++++++++ SELLERS INFORMTION ++++++++++++++++++++++++++++++
     public function Sellers_list()
     {
         $banners = Seller::get(['id','full_name','email']);
@@ -18,6 +20,7 @@ class frontPageApiController extends Controller
 
     }
 
+     // ++++++++++++++++++++++++++++ USERS INFORMTION ++++++++++++++++++++++++++++++
     public function register_new_user(Request $request)
     {
         $data = $request->all();
@@ -40,7 +43,7 @@ class frontPageApiController extends Controller
         $addnewcustumer->email = $data['email'];
         $addnewcustumer->password = Hash::make(($data['password']));
         $addnewcustumer->save();
-        return 'Congrats you have registerd as a customer';
+        return back()->with('message','Congrats you have registerd as a customer');
 
     }
 }
