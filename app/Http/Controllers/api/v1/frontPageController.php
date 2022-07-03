@@ -499,8 +499,6 @@ class frontPageController extends Controller
                 }
             }
         }
-
-
         // price filter 
         if (!empty($data['min_price']) || !empty($data['max_price'])) {
             if ($data['min_price'] < Helper::minPrice() || $data['max_price'] > Helper::maxPrice() || $data['min_price'] > $data['max_price']) {

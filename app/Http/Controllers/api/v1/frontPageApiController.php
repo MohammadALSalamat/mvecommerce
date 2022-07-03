@@ -480,15 +480,182 @@ class frontPageApiController extends Controller
             'single_product'=>$single_product,
             'vendor_info'=>$vendor_info,
             'product_gallary'=>$product_gallary,
-            'product_attr',
-            'user_review'
-            ,'Category_related_product'
+            'product_attr'=>$product_attr,
+            'user_review'=>$user_review,
+            'Category_related_product'=>$Category_related_product
         ],200);
       }else{
         return response()->json([
             'errors','This Product Is Not Valid'
         ],403);
       }
+    }
+
+    // Collections Filter
+
+    public function shop_filter(Request $request)
+    {
+        $data = $request->all();
+
+        $catUrl = '';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl.='&category='.$category;
+                }else{
+                    $catUrl.=','.$category;
+                }
+            }
+        }
+        $brandsUrl = '';
+        if(!empty($data['brand'])){
+            foreach($data['brand'] as $brand){
+                if(empty($brandsUrl)){
+                    $brandsUrl.='&brand='.$brand;
+                }else{
+                    $brandsUrl.=','.$brand;
+                }
+            }
+        }
+        // price filter 
+        if (!empty($data['min_price']) || !empty($data['max_price'])) {
+            if ($data['min_price'] < Helper::minPrice() || $data['max_price'] > Helper::maxPrice() || $data['min_price'] > $data['max_price']) {
+                return back()->with('error', 'The Price Rang is Not Correct, Search between '. Helper::minPrice() .' And '. Helper::maxPrice());
+            }
+            if ($data['min_price'] == null || empty($data['min_price'])) {
+                $minPrice = Helper::minPrice();
+            } else {
+                $minPrice = $data['min_price'];
+            }
+            if ($data['max_price'] == null || empty($data['max_price'])) {
+                $maxPrice = Helper::maxPrice();
+            } else {
+                $maxPrice = $data['max_price'];
+            }
+            //filter price
+            $price = $minPrice.'-'.$maxPrice;
+        }
+        $price_range_url='';
+        if(!empty($price)){
+            $price_range_url.='&price='.$price;
+        }
+        return redirect()->route('shop_page',$catUrl.$brandsUrl.$price_range_url);
+    }
+
+     //Grocery Filter
+    
+     public function Grocery_filter(Request $request)
+     {
+         $data = $request->all();
+ 
+         $catUrl = '';
+         if(!empty($data['category'])){
+             foreach($data['category'] as $category){
+                 if(empty($catUrl)){
+                     $catUrl.='&category='.$category;
+                 }else{
+                     $catUrl.=','.$category;
+                 }
+             }
+         }
+         // price filter 
+         if (!empty($data['min_price']) || !empty($data['max_price'])) {
+             if ($data['min_price'] < Helper::minPrice() || $data['max_price'] > Helper::maxPrice() || $data['min_price'] > $data['max_price']) {
+                 return back()->with('error', 'The Price Rang is Not Correct, Search between '. Helper::minPrice() .' And '. Helper::maxPrice());
+             }
+             if ($data['min_price'] == null || empty($data['min_price'])) {
+                 $minPrice = Helper::minPrice();
+             } else {
+                 $minPrice = $data['min_price'];
+             }
+             if ($data['max_price'] == null || empty($data['max_price'])) {
+                 $maxPrice = Helper::maxPrice();
+             } else {
+                 $maxPrice = $data['max_price'];
+             }
+             //filter price
+             $price = $minPrice.'-'.$maxPrice;
+         }
+         $price_range_url='';
+         if(!empty($price)){
+             $price_range_url.='&price='.$price;
+         }
+         $current_url = URL::current();
+         SEOMeta::setCanonical($current_url);
+         return redirect()->route('grocery_shop_only',$catUrl.$price_range_url);
+     }
+ 
+     // auto search products 
+ 
+     public function autosearch(Request $request)
+     {
+         $data = $request->get('term','');
+         // get the products
+         $products_autoSearch = product::where('title','LIKE','%'.$data.'%')->orwhere('ar_title','LIKE','%'.$data.'%')->get();
+ 
+         // add the products to an array
+ 
+         $products_array = array();
+         foreach($products_autoSearch as $product){
+             if (preg_match('/[اأإء-ي]/ui', $data)){
+                 $products_array[]= array('value'=>$product->ar_title,'id'=>$product->id);
+             }else{
+                 $products_array[]= array('value'=>$product->title,'id'=>$product->id);
+             }
+         }
+         if(count($products_array)){
+             return $products_array;
+         }else{
+             if (preg_match('/[اأإء-ي]/ui', $data)){
+                 return ['value'=>'لا يوجد منتجات بهذا اﻷسم' ,'id'=>''];
+             }else{
+                 return ['value'=>'There Is No Reslut Found...' ,'id'=>''];
+             }
+         }
+     }
+ 
+     // best dealies of the products where has discound more that 30%
+
+    public function best_dealis(Request $request)
+    {
+          // product filter in shop page get the data from the link top
+          $products = product::query();
+          
+          // use it for the filtter using ajax-> (sort prodcuts)
+          $sort = '';
+          if ($request->sort != null) {
+              $sort = $request->sort; // get the value
+          }
+          
+          
+          if ($products == null) {
+          return view('errors.404');
+          } else {
+              //start the sort depends on the valueof ajax
+              if ($sort == 'price-low') {
+              } elseif ($sort == 'price-low') {
+                  $products = product::orderBy('price', 'ASC');
+              } elseif ($sort == 'price-high') {
+                  $products = product::orderBy('price', 'DESC');
+              } elseif ($sort == 'alpha-asc') {
+                  $products = product::orderBy('title', 'ASC');
+              } elseif ($sort == 'alpha-desc') {
+                  $products = product::orderBy('title', 'DESC');
+              } elseif ($sort == 'discountLTH') {
+                  $products = product::orderBy('discound', 'ASC');
+              } elseif ($sort == 'discountHTL') {
+                  $products = product::orderBy('discound', 'DESC');
+              } 
+          }
+          $route='best-deals';
+          
+          $products = $products->with('this_belong_to_category')->where(['status' => 1])->where('discound','>',20)->orderBy('discound', 'DESC')->paginate(50);
+         
+
+          return response()->json([
+         'products'=>$products,
+          'route'=>$route
+        ]);
     }
 
     // ++++++++++++++++++++++++++++ SELLERS INFORMTION ++++++++++++++++++++++++++++++
