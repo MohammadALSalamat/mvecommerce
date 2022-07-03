@@ -653,7 +653,7 @@ class frontPageApiController extends Controller
          
 
           return response()->json([
-         'products'=>$products,
+          'products'=>$products,
           'route'=>$route
         ]);
     }
@@ -682,7 +682,6 @@ class frontPageApiController extends Controller
         ]);
 
     }
-
      // ++++++++++++++++++++++++++++ USERS INFORMTION ++++++++++++++++++++++++++++++
     public function register_new_user(Request $request)
     {
