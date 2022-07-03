@@ -36,11 +36,18 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\sellerRegistertionEmail_forAdmin;
 use App\Models\userLocation;
+use App\Http\Controllers;
 
 class frontPageController extends Controller
 {
     //add data from database to front page
 
+    public function banners()
+    {
+        $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
+        return json_decode($banners);
+
+    }
     public function HomePage()
     {
         //get the data
