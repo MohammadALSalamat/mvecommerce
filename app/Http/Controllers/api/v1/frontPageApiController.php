@@ -303,7 +303,6 @@ class frontPageApiController extends Controller
          // Filter Section
         #categories
         $products = $products->where(['status' => 1])->paginate(12); 
-
         $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         #vendors
         $main_vendors = User::where('status', 'active')->where('role','seller')->get();
@@ -311,8 +310,62 @@ class frontPageApiController extends Controller
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
 
         return response()->json([
-            'products','route', 'main_categories', 'main_vendors', 'type_of_work'
+            'products'=>$products,
+            'route'=>$route, 
+            'main_categories'=>$main_categories, 
+            'main_vendors'=>$main_vendors, 
+            'type_of_work'=>$type_of_work
         ]);
+    }
+
+    public function special_category_product(Request $request , $slug)
+    {
+        $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
+
+        $banner_category = categoryBanner::where('category_place_id',$category_product->id)->get();
+        //get the sort value from the Ajax
+        $sort = '';
+        if($request->sort != null){
+            $sort = $request->sort; // get the value
+        }
+        if($category_product == null){
+            return view('errors.404');
+        }else{
+            //start the sort depends on the valueof ajax
+            if($sort == 'price-low'){
+
+            }elseif($sort == 'price-low'){
+            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'category_id'=>$category_product->id])->paginate(12);
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+
+            }else{
+                $products = product::where(['status' => 1, 'category_id' => $category_product->id])->paginate(12);
+
+            }
+            
+        }
+        $count_product =  count($products);
+        $route = 'Shop/prodcuts';
+        // Filter Section
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+        $main_vendors = Seller::where('status',1)->where('is_verify' , 1)->get();
+        #type of work filter
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
+        
+        return response()->json(['banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work']);
     }
 
 
