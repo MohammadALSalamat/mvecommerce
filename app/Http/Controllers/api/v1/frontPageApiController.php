@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Hash;
 class frontPageApiController extends Controller
 {
     // ++++++++++++++++++++++++++++ SELLERS INFORMTION ++++++++++++++++++++++++++++++
-    public function Sellers_list()
+    public function sellers_list()
     {
-        $banners = Seller::get(['id','full_name','email']);
-        return json_decode($banners);
+        $seller_list = Seller::get(['id','full_name','email','username','phone','address','city','country','shop_name','is_verify','status','type_of_work','added_by']);
+        return json_decode($seller_list);
+
+    }
+
+    public function single_seller($id)
+    {
+        $seller = Seller::where('username',$id)->where('status',1)->where('is_verify' , 1)->first(['id','full_name','email','username','phone','address','city','country','shop_name','is_verify','status','type_of_work','added_by']);
+        return json_decode($seller);
 
     }
 

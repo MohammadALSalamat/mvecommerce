@@ -842,6 +842,7 @@ class frontPageController extends Controller
         {
             $current_url = URL::current();
             SEOMeta::setCanonical($current_url);
+            
             $seller = Seller::where('username',$id)->where('status',1)->where('is_verify' , 1)->first();
             $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
             $top_selles_vendor = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->take(6)->get();
