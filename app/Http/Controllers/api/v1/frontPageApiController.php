@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class frontPageApiController extends Controller
 {
@@ -31,26 +32,30 @@ class frontPageApiController extends Controller
     public function register_new_user(Request $request)
     {
         $data = $request->all();
-    
-        if ($data['full_name'] == null || empty($data['full_name'])) {
-            return back()->with('error', 'full name is required');
+
+        $validator = Validator::make($data,[
+            'full_name'=>'required',
+            'email'=>'required|email|unique:users,email',
+            'password'=>'required'
+        ],[
+        'full_name.required'=>'full name file is required',
+        'email.required'=>'email is required',
+        'email.unique'=>'email is already there',
+        ]);
+        
+        if($validator->failed()){
+            return response()->json(['error'=>'check Validation'],403);
         }
-        if ($data['email'] == null || empty($data['email'])) {
-            return back()->with('error', 'full name is required');
-        }
-        if ($data['password'] == null || empty($data['email'])) {
-            return back()->with('error', 'full name is required');
-        }
-        $emailCheck = User::where('email', $data['email'])->count();
-        if ($emailCheck > 0) {
-            return back()->with('error', 'Email Is Already Exist');
-        }
+       
         $addnewcustumer = new User();
         $addnewcustumer->full_name = $data['full_name'];
         $addnewcustumer->email = $data['email'];
         $addnewcustumer->password = Hash::make(($data['password']));
         $addnewcustumer->save();
-        return back()->with('message','Congrats you have registerd as a customer');
+
+        $token = $addnewcustumer->createToken('ItajerCustomerToken')->accessToken;
+
+        return response()->json(['token'=>$token,'full_name'=>$addnewcustumer->full_name ],200) ;
 
     }
 }
