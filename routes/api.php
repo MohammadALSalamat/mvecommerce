@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 // get banners of home page
-Route::get('/banners',[frontPageApiController::class,'banners']);
+Route::get('/Sellers_list',[frontPageApiController::class,'Sellers_list']);
