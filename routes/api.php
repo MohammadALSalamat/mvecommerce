@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/sellers_list',[frontPageApiController::class,'sellers_list']);
 Route::get('/single_seller/{id}',[frontPageApiController::class,'single_seller']);
 
+Route::post('/login_user',[frontPageApiController::class,'login_user']);
 Route::post('/new_register_user',[frontPageApiController::class,'register_new_user']);

@@ -997,6 +997,8 @@ class frontPageController extends Controller
                 $addnewcustumer->email = $data['email'];
                 $addnewcustumer->password = Hash::make(($data['password']));
                 $addnewcustumer->save();
+                $addnewcustumer->createToken('ItajerCustomerToken')->accessToken;
+
                 return back()->with('message','Congrats you have registerd as a customer');
     }
 

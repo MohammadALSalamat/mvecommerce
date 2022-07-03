@@ -8,6 +8,7 @@ use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,7 +36,7 @@ class frontPageApiController extends Controller
 
         $validator = Validator::make($data,[
             'full_name'=>'required',
-            'email'=>'required|email|unique:users,email',
+            'email'=>'required|email|unique:users',
             'password'=>'required'
         ],[
         'full_name.required'=>'full name file is required',
@@ -55,7 +56,23 @@ class frontPageApiController extends Controller
 
         $token = $addnewcustumer->createToken('ItajerCustomerToken')->accessToken;
 
-        return response()->json(['token'=>$token,'full_name'=>$addnewcustumer->full_name ],200) ;
+        return response()->json(['token'=>$token,'full_name'=>$addnewcustumer->full_name ,'email'=> $addnewcustumer->email],200) ;
 
     }
+
+     // login get the info details
+     public function login_user(Request $request)
+     {
+         $data = $request->all();
+         $this->validate($request,[
+             'email'=> 'email|required|exists:users,email',
+             'password'=>'required|min:4',
+         ]);
+         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'status'=>'active'])){
+             
+         }else{
+             return back()->with('error','Invalid Email & Password Or the Status of your account is inactive please contact the Admin');
+         }
+     }
+ 
 }
