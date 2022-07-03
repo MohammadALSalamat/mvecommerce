@@ -42,12 +42,7 @@ class frontPageController extends Controller
 {
     //add data from database to front page
 
-    public function banners()
-    {
-        $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
-        return json_decode($banners);
-
-    }
+   
     public function HomePage()
     {
         //get the data
