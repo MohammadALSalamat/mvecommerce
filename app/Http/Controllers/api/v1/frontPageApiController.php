@@ -45,7 +45,7 @@ class frontPageApiController extends Controller
         ]);
         
         if($validator->failed()){
-            return response()->json(['error'=>'check Validation'],403);
+            return response()->json(['errors'=>'check Validation'],403);
         }
        
         $addnewcustumer = new User();
@@ -64,14 +64,27 @@ class frontPageApiController extends Controller
      public function login_user(Request $request)
      {
          $data = $request->all();
-         $this->validate($request,[
+         $validator = Validator::make($data,[
              'email'=> 'email|required|exists:users,email',
              'password'=>'required|min:4',
          ]);
-         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'status'=>'active'])){
-             
+         if ($validator->failed()) {
+             if ($validator->failed()) {
+                 return response()->json(['errors'=>'check Validation'], 403);
+             }
+         }
+         $userInfo=[
+            'email'=>$data['email'],
+            'password'=>$data['password'],
+            'status'=>'active'
+         ];
+         if(auth()->attempt($userInfo)){
+            
+             $token = auth()->user()->createToken('ItajerCustomerToken')->accessToken;
+             return response()->json(['token'=>$token,'full_name'=>auth()->user()->full_name ,'email'=> auth()->user()->email],200) ;
+
          }else{
-             return back()->with('error','Invalid Email & Password Or the Status of your account is inactive please contact the Admin');
+             return response()->json(['errors'=>'something Went Wrong '], 401);
          }
      }
  
