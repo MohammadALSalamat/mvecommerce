@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\User;
 use App\Models\banner;
 use App\Models\Seller;
+use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ class frontPageApiController extends Controller
     public function sellers_list()
     {
         $seller_list = Seller::get(['id','full_name','email','username','phone','address','city','country','shop_name','is_verify','status','type_of_work','added_by']);
+        
         return json_decode($seller_list);
 
     }
@@ -25,7 +27,16 @@ class frontPageApiController extends Controller
     public function single_seller($id)
     {
         $seller = Seller::where('username',$id)->where('status',1)->where('is_verify' , 1)->first(['id','full_name','email','username','phone','address','city','country','shop_name','is_verify','status','type_of_work','added_by']);
-        return json_decode($seller);
+        $vendor_product = product::where('vendor_id',$seller->id)->where('added_by','seller')->get();
+        $top_selles_vendor = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->take(6)->get();
+        $top_reviewed_vendor_product= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->take(6)->get();
+
+        return response()->json([
+        'seller_details'=>$seller,
+        'seller_products'=>$vendor_product,
+        'top_selles_vendor'=>$top_selles_vendor,
+        'top_reviewed_vendor_product'=>$top_reviewed_vendor_product
+        ]);
 
     }
 
@@ -79,7 +90,7 @@ class frontPageApiController extends Controller
             'status'=>'active'
          ];
          if(auth()->attempt($userInfo)){
-            
+
              $token = auth()->user()->createToken('ItajerCustomerToken')->accessToken;
              return response()->json(['token'=>$token,'full_name'=>auth()->user()->full_name ,'email'=> auth()->user()->email],200) ;
 
