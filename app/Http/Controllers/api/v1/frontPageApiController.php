@@ -81,13 +81,13 @@ class frontPageApiController extends Controller
             'products_bestSelling_top3'=>$products_bestSelling_top3,
             'new_products'=>$new_products,
             'top_reviewed'=>$top_reviewed,
-            'sponsers',
-            'banners', 
-            'categories',
-            'home_3_Categories',
-            'products_bestSelling',
-            'categories_discound',
-            'user_locations'
+            'sponsers'=>$sponsers,
+            'banners'=>$banners, 
+            'categories'=>$categories,
+            'home_3_Categories'=>$home_3_Categories,
+            'products_bestSelling'=>$products_bestSelling,
+            'categories_discound'=>$categories_discound,
+            'user_locations'=>$user_locations
         ]);
     }
 
