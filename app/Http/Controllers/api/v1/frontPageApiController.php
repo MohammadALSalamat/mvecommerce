@@ -365,9 +365,131 @@ class frontPageApiController extends Controller
         #type of work filter
         $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
         
-        return response()->json(['banner_category','category_product', 'route' , 'products', 'count_product', 'main_categories' , 'main_vendors', 'type_of_work']);
+        return response()->json([
+            'banner_category'=>$banner_category,
+            'category_product'=>$category_product, 
+            'route' =>$route, 
+            'products'=>$products, 
+            'count_product'=>$count_product, 
+            'main_categories'=>$main_categories, 
+            'main_vendors'=>$main_vendors, 
+            'type_of_work'=>$type_of_work
+        ]);
     }
 
+    //still empty 
+    public function shop_child_cat(Request $request , $slug)
+    {
+        $category_product = category::with('one_cat_has_many_products')->where('slug', $slug)->first();
+        //get the sort value from the Ajax
+        $banner_category = categoryBanner::where('category_place_id',$category_product->id)->get();
+
+        $sort = '';
+        if($request->sort != null){
+            $sort = $request->sort; // get the value
+        }
+        if($category_product == null){
+            return view('errors.404');
+        }else{
+            //start the sort depends on the valueof ajax
+            if($sort == 'price-low'){
+
+            }elseif($sort == 'price-low'){
+            $products= product::orderBy('price','ASC')->where(['status'=> 1 , 'child_category_id'=>$category_product->id])->paginate(12);
+            } elseif ($sort == 'price-high') {
+                $products = product::orderBy('price', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
+            } elseif ($sort == 'alpha-asc') {
+                $products = product::orderBy('title', 'ASC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'alpha-desc') {
+                $products = product::orderBy('title', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'discountLTH') {
+                $products = product::orderBy('discound', 'ASC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
+
+            } elseif ($sort == 'discountHTL') {
+                $products = product::orderBy('discound', 'DESC')->where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(12);
+
+            }else{
+                $products = product::where(['status' => 1, 'child_category_id' => $category_product->id])->paginate(50);
+            }
+            
+        }
+
+        $count_product =  count($products);
+        $route = 'Shop/prodcuts/sub_product';
+
+        // Filter Section
+        $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
+        #vendors
+        $main_vendors = Seller::where('status',1)->where('is_verify' , 1)->get();
+        #type of work filter
+        $type_of_work = Seller::groupBy('type_of_work')->where('status',1)->pluck('type_of_work');
+        
+        return response()->json([
+            'banner_category'=>$banner_category,
+            'category_product'=>$category_product, 
+            'route' =>$route, 
+            'products'=>$products, 
+            'count_product'=>$count_product, 
+            'main_categories' =>$main_categories, 
+            'main_vendors' =>$main_vendors, 
+            'type_of_work' =>$type_of_work
+        ]);
+    }
+
+
+    public function Single_product($slug)
+    {
+      $single_product = product::with('rel_product')->where('slug',$slug)->first(); // single product info
+      $related_product = product::where('category_id',$single_product->category_id)->where('id','!=',$single_product->id)->get();
+      $vendor_info = Seller::where('id',$single_product->vendor_id)->first(); // vednof info
+      $vendor_products= product::where('vendor_id',$vendor_info->id)->where('added_by','seller')->get();
+      $product_attr = productAttribute::where('product_id',$single_product->id)->get();
+      $product_gallary =productGallary::where('product_id',$single_product->id)->get();
+      $user_review = ProductReview::where('product_id',$single_product->id)->latest()->paginate(10); // product_review
+      $avareg_review = ProductReview::where('product_id',$single_product->id)->get();
+      $Category_related_product = category::where('id',$single_product->category_id)->first();
+      $more_products_left_side = product::where('id','!=',$single_product->id)->inRandomOrder()->take(7)->get();
+
+     #review comments 
+     if(empty($single_product->frequantly_boughts_ids) || $single_product->frequantly_boughts_ids == null){
+        $freq_products = 0;
+     }else{
+         $freq_products = product::wherein('id',$single_product->frequantly_boughts_ids)->get(); // get frequantly products
+     }
+
+     $current_url = URL::current();
+     SEOMeta::setCanonical($current_url);
+
+     $avareg = 0;
+                                       $sum = 0;
+                                       foreach($avareg_review as $avg){
+                                           $sum += $avg->rate;
+                                           $countavg = count($avareg_review);
+                                           $avareg = $sum / $countavg;
+                                        }
+      if($single_product){
+        return response()->json([
+            'more_products_left_side'=>$more_products_left_side,
+            'freq_products'=>$freq_products,
+            'related_product'=>$related_product,
+            'vendor_products'=>$vendor_products,
+            'avareg'=>$avareg,
+            'avareg_review'=>$avareg_review,
+            'single_product'=>$single_product,
+            'vendor_info'=>$vendor_info,
+            'product_gallary'=>$product_gallary,
+            'product_attr',
+            'user_review'
+            ,'Category_related_product'
+        ],200);
+      }else{
+        return response()->json([
+            'errors','This Product Is Not Valid'
+        ],403);
+      }
+    }
 
     // ++++++++++++++++++++++++++++ SELLERS INFORMTION ++++++++++++++++++++++++++++++
     public function sellers_list()
