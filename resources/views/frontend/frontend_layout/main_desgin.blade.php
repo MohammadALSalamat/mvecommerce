@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+ @if(Config::get('app.locale') == 'en')
     <title>ITajer | @yield('mytitle')</title>
-    
+    @else
+    <title>اي تاجر | @yield('mytitle')</title>
+    @endif
     <meta name="author" content="ITAJER SHOP">
 
     {!! SEOMeta::generate() !!}

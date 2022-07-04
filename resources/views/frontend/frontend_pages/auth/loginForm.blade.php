@@ -1,5 +1,9 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','Login Page' )
+ @if(Config::get('app.locale') == 'en')
+@section('mytitle','Login Form')
+@else
+@section('mytitle','تسجيل دخول ')
+@endif
 @section('style')
 <style>
     .danger,
@@ -261,8 +265,18 @@
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>كلمة السر *</label>
-                                    <input type="password" class="form-control" name="password" id="password_1">
+                                    <input type="password" class="form-control" name="password" id="password_user"
+                                        required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
+                                        title="يجب أن يحتوي على رقم واحد على الأقل وحرف واحد كبير وصغير ، و 7 أحرف على الأقل أو أكثر">
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
+                                <span style="color: #000;margin-bottom:10px!important"> قواعد التحقق من كلمة المرور
+                                </span>
+                                <div id="Length" class="glyphicon glyphicon-remove">يجب على الاقل ان يكون 7 حروف</div>
+                                <div id="UpperCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد كبير على الأقل</div>
+                                <div id="LowerCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد صغير على الأقل</div>
+                                <div id="Numbers" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف رقمي واحد على الأقل</div>
+                                <div id="Symbols" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف خاص واحد على الأقل</div>
 
                                 <div class="mt-0 form-checkbox user-checkbox">
                                     <input type="radio" class="custom-checkbox checkbox-round active"

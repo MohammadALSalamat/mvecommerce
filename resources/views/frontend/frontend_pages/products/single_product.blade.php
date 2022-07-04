@@ -1,5 +1,12 @@
 @extends('frontend.frontend_layout.main_desgin')
+
+@if(Config::get('app.locale') == 'en')
 @section('mytitle',$single_product->title )
+
+@else
+@section('mytitle',$single_product->ar_title )
+
+@endif
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
@@ -520,7 +527,7 @@
                                         <div class="product-categories">
                                             القسم:
                                             <span class="product-category"><a
-                                                    href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a></span>
+                                                    href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->ar_title }}</a></span>
                                         </div>
                                         <div class="product-sku">
                                             الرمز: <span>MS46891340</span>
@@ -1208,7 +1215,7 @@
                                             @else
                                             <li class="store-address">
                                                 <label>العنوان:</label>
-                                                <span class="detail">{{$vendor_info->address}}</span>
+                                                <span class="detail">{!!$vendor_info->address!!}</span>
                                             </li>
                                             @endif
                                             <li class="store-phone">
@@ -1448,8 +1455,16 @@
                                         @endif
                                     </figure>
                                     <div class="product-details text-center">
-                                        <div class="product-cat"><a
-                                                href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}</a>
+                                        <div class="product-cat">
+                                            @if(Config::get('app.locale') == 'en')
+                                            <a
+                                                href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->title }}
+                                                </a>
+                                                  @else
+                                                    <a
+                                                href="{{ route('shop_special_category',$Category_related_product->slug) }}">{{ $Category_related_product->ar_title }}
+                                                </a>
+                                                @endif
                                         </div>
                                         @if(Config::get('app.locale') == 'en')
                                         <h4 class="product-name"><a

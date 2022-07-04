@@ -81,9 +81,9 @@
                                     <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                         <tr>
                                             <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                                <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">
-                                                <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="125" height="120" alt="">
-                                                </h1>
+                                                <a href="https://demo2-itajer.9yards-global.com/" target="_blank">
+                                                <img src="https://demo2-itajer.9yards-global.com/front-style/assets/images/itajer_logo_white.png" width="125" height="120" alt="">
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
@@ -95,10 +95,10 @@
                                                 <table cellspacing="0" cellpadding="0" border="0" align="right">
                                                     <tr>
                                                         <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400;">
-                                                            <p style="font-size: 18px; font-weight: 400; margin: 0; color: #ffffff;"><a href="{{ route('homepage') }}" target="_blank" style="color: #ffffff; text-decoration: none;">Shop &nbsp;</a></p>
+                                                            <p style="font-size: 18px; font-weight: 400; margin: 0; color: #ffffff;"><a href="https://demo2-itajer.9yards-global.com/" target="_blank" style="color: #ffffff; text-decoration: none;">Shop &nbsp;</a></p>
                                                         </td>
                                                         <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 24px;">
-                                                            <a href="{{ route('homepage') }}" target="_blank" style="color: #ffffff; text-decoration: none;"><img src="https://img.icons8.com/color/48/000000/small-business.png" width="27" height="23" style="display: block; border: 0px;" /></a>
+                                                            <a href="https://demo2-itajer.9yards-global.com/" target="_blank" style="color: #ffffff; text-decoration: none;"><img src="https://img.icons8.com/color/48/000000/small-business.png" width="27" height="23" style="display: block; border: 0px;" /></a>
                                                         </td>
                                                     </tr>
                                                 </table>

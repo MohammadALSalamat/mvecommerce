@@ -1,5 +1,11 @@
 @extends('frontend.frontend_layout.main_desgin')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','Shop Category')
+
+@else
+@section('mytitle','أقسام السوق')
+
+@endif
 <!-- Default CSS -->
 
 @section('content')
@@ -63,11 +69,19 @@
                                             style="width: 100%;height:130px !important;object-fit:contain;background:#fff"  />
                                     </a>
                                 </figure>
+                                @if(Config::get('app.locale') == 'en')
                                 <div class="category-content">
                                     <h4 class="category-name">
                                         <a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->title }}</a>
                                     </h4>
                                 </div>
+                                @else
+                                <div class="category-content">
+                                    <h4 class="category-name">
+                                        <a href="{{ route('shop_child_cat',$single_cat->slug) }}">{{ $single_cat->ar_title }}</a>
+                                    </h4>
+                                </div>
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -223,7 +237,11 @@
 
                     </div>
                     @else
+                       @if(Config::get('app.locale') == 'en')
                     <h1 class="text-center" style="color: #fff;background:red;padding:20pxborder:1px solid red"> There is No Products related to this category</h1>
+                    @else
+                    <h1 class="text-center" style="color: #fff;background:red;padding:20pxborder:1px solid red"> لا توجد منتجات متعلقة بهذه الفئة</h1>
+                    @endif
                 @endif
                 </div>
                

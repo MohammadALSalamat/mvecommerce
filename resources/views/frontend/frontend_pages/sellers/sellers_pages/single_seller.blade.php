@@ -1,5 +1,12 @@
 @extends('frontend.frontend_layout.main_desgin')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle', 'single Seller Page')
+
+@else
+@section('mytitle', 'صفحة المستثمر')
+
+@endif
+
 @section('content')
 <!-- Start of Main -->
 <main class="main">

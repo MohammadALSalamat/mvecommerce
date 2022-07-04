@@ -1,5 +1,11 @@
 @extends('frontend.frontend_layout.main_desgin')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','Home Page')
+
+@else
+@section('mytitle','الرئيسية')
+
+@endif
 @section('content')
 @section('style')
 <!--Addinal style for below sections -->
@@ -14,12 +20,15 @@
         height: 120px !important;
     }
     .best-deals-section img{
-        height: 130px !important;
+        height: 100px !important;
 
     }
     .carousel-item{
         height:unset !important;    
     }
+    .category-banner-wrapper img, .category-cosmetic-lifestyle img {
+    min-height: 11rem;
+}
 }
 </style>
 @endsection
@@ -226,6 +235,7 @@
         <!-- End of Category Banner Wrapper -->
         <div class="mb-8 row deals-wrapper appear-animate best-deals-section">
             <div class="mb-4 col-lg-12">
+                 @if(Config::get('app.locale') == 'en')
                 <div class="single-product h-100 br-sm">
                     <h4 class="title-sm title-underline font-weight-bolder ls-normal">
                         The Best Discound(s) Of Categries
@@ -275,6 +285,57 @@
                     </div>
 
                 </div>
+                @else
+                 <div class="single-product h-100 br-sm">
+                    <h4 class="title-sm title-underline font-weight-bolder ls-normal">
+                        أفضل تخفيضات على الفئات
+                    </h4>
+                    <div class="swiper">
+                        <div class="swiper-container swiper-theme nav-top swiper-nav-lg" data-swiper-options="{
+                            'spaceBetween': 20,
+                            'slidesPerView': 1
+                        }">
+                            <div class="swiper-wrapper row cols-1 gutter-no">
+                                <div class="swiper-slide">
+                                    <div class="product product-single row">
+                                        @foreach ($categories_discound as $cardsDiscound)
+                                        @if(count($cardsDiscound->one_cat_has_many_products) > 0)
+                                        @php
+                                        $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
+                                        @endphp
+                                        <div class="col-md-4">
+                                            <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
+                                                <div class="row"
+                                                    style="background: red;border-radius: 15px;box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px; margin:20px 0">
+                                                    <div class="col-md-7" style="vertical-align: middle;margin:auto">
+                                                        <h2 class="mb-2 title-sm  font-weight-bolder ls-normal text-center text-white"
+                                                            style="padding:10px; font-size:25px">
+                                                           تخفيضات تصل الى {{ $max_discound }} % </h2>
+                                                        <h4 class="text-center text-white"> من
+                                                            {{ $cardsDiscound->ar_title }}</h4>
+                                                    </div>
+                                                    <div class="col-md-5 ">
+                                                        <figure>
+                                                            <img src="{{ asset($cardsDiscound->image) }}" alt="product"
+                                                                style="height:200px;object-fit:contain;width:100%" />
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="swiper-pagination">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @endif
             </div>
            
         </div>
@@ -402,12 +463,12 @@
                                 <a href="{{ route('singleproduct',$new_product->slug) }}">
                                     @if(count($other_image) > 1 )
                                     <img src="{{ $other_image[0]}}" alt="Product"
-                                        style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        />
                                     <img src="{{ $other_image[1] }}" alt="Product"
-                                        style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        />
                                     @else
                                     <img src="{{ $other_image[0]}}" alt="Product"
-                                        style="height:200px !important; width:100% !important;object-fit:contain" />
+                                        />
                                     @endif
 
                                 </a>
@@ -529,12 +590,12 @@
                             <a href="{{ route('singleproduct',$top_selling->slug) }}">
                                 @if(count($other_image) > 1 )
                                 <img src="{{ $other_image[0]}}" alt="Product"
-                                    style="height:200px !important; width:100% !important;object-fit:contain" />
+                                    />
                                 <img src="{{ $other_image[1] }}" alt="Product"
-                                    style="height:200px !important; width:100% !important;object-fit:contain" />
+                                    />
                                 @else
                                 <img src="{{ $other_image[0]}}" alt="Product"
-                                    style="height:200px !important; width:100% !important;object-fit:contain" />
+                                    />
                                 @endif
                             </a>
                             <div class="product-action-vertical">
@@ -711,12 +772,12 @@
 
                                         @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         <img src="{{ $other_image[1] }}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @else
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @endif
                                     </a>
                                     <div class="product-action-vertical">
@@ -839,12 +900,12 @@
 
                                         @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         <img src="{{ $other_image[1] }}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @else
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @endif
                                     </a>
                                     <div class="product-action-vertical">
@@ -1031,12 +1092,12 @@
 
                                         @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         <img src="{{ $other_image[1] }}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @else
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @endif
                                     </a>
                                     <div class="product-action-vertical">
@@ -1159,12 +1220,12 @@
 
                                         @if(count($other_image) > 1 )
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         <img src="{{ $other_image[1] }}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @else
                                         <img src="{{ $other_image[0]}}" alt="Product"
-                                            style="height:200px !important; width:100% !important;object-fit:contain" />
+                                            />
                                         @endif
                                     </a>
                                     <div class="product-action-vertical">

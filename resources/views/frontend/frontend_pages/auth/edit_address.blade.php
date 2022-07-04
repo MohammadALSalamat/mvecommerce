@@ -1,5 +1,9 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','My Account' )
+ @if(Config::get('app.locale') == 'en')
+@section('mytitle','Edit Address' )
+@else
+@section('mytitle','تعديل العنوان ' )
+@endif
 @section('style')
 <style>
 .quform .form-control {
@@ -123,64 +127,78 @@ input[type=text],  input[type=number], input[type=tel], input[type=password], in
 @else
 <main class="main">
     <!-- Start of Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <h1 class="mb-0 page-title">العناوين</h1>
+    <div class="container">
+    <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
+            <h1 class="mb-0 page-title text-white">تعديل عنوان التسليم</h1>
         </div>
-    </div>
-    <div class="col-12">
-        <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
-            <div class="card">
-                <div class="card-header">
-                    <a href="#collapse1-1" class="expand">تعديل على موقع وصول الشحنة</a>
-                </div>
-                <div id="collapse1-1" class="card-body collapsed">
-                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="" method="post"
+    <div class="col-12 col-md-7 offset-md-2 mr-auto ml-auto mt-6">
+        <div class="">
+            <h3> تعديل العنوان   </h3>
+                    <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('add_deliver_address') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                        <div class="form-group mb-3">
+                            <label style="font-weight:900 !important"> البلد *</label>
+                            <select  id="country-dd" name="country" class="form-control">
+                                <option value="none" selected> <!!-- اختر بلدك--!!></option>
+                                 @foreach ($countries as $data)
+                                <option  value="{{$data->id}}"  @if($data->id != 252)                                   
+                                    style="display:none"
+                                    @else
+                                    selected 
+                                @endif>
+                                    {{$data->country}}
+                                </option>
+                                @endforeach
+                            </select>
+                            <small> التوصيل داخل  <b>الأمارات العربية المتحدة</b> فقط</small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important"> الأمارة *</label>
+                            <select name="state" id="state-dd" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important"> المدينة *</label>
+                            <select name="city" id="city-dd" class="form-control">
+                            </select>
+                        </div>
+                            <div class="form-group col-md-12 mb-3">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">الأسم الكامل ( المستلم ) </label>
+                                <input type="text" placeholder="مثال:محمد الأحمد" name="full_name" required class="form-control" id="full_name" value="{{ $current_location-> full_name }}">
+                            </div>
+                            <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">رقم الهاتف ( المستلم ) </label>
+                            <div class="form-row d-flex">
+                                <div class="col-2 mb-3" style="margin-right: 5px;">
+                                  <strong class="form-control" style="font-weight: 900 !important" ><img src="{{ asset('front-style/assets/images/flags/uae.png')}}" alt="ENG Flag" width="20"
+                                    height="10" class="dropdown-image " style="margin-right: 6px;margin-top:0px" /> +971 </strong>  
+                                </div>    
+                                <div class="form-group col-10 mb-3">
+                                    <input type="tel" placeholder="مثال : 5666xxxx" name="phone" required pattern="[0-9]{9}" class="form-control" id="phone" value="{{ $current_location->phone }}">
+                                </div>
+                            </div>
 
+                            <div class="form-group col-md-12 mb-3">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">أسم الشارع </label>
+                                <input type="text" placeholder="مثال: شارع الشيخ زايد الاول" name="street_name" required class="form-control" id="street_name" value="{{ $current_location->address }}">
+                            </div>
+                            <div class="form-group col-md-12 mb-3">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputPassword4">اسم المبنى / رقم.، الطابق، الشقة. او فيلا .</label>
+                                <input type="text" placeholder="مثال: فندق الرويال ,الشقة 91 في الطابق 9 " required name="full_street_info" class="form-control" id="full_street_info" value="{{ $current_location->full_street_info }}">
+                            </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="inputEmail4">الموقع </label>
-                                <input type="text" name="address" class="form-control" id="address" value="">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="inputPassword4">البلد</label>
-                                <input type="text" name="country" class="form-control" id="country" value="">
+                                <label style="font-weight: 900 !important;margin-bottom:10px !important" for="inputEmail4">موقع معروف قريب من موقع التسليم </label>
+                                <input type="text" placeholder="مثال:مقابل بنك ابوظبي الأسلامي" required name="near_landmark" class="form-control" id="near_landmark" value="{{ $current_location->near_location }}">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">المدينة </label>
-                                <input type="text" name="city" class="form-control" id="city" value="">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">الرمز البريدي</label>
-                                <input type="number" name="postcode" class="form-control" id="postcode" value="">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4">المقاطعة\ الامارة </label>
-                                <input type="text" name="state" class="form-control" id="state" value="">
-                            </div>
-                        </div>
-
-                        <div class="my-4 form-checkbox d-flex align-items-center">
-                            <input class="mr-4  form-check-input" type="checkbox" name="shipping_copy_billing_info"
-                                id="shippingcopybillinginfo">
-                            <label for="shippingcopybillinginfo" style="color:red">هل تريد نسخ المعلومات في الاعلى
-                                لاستخدامهافي توصيل الشحنة</label>
-                        </div>
-
-                        <button class="mt-3 btn btn-primary">تعديل الان</button>
+                       
+                        <button class="mt-3 mb-6 btn btn-primary">أضافة العنوان</button>
                     </form>
-                </div>
-            </div>
         </div>
     </div>
+</div>
 </main>
 @endif
 @endsection

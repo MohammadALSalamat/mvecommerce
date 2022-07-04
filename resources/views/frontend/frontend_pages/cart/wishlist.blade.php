@@ -1,5 +1,10 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','Wish List' )
+
+ @if(Config::get('app.locale') == 'en')
+@section('mytitle','WishList' )
+@else
+@section('mytitle','المفضلة ' )
+@endif
 @section('content')
  <!-- Start of Main -->
         <main class="main wishlist-page">

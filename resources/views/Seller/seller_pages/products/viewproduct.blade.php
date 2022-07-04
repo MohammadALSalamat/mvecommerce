@@ -13,7 +13,7 @@
 
 @endsection
 @section('content')
-
+ @if (Config::get('app.locale') == 'en')
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-header row">
@@ -269,6 +269,264 @@
     </div>
   </div>
 </div>
+
+@else
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
+        <h3 class="mb-0 content-header-title d-inline-block">بيانات المنتجات</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ route('seller') }}">لوحة التحكم</a>
+              </li>
+              <li class="breadcrumb-item active">جدول البيانات
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="content-header-right col-md-6 col-12">
+        <div class=" float-md-right">
+          <a href="{{ route('seller_createproducts') }}"><button class="px-2 btn btn-primary round btn-glow" type="button"><i
+                class="la la-plus"></i> أضافة المنتج </button></a>
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <!-- File export table -->
+      <section id="file-export">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">المنتجات</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                  <ul class="mb-0 list-inline">
+                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+
+                  <table class="table table-striped table-bordered file-export">
+                    <thead>
+                      <tr>
+                        <th>الرقم التسلسلي</th>
+                        <th>الصوره</th>
+                        <th>الاسم</th>
+                        <th>عنوان الاضافه</th>
+                        <th>اضافة بواسطة</th>
+                        <th>الحالة</th>
+                        <th>الفعل</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($products as $product)
+                      @php
+                        $other_image = explode(',',$product->image);
+                      @endphp
+                      <tr>
+                        <td>{{ $product->id }}</td>
+                        <td><img src="{{asset($other_image[0])  }}" width="100%" height="50px"
+                            alt="{{ $product->title }}"></th>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->slug }}</td>
+                        <td>{{ $product->added_by }}</td>
+                        <td> @if($product->status == '1')
+                          <div class="badge badge-success">فعال</div>
+                          @else
+                          <div class="badge badge-danger">غير فعال</div>
+                          @endif
+                        </td>
+                        <td>
+                          <span class="dropdown">
+                            <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
+                              aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i
+                                class="ft-settings"></i></button>
+                            <span aria-labelledby="btnSearchDrop2" class="mt-1 dropdown-menu dropdown-menu-right">
+                              <a href="{{ route('seller_add_productAttr',$product->id) }}" class="dropdown-item"><i
+                                class="ft-plus-circle primary"></i>اضافة سمات</a>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#product{{ $product->id }}"
+                                  class="dropdown-item"><i class="ft-eye primary"></i> رؤية المزيد</a>
+                              <a href="{{ route('seller_editproducts',$product->id) }}" class="dropdown-item"><i
+                                  class="ft-edit-2 success"></i> تعديل</a>
+                              <form action="{{ route('seller_deletproducts',$product->id) }}" method="post">
+                                @csrf
+                                <a href="" id="cancel-delete" class="dropdown-item dltbtn"><i class="ft-trash-2 danger"></i>
+                                  حذف المنتج</a>
+                              </form>
+                            </span>
+                          </span>
+                        </td>
+                      </tr>
+                      <!-- Modal -->
+                      <div class="modal fade bd-example-modal-lg" id="product{{ $product->id }}" tabindex="-1"
+                        role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">{{ $product->title }}</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            @php
+                            // get user name
+                            $user_full_name = \App\Models\User::where('id',$product->vendor_id)->first();
+                            $Category_Title = \App\Models\category::where('id',$product->category_id)->first();
+                            $Child_Category_Title =
+                            \App\Models\category::where('id',$product->child_category_id)->first();
+                            $Brand_title = \App\Models\brand::where('id',$product->brand_id)->first();
+                            @endphp
+                            <div class="modal-body">
+                              <div class="row">
+                                <!-- left section -->
+                                <div class="col-6" style="padding:9px">
+                                  <img src="{{ $product->image }}" alt="{{ $product->title }}" width="100%" height="auto">
+                                </div>
+                                <!-- Right section -->
+                                <div class="col-6">
+                                  <div class="row">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                      <b>اسم البائع : </b>
+                                      <p>
+                                        @if (empty($user_full_name->full_name) || $user_full_name->full_name == null)
+                                        <div class='badge badge-danger'>There is No Vendor</div>
+                                        @else
+                                        <div class='badge badge-success'> {{ $user_full_name->full_name}}</div>
+                                        @endif
+                                      </p>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                      <b>الفئة : </b>
+                                      <p>
+                                        @if (empty($Category_Title->title) || $Category_Title->title == null)
+                                        <div class='badge badge-danger'>There is No Category</div>
+                                        @else
+                                        <div class='badge badge-success'> {{ $Category_Title->title}}</div>
+                                        @endif
+
+                                      </p>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                      <b>العلامة التجارية : </b>
+                                      <p>
+                                        @if (empty($Brand_title->title) || $Brand_title->title == null)
+                                        <div class='badge badge-danger'>There is No Brand</div>
+                                        @else
+                                        <div class='badge badge-success'> {{ $Brand_title->title}}</div>
+                                        @endif
+                                      </p>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                      <b>الفئة الفرعية : </b>
+                                      <p>
+                                        @if (empty($Child_Category_Title->title) || $Child_Category_Title->title ==
+                                        null)
+                                        <div class='badge badge-danger'>There is No Child Category</div>
+                                        @else
+                                        <div class='badge badge-success'>{{ $Child_Category_Title->title}}</div>
+                                        @endif
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <!-- Size and conditions section -->
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <b>الحجم : </b>
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->size }}</div>
+                                      </p>
+                                    </div>
+                                    <div class="col-6">
+                                      <b>الحالة : </b>
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->conditions }}</div>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- price and Stock section -->
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <b>المخزون : </b>
+                                      @if($product->stock > 10)
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->stock }}</div>
+                                      </p>
+                                      @else
+                                      <p>
+                                        <div class='badge badge-danger'>{{ $product->stock }}</div>
+                                      </p>
+                                      @endif
+                                    </div>
+                                    <div class="col-6">
+                                      <b>السعر : </b>
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->price }} $</div>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- discound and Offer Price section -->
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <b>سعر العرض : </b>
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->offer_price }}</div>
+                                      </p>
+                                    </div>
+                                    <div class="col-6">
+                                      <b>الخصم : </b>
+                                      <p>
+                                        <div class='badge badge-success'>{{ $product->discound }}%</div>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- summary section -->
+                                  <b>الملخص : </b>
+                                  <div class="col-12" style="padding-bottom:10px;padding-left: 0;height: 100px;overflow-y:scroll">
+                                    <p >{!! $product->Summary !!}</p>
+                                  </div>
+
+                                  <!-- Description section -->
+                                  <b>الشرح : </b>
+                                  <div class="col-12" style="padding-left: 0;height: 100px;overflow-y:scroll">
+                                    <p style="">
+                                      
+                                      {!! $product->description !!}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                             <a href="{{ route('seller_add_productAttr',$product->id) }}"><button type="button" class="btn btn-secondary" data-dismiss="modal">اضافة سمة للمنتج</button></a>
+                             <a href="{{ route('seller_editproducts',$product->id) }}"><button  class="btn btn-success">تعديل المنتج</button></a> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- File export table -->
+    </div>
+  </div>
+</div>
+@endif
 @endsection
 @section('script')
 
