@@ -126,7 +126,8 @@
                                     <input type="password" class="form-control" name="password" id="password_user"
                                         required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
                                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">    Click here to see the Password
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                 <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD
                                 </span>
@@ -268,7 +269,9 @@
                                     <input type="password" class="form-control" name="password" id="password_user"
                                         required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
                                         title="يجب أن يحتوي على رقم واحد على الأقل وحرف واحد كبير وصغير ، و 7 أحرف على الأقل أو أكثر">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">أضغط هنا لرؤية كلمة السر
+
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                 <span style="color: #000;margin-bottom:10px!important"> قواعد التحقق من كلمة المرور
                                 </span>
@@ -285,12 +288,12 @@
                                 </div>
                                 <p>
                                     سيتم استخدام بياناتك الشخصية لدعم تجربتك في جميع أنحاء هذا الموقع ، وإدارة الوصول
-                                    إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="#" class="text-primary">خصوصية
+                                    إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="{{ route('policy') }}" class="text-primary">خصوصية
                                         الشركة</a>.</p>
                                 <div class="mb-5 form-checkbox d-flex align-items-center justify-content-between">
                                     <input type="checkbox" class="custom-checkbox" id="remember" name="remember"
                                         required="">
-                                    <label for="remember" class="font-size-md">أنا أوافق على <a href="#"
+                                    <label for="remember" class="font-size-md">أنا أوافق على <a href="{{ route('policy') }}"
                                             class="text-primary font-size-md">خصوصية الشركة</a></label>
                                 </div>
                                 <button type="submit" class="mx-auto btn btn-dangar"
@@ -398,5 +401,15 @@
         $("#password_user").on('keyup', ValidatePassword)
     });
 </script>
+<script>
+    function myFunction() {
+      var x = document.getElementById("password_user");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
 
 @endsection
