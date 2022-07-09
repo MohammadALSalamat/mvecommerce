@@ -30,7 +30,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
                     <figure class="br-sm">
-                        <img src="{{ asset('front-style/assets/images/pages/become/1.jpg') }}" alt="Banner"
+                        <img src="{{ asset('front-style/assets/images/buildyour.png') }}" alt="Banner"
                             width="610" height="435" style="background-color: #D9D8DD;" />
                     </figure>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <figure class="br-sm">
-                            <img src="{{ asset('front-style/assets/images/pages/become/2.jpg') }}" alt="Banner"
+                            <img src="{{ asset('front-style/assets/images/easysteps.png') }}" alt="Banner"
                                 width="610" height="520" style="background-color: #C9C8CD;" />
                         </figure>
                     </div>
@@ -124,139 +124,7 @@
         </div>
         <!-- End of How Trade -->
 
-        <div class="container few-fees mt-10 mb-2 mb-lg-10 pt-2 pt-lg-9">
-            <h4 class="text-center text-primary text-capitalize font-weight-bold ls-25">Only Few Fees</h4>
-            <h2 class="title title-center mb-3">All is secured and Transparent</h2>
-            <p class="text-center mb-2 mb-lg-10">Nunc id cursus metus aliquam. Libero id faucibus nisl tincidunt eget.</p>
-            <div class="row">
-                <div class="col-sm-6 listing-fee">
-                    <div class="counter text-center">
-                        <span>$</span>
-                        <span class="count-to" data-to="0">0</span>
-                        <h4>Listing Fee</h4>
-                        <p>Diam maecenas ultricies mi eget mauris
-                            Nibh tellus molestie nunc non</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 final-fee">
-                    <div class="counter text-center">
-                        <span class="count-to" data-to="5">0</span>
-                        <span>%</span>
-                        <h4>Final Value Fee</h4>
-                        <p>Diam maecenas ultricies mi eget mauris
-                            Nibh tellus molestie nunc non</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End of Container -->
-
-        <div class="bg-grey pt-2 pt-lg-10 wolmart-sellers pb-10">
-            <div class="container mt-0 mt-lg-10 mb-2 mb-lg-9">
-                <div class="row">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h4 class="text-primary font-weight-bold ls-25">What they say</h4>
-                        <h2 class="title text-left ls-25">Success stories from Wolmart sellers</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            hendrerit. Pellentesque aliquet nibh nec urna dolor sit
-                            In nisi dapibus id, mattis</p>
-                        <a href="vendor-dokan-store.html" class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Visit Vendors<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                    <!-- End of Col -->
-                    <div class="col-lg-8">
-                        <div class="swiper">
-                            <div class="swiper-container swiper-theme" data-swiper-options="{
-                                'spaceBetween': 20,
-                                'slidesPerView': 1,
-                                'loop': true,
-                                'breakpoints': {
-                                    '576': {
-                                        'slidesPerView': 2
-                                    }
-                                }
-                            }">
-                                <div class="swiper-wrapper row cols-sm-2">
-                                    <div class="swiper-slide testimonial-wrap">
-                                        <div class="testimonial testimonial-centered testimonial-boxed bg-white br-sm">
-                                            <div class="testimonial-info">
-                                                <figure class="testimonial-author-thumbnail">
-                                                    <img src="{{ asset('assets/images/agents/1-100x100.png') }}" alt="Testimonial" width="100"
-                                                        height="100" />
-                                                </figure>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <blockquote>
-                                                Lorem ipsum dolor sit amet, consectetuerd
-                                                do Pellentesque aliquet nib Nullamer
-                                                mnequtesq nibhue aliquet urnaIn mattis...
-                                            </blockquote>
-                                            <cite class="ls-25">
-                                                Victoria Ventura<span>Investor</span>
-                                            </cite>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide testimonial-wrap">
-                                        <div class="testimonial testimonial-centered testimonial-boxed bg-white br-sm">
-                                            <div class="testimonial-info">
-                                                <figure class="testimonial-author-thumbnail">
-                                                    <img src="{{ asset('assets/images/agents/2-100x100.png') }}" alt="Testimonial" width="100"
-                                                        height="100" />
-                                                </figure>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <blockquote>
-                                                Lorem ipsum dolor sit amet, consectetuerd
-                                                do Pellentesque aliquet nib Nullamer
-                                                mnequtesq nibhue aliquet urnaIn mattis...
-                                            </blockquote>
-                                            <cite class="ls-25">
-                                                Henry Harry<span>Investor</span>
-                                            </cite>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide testimonial-wrap">
-                                        <div class="testimonial testimonial-centered testimonial-boxed bg-white br-sm">
-                                            <div class=" testimonial-info">
-                                                <figure class="testimonial-author-thumbnail">
-                                                    <img src="{{ asset('assets/images/agents/3-100x100.png') }}" alt="Testimonial" width="100"
-                                                        height="100" />
-                                                </figure>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <blockquote>
-                                                Lorem ipsum dolor sit amet, consectetuerd
-                                                do Pellentesque aliquet nib Nullamer
-                                                mnequtesq nibhue aliquet urnaIn mattis...
-                                            </blockquote>
-                                            <cite class="ls-25">
-                                                Anna Miranda<span>Investor</span>
-                                            </cite>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Col -->
-                </div>
-            </div>
-            <!-- End of Container -->
-        </div>
-        <!-- End of Wolamrt Sellers -->
+       
 
         <div class="container questions mt-2 mt-lg-10 mb-5 mb-lg-9">
             <h4 class="text-center text-primary font-weight-bold text-capitalize ls-25">Frequently Asked Questions</h4>
@@ -320,7 +188,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
                     <figure class="br-sm">
-                        <img src="{{ asset('front-style/assets/images/pages/become/1.jpg') }}" alt="Banner"
+                        <img src="{{ asset('front-style/assets/images/buildyour.png') }}" alt="Banner"
                             width="610" height="435" style="background-color: #D9D8DD;" />
                     </figure>
                 </div>
@@ -342,7 +210,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <figure class="br-sm">
-                            <img src="{{ asset('front-style/assets/images/pages/become/2.jpg') }}" alt="Banner"
+                            <img src="{{ asset('front-style/assets/images/easysteps.png') }}" alt="Banner"
                                 width="610" height="520" style="background-color: #C9C8CD;" />
                         </figure>
                     </div>

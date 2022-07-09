@@ -288,7 +288,7 @@
                                                         <label for="date2" style="font-size: 15px">كلمة السر : <b
                                                                 style="color: red">*</b></label>
                                                         {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
-                                                   <input type="password" class="form-control" name="password" id="password_user"
+                                                   <input type="password" class="form-control" name="password" id="NewPassword"
                                         required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
                                         title="يجب أن يحتوي على رقم واحد على الأقل وحرف واحد كبير وصغير ، و 7 أحرف على الأقل أو أكثر">
                                                             <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">أضغط هنا لرؤية كلمة السر
