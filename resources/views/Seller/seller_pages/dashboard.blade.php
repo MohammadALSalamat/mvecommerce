@@ -134,8 +134,12 @@
 
                   </thead>
                   <tbody>
-                    @foreach ($order_product->take(6) as $items)
-                    @foreach ($items->orders->take(6) as $order )
+                    @if (!empty($vendor_products_ids))
+                    @foreach ($vendor_products_ids as $items)
+                    @php
+                        $order = \App\Models\Order::where('id',$items['order_id'])->get();
+                        
+                    @endphp
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -188,7 +192,7 @@
                      </td>
                     </tr>
                     @endforeach
-                    @endforeach
+                    @endif
                     <tr>
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
                       <td  style="background: #ccc"> <b >{{ array_sum($total).' AED ' }}</b></td>
