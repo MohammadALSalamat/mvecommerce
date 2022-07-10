@@ -156,14 +156,17 @@
                       </td>
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
-                        @foreach ( $order->product as $items_seller)
                         @php
-                       $vendor_products = \App\Models\product::where('vendnor_id',$items_seller->seller_id)->get();                        $other_image = explode(',',$items_seller->image);
+                        $vendor_products = \App\Models\product::where('id',$order->pivot->product_id)->get();                    
                         @endphp
+                        @foreach ($vendor_products as $seller_product_only)
+                            @php
+                              $other_image = explode(',',$vendor_products->image);
+                            @endphp
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
-                            data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
+                            data-original-title="{{ $seller_product_only->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+                              src="{{ $other_image[0] }}" alt="{{ $seller_product_only->title }}">
                         </li>                       
                         @endforeach
                         </ul>
