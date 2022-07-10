@@ -70,19 +70,18 @@ class SellerController extends Controller
         $products_sold = Order::count();
 
         $Orders = Order::with('product')->get(); // last 6 orders
-        
-        $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
-        dd($order_product);
 
-        $product_orders_ids = productOrder::where();
+        $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
+
         $vendor_products_ids =array();
-        foreach ($Orders as $items){
-            dd($items->product);
-             foreach ($items->orders->groupby('id') as $order ){
+        foreach ($order_product as $items){
+             foreach ($items->orders as $order ){
              array_push($vendor_products_ids,$order);
         }
 
         }
+       dd($vendor_products_ids);
+
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
       
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
