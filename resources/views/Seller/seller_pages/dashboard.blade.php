@@ -161,7 +161,7 @@
                         @endphp
                         @foreach ($vendor_products as $seller_product_only)
                             @php
-                              $other_image = explode(',',$vendor_products->image);
+                              $other_image = explode(',',$seller_product_only->image);
                             @endphp
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $seller_product_only->title }}" class="avatar avatar-sm pull-up">
