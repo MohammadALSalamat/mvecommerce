@@ -45,7 +45,7 @@ class product extends Model
     public function sellers()
     {
         # related product
-        return $this->hasMany(Seller::class, 'id');
+        return $this->belongsTo(Seller::class, 'id');
     }
     // return the product in cart
 
