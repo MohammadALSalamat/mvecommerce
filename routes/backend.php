@@ -147,4 +147,4 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 // channge language
-// Route::get('lang/{lang}',[AdminviewController::class,'switchLang'])->name('lang.switch');
+ Route::get('lang/{lang}',[AdminviewController::class,'switchLang'])->name('lang.switch');
