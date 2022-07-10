@@ -17,4 +17,7 @@ class Seller extends Authenticatable
     {
         return $this->belongsTo(product::class,'vendor_id');
     }
+    public function seller_product(){
+        return $this->hasManyThrough(product::class,productOrder::class,'vendor_id','product_orders')->withPivot('quantity');
+    }
 }
