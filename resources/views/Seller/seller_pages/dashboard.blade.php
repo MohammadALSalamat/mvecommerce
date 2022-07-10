@@ -137,9 +137,10 @@
                     @if (!empty($vendor_products_ids))
                     @foreach ($vendor_products_ids as $items)
                     @php
-                        $order = \App\Models\Order::where('id',$items['order_id'])->get();
-                        
+                        $order_details = \App\Models\Order::groupby('id')->where('id',$items['order_id'])->get();
+                        dd($order_details);
                     @endphp
+                    @foreach ($order_details as $order)
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -161,7 +162,7 @@
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
                         @php
-                        $vendor_products = \App\Models\product::where('id',$order->pivot->product_id)->get();                    
+                        $vendor_products = \App\Models\product::where('id',$items['product_id'])->get();                    
                         @endphp
                         @foreach ($vendor_products as $seller_product_only)
                             @php
@@ -176,7 +177,7 @@
                         </ul>
                       </td>
                       <td>
-                        @foreach ( $order->product as $items_seller)
+                        @foreach ( $vendor_products as $items_seller)
                         <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
                         @endforeach
                       </td>
@@ -190,7 +191,8 @@
                        
                       {{ $order->total }} AED 
                      </td>
-                    </tr>
+                    </tr>                 
+                    @endforeach
                     @endforeach
                     @endif
                     <tr>
