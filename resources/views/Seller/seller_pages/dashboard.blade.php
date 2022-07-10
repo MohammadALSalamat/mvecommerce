@@ -135,7 +135,7 @@
                   </thead>
                   <tbody>
                     @foreach ($order_product->take(6) as $items)
-                    @foreach ($items->orders->take(1) as $order )
+                    @foreach ($items->orders->take(6) as $order )
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -158,7 +158,7 @@
                         <ul class="list-unstyled users-list m-0">
                         @foreach ( $order->product as $items_seller)
                         @php
-                        $other_image = explode(',',$items_seller->image);
+                       $vendor_products = \App\Models\product::where('vendnor_id',$items_seller->seller_id)->get();                        $other_image = explode(',',$items_seller->image);
                         @endphp
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">

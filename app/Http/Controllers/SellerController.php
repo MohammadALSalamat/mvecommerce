@@ -72,12 +72,12 @@ class SellerController extends Controller
         $Orders = Order::latest()->get(); // last 6 orders
 
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
-
+        
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
       
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
         // seller product that got sold
-        
+
         $total = array(); // get the profit of seller 
         $sold_products = array();
         if ($Total_order_products->count() > 0) {
