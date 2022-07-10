@@ -136,11 +136,11 @@
                   <tbody>
                     @if (!empty($vendor_products_ids))
                     @foreach ($vendor_products_ids as $items)
-                    @php
-                        $order_details = \App\Models\Order::groupby('id')->where('id',$items['order_id'])->get();
-                        dd($order_details);
-                    @endphp
-                    @foreach ($order_details as $order)
+                        @php
+                            dd($vendor_products_ids);
+                        @endphp
+                    @foreach ($items->groupby('order_number') as $order)
+
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -161,19 +161,22 @@
                       </td>
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
-                        @php
-                        $vendor_products = \App\Models\product::where('id',$items['product_id'])->get();                    
-                        @endphp
-                        @foreach ($vendor_products as $seller_product_only)
+                        
                             @php
-                              $other_image = explode(',',$seller_product_only->image);
+                           
+                               $vendor_products = \App\Models\product::orderby('id','DESC')->where('id',$order->pivot->product_id)->get();                    
                             @endphp
+                            @foreach ($vendor_products as $products_images)
+                                @php
+                                 $other_image = explode(',',$products_images->image);
+                            @endphp
+                          
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
-                            data-original-title="{{ $seller_product_only->title }}" class="avatar avatar-sm pull-up">
+                            data-original-title="{{ $products_images->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}" alt="{{ $seller_product_only->title }}">
-                        </li>                       
-                        @endforeach
+                              src="{{ $other_image[0] }}" alt="{{ $products_images->title }}">
+                        </li>  
+                        @endforeach                     
                         </ul>
                       </td>
                       <td>
@@ -191,8 +194,8 @@
                        
                       {{ $order->total }} AED 
                      </td>
-                    </tr>                 
-                    @endforeach
+                    </tr>   
+                    @endforeach              
                     @endforeach
                     @endif
                     <tr>

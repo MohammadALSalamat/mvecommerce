@@ -54,7 +54,7 @@ class SellerController extends Controller
 
         $message_notify = null;
         if(!empty($notify_subscripe) || $notify_subscripe != null){
-            if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 20 ){
+            if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){
             $message_notify ='your days left is less than 10 days please subscripe before /  '. $notify_subscripe->ends_at .'/ Just ' . Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) . ' Days left Otherwise your account will not work';
             }
 
@@ -72,18 +72,12 @@ class SellerController extends Controller
         $Orders = Order::with('product')->get(); // last 6 orders
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
         $vendor_products_ids =array();
-        dd($order_product);
-        foreach ($Orders as $items){
-            foreach ($items->product as $order ){
-            array_push($vendor_products_ids,[
-                    'order_id'=>$items->id,
-                    'product_id'=>$order_product,
-                    'vendor_id'=>$order->vendor_id,
-                ]);
+        foreach ($order_product as $items){
+             foreach ($items->orders->groupby('id') as $order ){
+             array_push($vendor_products_ids,$order);
         }
 
         }
-        dd($vendor_products_ids);
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
       
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
