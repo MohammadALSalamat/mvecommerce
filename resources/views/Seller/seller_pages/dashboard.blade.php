@@ -135,12 +135,9 @@
                   </thead>
                   <tbody>
                     @if (!empty($vendor_products_ids))
-                    @foreach ($vendor_products_ids as $items)
-                        @php
-                            dd($vendor_products_ids);
-                        @endphp
-                    @foreach ($items->groupby('order_number') as $order)
-
+                    @foreach ($vendor_products_ids as $order)
+                    
+                   
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -163,12 +160,11 @@
                         <ul class="list-unstyled users-list m-0">
                         
                             @php
-                           
-                               $vendor_products = \App\Models\product::orderby('id','DESC')->where('id',$order->pivot->product_id)->get();                    
+                              $vendor_products = \App\Models\product::orderby('id','DESC')->where('id',$order->pivot->product_id)->get();                    
                             @endphp
                             @foreach ($vendor_products as $products_images)
-                                @php
-                                 $other_image = explode(',',$products_images->image);
+                              @php
+                              $other_image = explode(',',$products_images->image);
                             @endphp
                           
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
@@ -195,7 +191,6 @@
                       {{ $order->total }} AED 
                      </td>
                     </tr>   
-                    @endforeach              
                     @endforeach
                     @endif
                     <tr>

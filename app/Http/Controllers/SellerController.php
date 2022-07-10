@@ -75,12 +75,13 @@ class SellerController extends Controller
 
         $vendor_products_ids =array();
         foreach ($order_product as $items){
+            $groupedByValue = $items->orders->groupBy('value');
+            dd($groupedByValue);
              foreach ($items->orders as $order ){
              array_push($vendor_products_ids,$order);
         }
 
         }
-       dd($vendor_products_ids);
 
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
       
