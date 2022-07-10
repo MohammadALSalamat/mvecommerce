@@ -70,8 +70,8 @@ class SellerController extends Controller
         $products_sold = Order::count();
 
         $Orders = Order::with('product')->get(); // last 6 orders
-        dd($Orders);
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
+        dd($order_product);
         $vendor_products_ids =array();
         foreach ($Orders as $items){
             dd($items->product);

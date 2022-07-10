@@ -54,6 +54,6 @@ class product extends Model
         return self::where('id',$id)->get()->toArray();
     }
     public function orders(){
-        return $this->belongsToMany(Order::class,'product_orders')->withPivot('quantity');
+        return $this->belongsToMany(Order::class,'product_orders')->withPivot('quantity')->groupby('order_id');
     }
 }
