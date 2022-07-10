@@ -20,7 +20,4 @@ class Seller extends Authenticatable
         return $this->hasMany(product::class,'vendor_id');
     }
 
-    public function seller_product(){
-        return $this->hasManyThrough(product::class,productOrder::class,'vendor_id','product_id');
-    }
 }
