@@ -135,7 +135,7 @@
                   </thead>
                   <tbody>
                     @if (!empty($vendor_products_ids))
-                    @foreach ($vendor_products_ids as $order)
+                    @foreach ($vendor_products_ids->sortByDesc('order_number') as $order)
                     
                    
                     <tr>
