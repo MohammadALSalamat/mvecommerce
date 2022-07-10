@@ -69,13 +69,17 @@ class SellerController extends Controller
 
         $products_sold = Order::count();
 
-        $Orders = Order::latest()->get(); // last 6 orders
-dd($Orders);
+        $Orders = Order::with('product')->get(); // last 6 orders
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
         $vendor_products_ids =array();
-        foreach ($order_product as $items){
-            foreach ($items->orders as $order ){
-                array_push($vendor_products_ids,$order->pivot);
+        foreach ($Orders as $items){
+            foreach ($items->product as $order ){
+                
+            array_push($vendor_products_ids,[
+                    'order_id'=>$items->id,
+                    'product_id'=>$order->id,
+                    'vendor_id'=>$order->vendor_id,
+                ]);
         }
 
         }
