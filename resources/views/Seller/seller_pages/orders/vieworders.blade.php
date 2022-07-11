@@ -72,8 +72,6 @@
                     <tbody>
                       @foreach ($Orders as $items_order)
                       @foreach ( $items_order->orders as $order )
-                        
-                      
                       <tr>
                         <td class="text-truncate">
                           @if ($order->payment_status == 1)
@@ -94,17 +92,18 @@
                         </td>
                         <td class="text-truncate p-1">
                           <ul class="list-unstyled users-list m-0">
-                            @foreach ( $order->product as $items_seller)
+                          @foreach ( $order->product as $items_seller)
                           @php
-                          $seller_image = \App\Models\product::where('id',$items_seller->id)->where('vendor_id',Auth::guard('seller')->user()->id)->value(['image','title']);
                           
-                          $other_image = explode(',',$seller_image->image);
+                            $other_image = explode(',',$items_seller->image);
                           @endphp
+                          @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                             <li data-toggle="tooltip" data-popup="tooltip-custom"
-                            data-original-title="{{ $seller_image->title }}" class="avatar avatar-sm pull-up">
+                            data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                                src="{{ $other_image[0] }}" alt="{{ $seller_image->title }}">
-                              </li>                       
+                                src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+                              </li>
+                              @endif                     
                               @endforeach
                           </ul>
                         </td>
