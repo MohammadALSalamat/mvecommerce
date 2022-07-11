@@ -158,15 +158,22 @@
                       <tr>
                         <td>Sub Total</td>
                         <td class="text-right">
+
+                          @php
+                              $total = array();
+                          @endphp
                           @foreach ($order->product as $items)
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
-
-                          @if(empty($items->offer_price) || $items->offer_price == null )
-
-                          @endif
-                          @endif
-                          @endforeach
-                          {{ $order->sub_total }} AED</td>
+                          @php
+                              if(empty($items->offer_price) || $items->offer_price == null ){
+                                array_push($total,$items->price);
+                              }else{
+                                array_push($total,$items->offer_price);
+                              }
+                          @endphp
+                            @endif
+                            @endforeach
+                             {{ array_sum($total) }}</td>
                       </tr>
                       <tr>
                         <td>Coupon</td>
