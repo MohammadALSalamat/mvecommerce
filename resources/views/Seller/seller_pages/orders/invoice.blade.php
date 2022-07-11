@@ -157,7 +157,16 @@
                     <tbody>
                       <tr>
                         <td>Sub Total</td>
-                        <td class="text-right">{{ $order->sub_total }} AED</td>
+                        <td class="text-right">
+                          @foreach ($order->product as $items)
+                          @if($items->vendor_id === Auth::guard('seller')->user()->id)
+
+                          @if(empty($items->offer_price) || $items->offer_price == null )
+
+                          @endif
+                          @endif
+                          @endforeach
+                          {{ $order->sub_total }} AED</td>
                       </tr>
                       <tr>
                         <td>Coupon</td>
