@@ -118,7 +118,7 @@
                       <th class="border-top-0">Products</th>
                       <th class="border-top-0">Categories</th>
                       <th class="border-top-0">Shipping</th>
-                      <th class="border-top-0">Amount</th>
+                      <th class="border-top-0">Amount / Qty</th>
                     </tr>
                     @else
                     <tr>
@@ -198,7 +198,7 @@
                           }
                           
                       @endphp
-                        {{ array_sum($total_sum)}} AED <br> 
+                        {{ array_sum($total_sum)}} AED ({{ $order->pivot['quantity'] }})<br> 
                         
                         @endif
                         @endforeach
@@ -208,11 +208,10 @@
                     @endforeach
                     @endforeach
                     <tr>
-                     
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
                       <td  style="background: #ccc"> <b >{{ number_format(array_sum($total)) }} AED</b></td>
-                      
                     </tr>
+                    
                   </tbody>
                 </table>
               </div>
