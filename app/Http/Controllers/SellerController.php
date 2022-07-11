@@ -83,16 +83,15 @@ class SellerController extends Controller
         $sold_products = array();
         if ($Total_order_products->count() > 0) {
             foreach ($Total_order_products as $profit) {
-                    $sold_product = productOrder::where('product_id', $profit->id)->get();
+                $sold_product = productOrder::where('product_id', $profit->id)->get();
                     $countSoldProduct = count($profit->orders);
                    array_push($sold_products,$countSoldProduct);
                     foreach ($sold_product as $total_prodcut) {
                         // get the total of  products
-                        $total_products = product::where('id', $total_prodcut->product_id)->get();
+                        $total_products = product::where('id', $total_prodcut->product_id)->where('vendor_id',Auth::guard('seller')->user()->id)->get();
                         foreach ($total_products as $totals_prodcut) {
                             if (!empty($totals_prodcut->offer_price) || $totals_prodcut->offer_price != null) {
                                 $total_offer_price = $totals_prodcut->offer_price * $total_prodcut->quantity;
-
                                 array_push($total, $total_offer_price);
                             } else {
                                 $total_price = $totals_prodcut->price * $total_prodcut->quantity;
@@ -102,6 +101,7 @@ class SellerController extends Controller
                         }
                     }
                 }
+
             }else{
                 array_push($total, 0);
                 $sold_product = productOrder::where('product_id', $current_user->id)->get();

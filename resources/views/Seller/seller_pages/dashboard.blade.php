@@ -187,19 +187,17 @@
                       </td>
                       <td class="text-truncate">
                       @foreach ( $order->product as $items_seller)
+                        
                       @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
-                      
                       @php
                           $total_sum = array();
                           if(!empty($items_seller->offer_price)){
                             array_push($total_sum,$items_seller->offer_price);
                           }else {
                             array_push($total_sum,$items_seller->price);
-
                           }
                           
                       @endphp
-                      
                         {{ array_sum($total_sum)}} AED <br> 
                         
                         @endif
@@ -210,8 +208,9 @@
                     @endforeach
                     @endforeach
                     <tr>
+                     
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
-                      <td  style="background: #ccc"> <b >{{ array_sum($total).' AED ' }}</b></td>
+                      <td  style="background: #ccc"> <b >{{ number_format(array_sum($total)) }} AED</b></td>
                       
                     </tr>
                   </tbody>
