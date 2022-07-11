@@ -139,13 +139,22 @@
                 
                     <tr>
                       <td class="text-truncate">
-                        @if ($order->payment_status == 1)
-                        <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
-                        Paid
-                        @else
-                        <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
-                        pending
-                        @endif
+                        @if ($order->payment_status == 'completed')
+                          <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
+                          Completed
+                          @elseif ($order->payment_status == 'inprocess')
+                          <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
+                          In Proccess
+                          @elseif ($order->payment_status == 'shipped')
+                          <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
+                          Shipped
+                          @elseif ($order->payment_status == 'pending')
+                          <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
+                          Pending
+                          @elseif ($order->payment_status == 'cancelled')
+                          <i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>
+                          Cancelled
+                          @endif
                       </td>
                       <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                       <td class="text-truncate">

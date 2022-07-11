@@ -115,17 +115,19 @@
                               }
                               @endphp
                             
-                            @foreach ($order->product as $items)
-                            @php
-                                $other_image = explode(',',$items->image);  
-                            @endphp
-                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="{{ $items->title }}"
-                            class="avatar avatar-sm pull-up">
+                            @foreach ( $order->product as $items_seller)
+                          @php
+                          
+                            $other_image = explode(',',$items_seller->image);
+                          @endphp
+                          @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+                            <li data-toggle="tooltip" data-popup="tooltip-custom"
+                            data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}"
-                              alt="{{ $items->title }}">
-                            </li>
-                            @endforeach
+                                src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+                              </li>
+                              @endif                     
+                              @endforeach
                           </ul>
                         </td>
                       
