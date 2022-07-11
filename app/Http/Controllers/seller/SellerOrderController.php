@@ -26,6 +26,7 @@ class SellerOrderController extends Controller
     public function singleOrder($id)
     {
        $order = Order::find($id);
+       
        if($order){
         return view('Seller.seller_pages.orders.singleOrder',compact('order'));
        }else{
