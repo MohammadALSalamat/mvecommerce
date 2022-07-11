@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Coupon;
 use App\Models\product;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 

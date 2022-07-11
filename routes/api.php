@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\OrderController;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ShippingCartController;
+use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\api\v1\frontPageApiController;
 
 /*
