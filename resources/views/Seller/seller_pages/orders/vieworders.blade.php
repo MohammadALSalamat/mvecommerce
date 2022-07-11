@@ -10,10 +10,8 @@
 
 <!-- END Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/sweetalert.css') }}">
-
 @endsection
 @section('content')
-
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-header row">
@@ -34,7 +32,6 @@
       </div>
     </div>
     <div class="content-body">
-
       <!-- File export table -->
       <section id="file-export">
         <div class="row">
@@ -109,7 +106,9 @@
                         </td>
                         <td>
                           @foreach ( $order->product as $items_seller)
+                          @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                           <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
+                         @endif
                           @endforeach
                         </td>
                         <td>

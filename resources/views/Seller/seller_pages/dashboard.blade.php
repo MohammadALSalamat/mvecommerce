@@ -134,8 +134,9 @@
 
                   </thead>
                   <tbody>
-                    @if (!empty($vendor_products_ids))
-                    @foreach ($vendor_products_ids as $order)
+                    @foreach ($order_product as $items_order)
+                    @foreach ( $items_order->orders as $order )
+                   
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -149,48 +150,46 @@
                       <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                       <td class="text-truncate">
                         <span class="avatar avatar-xs">
-                          <img class="box-shadow-2"
-                            src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}" alt="avatar">
+                          <img class="box-shadow-2" src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}"
+                          alt="avatar">
                         </span>
                         <span>{{ $order->full_name }}</span>
                       </td>
                       <td class="text-truncate p-1">
                         <ul class="list-unstyled users-list m-0">
+                        @foreach ( $order->product as $items_seller)
+                        @php
                         
-                            @php
-                              $vendor_products = \App\Models\product::orderby('id','DESC')->where('id',$order->pivot->product_id)->get();                    
-                            @endphp
-                            @foreach ($vendor_products as $products_images)
-                              @php
-                              $other_image = explode(',',$products_images->image);
-                            @endphp
-                          
+                          $other_image = explode(',',$items_seller->image);
+                        @endphp
+                        @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
-                            data-original-title="{{ $products_images->title }}" class="avatar avatar-sm pull-up">
+                          data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
-                              src="{{ $other_image[0] }}" alt="{{ $products_images->title }}">
-                        </li>  
-                        @endforeach                     
+                              src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+                            </li>
+                            @endif                     
+                            @endforeach
                         </ul>
                       </td>
                       <td>
-                        @foreach ( $vendor_products as $items_seller)
+                        @foreach ( $order->product as $items_seller)
+                        @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                         <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
+                       @endif
                         @endforeach
                       </td>
                       <td>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
                           <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 25%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
-                      <td class="text-truncate"> 
-                       
-                      {{ $order->total }} AED 
-                     </td>
-                    </tr>   
+                      <td class="text-truncate">{{ $order->total }} AED</td>
+                      
+                    </tr>
                     @endforeach
-                    @endif
+                    @endforeach
                     <tr>
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
                       <td  style="background: #ccc"> <b >{{ array_sum($total).' AED ' }}</b></td>

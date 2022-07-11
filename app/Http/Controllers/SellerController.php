@@ -73,13 +73,7 @@ class SellerController extends Controller
 
         $order_product = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->take(6)->get();
 
-        $vendor_products_ids =array();
-        foreach ($order_product as $items){
-             foreach ($items->orders as $order ){
-             array_push($vendor_products_ids,$order);
-        }
-
-        }
+        
         $Total_order_products =  product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
       
         $products = product::where('vendor_id',$current_user->id)->where('added_by','seller')->count();
@@ -114,7 +108,7 @@ class SellerController extends Controller
                 array_push($sold_products, 0);
             }
         if($current_user){
-            return view('Seller.seller_pages.dashboard',compact('vendor_products_ids','message_notify','Orders','sold_products','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
+            return view('Seller.seller_pages.dashboard',compact('message_notify','Orders','sold_products','sold_product','total','current_user','count_vendors','order_product','products_sold','products')); 
         }else{
             return redirect()->route('homepage')->with('error','you do not have permission to access !!!');
         }
