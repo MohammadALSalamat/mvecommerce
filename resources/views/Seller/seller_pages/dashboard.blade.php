@@ -176,7 +176,7 @@
                         @foreach ( $order->product as $items_seller)
                         @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                         <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
-                       @endif
+                        @endif
                         @endforeach
                       </td>
                       <td>
@@ -207,11 +207,10 @@
                     </tr>
                     @endforeach
                     @endforeach
-                    <tr>
+                      <tr>
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
                       <td  style="background: #ccc"> <b >{{ number_format(array_sum($total)) }} AED</b></td>
                     </tr>
-                    
                   </tbody>
                 </table>
               </div>
