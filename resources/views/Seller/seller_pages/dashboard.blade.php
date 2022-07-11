@@ -136,7 +136,7 @@
                   <tbody>
                     @foreach ($order_product as $items_order)
                     @foreach ( $items_order->orders as $order )
-                   
+                
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
@@ -185,7 +185,25 @@
                           aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
-                      <td class="text-truncate">{{ $order->total }} AED</td>
+                      <td class="text-truncate">
+                      @foreach ( $order->product as $items_seller)
+                      @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+                      
+                      @php
+                          $total_sum = array();
+                          if(!empty($items_seller->offer_price)){
+                            array_push($total_sum,$items_seller->offer_price);
+                          }else {
+                            array_push($total_sum,$items_seller->price);
+                          }
+                          dd($total_sum);
+                      @endphp
+                      
+                        {{ array_sum($total_sum) }} 
+                        
+                        @endif
+                        @endforeach
+                      </td>
                       
                     </tr>
                     @endforeach
