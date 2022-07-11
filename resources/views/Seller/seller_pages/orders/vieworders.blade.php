@@ -108,7 +108,7 @@
                           @foreach ( $order->product as $items_seller)
                           @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                           <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
-                         @endif
+                          @endif
                           @endforeach
                         </td>
                         <td>
@@ -117,7 +117,24 @@
                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </td>
-                        <td class="text-truncate">{{ $order->total }} AED</td>
+                        <td class="text-truncate">
+                        @foreach ( $order->product as $items_seller)
+                          
+                        @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+                        @php
+                            $total_sum = array();
+                            if(!empty($items_seller->offer_price)){
+                              array_push($total_sum,$items_seller->offer_price);
+                            }else {
+                              array_push($total_sum,$items_seller->price);
+                            }
+                            
+                        @endphp
+                          {{ array_sum($total_sum)}} AED ({{ $order->pivot['quantity'] }})<br> 
+                          
+                          @endif
+                          @endforeach
+                        </td>
                         <td>
                           <span class="dropdown">
                             <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
