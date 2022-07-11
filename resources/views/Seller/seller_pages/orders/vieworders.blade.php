@@ -96,7 +96,8 @@
                           <ul class="list-unstyled users-list m-0">
                             @foreach ( $order->product as $items_seller)
                           @php
-                          $seller_image = \App\Models\product::where('id',$items_seller->id)->where('vendor_id',Auth::guard('seller')->user()->id)->first();
+                          $seller_image = \App\Models\product::where('id',$items_seller->id)->where('vendor_id',Auth::guard('seller')->user()->id)->value(['image','title']);
+                          
                           $other_image = explode(',',$seller_image->image);
                           @endphp
                             <li data-toggle="tooltip" data-popup="tooltip-custom"
