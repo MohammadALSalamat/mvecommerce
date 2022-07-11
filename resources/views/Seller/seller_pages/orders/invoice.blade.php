@@ -93,6 +93,8 @@
                   </thead>
                   <tbody>
                     @foreach ($order->product as $items)
+                    @if($items->vendor_id === Auth::guard('seller')->user()->id)
+
                     <tr>
                       <th scope="row">1</th>
                       <td class="text-truncate">
@@ -113,6 +115,7 @@
                         {{ $items->offer_price }} 
                         @endif</td>
                     </tr>
+                    @endif
                     @endforeach
 
                   </tbody>
