@@ -195,11 +195,12 @@
                             array_push($total_sum,$items_seller->offer_price);
                           }else {
                             array_push($total_sum,$items_seller->price);
+
                           }
-                          dd($total_sum);
+                          
                       @endphp
                       
-                        {{ array_sum($total_sum) }} 
+                        {{ array_sum($total_sum)}} AED <br> 
                         
                         @endif
                         @endforeach
