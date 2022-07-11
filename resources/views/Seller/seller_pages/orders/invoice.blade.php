@@ -42,7 +42,21 @@
               <p class="pb-3"># INV-{{ $order->order_number }}</p>
               <ul class="px-0 list-unstyled">
                 <li>Final Total</li>
-                <li class="lead text-bold-800">{{ $order->total + $order->delivary_charge + $order->coupon }} AED</li>
+                @php
+                              $total = array();
+                          @endphp
+                          @foreach ($order->product as $items)
+                          @if($items->vendor_id === Auth::guard('seller')->user()->id)
+                          @php
+                              if(empty($items->offer_price) || $items->offer_price == null ){
+                                array_push($total,$items->price);
+                              }else{
+                                array_push($total,$items->offer_price);
+                              }
+                          @endphp
+                            @endif
+                            @endforeach
+                <li class="lead text-bold-800">{{ array_sum($total) + $order->delivary_charge + $order->coupon }} AED</li>
               </ul>
             </div>
           </div>
@@ -185,7 +199,7 @@
                       </tr>
                       <tr>
                         <td class="text-bold-800">Total</td>
-                        <td class="text-bold-800 text-right"> {{ $order->total + $order->delivary_charge + $order->coupon }} AED</td>
+                        <td class="text-bold-800 text-right"> {{ array_sum($total) + $order->delivary_charge + $order->coupon }} AED</td>
                       </tr>
 
                     </tbody>
