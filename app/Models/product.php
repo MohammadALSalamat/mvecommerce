@@ -24,13 +24,9 @@ class product extends Model
         ];
     }
       //create a relatrion one to many with products
-      public function one_product_has_one_cat(){
+    public function one_product_has_one_cat(){
         return $this->hasOne(category::class,'id');
     }
-
-    
-
-    
     public function this_belong_to_category()
     {
         return $this->belongsTo(product::class,'category_id');

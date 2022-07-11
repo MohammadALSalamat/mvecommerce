@@ -136,8 +136,6 @@
                   <tbody>
                     @if (!empty($vendor_products_ids))
                     @foreach ($vendor_products_ids as $order)
-                    
-                   
                     <tr>
                       <td class="text-truncate">
                         @if ($order->payment_status == 1)
