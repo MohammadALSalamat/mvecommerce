@@ -134,7 +134,6 @@
                           </div>
                         </td>
                         <td class="text-truncate">
-                          @foreach ($order->product as $items)
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
 
                           @if(empty($items->offer_price) || $items->offer_price == null )
@@ -143,7 +142,6 @@
                           {{ $items->offer_price }} AED <br>
                           @endif
                           @endif
-                          @endforeach
 
                         </td>
                         
@@ -188,6 +186,8 @@
                     </thead>
                     <tbody>
                     @foreach ($order->product as $items)
+                    @if($items->vendor_id === Auth::guard('seller')->user()->id)
+
                       <tr>
                         <td class="text-truncate">{{ $items->id }}</td>
                         @php
@@ -211,6 +211,8 @@
                           @endif
                         </td>
                       </tr>
+                      @endif
+
                       @endforeach
                     </tbody>
                   </table>
