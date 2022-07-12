@@ -195,22 +195,21 @@
                         </div>
                       </td>
                       <td class="text-truncate">
+                        @php
+                            $total_sum = array();
+                        @endphp
                       @foreach ( $order->product as $items_seller)
-                        
                       @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                       @php
-                          $total_sum = array();
                           if(!empty($items_seller->offer_price)){
                             array_push($total_sum,$items_seller->offer_price);
                           }else {
                             array_push($total_sum,$items_seller->price);
                           }
-                          
                       @endphp
-                        {{ array_sum($total_sum)}} AED ({{ $order->pivot['quantity'] }})<br> 
-                        
                         @endif
                         @endforeach
+                        {{ array_sum($total_sum)}} AED ({{ $order->pivot['quantity'] }})<br> 
                       </td>
                       
                     </tr>
