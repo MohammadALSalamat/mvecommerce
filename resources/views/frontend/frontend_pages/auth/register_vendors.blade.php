@@ -198,11 +198,12 @@
                                                         <select type="text" name="city" class="form-control required"
                                                             id="country">
                                                             <option value="Abu Dhabi"> Abu Dhabi</option>
-                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
-                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
-                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
-                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
-                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Dubai"> Dubai</option>
+                                                            <option value="Ajman"> Ajman</option>
+                                                            <option value="Al Shariqah"> Al Shariqah</option>
+                                                            <option value="Ra's al Khaymah"> Ra's al Khaymah</option>
+                                                            <option value="Al Fujayrah"> Al Fujayrah</option>
+                                                            <option value="Umm al Qaywayn"> Umm al Qaywayn</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
