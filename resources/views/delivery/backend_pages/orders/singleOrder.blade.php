@@ -196,15 +196,22 @@
                               <td>{!! $sellers_info->address !!},{{ $sellers_info->city }},{{ $sellers_info->country }}</td>
                             </tr>
                             <tr>
+                              <td>Near Place : </td>
+                              <td>{{ $sellers_info->postcode }}</td>
+                            </tr>
+                            <tr>
                               <td>Product Details : </td>
                               <td>
                                 <b>Name :</b> {{ $items->title }}<br>
-                                <b>Price :</b> {{ $items->price }}<br>
+                                <b>Price :</b> 
+                                @if (!empty($items->offer_price))
+                                {{ $items->offer_price }}  <br>
+                                @else
+                                {{ $items->price }} <br>
+                                @endif
+                                <b>Quentity : </b> {{ $items->pivot->quantity }}
+                                <br>
                               </td>
-                            </tr>
-                            <tr>
-                              <td>Near Place : </td>
-                              <td>{{ $sellers_info->postcode }}</td>
                             </tr>
                           </table>
                         </div>
