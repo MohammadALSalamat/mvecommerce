@@ -180,9 +180,9 @@
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
                           @php
                               if(empty($items->offer_price) || $items->offer_price == null ){
-                                array_push($total,$items->price);
+                                array_push($total,$items->price * $items->pivot->quantity );
                               }else{
-                                array_push($total,$items->offer_price);
+                                array_push($total,$items->offer_price * $items->pivot->quantity);
                               }
                           @endphp
                             @endif
