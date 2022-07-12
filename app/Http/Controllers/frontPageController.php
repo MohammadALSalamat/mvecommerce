@@ -687,7 +687,7 @@ class frontPageController extends Controller
         public function vendor_info(Request $request)
         {
             $data = $request->all();
-            
+            dd($data);
             if ($data['name'] == null || empty($data['name'])) {
                 return back()->with('error', 'full name is required');
             }
@@ -709,7 +709,7 @@ class frontPageController extends Controller
             if ($data['phone-number'] == null || empty($data['phone-number'])) {
                 return back()->with('error', 'Phone is required');
             }
-            if ($data['address'] == null || empty($data['address'])) {
+            if ($data['street'] == null || empty($data['street'])) {
                 return back()->with('error', 'address is required');
             }
             if ($data['city'] == null || empty($data['city'])) {
