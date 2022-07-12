@@ -687,7 +687,7 @@ class frontPageController extends Controller
         public function vendor_info(Request $request)
         {
             $data = $request->all();
-            dd($data);
+            
             if ($data['name'] == null || empty($data['name'])) {
                 return back()->with('error', 'full name is required');
             }
@@ -712,11 +712,17 @@ class frontPageController extends Controller
             if ($data['street'] == null || empty($data['street'])) {
                 return back()->with('error', 'address is required');
             }
+            if ($data['nearlocation'] == null || empty($data['nearlocation'])) {
+                return back()->with('error', 'nearlocation is required');
+            }
+            if ($data['building'] == null || empty($data['building'])) {
+                return back()->with('error', 'building is required');
+            }
             if ($data['city'] == null || empty($data['city'])) {
                 return back()->with('error', 'city is required');
             }
-            if ($data['country'] == null || empty($data['country'])) {
-                return back()->with('error', 'Phone is required');
+            if (empty($data['country'])) {
+                $data['country'] = 'Untited Arab Emirates';
             }
             if ($data['agreed_policy'] == null || empty($data['agreed_policy'])) {
                 return back()->with('error', 'Check Box  Policy is required');
@@ -777,7 +783,7 @@ class frontPageController extends Controller
                 'phone' => $data['phone-number'],
                 'type_of_work' => $data['type_of_work'],
                 'shopname'=> $data['shop-name'],
-                'address' => $data['address'],
+                'address' => $data['street'].','.$data['nearlocation'].','.$data['building'],
                 'license' =>$filename,
                 'country' =>$data['country']
             ];
@@ -787,7 +793,7 @@ class frontPageController extends Controller
                 'phone' => $data['phone-number'],
                 'type_of_work' => $data['type_of_work'],
                 'shopname'=> $data['shop-name'],
-                'address' => $data['address'],
+                'address' => $data['street'].','.$data['nearlocation'].','.$data['building'],
                 'country' =>$data['country']
             ];
           
@@ -798,7 +804,7 @@ class frontPageController extends Controller
             $addnewvendor->email = $data['email'];
             $addnewvendor->city = $data['city'];
             $addnewvendor->country = $data['country'];
-            $addnewvendor->address = $data['address'];
+            $addnewvendor->address = $data['street'].','.$data['nearlocation'].','.$data['building'];
             $addnewvendor->phone = $data['phone-number'];
             $addnewvendor->document = $filename;
             $addnewvendor->photo = $filephoto;
