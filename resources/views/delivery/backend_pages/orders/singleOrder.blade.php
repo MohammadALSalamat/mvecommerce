@@ -107,7 +107,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-colored-form-control">User Info</h4>
+                <h4 class="card-title" id="basic-layout-colored-form-control">Billing Info</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -161,7 +161,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-form"> Billing Details </h4>
+                <h4 class="card-title" id="basic-layout-form"> Seller(s) Details </h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -178,32 +178,37 @@
                     <div class="form-body">
                       <div class="row">
                         <div class="col-md-12">
+                          @foreach ($order->product as $items)
+                          @php
+                            $sellers_info = \App\Models\Seller::where('id',$items->vendor_id)->first();
+                          @endphp
                           <table>
                             <tr>
                               <td>Full Name : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $sellers_info->full_name }}</td>
                             </tr>
                             <tr>
                               <td>Phone Number : </td>
-                              <td>{{ $order->phone }}</td>
+                              <td>{{ $sellers_info->phone }}</td>
                             </tr>
                             <tr>
                               <td>Street : </td>
-                              <td>{{ $order->address }}</td>
+                              <td>{!! $sellers_info->address !!}</td>
                             </tr>
                             <tr>
                               <td>City : </td>
-                              <td>{{ $order->city }}</td>
+                              <td>{{ $sellers_info->city }}</td>
                             </tr>
                             <tr>
                               <td>Country : </td>
-                              <td>{{ $order->country }}</td>
+                              <td>{{ $sellers_info->country }}</td>
                             </tr>
                             <tr>
                               <td>Near Place : </td>
-                              <td>{{ $order->postcode }}</td>
+                              <td>{{ $sellers_info->postcode }}</td>
                             </tr>
                           </table>
+                          @endforeach
                         </div>
                       </div>
                     </div>
