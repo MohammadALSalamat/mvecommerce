@@ -200,10 +200,8 @@
                               <td>
                                 <b>Name :</b> {{ $items->title }}<br>
                                 <b>Price :</b> {{ $items->price }}<br>
-
                               </td>
                             </tr>
-                           
                             <tr>
                               <td>Near Place : </td>
                               <td>{{ $sellers_info->postcode }}</td>
