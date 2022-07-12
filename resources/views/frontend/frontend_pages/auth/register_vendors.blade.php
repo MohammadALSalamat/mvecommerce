@@ -187,29 +187,34 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="eventName2" style="font-size: 15px">Address Name :
-                                                            <b style="color: red">*</b></label>
-                                                        <input type="text" class="form-control required" name="address"
-                                                            id="eventName2">
-                                                    </div>
-
-                                                    <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Country Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="country" class="form-control required"
-                                                            id="country">
+                                                            id="country" placeholder="add the country name that your store in">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">City Name :
                                                             <b style="color: red">*</b></label>
                                                         <input type="text" name="city" class="form-control required"
-                                                            id="country">
+                                                            id="country" placeholder="add the name of city that your store in">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="eventLocation2" style="font-size: 15px">Land Mark :
+                                                        <label for="eventLocation2" style="font-size: 15px">Street name
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control required"
-                                                            id="country">
+                                                        <input type="text" name="street" class="form-control required"
+                                                            id="street" placeholder="Ex, Elctra Street">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Building name/no, floor, Apt. or villa no.
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="building" class="form-control required"
+                                                            id="buiding" placeholder="Ex, Royal Rose , appartment 34 , floor 3">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Nearest Landmark :
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="nearlocation" class="form-control required"
+                                                            id="nearlocation" placeholder="the oppisate side of ADCB ">
                                                     </div>
                                                 </div>
                                             </div>
