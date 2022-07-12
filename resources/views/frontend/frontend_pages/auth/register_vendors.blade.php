@@ -205,6 +205,12 @@
                                                         <input type="text" name="city" class="form-control required"
                                                             id="country">
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Land Mark :
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="city" class="form-control required"
+                                                            id="country">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </fieldset>
