@@ -189,14 +189,21 @@
                                                     <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Country Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="country" class="form-control required"
-                                                            id="country" placeholder="add the country name that your store in">
+                                                        <input type="text" name="country" class="form-control required" disabled
+                                                            id="country" placeholder="Ex, United Arab Emirates" value="United Arab Emirates">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">City Name :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control required"
-                                                            id="country" placeholder="add the name of city that your store in">
+                                                        <select type="text" name="city" class="form-control required"
+                                                            id="country">
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">Street name
