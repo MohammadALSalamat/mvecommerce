@@ -189,8 +189,29 @@
                         @endforeach
                       </td>
                       <td>
-                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                          <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 25%"
+                       
+                      @if ($order->payment_status == 'completed')
+                      <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 100%"
+                     aria-valuenow="100"
+                     @elseif ($order->payment_status == 'inprocess')
+                       <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 75%"
+                     aria-valuenow="75"
+                     @elseif ($order->payment_status == 'shipped')
+                       <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 50%"
+                     aria-valuenow="50"
+                     @elseif ($order->payment_status == 'pending')
+                       <div class="progress-bar bg-gradient-x-danger" role="progressbar" 
+                     style="width: 25%"
+                     aria-valuenow="25"
+                     @elseif ($order->payment_status == 'cancelled')
+                       <div class="progress-bar bg-gradient-x-danger" role="progressbar" 
+                     style="width: 0%"
+                     aria-valuenow="0"
+                     @endif
+                          
                           aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                       </td>
