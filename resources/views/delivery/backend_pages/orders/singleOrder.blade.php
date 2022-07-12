@@ -199,7 +199,7 @@
                               <td>Product Details : </td>
                               <td>
                                 <b>Name :</b> {{ $items->title }}<br>
-                                <b>Price :</b> {{ $items->title }}<br>
+                                <b>Price :</b> {{ $items->price }}<br>
 
                               </td>
                             </tr>
