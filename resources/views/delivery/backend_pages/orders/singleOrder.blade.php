@@ -172,13 +172,13 @@
                   </ul>
                 </div>
               </div>
+              @foreach ($order->product as $items)
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form">
                     <div class="form-body">
                       <div class="row">
                         <div class="col-md-12">
-                          @foreach ($order->product as $items)
                           @php
                             $sellers_info = \App\Models\Seller::where('id',$items->vendor_id)->first();
                           @endphp
@@ -193,28 +193,29 @@
                             </tr>
                             <tr>
                               <td>Street : </td>
-                              <td>{!! $sellers_info->address !!}</td>
+                              <td>{!! $sellers_info->address !!},{{ $sellers_info->city }},{{ $sellers_info->country }}</td>
                             </tr>
                             <tr>
-                              <td>City : </td>
-                              <td>{{ $sellers_info->city }}</td>
+                              <td>Product Details : </td>
+                              <td>
+                                <b>Name :</b> {{ $items->title }}<br>
+                                <b>Price :</b> {{ $items->title }}<br>
+
+                              </td>
                             </tr>
-                            <tr>
-                              <td>Country : </td>
-                              <td>{{ $sellers_info->country }}</td>
-                            </tr>
+                           
                             <tr>
                               <td>Near Place : </td>
                               <td>{{ $sellers_info->postcode }}</td>
                             </tr>
                           </table>
-                          @endforeach
                         </div>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
+              @endforeach
             </div>
           </div>
           <div class="col-md-6">
@@ -296,7 +297,6 @@
                         <th>Vendor Name</th>
                         <th>Shipping</th>
                         <th>Amount</th>
-
                       </tr>
                       </tr>
                     </thead>
