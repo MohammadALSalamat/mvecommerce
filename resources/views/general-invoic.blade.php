@@ -88,7 +88,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right" style=" display: table-cell;width:300px">
+              <div class="col-md-6 col-sm-12 text-center text-md-right" style=" display: table-cell;width:350px">
                 <p>
                   <span class="text-muted">Invoice Date :</span> {{ date('d-m-y',strtotime($order->created_at)) }}</p>
                 <p>
