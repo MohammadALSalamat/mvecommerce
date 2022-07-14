@@ -426,8 +426,16 @@
                             <div class="top" style="width:100%">
                                 <div class="" style="float:left">
                                     <h5>ORDER <span class="text-primary font-weight-bold">#{{ $order->order_number }}</span></h5>
-                                    <h5>Price :<span class="order-price text-primary font-weight-bold">{{ $order->total }} AED </span> for 
+                                    <h5>PRICES :<span class="order-price text-primary font-weight-bold">{{ $order->total }} AED </span> for 
                                        <span class="order-quantity text-primary font-weight-bold"> {{ count($order->product) }}</span> item </h5>
+                                       <h5>ITEMS : <br>
+                                        @foreach ($order->product as $item)
+                                        @php
+                                        $other_image = explode(',',$item->image);
+                                      @endphp
+                                       <img src="{{ $other_image[0] }}" alt="{{ $item->title }}" style="width: 30px !important"> <span class="order-quantity text-primary font-weight-bold"> {{ ($item->title) }}</span><br>
+                                        @endforeach
+                                       </h5>
                                 </div>
                                 <div class="top" style="float:right">
                                     <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
