@@ -28,7 +28,7 @@ class delivery_status extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('support@9yards.ae')
+        return $this->from('info@fbmwomensportsaward.ae')
         ->subject('Order Delivery Status #'.$this->data_info_email['order_number'])
         ->view('mails.deliveryemails.changeStatus')
         ->with('data_info_email', $this->data_info_email);

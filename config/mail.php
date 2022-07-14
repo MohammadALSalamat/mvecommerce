@@ -45,6 +45,27 @@ return [
             'auth_mode' => null,
         ],
 
+        'sales' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST', 'smtp.office365.com'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_SALES_USERNAME'),
+            'password' => env('MAIL_SALES_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+        ],
+        'support' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST', 'smtp.office365.com'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_SUPPORT_USERNAME'),
+            'password' => env('MAIL_SUPPORT_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],
