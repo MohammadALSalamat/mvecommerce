@@ -237,10 +237,10 @@
                         <table class="mb-6 shop-table account-orders-table">
                             <thead>
                                 <tr>
-                                    <th class="order-id">Order</th>
-                                    <th class="order-date">Date</th>
-                                    <th class="order-status">Status</th>
-                                    <th class="order-total">Total</th>
+                                    <th class="order-id" style="text-align: left">Order</th>
+                                    <th class="order-date" style="text-align: left">Date</th>
+                                    <th class="order-status" style="text-align: left">Status</th>
+                                    <th class="order-total" style="text-align: left">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -248,7 +248,20 @@
                                 <tr>
                                     <td class="order-id">#{{ $order->order_number }}</td>
                                     <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
-                                    <td class="order-status">{{ $order->payment_status }}</td>
+                                    <td class="order-status" 
+                                    @if ($order->payment_status == 'completed')
+                                    style="color:green"
+                                    @elseif ($order->payment_status == 'inprocess')
+                                    style="color:orange"
+                                    @elseif ($order->payment_status == 'shipped')
+                                    style="color:green"
+                                    @elseif ($order->payment_status == 'pending')
+                                    style="color:orange"
+                                    @elseif ($order->payment_status == 'cancelled')
+                                    style="color:red"
+                                    @endif
+                                    >
+                                    {{ $order->payment_status }}</td>
                                     <td class="order-total">
                                         <span class="order-price">{{ $order->total }} AED </span> for
                                         <span class="order-quantity"> {{ count($order->product) }}</span> item
