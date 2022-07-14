@@ -422,18 +422,21 @@
                         @foreach ($user_orders as $orders)
                         @if ($orders->payment_status != 'completed')
 
-                        <div class="card">
-                            <div class="row d-flex justify-content-between px-3 top">
-                                <div class="d-flex">
+                        <div  style="width: 100%; display:flex;padding:40px 0px"> 
+                            <div class="top" style="width:100%">
+                                <div class="" style="float:left">
                                     <h5>ORDER <span class="text-primary font-weight-bold">#{{ $order->order_number }}</span></h5>
+                                    <h5>Price :<span class="order-price text-primary font-weight-bold">{{ $order->total }} AED </span> for 
+                                       <span class="order-quantity text-primary font-weight-bold"> {{ count($order->product) }}</span> item </h5>
                                 </div>
-                                <div class="d-flex flex-column text-sm-right">
+                                <div class="top" style="float:right">
                                     <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
                                     <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
                                 </div>
                             </div>
+                        </div>
 
-                        <ol class="progtrckr" data-progtrckr-steps="4">
+                        <ol class="progtrckr" data-progtrckr-steps="4" style="padding-bottom:30px">
                             <li class="progtrckr-done">Order Processing</li>
                             <!--
                              -->
