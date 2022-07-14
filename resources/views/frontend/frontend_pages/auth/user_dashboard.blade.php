@@ -451,7 +451,10 @@
                                         @php
                                         $other_image = explode(',',$item->image);
                                       @endphp
-                                       <img src="{{ $other_image[0] }}" alt="{{ $item->title }}" style="width: 30px !important"> <span class="order-quantity text-primary font-weight-bold"> {{ ($item->title) }}</span><br>
+                                    <a href="{{ route('singleproduct',$item->slug) }}" style="display:flex;padding:10px 0px">
+                                        <img src="{{ $other_image[0] }}" alt="{{ $item->title }}" style="width: 30px !important;padding-right:10px;"> 
+                                        <span class="order-quantity text-primary font-weight-bold"> {{ ($item->title) }}</span>
+                                    </a>
                                         @endforeach    
                                     </td>
                                     <td class="order-total">
