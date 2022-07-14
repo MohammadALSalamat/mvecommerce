@@ -419,52 +419,36 @@
                                 <h4 class="mb-0 icon-box-title ls-normal">Track Order</h4>
                             </div>
                         </div>
+                      
+                        @foreach ($user_orders as $orders)
+                        @if ($orders->payment_status != 'completed')
                         <table class="mb-6 shop-table account-orders-table">
                             <thead>
                                 <tr>
-                                    <th class="order-id">Order</th>
-                                    <th class="order-date">Date</th>
-                                    <th class="order-status">Status</th>
-                                    <th class="order-total">Total</th>
+                                    <th class="order-id" style="text-align: left">ORDER</th>
+                                    <th class="order-status" style="text-align: left">ITEMS</th>
+                                    <th class="order-total" style="text-align: left">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($user_orders as $order)
                                 <tr>
-                                    <td class="order-id">#{{ $order->order_number }}</td>
-                                    <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
-                                    <td class="order-status">{{ $order->payment_status }}</td>
-                                    <td class="order-total">
-                                        <span class="order-price">{{ $order->total }} AED </span> for
-                                        <span class="order-quantity"> {{ count($order->product) }}</span> item
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @foreach ($user_orders as $orders)
-                        @if ($orders->payment_status != 'completed')
-                        <div  style="width: 100%; display:flex;padding:40px 0px"> 
-                            <div class="top" style="width:100%">
-                                <div class="" style="float:left">
-                                    <h5>ORDER <span class="text-primary font-weight-bold">#{{ $order->order_number }}</span></h5>
-                                    <h5>PRICES :<span class="order-price text-primary font-weight-bold">{{ $order->total }} AED </span> for 
-                                       <span class="order-quantity text-primary font-weight-bold"> {{ count($order->product) }}</span> item </h5>
-                                       <h5>ITEMS : <br>
-                                        @foreach ($order->product as $item)
+                                    <td class="order-id">#{{ $orders->order_number }}</td>
+                                    <td class="order-date">
+                                        @foreach ($orders->product as $item)
                                         @php
                                         $other_image = explode(',',$item->image);
                                       @endphp
                                        <img src="{{ $other_image[0] }}" alt="{{ $item->title }}" style="width: 30px !important"> <span class="order-quantity text-primary font-weight-bold"> {{ ($item->title) }}</span><br>
-                                        @endforeach
-                                       </h5>
-                                </div>
-                                <div class="top" style="float:right">
-                                    <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
-                                    <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
-                                </div>
-                            </div>
-                        </div>
+                                        @endforeach    
+                                    </td>
+                                    <td class="order-total">
+                                        <span class="order-price">{{ $orders->total }} AED </span> for
+                                        <span class="order-quantity"> {{ count($orders->product) }}</span> item
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
                         <ol class="progtrckr" data-progtrckr-steps="4" style="padding-bottom:30px">
                             <li class="progtrckr-done">Order Processing</li>
                             <!--
