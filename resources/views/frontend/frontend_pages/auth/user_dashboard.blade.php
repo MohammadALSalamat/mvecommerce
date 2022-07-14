@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">Account details</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#track-order" class="nav-link">Track Order</a>
+                    </li>
                  
                     <li class="nav-item">
                         <a href="{{ route('logout_front_user') }}" class="nav-link">Logout</a>
@@ -102,6 +105,18 @@
                                         </span>
                                         <div class="icon-box-content">
                                             <p class="mb-0 text-uppercase">Account Details</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
+                                <a href="#track-order" class="link-to-tab">
+                                    <div class="text-center icon-box">
+                                        <span class="icon-box-icon icon-account">
+                                            <i class="w-icon-user"></i>
+                                        </span>
+                                        <div class="icon-box-content">
+                                            <p class="mb-0 text-uppercase">Track Order</p>
                                         </div>
                                     </div>
                                 </a>
@@ -170,7 +185,6 @@
                         <a href="{{ route('shop_page') }}" class="btn btn-dark btn-rounded btn-icon-right">Go
                             Shop<i class="w-icon-long-arrow-right"></i></a>
                     </div>
-                   
                     <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
@@ -312,6 +326,17 @@
                             </div>
                             <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">Save Changes</button>
                         </form>
+                    </div>
+                    <div class="tab-pane" id="track-order">
+                        <div class="icon-box icon-box-side icon-box-light">
+                            <span class="mr-2 icon-box-icon icon-account">
+                                <i class="w-icon-user"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="mb-0 icon-box-title ls-normal">Track Order</h4>
+                            </div>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
