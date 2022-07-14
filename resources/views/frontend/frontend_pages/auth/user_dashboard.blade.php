@@ -1,5 +1,5 @@
 @extends('frontend.frontend_layout.main_desgin')
- @if(Config::get('app.locale') == 'en')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','My Account' )
 @else
 @section('mytitle','الحساب الخاص بك' )
@@ -7,65 +7,90 @@
 
 @section('style')
 <style>
-ol.progtrckr {
-    margin: 0;
-    padding: 0;
-    list-style-type none;
-}
+    ol.progtrckr {
+        margin: 0;
+        padding: 0;
+        list-style-type none;
+    }
 
-ol.progtrckr li {
-    display: inline-block;
-    text-align: center;
-    line-height: 3.5em;
-}
+    ol.progtrckr li {
+        display: inline-block;
+        text-align: center;
+        line-height: 3.5em;
+    }
 
-ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }
-ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
-ol.progtrckr[data-progtrckr-steps="4"] li { width: 24%; }
-ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
-ol.progtrckr[data-progtrckr-steps="6"] li { width: 16%; }
-ol.progtrckr[data-progtrckr-steps="7"] li { width: 14%; }
-ol.progtrckr[data-progtrckr-steps="8"] li { width: 12%; }
-ol.progtrckr[data-progtrckr-steps="9"] li { width: 11%; }
+    ol.progtrckr[data-progtrckr-steps="2"] li {
+        width: 49%;
+    }
 
-ol.progtrckr li.progtrckr-done {
-    color: black;
-    border-bottom: 4px solid yellowgreen;
-}
-ol.progtrckr li.progtrckr-todo {
-    color: silver; 
-    border-bottom: 4px solid silver;
-}
+    ol.progtrckr[data-progtrckr-steps="3"] li {
+        width: 33%;
+    }
 
-ol.progtrckr li:after {
-    content: "\00a0\00a0";
-}
-ol.progtrckr li:before {
-    position: relative;
-    bottom: -2.5em;
-    float: left;
-    left: 50%;
-    line-height: 1em;
-}
-ol.progtrckr li.progtrckr-done:before {
-    content: "\2713";
-    color: white;
-    background-color: yellowgreen;
-    height: 2.2em;
-    width: 2.2em;
-    line-height: 2.2em;
-    border: none;
-    border-radius: 2.2em;
-}
-ol.progtrckr li.progtrckr-todo:before {
-    content: "\039F";
-    color: silver;
-    background-color: white;
-    font-size: 2.2em;
-    bottom: -1.2em;
-}
+    ol.progtrckr[data-progtrckr-steps="4"] li {
+        width: 24%;
+    }
 
+    ol.progtrckr[data-progtrckr-steps="5"] li {
+        width: 19%;
+    }
 
+    ol.progtrckr[data-progtrckr-steps="6"] li {
+        width: 16%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="7"] li {
+        width: 14%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="8"] li {
+        width: 12%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="9"] li {
+        width: 11%;
+    }
+
+    ol.progtrckr li.progtrckr-done {
+        color: black;
+        border-bottom: 4px solid yellowgreen;
+    }
+
+    ol.progtrckr li.progtrckr-todo {
+        color: silver;
+        border-bottom: 4px solid silver;
+    }
+
+    ol.progtrckr li:after {
+        content: "\00a0\00a0";
+    }
+
+    ol.progtrckr li:before {
+        position: relative;
+        bottom: -2.5em;
+        float: left;
+        left: 50%;
+        line-height: 1em;
+    }
+
+    ol.progtrckr li.progtrckr-done:before {
+        content: "\2713";
+        color: white;
+        background-color: yellowgreen;
+        height: 2.2em;
+        width: 2.2em;
+        line-height: 2.2em;
+        border: none;
+        border-radius: 2.2em;
+    }
+
+    ol.progtrckr li.progtrckr-todo:before {
+        content: "\039F";
+        color: silver;
+        background-color: white;
+        font-size: 2.2em;
+        bottom: -1.2em;
+    }
 </style>
 
 @endsection
@@ -97,7 +122,7 @@ ol.progtrckr li.progtrckr-todo:before {
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">Orders</a>
                     </li>
-        
+
                     <li class="nav-item">
                         <a href="#account-addresses" class="nav-link">Addresses</a>
                     </li>
@@ -107,7 +132,7 @@ ol.progtrckr li.progtrckr-todo:before {
                     <li class="nav-item">
                         <a href="#track-order" class="nav-link">Track Order</a>
                     </li>
-                 
+
                     <li class="nav-item">
                         <a href="{{ route('logout_front_user') }}" class="nav-link">Logout</a>
                     </li>
@@ -146,7 +171,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -171,7 +196,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#track-order" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -184,7 +209,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
@@ -252,17 +277,20 @@ ol.progtrckr li.progtrckr-todo:before {
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address shipping-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">Add New Address</h4>
-                                    <a href="{{ route('deliver_address',) }}"> 
-                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
-                                           <h4 style="color:#ccc; margin-top:10px">Add Address </h4>
-                                        </i> 
+                                    <a href="{{ route('deliver_address',) }}">
+                                        <i class=" fa fa-plus text-center"
+                                            style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                            <h4 style="color:#ccc; margin-top:10px">Add Address </h4>
+                                        </i>
                                     </a>
                                 </div>
                             </div>
                             @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address @if($user_location->themain_address == 1) <b style="color:red"> ( Defualt Address)</b> @endif</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address
+                                        @if($user_location->themain_address == 1) <b style="color:red"> ( Defualt
+                                            Address)</b> @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -301,11 +329,14 @@ ol.progtrckr li.progtrckr-todo:before {
                                             </tbody>
                                         </table>
                                     </address>
-                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> Edit </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> Delete </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> Set As Defualt</a>
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> Edit </a> | <a
+                                        href="{{ route('delete_deliverAddress',$user_location->id) }}"> Delete </a> | <a
+                                        href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> Set As
+                                        Defualt</a>
                                 </div>
                             </div>
                             @endforeach
-                           
+
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
@@ -318,7 +349,8 @@ ol.progtrckr li.progtrckr-todo:before {
                                 <h4 class="mb-0 icon-box-title ls-normal">Account Details</h4>
                             </div>
                         </div>
-                        <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
+                        <form class="form account-details-form"
+                            action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -355,11 +387,11 @@ ol.progtrckr li.progtrckr-todo:before {
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
-                             @if($current_user->role == 'seller')
+                            @if($current_user->role == 'seller')
                             <div class="mb-6 form-group">
                                 <label for="email_1">Shop Name </label>
                                 <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
-                                value="{{ $current_user->shop_name }}">
+                                    value="{{ $current_user->shop_name }}">
                             </div>
                             @endif
                             <h4 class="title title-password ls-25 font-weight-bold">Password change</h4>
@@ -388,16 +420,63 @@ ol.progtrckr li.progtrckr-todo:before {
                             </div>
                         </div>
                         @foreach ($user_orders as $orders)
-                            @if ($orders->payment_status != 'completed')
-                            <ol class="progtrckr" data-progtrckr-steps="4">
-                                <li class="progtrckr-done">Order Processing</li><!--
-                             --><li class="@if ($orders->payment_status == 'inprocess') progtrckr-done @else progtrckr-todo @endif">Pre-Production</li><!--
-                             --><li class="@if ($orders->payment_status == 'inprocess') progtrckr-done @else progtrckr-todo @endif">In Production</li><!--
-                             --><li class="@if ($orders->payment_status == 'shipped') progtrckr-done @else progtrckr-todo @endif">Shipped</li><!--
-                             --><li class="@if ($orders->payment_status == 'completed') progtrckr-done @else progtrckr-todo @endif">Delivered</li>
-                            </ol>
-                            @else
-                            @endif
+                        @if ($orders->payment_status != 'completed')
+
+                        <div class="card">
+                            <div class="row d-flex justify-content-between px-3 top">
+                                <div class="d-flex">
+                                    <h5>ORDER <span class="text-primary font-weight-bold">#{{ $order->order_number }}</span></h5>
+                                </div>
+                                <div class="d-flex flex-column text-sm-right">
+                                    <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
+                                    <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
+                                </div>
+                            </div>
+
+                        <ol class="progtrckr" data-progtrckr-steps="4">
+                            <li class="progtrckr-done">Order Processing</li>
+                            <!--
+                             -->
+                           
+                            <li
+                                class="@if ($orders->payment_status == 'inprocess') progtrckr-done @else progtrckr-todo @endif">
+                                In Production</li>
+                            <!--
+                             -->
+                            <li
+                                class="@if ($orders->payment_status == 'shipped') progtrckr-done @else progtrckr-todo @endif">
+                                Shipped</li>
+                            <!--
+                             -->
+                            <li
+                                class="@if ($orders->payment_status == 'completed') progtrckr-done @else progtrckr-todo @endif">
+                                Delivered</li>
+                        </ol>
+                        @else
+                        <table class="mb-6 shop-table account-orders-table">
+                            <thead>
+                                <tr>
+                                    <th class="order-id">Order</th>
+                                    <th class="order-date">Date</th>
+                                    <th class="order-status">Status</th>
+                                    <th class="order-total">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user_orders as $order)
+                                <tr>
+                                    <td class="order-id">#{{ $order->order_number }}</td>
+                                    <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
+                                    <td class="order-status">{{ $order->payment_status }}</td>
+                                    <td class="order-total">
+                                        <span class="order-price">{{ $order->total }} AED </span> for
+                                        <span class="order-quantity"> {{ count($order->product) }}</span> item
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        @endif
                         @endforeach
                     </div>
                 </div>
@@ -432,14 +511,14 @@ ol.progtrckr li.progtrckr-todo:before {
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">الطلبات</a>
                     </li>
-        
+
                     <li class="nav-item">
                         <a href="#account-addresses" class="nav-link">المواقع</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">معلومات الحساب</a>
                     </li>
-                 
+
                     <li class="nav-item">
                         <a href="{{ route('logout_front_user') }}" class="nav-link">تسجيل الخروج</a>
                     </li>
@@ -456,10 +535,12 @@ ol.progtrckr li.progtrckr-todo:before {
                         </p>
 
                         <p class="mb-4">
-                            من خلال لوحط التحكم الخاصة بك يمكن الان  <a href="#account-orders"
+                            من خلال لوحط التحكم الخاصة بك يمكن الان <a href="#account-orders"
                                 class="text-primary link-to-tab">الاطلاع على طلباتك</a>,
-                            أو تعديل <a href="#account-addresses" class="text-primary link-to-tab">عناوين الشحن والفواتير</a>, و
-                            <a href="#account-details" class="text-primary link-to-tab">تعديل حسابك الشخصي مع كلمة المرور</a>
+                            أو تعديل <a href="#account-addresses" class="text-primary link-to-tab">عناوين الشحن
+                                والفواتير</a>, و
+                            <a href="#account-details" class="text-primary link-to-tab">تعديل حسابك الشخصي مع كلمة
+                                المرور</a>
                         </p>
 
                         <div class="row">
@@ -475,7 +556,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -500,7 +581,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
@@ -547,14 +628,15 @@ ol.progtrckr li.progtrckr-todo:before {
                                     </td>
                                 </tr>
                                 @endforeach
-                               
+
                             </tbody>
                         </table>
 
-                        <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i class="w-icon-long-arrow-left"></i></a>
+                        <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i
+                                class="w-icon-long-arrow-left"></i></a>
                     </div>
-                   
-                     <!-- Address Tab -->
+
+                    <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
                             <span class="icon-box-icon icon-map-marker">
@@ -569,17 +651,20 @@ ol.progtrckr li.progtrckr-todo:before {
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address shipping-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">أضف عنوان جديد</h4>
-                                    <a href="{{ route('deliver_address',) }}"> 
-                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
-                                           <h4 style="color:#ccc; margin-top:10px">أضف عنوان </h4>
-                                        </i> 
+                                    <a href="{{ route('deliver_address',) }}">
+                                        <i class=" fa fa-plus text-center"
+                                            style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                            <h4 style="color:#ccc; margin-top:10px">أضف عنوان </h4>
+                                        </i>
                                     </a>
                                 </div>
                             </div>
                             @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان التسليم @if($user_location->themain_address == 1) <b style="color:red"> ( العنوان الافتراضي)</b> @endif</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان التسليم
+                                        @if($user_location->themain_address == 1) <b style="color:red"> ( العنوان
+                                            الافتراضي)</b> @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -618,11 +703,14 @@ ol.progtrckr li.progtrckr-todo:before {
                                             </tbody>
                                         </table>
                                     </address>
-                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> تعديل </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> حذف </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> عنوان افتراضي</a>
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> تعديل </a> | <a
+                                        href="{{ route('delete_deliverAddress',$user_location->id) }}"> حذف </a> | <a
+                                        href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> عنوان
+                                        افتراضي</a>
                                 </div>
                             </div>
                             @endforeach
-                           
+
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
@@ -635,7 +723,8 @@ ol.progtrckr li.progtrckr-todo:before {
                                 <h4 class="mb-0 icon-box-title ls-normal">معلومات الحساب</h4>
                             </div>
                         </div>
-                        <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
+                        <form class="form account-details-form"
+                            action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -650,7 +739,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="lastname">اسم المستخدم  </label>
+                                        <label for="lastname">اسم المستخدم </label>
                                         <input type="text" id="username" name="username"
                                             @if(!empty($current_user->username) || $current_user->username != null)
                                         value="{{ $current_user->username }}" @endif
@@ -672,21 +761,23 @@ ol.progtrckr li.progtrckr-todo:before {
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
-                             @if($current_user->role == 'seller')
+                            @if($current_user->role == 'seller')
                             <div class="mb-6 form-group">
                                 <label for="email_1">اسم المشروع </label>
                                 <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
-                                value="{{ $current_user->shop_name }}">
+                                    value="{{ $current_user->shop_name }}">
                             </div>
                             @endif
                             <h4 class="title title-password ls-25 font-weight-bold">تعديل كلمة السر</h4>
                             <div class="form-group">
-                                <label class="text-dark" for="cur-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
+                                <label class="text-dark" for="cur-password">اذا لم ترد تغيير كلمة السر فدع الحقل
+                                    فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="old-password"
                                     name="old_password">
                             </div>
                             <div class="form-group">
-                                <label class="text-dark" for="new-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
+                                <label class="text-dark" for="new-password">اذا لم ترد تغيير كلمة السر فدع الحقل
+                                    فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="new-password"
                                     name="new_password">
                             </div>
@@ -698,7 +789,7 @@ ol.progtrckr li.progtrckr-todo:before {
         </div>
     </div>
     <!-- End of PageContent -->
-</main> 
+</main>
 
 @endif
 <!-- End of Main -->
