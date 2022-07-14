@@ -223,7 +223,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                 <tr>
                                     <td class="order-id">#{{ $order->order_number }}</td>
                                     <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
-                                    <td class="order-status">Processing</td>
+                                    <td class="order-status">{{ $order->payment_status }}</td>
                                     <td class="order-total">
                                         <span class="order-price">{{ $order->total }} AED </span> for
                                         <span class="order-quantity"> {{ count($order->product) }}</span> item
@@ -389,12 +389,12 @@ ol.progtrckr li.progtrckr-todo:before {
                         </div>
                         @foreach ($user_orders as $orders)
                             @if ($orders->payment_status != 'completed')
-                            <ol class="progtrckr" data-progtrckr-steps="5">
+                            <ol class="progtrckr" data-progtrckr-steps="4">
                                 <li class="progtrckr-done">Order Processing</li><!--
-                             --><li class="progtrckr-done">Pre-Production</li><!--
-                             --><li class="progtrckr-done">In Production</li><!--
-                             --><li class="progtrckr-todo">Shipped</li><!--
-                             --><li class="progtrckr-todo">Delivered</li>
+                             --><li class="@if ($orders->payment_status == 'inprocess') progtrckr-done @else progtrckr-todo @endif">Pre-Production</li><!--
+                             --><li class="@if ($orders->payment_status == 'inprocess') progtrckr-done @else progtrckr-todo @endif">In Production</li><!--
+                             --><li class="@if ($orders->payment_status == 'shipped') progtrckr-done @else progtrckr-todo @endif">Shipped</li><!--
+                             --><li class="@if ($orders->payment_status == 'completed') progtrckr-done @else progtrckr-todo @endif">Delivered</li>
                             </ol>
                             @else
                             @endif
