@@ -65,7 +65,7 @@ ol.progtrckr li.progtrckr-todo:before {
     bottom: -1.2em;
 }
 
-    
+
 </style>
 
 @endsection
@@ -387,13 +387,18 @@ ol.progtrckr li.progtrckr-todo:before {
                                 <h4 class="mb-0 icon-box-title ls-normal">Track Order</h4>
                             </div>
                         </div>
-                        <ol class="progtrckr" data-progtrckr-steps="5">
-                            <li class="progtrckr-done">Order Processing</li><!--
-                         --><li class="progtrckr-done">Pre-Production</li><!--
-                         --><li class="progtrckr-done">In Production</li><!--
-                         --><li class="progtrckr-todo">Shipped</li><!--
-                         --><li class="progtrckr-todo">Delivered</li>
-                        </ol>
+                        @foreach ($user_orders as $orders)
+                            @if ($orders->payment_status != 'completed')
+                            <ol class="progtrckr" data-progtrckr-steps="5">
+                                <li class="progtrckr-done">Order Processing</li><!--
+                             --><li class="progtrckr-done">Pre-Production</li><!--
+                             --><li class="progtrckr-done">In Production</li><!--
+                             --><li class="progtrckr-todo">Shipped</li><!--
+                             --><li class="progtrckr-todo">Delivered</li>
+                            </ol>
+                            @else
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
