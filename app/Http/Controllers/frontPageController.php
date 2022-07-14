@@ -983,8 +983,6 @@ class frontPageController extends Controller
     public function register_users( Request $request)
     {
         $data = $request->all();
-    
-
                 if ($data['full_name'] == null || empty($data['full_name'])) {
                     return back()->with('error', 'full name is required');
                 }

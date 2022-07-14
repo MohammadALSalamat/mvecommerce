@@ -7,128 +7,66 @@
 
 @section('style')
 <style>
-    
-.card {
-    z-index: 0;
-    background-color: #ECEFF1;
-    padding-bottom: 20px;
-    margin-top: 90px;
-    margin-bottom: 90px;
-    border-radius: 10px;
+ol.progtrckr {
+    margin: 0;
+    padding: 0;
+    list-style-type none;
 }
 
-.top {
-    padding-top: 40px;
-    padding-left: 13% !important;
-    padding-right: 13% !important;
+ol.progtrckr li {
+    display: inline-block;
+    text-align: center;
+    line-height: 3.5em;
 }
 
-/*Icon progressbar*/
-#progressbar {
-    margin-bottom: 30px;
-    overflow: hidden;
-    color: #455A64;
-    padding-left: 0px;
-    margin-top: 30px;
-} 
+ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }
+ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
+ol.progtrckr[data-progtrckr-steps="4"] li { width: 24%; }
+ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
+ol.progtrckr[data-progtrckr-steps="6"] li { width: 16%; }
+ol.progtrckr[data-progtrckr-steps="7"] li { width: 14%; }
+ol.progtrckr[data-progtrckr-steps="8"] li { width: 12%; }
+ol.progtrckr[data-progtrckr-steps="9"] li { width: 11%; }
 
-#progressbar li {
-    list-style-type: none;
-    font-size: 13px;
-    width: 25%;
-    float: left;
+ol.progtrckr li.progtrckr-done {
+    color: black;
+    border-bottom: 4px solid yellowgreen;
+}
+ol.progtrckr li.progtrckr-todo {
+    color: silver; 
+    border-bottom: 4px solid silver;
+}
+
+ol.progtrckr li:after {
+    content: "\00a0\00a0";
+}
+ol.progtrckr li:before {
     position: relative;
-    font-weight: 400;
-}
-
-#progressbar .step0:before {
-    font-family: FontAwesome;
-    content: "\f10c";
-    color: #fff;
-}
-
-#progressbar li:before {
-    width: 40px;
-    height: 40px;
-    line-height: 45px;
-    display: block;
-    font-size: 20px;
-    background: #C5CAE9;
-    border-radius: 50%;
-    margin: auto;
-    padding: 0px;
-}
-
-/*ProgressBar connectors*/
-#progressbar li:after {
-    content: '';
-    width: 100%;
-    height: 12px;
-    background: #C5CAE9;
-    position: absolute;
-    left: 0;
-    top: 16px;
-    z-index: -1;
-}
-
-#progressbar li:last-child:after {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    position: absolute;
-    left: -50%;
-}
-
-#progressbar li:nth-child(2):after, #progressbar li:nth-child(3):after {
-    left: -50%;
-}
-
-#progressbar li:first-child:after {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    position: absolute;
+    bottom: -2.5em;
+    float: left;
     left: 50%;
+    line-height: 1em;
+}
+ol.progtrckr li.progtrckr-done:before {
+    content: "\2713";
+    color: white;
+    background-color: yellowgreen;
+    height: 2.2em;
+    width: 2.2em;
+    line-height: 2.2em;
+    border: none;
+    border-radius: 2.2em;
+}
+ol.progtrckr li.progtrckr-todo:before {
+    content: "\039F";
+    color: silver;
+    background-color: white;
+    font-size: 2.2em;
+    bottom: -1.2em;
 }
 
-#progressbar li:last-child:after {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-#progressbar li:first-child:after {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-/*Color number of the step and the connector before it*/
-#progressbar li.active:before, #progressbar li.active:after {
-    background: #651FFF;
-}
-
-#progressbar li.active:before {
-    font-family: FontAwesome;
-    content: "\f00c";
-}
-
-.icon {
-    width: 60px;
-    height: 60px;
-    margin-right: 15px;
-}
-
-.icon-content { 
-    padding-bottom: 20px;
-}
-
-@media screen and (max-width: 992px) {
-    .icon-content {
-        width: 50%;
-    }
-}
+    
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @endsection
 @section('content')
@@ -449,56 +387,13 @@
                                 <h4 class="mb-0 icon-box-title ls-normal">Track Order</h4>
                             </div>
                         </div>
-                        <div class="container px-1 px-md-4 py-5 mx-auto">
-                            <div class="card">
-                                <div class="row d-flex justify-content-between px-3 top">
-                                    <div class="d-flex">
-                                        <h5>ORDER <span class="text-primary font-weight-bold">#Y34XDHR</span></h5>
-                                    </div>
-                                    <div class="d-flex flex-column text-sm-right">
-                                        <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
-                                        <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
-                                    </div>
-                                </div>
-                                <!-- Add class 'active' to progress -->
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-12">
-                                    <ul id="progressbar" class="text-center">
-                                        <li class="active step0"></li>
-                                        <li class="active step0"></li>
-                                        <li class="active step0"></li>
-                                        <li class="step0"></li>
-                                    </ul>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-between top">
-                                    <div class="row d-flex icon-content">
-                                        <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
-                                        <div class="d-flex flex-column">
-                                            <p class="font-weight-bold">Order<br>Processed</p>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex icon-content">
-                                        <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
-                                        <div class="d-flex flex-column">
-                                            <p class="font-weight-bold">Order<br>Shipped</p>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex icon-content">
-                                        <img class="icon" src="https://i.imgur.com/TkPm63y.png">
-                                        <div class="d-flex flex-column">
-                                            <p class="font-weight-bold">Order<br>En Route</p>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex icon-content">
-                                        <img class="icon" src="https://i.imgur.com/HdsziHP.png">
-                                        <div class="d-flex flex-column">
-                                            <p class="font-weight-bold">Order<br>Arrived</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ol class="progtrckr" data-progtrckr-steps="5">
+                            <li class="progtrckr-done">Order Processing</li><!--
+                         --><li class="progtrckr-done">Pre-Production</li><!--
+                         --><li class="progtrckr-done">In Production</li><!--
+                         --><li class="progtrckr-todo">Shipped</li><!--
+                         --><li class="progtrckr-todo">Delivered</li>
+                        </ol>
                     </div>
                 </div>
             </div>
