@@ -253,6 +253,7 @@
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
+                                        @if ($max_discound > 0)
                                         <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
@@ -273,6 +274,7 @@
                                                 </div>
                                             </a>
                                         </div>
+                                        @endif
                                         @endif
                                         @endforeach
                                     </div>
@@ -303,6 +305,7 @@
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
+                                        @if ($max_discound > 0)
                                         <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
@@ -323,6 +326,7 @@
                                                 </div>
                                             </a>
                                         </div>
+                                        @endif
                                         @endif
                                         @endforeach
                                     </div>
@@ -608,11 +612,8 @@
                                     id="add_to_wishlist{{ $top_selling->id }}" data-quantity="1"
                                     class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                     title="Wishlist"></a>
-
                                 
-
                             </div>
-
                             @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
                             <div class="product-label-group">
                                 @if(Config::get('app.locale') == 'en')
