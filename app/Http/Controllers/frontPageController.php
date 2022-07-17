@@ -75,22 +75,7 @@ class frontPageController extends Controller
         }
         $current_url = URL::current();
         SEOMeta::setCanonical($current_url);
-        $respond= response()->json([
-            'home_Grocery_Categories'=>$home_Grocery_Categories,
-            'brands'=>$brands,
-            'products_bestSelling_top3'=>$products_bestSelling_top3,
-            'new_products'=>$new_products,
-            'top_reviewed'=>$top_reviewed,
-            'sponsers'=>$sponsers,
-            'banners'=>$banners, 
-            'categories'=>$categories,
-            'home_3_Categories'=>$home_3_Categories,
-            'products_bestSelling'=>$products_bestSelling,
-            'categories_discound'=>$categories_discound,
-            'user_locations'=>$user_locations
-        ]);
-        return $respond;
-        // return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound','user_locations'));
+        return view('frontend.frontend_pages.homepage',compact('home_Grocery_Categories','brands','products_bestSelling_top3','new_products','top_reviewed','sponsers','banners', 'categories','home_3_Categories','products_bestSelling','categories_discound','user_locations'));
     }
 
     public function aboutus()
