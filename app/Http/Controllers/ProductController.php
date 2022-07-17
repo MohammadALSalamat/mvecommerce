@@ -71,7 +71,7 @@ class ProductController extends Controller
         if(!empty($data['offer_price']) || $data['offer_price'] != null){
             $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
           }else{
-            $discound = null;
+            $discound = 0;
           }
 
         if (!empty($data['status'])) {
@@ -174,7 +174,7 @@ class ProductController extends Controller
             if(!empty($data['offer_price']) || $data['offer_price'] != null){
                 $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
               }else{
-                $discound = null;
+                $discound = 0;
               }
 
             if (!empty($data['status'])) {
