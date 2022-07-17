@@ -48,7 +48,7 @@ public function admin_viewSubscription_Status()
     {
         $data = $request->all();
         $seller_id = Seller::where('status',1)->where('id',$id)->first();
-dd($seller_id);
+       
         if(empty(Session::get('strip_plan')['subscribe_id']) || Session::get('strip_plan')['subscribe_id'] == null){
             $check_if_the_user_is_subscibed = 0;
         }else{
@@ -80,6 +80,7 @@ dd($seller_id);
             ]);
             return redirect()->route('view_seller_details')->with('message','Your Subscibe has been updated');
         }else{
+            
             $add_subscribe_data = new subscription();
             $add_subscribe_data->seller_id = $data['seller_id'];
             $add_subscribe_data->name = $data['card_name'];
