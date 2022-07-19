@@ -971,7 +971,7 @@ class frontPageController extends Controller
         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'status'=>'active'])){
             Session::put('user',$data['email']);
             if(Session::get('url.intended')){
-                return Redirect::to(Session::get('url.intended'));
+                return Redirect::to(Session::get('url.intended'))->with('message','Welcome Back '.auth()->user()->username);
             }else{
                 return redirect()->route('userdashboard')->with('message','Welcome Back '.auth()->user()->username);
             }

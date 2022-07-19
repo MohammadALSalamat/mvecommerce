@@ -90,11 +90,14 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
-                                    @error('password')
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">    Click here to see the Password
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror </div>
+                                    @enderror 
+                                </div>
                                 <div class="form-checkbox d-flex align-items-center">
                                     <input class="form-check-input mr-2" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
