@@ -231,10 +231,11 @@
                                     @enderror </div>
                                 <div class="mb-0 form-group">
                                     <label>كلمة السر *</label>
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-                                    @error('password')
+                                    <input id="password" type="password" style="padding:15px 10px;border:1px solid #ccc;width:90%"
+                                    class=" @error('password') is-invalid @enderror" name="password"
+                                required autocomplete="current-password">
+                                <i class="far fa-eye" id="togglePassword" style="margin-right: -30px; cursor: pointer;"></i>
+                                  @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
