@@ -87,12 +87,11 @@
                                     @enderror </div>
                                 <div class="mb-0 form-group">
                                     <label>Password *</label>
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                    <input id="password" type="password" style="padding:15px 10px;border:1px solid #ccc;width:90%"
+                                            class=" @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
-                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">    Click here to see the Password
-                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                        @error('password')
+                                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                                         @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -413,6 +412,18 @@
         x.type = "password";
       }
     }
+    </script>
+   <script>
+        const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
     </script>
 
 @endsection
