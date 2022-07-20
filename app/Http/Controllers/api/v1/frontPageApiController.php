@@ -153,8 +153,7 @@ class frontPageApiController extends Controller
         
          $main_categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
          #vendors
- 
-         // brands and related products
+        // brands and related products
  
          $brands_rel_product = brand::with('products')->where('status',1)->get();
  
