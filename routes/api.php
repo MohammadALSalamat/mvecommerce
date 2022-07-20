@@ -26,10 +26,9 @@ use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
 
 //++++++++++++++++++++++++++ v2 of api routes +++++++++++++++++++++++++
 Route::group(['perfix'=>'v2'],function(){
-    Route::get('users/{id?}', [ApiItajerUpdatedInformation::class,'users_info']);
-    Route::post('/login_user',[ApiItajerUpdatedInformation::class,'login_user']);
-    Route::post('/new_register_user',[ApiItajerUpdatedInformation::class,'register_new_user']);
-    
+    Route::get('v2/users/{id?}', [ApiItajerUpdatedInformation::class,'users_info']);
+    Route::post('v2/login_user',[ApiItajerUpdatedInformation::class,'login_user']);
+    Route::post('v2/new_register_user',[ApiItajerUpdatedInformation::class,'register_new_user']);
     
 });
 

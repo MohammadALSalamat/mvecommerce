@@ -19,9 +19,13 @@ class ApiItajerUpdatedInformation extends Controller
             ]);
         }else{
             $user = User::find($id);
-            return response()->json([
-                'user'=>$user,
-            ]);
+            if($user){
+                return response()->json([
+                    'user'=>$user,
+                ]);
+            }else{
+                return response()->json(['errors'=>'The User is not found '], 404);
+            }
         }
     }
 
