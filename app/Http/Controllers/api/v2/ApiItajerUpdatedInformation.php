@@ -260,5 +260,24 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-
+    public function set_deliverAddress_asDefualt($id)
+    {
+       $current_location = userLocation::find($id);
+       $loations = userLocation::where('id','!=',$current_location->id)->get();
+       if($current_location){
+           foreach($loations as $location){
+               userLocation::where('id',$location->id)->update([
+                   'themain_address'=> 0
+               ]);
+           }
+           userLocation::where('id',$current_location->id)->update([
+               'themain_address'=> 1
+           ]);
+   
+           return response()->json(['success','your address has been set to be used in checkout'],200);
+       }else{
+           return response()->json(['error','The address is not there'],404);
+       }
+   
+    }
 }
