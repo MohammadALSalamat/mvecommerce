@@ -29,14 +29,10 @@ Route::group(['perfix'=>'v2'],function(){
    
    //+++++++++++++++++++++++++ users information api/v2 +++++++++++++++++++++++++++++++++++
     Route::get('v2/users/{id?}', [ApiItajerUpdatedInformation::class,'users_info']);
-    Route::post('v2/login_user',[ApiItajerUpdatedInformation::class,'login_user']);
-    Route::post('v2/new_register_user',[ApiItajerUpdatedInformation::class,'register_new_user']);
-    // auth show the  login form.
-Route::get('my-account',[frontPageApiController::class,'loginForm'])->name('api_loginForm');
-// auth submit the login info
-Route::post('authsubmit',[frontPageApiController::class,'loginSubmit'])->name('api_submitlogin');
-// register custmor data
-Route::post('registerusers',[frontPageApiController::class,'register_users'])->name('api_registerusers');
+    Route::post('v2/login',[ApiItajerUpdatedInformation::class,'login_user']);
+    Route::post('v2/register',[ApiItajerUpdatedInformation::class,'register_new_user']);
+    
+    Route::post('v2/user_address',[frontPageApiController::class,'add_user_address']);
 
 });
 
