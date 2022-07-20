@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiItajerUpdatedInformation extends Controller
 {
-    //++++++++++++++++++++++++++++ Users Info ++++++++++++++++++++++
+   
+    // ++++++++++++++++++++++++++++ USERS REGISTRATION ++++++++++++++++++++++++++++++
     public function users_info($id = null)
     {
 
@@ -34,8 +35,6 @@ class ApiItajerUpdatedInformation extends Controller
             }
         }
     }
-
-    // ++++++++++++++++++++++++++++ USERS REGISTRATION ++++++++++++++++++++++++++++++
     public function register_new_user(Request $request)
     {
         $data = $request->all();
@@ -93,6 +92,49 @@ class ApiItajerUpdatedInformation extends Controller
     }
 
     //++++++++++++++++++++++++++++ USER DASHBOARD ++++++++++++++++++++++
+
+    public function update_useraccount(Request $request,$id)
+    {
+        $data = $request->all();
+        $current_user = User::find($id);
+
+        if(empty($data['full_name']) || $data['full_name'] == null){
+            return back()->with('error','full name is required');
+        }
+
+        if (empty($data['username']) || $data['username'] == null) {
+            return back()->with('error', 'Username is required');
+        }
+
+        if (empty($data['phone']) || $data['phone'] == null) {
+            return back()->with('error', 'full name is required');
+        }
+        if($current_user){
+            //check the old password
+            $oldpasscheker = Hash::check($data['old_password'],$current_user->password);
+            if($oldpasscheker || $data['old_password'] == null){
+                if($data['old_password'] == null){
+                    $passowrd = $current_user->password;
+                }else{
+                    $passowrd = Hash::make($data['new_password']);
+                }
+               
+
+                User::where('id',$id)->update([
+                    "full_name"=> $data['full_name'],
+                    "username"=> $data['username'],
+                    "phone"=> $data['phone'],
+                    "password" => $passowrd,
+                ]);
+                return back()->with('message','Your data has been updated');
+            }else{
+                return back()->with('error','Your Current Password is not Correct');
+            }
+        }else{
+            return back()->with('error','the user is not found');
+        }
+    }
+
 
     public function user_addresses($current_user_id = null)
     {
@@ -163,8 +205,6 @@ class ApiItajerUpdatedInformation extends Controller
             return response()->json(['errors' => 'The User is not found'], 404);
         }
     }
-
-
     public function update_address(Request $request, $id = null)
     {
         $data = $request->all();
@@ -216,4 +256,6 @@ class ApiItajerUpdatedInformation extends Controller
             return response()->json(['warning', 'Login First To have access'], 404);
         }
     }
+
+
 }
