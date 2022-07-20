@@ -96,13 +96,14 @@ class ApiItajerUpdatedInformation extends Controller
     {
     $data = $request->all();
     $current_user = User::find($data['user_id']);
-if ($current_user) {
+    if ($current_user) {
     $validator = Validator::make($data,[
         'country'=> 'required',
         'state'=>'required',
         'phone'=>'required',
         'street_name'=>'required',
-        'full_street_info'=>'required'
+        'full_street_info'=>'required',
+        'near_landmark'=>'required'
     ]);
     if ($validator->fails()) {
         if ($validator->fails()) {
@@ -132,7 +133,6 @@ if ($current_user) {
     } else {
         $themain_address = 0;
     }
-        dd($check_if_user_has_an_address);
     if ($check_ifthe_City_is_UAE->id == 252) {
         $new_address = new userLocation();
         $new_address->user_id = $current_user->id;
@@ -146,6 +146,14 @@ if ($current_user) {
         $new_address->near_location = $data['near_landmark'];
         $new_address->save();
         }
+        return response()->json(['success'=>'you have add a new address for shipping'],201);
+        }else{
+            return response()->json(['errors'=>'The User is not found'],404);
         }
+    }
+
+    public function update_delivery_address(Type $var = null)
+    {
+        # code...
     }
 }
