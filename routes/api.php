@@ -32,7 +32,7 @@ Route::group(['perfix'=>'v2'],function(){
     Route::post('v2/login',[ApiItajerUpdatedInformation::class,'login_user']);
     Route::post('v2/register',[ApiItajerUpdatedInformation::class,'register_new_user']);
     
-    Route::post('v2/user_address',[frontPageApiController::class,'add_user_address']);
+    Route::post('v2/user_address',[ApiItajerUpdatedInformation::class,'add_user_address']);
 
 });
 

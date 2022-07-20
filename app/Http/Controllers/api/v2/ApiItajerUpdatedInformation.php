@@ -90,62 +90,65 @@ class ApiItajerUpdatedInformation extends Controller
 
     public function add_user_address(Request $request)
     {
-        $data = $request->all();
-        $current_user = User::find($data['user_id']);
-        if($current_user){
-        if( empty($data['country']) || $data['country'] == null ){
-            return back()->with('error','the country is required');
-        }
+    $data = $request->all();
+    $current_user = User::find($data['user_id']);
+    dd($current_user);
+if ($current_user) {
+    if (empty($data['country']) || $data['country'] == null) {
+        return back()->with('error', 'the country is required');
+    }
         
-        if (empty($data['state']) || $data['state'] == null) {
-            return back()->with('error', 'the state is required');
-        }
+    if (empty($data['state']) || $data['state'] == null) {
+        return back()->with('error', 'the state is required');
+    }
     
-        if (empty($data['city']) || $data['city'] == null) {
-            $city = null;
-        }else{
-            $city = $data['city'];
-        }
+    if (empty($data['city']) || $data['city'] == null) {
+        $city = null;
+    } else {
+        $city = $data['city'];
+    }
     
         
-        if (empty($data['full_name']) || $data['full_name'] == null) {
-            $full_name = $current_user->full_name;
-        }else{
-            $full_name = $data['full_name'];
-        }
+    if (empty($data['full_name']) || $data['full_name'] == null) {
+        $full_name = $current_user->full_name;
+    } else {
+        $full_name = $data['full_name'];
+    }
     
-        if (empty($data['phone']) || $data['phone'] == null) {
-            return back()->with('error', 'the phone is required');
-        }
+    if (empty($data['phone']) || $data['phone'] == null) {
+        return back()->with('error', 'the phone is required');
+    }
     
-        if (empty($data['street_name']) || $data['street_name'] == null) {
-            return back()->with('error', 'the Street name is required');
-        }
+    if (empty($data['street_name']) || $data['street_name'] == null) {
+        return back()->with('error', 'the Street name is required');
+    }
     
-        if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
-            return back()->with('error', 'the building information is required');
-        }
-            $check_ifthe_City_is_UAE = Country::find($data['country']);
-            $state = Region::find($data['state']);
-            $city_name = City::find($city);
-            $check_if_user_has_an_address = userLocation::where('user_id',$current_user->id)->count();
-            if($check_if_user_has_an_address == 0){
-                $themain_address = 1;
-            }else{
-                $themain_address = 0;
-            }
+    if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
+        return back()->with('error', 'the building information is required');
+    }
+    $check_ifthe_City_is_UAE = Country::find($data['country']);
+    $state = Region::find($data['state']);
+    $city_name = City::find($city);
+    $check_if_user_has_an_address = userLocation::where('user_id', $current_user->id)->count();
+    if ($check_if_user_has_an_address == 0) {
+        $themain_address = 1;
+    } else {
+        $themain_address = 0;
+    }
             
-            if($check_ifthe_City_is_UAE->id == 252){
-                $new_address = new userLocation();
-                $new_address->user_id = $current_user->id;
-                $new_address->themain_address = $themain_address;
-                $new_address->address = $data['street_name'];
-                $new_address->full_name = $full_name;
-                $new_address->full_street_info = $data['full_street_info'];
-                $new_address->country = $check_ifthe_City_is_UAE->country;
-                $new_address->city = $state->region;
-                $new_address->phone = $data['phone'];
-                $new_address->near_location = $data['near_landmark'];
-                $new_address->save();
+    if ($check_ifthe_City_is_UAE->id == 252) {
+        $new_address = new userLocation();
+        $new_address->user_id = $current_user->id;
+        $new_address->themain_address = $themain_address;
+        $new_address->address = $data['street_name'];
+        $new_address->full_name = $full_name;
+        $new_address->full_street_info = $data['full_street_info'];
+        $new_address->country = $check_ifthe_City_is_UAE->country;
+        $new_address->city = $state->region;
+        $new_address->phone = $data['phone'];
+        $new_address->near_location = $data['near_landmark'];
+        $new_address->save();
+        }
+        }
     }
 }
