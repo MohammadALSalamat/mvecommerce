@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\api\v2;
+use App\Models\City;
 use App\Models\User;
+use App\Models\Region;
+use App\Models\Country;
+use App\Models\userLocation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -92,14 +96,18 @@ class ApiItajerUpdatedInformation extends Controller
     {
     $data = $request->all();
     $current_user = User::find($data['user_id']);
-    dd($current_user);
 if ($current_user) {
-    if (empty($data['country']) || $data['country'] == null) {
-        return back()->with('error', 'the country is required');
-    }
-        
-    if (empty($data['state']) || $data['state'] == null) {
-        return back()->with('error', 'the state is required');
+    $validator = Validator::make($data,[
+        'country'=> 'required',
+        'state'=>'required',
+        'phone'=>'required',
+        'street_name'=>'required',
+        'full_street_info'=>'required'
+    ]);
+    if ($validator->fails()) {
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
     }
     
     if (empty($data['city']) || $data['city'] == null) {
@@ -115,17 +123,6 @@ if ($current_user) {
         $full_name = $data['full_name'];
     }
     
-    if (empty($data['phone']) || $data['phone'] == null) {
-        return back()->with('error', 'the phone is required');
-    }
-    
-    if (empty($data['street_name']) || $data['street_name'] == null) {
-        return back()->with('error', 'the Street name is required');
-    }
-    
-    if (empty($data['full_street_info']) || $data['full_street_info'] == null) {
-        return back()->with('error', 'the building information is required');
-    }
     $check_ifthe_City_is_UAE = Country::find($data['country']);
     $state = Region::find($data['state']);
     $city_name = City::find($city);
