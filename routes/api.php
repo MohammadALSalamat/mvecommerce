@@ -39,7 +39,7 @@ Route::group(['perfix'=>'v2'],function(){
     Route::get('v2/users/{current_user_id?}/user_addresses',[ApiItajerUpdatedInformation::class,'user_addresses']);
     Route::post('v2/create_address',[ApiItajerUpdatedInformation::class,'add_user_address']);
     Route::put('v2/users/update_address/{id?}',[ApiItajerUpdatedInformation::class,'update_address']);
-    Route::patch('v2/users/default_address/{$id?}',[ApiItajerUpdatedInformation::class,'set_deliverAddress_asDefualt']);
+    Route::patch('v2/users/default_address/{$id?}',[ApiItajerUpdatedInformation::class,'change_to_defalut_address']);
 
 
 });

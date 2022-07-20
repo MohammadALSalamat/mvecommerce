@@ -260,7 +260,7 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-    public function set_deliverAddress_asDefualt($id)
+    public function change_to_defalut_address($id)
     {
        $current_location = userLocation::find($id);
        dd($current_location);
