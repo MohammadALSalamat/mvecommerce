@@ -33,6 +33,7 @@ Route::group(['perfix'=>'v2'],function(){
     Route::post('v2/login',[ApiItajerUpdatedInformation::class,'login_user']);
     Route::post('v2/register',[ApiItajerUpdatedInformation::class,'register_new_user']);
    // DASHBOARD USER API
+    Route::put('v2/users/{id?}/update_useraccount', [ApiItajerUpdatedInformation::class,'update_useraccount']);
     Route::get('v2/users/{current_user_id?}/user_addresses',[ApiItajerUpdatedInformation::class,'user_addresses']);
     Route::post('v2/create_address',[ApiItajerUpdatedInformation::class,'add_user_address']);
     Route::put('v2/users/update_address/{id?}',[ApiItajerUpdatedInformation::class,'update_address']);

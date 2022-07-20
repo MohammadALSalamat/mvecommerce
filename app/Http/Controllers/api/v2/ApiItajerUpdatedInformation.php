@@ -98,17 +98,22 @@ class ApiItajerUpdatedInformation extends Controller
         $data = $request->all();
         $current_user = User::find($id);
 
-        if(empty($data['full_name']) || $data['full_name'] == null){
-            return back()->with('error','full name is required');
+        $validator = Validator::make($data, [
+            'full_name' => 'required',
+            'username' => 'required',
+            'password' => 'required'
+        ], [
+            'full_name.required' => 'full name file is required',
+            'username.required' => 'username is required',
+            'phone.required' => 'phone is required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(
+                $validator->errors(),
+                422
+            );
         }
 
-        if (empty($data['username']) || $data['username'] == null) {
-            return back()->with('error', 'Username is required');
-        }
-
-        if (empty($data['phone']) || $data['phone'] == null) {
-            return back()->with('error', 'full name is required');
-        }
         if($current_user){
             //check the old password
             $oldpasscheker = Hash::check($data['old_password'],$current_user->password);
@@ -118,20 +123,18 @@ class ApiItajerUpdatedInformation extends Controller
                 }else{
                     $passowrd = Hash::make($data['new_password']);
                 }
-               
-
                 User::where('id',$id)->update([
                     "full_name"=> $data['full_name'],
                     "username"=> $data['username'],
                     "phone"=> $data['phone'],
                     "password" => $passowrd,
                 ]);
-                return back()->with('message','Your data has been updated');
+                return response()->json(['success','Your data has been updated'],200);
             }else{
-                return back()->with('error','Your Current Password is not Correct');
+                return response()->json(['error','Your Current Password is not Correct'],422);
             }
         }else{
-            return back()->with('error','the user is not found');
+            return response()->json(['error','the user is not found'],404);
         }
     }
 
