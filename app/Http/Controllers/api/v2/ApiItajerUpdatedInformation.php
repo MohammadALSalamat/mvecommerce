@@ -96,7 +96,8 @@ class ApiItajerUpdatedInformation extends Controller
 
     public function user_addresses($id=null)
     {
-        $current_user = User::find('1');
+
+        $current_user = User::find($id);
         dd($current_user);
         if($current_user){
                 $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
