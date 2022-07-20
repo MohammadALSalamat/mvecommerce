@@ -96,9 +96,9 @@ class ApiItajerUpdatedInformation extends Controller
 
     public function user_addresses($id=null)
     {
-        $current_user = User::find($id);
+        $current_user = User::find('1');
+        dd($current_user);
         if($current_user){
-            
                 $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
                 return response()->json(['locations'=>$user_locations],200);
         }else{
@@ -184,15 +184,11 @@ class ApiItajerUpdatedInformation extends Controller
                     return response()->json($validator->errors(), 422);
                 }
             }
-
-
             if (empty($data['city']) || $data['city'] == null) {
                 $city = null;
             } else {
                 $city = $data['city'];
             }
-
-
             if (empty($data['full_name']) || $data['full_name'] == null) {
                 $full_name = $current_user->full_name;
             } else {
@@ -201,7 +197,6 @@ class ApiItajerUpdatedInformation extends Controller
             $check_ifthe_City_is_UAE = Country::find($data['country']);
             $state = Region::find($data['state']);
             if ($check_ifthe_City_is_UAE->id == 252) {
-                dd($check_ifthe_City_is_UAE);
                 userLocation::where('id', $id)->update([
                     'user_id' => $current_user->id,
                     'themain_address' => 0,
