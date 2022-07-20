@@ -132,7 +132,7 @@ if ($current_user) {
     } else {
         $themain_address = 0;
     }
-            
+        dd($check_if_user_has_an_address);
     if ($check_ifthe_City_is_UAE->id == 252) {
         $new_address = new userLocation();
         $new_address->user_id = $current_user->id;
