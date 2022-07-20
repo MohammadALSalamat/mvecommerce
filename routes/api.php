@@ -9,6 +9,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ShippingCartController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\api\v1\frontPageApiController;
+use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,41 @@ use App\Http\Controllers\api\v1\frontPageApiController;
 |
 */
 
-Route::middleware('auth:passport')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return 'test';
 });
+
+//++++++++++++++++++++++++++ v2 of api routes +++++++++++++++++++++++++
+
+Route::get('users/{id?}',[ApiItajerUpdatedInformation::class,'users_info']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++ Defualt Sittings For API +++++++++++++++++++++++++++++++
 // get banners of home page
 Route::get('/sellers_list',[frontPageApiController::class,'sellers_list']);
 Route::get('/single_seller/{id}',[frontPageApiController::class,'single_seller']);
