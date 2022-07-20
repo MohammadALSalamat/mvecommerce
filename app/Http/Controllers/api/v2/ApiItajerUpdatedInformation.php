@@ -23,10 +23,6 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-    public function register_user(Request $request)
-    {
-        # code...
-    }
     //++++++++++++++++++++++++++++ End Users Info ++++++++++++++++++++++
 
 }
