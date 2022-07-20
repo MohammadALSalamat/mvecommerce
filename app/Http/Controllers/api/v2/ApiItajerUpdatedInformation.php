@@ -94,11 +94,9 @@ class ApiItajerUpdatedInformation extends Controller
 
     //++++++++++++++++++++++++++++ USER DASHBOARD ++++++++++++++++++++++
 
-    public function user_addresses($id=null)
+    public function user_addresses($current_user_id = null)
     {
-
-        $current_user = User::find($id);
-        dd($current_user);
+        $current_user = User::find($current_user_id);
         if($current_user){
                 $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
                 return response()->json(['locations'=>$user_locations],200);
