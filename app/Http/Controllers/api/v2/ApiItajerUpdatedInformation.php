@@ -12,6 +12,7 @@ class ApiItajerUpdatedInformation extends Controller
     //++++++++++++++++++++++++++++ Users Info ++++++++++++++++++++++
     public function users_info($id=null)
     {
+
         if($id == null){
             $users = User::get();
             return response()->json([
