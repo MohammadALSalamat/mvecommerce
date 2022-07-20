@@ -729,12 +729,11 @@ class frontPageApiController extends Controller
             'password'=>$data['password'],
             'status'=>'active'
          ];
-         dd($data);
          if(auth()->attempt($userInfo)){
              $token = auth()->user()->createToken('ItajerCustomerToken')->accessToken;
              return response()->json(['token'=>$token,'full_name'=>auth()->user()->full_name ,'email'=> auth()->user()->email],200) ;
          }else{
-             return response()->json(['errors'=>'something Went Wrong '], 401);
+             return response()->json(['errors'=>'Please chech your Passwrod or Email Validation '], 422);
          }
     }
  
