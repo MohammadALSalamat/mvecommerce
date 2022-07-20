@@ -9,7 +9,6 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\ShippingCartController;
 use App\Http\Controllers\ProductReviewController;
-use App\Models\helpUs;
 
 // Other Pages
 

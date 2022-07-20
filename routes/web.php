@@ -20,6 +20,8 @@ use App\Http\Controllers\AdminbackendController;
 use App\Http\Controllers\ShippingCartController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\ProductAttributeController;
+use App\Http\Controllers\HelpUsController;
+
 
 /*
 |--------------------------------------------------------------------------
