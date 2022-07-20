@@ -35,7 +35,7 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-    // ++++++++++++++++++++++++++++ USERS INFORMTION ++++++++++++++++++++++++++++++
+    // ++++++++++++++++++++++++++++ USERS REGISTRATION ++++++++++++++++++++++++++++++
     public function register_new_user(Request $request)
     {
         $data = $request->all();
@@ -92,7 +92,7 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-    //++++++++++++++++++++++++++++ End Users Info ++++++++++++++++++++++
+    //++++++++++++++++++++++++++++ USER DASHBOARD ++++++++++++++++++++++
 
     public function user_addresses($id=null)
     {
