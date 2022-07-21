@@ -11,7 +11,10 @@ use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\api\v1\frontPageApiController;
 use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 =======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 
@@ -28,6 +31,12 @@ use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+//++++++++++++++++++++++++++ v2 of api routes +++++++++++++++++++++++++
+Route::group(['perfix'=>'v2'],function(){
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 =======
 
 //++++++++++++++++++++++++++ v2 of api routes +++++++++++++++++++++++++
@@ -48,12 +57,15 @@ Route::group(['perfix'=>'v2'],function(){
     Route::put('v2/users/update_address/{id?}',[ApiItajerUpdatedInformation::class,'update_address']);
     Route::put('v2/users/default_address/{id?}',[ApiItajerUpdatedInformation::class,'change_to_defalut_address']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 
 Route::middleware('auth:passport')->get('/user', function (Request $request) {
     return $request->user();
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 =======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 });

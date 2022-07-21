@@ -13,16 +13,22 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class ApiItajerUpdatedInformation extends Controller
 {
     
      // ++++++++++++++++++++++++++++ USERS REGISTRATION ++++++++++++++++++++++++++++++
 =======
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 class ApiItajerUpdatedInformation extends Controller
 {
    
     // ++++++++++++++++++++++++++++ USERS REGISTRATION ++++++++++++++++++++++++++++++
+<<<<<<< HEAD
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+=======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
     public function users_info($id = null)
     {

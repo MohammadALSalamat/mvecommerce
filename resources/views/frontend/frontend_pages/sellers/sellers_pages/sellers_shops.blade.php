@@ -9,6 +9,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style>
     @media (max-width:600px){
         .mobile{
@@ -17,6 +18,8 @@
         .desktop{
             display: none !important;
 =======
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 <style>
     @media (max-width:600px){
         .mobile{
@@ -24,11 +27,15 @@
         }
         .desktop{
             display: none;
+<<<<<<< HEAD
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+=======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
         }
     }
     @media (min-width:601px){
         .mobile{
+<<<<<<< HEAD
 <<<<<<< HEAD
             display: none !important;
         }
@@ -40,6 +47,8 @@
 =======
 >>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 =======
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
             display: none;
         }
         .desktop{
@@ -47,6 +56,9 @@
         }
     }
 </style>
+<<<<<<< HEAD
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+=======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 @section('content')
         <!-- Start of Main -->

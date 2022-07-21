@@ -91,9 +91,14 @@
                                             class=" @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                          <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunctiontwo()">    Click here to see the Password
                                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     @error('password')
+=======
+                                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                                         @error('password')
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 =======
                                         <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
                                          @error('password')
@@ -238,6 +243,7 @@
                                 <div class="mb-0 form-group">
                                     <label>كلمة السر *</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
@@ -246,11 +252,16 @@
                                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     @error('password')
 =======
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
                                     <input id="password" type="password" style="padding:15px 10px;border:1px solid #ccc;width:90%"
                                     class=" @error('password') is-invalid @enderror" name="password"
                                 required autocomplete="current-password">
                                 <i class="far fa-eye" id="togglePassword" style="margin-right: -30px; cursor: pointer;"></i>
                                   @error('password')
+<<<<<<< HEAD
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+=======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -427,6 +438,7 @@
     </script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <script>
     function myFunctiontwo() {
       var x = document.getElementById("password");
@@ -440,6 +452,8 @@
 =======
 >>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 =======
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
    <script>
         const togglePassword = document.querySelector('#togglePassword');
   const password = document.querySelector('#password');
@@ -452,6 +466,9 @@
     this.classList.toggle('fa-eye-slash');
 });
     </script>
+<<<<<<< HEAD
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+=======
 >>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 
 @endsection

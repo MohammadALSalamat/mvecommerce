@@ -48,6 +48,7 @@ class SellerController extends Controller
     }
     // admin dashboard
     public function dashboard(){
+<<<<<<< HEAD
 
  $current_user = Seller::where('status','1')->where('id',Auth::guard('seller')->user()->id)->first();
         if(empty($current_user) ||$current_user == null){
@@ -56,6 +57,13 @@ class SellerController extends Controller
          $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
 
+=======
+        $current_user = Seller::where('status','1')->where('id',Auth::guard('seller')->user()->id)->first();
+        if(empty($current_user) ||$current_user == null){
+            return  redirect()->route('homepage')->with('warning','Your Status still not active please contnact admin for more informations'); 
+         }
+        $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 
         $current_user = Seller::where('status','1')->where('id',Auth::guard('seller')->user()->id)->first();
         if(empty($current_user) ||$current_user == null){
