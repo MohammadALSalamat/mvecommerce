@@ -206,7 +206,6 @@
                         @foreach ( $order->product as $items_seller)
                         @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                         @php
-                        
                           $other_image = explode(',',$items_seller->image);
                         @endphp
                         @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
