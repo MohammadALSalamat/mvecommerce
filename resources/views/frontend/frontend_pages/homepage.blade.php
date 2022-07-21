@@ -12,7 +12,7 @@
 <style>
    .category-section img {
         width: 100% !important;
-        height: 150px;
+        height: 150px !important;
         object-fit: contain;
     }
 @media (max-width:600px){
@@ -196,17 +196,7 @@
                             height="160" style="background-color: #ecedec;object-fit:cover;width:100%" />
                         @endif
                     </figure>
-                    {{-- <div class="mt-0 banner-content y-50">
-                            <h5 class="banner-subtitle font-weight-normal text-dark">Get up to <span
-                                    class="text-secondary font-weight-bolder text-uppercase ls-25">20% Off</span>
-                            </h5>
-                            <h3 class="banner-title text-uppercase">Sports Outfits<br><span
-                                    class="font-weight-normal text-capitalize">Collection</span>
-                            </h3>
-                            <div class="banner-price-info font-weight-normal">Starting at <span
-                                    class="text-secondary font-weight-bolder">$170.00</span>
-                            </div>
-                        </div> --}}
+                
                 </div>
             </div>
             @endforeach
@@ -253,7 +243,8 @@
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
-                                        @if ($max_discound > 0)
+                                                                                @if ($max_discound > 0)
+
                                         <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
@@ -274,6 +265,7 @@
                                                 </div>
                                             </a>
                                         </div>
+                                        
                                         @endif
                                         @endif
                                         @endforeach
@@ -305,7 +297,8 @@
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
-                                        @if ($max_discound > 0)
+                                                                                @if ($max_discound > 0)
+
                                         <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
@@ -466,12 +459,12 @@
                             <figure class="product-media">
                                 <a href="{{ route('singleproduct',$new_product->slug) }}">
                                     @if(count($other_image) > 1 )
-                                    <img src="{{ $other_image[0]}}" alt="Product"
+                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                         />
                                     <img src="{{ $other_image[1] }}" alt="Product"
                                         />
                                     @else
-                                    <img src="{{ $other_image[0]}}" alt="Product"
+                                    <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                         />
                                     @endif
 
@@ -593,12 +586,12 @@
                         <figure class="product-media">
                             <a href="{{ route('singleproduct',$top_selling->slug) }}">
                                 @if(count($other_image) > 1 )
-                                <img src="{{ $other_image[0]}}" alt="Product"
+                                <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                     />
                                 <img src="{{ $other_image[1] }}" alt="Product"
                                     />
                                 @else
-                                <img src="{{ $other_image[0]}}" alt="Product"
+                                <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                     />
                                 @endif
                             </a>
@@ -612,8 +605,11 @@
                                     id="add_to_wishlist{{ $top_selling->id }}" data-quantity="1"
                                     class=" add_to_wishlist btn-product-icon btn-wishlist w-icon-heart"
                                     title="Wishlist"></a>
+
                                 
+
                             </div>
+
                             @if (!empty($top_selling-> discound) || $top_selling-> discound != null)
                             <div class="product-label-group">
                                 @if(Config::get('app.locale') == 'en')
@@ -772,12 +768,12 @@
                                     <a href="{{ route('singleproduct',$products_cat->slug) }}">
 
                                         @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         <img src="{{ $other_image[1] }}" alt="Product"
                                             />
                                         @else
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         @endif
                                     </a>
@@ -900,12 +896,12 @@
                                     <a href="{{ route('singleproduct',$products_cat->slug) }}">
 
                                         @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         <img src="{{ $other_image[1] }}" alt="Product"
                                             />
                                         @else
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         @endif
                                     </a>
@@ -1092,12 +1088,12 @@
                                     <a href="{{ route('singleproduct',$products_cat->slug) }}">
 
                                         @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         <img src="{{ $other_image[1] }}" alt="Product"
                                             />
                                         @else
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         @endif
                                     </a>
@@ -1220,12 +1216,12 @@
                                     <a href="{{ route('singleproduct',$products_cat->slug) }}">
 
                                         @if(count($other_image) > 1 )
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         <img src="{{ $other_image[1] }}" alt="Product"
                                             />
                                         @else
-                                        <img src="{{ $other_image[0]}}" alt="Product"
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
                                             />
                                         @endif
                                     </a>
