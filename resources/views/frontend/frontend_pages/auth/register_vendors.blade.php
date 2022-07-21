@@ -73,7 +73,7 @@
                                                         <label for="firstName2" style="font-size: 15px">Full Name : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="text" name="name" class="form-control required"
-                                                            id="firstName2" >
+                                                            id="firstName2" value="{{ old('name') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -99,7 +99,7 @@
                                                         <label for="location2" style="font-size: 15px">Your Photo : <b
                                                                 style="color: red">*</b></label>
                                                         <input type="file" accept="image/png,image/jpeg,.jpg"
-                                                            name="photo" class="form-control required" id="photo" >
+                                                            name="photo" class="form-control required" id="photo" value="{{ old('photo') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,9 +116,8 @@
                                                     <div class="form-group has-feedback">
                                                         <label for="date2" style="font-size: 15px">Password : <b
                                                                 style="color: red">*</b></label>
-                                                        {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
                                                         <input type="password" name="password" id="NewPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters"
-                                                            class=" form-control required">
+                                                            class=" form-control required" value="{{ old('password') }}">
                                                             <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">Click To Show Password
                                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                                 </div>

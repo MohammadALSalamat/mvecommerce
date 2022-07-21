@@ -50,8 +50,8 @@ class frontPageController extends Controller
         $sponsers = sponserAds::where('status',1)->get();
         $home_3_Categories= category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id','!=',4)->get();
         $home_Grocery_Categories =category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->where('id',4)->get();
-        $top_selles = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','desc')->get();
-        $top_reviewed= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','desc')->get();
+        $top_selles = DB::table('product_orders')->select('product_id',DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count','DESC')->get();
+        $top_reviewed= DB::table('product_reviews')->select('product_id',DB::raw('AVG(rate) as rate'))->groupBy('product_id')->orderBy('rate','DESC')->get();
         $new_products =product::orderBy('created_at','desc')->get();
         $brands = DB::table('brands')->select('title','image')->where('status','1')->get();
         // more products (random product)
@@ -985,8 +985,6 @@ class frontPageController extends Controller
     public function register_users( Request $request)
     {
         $data = $request->all();
-    
-
                 if ($data['full_name'] == null || empty($data['full_name'])) {
                     return back()->with('error', 'full name is required');
                 }
@@ -1033,6 +1031,10 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::orderBy('id','DESC')->where('user_id',$current_user->id)->get();
+<<<<<<< HEAD
+=======
+        
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
         $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);

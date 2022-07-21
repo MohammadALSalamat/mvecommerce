@@ -105,7 +105,11 @@
                     </div>
                     <div class="col-md-6 mb-8">
                         <figure class="br-lg">
+<<<<<<< HEAD
                             <img src="{{ asset('front-style/assets/images/whoweare.png') }}" alt="Banner"
+=======
+                            <img src="{{ asset('front-style/assets/images/pages/about_us/1.jpg') }}" alt="Banner"
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                                 width="610" height="450" style="background-color: #9E9DA2;" />
                         </figure>
                     </div>
@@ -121,7 +125,11 @@
             <div class="row align-items-center mb-10">
                 <div class="col-md-6 mb-8">
                     <figure class="br-lg">
+<<<<<<< HEAD
                         <img src="{{ asset('front-style/assets/images/ourvision.png') }}" alt="Banner"
+=======
+                        <img src="{{ asset('front-style/assets/images/pages/about_us/3.jpg') }}" alt="Banner"
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                             width="610" height="450" style="background-color: #9E9DA2;" />
                     </figure>
                 </div>
@@ -147,7 +155,11 @@
                 </div>
                 <div class="col-md-6 mb-8">
                     <figure class="br-lg">
+<<<<<<< HEAD
                         <img src="{{ asset('front-style/assets/images/ourmission.png') }}" alt="Banner"
+=======
+                        <img src="{{ asset('front-style/assets/images/pages/about_us/3.jpg') }}" alt="Banner"
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                             width="610" height="450" style="background-color: #9E9DA2;" />
                     </figure>
                 </div>

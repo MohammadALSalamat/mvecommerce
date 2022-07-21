@@ -134,7 +134,7 @@
                       <th class="border-top-0">Products</th>
                       <th class="border-top-0">Categories</th>
                       <th class="border-top-0">Shipping</th>
-                      <th class="border-top-0">Amount</th>
+                      <th class="border-top-0">Amount / Qty</th>
                     </tr>
                     @else
                     <tr>
@@ -150,12 +150,17 @@
 
                   </thead>
                   <tbody>
-                    @foreach ($order_product->take(6) as $items)
-                    @foreach ($items->orders->take(1) as $order )
+                    @foreach ($order_product as $items_order)
+                    @foreach ( $items_order->orders as $order )
+                
                     <tr>
                       <td class="text-truncate">
+<<<<<<< HEAD
                     @if (Config::get('app.locale') == 'en')
                        @if ($order->payment_status == 'completed')
+=======
+                        @if ($order->payment_status == 'completed')
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                           <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
                           Completed
                           @elseif ($order->payment_status == 'inprocess')
@@ -171,6 +176,7 @@
                           <i class="la la-dot-circle-o danger font-medium-1 mr-1"></i>
                           Cancelled
                           @endif
+<<<<<<< HEAD
                           
                      @else
                      
@@ -192,12 +198,14 @@
                           الغاء
                       @endif
                      @endif
+=======
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                       </td>
                       <td class="text-truncate"><a href="#">{{ $order->order_number }}</a></td>
                       <td class="text-truncate">
                         <span class="avatar avatar-xs">
-                          <img class="box-shadow-2"
-                            src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}" alt="avatar">
+                          <img class="box-shadow-2" src="{{ \App\Models\User::where('id',$order->user_id)->value('photo') }}"
+                          alt="avatar">
                         </span>
                         <span>{{ $order->full_name }}</span>
                       </td>
@@ -207,16 +215,24 @@
                     @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
 
                         @php
-                        $other_image = explode(',',$items_seller->image);
+                        
+                          $other_image = explode(',',$items_seller->image);
                         @endphp
+                        @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                           <li data-toggle="tooltip" data-popup="tooltip-custom"
-                            data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
+                          data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                             <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                               src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+<<<<<<< HEAD
                         </li>                       
                         @endif
                         @endforeach
                         
+=======
+                            </li>
+                            @endif                     
+                            @endforeach
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                         </ul>
                       </td>
                       <td>
@@ -227,6 +243,7 @@
                         @endforeach
                       </td>
                       <td>
+<<<<<<< HEAD
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
                          
                            @if ($order->payment_status == 'completed')
@@ -273,13 +290,58 @@
                           @endif
                           @endforeach
                      </td>
+=======
+                       
+                      @if ($order->payment_status == 'completed')
+                      <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 100%"
+                     aria-valuenow="100"
+                     @elseif ($order->payment_status == 'inprocess')
+                       <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 75%"
+                     aria-valuenow="75"
+                     @elseif ($order->payment_status == 'shipped')
+                       <div class="progress-bar bg-gradient-x-success" role="progressbar" 
+                     style="width: 50%"
+                     aria-valuenow="50"
+                     @elseif ($order->payment_status == 'pending')
+                       <div class="progress-bar bg-gradient-x-danger" role="progressbar" 
+                     style="width: 25%"
+                     aria-valuenow="25"
+                     @elseif ($order->payment_status == 'cancelled')
+                       <div class="progress-bar bg-gradient-x-danger" role="progressbar" 
+                     style="width: 0%"
+                     aria-valuenow="0"
+                     @endif
+                          
+                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td class="text-truncate">
+                        @php
+                            $total_sum = array();
+                        @endphp
+                      @foreach ( $order->product as $items_seller)
+                      @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+                      @php
+                          if(!empty($items_seller->offer_price)){
+                            array_push($total_sum,$items_seller->offer_price);
+                          }else {
+                            array_push($total_sum,$items_seller->price);
+                          }
+                      @endphp
+                        @endif
+                        @endforeach
+                        {{ array_sum($total_sum)}} AED ({{ $order->pivot['quantity'] }})<br> 
+                      </td>
+                      
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                     </tr>
                     @endforeach
                     @endforeach
-                    <tr>
+                      <tr>
                       <td colspan="6" style="background: #ccc;text-align:right"> <b style="font-size:20px;text-align:right ">Total : </b></td>
-                      <td  style="background: #ccc"> <b >{{ array_sum($total).' AED ' }}</b></td>
-                      
+                      <td  style="background: #ccc"> <b >{{ number_format(array_sum($total)) }} AED</b></td>
                     </tr>
                   </tbody>
                 </table>

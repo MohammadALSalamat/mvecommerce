@@ -102,7 +102,7 @@ class OrderController extends Controller
 
         // dd($final_total);
 
-        $ordernumber = rand(1,10000000);
+        $ordernumber = (rand(1,10000000).'-800000-000')+1;
         
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {

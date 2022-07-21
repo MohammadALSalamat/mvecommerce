@@ -1,5 +1,9 @@
 @extends('frontend.frontend_layout.main_desgin')
+<<<<<<< HEAD
  @if(Config::get('app.locale') == 'en')
+=======
+@if(Config::get('app.locale') == 'en')
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 @section('mytitle','My Account' )
 @else
 @section('mytitle','الحساب الخاص بك' )
@@ -92,6 +96,10 @@
         bottom: -1.2em;
     }
 </style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 @endsection
 @section('content')
 <!-- Start of Main -->
@@ -169,7 +177,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -194,6 +202,7 @@
                                     </div>
                                 </a>
                             </div>
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#track-order" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -206,7 +215,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
@@ -271,7 +280,6 @@
                         <a href="{{ route('shop_page') }}" class="btn btn-dark btn-rounded btn-icon-right">Go
                             Shop<i class="w-icon-long-arrow-right"></i></a>
                     </div>
-                   
                     <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
@@ -288,17 +296,20 @@
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address shipping-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">Add New Address</h4>
-                                    <a href="{{ route('deliver_address',) }}"> 
-                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
-                                           <h4 style="color:#ccc; margin-top:10px">Add Address </h4>
-                                        </i> 
+                                    <a href="{{ route('deliver_address',) }}">
+                                        <i class=" fa fa-plus text-center"
+                                            style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                            <h4 style="color:#ccc; margin-top:10px">Add Address </h4>
+                                        </i>
                                     </a>
                                 </div>
                             </div>
                             @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address @if($user_location->themain_address == 1) <b style="color:red"> ( Defualt Address)</b> @endif</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">Deliver Address
+                                        @if($user_location->themain_address == 1) <b style="color:red"> ( Defualt
+                                            Address)</b> @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -337,11 +348,14 @@
                                             </tbody>
                                         </table>
                                     </address>
-                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> Edit </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> Delete </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> Set As Defualt</a>
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> Edit </a> | <a
+                                        href="{{ route('delete_deliverAddress',$user_location->id) }}"> Delete </a> | <a
+                                        href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> Set As
+                                        Defualt</a>
                                 </div>
                             </div>
                             @endforeach
-                           
+
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
@@ -354,7 +368,8 @@
                                 <h4 class="mb-0 icon-box-title ls-normal">Account Details</h4>
                             </div>
                         </div>
-                        <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
+                        <form class="form account-details-form"
+                            action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -391,11 +406,11 @@
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
-                             @if($current_user->role == 'seller')
+                            @if($current_user->role == 'seller')
                             <div class="mb-6 form-group">
                                 <label for="email_1">Shop Name </label>
                                 <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
-                                value="{{ $current_user->shop_name }}">
+                                    value="{{ $current_user->shop_name }}">
                             </div>
                             @endif
                             <h4 class="title title-password ls-25 font-weight-bold">Password change</h4>
@@ -414,7 +429,11 @@
                             <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">Save Changes</button>
                         </form>
                     </div>
+<<<<<<< HEAD
                      <div class="tab-pane" id="track-order">
+=======
+                    <div class="tab-pane" id="track-order">
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                         <div class="icon-box icon-box-side icon-box-light">
                             <span class="mr-2 icon-box-icon icon-account">
                                 <i class="w-icon-shipping"></i>
@@ -511,14 +530,14 @@
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">الطلبات</a>
                     </li>
-        
+
                     <li class="nav-item">
                         <a href="#account-addresses" class="nav-link">المواقع</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">معلومات الحساب</a>
                     </li>
-                 
+
                     <li class="nav-item">
                         <a href="{{ route('logout_front_user') }}" class="nav-link">تسجيل الخروج</a>
                     </li>
@@ -535,10 +554,12 @@
                         </p>
 
                         <p class="mb-4">
-                            من خلال لوحط التحكم الخاصة بك يمكن الان  <a href="#account-orders"
+                            من خلال لوحط التحكم الخاصة بك يمكن الان <a href="#account-orders"
                                 class="text-primary link-to-tab">الاطلاع على طلباتك</a>,
-                            أو تعديل <a href="#account-addresses" class="text-primary link-to-tab">عناوين الشحن والفواتير</a>, و
-                            <a href="#account-details" class="text-primary link-to-tab">تعديل حسابك الشخصي مع كلمة المرور</a>
+                            أو تعديل <a href="#account-addresses" class="text-primary link-to-tab">عناوين الشحن
+                                والفواتير</a>, و
+                            <a href="#account-details" class="text-primary link-to-tab">تعديل حسابك الشخصي مع كلمة
+                                المرور</a>
                         </p>
 
                         <div class="row">
@@ -554,7 +575,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="#account-addresses" class="link-to-tab">
                                     <div class="text-center icon-box">
@@ -579,7 +600,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
                                 <a href="{{ route('logout_front_user') }}">
                                     <div class="text-center icon-box">
@@ -626,14 +647,20 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                               
+
                             </tbody>
                         </table>
 
-                        <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i class="w-icon-long-arrow-left"></i></a>
+                        <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i
+                                class="w-icon-long-arrow-left"></i></a>
                     </div>
+<<<<<<< HEAD
                    
                      <!-- Address Tab -->
+=======
+
+                    <!-- Address Tab -->
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
                             <span class="icon-box-icon icon-map-marker">
@@ -648,17 +675,31 @@
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address shipping-address pr-lg-8">
                                     <h4 class="title title-underline ls-25 font-weight-bold">أضف عنوان جديد</h4>
+<<<<<<< HEAD
                                     <a href="{{ route('deliver_address',) }}"> 
                                         <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
                                            <h4 style="color:#ccc; margin-top:10px">أضف عنوان </h4>
                                         </i> 
+=======
+                                    <a href="{{ route('deliver_address',) }}">
+                                        <i class=" fa fa-plus text-center"
+                                            style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                            <h4 style="color:#ccc; margin-top:10px">أضف عنوان </h4>
+                                        </i>
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                                     </a>
                                 </div>
                             </div>
                             @foreach ($user_locations as $user_location )
                             <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
+<<<<<<< HEAD
                                     <h4 class="title title-underline ls-25 font-weight-bold">عنوان التسليم @if($user_location->themain_address == 1) <b style="color:red"> ( العنوان الافتراضي)</b> @endif</h4>
+=======
+                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان التسليم
+                                        @if($user_location->themain_address == 1) <b style="color:red"> ( العنوان
+                                            الافتراضي)</b> @endif</h4>
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
@@ -697,11 +738,22 @@
                                             </tbody>
                                         </table>
                                     </address>
+<<<<<<< HEAD
                                     <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> تعديل </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> حذف </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> عنوان افتراضي</a>
                                 </div>
                             </div>
                             @endforeach
                            
+=======
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> تعديل </a> | <a
+                                        href="{{ route('delete_deliverAddress',$user_location->id) }}"> حذف </a> | <a
+                                        href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> عنوان
+                                        افتراضي</a>
+                                </div>
+                            </div>
+                            @endforeach
+
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
@@ -714,7 +766,8 @@
                                 <h4 class="mb-0 icon-box-title ls-normal">معلومات الحساب</h4>
                             </div>
                         </div>
-                        <form class="form account-details-form" action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
+                        <form class="form account-details-form"
+                            action="{{ route('updateuseraccount',$current_user->id) }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -729,7 +782,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="lastname">اسم المستخدم  </label>
+                                        <label for="lastname">اسم المستخدم </label>
                                         <input type="text" id="username" name="username"
                                             @if(!empty($current_user->username) || $current_user->username != null)
                                         value="{{ $current_user->username }}" @endif
@@ -751,21 +804,23 @@
                                     @if(!empty($current_user->phone) || $current_user->phone != null)
                                 value="{{ $current_user->phone }}" @endif>
                             </div>
-                             @if($current_user->role == 'seller')
+                            @if($current_user->role == 'seller')
                             <div class="mb-6 form-group">
                                 <label for="email_1">اسم المشروع </label>
                                 <input type="text" id="shop-name" name="shop-name" class="form-control form-control-md"
-                                value="{{ $current_user->shop_name }}">
+                                    value="{{ $current_user->shop_name }}">
                             </div>
                             @endif
                             <h4 class="title title-password ls-25 font-weight-bold">تعديل كلمة السر</h4>
                             <div class="form-group">
-                                <label class="text-dark" for="cur-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
+                                <label class="text-dark" for="cur-password">اذا لم ترد تغيير كلمة السر فدع الحقل
+                                    فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="old-password"
                                     name="old_password">
                             </div>
                             <div class="form-group">
-                                <label class="text-dark" for="new-password">اذا لم ترد تغيير كلمة السر فدع الحقل فارغ</label>
+                                <label class="text-dark" for="new-password">اذا لم ترد تغيير كلمة السر فدع الحقل
+                                    فارغ</label>
                                 <input type="password" class="form-control form-control-md" id="new-password"
                                     name="new_password">
                             </div>
@@ -777,7 +832,7 @@
         </div>
     </div>
     <!-- End of PageContent -->
-</main> 
+</main>
 
 @endif
 <!-- End of Main -->

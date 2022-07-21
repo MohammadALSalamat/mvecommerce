@@ -20,13 +20,13 @@ class SellerOrderController extends Controller
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
 
         $Orders = product::orderBy('id','DESC')->with('orders')->where('vendor_id',$current_user->id)->where('added_by','seller')->get();
-        
         return view('Seller.seller_pages.orders.vieworders',compact('Orders'));
     }
 
     public function singleOrder($id)
     {
        $order = Order::find($id);
+       
        if($order){
         return view('Seller.seller_pages.orders.singleOrder',compact('order'));
        }else{

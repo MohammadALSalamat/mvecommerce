@@ -49,9 +49,15 @@
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
                           @php
                               if(empty($items->offer_price) || $items->offer_price == null ){
+<<<<<<< HEAD
                                 array_push($total,$items->price * $items->pivot->quantity);
                               }else{
                                 array_push($total,$items->offer_price * $items->pivot->quantity);
+=======
+                                array_push($total,$items->price);
+                              }else{
+                                array_push($total,$items->offer_price);
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                               }
                           @endphp
                             @endif
@@ -180,14 +186,22 @@
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
                           @php
                               if(empty($items->offer_price) || $items->offer_price == null ){
+<<<<<<< HEAD
                                 array_push($total,$items->price * $items->pivot->quantity);
+=======
+                                array_push($total,$items->price * $items->pivot->quantity );
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                               }else{
                                 array_push($total,$items->offer_price * $items->pivot->quantity);
                               }
                           @endphp
                             @endif
                             @endforeach
+<<<<<<< HEAD
                              {{ array_sum($total) }} AED</td>
+=======
+                             {{ array_sum($total) }}</td>
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                       </tr>
                       <tr>
                         <td>Coupon</td>

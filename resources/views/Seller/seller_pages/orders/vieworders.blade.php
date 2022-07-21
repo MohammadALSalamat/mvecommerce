@@ -10,10 +10,8 @@
 
 <!-- END Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/sweetalert.css') }}">
-
 @endsection
 @section('content')
-
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-header row">
@@ -34,7 +32,6 @@
       </div>
     </div>
     <div class="content-body">
-
       <!-- File export table -->
       <section id="file-export">
         <div class="row">
@@ -72,8 +69,6 @@
                     <tbody>
                       @foreach ($Orders as $items_order)
                       @foreach ( $items_order->orders as $order )
-                        
-                      
                       <tr>
                         <td class="text-truncate">
                           @if ($order->payment_status == 'completed')
@@ -103,27 +98,45 @@
                         </td>
                         <td class="text-truncate p-1">
                           <ul class="list-unstyled users-list m-0">
-                            @foreach ( $order->product as $items_seller)
+                          @foreach ( $order->product as $items_seller)
                           @php
-                          $other_image = explode(',',$items_seller->image);
+                          
+                            $other_image = explode(',',$items_seller->image);
                           @endphp
+<<<<<<< HEAD
                                                   @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
 
+=======
+                          @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                             <li data-toggle="tooltip" data-popup="tooltip-custom"
                             data-original-title="{{ $items_seller->title }}" class="avatar avatar-sm pull-up">
                               <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius"
                                 src="{{ $other_image[0] }}" alt="{{ $items_seller->title }}">
+<<<<<<< HEAD
                               </li>   
                               @endif
+=======
+                              </li>
+                              @endif                     
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                               @endforeach
                           </ul>
                         </td>
                         <td>
+<<<<<<< HEAD
                         @foreach ( $order->product as $items_seller)
                         @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                         <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
                         @endif
                         @endforeach
+=======
+                          @foreach ( $order->product as $items_seller)
+                          @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
+                          <button type="button" class="btn btn-sm btn-outline-danger round">{{ \App\Models\category::where('id',$items_seller->category_id)->value('title') }}</button>
+                          @endif
+                          @endforeach
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                         </td>
                         <td>
                           <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -151,7 +164,11 @@
                           </div>
                         </td>
                         <td class="text-truncate">
+<<<<<<< HEAD
                             @foreach ( $order->product as $items_seller)
+=======
+                        @foreach ( $order->product as $items_seller)
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                           
                         @if($items_seller->vendor_id === Auth::guard('seller')->user()->id)
                         @php

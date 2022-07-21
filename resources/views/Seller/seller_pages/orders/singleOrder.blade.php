@@ -137,9 +137,15 @@
                           @if($items->vendor_id === Auth::guard('seller')->user()->id)
 
                           @if(empty($items->offer_price) || $items->offer_price == null )
+<<<<<<< HEAD
                           {{ $items->price * $items->pivot->quantity }} AED <br>
                           @else
                           {{ $items->offer_price * $items->pivot->quantity }} AED <br>
+=======
+                          {{ $items->price }} AED <br>
+                          @else
+                          {{ $items->offer_price }} AED <br>
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
                           @endif
                           @endif
 

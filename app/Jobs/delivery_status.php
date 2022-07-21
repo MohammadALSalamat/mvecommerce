@@ -32,7 +32,6 @@ class delivery_status implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->data_info_email['email'])->send(new MailDelivery_status($this->data_info_email)); // send email to user
-
+        Mail::mailer('sales')->to($this->data_info_email['email'])->send(new MailDelivery_status($this->data_info_email)); // send email to user
     }
 }

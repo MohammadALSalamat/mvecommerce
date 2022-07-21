@@ -177,8 +177,8 @@ Route::group(['perfix'=>'user'],function(){
     Route::post('updatepost_text/{id}',[HelpUsController::class,'updatepost_text'])->name('updatepost_text');
     Route::get('delete-post/{id}',[HelpUsController::class,'delete_post'])->name('delete_post');
 
-Route::post('improve_submit',[HelpUsController::class,'helpusform'])->name('helpusform');
-Route::post('ajax_like',[HelpUsController::class,'like_submition'])->name('like_submition');
+    Route::post('improve_submit',[HelpUsController::class,'helpusform'])->name('helpusform');
+    Route::post('ajax_like',[HelpUsController::class,'like_submition'])->name('like_submition');
 
 
 });

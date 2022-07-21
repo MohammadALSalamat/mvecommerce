@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\product;
+use App\Models\productOrder;
 use Laravel\Cashier\Billable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -15,6 +17,7 @@ class Seller extends Authenticatable
 
     public function products()
     {
-        return $this->belongsTo(product::class,'vendor_id');
+        return $this->hasMany(product::class,'vendor_id');
     }
+
 }

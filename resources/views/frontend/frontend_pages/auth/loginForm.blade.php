@@ -411,6 +411,7 @@
       }
     }
     </script>
+<<<<<<< HEAD
     <script>
     function myFunctiontwo() {
       var x = document.getElementById("password");
@@ -421,5 +422,7 @@
       }
     }
     </script>
+=======
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 
 @endsection

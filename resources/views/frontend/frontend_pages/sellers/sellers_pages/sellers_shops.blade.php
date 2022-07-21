@@ -7,6 +7,7 @@
 
 @endif
 
+<<<<<<< HEAD
 <style>
     @media (max-width:600px){
         .mobile{
@@ -25,6 +26,8 @@
         }
     }
 </style>
+=======
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 @section('content')
         <!-- Start of Main -->
         <main class="main mt-5">

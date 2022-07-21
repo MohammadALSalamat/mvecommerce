@@ -732,7 +732,6 @@ class frontPageApiController extends Controller
             'status'=>'active'
          ];
          if(auth()->attempt($userInfo)){
-
              $token = auth()->user()->createToken('ItajerCustomerToken')->accessToken;
              return response()->json(['token'=>$token,'full_name'=>auth()->user()->full_name ,'email'=> auth()->user()->email],200) ;
 

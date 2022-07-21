@@ -68,11 +68,19 @@ class ProductController extends Controller
         if ($data['offer_price'] > $data['price'] ) {
             return back()->with('error', 'Offer Price Must be less than Main Price');
         }
+<<<<<<< HEAD
          if(!empty($data['offer_price']) || $data['offer_price'] != null){
                 $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
               }else{
                 $discound = 0;
               }
+=======
+        if(!empty($data['offer_price']) || $data['offer_price'] != null){
+            $discound =  ceil(($data['price'] - $data['offer_price'])/$data['price'] *100);
+          }else{
+            $discound = 0;
+          }
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
 
         if (!empty($data['status'])) {
             $status = '1';
