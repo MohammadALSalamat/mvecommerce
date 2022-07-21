@@ -10,7 +10,10 @@ use App\Http\Controllers\ShippingCartController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\api\v1\frontPageApiController;
 use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
+<<<<<<< HEAD
 
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,12 @@ use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
 */
 
 
+<<<<<<< HEAD
+=======
+
+//++++++++++++++++++++++++++ v2 of api routes +++++++++++++++++++++++++
+Route::group(['perfix'=>'v2'],function(){
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
    //+++++++++++++++++++++++++ users information api/v2 +++++++++++++++++++++++++++++++++++
     
    //LOGIN USER API
@@ -38,13 +47,34 @@ use App\Http\Controllers\api\v2\ApiItajerUpdatedInformation;
     Route::post('v2/create_address',[ApiItajerUpdatedInformation::class,'add_user_address']);
     Route::put('v2/users/update_address/{id?}',[ApiItajerUpdatedInformation::class,'update_address']);
     Route::put('v2/users/default_address/{id?}',[ApiItajerUpdatedInformation::class,'change_to_defalut_address']);
+<<<<<<< HEAD
 
 
 
 
 Route::middleware('auth:passport')->get('/user', function (Request $request) {
     return $request->user();
+=======
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++ Defualt Sittings For API +++++++++++++++++++++++++++++++
 // get banners of home page
 Route::get('/sellers_list',[frontPageApiController::class,'sellers_list']);
 Route::get('/single_seller/{id}',[frontPageApiController::class,'single_seller']);

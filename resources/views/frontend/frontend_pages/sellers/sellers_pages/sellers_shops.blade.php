@@ -8,6 +8,7 @@
 @endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style>
     @media (max-width:600px){
         .mobile{
@@ -15,10 +16,20 @@
         }
         .desktop{
             display: none !important;
+=======
+<style>
+    @media (max-width:600px){
+        .mobile{
+            display: block;
+        }
+        .desktop{
+            display: none;
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
         }
     }
     @media (min-width:601px){
         .mobile{
+<<<<<<< HEAD
             display: none !important;
         }
         .desktop{
@@ -28,6 +39,15 @@
 </style>
 =======
 >>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+=======
+            display: none;
+        }
+        .desktop{
+            display: block;
+        }
+    }
+</style>
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
 @section('content')
         <!-- Start of Main -->
         <main class="main mt-5">

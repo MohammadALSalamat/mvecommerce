@@ -48,18 +48,20 @@ class SellerController extends Controller
     }
     // admin dashboard
     public function dashboard(){
-<<<<<<< HEAD
+
  $current_user = Seller::where('status','1')->where('id',Auth::guard('seller')->user()->id)->first();
         if(empty($current_user) ||$current_user == null){
             return  redirect()->route('homepage')->with('warning','Your Status still not active please contnact admin for more informations'); 
          }
          $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
-=======
         $current_user = Seller::find(Auth::guard('seller')->user()->id);
 
-        $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
 
->>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+        $current_user = Seller::where('status','1')->where('id',Auth::guard('seller')->user()->id)->first();
+        if(empty($current_user) ||$current_user == null){
+            return  redirect()->route('homepage')->with('warning','Your Status still not active please contnact admin for more informations'); 
+         }
+        $notify_subscripe = subscription::where('seller_id',$current_user->id)->first();
         $message_notify = null;
         if(!empty($notify_subscripe) || $notify_subscripe != null){
             if(Carbon::parse($notify_subscripe->ends_at)->diffInDays(Carbon::now()) < 10 ){

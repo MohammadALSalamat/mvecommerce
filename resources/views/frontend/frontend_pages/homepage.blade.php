@@ -297,7 +297,12 @@
                                         @php
                                         $max_discound = \App\Models\product::where('category_id',$cardsDiscound->id)->max('discound');
                                         @endphp
+<<<<<<< HEAD
                                         @if ($max_discound > 0)
+=======
+                                                                                @if ($max_discound > 0)
+
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
                                         <div class="col-md-4">
                                             <a href="{{ route('shop_special_category',$cardsDiscound->slug) }}">
                                                 <div class="row"
@@ -1087,19 +1092,27 @@
 
                                         @if(count($other_image) > 1 )
 <<<<<<< HEAD
-                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
-=======
-                                        <img src="{{ $other_image[0]}}" alt="Product"
->>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
-                                            />
-                                        <img src="{{ $other_image[1] }}" alt="Product"
-                                            />
-                                        @else
 <<<<<<< HEAD
                                         <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
 =======
                                         <img src="{{ $other_image[0]}}" alt="Product"
 >>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+                                            />
+                                        <img src="{{ $other_image[1] }}" alt="Product"
+                                            />
+                                        @else
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
                                             />
                                         @endif
                                     </a>
@@ -1223,19 +1236,27 @@
 
                                         @if(count($other_image) > 1 )
 <<<<<<< HEAD
-                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
-=======
-                                        <img src="{{ $other_image[0]}}" alt="Product"
->>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
-                                            />
-                                        <img src="{{ $other_image[1] }}" alt="Product"
-                                            />
-                                        @else
 <<<<<<< HEAD
                                         <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
 =======
                                         <img src="{{ $other_image[0]}}" alt="Product"
 >>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
+                                            />
+                                        <img src="{{ $other_image[1] }}" alt="Product"
+                                            />
+                                        @else
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product"
+>>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
+=======
+                                        <img src="{{ $other_image[0]}}" alt="Product" style="height:150px !important;object-fit: contain;"
+>>>>>>> dba029835f576dc2cb612d13e05f09303e80f590
                                             />
                                         @endif
                                     </a>
