@@ -1,5 +1,10 @@
 @extends('frontend.frontend_layout.main_desgin')
+ @if(Config::get('app.locale') == 'en')
 @section('mytitle','Register Seller')
+@else
+@section('mytitle','تسجيل دخول مستثمر')
+@endif
+
 @section('style')
 <!-- BEGIN Page Level CSS-->
 <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
@@ -36,6 +41,9 @@
 .glyphicon-ok {
   color: green;
 }
+.form-control{
+    font-size:15px !important;
+}
 </style>
 @endsection
 @section('content')
@@ -49,18 +57,7 @@
                         <div class="card">
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                        {{-- <div id="message">
-
-                                            <h3>Password must contain the following:</h3>
-                                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-
-                                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter
-                                            </p>
-
-                                            <p id="number" class="invalid">A <b>number</b></p>
-
-                                            <p id="length" class="invalid">Minimum <b>16 characters</b></p>
-                                        </div> --}}
+                                        
                                     <form action="{{ route('vendor_info') }}" method="POST"
                                         enctype="multipart/form-data" class="steps-validation wizard-notification"
                                         style="direction: ltr;">
@@ -190,27 +187,46 @@
                                         <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>Seller
                                             Location
                                         </h6>
-                                        <fieldset>
+                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="eventName2" style="font-size: 15px">Address Name :
-                                                            <b style="color: red">*</b></label>
-                                                        <input type="text" class="form-control required" name="address"
-                                                            id="eventName2">
-                                                    </div>
-
-                                                    <div class="form-group">
                                                         <label for="location2" style="font-size: 15px">Country Name : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="country" class="form-control required"
-                                                            id="country">
+                                                        <input type="text" name="country" class="form-control required" disabled
+                                                            id="country" placeholder="Ex, United Arab Emirates" value="United Arab Emirates">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">City Name :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control required"
+                                                        <select type="text" name="city" class="form-control required"
                                                             id="country">
+                                                            <option value="Abu Dhabi"> Abu Dhabi</option>
+                                                            <option value="Dubai"> Dubai</option>
+                                                            <option value="Ajman"> Ajman</option>
+                                                            <option value="Al Shariqah"> Al Shariqah</option>
+                                                            <option value="Ra's al Khaymah"> Ra's al Khaymah</option>
+                                                            <option value="Al Fujayrah"> Al Fujayrah</option>
+                                                            <option value="Umm al Qaywayn"> Umm al Qaywayn</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Street name
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="street" class="form-control required"
+                                                            id="street" placeholder="Ex, Elctra Street">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Building name/no, floor, Apt. or villa no.
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="building" class="form-control required"
+                                                            id="buiding" placeholder="Ex, Royal Rose , appartment 34 , floor 3">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">Nearest Landmark :
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="nearlocation" class="form-control required"
+                                                            id="nearlocation" placeholder="the oppisate side of ADCB ">
                                                     </div>
                                                 </div>
                                             </div>
@@ -294,8 +310,18 @@
                                                         <label for="date2" style="font-size: 15px">كلمة السر : <b
                                                                 style="color: red">*</b></label>
                                                         {{-- <input type="date" name="date" class="form-control required" id="date2"> --}}
-                                                        <input type="password" name="password" id="password"
-                                                            class=" form-control required">
+                                                   <input type="password" class="form-control" name="password" id="NewPassword"
+                                        required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
+                                        title="يجب أن يحتوي على رقم واحد على الأقل وحرف واحد كبير وصغير ، و 7 أحرف على الأقل أو أكثر">
+                                                            <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">أضغط هنا لرؤية كلمة السر
+                                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                                    <span style="color: #000;margin-bottom:10px!important"> قواعد التحقق من كلمة المرور
+                                </span>
+                                <div id="Length" class="glyphicon glyphicon-remove">يجب على الاقل ان يكون 7 حروف</div>
+                                <div id="UpperCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد كبير على الأقل</div>
+                                <div id="LowerCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد صغير على الأقل</div>
+                                <div id="Numbers" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف رقمي واحد على الأقل</div>
+                                <div id="Symbols" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف خاص واحد على الأقل</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -357,29 +383,50 @@
                                         <h6><i class="step-icon la la-map-marker" style="font-size: 20px"></i>موقع
                                             البائع</h6>
                                         <fieldset style="direction: rtl;text-align: right;">
+                                           
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="eventName2" style="font-size: 15px">عنوانك :
-                                                            <b style="color: red">*</b></label>
-                                                        <input type="text" class="form-control required" name="address"
-                                                            id="eventName2">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="location2" style="font-size: 15px">اسم البلد : <b
+                                                        <label for="location2" style="font-size: 15px">البلد : <b
                                                                 style="color: red">*</b></label>
-                                                        <input type="text" name="country" class="form-control required"
-                                                            id="country">
+                                                        <input type="text" name="country" class="form-control required" disabled
+                                                            id="country" placeholder="Ex, United Arab Emirates" value="United Arab Emirates">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="eventLocation2" style="font-size: 15px">المدينة :
                                                             <b style="color: red">*</b></label>
-                                                        <input type="text" name="city" class="form-control required"
+                                                        <select type="text" name="city" class="form-control required"
                                                             id="country">
+                                                            <option value="Abu Dhabi"> أبو ظبي</option>
+                                                            <option value="Dubai"> دبي</option>
+                                                            <option value="Ajman"> عجمان</option>
+                                                            <option value="Al Shariqah"> الشارقة</option>
+                                                            <option value="Ra's al Khaymah"> رأس الخيمة</option>
+                                                            <option value="Al Fujayrah"> الفجيرة</option>
+                                                            <option value="Umm al Qaywayn"> أم القيوان</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">أسم الشارع
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="street" class="form-control required"
+                                                            id="street" placeholder="مثال : شارع الشيخ محمد بن خليفة الأول">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">أسم المبنى مع الرقم \ رقم الطابق \ رقم الشقة.
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="building" class="form-control required"
+                                                            id="buiding" placeholder="مثال: برج السعديات 35 في الطابق 9 الشقه 991">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eventLocation2" style="font-size: 15px">أقرب مكان معروف للمبنى :
+                                                            <b style="color: red">*</b></label>
+                                                        <input type="text" name="nearlocation" class="form-control required"
+                                                            id="nearlocation" placeholder="في الجهة المقابلة لبنك ابو ظبي التجاري ">
                                                     </div>
                                                 </div>
                                             </div>
+                                        
                                         </fieldset>
                                         <!-- Step 4 -->
                                         <h6><i class="step-icon la la-file" style="font-size: 20px"></i>خصوصيتنا</h6>

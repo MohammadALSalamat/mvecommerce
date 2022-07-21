@@ -57,6 +57,13 @@
                     <li class="{{ request()->routeIs('sellers_list') ? 'active' : '' }}" >
                         <a href="{{ route('sellers_list') }}">Vendors</a>
                     </li>
+                    
+                      <li class="{{ request()->routeIs('helpus') ? 'active' : '' }}">
+                               <a href="{{ route('helpus') }}">Help Us</a>
+                           </li>
+                           <li class=" {{ request()->routeIs('best_deals') ? 'active' : '' }}">
+                               <a href="{{ route('best_deals') }}">Best Deals</a>
+                           </li>
                 </ul>
             </div>
             <div class="tab-pane" id="categories">
@@ -115,6 +122,12 @@
                     <li class="{{ request()->routeIs('sellers_list') ? 'active' : '' }}" >
                         <a href="{{ route('sellers_list') }}">التجار</a>
                     </li>
+                     <li class="{{ request()->routeIs('helpus') ? 'active' : '' }}">
+                               <a href="{{ route('helpus') }}">ساعدنا بالتطور</a>
+                           </li>
+                           <li class=" {{ request()->routeIs('best_deals') ? 'active' : '' }}">
+                               <a href="{{ route('best_deals') }}">افضل العروض</a>
+                           </li>
                 </ul>
             </div>
             <div class="tab-pane" id="categories">

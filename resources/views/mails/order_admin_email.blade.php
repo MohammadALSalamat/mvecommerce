@@ -89,10 +89,9 @@
                                     <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                         <tr>
                                             <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                                <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">
-                                                    <img src="{{ asset('front-style/assets/images/itajer_logo.png') }}" width="125" height="120" alt="">
-
-                                                </h1>
+                                                <a href="https://demo2-itajer.9yards-global.com/" target="_blank">
+                                                <img src="https://demo2-itajer.9yards-global.com/front-style/assets/images/itajer_logo_white.png" width="125" height="120" alt="">
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
@@ -256,7 +255,7 @@
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                        <a href="{{ route('homepage') }}" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
+                                                        <a href="https://demo2-itajer.9yards-global.com/" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Shop Again</a>
                                                     </td>
                                                 </tr>
                                             </table>

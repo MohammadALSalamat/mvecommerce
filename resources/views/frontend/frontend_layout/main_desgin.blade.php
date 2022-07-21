@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+ @if(Config::get('app.locale') == 'en')
     <title>ITajer | @yield('mytitle')</title>
-    
+    @else
+    <title>اي تاجر | @yield('mytitle')</title>
+    @endif
     <meta name="author" content="ITAJER SHOP">
 
     {!! SEOMeta::generate() !!}
@@ -110,12 +112,19 @@
             width: 90% !important;
         }
         }
+        .invalid-feedback{
+            color:red;
+        }
     </style>
 
 </head>
 
 <body class="home my-account @if(Config::get('app.locale') == 'ar') ar @endif " @if(Config::get('app.locale') == 'en') @else dir="rtl" @endif>
+     @if(Config::get('app.locale') == 'en')
     <div class="page-wrapper">
+        @else
+         <div class="page-wrapper"  style="text-align:right">
+        @endif
         <!-- Start of Header -->
         <header class="header" id="header-ajax">
         @include('frontend.frontend_layout.header')

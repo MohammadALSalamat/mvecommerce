@@ -1,5 +1,9 @@
 @extends('frontend.frontend_layout.main_desgin')
-@section('mytitle','Login Page' )
+ @if(Config::get('app.locale') == 'en')
+@section('mytitle','Login Form')
+@else
+@section('mytitle','تسجيل دخول ')
+@endif
 @section('style')
 <style>
     .danger,
@@ -86,6 +90,8 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
+                                         <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunctiontwo()">    Click here to see the Password
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -122,7 +128,8 @@
                                     <input type="password" class="form-control" name="password" id="password_user"
                                         required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
                                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">    Click here to see the Password
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                 <span style="color: #000;margin-bottom:10px!important"> RULES TO VALDIATE THE PASSWORD
                                 </span>
@@ -227,6 +234,9 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunctiontwo()">أضغط هنا لرؤية كلمة السر
+
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -237,12 +247,7 @@
                                         {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember1">تذكرني</label>
                                 </div>
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link " style="text-align:right;"
-                                    href="{{ route('password.request') }}">
-                                    هل نسيت كلمة السر؟
-                                </a>
-                                @endif
+                                
 
                                 <button type="submit" class="btn btn-dangar"
                                     style="background: red;color:#fff;width:50%">تسجيل الدخول </button>
@@ -261,8 +266,20 @@
                                 </div>
                                 <div class="mb-5 form-group">
                                     <label>كلمة السر *</label>
-                                    <input type="password" class="form-control" name="password" id="password_1">
+                                    <input type="password" class="form-control" name="password" id="password_user"
+                                        required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"
+                                        title="يجب أن يحتوي على رقم واحد على الأقل وحرف واحد كبير وصغير ، و 7 أحرف على الأقل أو أكثر">
+                                        <input type="checkbox" style="margin-top:10px;font-size:13px;color:#000;margin-right:5px" onclick="myFunction()">أضغط هنا لرؤية كلمة السر
+
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
+                                <span style="color: #000;margin-bottom:10px!important"> قواعد التحقق من كلمة المرور
+                                </span>
+                                <div id="Length" class="glyphicon glyphicon-remove">يجب على الاقل ان يكون 7 حروف</div>
+                                <div id="UpperCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد كبير على الأقل</div>
+                                <div id="LowerCase" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف واحد صغير على الأقل</div>
+                                <div id="Numbers" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف رقمي واحد على الأقل</div>
+                                <div id="Symbols" class="glyphicon glyphicon-remove">يجب أن يحتوي على حرف خاص واحد على الأقل</div>
 
                                 <div class="mt-0 form-checkbox user-checkbox">
                                     <input type="radio" class="custom-checkbox checkbox-round active"
@@ -271,12 +288,12 @@
                                 </div>
                                 <p>
                                     سيتم استخدام بياناتك الشخصية لدعم تجربتك في جميع أنحاء هذا الموقع ، وإدارة الوصول
-                                    إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="#" class="text-primary">خصوصية
+                                    إلى حسابك ، ولأغراض أخرى موصوفة في موقعنا<a href="{{ route('policy') }}" class="text-primary">خصوصية
                                         الشركة</a>.</p>
                                 <div class="mb-5 form-checkbox d-flex align-items-center justify-content-between">
                                     <input type="checkbox" class="custom-checkbox" id="remember" name="remember"
                                         required="">
-                                    <label for="remember" class="font-size-md">أنا أوافق على <a href="#"
+                                    <label for="remember" class="font-size-md">أنا أوافق على <a href="{{ route('policy') }}"
                                             class="text-primary font-size-md">خصوصية الشركة</a></label>
                                 </div>
                                 <button type="submit" class="mx-auto btn btn-dangar"
@@ -384,5 +401,25 @@
         $("#password_user").on('keyup', ValidatePassword)
     });
 </script>
+<script>
+    function myFunction() {
+      var x = document.getElementById("password_user");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
+    <script>
+    function myFunctiontwo() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
 
 @endsection

@@ -61,6 +61,11 @@ Route::get('/storagelink',function(){
     return ' its storage now';
 });
 
+Route::get('/createcontroller',function(){
+    Artisan::call('make:controller api/v2/ApiItajerUpdatedInformation');
+    return ' its conntroller now';
+});
+
 
 
 

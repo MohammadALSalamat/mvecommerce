@@ -107,7 +107,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-colored-form-control">User Info</h4>
+                <h4 class="card-title" id="basic-layout-colored-form-control">Billing Info</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -161,7 +161,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" id="basic-layout-form"> Billing Details </h4>
+                <h4 class="card-title" id="basic-layout-form"> Seller(s) Details </h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -172,36 +172,46 @@
                   </ul>
                 </div>
               </div>
+              @foreach ($order->product as $items)
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form">
                     <div class="form-body">
                       <div class="row">
                         <div class="col-md-12">
+                          @php
+                            $sellers_info = \App\Models\Seller::where('id',$items->vendor_id)->first();
+                          @endphp
                           <table>
                             <tr>
                               <td>Full Name : </td>
-                              <td>{{ $order->full_name }}</td>
+                              <td>{{ $sellers_info->full_name }}</td>
                             </tr>
                             <tr>
                               <td>Phone Number : </td>
-                              <td>{{ $order->phone }}</td>
+                              <td>{{ $sellers_info->phone }}</td>
                             </tr>
                             <tr>
                               <td>Street : </td>
-                              <td>{{ $order->address }}</td>
-                            </tr>
-                            <tr>
-                              <td>City : </td>
-                              <td>{{ $order->city }}</td>
-                            </tr>
-                            <tr>
-                              <td>Country : </td>
-                              <td>{{ $order->country }}</td>
+                              <td>{!! $sellers_info->address !!},{{ $sellers_info->city }},{{ $sellers_info->country }}</td>
                             </tr>
                             <tr>
                               <td>Near Place : </td>
-                              <td>{{ $order->postcode }}</td>
+                              <td>{{ $sellers_info->postcode }}</td>
+                            </tr>
+                            <tr>
+                              <td>Product Details : </td>
+                              <td>
+                                <b>Name :</b> {{ $items->title }}<br>
+                                <b>Price :</b> 
+                                @if (!empty($items->offer_price))
+                                {{ $items->offer_price }}  <br>
+                                @else
+                                {{ $items->price }} <br>
+                                @endif
+                                <b>Quentity : </b> {{ $items->pivot->quantity }}
+                                <br>
+                              </td>
                             </tr>
                           </table>
                         </div>
@@ -210,6 +220,7 @@
                   </form>
                 </div>
               </div>
+              @endforeach
             </div>
           </div>
           <div class="col-md-6">
@@ -291,7 +302,6 @@
                         <th>Vendor Name</th>
                         <th>Shipping</th>
                         <th>Amount</th>
-
                       </tr>
                       </tr>
                     </thead>

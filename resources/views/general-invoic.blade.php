@@ -47,7 +47,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <p class="pb-3"># INV-{{ $order->order_number }}</p>
                 <ul class="px-0 list-unstyled">
                   <li>Final Total</li>
-                  <li class="lead text-bold-800">{{ $order->total + $order->delivary_charge + $order->coupon }} AED</li>
+                  @php
+                  $total = array();
+              @endphp
+              @foreach ($order->product as $items)
+              @if($items->vendor_id === Auth::guard('seller')->user()->id)
+              @php
+                  if(empty($items->offer_price) || $items->offer_price == null ){
+                    array_push($total,$items->price);
+                  }else{
+                    array_push($total,$items->offer_price);
+                  }
+              @endphp
+                @endif
+                @endforeach
+                  <li class="lead text-bold-800">{{ array_sum($total) + $order->delivary_charge + $order->coupon }} AED</li>
                 </ul>
               </div>
             </div>
@@ -74,14 +88,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right" style=" display: table-cell;width:500px">
+              <div class="col-md-6 col-sm-12 text-center text-md-right" style=" display: table-cell;width:350px">
                 <p>
-                  <span class="text-muted">Invoice Date :</span> 06/05/2017</p>
+                  <span class="text-muted">Invoice Date :</span> {{ date('d-m-y',strtotime($order->created_at)) }}</p>
                 <p>
                   <span class="text-muted">Terms :</span> Due on Receipt</p>
                 <p>
-                  <span class="text-muted">Due Date :</span> 10/05/2017</p>
-              </div>
+                  <span class="text-muted">Due Date :</span>{{ date('d-m-y ', strtotime($order->created_at. ' +10 days')) }}</p>
+            </div>
             </div>
             <!--/ Invoice Customer Details -->
             <!-- Invoice Items Details -->
@@ -100,6 +114,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                     </thead>
                     <tbody>
                       @foreach ($order->product as $items)
+                      @if($items->vendor_id === Auth::guard('seller')->user()->id)
                       <tr>
                         <th scope="row" style="width: 100px">1</th>
                         <td class="text-truncate" style="width:300px">
@@ -118,6 +133,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                           @endif
                         </td>
                       </tr>
+                      @endif
                       @endforeach
 
                     </tbody>
@@ -134,7 +150,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       <tbody>
                         <tr>
                           <td>Sub Total</td>
-                          <td class="text-right">{{ $order->sub_total }} AED</td>
+                          @php
+                          $total = array();
+                      @endphp
+                      @foreach ($order->product as $items)
+                      @if($items->vendor_id === Auth::guard('seller')->user()->id)
+                      @php
+                          if(empty($items->offer_price) || $items->offer_price == null ){
+                            array_push($total,$items->price);
+                          }else{
+                            array_push($total,$items->offer_price);
+                          }
+                      @endphp
+                        @endif
+                        @endforeach
+                          <td class="text-right">{{ array_sum($total) }} AED</td>
                         </tr>
                         <tr>
                           <td>Coupon</td>
@@ -146,7 +176,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                         </tr>
                         <tr>
                           <td class="text-bold-800">Total</td>
-                          <td class="text-bold-800 text-right"> {{ $order->total + $order->delivary_charge + $order->coupon }} AED</td>
+                        
+                          <td class="text-bold-800 text-right"> {{ array_sum($total) + $order->delivary_charge + $order->coupon }} AED</td>
                         </tr>
 
                       </tbody>

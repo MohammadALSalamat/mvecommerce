@@ -1,8 +1,15 @@
 @extends('frontend.frontend_layout.main_desgin')
+
+ @if(Config::get('app.locale') == 'en')
 @section('mytitle','DISCLAIMER')
 
-@section('content')
+@else
+@section('mytitle',' تنصل')
 
+@endif
+
+@section('content')
+ @if(Config::get('app.locale') == 'en')
 <main class="main">
     <!-- Start of Page Header -->
     <div class="container">
@@ -44,4 +51,38 @@
         </div>
     </div>
 </main>
+@else
+<main class="main">
+    <!-- Start of Page Header -->
+    <div class="container">
+    <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
+            <h1 class="page-title mb-0 text-white">اخلاء المسؤولية</h1>
+        </div>
+    </div>
+    <!-- End of Page Header -->
+
+    <!-- Start of Page Content -->
+    <div class="page-content">
+        <div class="container">
+            <section class="boost-section pt-10 pb-10">
+                <div class="container mt-10 mb-9">
+                    <div class="row align-items-center mb-10">
+                        <div class="col-md-12 pl-lg-8 mb-8">
+                            <h4 class="title text-left">اخلاء المسؤولية</h4>
+                            <p class="mb-6">
+                                هذا الموقع يتم الموافقة على محتواه ووظيفته وجميع المعلومات والمنتجات والخدمات الواردة فيه أو المعروضة من خلاله على أساس "كما هي" و "كما هو متاح" دون عروض تقديمية أو ضمانات من أي نوع. تتنصل iTajer صراحةً من جميع هذه الإقرارات والضمانات سواء كانت صريحة أو ضمنية بما في ذلك على سبيل المثال لا الحصر ، ضمانات الملكية والملاءمة التجارية لأغراض معينة أو عدم الانتهاك وأي ضمانات ضمنية تنشأ عن سير التعامل أو سير الأداء. لا تضمن iTajer أن هذا الموقع أو محتوياته ستكون كاملة أو دقيقة أو في الوقت المناسب أو غير منقطعة أو آمنة أو خالية من الأخطاء أو أنه سيتم تصحيح العيوب. تخضع جميع المعلومات الواردة في هذا الموقع للتغيير دون إشعار ، ولا تسمح بعض السلطات القضائية باستثناء بعض الضمانات ، لذلك قد لا تنطبق عليك بعض الاستثناءات المذكورة أعلاه.
+                                <b>الشركة:</b>أي تاجر
+                                <b>خدمة عملاء: </b> (info@itajer.ae)
+                                <b> الرقم: </b> +971588052313
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</main>
+
+@endif
 @endsection

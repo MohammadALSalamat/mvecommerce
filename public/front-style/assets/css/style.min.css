@@ -45,6 +45,31 @@ html {
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+@media (max-width:600px){
+    .carousel-item{
+        height:100px !important;
+    }
+    .category-media img{
+                height:100px !important;
+
+    }
+    .product-media img {
+        height:100px !important;
+    
+    }
+    
+    .hiden_desktop{
+        display:block !important;
+    }
+}
+.product-media img{
+     height:200px !important ;
+     width:100% !important ;
+     object-fit:contain !important
+}
+ .hiden_desktop{
+        display:hidden !important;
+}
 
 body {
     margin: 0;

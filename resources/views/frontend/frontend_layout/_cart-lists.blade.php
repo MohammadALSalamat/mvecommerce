@@ -267,7 +267,7 @@
     <form class="coupon" action="{{ route('code_coupon')}}" id="form_coupon" method="POST">
         @csrf
         <h5 class="title coupon-title font-weight-bold text-uppercase">قسيمة شراء</h5>
-        <input type="text" class="form-control mb-4" name="code_coupon" placeholder="Enter coupon code here..."
+        <input type="text" class="form-control mb-4" name="code_coupon" placeholder="أدخل قسيمة الخصم هنا ....."
             required />
         <button class="btn btn-dark btn-outline btn-rounded code_coupon_click">تفعيل القسيمة</button>
     </form>

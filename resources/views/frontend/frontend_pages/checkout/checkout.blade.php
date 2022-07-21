@@ -1,5 +1,11 @@
 @extends('frontend.frontend_layout.main_desgin')
+
+
+ @if(Config::get('app.locale') == 'en')
 @section('mytitle','CheckOut' )
+@else
+@section('mytitle',' صفحة الدفع ' )
+@endif
 @section('content')
  <!-- Start of Main -->
  <style>
@@ -280,139 +286,41 @@ div.checkRadioContainer1> label > input:checked + i {
                             @else
                             <div class="col-lg-7 pr-lg-4 mb-4">
                                 <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
-                                    معلومات الفاتورة
+                                    Deliver Details ( Reciver)
                                 </h3>
-                                <div class="row gutter-sm">
-                                    <div class="col-xs-12">
-                                        <div class="form-group">
-                                            <label>الاسم الكامل *</label>
-                                            <input type="text" class="form-control form-control-md" id="full_name" name="full_name"
-                                                required value="{{ $user->full_name }}">
-                                        </div>
+                                @if(empty($locations) )
+                                   <div class="modal-body">
+                                    قد تختلف خيارات التسليم وسرعات التسليم باختلاف المواقع<br>
+                                    <b class="mt-2 mb-2">ليس لدى المستخدم الحالي أي مخازن عناوين ، لذا يُرجى النقر أدناه لإضافة عناوين جديدة
+                                    </b>
                                     </div>
-                                   
-                                </div>
-                                <div class="form-group mb-3">
-                                    <select  id="country-dd" class="form-control">
-                                        <option value="">Select Country</option>
-                                        @foreach ($countries as $data)
-                                        <option value="{{$data->id}}">
-                                            {{$data->country}}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <select id="state-dd" class="form-control">
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select id="city-dd" class="form-control">
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                        <label>المدينة *</label>
-                                    <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="country" id="country" required value="{{ $user->country }}">
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <label>الشارع *</label>
-                                    <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="address" id="address" required value="{{ $user->address }}">
-                                    
-                                </div>
-                                <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>المدينة *</label>
-                                            <input type="text" id="city" class="form-control form-control-md" name="city" required value="{{ $user->city }}">
+                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="button"
+                                                class="btn btn-primary">أضف عنوان جديد</button></a>
+                                   @else
+                                       <div class="modal-body">
+                                           @csrf
+                                           <div class="checkRadioContainer1">
+                                            <label style=" padding:10px">
+                                                <input type="hidden" name="location_id_selected" value="{{ $locations->id }}">
+                                                <input type="radio" name="radioGroup" @if($locations->themain_address == 1) checked  @endif  />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span style="width:80%"> <b> اسم المرسل: </b> {{ $locations->full_name }}@if($locations->themain_address == 1)<br><b style="color:red;float:right">(تسليم إلى هذا الموقع)</b></span> @endif<br>
+                                                <span> <b>يسلم إلى : </b> {{ $locations->address }}, {{ $locations->full_street_info }} ,{{ $locations->city}},{{ $locations->country  }}</span>
+                                            </label>
                                         </div>
-                                        <div class="form-group">
-                                            <label>ZIP *</label>
-                                            <input type="text" id="postcode" class="form-control form-control-md" name="postcode" required value="{{ $user->postcode }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State *</label>
-                                            <div class="select-box">
-                                            <input type="text" id="state" class="form-control form-control-md" name="state" required value="{{ $user->stat }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone *</label>
-                                            <input type="text" id="phone" class="form-control form-control-md" name="phone" required value="{{ $user->phone }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-7">
-                                    <label>Email address *</label>
-                                    <input type="email" class="form-control form-control-md" name="email" required value="{{ $user->email }}">
-                                </div>
-                                <div class="form-group checkbox-toggle pb-2">
-                                    <input type="checkbox" class="custom-checkbox" id="shipping-toggle"
-                                        name="shipping-toggle">
-                                    <label for="shipping-toggle">Ship to a different address?</label>
-                                </div>
-                                <div class="checkbox-content">
-                                    <div class="row gutter-sm">
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <label>Full name *</label>
-                                                <input type="text" id="sfull_name" class="form-control form-control-md" name="sfull_name"
-                                                    required value="{{ $user->full_name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Country *</label>
-                                        <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="scountry" required value=" {{ $user->scountry }}">
-                                    
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Street address *</label>
-                                        <input type="text" id="saddress" placeholder="House number and street name"
-                                            class="form-control form-control-md mb-2" name="saddress" required value=" {{ $user->saddress }}">
-                                    </div>
-                                    <div class="row gutter-sm">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Town / City *</label>
-                                                <input id="scity" type="text" class="form-control form-control-md" name="scity" required value=" {{ $user->scity }} ">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Postcode *</label>
-                                                <input id="spostcode" type="text" class="form-control form-control-md" name="spostcode" required value=" {{ $user->spostcode }} ">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>state</label>
-                                                <input id="sstate" type="text" class="form-control form-control-md" name="sstate" required value=" {{ $user->sstat }} ">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-3">
-                                    <label for="order-notes">Order notes (optional)</label>
-                                    <textarea class="form-control mb-0" id="order-notes" name="note" cols="30"
-                                        rows="4"
-                                        placeholder="Notes about your order, e.g special notes for delivery"></textarea>
-                                </div>
+                                        <strong> انقر فوق تسليم إلى (الموجود في الرأس لتغيير موقع التسليم)</strong>
+                                       </div>
+                                   @endif
                             </div>
                             <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
                                 <div class="order-summary-wrapper sticky-sidebar">
-                                    <h3 class="title text-uppercase ls-10">Your Order</h3>
+                                    <h3 class="title text-uppercase ls-10">طلبك</h3>
                                     <div class="order-summary">
                                         <table class="order-table">
                                             <thead>
                                                 <tr>
                                                     <th colspan="2">
-                                                        <b>Products</b>
+                                                        <b>منتجات</b>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -425,41 +333,41 @@ div.checkRadioContainer1> label > input:checked + i {
                                                         white-space: normal;" class="product-name">{{ $item->name }} <i
                                                                 class="fas fa-times"></i> <span
                                                                 class="product-quantity">{{ $item->qty }}</span></td>
-                                                        <td class="product-total">{{ number_format($item->price) }} AED</td>
+                                                        <td class="product-total">{{ number_format($item->price) }} أ.د</td>
                                                     </tr>
                                                 @endforeach
                                                 @if(session()->has('coupon'))
                                                 <tr class="cart-subtotal bb-no">
                                                     <td>
-                                                        <b>Subtotal</b>
+                                                        <b>المجموع الفرعي</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
+                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} أ.د</b>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                       <td>
-                                                        <b>Coupon</b>
+                                                        <b>قسيمة الخصم</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{\Illuminate\Support\Facades\Session::get('coupon')['value']}} AED</b>
+                                                        <b> {{\Illuminate\Support\Facades\Session::get('coupon')['value']}} أ.د</b>
                                                     </td>
                                                 </tr>
                                                 @else
                                                 <tr>
                                                     <td>
-                                                        <b>Subtotal</b>
+                                                        <b>المجموع الفرعي</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
+                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} أ.د</b>
                                                     </td>
                                                     </tr>
                                                 <tr>
                                                     <td>
-                                                        <b>Coupon</b>
+                                                        <b>قسيمة الخصم</b>
                                                     </td>
                                                     <td>
-                                                        <b> 0 AED</b>
+                                                        <b> 0 أ.د</b>
                                                     </td>
                                                 </tr>
                                                 @endif
@@ -467,7 +375,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                             <tfoot>
                                                 <tr class="shipping-methods">
                                                     <td colspan="2" class="text-left">
-                                                        <h4 class="title title-simple bb-no mb-1 pb-0 pt-3">Shipping
+                                                        <h4 class="title title-simple bb-no mb-1 pb-0 pt-3">شحن
                                                         </h4>
                                                         <ul id="shipping-method" class="mb-4">
                                                             @foreach ($shipping_adress as $shipping)
@@ -476,7 +384,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                                                     <input type="radio" id="free-shipping"
                                                                     value="{{ $shipping->delivery_charge}}" name="shipping_paid">
                                                                     <label for="free-shipping"
-                                                                        class="" >{{ $shipping->shipping_address }} : {{ number_format($shipping->delivery_charge,2)}} AED - <small style="color: #fff; background:rgb(236, 58, 3);padding:5px 10px;border-radius:20px;text-transform:capitalize;text-weight:bold" class=" badge badge-success">{{ $shipping->delivery_Time}}</small></label>
+                                                                        class="" >{{ $shipping->shipping_address }} : {{ number_format($shipping->delivery_charge,2)}} أ.د - <small style="color: #fff; background:rgb(236, 58, 3);padding:5px 10px;border-radius:20px;text-transform:capitalize;text-weight:bold" class=" badge badge-success">{{ $shipping->delivery_Time}}</small></label>
                                                                 </div>
                                                             </li>
                                                             @endforeach
@@ -498,7 +406,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                                         <b>Total</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}} AED</b>
+                                                        <b> {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}} أ.د</b>
                                                         <input type="hidden" name="total_with_copuon" value="{{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}}">
                                                         <input type="hidden" name="total_without_copuon" value="0">
                                                         <input type="hidden" name="coupon_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon')['value'] }}">             
@@ -506,10 +414,10 @@ div.checkRadioContainer1> label > input:checked + i {
                                                 </tr>
                                                 @else
                                                  <td class="order-total">
-                                                        <b>Total</b>
+                                                        <b>المجموع النهائي</b>
                                                     </td>
                                                     <td>
-                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
+                                                        <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} أ.د</b>
                                                         <input type="hidden" name="total_without_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
                                                         <input type="hidden" name="total_with_copuon" value="0">
                                                     </td>
@@ -520,61 +428,24 @@ div.checkRadioContainer1> label > input:checked + i {
                                         </table>
 
                                         <div class="payment-methods" id="payment_method">
-                                            <h4 class="title font-weight-bold ls-25 pb-0 mb-1">Payment Methods</h4>
+                                            <h4 class="title font-weight-bold ls-25 pb-0 mb-1">طرق الدفع</h4>
                                             <div class="accordion payment-accordion">
+                                            
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <a href="#cash-on-delivery" class="collapse">Direct Bank Transfor</a>
-                                                    </div>
-                                                    <div id="cash-on-delivery" class="card-body expanded">
-                                                        <p class="mb-0">
-                                                            Make your payment directly into our bank account. 
-                                                            Please use your Order ID as the payment reference. 
-                                                            Your order will not be shipped until the funds have cleared in our account.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <a href="#payment" class="expand">Check Payments</a>
-                                                    </div>
-                                                    <div id="payment" class="card-body collapsed">
-                                                        <p class="mb-0">
-                                                            Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <a href="#delivery" class="expand">Cash on delivery</a>
+                                                        <a href="#delivery" class="expand">الدفع عند الاستلام</a>
                                                     </div>
                                                     <div id="delivery" class="card-body collapsed">
                                                         <p class="mb-0">
                                                             <input type="radio" name="cod" id="cod">
-                                                             Pay with cash upon delivery.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="card p-relative">
-                                                    <div class="card-header">
-                                                        <a href="#paypal" class="expand">Paypal</a>
-                                                    </div>
-                                                    <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" class="text-primary paypal-que" 
-                                                        onclick="javascript:window.open('https://www.paypal.com/us/webapps/mpp/paypal-popup','WIPaypal',
-                                                        'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); 
-                                                        return false;">What is PayPal?
-                                                    </a>
-                                                    <div id="paypal" class="card-body collapsed">
-                                                        <p class="mb-0">
-                                                            Pay via PayPal, you can pay with your credit cart if you
-                                                            don't have a PayPal account.
+                                                             ادفع نقدا عند الاستلام.
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group place-order pt-6">
-                                            <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+                                            <button type="submit" class="btn btn-dark btn-block btn-rounded">تكملة عملية الشراء</button>
                                         </div>
                                     </div>
                                 </div>

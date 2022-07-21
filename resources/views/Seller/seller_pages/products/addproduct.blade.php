@@ -149,7 +149,7 @@ input:checked + .slider:before {
 </style>
 @endsection
 @section('content')
-
+ @if (Config::get('app.locale') == 'en')
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -406,7 +406,266 @@ input:checked + .slider:before {
         </div>
     </div>
 </div>
+@else
 
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="mb-2 content-header-left col-md-6 col-12 breadcrumb-new">
+                <h3 class="mb-0 content-header-title d-inline-block">اضافة منتجات</h3>
+                <div class="row breadcrumbs-top d-inline-block">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('seller_viewproducts') }}">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item active"><a href="#">اضافة منتج</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic form layout section start -->
+            <section id="horizontal-form-layouts">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="horz-layout-basic">اضف منتج جديد</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="mb-0 list-inline">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collpase show">
+                                <div class="card-body">
+                                    <form class="form form-horizontal" action="{{ route('seller_addproducts') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-clipboard"></i> المتطلبات</h4>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">اسم المنتج</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="title" value="{{ old('title') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput5">اسم المنتج بالعربي</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="projectinput5" class="form-control"
+                                                        placeholder="add the title" name="ar_title" value="{{ old('ar_title') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput56">اسم البائع</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput56" name="vendor" class="form-control" disabled>
+                                                        <option  selected value="{{ $vendors->id }}"> {{ $vendors->full_name }}
+                                                        </option>
+                                                        {{-- @foreach ($vendors as $vendor)
+                                                        <option value="{{ $vendor->id }}" > {{ $vendor->full_name }}
+                                                        </option>
+                                                        @endforeach --}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput76">العلامة التجارية</label>
+                                                <div class="col-md-9">
+                                                    <select id="projectinput76" name="brand" class="form-control">
+                                                        <option value="none" ><-- Brands -->
+                                                        </option>
+                                                        @foreach ($brands as $brand)
+                                                        <option value="{{ $brand->id }}" > {{ $brand->title }}
+                                                        </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="cat_id">فئة المنتج</label>
+                                                <div class="col-md-9">
+                                                    <select id="cat_id" name="category" class="form-control">
+                                                        <option value="none" ><-- Category -->
+                                                        </option>
+                                                        @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}" > {{ $category->title }}
+                                                        </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row d-none" id="child_cat_div">
+                                                <label class="col-md-3 label-control" for="child_cat_id">الفئة الفرعية</label>
+                                                <div class="col-md-9">
+                                                    <select id="child_cat_id" name="child_category" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput11">الملخص</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote" rows="5" class="form-control"
+                                                    name="summary" placeholder="About Project">{{ old('summary') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput11">الملخص بالعربي</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar1" rows="5" class="form-control"
+                                                    name="ar_summary" placeholder="About Project">{{ old('ar_summary') }}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="input-group col-md-10 offset-2">
+                                                    <span class="input-group-btn">
+                                                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> صورة المنتج
+                                                        </a>
+                                                    </span>
+                                                    <input id="thumbnail" class="form-control" type="text" name="filepath">
+                                                </div>
+                                                <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="input-group col-md-10 offset-2">
+                                                    <span class="input-group-btn">
+                                                        <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-light">
+                                                            <i class="fa fa-picture-o"></i> اختر صورة المقاسات
+                                                        </a>
+                                                    </span>
+                                                    <input id="thumbnail1" class="form-control" type="text" name="size_guid">
+                                                </div>
+                                                <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">الوصف</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote1" rows="5" class="form-control"
+                                                        name="comment" placeholder="About Project">{{ old('description') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">الوصف بالعربي</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar" rows="5" class="form-control"
+                                                        name="ar_comment" placeholder="About Project">{{ old('ar_description') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">معلومات اضافية</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote2" rows="5" class="form-control"
+                                                        name="additional_info" placeholder="write somthing new">{{ old('additional_info') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">معلومات اضافية بالعربي</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar2" rows="5" class="form-control"
+                                                        name="ar_additional_info" placeholder="write somthing new">{{ old('ar_additional_info') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">سياسة الخصوصية</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote3" rows="5" class="form-control"
+                                                        name="return_policy" placeholder="Write Something ">{{ old('return_policy') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control"
+                                                    for="projectinput9">سياسة الخصوصية بالعربي</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="summernote_ar3" rows="5" class="form-control"
+                                                        name="ar_return_policy" placeholder="Write Something ">{{ old('ar_return_policy') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput30">المخزن</label>
+                                                <div class="col-md-9">
+                                                    <input type="number" id="projectinput30" class="form-control"
+                                                        placeholder="add the stock value" name="stock" value="{{ old('stock') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                              <label class="col-md-3 label-control" for="projectinput30">رقم المنتج التسلسلي</label>
+                                              <div class="col-md-9">
+                                                  <input type="text" id="projectinput1000" class="form-control"
+                                                      placeholder="add the SKU value" name="sku" value="{{ old('sku') }}">
+                                              </div>
+                                          </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput31">السعر</label>
+                                                <div class="col-md-9">
+                                                    <input type="number" id="projectinput31" class="form-control"
+                                                        placeholder="Add The Price Value" step="any" name="price" value="{{ old('price') }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput31">سعر العرض</label>
+                                                <div class="col-md-9">
+                                                    <input type="number" id="projectinput31" class="form-control"
+                                                        placeholder="Add The Offer Price Value" step="any" name="offer_price" value="{{ old('price') }}">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput56">منتجات تباع معه</label>
+                                                <div class="col-md-9">
+                                                        <select name="field2[]" id="field2" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="3" >						    
+                                                        @foreach ($products as $product)
+                                                        <option  value="{{ $product->id }}" > {{ $product->title }}</option>
+                                                        @endforeach
+                                                        </select>	
+                                                </div>
+                                            </div>
+                                          
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="projectinput1">نشر</label>
+                                                <div class="col-md-9">
+                                                  <!-- Rounded switch -->
+                                                        <label class="switch">
+                                                        <input type="checkbox" name="status" vlaue="{{ old('status') == "active" ? 'selected' : ''}}">
+                                                        <span class="slider round"></span>
+                                                        </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="button" class="mr-1 btn btn-warning">
+                                                <i class="ft-x"></i> الغاء
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> حفظ المنتج
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // Basic form layout section end -->
+        </div>
+    </div>
+</div>
+
+@endif
 @endsection
 @section('script')
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
@@ -546,7 +805,7 @@ function MultiselectDropdown(options){
           sels.map(x=>{
             var c=newEl('span',{class:'optext',text:x.text, srcOption: x});
             if((el.attributes['multiselect-hide-x']?.value !== 'true'))
-              c.appendChild(newEl('span',{class:'optdel',text:'🗙',title:config.txtRemove, onclick:(ev)=>{c.srcOption.listitemEl.dispatchEvent(new Event('click'));div.refresh();ev.stopPropagation();}}));
+              c.appendChild(newEl('span',{class:'optdel',text:'ðŸ—™',title:config.txtRemove, onclick:(ev)=>{c.srcOption.listitemEl.dispatchEvent(new Event('click'));div.refresh();ev.stopPropagation();}}));
 
             div.appendChild(c);
           });

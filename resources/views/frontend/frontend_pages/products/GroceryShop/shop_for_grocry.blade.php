@@ -1,5 +1,12 @@
 @extends('frontend.frontend_layout.main_desgin')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','Grocery')
+
+@else
+@section('mytitle','البقالة')
+
+@endif
+
 <!-- Default CSS -->
 
 @section('content')

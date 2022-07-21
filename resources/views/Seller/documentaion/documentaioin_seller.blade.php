@@ -187,7 +187,7 @@
                         <p>Itajer follows a simple and easy to customize and add the products. Here is the sample for
                             your
                             reference:<br>
-                            The template is based on <b class="ml-1" "></i> Left side bar & Right side Panel</b></p>
+                            The template is based on <b class="ml-1" ></i> Left side bar & Right side Panel</b></p>
                             <a class=" popup-img"
                                 href="{{ asset('storage/documentaion/dashboard_without_content.png') }}"><img
                                     src="{{ asset('storage/documentaion/dashboard_without_content.png') }}"
@@ -545,11 +545,11 @@
 
     </div>
     <!-- Document Wrapper end -->
-    @else
+@else
 
     <!-- Document Wrapper   
 =============================== -->
-    <div id="main-wrapper">
+    <div id="main-wrapper" style="direction:rtl;text-align:right;">
 
         <!-- Header
 ============================ -->
@@ -580,7 +580,7 @@
                                 <a class=" nav-link" href="{{ route('lang.switch','en') }}">English</a>
                             </li>
                             <li class="dropdown dropdown-language nav-item">
-                                <a class=" nav-link" href="{{ route('lang.switch','ar') }}">Arabic</a>
+                                <a class=" nav-link" href="{{ route('lang.switch','ar') }}">عربي</a>
                             </li>
 
                         </ul>
@@ -613,21 +613,20 @@
                             <li class="nav-item"><a class="nav-link" href="#idocs_addnewproduct">أضف منتجات جديدة</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#idocs_navbar">تحرير المنتجات</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">Add Attributs to Product</a>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_sidebar">أضف سمات للمنتج</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_footer">Add Gallery to product</a>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_footer">إضافة معرض إلى المنتج</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">Add Frequently Bought
-                                    Together </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#idocs_box_layout">إضافة يتم شراؤها معًا بشكل متكرر </a></li>
 
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="#idocs_changelog">Other Sittings</a>
+                    <li class="nav-item"><a class="nav-link" href="#idocs_changelog">اعدادات اخرى</a>
                         <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#v1-2">Orders</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#v1-1">Subscriptions</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#v1-0">Seller Sittings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#v1-2">الطلب</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#v1-1">الاشتراكات</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#v1-0">إعدادات البائع</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -641,28 +640,27 @@
                     <!-- Getting Started
     ============================ -->
                     <section id="idocs_start">
-                        <h1>Documentation</h1>
-                        <h2>Below is how seller can control the admin panel</h2>
-                        <p class="lead">Thank you so much for using our patform and wish you can get what you want with
-                            us.</p>
+                        <h1>توثيق</h1>
+                        <h2>فيما يلي كيف يمكن للبائع التحكم في لوحة الإدارة</h2>
+                        <p class="lead">شكرًا جزيلاً لاستخدام منصتنا وأتمنى أن تحصل على ما تريد معنا.</p>
                         <hr>
                         <div class="row">
                             <div class="col-sm-6 col-lg-4">
                                 <ul class="list-unstyled">
-                                    <li><strong>Version:</strong> 1.0</li>
-                                    <li><strong>Author:</strong> <a href="https://9yards.ae" target="_blank">9Yards
+                                    <li><strong>إصدار:</strong> 1.0</li>
+                                    <li><strong>مؤلف:</strong> <a href="https://9yards.ae" target="_blank">9Yards
                                             Team</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <ul class="list-unstyled">
-                                    <li><strong class="font-weight-700">Created:</strong> 1 March, 2022</li>
-                                    <li><strong>Update:</strong> 21 May, 2022</li>
+                                    <li><strong class="font-weight-700">مصنوع :</strong> 1 March, 2022</li>
+                                    <li><strong>التحديث:</strong> 21 May, 2022</li>
                                 </ul>
                             </div>
                         </div>
-                        <p class="alert alert-info">If you have any questions that are beyond the scope of this help
-                            file, Please feel free to email via <a target="_blank"
+                        <p class="alert alert-info">إذا كان لديك أي أسئلة خارج نطاق هذه المساعدة
+                             ملف ، لا تتردد في مراسلتنا عبر البريد الإلكتروني <a target="_blank"
                                 href="mail:alomda.alslamt@gmail.com">Team Support Email</a>.</p>
                     </section>
 
@@ -671,18 +669,15 @@
                     <!-- basic Info
     ============================ -->
                     <section id="idocs_installation">
-                        <h2>Basic Info</h2>
-                        <p class="lead">Follow the steps below to view your site template:</p>
+                        <h2>معلومات أساسية</h2>
+                        <p class="lead">اتبع الخطوات أدناه لعرض قالب الموقع الخاص بك:</p>
                         <p>
-                            Itajer Seller admin panel is the place where the seller can control his section on the main
-                            website
+                           لوحة إدارة بائع إتاجر هي المكان الذي يمكن للبائع من خلاله التحكم في قسمه على الموقع الرئيسي
                             <br> <a href="{{ route('homepage') }}" target="_blank"> <i
-                                    class="fas fa-external-link-alt"></i> Itajer Home Page</a> from now on the below
-                            info will guid you
-                            to be able to use your panel perfectly!!.
-                        </p>
+                                    class="fas fa-external-link-alt"></i> صفحة إتاجر الرئيسية</a> 
+                                    من الآن فصاعدًا ، ستوجهك المعلومات أدناه لتتمكن من استخدام اللوحة الخاصة بك بشكل مثالي !!.
                         <p>
-                            Now let's start with the first section which is <code>Panel Structure</code>.
+                            لنبدأ الآن بالقسم الأول وهو <code> هيكل لوحة التحكم</code>.
                         </p>
                     </section>
 
@@ -691,33 +686,30 @@
                     <!-- HTML Structure
     ============================ -->
                     <section id="idocs_html_structure">
-                        <h2>Panel Structure</h2>
-                        <p>Itajer follows a simple and easy to customize and add the products. Here is the sample for
-                            your
-                            reference:<br>
-                            The template is based on <b class="ml-1" "></i> Left side bar & Right side Panel</b></p>
+                        <h2>هيكل لوحة التحكم</h2>
+                        <p>تتبع إتاجر طريقة بسيطة وسهلة لتخصيص المنتجات وإضافتها. هذه هي العينة الخاصة بك
+                           </p>المرجعي<br>
+                            القالب يعتمد على <b class="ml-1 "></i> شريط الجانب الأيسر ولوحة الجانب الأيمن</b></p>
                         <a class=" popup-img"
                                 href="{{ asset('storage/documentaion/dashboard_without_content.png') }}"><img
                                     src="{{ asset('storage/documentaion/dashboard_without_content.png') }}"
                                     class="img-fluid img-thumbnail" alt="image" style="width: 600px"></a>
-                                <p> The Above Image is the dashboard with out any information where the lest side <b>
-                                        The black one </b> <br>
-                                    is where the user can go through the dashborad and select the section that he wants.
-                                    and it containes
+                                <p> الصورة أعلاه هي لوحة القيادة دون أي معلومات حيث الجانب الأيسر <b>
+                                        الاسود </b> <br>هو المكان الذي يمكن للمستخدم الانتقال إليه من خلال لوحة القيادة وتحديد القسم الذي يريده. ويحتوي على
                                     <code>
                                         <ul>
-                                            <li>Dashboard </li>
-                                            <li>documentaion </li>
-                                            <li>Products </li>
-                                            <li>Orders </li>
-                                            <li>Subscribtion </li>
-                                            <li>Sittings</li>
+                                            <li>لوحة التحكم </li>
+                                            <li>التوثيق </li>
+                                            <li>المنتجات </li>
+                                            <li>الطلبات </li>
+                                            <li>الاشتراك </li>
+                                            <li>الأعدادات</li>
                                         </ul>
                                     </code>
                                 </p>
 
-                                <p> Once the seller start getting notification and add products <b>The Dashboard </b>
-                                    will be filled with the Important info Such as the below image</p>
+                                <p> بمجرد أن يبدأ البائع في تلقي إشعار وإضافة منتجات <b>لوحة القيادة </b>
+                                    سيتم ملؤها بالمعلومات الهامة مثل الصورة أدناه</p>
                                 <a class="popup-img"
                                     href="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}"><img
                                         src="{{ asset('storage/documentaion/iTajer_dashboard_with_content.png') }}"
@@ -729,23 +721,23 @@
                     <!-- Sass
     ============================ -->
                     <section id="idocs_sass">
-                        <h2>Main Sections</h2>
-                        <p>As Above there are few sections that seller must focus on to get things done correctly!!</p>
+                        <h2>الأقسام الرئيسية</h2>
+                        <p>كما ورد أعلاه ، هناك عدد قليل من الأقسام التي يجب على البائع التركيز عليها لإنجاز الأمور بشكل صحيح !!</p>
                         <code>
                             <ol>
-                                <li>Dashboard to view the statistic Informations</li>
-                                <li>documentaion to view the guid book </li>
-                                <li>Products to view the products and every thing related to products </li>
-                                <li>Orders to view the Sold Products Invoices and every thing related to orders </li>
-                                <li>Subscribtion to view the the seller package status and the Expired Date</li>
-                                <li>Sittings to view the the seller details </li>
+                                <li>لوحة القيادة لعرض المعلومات الإحصائية</li>
+                                <li>الوثائق لعرض دليل كتاب الأرشادات </li>
+                                <li>منتجات لعرض المنتجات وكل ما يتعلق بالمنتجات </li>
+                                <li>أوامر لعرض فواتير المنتجات المباعة وكل ما يتعلق بالطلبات</li>
+                                <li>اشتراك لعرض حالة حزمة البائع وتاريخ انتهاء الصلاحية</li>
+                                <li>إعدادات لعرض تفاصيل البائع</li>
                             </ol>
                         </code>
                         <a class="popup-img" href="{{ asset('storage/documentaion/left_side_bar_products.png') }}"><img
                                 src="{{ asset('storage/documentaion/left_side_bar_products.png') }}"
                                 class="img-fluid img-thumbnail" alt="image" style="width: 200px;height:100%"></a>
 
-                        <p>Below will go deep with each of the sections so lets start with <code>Products.</code></p>
+                        <p>أدناه سوف تتعمق في كل قسم من الأقسام ، لذا فلنبدأ بها <code>منتجات.</code></p>
                     </section>
 
                     <hr class="divider">
@@ -753,9 +745,8 @@
                     <!-- Layout
     ============================ -->
                     <section id="idocs_layout">
-                        <h2>Products Managments </h2>
-                        <p class="lead mb-5">Products Section where the seller can View , Edit , Add Attributs , delete
-                            products</p>
+                        <h2>إدارة المنتجات </h2>
+                        <p class="lead mb-5">قسم المنتجات حيث يمكن للبائع عرض وتحرير وإضافة سمات وحذف المنتجات</p>
 
                     </section>
 
@@ -764,23 +755,20 @@
                     <section id="idocs_header">
                         <ul>
                             <code>
-                                <li> View Produts </li>
+                                <li> مشاهدة المنتجات </li>
                             </code>
-                            <p>to view all the products click on the <strong>left side bar</strong> view products tab as
-                                shown below</p>
+                            <p>لعرض جميع المنتجات اضغط على <strong>شريط الجانب الأيسر  </strong>عرض علامة التبويب المنتجات كما هو موضح أدناه</p>
                             <a class="popup-img"
                                 href="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}"><img
                                     src="{{ asset('storage/documentaion/left_side_bar_products_view.png') }}"
                                     class="img-fluid img-thumbnail" alt="image" style="width: 200px;height:100%"></a>
-                            <p>Then the right bar will show the detailes of the products like the below <b> (in the
-                                    Empty case you will see nothing)</b> </p>
+                            <p>ثم سيعرض الشريط الأيمن تفاصيل المنتجات مثل أدناه <b> (في الحالة الفارغة لن ترى شيئًا)</b> </p>
                             <a class="popup-img"
                                 href="{{ asset('storage/documentaion/products_view_without_data.png') }}"><img
                                     src="{{ asset('storage/documentaion/products_view_without_data.png') }}"
                                     class="img-fluid img-thumbnail" alt="image" style="width: 100%;"></a>
-                            <p>Once the seller add products <strong>(this what we will talk about next section)</strong>
-                                the products will be inserted in view section then the seller will be able to do the
-                                needed for the products (Edit,delete and add more features) as shown below</p>
+                            <p>بمجرد أن يضيف البائع المنتجات <strong> (هذا ما سنتحدث عنه في القسم التالي)</strong>
+                                سيتم إدراج المنتجات في قسم العرض ثم سيتمكن البائع من القيام بما هو مطلوب للمنتجات (تحرير وحذف وإضافة المزيد من الميزات) كما هو موضح أدناه</p>
                             <a class="popup-img"
                                 href="{{ asset('storage/documentaion/view_prodcuts_with_data.png') }}"><img
                                     src="{{ asset('storage/documentaion/view_prodcuts_with_data.png') }}"
@@ -793,14 +781,14 @@
                     <!-- Navbar
     ============================ -->
                     <section id="idocs_addnewproduct">
-                        <h2>Add New Products</h2>
-                        <p>There are 2 ways to view the add products form</p>
+                        <h2>أضف منتجات جديدة</h2>
+                        <p>هناك طريقتان لعرض نموذج إضافة منتجات</p>
                         <ol>
-                            <li> Add product button on top right of the <code>view products page</code> </li>
-                            <li> Create products on the <code> left side bar </code></li>
+                            <li> إضافة زر المنتج في أعلى يمين ملف <code>عرض صفحة المنتجات</code> </li>
+                            <li> قم بإنشاء منتجات على <code>شريط الجانب الأيسر </code></li>
 
                         </ol>
-                        <p> as shown below the place of buttons</p>
+                        <p> كما هو موضح أسفل مكان الأزرار</p>
 
                         <div class="row">
                             <div class="col-6">
@@ -818,117 +806,118 @@
                             </div>
 
                         </div>
-                        <p>Once the seller click one of the above buttons will be redirect to the add product from where
-                            he will be able to fill the needed section to create a new product as shown below </p>
+                        <p>بمجرد أن ينقر البائع على أحد الأزرار أعلاه ، سيتم إعادة توجيهه إلى إضافة المنتج من حيث
+                             سيكون قادرًا على ملء القسم المطلوب لإنشاء منتج جديد كما هو موضح أدناه </p>
                         <a class="popup-img" href="{{ asset('storage/documentaion/add_new_product_table.png') }}"><img
                                 src="{{ asset('storage/documentaion/add_new_product_table.png') }}"
                                 class="img-fluid img-thumbnail" alt="image" style="width: 100%;"></a>
-                        <p>Click the video below to see more about how to view <code> add new product </code> form</p>
+                        <p>انقر فوق الفيديو أدناه لمعرفة المزيد حول كيفية العرض <code> إضافة منتج جديد </code> شكل</p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/add_product_video.mp4') }}"
                                 type="video/mp4">
-                            Your browser does not support the video tag.
+                            متصفحك الحالي لا يدعم تشغيل الفيديو.
                         </video>
 
-                        <h3 class="mt-2 mb-2">Show the forms of add new product </h3>
-                        <p> Once the seller enter the add product page he can fill the required data of inupts then save
-                            them as shown the below video </p>
-                        <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Itajer is a multi
-                            language website so there are 2 types of forms <b>(Arabic & English)</b> so do not miss any
-                            of them becuase the once that the seller will fill it will be shown in the front side as it
-                            is.</p>
+                        <h3 class="mt-2 mb-2">إظهار أشكال إضافة منتج جديد</h3>
+                        <p> بمجرد دخول البائع إلى صفحة إضافة منتج يمكنه ملء البيانات المطلوبة للمدخلات ثم حفظها كما هو موضح في الفيديو أدناه </p>
+                        <p><span class="badge badge-danger text-uppercase mr-2">ملحوظة ::</span>
+                       إتاجر هو موقع متعدد اللغات لذا يوجد نوعان من النماذج <b>(العربية والإنجليزية)</b>
+                       لذلك لا تفوت أيًا منهم لأنه بمجرد أن يملأ البائع سيظهر في الجانب الأمامي كما هو.</p>
 
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/add_new_product_fill.mp4') }}"
                                 type="video/mp4">
-                            Your browser does not support the video tag.
+                            متصفحك الحالي لا يدعم تشغيل الفيديو.
                         </video>
 
-                        <h3 class="mt-2 mb-2">Add Real Product and Fill the form</h3>
+                        <h3 class="mt-2 mb-2">أضف منتج حقيقي واملأ النموذج</h3>
 
-                        <p>As we have seen that the form needs to be filled to add the new product so there are some
-                            tricks can help to get the best options </p>
+                        <p>كما رأينا أن النموذج يحتاج إلى تعبئته لإضافة المنتج الجديد لذلك هناك بعض الحيل يمكن أن تساعد في الحصول على أفضل الخيارات </p>
 
-                        <b> * Required Forms * </b>
+                        <b> * النماذج المطلوبة * </b>
                         <code>
                             <ul>
-                                <li><b>Title : </b> the product name (English Language)</li>
-                                <li><b>Arabic Title : </b> the product name (Arabic Language)</li>
-                                <li><b>Main Category : </b> the product category
-                                    <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> If the Main
-                                        Category has a sub category then there will be form will appear under it to
-                                        select the sub category or you can keep it empty to append the product to main
-                                        category ONLY</p>
+                                <li><b>عنوان : </b>
+                               اسم المنتج (اللغة الانجليزية)</li>
+                                <li>
+                                    <b>عنوان عربي : </b> 
+                                   اسم المنتج (اللغة العربية)</li>
+                                <li>
+                                    <b>الفئة الرئيسية : </b> 
+                                    فئة المنتج
+                                    <p><span class="badge badge-danger text-uppercase mr-2">ملحوظة ::</span>
+                                  إذا كانت الفئة الرئيسية تحتوي على فئة فرعية ، فسيظهر نموذج تحتها لتحديد الفئة الفرعية أو يمكنك الاحتفاظ بها فارغة لإلحاق المنتج بالفئة الرئيسية فقط</p>
                                 </li>
-                                <li><b>Sub Category : </b> Hidden Field appears when you select a Main Category has sub
-                                    categories.</li>
-                                <li><b>Summary : </b> Short description about the product (English Language)</li>
-                                <li><b>Arabic Summary : </b> Short description about the product (Arabic Language)</li>
-                                <li><b>Description: </b> Long Description about the product (English Language)</li>
-                                <li><b>Arabic Description : </b> Long Description about the product (Arabic Language)
+                                <li><b>تصنيف فرعي : </b> 
+                                يظهر الحقل المخفي عند تحديد الفئة الرئيسية بها فئات فرعية.</li>
+                                <li><b>ملخص : </b> 
+                                وصف قصير عن المنتج (اللغة الانجليزية)</li>
+                                <li><b>ملخص عربي : </b> 
+                                وصف موجز للمنتج (اللغة العربية)</li>
+                                <li><b>وصف: </b> 
+                                وصف مطول عن المنتج (اللغة الانجليزية)</li>
+                                <li><b>الوصف العربي : </b> 
+                                وصف مطول عن المنتج (اللغة العربية)
                                 </li>
 
-                                <li><b>Choose Image : </b> Product image that will appear for user</li>
-                                <li><b>Price : </b> Product Price</li>
+                                <li><b>اختر صورة : </b> 
+                                صورة المنتج التي ستظهر للمستخدم</li>
+                                <li><b>سعر : </b> 
+                                سعر المنتج</li>
                             </ul>
                         </code>
 
-                        <b> * Not Required Forms * </b>
+                        <b> * النماذج غير المطلوبة * </b>
                         <code>
                             <ul>
-                                <li><b>Choose Size Guid : </b> Add size guid table as an image for the product (Clothes
-                                    type) or you can add some other images with diffrenet colors or featuers </li>
-                                <li><b>Additional Info : </b> Add some features or some other information for the
-                                    product (English Language)</li>
-                                <li><b>Arabic Additional Info : </b> Add some features or some other information for the
-                                    product (Arabic Language)</li>
-                                <li><b>Return Policy : </b> Add some Policy for the product (English Language)</li>
-                                <li><b>Arabic Return Policy : </b> Add some Policy for the product (Arabic Language)
+                                <li><b>اختر دليل المقاسات: </b> 
+                                أضف جدول دليل المقاسات كصورة للمنتج (نوع الملابس) أو يمكنك إضافة بعض الصور الأخرى بألوان أو ميزات مختلفة </li>
+                                <li><b>معلومات إضافية : </b> 
+                               إضافة بعض الميزات أو بعض المعلومات الأخرى للمنتج (اللغة الإنجليزية)</li>
+                                <li><b>معلومات إضافية عربية : </b> 
+                               إضافة بعض الميزات أو بعض المعلومات الأخرى للمنتج (اللغة العربية)</li>
+                                <li><b>سياسة العائدات : </b> 
+                                اضافة بعض السياسات للمنتج (اللغة الانجليزية)</li>
+                                <li><b>سياسة الإرجاع باللغة العربية : </b> 
+                               اضافة بعض السياسات للمنتج (اللغة العربية)
                                 </li>
-                                <li><b>Stock : </b> Add number of items in stock ( if you keep it empty then the product
-                                    will be in stock )</li>
-                                <li> <b> Offer Price : </b> Add a special price if you have then the system will count
-                                    the <b>(discound)</b> automaticlly</li>
-                                <li><b> Frequently Bought Together : </b> This option if the seller want to add a group
-                                    of products to buy them togother. (below is a video to show how it looks.)</li>
+                                <li><b>مخزون : </b> 
+                               أضف عددًا من العناصر في المخزن (إذا تركته فارغًا ، فسيكون المنتج متوفرًا)</li>
+                                <li> <b> سعر العرض : </b> 
+                               أضف سعرًا خاصًا إذا كان لديك ، فسيقوم النظام بحساب 
+                                <b>(تخفيض)</b> تلقائيا</li>
+                                <li><b>اشترى في كثير من الأحيان جنبا إلى جنب : </b> 
+                                هذا الخيار إذا كان البائع يريد إضافة مجموعة من المنتجات لشرائها معًا. (يوجد أدناه مقطع فيديو لإظهار كيف يبدو.)</li>
                             </ul>
                         </code>
-                        <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Frequently Bought
-                            Together can select them from an existing products (the seller must add the products then he
-                            can choose them from the dropdown menu)</p>
+                        <p><span class="badge badge-danger text-uppercase mr-2">ملحوظة ::</span> 
+                        في كثير من الأحيان يمكن للشراء معًا تحديدهم من المنتجات الحالية (يجب على البائع إضافة المنتجات ثم يمكنه اختيارها من القائمة المنسدلة)</p>
 
-                        <p><span class="badge badge-danger text-uppercase mr-2">Note ::</span> Enable button is to make
-                            the product active or not</p>
+                        <p><span class="badge badge-danger text-uppercase mr-2">ملحوظة ::</span>زر التمكين هو جعل المنتج نشطًا أم لا</p>
 
                         <div class="row">
                             <div class="col-6">
-                                <b>* Video below is to add other image so when user hover on the product image will see
-                                    other one *</b>
+                                <b>* الفيديو أدناه هو إضافة صورة أخرى بحيث عندما يحوم المستخدم فوق صورة المنتج سيرى صورة أخرى *</b>
                                 <video width="100%" height="440" controls>
                                     <source src="{{ asset('storage/documentaion/videos/add_product_other_image.mp4') }}"
                                         type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                                </video>
                             </div>
                             <div class="col-6">
-                                <b>* Video below is to show the product after adding the offer price & hover image
-                                    option*</b>
+                                <b>* الفيديو أدناه لعرض المنتج بعد إضافة سعر العرض وخيار صورة التمرير*</b>
                                 <video width="100%" height="440" controls>
                                     <source src="{{ asset('storage/documentaion/videos/tricks_products.mp4') }}"
                                         type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                                </video>
                             </div>
 
                         </div>
                         <div class="mt-4 mb-4">
-                            <b class="mb-4">* Video below is to show the product after inserting along with Frequently
-                                Bought Together *</b><br>
+                            <b class="mb-4">*يوضح الفيديو أدناه المنتج بعد إدخاله مع "الشراء المتكرر معًا" *</b><br>
                             <video width="100%" height="440" controls>
                                 <source src="{{ asset('storage/documentaion/videos/single_product.mp4') }}"
                                     type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                            </video>
                         </div>
                     </section>
 
@@ -937,12 +926,11 @@
                     <!-- Sidebar
     ============================ -->
                     <section id="idocs_navbar">
-                        <h2>Edit Products</h2>
-                        <p> Once the seller add the products he can edit on each of them as shown below.</p>
+                        <h2>تعديل المنتجات</h2>
+                        <p> بمجرد أن يضيف البائع المنتجات ، يمكنه تعديل كل منها كما هو موضح أدناه.</p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/edit_product.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                        </video>
                     </section>
 
                     <hr class="divider">
@@ -950,10 +938,10 @@
                     <!-- Box Layout Style
     ============================ -->
                     <section id="idocs_sidebar">
-                        <h2>Add Attributes To Products</h2>
-                        <p>For now the seller can just add some images to be shown in the single product page</p>
+                        <h2>إضافة سمات إلى المنتجات</h2>
+                        <p>في الوقت الحالي ، يمكن للبائع فقط إضافة بعض الصور لتظهر في صفحة منتج واحد</p>
                         <ol>
-                            <li>Products Gallery</li>
+                            <li>معرض المنتجات</li>
                         </ol>
 
                     </section>
@@ -963,72 +951,63 @@
                     <!-- Content
     ============================ -->
                     <section id="idocs_footer">
-                        <h2>Products Gallery</h2>
-                        <p> below the video shows how to add a gallery to the product </p>
+                        <h2>معرض المنتجات</h2>
+                        <p> يظهر أسفل الفيديو كيفية إضافة معرض إلى المنتج </p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/gallery_product.mp4') }}"
                                 type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                        </video>
                         <hr class="divider">
                     </section>
 
                     <!-- Typography
     ============================ -->
                     <section id="idocs_box_layout">
-                        <h2> Frequently Bought Together</h2>
+                        <h2> اشترى في كثير من الأحيان جنبا إلى جنب</h2>
 
-                        <p> * Video below is to show how to add new product with Frequently Bought Together * </p>
+                        <p> * يوضح الفيديو أدناه كيفية إضافة منتج جديد باستخدام "كثيرًا ما يتم شراؤه معًا" * </p>
 
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/full_add_product_.mp4') }}"
                                 type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+متصفحك الحالي لا يدعم تشغيل الفيديو.                        </video>
                     </section>
 
                     <hr class="divider">
 
                     <section id="idocs_changelog">
-                        <h2>Changelog</h2>
-                        <p class="text-4">See what's new added, changed, fixed, improved or updated in the latest
-                            versions. </p>
-                        <p class="alert alert-info mb-5"> For Future Updates Follow Us <a target="_blank"
-                                href="http://themeforest.net/user/harnishdesign?ref=HarnishDesign">@themeforest</a> / <a
-                                target="_blank" href="http://facebook.com/harnishdesign">@facebook</a> / <a
-                                target="_blank" href="http://twitter.com/harnishdesign">@twitter</a> / <a
-                                target="_blank" href="https://dribbble.com/harnishdesign">@Dribbble</a></p>
+                    
 
-                        <h3 id="v1-2">Orders</h3>
-                        <p> There are two way(s) to view all orders </p>
+                        <h3 id="v1-2">الطلب</h3>
+                        <p> هناك طريقتان لعرض جميع الطلبات </p>
                         <ol>
-                            <li> <code> View All </code> button on the dashboard below the statistice boards </li>
-                            <li> from the left bar under the <code> Order(s) Managments </code> </li>
+                            <li> <code> مشاهدة الكل </code> 
+                            زر على لوحة القيادة أسفل لوحات الإحصاء</li>
+                            <li> من الشريط الأيسر أسفل <code> 
+                            ترتيب (ق) إدارات </code> </li>
                         </ol>
-                        <p> The seller will be able to view the purchased product(s) beside view the invoices and
-                            download the invoices as a PDF</p>
-                        <p> below the video will show how to view the orders and download the invoices</p>
+                        <p> سيتمكن البائع من عرض المنتج (المنتجات) المشتراة بجانب عرض الفواتير وتنزيل الفواتير كملف PDF</p>
+                        <p> أسفل الفيديو سيوضح كيفية عرض الطلبات وتنزيل الفواتير</p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/order_video.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
+                            متصفحك الحالي لا يدعم تشغيل الفيديو.
                         </video>
                         <hr class="divider">
-                        <h3 id="v1-1">Subscriptions</h3>
-                        <p> The subscribe is what the seller select from the begging then he will be able to upgarde the
-                            package or view the current package </p>
-                        <p> below is a video to show the subscription</p>
+                        <h3 id="v1-1">الاشتراكات</h3>
+                        <p> الاشتراك هو ما يختاره البائع من التسول ثم يمكنه ترقية الباقة أو عرض الباقة الحالية </p>
+                        <p> أدناه مقطع فيديو لإظهار الاشتراك</p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/subscription.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
+                            متصفحك الحالي لا يدعم تشغيل الفيديو.
                         </video>
                         <hr class="divider">
-                        <h3 id="v1-0">Seller Sittings</h3>
-                        <p> The final things are how the seller can edit the personal , company details </p>
-                        <p> below is a video to show how to do the things </p>
+                        <h3 id="v1-0">اعدادات البائع</h3>
+                        <p> الأشياء الأخيرة هي كيف يمكن للبائع تعديل تفاصيل الشركة الشخصية </p>
+                        <p> يوجد أدناه مقطع فيديو يوضح كيفية القيام بالأشياء </p>
                         <video width="100%" height="440" controls>
                             <source src="{{ asset('storage/documentaion/videos/seller_sittings.mp4') }}"
                                 type="video/mp4">
-                            Your browser does not support the video tag.
+                          متصفحك الحالي لا يدعم تشغيل الفيديو.
                         </video>
                     </section>
 
@@ -1042,10 +1021,10 @@
 ============================ -->
         <footer id="footer" class="section bg-danger footer-text-light">
             <div class="container">
-                <p class="text-center text-white">Copyright &copy; 2022 <a href="{{ route('homepage') }}"
-                        class="text-white">ITajer</a>. All
-                    Rights Reserved.</p>
-                <p class="text-2 text-center mb-0 text-white">Design &amp; Develop by <a class="btn-link text-white"
+                <p class="text-center text-white">حقوق النشر &copy; 2022 <a href="{{ route('homepage') }}"
+                        class="text-white">اي تاجر</a>.
+                        كل الحقوق محفوظة.</p>
+                <p class="text-2 text-center mb-0 text-white">تصميم &amp; طور بواسطة <a class="btn-link text-white"
                         target="_blank" href="http://9yards.ae">9yards Team</a>.</p>
             </div>
         </footer>

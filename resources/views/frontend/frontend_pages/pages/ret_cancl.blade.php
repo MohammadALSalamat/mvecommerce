@@ -1,8 +1,16 @@
 @extends('frontend.frontend_layout.main_desgin')
+
+
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','Refund & cancellation Policy')
 
-@section('content')
+@else
+@section('mytitle','سياسة الاسترداد والإلغاء')
 
+@endif
+
+@section('content')
+@if(Config::get('app.locale') == 'en')
 <main class="main">
     <!-- Start of Page Header -->
     <div class="container">
@@ -44,4 +52,40 @@
         </div>
     </div>
 </main>
+@else
+<main class="main">
+    <!-- Start of Page Header -->
+    <div class="container">
+    <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
+            <h1 class="page-title mb-0 text-white">سياسة الاسترداد والإلغاء</h1>
+        </div>
+    </div>
+    <!-- End of Page Header -->
+
+    <!-- Start of Page Content -->
+    <div class="page-content">
+        <div class="container">
+            <section class="boost-section pt-10 pb-10">
+                <div class="container mt-10 mb-9">
+                    <div class="row align-items-center mb-10">
+                        <div class="col-md-12 pl-lg-8 mb-8">
+                            <h4 class="title text-left">سياسة الاسترداد والإلغاء</h4>
+                            <p class="mb-6">
+                                لا نقبل إرجاع السلع والخدمات القابلة للتلف. يرجى الاتصال بفريق خدمة العملاء لدينا إذا كانت لديك أي مخاوف أو أسئلة حول عنصر أو خدمة معينة.
+إذا تعرض طلبك للتلف أثناء النقل ، أو إذا تلقيت طلبًا خاطئًا خلال 3 أيام عمل من وقت التسليم ، فيرجى التواصل مع فريق خدمة العملاء لدينا على الفور عن طريق الاتصال بنا أو إرسال بريد إلكتروني على الرقم 971588052313+ (أو عن طريق info@itajer.ae ) وسنرسل لك عنصرًا بديلاً أو نقدم حلًا آخر.
+   في حال شعرت أنه قد تم تحميل حسابك عن طريق الخطأ ، يجب عليك إخطارنا في غضون 7 أيام من الشراء. يجب توجيه أي أسئلة أو شكاوى أو مطالبات تتعلق بالتطبيق إلى:
+info@itajer.ae
+سيتم التعامل مع هذه الاستفسارات على أساس كل حالة على حدة.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+</main>
+@endif
 @endsection

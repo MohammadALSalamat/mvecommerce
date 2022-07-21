@@ -48,7 +48,9 @@ public function admin_viewSubscription_Status()
     {
         $data = $request->all();
         $seller_id = Seller::where('status',1)->where('id',$id)->first();
-
+       if(empty($seller_id) ||$seller_id == null){
+          return  redirect()->route('homepage')->with('warning','Your Status still not active please contnact admin for more informations'); 
+       }
         if(empty(Session::get('strip_plan')['subscribe_id']) || Session::get('strip_plan')['subscribe_id'] == null){
             $check_if_the_user_is_subscibed = 0;
         }else{
@@ -116,6 +118,9 @@ public function admin_viewSubscription_Status()
     {
         $seller = Seller::where('status',1)->where('id',Auth::guard('seller')->user()->id)->first();
 
+         if(empty($seller) ||$seller == null){
+           return redirect()->route('homepage')->with('warning','Your Status still not active please contnact admin for more informations'); 
+       }
         $subscripe = subscription::where('seller_id',$seller->id)->first();
         return view('Seller.seller_pages.subscription.viewSubscripePlan' ,compact('seller','subscripe'));
     }

@@ -79,7 +79,7 @@ return array (
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'feather' => array(
-    'normal' => $fontDir . '/feather_normal_9f2288c911b5447ce3bd32fb2714c0f6',
+    'normal' => $fontDir . '/feather_normal_8f52605efba030474933c95976d84ea8',
   ),
   'meteocons' => array(
     'normal' => $fontDir . '/meteocons_normal_76eaf34988c001387ade72b30ab7b0cb',

@@ -169,7 +169,7 @@
                           @if ($order->payment_status == 'completed')
                           <i class="la la-dot-circle-o success font-medium-1 mr-1"></i>
                           Completed
-                          @elseif ($order->payment_status == 'inprocess')
+                          @elseif ($order->payment_status == 'inproccess')
                           <i class="la la-dot-circle-o warning font-medium-1 mr-1"></i>
                           In Proccess
                           @elseif ($order->payment_status == 'shipped')

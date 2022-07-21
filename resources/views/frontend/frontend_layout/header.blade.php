@@ -788,6 +788,7 @@ div.checkRadioContainer > label > input:checked + i {
                            <li class="{{ request()->routeIs('sellers_list') ? 'active' : '' }}">
                                <a href="{{ route('sellers_list') }}">Vendors</a>
                            </li>
+                         
                        </ul>
                    </nav>
                </div>
@@ -823,13 +824,93 @@ div.checkRadioContainer > label > input:checked + i {
                </form>
            </div>
            <div class="ml-4 header-right">
-               <div class="header-call d-xs-show d-lg-flex align-items-center">
-                   <a href="tel:#" class="w-icon-call"></a>
-                   <div class="call-info d-lg-show">
-                       <h4 class="mb-0 chat font-weight-normal font-size-md text-normal ls-normal text-light">
-                           <a href="mailto:#" class="text-capitalize">أتصال مباشر</a> أو :</h4>
-                       <a href="tel:+971501413429" class="phone-number font-weight-bolder ls-50 "
-                           style="float:left;direction:ltr">+(971)501413429</a>
+              <div class="header-call location-mobile d-lg-flex align-items-start modal-drop" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   <a href="#">
+                       <img src="{{ asset('front-style/assets/images/itajermapmarker.png')}}" alt="ENG Flag" width="40"
+                           height="20" class="dropdown-image " style="margin-right: 6px;margin-top:10px" />
+                   </a>
+                   <div class="call-info location-info-mobile">
+                       <div >
+                           <span style="font-size:20px;font-weight:bold;">
+                               <a>
+                                   <h4 class="m-0" style="margin:0">توصيل الى</h4>
+                               </a>
+                               <a> @auth
+                                   <p class="mt-0"> {{ auth()->user()->full_name }} </p>
+                                   @else
+                                   <p class="mt-0"> الامارات العربية المتحدة <b>(فقط)</b> </p>
+                                   @endauth</a>
+                           </span>
+                       </div>
+
+                       <!-- Modal -->
+                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                           aria-hidden="true">
+                           <div class="modal-dialog">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLabel">أختر الموقع للتوصيل
+                                       </h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                           aria-label="Close"></button>
+                                   </div>
+                                   @auth
+                                   @if(empty($user_locations) || count($user_locations) == 0 )
+                                   <div class="modal-body">
+                                    قد تختلف خيارات التسليم وسرعات التسليم باختلاف المواقع <br>
+                                    <b class="mt-2 mb-2">ليس لدى المستخدم الحالي أي عناوين محفوظة، لذا يُرجى النقر أدناه لإضافة عناوين جديد
+                                    </b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">أغلاق</button>
+                                        <a href="{{route('userdashboard').'/#account-addresses'}}" class=""><button type="submit"
+                                                class="btn btn-primary">أضافة عنوان جديد</button></a>
+                                    </div>
+                                   @else
+                                   <form action="{{route('selected_address')}}" method="Post">
+                                       <div class="modal-body">
+                                           @csrf
+                                           <div class="checkRadioContainer">
+                                            @foreach ($user_locations as $user_location )
+                                            <label style=" padding:10px">
+                                                <input type="hidden" name="location_id_selected" value="{{ $user_location->id }}">
+                                                <input type="radio" name="radioGroup" @if($user_location->themain_address == 1) checked @endif  />
+                                                <i class="fa fa-check fa-2x"></i>
+                                                <span> <b>أسم المستلم : </b> {{ $user_location->full_name }}</span><br>
+                                                <span> <b>توصيل الى : </b> {{ $user_location->address }}, {{ $user_location->full_street_info }} ,{{ $user_location->city}},{{ $user_location->country  }}</span>
+                                            </label>
+                                            @endforeach
+                                        </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary"
+                                               data-bs-dismiss="modal">أغلاق</button>
+                                               <button type="button" class=" btn btn-dark"><a href="{{ route('deliver_address') }}"> 
+                                                
+                                                    التعديل  <i class="fa fa-gear spinner fa-2x" style="color:#fff;font-size:20px"></i>
+                                                </a>
+                                            </button>
+                                           <button type="submit" class="btn btn-primary">حفظ</button>
+                                       </div>
+                                   </form>
+                                   @endif
+                                   @else
+                                   <div class="modal-body">
+                                       قد تختلف خيارات التسليم وسرعات التسليم باختلاف المواقع<br>
+                                       <b> انقر أدناه تسجيل الدخول لرؤية عناوينك
+                                       </b>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary"
+                                           data-bs-dismiss="modal">أغلاق</button>
+                                       <a href="{{route('loginForm')}}" class=""><button type="submit"
+                                               class="btn btn-primary">تسجيل الدخول</button></a>
+                                   </div>
+                                   @endauth
+                               </div>
+                           </div>
+                       </div>
                    </div>
                </div>
                <a class="wishlist label-down link d-xs-show" style="position: relative"
@@ -991,12 +1072,12 @@ div.checkRadioContainer > label > input:checked + i {
                    </nav>
                </div>
                <div class="header-right">
-                   <a href="#" class="d-xl-show"><i class="mr-1 w-icon-map-marker"></i>مسار الشحنة</a>
+                   <a href="{{ route('helpus') }}" class="d-xl-show"><i class="mr-1 w-icon-comments"></i>مقترحات للتحديث</a>
                    @php
                    $best_deals_checker = \App\Models\product::where(['status' => 1])->where('discound','>',20)->count();
                    @endphp
                    <a class="@if ($best_deals_checker > 0 ) glow @else @endif
-                         " href="{{ route('best_deals') }}"><i class="w-icon-sale glow"></i> أفضل العروض</a>
+                     " href="{{ route('best_deals') }}"><i class="w-icon-sale glow"></i>أفضل العروض</a>
                </div>
            </div>
        </div>

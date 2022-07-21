@@ -685,7 +685,7 @@ class frontPageController extends Controller
             return view('frontend.frontend_pages.auth.register_vendors');
         }
         public function vendor_info(Request $request)
-        {
+       {
             $data = $request->all();
             
             if ($data['name'] == null || empty($data['name'])) {
@@ -709,14 +709,20 @@ class frontPageController extends Controller
             if ($data['phone-number'] == null || empty($data['phone-number'])) {
                 return back()->with('error', 'Phone is required');
             }
-            if ($data['address'] == null || empty($data['address'])) {
+            if ($data['street'] == null || empty($data['street'])) {
                 return back()->with('error', 'address is required');
+            }
+            if ($data['nearlocation'] == null || empty($data['nearlocation'])) {
+                return back()->with('error', 'nearlocation is required');
+            }
+            if ($data['building'] == null || empty($data['building'])) {
+                return back()->with('error', 'building is required');
             }
             if ($data['city'] == null || empty($data['city'])) {
                 return back()->with('error', 'city is required');
             }
-            if ($data['country'] == null || empty($data['country'])) {
-                return back()->with('error', 'Phone is required');
+            if (empty($data['country'])) {
+                $data['country'] = 'Untited Arab Emirates';
             }
             if ($data['agreed_policy'] == null || empty($data['agreed_policy'])) {
                 return back()->with('error', 'Check Box  Policy is required');
@@ -777,7 +783,7 @@ class frontPageController extends Controller
                 'phone' => $data['phone-number'],
                 'type_of_work' => $data['type_of_work'],
                 'shopname'=> $data['shop-name'],
-                'address' => $data['address'],
+                'address' => $data['street'].','.$data['nearlocation'].','.$data['building'],
                 'license' =>$filename,
                 'country' =>$data['country']
             ];
@@ -787,7 +793,7 @@ class frontPageController extends Controller
                 'phone' => $data['phone-number'],
                 'type_of_work' => $data['type_of_work'],
                 'shopname'=> $data['shop-name'],
-                'address' => $data['address'],
+                'address' => $data['street'].','.$data['nearlocation'].','.$data['building'],
                 'country' =>$data['country']
             ];
           
@@ -798,7 +804,7 @@ class frontPageController extends Controller
             $addnewvendor->email = $data['email'];
             $addnewvendor->city = $data['city'];
             $addnewvendor->country = $data['country'];
-            $addnewvendor->address = $data['address'];
+            $addnewvendor->address = $data['street'].','.$data['nearlocation'].','.$data['building'];
             $addnewvendor->phone = $data['phone-number'];
             $addnewvendor->document = $filename;
             $addnewvendor->photo = $filephoto;
@@ -822,6 +828,8 @@ class frontPageController extends Controller
             return back()->with('message', 'kindly check your email , the Verification Email has been sent');
 
         }
+        
+        
         // +++++++++++++++++++++++++++++ VVendors pages ++++++++++++++++++++++++++++//
 
         public function sellers_list()
@@ -965,7 +973,7 @@ class frontPageController extends Controller
         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'status'=>'active'])){
             Session::put('user',$data['email']);
             if(Session::get('url.intended')){
-                return Redirect::to(Session::get('url.intended'));
+                return Redirect::to(Session::get('url.intended'))->with('message','Welcome Back '.auth()->user()->username);
             }else{
                 return redirect()->route('userdashboard')->with('message','Welcome Back '.auth()->user()->username);
             }
@@ -1024,7 +1032,7 @@ class frontPageController extends Controller
         SEOMeta::setCanonical($current_url);
         
         $current_user = Auth::user();
-        $user_orders = Order::where('user_id',$current_user->id)->get();
+        $user_orders = Order::orderBy('id','DESC')->where('user_id',$current_user->id)->get();
         $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);

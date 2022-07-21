@@ -1,6 +1,97 @@
 @extends('frontend.frontend_layout.main_desgin')
+ @if(Config::get('app.locale') == 'en')
 @section('mytitle','My Account' )
+@else
+@section('mytitle','الحساب الخاص بك' )
+@endif
+
 @section('style')
+<style>
+    ol.progtrckr {
+        margin: 0;
+        padding: 0;
+        list-style-type none;
+    }
+
+    ol.progtrckr li {
+        display: inline-block;
+        text-align: center;
+        line-height: 3.5em;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="2"] li {
+        width: 49%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="3"] li {
+        width: 33%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="4"] li {
+        width: 24%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="5"] li {
+        width: 19%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="6"] li {
+        width: 16%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="7"] li {
+        width: 14%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="8"] li {
+        width: 12%;
+    }
+
+    ol.progtrckr[data-progtrckr-steps="9"] li {
+        width: 11%;
+    }
+
+    ol.progtrckr li.progtrckr-done {
+        color: black;
+        border-bottom: 4px solid yellowgreen;
+    }
+
+    ol.progtrckr li.progtrckr-todo {
+        color: silver;
+        border-bottom: 4px solid silver;
+    }
+
+    ol.progtrckr li:after {
+        content: "\00a0\00a0";
+    }
+
+    ol.progtrckr li:before {
+        position: relative;
+        bottom: -2.5em;
+        float: left;
+        left: 50%;
+        line-height: 1em;
+    }
+
+    ol.progtrckr li.progtrckr-done:before {
+        content: "\2713";
+        color: white;
+        background-color: yellowgreen;
+        height: 2.2em;
+        width: 2.2em;
+        line-height: 2.2em;
+        border: none;
+        border-radius: 2.2em;
+    }
+
+    ol.progtrckr li.progtrckr-todo:before {
+        content: "\039F";
+        color: silver;
+        background-color: white;
+        font-size: 2.2em;
+        bottom: -1.2em;
+    }
+</style>
 @endsection
 @section('content')
 <!-- Start of Main -->
@@ -30,19 +121,21 @@
                     <li class="nav-item">
                         <a href="#account-orders" class="nav-link">Orders</a>
                     </li>
-        
+
                     <li class="nav-item">
                         <a href="#account-addresses" class="nav-link">Addresses</a>
                     </li>
                     <li class="nav-item">
                         <a href="#account-details" class="nav-link">Account details</a>
                     </li>
-                 
+                    <li class="nav-item">
+                        <a href="#track-order" class="nav-link">Track Order</a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('logout_front_user') }}" class="nav-link">Logout</a>
                     </li>
                 </ul>
-
                 <div class="mb-6 tab-content">
                     <div class="tab-pane active in" id="account-dashboard">
                         <p class="greeting">
@@ -102,7 +195,7 @@
                                 </a>
                             </div>
                             <div class="mb-4 col-lg-4 col-md-6 col-sm-4 col-xs-6">
-                                <a href="#account-details" class="link-to-tab">
+                                <a href="#track-order" class="link-to-tab">
                                     <div class="text-center icon-box">
                                         <span class="icon-box-icon icon-account">
                                             <i class="w-icon-shipping"></i>
@@ -141,10 +234,10 @@
                         <table class="mb-6 shop-table account-orders-table">
                             <thead>
                                 <tr>
-                                    <th class="order-id">Order</th>
-                                    <th class="order-date">Date</th>
-                                    <th class="order-status">Status</th>
-                                    <th class="order-total">Total</th>
+                                    <th class="order-id" style="text-align: left">Order</th>
+                                    <th class="order-date" style="text-align: left">Date</th>
+                                    <th class="order-status" style="text-align: left">Status</th>
+                                    <th class="order-total" style="text-align: left">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -152,7 +245,20 @@
                                 <tr>
                                     <td class="order-id">#{{ $order->order_number }}</td>
                                     <td class="order-date">{{ date('Y-m-d',strtotime($order->created_at)) }}</td>
-                                    <td class="order-status">Processing</td>
+                                    <td class="order-status" 
+                                    @if ($order->payment_status == 'completed')
+                                    style="color:green"
+                                    @elseif ($order->payment_status == 'inprocess')
+                                    style="color:orange"
+                                    @elseif ($order->payment_status == 'shipped')
+                                    style="color:green"
+                                    @elseif ($order->payment_status == 'pending')
+                                    style="color:orange"
+                                    @elseif ($order->payment_status == 'cancelled')
+                                    style="color:red"
+                                    @endif
+                                    >
+                                    {{ $order->payment_status }}</td>
                                     <td class="order-total">
                                         <span class="order-price">{{ $order->total }} AED </span> for
                                         <span class="order-quantity"> {{ count($order->product) }}</span> item
@@ -308,6 +414,71 @@
                             <button type="submit" class="mb-4 btn btn-dark btn-rounded btn-sm">Save Changes</button>
                         </form>
                     </div>
+                     <div class="tab-pane" id="track-order">
+                        <div class="icon-box icon-box-side icon-box-light">
+                            <span class="mr-2 icon-box-icon icon-account">
+                                <i class="w-icon-shipping"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="mb-0 icon-box-title ls-normal">Track Order</h4>
+                            </div>
+                        </div>
+                      
+                        @foreach ($user_orders as $orders)
+                        @if ($orders->payment_status != 'completed')
+                        <table class="mb-6 shop-table account-orders-table">
+                            <thead>
+                                <tr>
+                                    <th class="order-id" style="text-align: left">ORDER</th>
+                                    <th class="order-status" style="text-align: left">ITEMS</th>
+                                    <th class="order-total" style="text-align: left">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="order-id">#{{ $orders->order_number }}</td>
+                                    <td class="order-date">
+                                        @foreach ($orders->product as $item)
+                                        @php
+                                        $other_image = explode(',',$item->image);
+                                      @endphp
+                                    <a href="{{ route('singleproduct',$item->slug) }}" style="display:flex;padding:10px 0px">
+                                        <img src="{{ $other_image[0] }}" alt="{{ $item->title }}" style="width: 30px !important;padding-right:10px;"> 
+                                        <span class="order-quantity text-primary font-weight-bold"> {{ ($item->title) }}</span>
+                                    </a>
+                                        @endforeach    
+                                    </td>
+                                    <td class="order-total">
+                                        <span class="order-price">{{ $orders->total }} AED </span> for
+                                        <span class="order-quantity"> {{ count($orders->product) }}</span> item
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                        <ol class="progtrckr" data-progtrckr-steps="4" style="padding-bottom:30px">
+                            <li class="progtrckr-done">Order Processing</li>
+                            <!--
+                             -->
+                           
+                            <li
+                                class="@if ($orders->payment_status == 'inprocess' || $orders->payment_status == 'shipped') progtrckr-done @else progtrckr-todo @endif">
+                                In Production</li>
+                            <!--
+                             -->
+                            <li
+                                class="@if ($orders->payment_status == 'shipped'  || $orders->payment_status == 'completed') progtrckr-done @else progtrckr-todo @endif">
+                                Shipped</li>
+                            <!--
+                             -->
+                            <li
+                                class="@if ($orders->payment_status == 'completed') progtrckr-done @else progtrckr-todo @endif">
+                                Delivered</li>
+                        </ol>
+                        @else
+                        @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -319,7 +490,7 @@
     <!-- Start of Page Header -->
     <div class="page-header" style="background:url('/storage/photos/1/Artboard 1 copy-100.jpg');background-size:cover">
         <div class="container">
-            <h1 class="mb-0 page-title">الحساب الشخصي</h1>
+            <h1 class="mb-0 page-title text-white">الحساب الشخصي</h1>
         </div>
     </div>
     <!-- End of Page Header -->
@@ -462,202 +633,75 @@
                         <a href="{{ route('homepage') }}" class="btn btn-dark btn-rounded btn-icon-left">تسوق الان<i class="w-icon-long-arrow-left"></i></a>
                     </div>
                    
-                    <!-- Address Tab -->
+                     <!-- Address Tab -->
                     <div class="tab-pane" id="account-addresses">
                         <div class="icon-box icon-box-side icon-box-light">
                             <span class="icon-box-icon icon-map-marker">
                                 <i class="w-icon-map-marker"></i>
                             </span>
                             <div class="icon-box-content">
-                                <h4 class="mb-0 icon-box-title ls-normal">المواقع</h4>
+                                <h4 class="mb-0 icon-box-title ls-normal">العناوين</h4>
                             </div>
                         </div>
-                        <p>المعلومات الموجودة هنا سيتم استخدامها لاحقا في صفحة الدفع</p>
+                        <p>سيتم استخدام العناوين التالية في صفحة الخروج بشكل افتراضي.</p>
                         <div class="row">
                             <div class="mb-6 col-sm-6">
+                                <div class="ecommerce-address shipping-address pr-lg-8">
+                                    <h4 class="title title-underline ls-25 font-weight-bold">أضف عنوان جديد</h4>
+                                    <a href="{{ route('deliver_address',) }}"> 
+                                        <i class=" fa fa-plus text-center" style="border:1px dashed #ccc; padding:100px; font-size:40px;color:#ccc;width:100%;height:100%;">
+                                           <h4 style="color:#ccc; margin-top:10px">أضف عنوان </h4>
+                                        </i> 
+                                    </a>
+                                </div>
+                            </div>
+                            @foreach ($user_locations as $user_location )
+                            <div class="mb-6 col-sm-6">
                                 <div class="ecommerce-address billing-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان وصول الشحنة</h4>
+                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان التسليم @if($user_location->themain_address == 1) <b style="color:red"> ( العنوان الافتراضي)</b> @endif</h4>
                                     <address class="mb-4">
                                         <table class="address-table">
                                             <tbody>
                                                 <tr>
-                                                    <th>الاسم الكامل:</th>
+                                                    <th>الأسم الكامل:</th>
                                                     <td>{{ $current_user->full_name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>الاسم المستخدم:</th>
+                                                    <th>أسم المستخدم:</th>
                                                     <td>{{ $current_user->username }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>الموقع:</th>
-                                                    <td>{{ $current_user->address }}</td>
+                                                    <th>الشارع :</th>
+                                                    <td>{{ $user_location->address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>العنوان الكامل:</th>
+                                                    <td>{{ $user_location->full_street_info }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>المدينة:</th>
-                                                    <td>{{ $current_user->city }}</td>
+                                                    <td>{{ $user_location->city }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>البلد:</th>
-                                                    <td>{{ $current_user->country }}</td>
+                                                    <td>{{ $user_location->country }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>الرمز البريدي:</th>
-                                                    <td>{{ $current_user->postcode }}</td>
+                                                    <th>موقع معروف قريب من موقع التسليم:</th>
+                                                    <td>{{ $user_location->near_location }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>رقم الهاتف:</th>
-                                                    <td>{{ $current_user->phone }}</td>
+                                                    <th>الهاتف:</th>
+                                                    <td>{{ $user_location->phone }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </address>
-                                   
+                                    <a href="{{ route('edit_deliverAddress',$user_location->id) }}"> تعديل </a> | <a href="{{ route('delete_deliverAddress',$user_location->id) }}"> حذف </a> | <a href="{{ route('set_deliverAddress_asDefualt',$user_location->id) }}"> عنوان افتراضي</a>
                                 </div>
                             </div>
-                            <div class="mb-6 col-sm-6">
-                                <div class="ecommerce-address shipping-address pr-lg-8">
-                                    <h4 class="title title-underline ls-25 font-weight-bold">عنوان الشحن</h4>
-                                    <address class="mb-4">
-                                        <table class="address-table">
-                                             <tbody>
-                                                <tr>
-                                                    <th>الاسم الكامل:</th>
-                                                    <td>{{ $current_user->full_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>الاسم المستخدم:</th>
-                                                    <td>{{ $current_user->username }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>الموقع:</th>
-                                                    <td>{{ $current_user->saddress }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>المدينة:</th>
-                                                    <td>{{ $current_user->scity }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>البلد:</th>
-                                                    <td>{{ $current_user->scountry }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>الرمز البريدي:</th>
-                                                    <td>{{ $current_user->spostcode }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>رقم الهاتف:</th>
-                                                    <td>{{ $current_user->phone }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </address>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="accordion accordion-bg accordion-gutter-md accordion-border ">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">تعديل على موقع وصول الشحنة</a>
-                                        </div>
-                                        <div id="collapse1-1" class="card-body collapsed">
-                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('billingupdate',$current_user->id) }}"
-                                                method="post" enctype="multipart/form-data">
-                                                @csrf
-
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">الموقع </label>
-                                                        <input  type="text" name="address" class="form-control"
-                                                            id="address" value="{{ $current_user->address }}">
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputPassword4">البلد</label>
-                                                        <input type="text" name="country" class="form-control"
-                                                            id="country" value="{{ $current_user->country }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">المدينة </label>
-                                                        <input  type="text" name="city" class="form-control"
-                                                            id="city" value="{{ $current_user->city }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">الرمز البريدي</label>
-                                                        <input  type="number" name="postcode"
-                                                            class="form-control" id="postcode" value="{{ $current_user->postcode }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">المقاطعة\ الامارة </label>
-                                                        <input  type="text" name="state"
-                                                            class="form-control" id="state" value="{{ $current_user->stat }}">
-                                                    </div>
-                                                </div>
-
-                                                  
-                                                        
-                                                <div class="my-4 form-checkbox d-flex align-items-center">
-                                    <input class="mr-4  form-check-input" type="checkbox" name="shipping_copy_billing_info" id="shippingcopybillinginfo">
-                                    <label for="shippingcopybillinginfo" style="color:red">هل تريد نسخ المعلومات في الاعلى لاستخدامهافي توصيل الشحنة</label>
-                                </div>
-                                                  
-                                                <button class="mt-3 btn btn-primary">تعديل الان</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse1-1" class="expand">تعديل عنوان الشحن</a>
-                                        </div>
-                                        <div id="collapse1-1" class="card-body collapsed">
-                                            <form id="demo-form" class="quform from-prevent-multiple-submits" action="{{ route('shippingupdate',$current_user->id) }}"
-                                                method="post" enctype="multipart/form-data">
-                                                @csrf
-
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">الموقع </label>
-                                                        <input  type="text" name="saddress" class="form-control"
-                                                            id="saddress" value="{{ $current_user->saddress }}">
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputPassword4">البلد</label>
-                                                        <input type="text" name="scountry" class="form-control"
-                                                            id="scountry" value="{{ $current_user->scountry }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">المدينة </label>
-                                                        <input  type="text" name="scity" class="form-control"
-                                                            id="scity" value="{{ $current_user->scity }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">الرمز البريدي</label>
-                                                        <input  type="number" name="spostcode"
-                                                            class="form-control" id="spostcode" value="{{ $current_user->spostcode }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4">المقاطعة\ الامارة </label>
-                                                        <input  type="text" name="sstate"
-                                                            class="form-control" id="sstate" value="{{ $current_user->sstat }}">
-                                                    </div>
-                                                </div>
-                                                <button  class="mt-3 btn btn-primary btn-rounded">Edit Shipping Address</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                           
                         </div>
                     </div>
                     <!-- Acount Details Tab -->
