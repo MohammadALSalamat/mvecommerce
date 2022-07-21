@@ -1031,10 +1031,6 @@ class frontPageController extends Controller
         
         $current_user = Auth::user();
         $user_orders = Order::orderBy('id','DESC')->where('user_id',$current_user->id)->get();
-<<<<<<< HEAD
-=======
-        
->>>>>>> c42a79ae9da527b74c953d05e3ae4ed76f6534ef
         $user_locations = userLocation::orderBy('themain_address','DESC')->where('user_id',$current_user->id)->get();
         if($current_user){
             // dd($current_user);

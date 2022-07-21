@@ -332,8 +332,6 @@
                     </div>
 
                 </div>
-<<<<<<< HEAD
-=======
                 @else
                  <div class="single-product h-100 br-sm">
                     <h4 class="title-sm title-underline font-weight-bolder ls-normal">
