@@ -29,7 +29,7 @@ Route::group(['perfix'=>'v2'],function(){
    //+++++++++++++++++++++++++ users information api/v2 +++++++++++++++++++++++++++++++++++
     
    //LOGIN USER API
-   Route::get('v2/users/{id?}', [ApiItajerUpdatedInformation::class,'users_info']);
+    Route::get('v2/users/{id?}', [ApiItajerUpdatedInformation::class,'users_info']);
     Route::post('v2/login',[ApiItajerUpdatedInformation::class,'login_user']);
     Route::post('v2/register',[ApiItajerUpdatedInformation::class,'register_new_user']);
    // DASHBOARD USER API
@@ -40,8 +40,6 @@ Route::group(['perfix'=>'v2'],function(){
     Route::post('v2/create_address',[ApiItajerUpdatedInformation::class,'add_user_address']);
     Route::put('v2/users/update_address/{id?}',[ApiItajerUpdatedInformation::class,'update_address']);
     Route::put('v2/users/default_address/{id?}',[ApiItajerUpdatedInformation::class,'change_to_defalut_address']);
-
-
 });
 
 
