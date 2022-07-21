@@ -260,10 +260,9 @@ class ApiItajerUpdatedInformation extends Controller
         }
     }
 
-    public function change_to_defalut_address($id)
+    public function change_to_defalut_address($id=null)
     {
        $current_location = userLocation::find($id);
-       dd($current_location);
        $loations = userLocation::where('id','!=',$current_location->id)->get();
        if($current_location){
            foreach($loations as $location){
