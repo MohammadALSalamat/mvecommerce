@@ -36,6 +36,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\sellerRegistertionEmail_forAdmin;
 use App\Models\userLocation;
+use Stripe\Stripe;
 
 class frontPageController extends Controller
 {
@@ -43,7 +44,7 @@ class frontPageController extends Controller
 
     public function HomePage()
     {
-        //get the data
+        
         $banners = banner::where('status', 'active')->where('is_banner', '1')->get();
         $categories = category::with('one_cat_has_many_products')->where('is_parent', 0)->where('status', 1)->get();
         $categories_discound = category::with('best_descound')->where('is_parent', 0)->where('status', 1)->get();
@@ -109,6 +110,19 @@ class frontPageController extends Controller
 
     public function ShopPage(Request $request)
     {
+        $charge = Stripe::charges()->create([
+            'amount' => getNumbers()->get('newTotal') / 100,
+            'currency' => 'CAD',
+            'source' => $request->stripeToken,
+            'description' => 'Order',
+            'receipt_email' => $request->email,
+            'metadata' => [
+                'contents' => $contents,
+                'quantity' => Cart::instance('default')->count(),
+                'discount' => collect(session()->get('coupon'))->toJson(),
+            ],
+        ]);
+                //get the data
 
         // product filter in shop page get the data from the link top
         $products = product::query();
