@@ -156,8 +156,8 @@ Route::get('lang/{lang}',[frontPageController::class,'switchLang'])->name('lang.
 Route::get('helpus',[HelpUsController::class,'helpus'])->name('helpus');
 
 Route::group(['perfix'=>'user'],function(){
-    
     //view dashboard
+    Route::get('/plans', [frontPageController::class,'plan_index'])->name('plans_index');
     Route::get('/dashboard',[frontPageController::class,'userdashboard'])->name('userdashboard');
     Route::get('/deliver_address',[frontPageController::class,'deliver_address'])->name('deliver_address');
     Route::post('/add_deliver_address',[frontPageController::class,'add_deliver_address'])->name('add_deliver_address');
@@ -178,6 +178,5 @@ Route::group(['perfix'=>'user'],function(){
 
     Route::post('improve_submit',[HelpUsController::class,'helpusform'])->name('helpusform');
     Route::post('ajax_like',[HelpUsController::class,'like_submition'])->name('like_submition');
-
 
 });
