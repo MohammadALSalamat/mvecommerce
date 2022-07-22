@@ -36,7 +36,6 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\sellerRegistertionEmail_forAdmin;
 use App\Models\userLocation;
-use Stripe\Stripe;
 
 class frontPageController extends Controller
 {
