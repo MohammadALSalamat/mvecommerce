@@ -110,19 +110,7 @@ class frontPageController extends Controller
 
     public function ShopPage(Request $request)
     {
-        $charge = Stripe::charges()->create([
-            'amount' => getNumbers()->get('newTotal') / 100,
-            'currency' => 'CAD',
-            'source' => $request->stripeToken,
-            'description' => 'Order',
-            'receipt_email' => $request->email,
-            'metadata' => [
-                'contents' => $contents,
-                'quantity' => Cart::instance('default')->count(),
-                'discount' => collect(session()->get('coupon'))->toJson(),
-            ],
-        ]);
-                //get the data
+        
 
         // product filter in shop page get the data from the link top
         $products = product::query();
