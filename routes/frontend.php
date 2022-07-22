@@ -157,7 +157,6 @@ Route::get('helpus',[HelpUsController::class,'helpus'])->name('helpus');
 
 Route::group(['perfix'=>'user'],function(){
     //view dashboard
-    Route::get('/plans', [frontPageController::class,'plan_index'])->name('plans_index');
     Route::get('/dashboard',[frontPageController::class,'userdashboard'])->name('userdashboard');
     Route::get('/deliver_address',[frontPageController::class,'deliver_address'])->name('deliver_address');
     Route::post('/add_deliver_address',[frontPageController::class,'add_deliver_address'])->name('add_deliver_address');
