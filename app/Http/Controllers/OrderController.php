@@ -18,7 +18,7 @@ use App\Models\userLocation;
 use Illuminate\Http\Request;
 use App\Jobs\orderVendorEmail;
 use App\Jobs\OrderEmailForAdmin;
-use Cartalyst\Stripe\Stripe;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -57,7 +57,7 @@ class OrderController extends Controller
         Stripe::charges()->create([
 
         ]);
-        
+
         if(empty($data['location_id_selected']) || $data['location_id_selected'] == null){
             return back()->with('error','Please add an address to deliver.');
         }
