@@ -10,7 +10,6 @@ use App\Models\State;
 use App\Models\Region;
 use App\Models\Seller;
 use App\Models\Country;
-
 use App\Models\product;
 use App\Jobs\OrderEmail;
 use App\Models\Shipping;
@@ -18,9 +17,10 @@ use App\Models\userLocation;
 use Illuminate\Http\Request;
 use App\Jobs\orderVendorEmail;
 use App\Jobs\OrderEmailForAdmin;
-use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+
 
 class OrderController extends Controller
 {
@@ -54,10 +54,31 @@ class OrderController extends Controller
     {
         $data = $request->all();
 
-        Stripe::charges()->create([
+            $charge = Stripe::charges()->create([
+                'amount' => Cart::total()/100,
+                'currency' => 'CAD',
+                'source' => $request->stripeToken,
+                'description' => 'Order',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    // 'contents' => $contents,
+                    // 'quantity' => Cart::instance('shipping')->count(),
+                    // 'discount' => collect(session()->get('coupon'))->toJson(),
+                ],
+            ]);
+            dd($charge);
+            $order = $this->addToOrdersTables($request, null);
+            // Mail::send(new OrderPlaced($order));
 
-        ]);
+            // decrease the quantities of all the products in the cart
+            $this->decreaseQuantities();
 
+            Cart::instance('default')->destroy();
+            session()->forget('coupon');
+
+            return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!'); 
+        
+    dd($data);
         if(empty($data['location_id_selected']) || $data['location_id_selected'] == null){
             return back()->with('error','Please add an address to deliver.');
         }
@@ -104,11 +125,13 @@ class OrderController extends Controller
         }else{
             $final_total = (float) str_replace(',','',$total) + $shipping_paid;
         }
+        
+       
 
 
         // dd($final_total);
 
-        $ordernumber = (rand(1,10000000).'-800000-000')+1;
+        $ordernumber = rand(1,10000000);
         
         $userInfo = User::where('id',$data['user_id'])->first();
         if ($userInfo) {

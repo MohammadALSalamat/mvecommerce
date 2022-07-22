@@ -1,7 +1,7 @@
 @extends('frontend.frontend_layout.main_desgin')
 
 
- @if(Config::get('app.locale') == 'en')
+@if(Config::get('app.locale') == 'en')
 @section('mytitle','CheckOut' )
 @else
 @section('mytitle',' صفحة الدفع ' )
@@ -44,7 +44,35 @@ div.checkRadioContainer1> label > input + i {
 div.checkRadioContainer1> label > input:checked + i {
 	visibility: visible;
 }
+/**
+* The CSS shown here will not be introduced in the Quickstart guide, but shows
+* how you can use CSS to style your Element's container.
+*/
+.StripeElement {
+  background-color: white;
+  padding: 16px 16px;
+  border: 1px solid #ccc;
+
+}
+
+.StripeElement--focus {
+  // box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#card-errors {
+  color: #fa755a;
+}
 </style>
+<script src="https://js.stripe.com/v3/"></script>
+
         <main class="main checkout">
             <!-- Start of Breadcrumb -->
             @if(Config::get('app.locale') == 'en')
@@ -73,11 +101,11 @@ div.checkRadioContainer1> label > input:checked + i {
             <!-- Start of PageContent -->
             <div class="page-content">
                 <div class="container">
-                    <form class="form checkout-form" action="{{ route('checkout_process') }}" method="post">
+                    <form class="form checkout-form" action="{{route('checkout_process')}}" method="POST" id=payment-form>
                         @csrf
                         <div class="row mb-9">
                             <!-- hidden info for checkout -->
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
                             @if(Config::get('app.locale') == 'en')
 
                             <div class="col-lg-7 pr-lg-4 mb-4">
@@ -95,10 +123,10 @@ div.checkRadioContainer1> label > input:checked + i {
                                    @else
                                        <div class="modal-body">
                                            @csrf
-                                           <div class="checkRadioContainer1">
+                                <div class="checkRadioContainer1">
                                             <label style=" padding:10px">
-                                                <input type="hidden" name="location_id_selected" value="{{ $locations->id }}">
-                                                <input type="radio" name="radioGroup" @if($locations->themain_address == 1) checked  @endif  />
+                            <input id="location_id_selected" type="hidden" name="location_id_selected" value="{{ $locations->id }}">
+                                <input id="radioGroup" type="radio" name="radioGroup" @if($locations->themain_address == 1) checked  @endif  />
                                                 <i class="fa fa-check fa-2x"></i>
                                                 <span style="width:80%"> <b> Deliver's Name : </b> {{ $locations->full_name }}@if($locations->themain_address == 1)<b style="color:red;float:right">( Deliver to this location )</b></span> @endif<br>
                                                 <span> <b>Deliver To : </b> {{ $locations->address }}, {{ $locations->full_street_info }} ,{{ $locations->city}},{{ $locations->country  }}</span>
@@ -123,7 +151,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                             <tbody>
                                                 @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)   
                                                 <!-- hidden info for checkout -->
-                                                <input type="hidden" name="sub_total" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
+                                <input type="hidden" id="sub_total" name="sub_total" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
                                                     <tr class="bb-no">
                                                         <td style="word-wrap:break-word;
                                                         white-space: normal;" class="product-name">{{ $item->name }} <i
@@ -177,7 +205,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                                             @foreach ($shipping_adress as $shipping)
                                                                 
                                                             <li><div class="custom-radio">
-                                                                    <input type="radio" id="free-shipping"
+                                    <input type="radio" id="free-shipping"
                                                                     value="{{ $shipping->delivery_charge}}" name="shipping_paid">
                                                                     <label for="free-shipping"
                                                                         class="" >{{ $shipping->shipping_address }} : {{ number_format($shipping->delivery_charge,2)}} AED - <small style="color: #fff; background:rgb(236, 58, 3);padding:5px 10px;border-radius:20px;text-transform:capitalize;text-weight:bold" class=" badge badge-success">{{ $shipping->delivery_Time}}</small></label>
@@ -203,9 +231,9 @@ div.checkRadioContainer1> label > input:checked + i {
                                                     </td>
                                                     <td>
                                                         <b> {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}} AED</b>
-                                                        <input type="hidden" name="total_with_copuon" value="{{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}}">
-                                                        <input type="hidden" name="total_without_copuon" value="0">
-                                                        <input type="hidden" name="coupon_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon')['value'] }}">             
+                            <input type="hidden" id="total_with_copuon" name="total_with_copuon" value="{{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()) - session('coupon')['value'])}}">
+                            <input type="hidden" id="total_without_copuon" name="total_without_copuon" value="0">
+                                <input type="hidden" id="coupon_value" name="coupon_value" value="{{ \Illuminate\Support\Facades\Session::get('coupon')['value'] }}">             
                                                     </td>
                                                 </tr>
                                                 @else
@@ -214,8 +242,8 @@ div.checkRadioContainer1> label > input:checked + i {
                                                     </td>
                                                     <td>
                                                         <b> {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} AED</b>
-                                                        <input type="hidden" name="total_without_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
-                                                        <input type="hidden" name="total_with_copuon" value="0">
+                                     <input type="hidden" id="total_without_copuon" name="total_without_copuon" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
+                                                        <input type="hidden" id="total_with_copuon" name="total_with_copuon" value="0">
                                                     </td>
                                                 
                                                 @endif
@@ -227,15 +255,22 @@ div.checkRadioContainer1> label > input:checked + i {
                                             <h4 class="title font-weight-bold ls-25 pb-0 mb-1">Payment Methods</h4>
                                             <div class="accordion payment-accordion">
                                                 <div class="card">
-                                                    <div class="card-header">
-                                                        <a href="#cash-on-delivery" class="collapse">Direct Bank Transfor</a>
+                             <div class="card-header">
+        <a href="#cash-on-delivery" class="collapse">Using Stripe</a>
                                                     </div>
-                                                    <div id="cash-on-delivery" class="card-body expanded">
-                                                        <p class="mb-0">
-                                                            Make your payment directly into our bank account. 
-                                                            Please use your Order ID as the payment reference. 
-                                                            Your order will not be shipped until the funds have cleared in our account.
-                                                        </p>
+            <div id="cash-on-delivery" class="card-body expanded">
+                            
+                            <p class="mb-0 stripe_class">
+                        <label for="card-element">
+                          Credit or debit card
+                        </label>
+                        <div id="card-element">
+                          <!-- a Stripe Element will be inserted here. -->
+                        </div>
+
+                        <!-- Used to display form errors -->
+                        <div id="card-errors" role="alert"></div>
+                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="card">
@@ -278,7 +313,7 @@ div.checkRadioContainer1> label > input:checked + i {
                                             </div>
                                         </div>
                                         <div class="form-group place-order pt-6">
-                                            <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+                                            <button type="submit" id="complete-order" class="btn btn-dark btn-block btn-rounded">Place Order</button>
                                         </div>
                                     </div>
                                 </div>
@@ -458,9 +493,121 @@ div.checkRadioContainer1> label > input:checked + i {
             <!-- End of PageContent -->
         </main>
         <!-- End of Main -->
+        
 @endsection
 
 @section('script')
 
+ <script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
+
+    <script>
+        (function(){
+            // Create a Stripe client
+            var stripe = Stripe('{{ config('services.stripe.key') }}');
+            // Create an instance of Elements
+            var elements = stripe.elements();
+            // Custom styling can be passed to options when creating an Element.
+            // (Note that this demo uses a wider set of styles than the guide below.)
+            var style = {
+              base: {
+                color: '#32325d',
+                lineHeight: '18px',
+                fontFamily: '"Roboto", Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                  color: '#aab7c4'
+                }
+              },
+              invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+              }
+            };
+            // Create an instance of the card Element
+            var card = elements.create('card', {
+                style: style,
+                hidePostalCode: true
+            });
+            // Add an instance of the card Element into the `card-element` <div>
+            card.mount('#card-element');
+            // Handle real-time validation errors from the card Element.
+            card.addEventListener('change', function(event) {
+              var displayError = document.getElementById('card-errors');
+              if (event.error) {
+                displayError.textContent = event.error.message;
+              } else {
+                displayError.textContent = '';
+              }
+            });
+            // Handle form submission
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event) {
+              event.preventDefault();
+              // Disable the submit button to prevent repeated clicks
+              document.getElementById('complete-order').disabled = true;
+              var options = {
+                name: document.getElementById('user_id').value,
+                // address_line1: document.getElementById('address').value,
+                // address_city: document.getElementById('city').value,
+                // address_state: document.getElementById('province').value,
+                // address_zip: document.getElementById('postalcode').value
+              }
+              stripe.createToken(card, options).then(function(result) {
+                if (result.error) {
+                  // Inform the user if there was an error
+                  var errorElement = document.getElementById('card-errors');
+                  errorElement.textContent = result.error.message;
+                  // Enable the submit button
+                  document.getElementById('complete-order').disabled = false;
+                } else {
+                  // Send the token to your server
+                  stripeTokenHandler(result.token);
+                }
+              });
+            });
+            function stripeTokenHandler(token) {
+              // Insert the token ID into the form so it gets submitted to the server
+              var form = document.getElementById('payment-form');
+              var hiddenInput = document.createElement('input');
+              hiddenInput.setAttribute('type', 'hidden');
+              hiddenInput.setAttribute('name', 'stripeToken');
+              hiddenInput.setAttribute('value', token.id);
+              form.appendChild(hiddenInput);
+              // Submit the form
+              form.submit();
+            }
+            // PayPal Stuff
+            var form = document.querySelector('#paypal-payment-form');
+            var client_token = "#";
+            braintree.dropin.create({
+              authorization: client_token,
+              selector: '#bt-dropin',
+              paypal: {
+                flow: 'vault'
+              }
+            }, function (createErr, instance) {
+              if (createErr) {
+                console.log('Create Error', createErr);
+                return;
+              }
+              // remove credit card option
+              var elem = document.querySelector('.braintree-option__card');
+              elem.parentNode.removeChild(elem);
+              form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                instance.requestPaymentMethod(function (err, payload) {
+                  if (err) {
+                    console.log('Request Payment Method Error', err);
+                    return;
+                  }
+                  // Add the nonce to the form and submit
+                  document.querySelector('#nonce').value = payload.nonce;
+                  form.submit();
+                });
+              });
+            });
+        })();
+    </script>
 
 @endsection
